@@ -107,7 +107,7 @@ namespace CoachCue.Controllers
 
         public ActionResult ImportSchedule(int weekNumber)
         {
-            gameschedule.ImportSchedule(4, weekNumber);
+            gameschedule.ImportSchedule(5, weekNumber);
             return RedirectToAction("Index");
         }
 

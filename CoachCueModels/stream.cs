@@ -412,7 +412,7 @@ namespace CoachCue.Model
                 bool includeFromDate = (fromDate.HasValue) ? true : false;
                 //if no date, grab everything from the last 60 days
                 if( !fromDate.HasValue )
-                    fromDate = DateTime.UtcNow.GetEasternTime().AddDays(-180);
+                    fromDate = DateTime.UtcNow.GetEasternTime().AddDays(-280);
 
                 user currentUser = user.Get(userID);
 

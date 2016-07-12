@@ -18,7 +18,7 @@ namespace CoachCue.Controllers
             var model = filterContext.Controller.ViewData.Model as BaseViewModel;
             if (model != null)
             {
-                model.IsMobile = false;//Request.Browser.IsMobileDevice;
+                model.IsMobile = Request.Browser.IsMobileDevice;
                 int userID = 0;
 
                 model.Avatar = "sm_profile.jpg";
@@ -50,7 +50,7 @@ namespace CoachCue.Controllers
                 model.TopVotedPlayers = (Request.Browser.IsMobileDevice) ? new List<VotedPlayers>() : matchup.GetTopMathupVotes(gameschedule.GetCurrentWeekID());
                 model.TrendingItems = (Request.Browser.IsMobileDevice) ? new List<AccountData>() : user.GetAccountsFromPlayers(nflplayer.GetTrending(5), (userID != 0) ? (int?)userID : null);
                 model.PlayerID = getPlayerID(filterContext);
-                model.TopCoaches = (Request.Browser.IsMobileDevice) ? new List<LeaderboardCoach>() : user.GetTopCoachesByWeek(5, gameschedule.GetCurrentWeekID()-1, 4);
+                model.TopCoaches = new List<LeaderboardCoach>(); //(Request.Browser.IsMobileDevice) ? new List<LeaderboardCoach>() : user.GetTopCoachesByWeek(5, gameschedule.GetCurrentWeekID()-1, 4);
             }
 
             base.OnActionExecuted(filterContext);
