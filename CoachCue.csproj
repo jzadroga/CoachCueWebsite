@@ -317,6 +317,8 @@
     <Content Include="assets\js\bootstrap-tagsinput.js" />
     <Content Include="assets\js\controlPanel.js" />
     <Content Include="assets\js\helpers.js" />
+    <Content Include="assets\data\players.json" />
+    <Content Include="assets\data\users.json" />
     <None Include="assets\js\jquery-1.5.1-vsdoc.js" />
     <Content Include="assets\js\hogan.js" />
     <Content Include="assets\js\jquery.masonry.min.js" />
@@ -458,6 +460,7 @@
     <Content Include="packages.config" />
     <Content Include="Views\WhoDoIStart\Index.cshtml" />
     <Content Include="Views\Shared\_VoteCompare.cshtml" />
+    <None Include="Properties\PublishProfiles\CoachCue - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="CoachCueModels\CoachCueModels.csproj">
@@ -465,9 +468,7 @@
       <Name>CoachCueModels</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="assets\data\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
