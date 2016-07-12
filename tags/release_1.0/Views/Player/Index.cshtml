@@ -1,0 +1,87 @@
+﻿@model CoachCue.ViewModels.PlayerViewModel
+@using CoachCue.Model
+
+@{
+    ViewBag.Title = "CoachCue - " + Model.PlayerDetail.fullName;
+    ViewBag.Description = "Fantasy football realtime news and comments for " + Model.PlayerDetail.fullName;
+    ViewBag.Keywords = "fantasy football, News, " + Model.PlayerDetail.fullName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="span6 section" id="playerdetail">
+
+    <div class='item parent player-header' data-player='@Model.PlayerDetail.playerID'>
+        <div class='content'>
+            <div class='content-header'>
+                @if (!User.Identity.IsAuthenticated){
+                 <a data-account-type="players" data-account='@Model.PlayerDetail.playerID' class="btn btn-success btn-mini action"data-toggle="modal" href="#register-modal">Follow</a>
+                }else{
+                    if (!Model.PlayerDetail.isFollowing ){
+                    <a data-account-type="players" data-account='@Model.PlayerDetail.playerID' class="btn btn-success btn-mini follow action playerdetail" href="#">Follow</a>
+                    }else{
+                    <a data-account-type="players" data-account='@Model.PlayerDetail.playerID' class="btn btn-inverse unfollow btn-mini action" href="#">Unfollow</a>
+                    }
+                }
+                <span class='username'>@Model.PlayerDetail.fullName</span>
+            </div>
+            <img class='avatar large' src='@Model.PlayerDetail.profilePicLarge' />
+            <p class="bio">@Model.PlayerDetail.position.positionName&nbsp;|&nbsp;@Model.PlayerDetail.nflteam.teamSlug</p>
+            <div class="detail-info">
+                @if (!User.Identity.IsAuthenticated){
+                <a data-toggle="modal" href="#register-modal">@Model.Followers Followers</a>
+                }else{
+                <a id="playerfollow-count-@Model.PlayerDetail.playerID" href="@Url.Action("Index", "Followers", new { id = Model.PlayerDetail.playerID, type = "players",  name = Model.PlayerDetail.linkFullName })">@Model.Followers Followers</a>
+                }
+            </div>
+        </div>
+
+        <div class="controls player-details" id="select-player-controls">
+            <textarea class="user-message-detail" rows="1" id="user-message" placeholder="Click to Add a Message or Matchup"></textarea>
+            <input style="display: none" type="text" data-plyid="0" class="new-matchup-input-text" id="player2" placeholder="Vs." />
+        </div>
+         
+        @{ Html.RenderPartial("_PlayerPostingCtrl", new ViewDataDictionary { { "PostContext", "player" }}); }
+    </div>
+
+    <div id="stream-area">
+        <div id="player-message-stream">
+        
+            @if (!User.Identity.IsAuthenticated){
+            <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong><a data-toggle="modal" href="#register-modal">Join CoachCue!</a></strong> to follow all your players and get the latest news from Twitter and the CoachCue community.
+            </div>
+            }
+
+            <div id="@Model.PlayerDetail.playerID" class="player-stream message-list-stream">
+            @foreach (StreamContent streamItem in Model.PlayerStream)
+            { Html.RenderPartial("_StreamItem", streamItem, new ViewDataDictionary { { "UserImage", Model.Avatar } }); }
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+@section playerlist
+{
+    <!-- player search -->
+    <div class="row" style="position: relative">
+        <form class="form-search" id="frm-search">
+            <span class="add-on search-icon">
+                <i class="icon-search"></i>
+            </span>                   
+            <input autocomplete="off" id="player-search" type="text" class="searchit-val search-box input-large search-query" placeholder="Search for Player or User" /> 
+        </form>
+    </div>
+
+    <div class="row">
+        @{ Html.RenderPartial("_TrendingList", model: Model.TrendingItems); }
+    </div>
+}
+
+<div class="span3 section">
+
+    @{Html.RenderPartial("_TopCoaches", model: Model.WeeklyTopCoaches.Take(25).ToList());}
+
+</div>

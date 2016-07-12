@@ -1,0 +1,27 @@
+﻿@model List<PlayerStream>
+@using CoachCue.Model;
+
+    @foreach (PlayerStream playerItem in Model){
+        <div class="player-container" data-player='@playerItem.Player.playerID'>
+        @if( playerItem.BuildPlayerHeader )
+            { Html.RenderPartial("_StreamPlayerHeader", model: playerItem); }
+
+            <div id="@playerItem.Player.playerID" class="player-stream">
+            @foreach ( StreamContent streamItem in playerItem.StreamItems  )
+                { Html.RenderPartial("_StreamItem", model: streamItem); }
+            </div>
+            
+            <form class="form-inline new-message-post" data-plyid="@playerItem.Player.playerID">
+                <input class="new-message-input input-block-level" type="text" placeholder="Add Player Message" />
+                <div class="new-message-text" style="display: none">
+                    <img class="avatar player-item-avatar" src='@Url.Content("~/assets/img/avatar/" + ViewData["UserImage"])' />
+                    <textarea rows="5" maxlength="140" class="new-message-input-textarea"></textarea>
+                    <div class="message-charNum">140</div>
+                </div>
+            </form>
+
+            <form style="display:none;" class="form-inline new-matchup-post" data-plyid="@playerItem.Player.playerID">
+                <input id="matchup-player-@playerItem.Player.playerID" class="new-matchup-input input-block-level" type="text" placeholder="Vs. Player" />
+            </form>
+        </div>
+    }

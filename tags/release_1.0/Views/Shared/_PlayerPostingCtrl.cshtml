@@ -1,0 +1,50 @@
+﻿    <div id="scoring-format" style="display: none">
+        <span>Scoring format:</span>
+        <label class="radio inline">
+            <input type="radio" name="scoringOptions" id="scoringStandard" value="1" checked>
+            Standard
+        </label>
+        <label class="radio inline">
+            <input type="radio" name="scoringOptions" id="scoringPPR" value="2">
+            PPR
+        </label>
+    </div>
+
+    <div class="new-message-options relative" style="display: none">    
+        @if( ViewData["PostContext"] != "matchup" ){               
+        <a id="select-new-message" class="btn new-post-btn selected">
+            <span>Text</span>
+        </a>    
+        }
+        <a id="select-new-matchup" class="btn new-post-btn">
+            <span>Matchup</span>
+        </a>                    
+        <div class="post-controls">
+            @if (ViewData["PostContext"] == "matchup") {
+            <div id="matchup-controls" class="posting-controls">
+                @if (!User.Identity.IsAuthenticated){
+                    <a class="btn btn-success" data-toggle="modal" href="#register-modal">Post</a>
+                }else{
+                <a href="#" id="@ViewData["PostContext"]-post-matchup" class="btn btn-success disabled">Post</a> 
+                }
+            </div>
+            }else{ 
+            <div id="message-controls" class="posting-controls">
+                <div id="charNum">140</div>
+                 @if (!User.Identity.IsAuthenticated){
+                    <a class="btn btn-success" data-toggle="modal" href="#register-modal">Post</a>
+                 }else{
+                    <a class="btn btn-success disabled" href="#" id="@ViewData["PostContext"]-post-message">Post</a>
+                 }
+            </div>
+            <div id="matchup-controls" class="posting-controls" style="display: none">
+                @if (!User.Identity.IsAuthenticated){
+                    <a class="btn btn-success" data-toggle="modal" href="#register-modal">Post</a>
+                }else{
+                <a href="#" id="@ViewData["PostContext"]-post-matchup" class="btn btn-success disabled">Post</a> 
+                }
+            </div>
+            }
+            <input type="button" id="@ViewData["PostContext"]-cancel-post" class="btn" value="Cancel" /> 
+        </div>                   
+    </div>

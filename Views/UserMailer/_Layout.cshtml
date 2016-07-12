@@ -1,0 +1,40 @@
+<table cellpadding="0" border="0" style="line-height: 1.2em; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; border-spacing: 0px; font-size: 100%; border: 0; background-color: #e7e8e8; border-top: 1px solid #ddd" cellspacing="0" width="100%">
+    <tbody>
+        <tr>
+            <td width="100%" align="center">
+                <img src="http://coachcue.com/assets/img/mailsp.gif" style="border-style: none" height="1" width="1"><table cellpadding="0" border="0" style="line-height: 1.2em; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; border-spacing: 0px; font-size: 100%; border: 0; margin: 30px 0px 30px 0px" cellspacing="0" width="585">
+                    <tbody>
+                        <tr>
+                            <td width="99" valign="top">&nbsp;</td>
+                            <td width="486" style="vertical-align: middle; padding-left: 20px; text-align: left">
+                                <div style="color: #333333; padding: 0; font-size: 1.4em; line-height: 1.4em; text-align: left; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif">@Html.Raw(ViewData["Title"].ToString())</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table cellpadding="0" border="0" style="border-spacing: 0px; background-color: #ffffff; border: 1px solid #dddddd; border-bottom: 1px solid #bbbbbb; padding-bottom: 20px" cellspacing="0" width="585">
+                    <tbody>
+                        <tr>
+                            <td>
+                                @RenderBody()
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <table cellpadding="0" border="0" style="line-height: 1.2em; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; border-spacing: 0px; font-size: 100%; border: 0; padding-bottom: 25px; padding-top: 10px" cellspacing="0" width="585">
+                    <tbody>
+                        <tr>
+                            <td width="585" style="padding: 10px 0 0 10px">
+                                <div style="font-size: 10px; color: #999; line-height: 1.1em; text-align: left; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif"><span>This email was sent by CoachCue.  CoachCue is a social network for Fantasy Sports. </span><span>To disable all email from CoachCue, visit the following link: <a style="color: #538dc2" href="http://www.coachcue.com/account/settings?usr=@ViewData["UserGuid"]" target="_blank">Unsubscribe</a></span></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

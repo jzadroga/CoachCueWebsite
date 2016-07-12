@@ -1,0 +1,48 @@
+﻿@model CoachCue.ViewModels.MyMatchupViewModel
+@using CoachCue.Model;
+
+@{
+    ViewBag.Description = "Fantasy football Who Should I Start " + Model.MyMatchup.Player1.PlayerName + " or " + Model.MyMatchup.Player2.PlayerName;
+    ViewBag.Keywords = "fantasy football, Who Should I Start, " + Model.MyMatchup.Player1.PlayerName + ", " + Model.MyMatchup.Player2.PlayerName;
+    ViewBag.Title = "Who Should I Start? " + Model.MyMatchup.Player1.PlayerName + " or " + Model.MyMatchup.Player2.PlayerName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.twitterCard = "summary";
+    ViewBag.twitterSite = "@CoachCue";
+    ViewBag.twitterTitle = Model.MyMatchup.Player1.PlayerName + " vs. " + Model.MyMatchup.Player2.PlayerName;
+    ViewBag.twitterDescription = "Vote now on who to Draft at <a href='http://coachcue.com/matchup?mt=" + Model.MyMatchup.MatchupID + "'>Coachcue.com</a>";
+    ViewBag.twitterImage = "http://coachcue.com/assets/img/twittercard-matchup1.png";
+    ViewBag.twitterUrl = "http://coachcue.com/matchup?mt=" + Model.MyMatchup.MatchupID;
+}
+
+<input type="hidden" id="find-coachID" />
+<div class="span8 section matchup-details-item">
+    @{Html.RenderPartial("_ShareCtrl");}
+
+    <h1>Who Should I Start? @Model.MyMatchup.Player1.PlayerName or @Model.MyMatchup.Player2.PlayerName</h1>
+
+    <div id="matchup-details">
+        <div class="weekly-matchup-item mymatchup" data-matchup="@Model.MyMatchup.MatchupID">
+
+            @{ Html.RenderPartial("_StreamItem", model: Model.Matchup); }
+
+        </div>
+
+        @if (Model.RelatedMatchups.Count() > 0)
+        {
+            <h2 class="related-matchups">Who Should I Start Related Matchups</h2>
+
+            foreach (StreamContent relatedMatchup in Model.RelatedMatchups)
+            {
+                <div class="weekly-matchup-item mymatchup" data-matchup="@relatedMatchup.MatchupItem.MatchupID">
+                    @{Html.RenderPartial("_StreamItem", model: relatedMatchup); }
+                </div>
+            }
+        }
+
+    </div>
+</div>
+
+@section rightcolumn {
+    @{ Html.RenderPartial("_RightColumnBase", model: Model); }
+}

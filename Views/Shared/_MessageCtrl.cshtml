@@ -1,0 +1,44 @@
+﻿@model CoachCue.ViewModels.MessageViewModel
+@using CoachCue.Model;
+
+<div class="message-post">
+    <input type="hidden" value="@Model.Type" id="msgType" />
+    <div class="row">
+        <input type="hidden" id="prnt-id" value="@Model.ParentID" />
+        <div class="user-avatar height large" style="background: url(/assets/img/avatar/@Model.User.avatar.imageName) 50% 50% no-repeat;"></div>
+        <div class="msg-container">
+            <div class="textarea-wrap">
+                <div class="point">
+                    <div class="yw oo"></div>
+                    <div class="yw VK"></div>
+                </div>
+                <textarea class="users-typeahead" id="share-message" placeholder="Share some news (Add relevant players below)" ></textarea>
+            </div>
+            <div class="message-charNum">140</div>
+        </div>
+    </div>
+    
+    <div class="row" style="padding-top: 8px;">
+        <div class="msg-players">
+            <div class="ply-label">
+                About Player(s):
+            </div>
+            <div class="share-players">
+                <input type="hidden" id="enablePlayerDelete" value="@(Model.Matchup.matchupID == 0 ? true : false)" />
+                <input data-role="tagsinput" style="width: 100%" type="text" data-plyid="0" id="players" @if( Model.MessagePlayers.Count() <= 0 ){ <text> placeholder="+ Add player(s) in message" </text>  } />                 
+                @foreach (nflplayer player in Model.MessagePlayers)
+                {
+                    <input type="hidden" class="player-tags" data-img="@player.profilePic" data-name="@player.shortName" value="@player.playerID" />
+                }
+            </div>
+        </div>
+    </div>      
+    
+</div>
+
+<div class="msg-controls-wrapper">
+    <div class="msg-controls">
+        <button id="share-post" class="btn btn-success post-sidepanel-reply disabled close-panel" type="submit">Share</button>
+        <button class="btn btn-default close-panel" type="button">Cancel</button>
+    </div>
+</div>

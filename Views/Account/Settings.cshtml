@@ -1,0 +1,56 @@
+﻿@model CoachCue.ViewModels.SettingsViewModel
+
+@{
+    ViewBag.Title = "CoachCue - Settings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="span8 section">
+
+    @if (Model.DisplayMessage)
+    {
+        <div class="alert alert-info fade in">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            @Model.Message;
+        </div>
+    }
+
+    <ul class="nav nav-tabs" id="profileTab">
+        <li @( Model.CurrentTab == "emailnotices" ? "class=active" : "")><a href="#emailnotices" data-toggle="tab">Emails</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane pod active" id="emailnotices">
+
+            @using (Html.BeginForm("UpdateSettingsEmailNotices", "Account", FormMethod.Post, new { @class = "validate" }))
+            {
+                <h3>Email Notifications</h3>
+                <div class="form-group">
+                    <label class="control-label standout" for="username">Receive an email when I have a notification</label>
+                    <div class="controls">
+                        @Html.DropDownListFor(m => m.RecieveNotificationEmail, Model.RecieveNotificationEmailOptions)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="controls">
+                        <button type="submit" id="btnSave" class="btn btn-primary btn-large">Save</button>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+
+    </div>
+</div>
+
+@section rightcolumn {
+    @{ Html.RenderPartial("_RightColumnBase", model: Model); }
+}
+
+@section pagescripts
+{
+    <script src="@Url.Content("~/assets/js/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+} 

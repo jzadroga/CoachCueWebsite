@@ -1,0 +1,14 @@
+﻿@model List<CoachCue.Model.user>
+@using CoachCue.Model;
+
+<div class="pod" id="coach-listing">
+    <h5>Top Coaches</h5>
+  
+    <div id="top-overall-coaches" class="coaches">
+        @foreach (CoachCue.Model.user coach in Model)
+        {
+            { Html.RenderPartial("_CoachItem", model: coach); }
+        }
+        <a class="link" href="@Url.Action("Leaderboard", "Coach")">View Leaderboard</a>
+    </div>
+</div>

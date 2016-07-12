@@ -1,0 +1,36 @@
+﻿@model List<LeaderboardCoach>
+@using CoachCue.Model;
+
+<div class="span4 pod pod-child">
+    <h4>Top Correct Votes Week 7</h4>
+
+    <div id="top-overall-coaches">
+        @foreach (LeaderboardCoach coach in Model)
+        {
+            <div class="item clear player-item">
+                <div class="content">
+                    <div class="content-header">
+                        <a data-account-id='@coach.Coach.userID' class="username" href="@Url.Action("Index", "Coach", new { id = coach.Coach.userID, name = coach.Coach.fullName })">@coach.Coach.fullName</a>
+                    </div>
+                    <div class="item-hover-menu">
+                        <ul class="top-coach-list">
+                             <li>    
+                                <span>@coach.Percent %</span>
+                            </li>
+                            <li>
+                                <span class="coach-wrong"><i class='icon-small icon-thumbs-down'></i>@coach.Wrong</span>
+                            </li>
+                            <li>
+                                <span class="coach-correct"><i class='icon-small icon-thumbs-up'></i>@coach.Correct</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <img class="avatar player-item-avatar lazy-load" data-src="/assets/img/avatar/@coach.Coach.avatar.imageName" alt="@coach.Coach.fullName">
+                    <span>@@@coach.Coach.userName</span>
+                    
+                </div>
+            </div>
+        }
+        <a style="white-space: nowrap;" class="link" href="@Url.Action("Index", "Leaderboard", new { week = 7 })">View Full Leaderboard</a>
+    </div>
+</div>

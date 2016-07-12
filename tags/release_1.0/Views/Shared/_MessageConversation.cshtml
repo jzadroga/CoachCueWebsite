@@ -1,0 +1,49 @@
+﻿@model List<message>
+@using CoachCue.Model;
+
+@foreach( message msgItem in Model ){
+
+    <div data-parent="@msgItem.messageContextID" id="msg-@msgItem.messageID" class="item child user-message conversation-message @if( Model.IndexOf( msgItem ) == (Model.Count -1) ){<text>last-message</text> }" data-ticks="@msgItem.dateCreated.Ticks.ToString()">
+        <div class="content">
+            <div class="content-header">
+                <a data-ajax="false" class="username" href="@Url.Action("Index", "Coach", new { id = msgItem.userID, name = msgItem.user.fullName })">@msgItem.user.fullName</a>
+            </div>
+            <div class="avatar user-avatar height" style='background: url(@Url.Content("~/assets/img/avatar/" + msgItem.user.avatar.imageName)) 50% 50% no-repeat;'></div>
+            <span>@Html.Raw(@msgItem.messageText)</span>
+            <a class="time" href="#">@twitter.GetRelativeTime(msgItem.dateCreated)</a>
+        </div>
+ 
+        <div class="message-tools">
+            @if( Model.IndexOf( msgItem ) == (Model.Count -1) ){       
+            <div class="message-conversation">
+                <a role="button" data-msg="@msgItem.messageContextID" class="with-icn ms-action-hideconversation" href="#">
+                    <i class="icon-comment"></i>Hide conversation
+                </a>
+            </div>
+            }
+            <ul class="message-actions">
+                <li class="action-reply-container">
+                    <a role="button" class="with-icn ms-action-reply" href="#">
+                        <i class="icon-reply"></i>Reply
+                    </a>
+                </li>
+            </ul>
+        </div>    
+
+        <div class="reply-message-post" style="display: none">
+            <form data-msg="@msgItem.messageContextID" data-plyid="@msgItem.playerID" class="form-inline reply-message-post-form" >
+                <div class="new-message-text">
+                    <img class="avatar player-item-avatar" src='@Url.Content("~/assets/img/avatar/" + ViewData["UserImage"])' />
+                    <textarea rows="5" maxlength="140" class="reply-message-input-textarea">@@@msgItem.MessageUser.userName </textarea>
+                    <div class="message-charNum">140</div>
+                </div>
+            
+                <div class="reply-message-buttons">
+                    <button class="btn btn-small btn-success post-reply" type="submit">Post</button>
+                    <button class="btn btn-small cancel-reply" type="button">Cancel</button>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+}

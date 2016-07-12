@@ -1,0 +1,777 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\publish\CoachCue</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="assets/css/bootstrap-tagsinput.css">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/css/bootstrap.css">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/css/global.css">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/css/global.mobile.css">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/css/typeahead.css">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/img/asktwitter.png">
+      <publishTime>03/23/2016 15:56:18</publishTime>
+    </File>
+    <File Include="assets/img/avatar/profile.jpg">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/img/avatar/sm_profile.jpg">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/img/CC_Header_Background.jpg">
+      <publishTime>03/23/2016 15:56:18</publishTime>
+    </File>
+    <File Include="assets/img/CC_Howto_Modal.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/CC_Login_Modal_background_Full.jpg">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/img/cc_logo-2.png">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/img/CC_Logo_Flat.png">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/CC_Logo_Flat_White_1.png">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/img/cc_vs_icon_45.png">
+      <publishTime>03/23/2016 15:56:18</publishTime>
+    </File>
+    <File Include="assets/img/cc_vs_icon_70.png">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/closeall.png">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/img/coachcue_web_sprite_icons.png">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/img/glyphicons-halflings-white.png">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/img/glyphicons-halflings.png">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/LeaderboardHeaderGraphic_700px.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/img/Logo_PlayerPod_Header_2.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/img/mailsp.gif">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/img/MatchupsHEaderGraphic_700px.png">
+      <publishTime>03/23/2016 15:56:18</publishTime>
+    </File>
+    <File Include="assets/img/matchups_grey.png">
+      <publishTime>03/23/2016 15:56:18</publishTime>
+    </File>
+    <File Include="assets/img/matchups_grey_btn.png">
+      <publishTime>03/23/2016 15:56:18</publishTime>
+    </File>
+    <File Include="assets/img/matchups_orange.png">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/matchups_orange_btn.png">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/medal-trophy.jpg">
+      <publishTime>03/23/2016 15:56:18</publishTime>
+    </File>
+    <File Include="assets/img/medal-trophy_sm.jpg">
+      <publishTime>03/23/2016 15:56:18</publishTime>
+    </File>
+    <File Include="assets/img/message_gray.png">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/img/message_gray_btn.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/img/message_orange.png">
+      <publishTime>03/23/2016 15:56:18</publishTime>
+    </File>
+    <File Include="assets/img/message_orange_btn.png">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/img/nflteams.jpg">
+      <publishTime>03/23/2016 15:56:18</publishTime>
+    </File>
+    <File Include="assets/img/partners/4for4.jpg">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/img/partners/numberFire.jpg">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/img/partners/SQ.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/img/Player_Icon_1-orange.png">
+      <publishTime>03/23/2016 15:56:18</publishTime>
+    </File>
+    <File Include="assets/img/social/cue.png">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/img/social/facebook.png">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/img/social/twitter.png">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/img/social/wordpress.png">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/img/SQ-icon-25px.png">
+      <publishTime>03/23/2016 15:56:18</publishTime>
+    </File>
+    <File Include="assets/img/teams/ari.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/atl.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/bal.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/buf.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/car.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/chi.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/cin.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/cle.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/dal.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/den.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/det.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/gb.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/hou.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/ind.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/jac.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/kc.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/mia.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/min.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/ne.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/no.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/nyg.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/nyj.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/oak.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/phi.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/pit.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/sd.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/sea.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/sf.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/stl.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/tb.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/ten.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/teams/was.jpg">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/trophy-1.png">
+      <publishTime>03/23/2016 15:56:17</publishTime>
+    </File>
+    <File Include="assets/img/tweet-news.png">
+      <publishTime>03/23/2016 15:56:18</publishTime>
+    </File>
+    <File Include="assets/img/verified.png">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/img/verified_small.png">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/js/bootstrap-tagsinput.js">
+      <publishTime>03/23/2016 15:56:21</publishTime>
+    </File>
+    <File Include="assets/js/controlPanel.js">
+      <publishTime>03/23/2016 15:56:21</publishTime>
+    </File>
+    <File Include="assets/js/helpers.js">
+      <publishTime>03/23/2016 15:56:21</publishTime>
+    </File>
+    <File Include="assets/js/hogan.js">
+      <publishTime>03/23/2016 15:56:21</publishTime>
+    </File>
+    <File Include="assets/js/jquery.masonry.min.js">
+      <publishTime>03/23/2016 15:56:21</publishTime>
+    </File>
+    <File Include="assets/js/jquery.placeholder.min.js">
+      <publishTime>03/23/2016 15:56:21</publishTime>
+    </File>
+    <File Include="assets/js/jquery.unobtrusive-ajax.min.js">
+      <publishTime>03/23/2016 15:56:21</publishTime>
+    </File>
+    <File Include="assets/js/jquery.unveil.js">
+      <publishTime>03/23/2016 15:56:21</publishTime>
+    </File>
+    <File Include="assets/js/jquery.validate.min.js">
+      <publishTime>03/23/2016 15:56:21</publishTime>
+    </File>
+    <File Include="assets/js/jquery.validate.unobtrusive.min.js">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/js/libs/slidepanel/css/jquery.slidepanel.css">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/js/libs/slidepanel/img/ajax-loader.gif">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/js/libs/slidepanel/img/panel_bg_default.jpg">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/js/libs/slidepanel/img/panel_close_default.jpg">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/js/libs/slidepanel/js/jquery.slidepanel.js">
+      <publishTime>03/23/2016 15:56:19</publishTime>
+    </File>
+    <File Include="assets/js/main.js">
+      <publishTime>03/23/2016 15:56:21</publishTime>
+    </File>
+    <File Include="assets/js/main.mobile.js">
+      <publishTime>03/23/2016 15:56:21</publishTime>
+    </File>
+    <File Include="assets/js/mention.js">
+      <publishTime>03/23/2016 15:56:21</publishTime>
+    </File>
+    <File Include="assets/js/mustache.js">
+      <publishTime>03/23/2016 15:56:21</publishTime>
+    </File>
+    <File Include="assets/js/search.js">
+      <publishTime>03/23/2016 15:56:21</publishTime>
+    </File>
+    <File Include="assets/js/spin.js">
+      <publishTime>03/23/2016 15:56:21</publishTime>
+    </File>
+    <File Include="assets/js/tasks.js">
+      <publishTime>03/23/2016 15:56:21</publishTime>
+    </File>
+    <File Include="assets/js/typeahead.min.js">
+      <publishTime>03/23/2016 15:56:21</publishTime>
+    </File>
+    <File Include="assets/signup/css/signup.css">
+      <publishTime>03/23/2016 15:56:00</publishTime>
+    </File>
+    <File Include="assets/signup/img/banner-bg.jpg">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/cc-macbook.jpg">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/cc_background1.jpg">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/cc_background2.jpg">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/cc_background3.jpg">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/cc_logo-1.jpg">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/cc_logo-2.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/cc_logo-3.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/cc_logo.jpg">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/Computer_Ipad_Phone.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/Computer_Ipad_Phone_2.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/doge.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/facebook.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/facebook_orange.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/form_background.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/form_background_2.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/intro-bg.jpg">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/ipad.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/matchups_orange.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/messages.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/phones.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/screenshot_1.jpg">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/trophy_Icon.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/twitter.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="assets/signup/img/twitter_orange.png">
+      <publishTime>03/23/2016 15:56:13</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>03/23/2016 16:01:35</publishTime>
+    </File>
+    <File Include="bin/CoachCue.dll">
+      <publishTime>03/23/2016 16:31:28</publishTime>
+    </File>
+    <File Include="bin/CoachCueModels.dll">
+      <publishTime>03/23/2016 16:28:25</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.Core.dll">
+      <publishTime>02/08/2016 13:18:02</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.Core.UI.dll">
+      <publishTime>02/08/2016 13:18:01</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.InfoCard.dll">
+      <publishTime>02/08/2016 13:18:01</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.InfoCard.UI.dll">
+      <publishTime>02/08/2016 13:18:00</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OAuth.Common.dll">
+      <publishTime>02/08/2016 13:18:00</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OAuth.Consumer.dll">
+      <publishTime>02/08/2016 13:17:58</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OAuth.dll">
+      <publishTime>02/08/2016 13:17:58</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OAuth.ServiceProvider.dll">
+      <publishTime>02/08/2016 13:18:00</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OAuth2.AuthorizationServer.dll">
+      <publishTime>02/08/2016 13:17:59</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OAuth2.Client.dll">
+      <publishTime>02/08/2016 13:18:01</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OAuth2.Client.UI.dll">
+      <publishTime>02/08/2016 13:18:00</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OAuth2.ClientAuthorization.dll">
+      <publishTime>02/08/2016 13:17:59</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OAuth2.dll">
+      <publishTime>02/08/2016 13:17:56</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OAuth2.ResourceServer.dll">
+      <publishTime>02/08/2016 13:17:54</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OpenId.dll">
+      <publishTime>02/08/2016 13:17:54</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OpenId.Provider.dll">
+      <publishTime>02/08/2016 13:17:57</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OpenId.Provider.UI.dll">
+      <publishTime>02/08/2016 13:17:57</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OpenId.RelyingParty.dll">
+      <publishTime>02/08/2016 13:17:56</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OpenId.RelyingParty.UI.dll">
+      <publishTime>02/08/2016 13:17:56</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OpenId.UI.dll">
+      <publishTime>02/08/2016 13:17:55</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OpenIdInfoCard.UI.dll">
+      <publishTime>02/08/2016 13:17:55</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OpenIdOAuth.dll">
+      <publishTime>02/08/2016 13:17:55</publishTime>
+    </File>
+    <File Include="bin/HtmlAgilityPack.dll">
+      <publishTime>03/23/2016 16:01:36</publishTime>
+    </File>
+    <File Include="bin/LinqToTwitter.AspNet.dll">
+      <publishTime>03/23/2016 16:01:35</publishTime>
+    </File>
+    <File Include="bin/LinqToTwitterPcl.dll">
+      <publishTime>03/23/2016 16:01:35</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>03/23/2016 16:01:35</publishTime>
+    </File>
+    <File Include="bin/Mvc.Mailer.dll">
+      <publishTime>02/08/2016 13:17:26</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>03/23/2016 16:01:37</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>07/10/2012 22:51:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>07/10/2012 13:03:34</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>07/10/2012 22:51:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>07/10/2012 22:51:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>02/08/2016 13:17:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>03/23/2016 16:01:35</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>08/17/2012 12:22:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>07/10/2012 13:03:34</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>07/10/2012 13:03:34</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>07/10/2012 13:03:34</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>03/23/2016 16:01:35</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/About/Index.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Account/Following.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Account/Login.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Account/Notifications.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Account/Profile.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Account/Register.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Account/Settings.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Coach/Index.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/ControlPanel/Index.cshtml">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/ControlPanel/JournalistAccounts.cshtml">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/ControlPanel/Matchups.cshtml">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/ControlPanel/Messages.cshtml">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/ControlPanel/SendNotificationEmail.cshtml">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/ControlPanel/TeamRoster.cshtml">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/ControlPanel/UpdatePlayerTwitter.cshtml">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/ControlPanel/Users.cshtml">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/ControlPanel/_TeamPlayerRow.cshtml">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/Error/Index.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Followers/Index.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/FollowPlayers/Index.cshtml">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/LeaderBoard/Index.cshtml">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/Matchup/Index.cshtml">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/Player/Index.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Player/List.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/PlayerPod/Index.cshtml">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/PlayerPod/Sample.cshtml">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/Post/Invite.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Post/NewMatchup.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Post/NewMatchupMessage.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Post/NewMessage.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Post/ReplyMessage.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Search/Index.cshtml">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_AccountList.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_BasicLayout.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_CarouselMatchupItem.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_CoachItem.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_ControlPanelLayout.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_GoogleAnalytics.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_MatchupDetail.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_MatchupList.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_MessageConversation.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_MessageCtrl.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_NoticeList.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_PlayerItem.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_PlayerItemList.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_PlayerPopover.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_PlayerPostingCtrl.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_PostLayout.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_RecentlyViewed.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_RightColumnBase.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_SearchItem.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_SearchItemList.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_ShareCtrl.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_StreamItem.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_StreamItemList.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_StreamPlayerHeader.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_TopCoaches.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_TopVoteList.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_TrendingList.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_TwitterFeed.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_UserPod.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_UserVote.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_UserVoteList.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_VoteCompare.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/SignUp/Index.cshtml">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/Task/BuildPlayers.cshtml">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/Task/UpdatePlayerTwitterAccounts.cshtml">
+      <publishTime>03/23/2016 15:55:49</publishTime>
+    </File>
+    <File Include="Views/UserMailer/Invite.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/UserMailer/MatchupVote.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/UserMailer/MentionNotice.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/UserMailer/NewFollow.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/UserMailer/Notifications.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/UserMailer/PasswordReset.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/UserMailer/RequestVote.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/UserMailer/_Layout.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/WhoDoIStart/Index.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>03/23/2016 15:55:51</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>03/23/2016 16:28:26</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

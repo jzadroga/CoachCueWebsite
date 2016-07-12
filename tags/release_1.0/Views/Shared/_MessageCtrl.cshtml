@@ -1,0 +1,100 @@
+﻿@model CoachCue.ViewModels.ConversationViewModel
+@using CoachCue.Model;
+
+    @if( !Model.SingleMessage ) {
+    <div class="reply-message-post sidepanel">
+        <div id="conversation-placeholder">
+            <img class="avatar player-item-avatar" src='@Url.Content("~/assets/img/avatar/" + Model.Avatar)' />
+            <input id="sidepanel-msg-post" type="text" placeholder="Join the conversation" />        
+        </div>
+        <form id="conversation-post" style="display: none" data-msg="@Model.ParentMessage.messageID" data-plyid="@Model.ParentMessage.playerID" class="form-inline reply-message-post-form" >
+            <div class="new-message-text">
+                <img class="avatar player-item-avatar" src='@Url.Content("~/assets/img/avatar/" + Model.Avatar)' />
+                <textarea rows="5" maxlength="140" class="reply-message-input-textarea"></textarea>
+                <div class="message-charNum">140</div>
+            </div>
+            
+            <div class="reply-message-buttons">
+                <button class="btn btn-small btn-success post-sidepanel-reply" type="submit">Post</button>
+                <button class="btn btn-small cancel-sidepanel-reply" type="button">Cancel</button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- parent message -->
+    <div data-player="@Model.ParentMessage.playerID" id="msg-@Model.ParentMessage.messageID" class="user-message item child clear stream-news conversation-parent">
+        <div class="content">
+            <div class="content-header">
+                <a data-ajax="false" class="username" href="@Url.Action("Index", "Coach", new { id = Model.ParentMessage.userID, name = Model.ParentMessage.user.fullName })">@Model.ParentMessage.user.fullName</a>
+            </div>
+            <div class="avatar user-avatar height" style='background: url(@Url.Content("~/assets/img/avatar/" + Model.ParentMessage.user.avatar.imageName)) 50% 50% no-repeat;'></div>
+            <span>@Html.Raw(@Model.ParentMessage.messageText)</span>
+            <span class="time">@twitter.GetRelativeTime(Model.ParentMessage.dateCreated)</span>
+        </div>
+            
+        <div class="message-tools">
+            <ul class="message-actions">
+                <li class="action-reply-container">
+                    <a data-user="@Model.ParentMessage.user.userName" role="button" class="with-icn sidepanel-action-reply" href="#">
+                        <i class="icon-reply"></i>Reply
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- other replies -->
+    <div class="scroll-pane" id="message-replies-sidepanel">
+        @foreach (message msgItem in Model.ReplyMessages) {
+        <div data-parent="@msgItem.messageContextID" id="msg-@msgItem.messageID" class="item child user-message conversation-message" data-ticks="@msgItem.dateCreated.Ticks.ToString()">
+            <div class="content">
+                <div class="content-header">
+                    <a data-ajax="false" class="username" href="@Url.Action("Index", "Coach", new { id = msgItem.userID, name = msgItem.user.fullName })">@msgItem.user.fullName</a>
+                </div>
+                <div class="avatar user-avatar height" style='background: url(@Url.Content("~/assets/img/avatar/" + msgItem.user.avatar.imageName)) 50% 50% no-repeat;'></div>
+                <span>@Html.Raw(@msgItem.messageText)</span>
+                <span class="time">@twitter.GetRelativeTime(msgItem.dateCreated)</span>
+            </div>
+ 
+            <div class="message-tools">
+                <ul class="message-actions">
+                    <li class="action-reply-container">
+                        @if( Model.ShowReply ){
+                        <a data-user="@msgItem.user.userName" role="button" class="with-icn sidepanel-action-reply" href="#">
+                            <i class="icon-reply"></i>Reply
+                        </a>
+                        }
+                    </li>
+                </ul>
+            </div>          
+        </div>
+        }
+    </div>
+    }
+    else
+    {
+        foreach (message msgItem in Model.ReplyMessages) {
+        <div data-parent="@msgItem.messageContextID" id="msg-@msgItem.messageID" class="item child user-message conversation-message" data-ticks="@msgItem.dateCreated.Ticks.ToString()">
+            <div class="content">
+                <div class="content-header">
+                    <a data-ajax="false" class="username" href="@Url.Action("Index", "Coach", new { id = msgItem.userID, name = msgItem.user.fullName })">@msgItem.user.fullName</a>
+                </div>
+                <div class="avatar user-avatar height" style='background: url(@Url.Content("~/assets/img/avatar/" + msgItem.user.avatar.imageName)) 50% 50% no-repeat;'></div>
+                <span>@Html.Raw(@msgItem.messageText)</span>
+                <span class="time">@twitter.GetRelativeTime(msgItem.dateCreated)</span>
+            </div>
+ 
+            <div class="message-tools">
+                <ul class="message-actions">
+                    <li class="action-reply-container">
+                         @if( Model.ShowReply ){
+                        <a data-user="@msgItem.user.userName"  role="button" class="with-icn sidepanel-action-reply" href="#">
+                            <i class="icon-reply"></i>Reply
+                        </a>
+                         }
+                    </li>
+                </ul>
+            </div>          
+        </div>
+        }       
+    }

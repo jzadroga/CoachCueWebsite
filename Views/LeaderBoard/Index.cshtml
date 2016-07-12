@@ -1,0 +1,125 @@
+﻿@model CoachCue.ViewModels.LeaderBoardModel
+@using CoachCue.Model;
+
+@{
+    ViewBag.Title = "CoachCue - LeaderBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="span9 section">
+
+    <ul class="nav nav-pills weeklist">
+        <li @if (Model.SelectedWeek == 0) { <text> class="active" </text>  }>
+            <a href="@Url.Action("Index", "LeaderBoard", new { week = 0 })">Overall</a>
+        </li>
+        @foreach (GameWeek week in Model.Weeks)
+        {
+            <li @if (week.ID == Model.SelectedWeek) { <text> class="active" </text>  }>
+                <a href="@Url.Action("Index", "LeaderBoard", new { week = @week.ID })">@week.Label</a>
+            </li>
+        }
+    </ul>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">LeaderBoard</h3>
+    </div>
+    <div class="panel-body">
+        <div id="leaderboard" class="span9 section pod">
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>User</th>
+                        <th>
+                        @if (Model.Sort == "percent")
+                        {
+                            if (Model.Direction == "desc")
+                            {
+                                <a href="@Url.Action("Index", "LeaderBoard", new { sort = "percent", dr = "asc", week = @Model.SelectedWeek })">Percent <span class="glyphicon glyphicon-chevron-down"></span></a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Index", "LeaderBoard", new { sort = "percent", dr = "desc", week = @Model.SelectedWeek })">Percent <span class="glyphicon glyphicon-chevron-up"></span></a>
+                            }
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Index", "LeaderBoard", new { sort = "percent", dr = "asc", week = @Model.SelectedWeek })">Percent</a>
+                        }
+                        </th>
+                        <th>
+                        @if (Model.Sort == "wrong")
+                        {
+                            if (Model.Direction == "desc")
+                            {
+                                <a href="@Url.Action("Index", "LeaderBoard", new { sort = "wrong", dr = "asc", week = @Model.SelectedWeek })">Wrong <span class="glyphicon glyphicon-chevron-down"></span></a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Index", "LeaderBoard", new { sort = "wrong", dr = "desc", week = @Model.SelectedWeek })">Wrong <span class="glyphicon glyphicon-chevron-up"></span></a>
+                            }
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Index", "LeaderBoard", new { sort = "wrong", dr = "asc", week = @Model.SelectedWeek })">Wrong</a>
+                        }
+                        </th>
+                        <th>
+                        @if (Model.Sort == "correct"){
+                            if (Model.Direction == "desc") { 
+                            <a href="@Url.Action("Index", "LeaderBoard", new { sort = "correct", dr = "asc", week = @Model.SelectedWeek })">Correct <span class="glyphicon glyphicon-chevron-down"></span></a>
+                            }
+                            else{
+                            <a href="@Url.Action("Index", "LeaderBoard", new { sort = "correct", dr = "desc", week = @Model.SelectedWeek })">Correct <span class="glyphicon glyphicon-chevron-up"></span></a>
+                            }
+                        }
+                        else {
+                             <a href="@Url.Action("Index", "LeaderBoard", new { sort = "correct", dr = "asc", week = @Model.SelectedWeek })">Correct</a>
+                        }
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                @if (Model.LeaderCoaches.Count() <= 0)
+                {
+                    <tr><td class="leaderboard-item"><span>Results are still pending</span></td></tr>
+                }
+                else
+                {
+                    for (int i = 0; i < Model.LeaderCoaches.Count(); i++)
+                    {
+                        <tr>
+                            <td style="width: 8px" class="leaderboard-item">
+                                <span>@(i + 1).</span>
+                            </td>
+                            <td class="leaderboard-item">
+                                <img class="avatar player-item-avatar" style="position: relative" src='@Url.Content("~/assets/img/avatar/" + @Model.LeaderCoaches[i].Coach.avatar.imageName)' alt="@Model.LeaderCoaches[i].Coach.fullName">                              
+                                <span><a class="username" data-account-id='@Model.LeaderCoaches[i].Coach.userID' href="@Url.Action("Index", "Coach", new { id = Model.LeaderCoaches[i].Coach.userID, name = Model.LeaderCoaches[i].Coach.fullName })">@Model.LeaderCoaches[i].Coach.fullName</a></span>
+                                @if (Model.LeaderCoaches[i].Coach.verified) {
+                                    <img class="user-verified-small" src='@Url.Content("~/assets/img/verified_small.png")' alt="Fantasy Pro" />
+                                }
+                            </td>
+                            <td class="leaderboard-item">
+                                <span>@Model.LeaderCoaches[i].Percent %</span>
+                            </td>
+                            <td class="leaderboard-item">
+                                <span class="coach-wrong"><i class='icon-small icon-thumbs-down'></i>@Model.LeaderCoaches[i].Wrong</span>
+                            </td>
+                            <td class="leaderboard-item">
+                                <span class="coach-correct"><i class='icon-small icon-thumbs-up'></i>@Model.LeaderCoaches[i].Correct</span>
+                            </td>
+                        </tr>
+                    }
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section rightcolumn {
+    @{ Html.RenderPartial("_RightColumnBase", model: Model); }
+}

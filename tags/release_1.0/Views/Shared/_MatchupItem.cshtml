@@ -1,0 +1,107 @@
+﻿@model CoachCue.Model.WeeklyMatchups
+@using CoachCue.Model;
+
+<div class="weekly-matchup-item">
+    <div class="item parent mymatchup" data-matchup="@Model.MatchupID">
+        <span class="mymatchup-title">Week @Model.WeekNumber Matchup</span>
+        <div class="content matchup-player1">
+            <div class="content-header">
+                <a class="username" href="@Url.Action("Index", "Player", new { id = Model.Player1.PlayerID, name = Model.Player1.linkFullName })">@Model.Player1.PlayerName</a>
+            </div>
+            @if (Model.AllowVote){
+                <a data-matchup="@Model.MatchupID" data-loading-text="Saving..." id="@Model.Player1.PlayerID" href="#" class="btn btn-warning btn-small action select-starter-from-matchup"><i class="icon-large icon-thumbs-up icon-white"></i></a>
+            }else{
+                if (!User.Identity.IsAuthenticated){
+                <a data-matchup="@Model.MatchupID" data-toggle="modal" href="#register-modal" class="btn btn-warning btn-small action"><i class="icon-large icon-thumbs-up icon-white"></i></a>
+                }else{
+                <div class="votes">@Model.Player1.TotalVotes</div>
+                }
+            }
+            <img class="avatar" alt="@Model.Player1.PlayerName" src="@Model.Player1.Image">
+            <p class="bio">@Model.Player1.PlayerDescription</p>
+            <span class="gamedetails">@Model.Player1.GameInfo</span>
+        </div>
+        <div class="matchup-vs">- VS -</div>
+        <div class="content matchup-player2">
+            <div class="content-header">
+                <a class="username" href="@Url.Action("Index", "Player", new { id = Model.Player2.PlayerID, name = Model.Player2.linkFullName })">@Model.Player2.PlayerName</a>
+            </div>
+            @if (Model.AllowVote){
+                <a data-matchup="@Model.MatchupID" data-loading-text="Saving..." id="@Model.Player2.PlayerID" href="#" class="btn btn-warning btn-small action select-starter-from-matchup"><i class="icon-large icon-thumbs-up icon-white"></i></a>
+            }else{
+                if (!User.Identity.IsAuthenticated){
+                <a data-matchup="@Model.MatchupID" data-toggle="modal" href="#register-modal" class="btn btn-warning btn-small action"><i class="icon-large icon-thumbs-up icon-white"></i></a>
+                }else{
+                <div class="votes">@Model.Player2.TotalVotes</div>
+                }
+            }
+            <img class="avatar" alt="@Model.Player2.PlayerName" src="@Model.Player2.Image">
+            <p class="bio">@Model.Player2.PlayerDescription</p>
+            <span class="gamedetails">@Model.Player2.GameInfo</span>
+        </div>
+        <div class="matchup-details">
+            <a href="@Url.Action("Index", "Matchup", new {mt = Model.MatchupID })">Details</a> 
+            <div class="scoring-format">Scoring Format: <b>@Model.ScoringFormat</b></div>
+        </div>
+
+        @if (Model.HideCoaches.Count() > 0){
+        <button class="vote-list btn btn-link" data-toggle="collapse" data-target="#votes-@Model.MatchupID">
+            @Model.Coaches.Count() Votes <i class="icon-chevron-down"></i>
+        </button>
+        }
+    </div>
+
+    <div class="child-list mymatchup-votes" id="@Model.MatchupID">
+        @if (Model.Coaches.Count() > 0){
+            
+            <div>
+
+             @if (Model.HideCoaches.Count() > 0){
+                <div id="votes-@Model.MatchupID" class="collapse toggle-votes">
+                @foreach( var hiddenVote in Model.HideCoaches ){
+                    <div class="item clear child">
+                    @{Html.RenderPartial("_UserVote", hiddenVote, new ViewDataDictionary { { "MatchupStatus", Model.Status } });}
+                    </div>
+                }
+                </div>
+            }
+
+            @foreach( var coach in Model.ShowCoaches.Select((x,i) => new {Member = x, Index = i} )){           
+                <div @if (coach.Index + 1 < Model.ShowCoaches.Count()) { <text>class="item clear child"</text>}else{ <text>class="item clear child-bottom"</text>}>
+                    @{Html.RenderPartial("_UserVote", coach.Member, new ViewDataDictionary{ {"MatchupStatus", Model.Status}} );}
+                </div>
+            }
+
+            </div>
+        }else{
+            <div class="item clear child-bottom no-votes">
+                <div class="content">
+                    <div class="content-header"></div>
+                    <span>No Votes Yet</span>   
+                </div>
+            </div>
+        }
+
+        <!-- inviting people to vote - note working yet -->
+        @if (Model.AllowInvite){
+            foreach (var invitedCoach in Model.InvitedCoaches){
+                <div class='item clear child asked-to-amswer'>
+                    <div class='content'>
+                        <div class='content-header'>
+                            <a class='username' href='#'>@invitedCoach.fullName</a>
+                            <span class='user'>@invitedCoach.correctPercentage</span>
+                        </div>
+                        <img class='avatar profile-avatar' src='@invitedCoach.profileImg' />
+                        <span>Asked to Answer</span>
+                    </div>
+                </div>
+            }
+            <div class="item clear child-bottom">
+                <div class="content">
+                    <input style="margin-bottom: 0px" type="text" placeholder="Find a Coach or User" class="ask-a-coach" />
+                    <button data-matchup="@Model.MatchupID" data-loading-text="Sending..." class="btn btn-mini matchup-invite invite-coach-matchup">Ask</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

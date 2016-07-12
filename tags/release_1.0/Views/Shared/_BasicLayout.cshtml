@@ -1,0 +1,66 @@
+﻿@model CoachCue.ViewModels.BaseViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @RenderSection("MetaData", required: false)
+
+    <title>@ViewBag.Title</title>
+    <link href='@Url.Content("~/assets/css/bootstrap.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/assets/css/global.css")' rel="stylesheet" type="text/css" />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+    $(function () {
+       setValidation();
+    });
+    </script>
+
+    @{Html.RenderPartial("_GoogleAnalytics");}
+</head>
+
+<body>
+
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+        
+            <div class="container">        
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+         @RenderBody()
+
+        <hr />
+
+        <footer>
+            <p>&copy; Company 2012</p>
+        </footer>
+    </div>
+
+    <!-- javascript placed at the end of the document so the pages load faster -->
+    <script src="@Url.Content("~/assets/js/bootstrap.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/helpers.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/assets/js/bootstrap-transition.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/bootstrap-alert.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/bootstrap-modal.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/assets/js/bootstrap-dropdown.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/bootstrap-scrollspy.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/bootstrap-tab.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/bootstrap-tooltip.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/bootstrap-popover.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/bootstrap-button.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/assets/js/bootstrap-collapse.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/bootstrap-carousel.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/bootstrap-typeahead.js")" type="text/javascript"></script>
+</body>
+</html>

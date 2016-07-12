@@ -1,0 +1,99 @@
+﻿@model CoachCue.ViewModels.MessageViewModel
+
+@{
+    ViewBag.Title = "Invite";
+    Layout = "~/Views/Shared/_PostLayout.cshtml";
+}
+
+<div class="msg-header">
+    <h2>
+        <input type="hidden" id="pst-type" value="match" />
+        <i class="glyphicon glyphicon-bullhorn"></i>
+        <span style="margin-left: 8px;">Ask the Community</span>
+    </h2>
+</div>
+
+
+<div class="message-post">
+    <div class="row">
+        <div class="user-avatar height large" style="background: url('/assets/img/avatar/@Model.User.avatar.imageName') 50% 50% no-repeat;"></div>
+        <div class="msg-container create-matchup player-selected-pod" style="display: none">
+            <div class="player-selected-pod-inner">
+                <!-- player 1 -->
+                <div id="player1-selected">
+                    <input type="hidden" id="player1-id" />
+                    <div class="content large player-selected">
+                        <div class="content-header">
+                            <span id="player1-selected-name" class="username">@Model.Matchup.nflplayer.fullName</span>
+                            <span id="player1-selected-bio" class="username">@Model.Matchup.nflplayer.position.positionName @Model.Matchup.nflplayer.nflteam.teamName</span>
+                        </div>
+                        <img id="player1-selected-img" class="avatar medium" src="@Model.Matchup.nflplayer.profilePicLarge">
+                    </div>
+                </div>
+
+                <div class="create-matchup-vs">Vs.</div>
+
+                <!-- player 2 -->
+                <div id="player2-selected">
+                    <input type="hidden" id="player2-id" />
+                    <div class="content large player-selected">
+                        <div class="content-header">
+                            <span id="player2-selected-name" class="username">@Model.Matchup.nflplayer1.fullName</span>
+                            <span id="player2-selected-bio" class="username">@Model.Matchup.nflplayer1.position.positionName @Model.Matchup.nflplayer1.nflteam.teamName</span>
+                        </div>
+                        <img id="player2-selected-img" class="avatar medium" src="@Model.Matchup.nflplayer1.profilePicLarge">
+                    </div>
+                </div>
+            </div>
+
+            <div id="scoring-format">
+                <span>Scoring format: @Model.Matchup.matchupscoringtype.scoringType</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="invite-users">
+        <!-- suggest invite -->
+
+        <!-- invite anyone -->
+        <div class="matchup-invite">
+
+            @foreach (var invitedCoach in Model.MatchupInvites)
+            {
+                <div class='item clear child asked-to-amswer'>
+                    <div class='content'>
+                        <div class='content-header'>
+                            <a class='username' href='#'>@invitedCoach.fullName</a>
+                            <span class='user'>@invitedCoach.CorrectPercentage%</span>
+                        </div>
+                        <img class='avatar profile-avatar' src='/assets/img/avatar/@invitedCoach.avatar.imageName' />
+
+                        <div class="new-invite-ask">
+                            <button data-user="@invitedCoach.userID" data-loading-text="Sending" class="btn btn-small btn-warning invite-coach-new-matchup">Ask</button>
+                            <div>
+                                <span class="coach-correct"><i class='icon-small icon-thumbs-up'></i>@invitedCoach.TotalCorrectVotes</span>
+                                <span class="coach-wrong"><i class='icon-small icon-thumbs-down'></i>@invitedCoach.TotalInCorrectVotes</span>
+                            </div>
+                        </div>
+                        <div class="new-invite-sent" style="display: none">
+                            <span>Asked to Answer</span>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="content ask-any-user">
+                <input type="text" placeholder="Ask any User" class="ask-a-coach" />
+                <button id="matchup-ask-@Model.Matchup.matchupID" data-matchup="@Model.Matchup.matchupID" data-loading-text="Sending" class="btn btn-small btn-warning invite-coach-matchup">Ask</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row msg-controls-wrapper">
+    <div class="msg-controls">
+        <button id="send-invites" class="btn btn-success post-sidepanel-matchup close-panel" type="submit">Send Ask Requests</button>
+        <button class="btn btn-default close-panel" type="button">Cancel</button>
+    </div>
+</div>

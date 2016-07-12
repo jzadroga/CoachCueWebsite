@@ -1,0 +1,22 @@
+﻿@model CoachCue.ViewModels.SearchResultViewModel
+@using CoachCue.Model
+
+@{
+    ViewBag.Title = "CoachCue - Player Listing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="span9 section">
+
+    <div id="player-find-list">
+    @foreach (AccountData playerItem in Model.Accounts)
+    {  
+        { Html.RenderPartial("_PlayerItem", model: playerItem); }
+    }
+    </div>
+
+</div>
+
+@section rightcolumn {
+    @{ Html.RenderPartial("_RightColumnBase", model: Model); }
+}

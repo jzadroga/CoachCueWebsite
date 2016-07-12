@@ -1,0 +1,37 @@
+﻿@model CoachCue.ViewModels.SearchResultViewModel
+@using CoachCue.Model;
+
+<div class="span6 offset1 section" id="msg-list">
+    <div id="search-results">
+        @foreach (AccountData acnt in Model.Accounts)
+        {       
+            <div class="item clear">
+                <div class="content">
+                    <div class="content-header">
+                        <a class="username" href='@acnt.twitterLink' target="_blank">@acnt.fullName</a>
+                        <span class="user">@acnt.username</span>
+                    </div>
+                    @if (Model.ShowFollow)
+                    {
+                        if (acnt.following <= 0)
+                        {
+                        <a data-account-type="players" data-account='@acnt.accountID' class="btn btn-success btn-mini follow action" href="#">
+                            <i class="icon-plus-sign icon-white"></i>
+                            Follow
+                        </a>
+                        }
+                        else
+                        {
+                        <a data-account-type="players" data-account='@acnt.accountID' class="btn btn-danger unfollow btn-mini action" href="#">
+                            <i class="icon-minus-sign icon-white"></i>
+                            Unfollow
+                        </a>
+                        }
+                    }
+                    <img class="avatar" src='@acnt.profileImg' alt='@acnt.fullName' />
+                    <span>@acnt.position @acnt.team</span>
+                </div>
+            </div>
+        }
+    </div>
+</div>

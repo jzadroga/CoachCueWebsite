@@ -1,0 +1,24 @@
+﻿@model List<StreamContent>
+@using CoachCue.Model;
+
+   <div class="span4 pod pod-child">
+
+        <h4>Beat Writer Tweets</h4>
+
+        <div class="tweet-list">
+        @foreach (StreamContent streamItem in Model)
+        {
+           <div class="item clear child player-item @streamItem.CssClass" data-player="@streamItem.PlayerID">
+            <div class="content">
+                <img class="avatar player-item-avatar" src="@streamItem.ProfileImg" />
+                <div class="content-header">
+                    <a title="first tooltip" class="username" target="_blank" href="http://twitter.com/@streamItem.UserName">@streamItem.FullName</a>
+                </div>
+                <span style="font-weight: normal; font-size: 12px;">@Html.Raw(streamItem.Tweet.Message)</span>
+                <span style="position: absolute; top: 10px; right: 10px;" class="time">@streamItem.TimeAgo</span>
+            </div>
+        </div>
+        }
+       </div>
+
+    </div>

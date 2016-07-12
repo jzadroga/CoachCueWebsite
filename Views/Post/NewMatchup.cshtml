@@ -1,0 +1,126 @@
+﻿@model CoachCue.ViewModels.MessageViewModel
+
+@{
+    ViewBag.Title = "NewMatchup";
+    Layout = "~/Views/Shared/_PostLayout.cshtml";
+}
+
+<div class="msg-header">
+    <h2>
+        <input type="hidden" id="pst-type" value="match" />
+        <i class="icon-thumbs-up icon-white"></i>
+        <span style="margin-left: 8px;">New Matchup</span>
+    </h2>
+</div>
+
+
+<div class="message-post">
+    <div class="row">
+        <div class="user-avatar height large" style="background: url(/assets/img/avatar/@Model.User.avatar.imageName) 50% 50% no-repeat;"></div>
+        <div class="msg-container create-matchup player-selected-pod">
+            <div class="player-selected-pod-inner">
+                <!-- player 1 -->
+                @if (Model.MessagePlayers.Count() > 0) {
+                <div id="player1-selected">
+                    <input type="hidden" id="player1-id" value="@Model.MessagePlayers[0].playerID" />
+                    <div class="content large player-selected">
+                        <div class="content-header">
+                            <span id="player1-selected-name" class="username">@Model.MessagePlayers[0].fullName</span>
+                            <span id="player1-selected-bio" class="username">@Model.MessagePlayers[0].position.positionName @Model.MessagePlayers[0].nflteam.teamName</span>
+                        </div>
+                        <img id="player1-selected-img" class="avatar medium" src="@Model.MessagePlayers[0].profilePicLarge">
+                    </div>
+                </div>
+                } else { 
+                <input type="text" style="width: 100%" data-plyid="0" class="matchup-player-select" id="player1" placeholder="Select First Player" />
+                <div id="player1-selected" style="display: none">
+                    <input type="hidden" id="player1-id" />
+                    <div class="content large player-selected">
+                        <div class="content-header">
+                            <span id="player1-selected-name" class="username"></span>
+                            <span id="player1-selected-bio" class="username"></span>
+                        </div>
+                        <img id="player1-selected-img" class="avatar medium" src="/assets/img/teams/MIA.jpg">
+                    </div>
+                </div>
+                }
+
+                <div class="create-matchup-vs">Vs.</div>
+
+                <!-- player 2 -->
+                <input type="text" data-plyid="0" class="matchup-player-select" id="player2" placeholder="Select Second Player" />
+                <div id="player2-selected" style="display: none">
+                    <input type="hidden" id="player2-id" />
+                    <div class="content large player-selected">
+                        <div class="content-header">
+                            <span id="player2-selected-name" class="username"></span>
+                            <span id="player2-selected-bio" class="username"></span>
+                        </div>
+                        <img id="player2-selected-img" class="avatar medium" src="/assets/img/teams/MIA.jpg">
+                    </div>
+                </div>
+            </div>
+        
+            <div id="scoring-format">
+                <span>Scoring format:</span>
+                <label class="radio inline">
+                    <input type="radio" name="scoringOptions" id="scoringStandard" value="1" checked>
+                    Standard
+                </label>
+                <label class="radio inline">
+                    <input type="radio" name="scoringOptions" id="scoringPPR" value="2">
+                    PPR
+                </label>
+                <label class="radio inline">
+                    <input type="radio" name="scoringOptions" id="scoringDaily" value="3">
+                    Daily
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="invite-users">
+        <!-- suggest invite -->
+
+        <!-- invite anyone -->
+        <div class="matchup-invite" style="display: none">
+
+            @foreach (var invitedCoach in Model.MatchupInvites)
+            {
+                <div class='item clear child asked-to-amswer'>
+                    <div class='content'>
+                        <div class='content-header'>
+                            <a class='username' href='#'>@invitedCoach.fullName</a>
+                            <span class='user'>@invitedCoach.CorrectPercentage%</span>
+                        </div>
+                        <img class='avatar profile-avatar' src='/assets/img/avatar/@invitedCoach.avatar.imageName' />
+
+                        <div class="new-invite-ask">
+                            <button data-user="@invitedCoach.userID" data-loading-text="Sending" class="btn btn-small btn-warning invite-coach-new-matchup">Ask</button>
+                            <div>
+                                <span class="coach-correct"><i class='icon-small icon-thumbs-up'></i>@invitedCoach.TotalCorrectVotes</span>
+                                <span class="coach-wrong"><i class='icon-small icon-thumbs-down'></i>@invitedCoach.TotalInCorrectVotes</span>
+                            </div>
+                        </div>
+                        <div class="new-invite-sent" style="display: none">
+                            <span>Asked to Answer</span>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="content" style="display: none">
+                <input type="text" placeholder="Find a Coach or User" class="ask-a-coach" />
+                <button id="matchup-ask-@Model.Matchup.matchupID" data-matchup="@Model.Matchup.matchupID" data-loading-text="Sending" class="btn btn-small btn-warning matchup-invite invite-coach-matchup">Ask</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="msg-controls-wrapper">
+    <div class="msg-controls">
+        <button id="share-matchup" class="btn btn-success post-sidepanel-matchup disabled close-panel" type="submit">Share</button>
+        <button class="btn btn-default close-panel" type="button">Cancel</button>
+    </div>
+</div>

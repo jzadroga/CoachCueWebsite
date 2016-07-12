@@ -1,0 +1,514 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 37.875" name="CoachCue">
+  <DataContextMoniker Name="/CoachCueDataContext" />
+  <nestedChildShapes>
+    <classShape Id="6e502f8d-fa76-467d-ab25-562018e61ccf" absoluteBounds="3.25, 4.75, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/CoachCueDataContext/positiontype" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5a400bdb-640e-45da-85c1-0eaad2bf2e51" absoluteBounds="3.2649999999999997, 5.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="05745077-7a6d-4026-b7ef-a81794904e43" absoluteBounds="3, 2.875, 2, 1.3862939453125">
+      <DataClassMoniker Name="/CoachCueDataContext/position" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3af654f2-2383-4c1f-b222-a6c19e3b22fb" absoluteBounds="3.015, 3.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.125 : 4.75); (4.125 : 4.2612939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/positiontype/positiontype_position" />
+      <nodes>
+        <classShapeMoniker Id="6e502f8d-fa76-467d-ab25-562018e61ccf" />
+        <classShapeMoniker Id="05745077-7a6d-4026-b7ef-a81794904e43" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f84eaf78-50f8-4772-a5e8-9bc4f1406a2b" absoluteBounds="0.75, 6.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/CoachCueDataContext/status" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bdd0471a-a3f8-4b37-8b3d-57d27196af5c" absoluteBounds="0.76500000000000012, 6.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="025da1f9-6e91-4d8b-9e28-56decdbed8f6" absoluteBounds="3.875, 6.25, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/CoachCueDataContext/component" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2a63c2e4-f52f-4e42-831c-764d37187ac9" absoluteBounds="3.8899999999999997, 6.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.875 : 6.90949625651042); (3.70833333333333 : 6.90949625651042 : JumpStart); (3.54166666666667 : 6.90949625651042 : JumpEnd); (3.45833333333333 : 6.90949625651042 : JumpStart); (3.29166666666667 : 6.90949625651042 : JumpEnd); (3.14583333333333 : 6.90949625651042 : JumpStart); (2.85416666666667 : 6.90949625651042 : JumpEnd); (2.75 : 6.90949625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/component/component_status" />
+      <nodes>
+        <classShapeMoniker Id="025da1f9-6e91-4d8b-9e28-56decdbed8f6" />
+        <classShapeMoniker Id="f84eaf78-50f8-4772-a5e8-9bc4f1406a2b" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="c5f6e1f3-2911-4616-ac2e-9a806db53922" absoluteBounds="5.875, 3.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/CoachCueDataContext/nflteam" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2de38d81-9dfd-47a3-9e34-60266907859b" absoluteBounds="5.89, 3.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="197c6b4f-ec4f-41e0-9c0f-84384c9e8f4b" absoluteBounds="3.5, 8.25, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/CoachCueDataContext/twitteraccounttype" />
+      <nestedChildShapes>
+        <elementListCompartment Id="af204b6e-ffee-405c-a440-f5f4841187a9" absoluteBounds="3.5149999999999997, 8.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2568dc9a-fcbe-41ef-a1b6-1f3ad7435504" absoluteBounds="0.625, 2.375, 2, 3.1170068359375">
+      <DataClassMoniker Name="/CoachCueDataContext/nflplayer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="26be136e-74e3-4475-a886-9f82de181e3c" absoluteBounds="0.64, 2.835, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3 : 3.56814697265625); (2.625 : 3.56814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/position/position_nflplayer" />
+      <nodes>
+        <classShapeMoniker Id="05745077-7a6d-4026-b7ef-a81794904e43" />
+        <classShapeMoniker Id="2568dc9a-fcbe-41ef-a1b6-1f3ad7435504" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.6875 : 6.375); (1.6875 : 5.4920068359375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/status/status_nflplayer" />
+      <nodes>
+        <classShapeMoniker Id="f84eaf78-50f8-4772-a5e8-9bc4f1406a2b" />
+        <classShapeMoniker Id="2568dc9a-fcbe-41ef-a1b6-1f3ad7435504" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.875 : 4.50564697265625); (4.20833333333333 : 4.50564697265625 : JumpStart); (4.04166666666667 : 4.50564697265625 : JumpEnd); (3.02083333333333 : 4.50564697265625 : JumpStart); (2.85416666666667 : 4.50564697265625 : JumpEnd); (2.625 : 4.50564697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/nflteam/nflteam_nflplayer" />
+      <nodes>
+        <classShapeMoniker Id="c5f6e1f3-2911-4616-ac2e-9a806db53922" />
+        <classShapeMoniker Id="2568dc9a-fcbe-41ef-a1b6-1f3ad7435504" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4c6b4f17-d7fe-40e8-95fb-8bab898b9698" absoluteBounds="0.875, 8.625, 2, 2.5401025390625">
+      <DataClassMoniker Name="/CoachCueDataContext/twitteraccount" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5834b27c-4473-46c7-a4c5-1ed07135a933" absoluteBounds="0.89000000000000012, 9.085, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(0.876537461538462 : 8.625); (0.501537461538462 : 7.75); (0.25 : 7.75); (0.25 : 5.86854429747596); (1.01249864145739 : 5.69474122704748 : JumpStart); (1.17499735854261 : 5.6577014548636 : JumpEnd); (1.90192307692308 : 5.4920068359375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/twitteraccount/twitteraccount_nflplayer" />
+      <nodes>
+        <classShapeMoniker Id="4c6b4f17-d7fe-40e8-95fb-8bab898b9698" />
+        <classShapeMoniker Id="2568dc9a-fcbe-41ef-a1b6-1f3ad7435504" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.84452123076923 : 7.7612939453125); (1.84452123076923 : 8.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/status/status_twitteraccount" />
+      <nodes>
+        <classShapeMoniker Id="f84eaf78-50f8-4772-a5e8-9bc4f1406a2b" />
+        <classShapeMoniker Id="4c6b4f17-d7fe-40e8-95fb-8bab898b9698" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.5 : 9.03449625651042); (3.45833333333333 : 9.03449625651042 : JumpStart); (3.29166666666667 : 9.03449625651042 : JumpEnd); (3.14583333333333 : 9.03449625651042 : JumpStart); (2.91666666666667 : 9.03449625651042 : JumpEnd); (2.875 : 9.03449625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/twitteraccounttype/twitteraccounttype_twitteraccount" />
+      <nodes>
+        <classShapeMoniker Id="197c6b4f-ec4f-41e0-9c0f-84384c9e8f4b" />
+        <classShapeMoniker Id="4c6b4f17-d7fe-40e8-95fb-8bab898b9698" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="5c50ab6b-ef08-4ffa-8cfb-265f58ccbe5b" absoluteBounds="0.625, 11.875, 2, 1.3862939453125">
+      <DataClassMoniker Name="/CoachCueDataContext/nflteams_twitteraccount" />
+      <nestedChildShapes>
+        <elementListCompartment Id="12d470ac-6a92-4b8c-9453-cb0935efd68b" absoluteBounds="0.64000000000000012, 12.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.63281375 : 4.7612939453125); (7.63281375 : 12.5440991210937); (7.58333333333333 : 12.5440991210937 : JumpStart); (7.32916666666667 : 12.5440991210937 : JumpEnd); (6.73958333333333 : 12.5440991210937 : JumpStart); (6.57291666666667 : 12.5440991210937 : JumpEnd); (5.58333333333333 : 12.5440991210937 : JumpStart); (5.41666666666667 : 12.5440991210937 : JumpEnd); (4.86458333333333 : 12.5440991210937 : JumpStart); (4.69791666666667 : 12.5440991210937 : JumpEnd); (3.45833333333333 : 12.5440991210937 : JumpStart); (3.29166666666667 : 12.5440991210937 : JumpEnd); (3.08333333333333 : 12.5440991210937 : JumpStart); (2.85416666666667 : 12.5440991210937 : JumpEnd); (2.625 : 12.5440991210937)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/nflteam/nflteam_nflteams_twitteraccount" />
+      <nodes>
+        <classShapeMoniker Id="c5f6e1f3-2911-4616-ac2e-9a806db53922" />
+        <classShapeMoniker Id="5c50ab6b-ef08-4ffa-8cfb-265f58ccbe5b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 11.1651025390625); (1.75 : 11.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/twitteraccount/twitteraccount_nflteams_twitteraccount" />
+      <nodes>
+        <classShapeMoniker Id="4c6b4f17-d7fe-40e8-95fb-8bab898b9698" />
+        <classShapeMoniker Id="5c50ab6b-ef08-4ffa-8cfb-265f58ccbe5b" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="a8aae3c6-0ebd-4605-9a7d-40c6dbdf554f" absoluteBounds="5.125, 12.875, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/CoachCueDataContext/matchup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="35d801e0-80b8-4f75-b0f7-81f69fe92f79" absoluteBounds="5.14, 13.335, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.093748 : 5.4920068359375); (1.093748 : 6.25); (1.60416666666667 : 6.25 : JumpStart); (1.77083333333333 : 6.25 : JumpEnd); (2.85416666666667 : 6.25 : JumpStart); (3.08333333333333 : 6.25 : JumpEnd); (3.375 : 6.25); (3.375 : 13); (4.375 : 13); (4.375 : 14.3373527018229); (4.41666666666667 : 14.3373527018229 : JumpStart); (4.58333333333333 : 14.3373527018229 : JumpEnd); (4.69791666666667 : 14.3373527018229 : JumpStart); (4.86458333333333 : 14.3373527018229 : JumpEnd); (5.125 : 14.3373527018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/nflplayer/nflplayer_matchup" />
+      <nodes>
+        <classShapeMoniker Id="2568dc9a-fcbe-41ef-a1b6-1f3ad7435504" />
+        <classShapeMoniker Id="a8aae3c6-0ebd-4605-9a7d-40c6dbdf554f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.156252 : 5.4920068359375); (2.156252 : 5.8125); (2.33854466666667 : 5.8125 : JumpStart); (2.50521133333333 : 5.8125 : JumpEnd); (3 : 5.8125); (3 : 13.125); (4.29166666666667 : 13.125 : JumpStart); (4.45833333333333 : 13.125 : JumpEnd); (4.5 : 13.125); (4.5 : 15.0997810527344); (4.69791666666667 : 15.0997810527344 : JumpStart); (4.86458333333333 : 15.0997810527344 : JumpEnd); (5.125 : 15.0997810527344)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/nflplayer/nflplayer_matchup1" />
+      <nodes>
+        <classShapeMoniker Id="2568dc9a-fcbe-41ef-a1b6-1f3ad7435504" />
+        <classShapeMoniker Id="a8aae3c6-0ebd-4605-9a7d-40c6dbdf554f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 7.63389272916667); (2.85416666666667 : 7.63389272916667 : JumpStart); (3.14583333333333 : 7.63389272916667 : JumpEnd); (3.29166666666667 : 7.63389272916667 : JumpStart); (3.45833333333333 : 7.63389272916667 : JumpEnd); (3.54166666666667 : 7.63389272916667 : JumpStart); (3.70833333333333 : 7.63389272916667 : JumpEnd); (6.65625 : 7.63389272916667); (6.65625 : 12.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/status/status_matchup" />
+      <nodes>
+        <classShapeMoniker Id="f84eaf78-50f8-4772-a5e8-9bc4f1406a2b" />
+        <classShapeMoniker Id="a8aae3c6-0ebd-4605-9a7d-40c6dbdf554f" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="20dd63ae-a774-49e6-ad2d-9047fe4ad2bd" absoluteBounds="1.875, 13.625, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/CoachCueDataContext/matchupscoringtype" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f66d12ce-0b9b-486c-b852-cb298276c0bf" absoluteBounds="1.8899999999999997, 14.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.875 : 14.2219962565104); (3.91666666666667 : 14.2219962565104 : JumpStart); (4.08333333333333 : 14.2219962565104 : JumpEnd); (4.29166666666667 : 14.2219962565104 : JumpStart); (4.58333333333333 : 14.2219962565104 : JumpEnd); (4.69791666666667 : 14.2219962565104 : JumpStart); (4.86458333333333 : 14.2219962565104 : JumpEnd); (5.125 : 14.2219962565104)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/matchupscoringtype/matchupscoringtype_matchup" />
+      <nodes>
+        <classShapeMoniker Id="20dd63ae-a774-49e6-ad2d-9047fe4ad2bd" />
+        <classShapeMoniker Id="a8aae3c6-0ebd-4605-9a7d-40c6dbdf554f" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="927369ad-dc6e-4c03-b545-cb52df1af8e6" absoluteBounds="4, 18.75, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/CoachCueDataContext/nflseason" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3d685511-3141-484a-a0f3-ef5933263ce3" absoluteBounds="4.015, 19.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e7e17bd3-acbb-4007-acee-70caac7fb638" absoluteBounds="1, 22.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/CoachCueDataContext/users_account" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ad005787-7cd1-4426-931d-76c99a5ad3a7" absoluteBounds="1.0150000000000001, 23.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ec2b00e5-850f-4a5f-9c5f-3ebb5fedf14f" absoluteBounds="3.875, 10.25, 2, 1.9631982421875">
+      <DataClassMoniker Name="/CoachCueDataContext/users_matchup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8d1e9406-eef2-4662-a901-5af294a02f56" absoluteBounds="3.8899999999999997, 10.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 12.875); (5.5 : 12.2131982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/matchup/matchup_users_matchup" />
+      <nodes>
+        <classShapeMoniker Id="a8aae3c6-0ebd-4605-9a7d-40c6dbdf554f" />
+        <classShapeMoniker Id="ec2b00e5-850f-4a5f-9c5f-3ebb5fedf14f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.625 : 5.4920068359375); (1.625 : 6.1875); (2.85416666666667 : 6.1875 : JumpStart); (3.02083333333333 : 6.1875 : JumpEnd); (3.0625 : 6.1875); (3.0625 : 11.2315991210937); (3.29166666666667 : 11.2315991210937 : JumpStart); (3.45833333333333 : 11.2315991210937 : JumpEnd); (3.875 : 11.2315991210937)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/nflplayer/nflplayer_users_matchup" />
+      <nodes>
+        <classShapeMoniker Id="2568dc9a-fcbe-41ef-a1b6-1f3ad7435504" />
+        <classShapeMoniker Id="ec2b00e5-850f-4a5f-9c5f-3ebb5fedf14f" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="a8134596-6646-41ef-af58-c0df96b15d26" absoluteBounds="4, 22.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/CoachCueDataContext/avatar" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4da34e7d-c85b-42a8-9f1f-f8ebc99fcc43" absoluteBounds="4.015, 22.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.75 : 7.7612939453125); (1.75 : 8.5625); (2.9375 : 8.5625); (2.9375 : 13.5); (4 : 13.5); (4 : 18.3125); (3.45833333333333 : 18.3125 : JumpStart); (3.29166666666667 : 18.3125 : JumpEnd); (3.0625 : 18.3125); (3.0625 : 23.0054358375651); (3.54166666666667 : 23.0054358375651 : JumpStart); (3.70833333333333 : 23.0054358375651 : JumpEnd); (3.72916666666667 : 23.0054358375651 : JumpStart); (3.89583333333333 : 23.0054358375651 : JumpEnd); (4 : 23.0054358375651)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/status/status_avatar" />
+      <nodes>
+        <classShapeMoniker Id="f84eaf78-50f8-4772-a5e8-9bc4f1406a2b" />
+        <classShapeMoniker Id="a8134596-6646-41ef-af58-c0df96b15d26" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="5e0b76e0-191c-412e-be02-5526f33ebb4d" absoluteBounds="3.375, 24.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/CoachCueDataContext/user_login" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eae94742-9453-4c19-bfc5-b8189db22fdd" absoluteBounds="3.3899999999999997, 24.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fef9a0b7-78aa-4f7a-aa3d-70ee4fe343af" absoluteBounds="0.625, 26.625, 2, 2.5401025390625">
+      <DataClassMoniker Name="/CoachCueDataContext/notification" />
+      <nestedChildShapes>
+        <elementListCompartment Id="54b09153-f77f-4798-93ce-72d8fe187a42" absoluteBounds="0.64000000000000012, 27.085, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(0.750000000000001 : 7.7612939453125); (0.638389971769552 : 7.87290397354295 : JumpStart); (0.520538841571795 : 7.99075510374071 : JumpEnd); (0.375000000000002 : 8.1362939453125); (0.25 : 8.1362939453125); (0.25 : 26.2992307692308); (0.253574434901122 : 26.3028052041319 : JumpStart); (0.433925565098879 : 26.4831563343296 : JumpEnd); (0.625 : 26.6742307692308)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/status/status_notification" />
+      <nodes>
+        <classShapeMoniker Id="f84eaf78-50f8-4772-a5e8-9bc4f1406a2b" />
+        <classShapeMoniker Id="fef9a0b7-78aa-4f7a-aa3d-70ee4fe343af" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="cef3a9e8-e89f-400c-bd21-fd80976dca4f" absoluteBounds="4.125, 26.375, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/CoachCueDataContext/notification_type" />
+      <nestedChildShapes>
+        <elementListCompartment Id="02b31521-2fdd-448b-bb7b-50872a3f7e8a" absoluteBounds="4.14, 26.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.125 : 27.0969962565104); (3.95833333333333 : 27.0969962565104 : JumpStart); (3.79166666666667 : 27.0969962565104 : JumpEnd); (2.625 : 27.0969962565104)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/notification_type/notification_type_notification" />
+      <nodes>
+        <classShapeMoniker Id="cef3a9e8-e89f-400c-bd21-fd80976dca4f" />
+        <classShapeMoniker Id="fef9a0b7-78aa-4f7a-aa3d-70ee4fe343af" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="824746cf-f45f-43a6-b308-7fa074737802" absoluteBounds="0.875, 24.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/CoachCueDataContext/users_setting" />
+      <nestedChildShapes>
+        <elementListCompartment Id="69673cca-1013-41e3-b2a3-9628272079ef" absoluteBounds="0.89000000000000012, 25.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e818a634-2291-4369-b20d-dee49f9263a2" absoluteBounds="3.625, 0.5, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/CoachCueDataContext/accounttype" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3f774859-d4c8-4421-9bf1-e373d8ec96ef" absoluteBounds="3.6399999999999997, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.625 : 1.69399251302083); (4.625 : 2.8125); (2.9375 : 2.8125); (2.9375 : 13.4375); (3.9375 : 13.4375); (3.9375 : 20.0625); (3.8125 : 20.0625); (3.8125 : 23.6358706751302); (3.70833333333333 : 23.6358706751302 : JumpStart); (3.54166666666667 : 23.6358706751302 : JumpEnd); (3 : 23.6358706751302)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/accounttype/accounttype_users_account" />
+      <nodes>
+        <classShapeMoniker Id="e818a634-2291-4369-b20d-dee49f9263a2" />
+        <classShapeMoniker Id="e7e17bd3-acbb-4007-acee-70caac7fb638" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4b5baca4-6804-46e8-a862-d12b72c50b2f" absoluteBounds="3.125, 30, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/CoachCueDataContext/messagecontexttype" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1cc3a658-a669-48e2-a1a4-ba5dca21de38" absoluteBounds="3.1399999999999997, 30.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="135986b0-d3fc-4098-824d-1144e9e827b3" absoluteBounds="3.875, 20.125, 2, 1.9631982421875">
+      <DataClassMoniker Name="/CoachCueDataContext/gameschedule" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ff3ccad0-b43f-498c-a499-f24d77978122" absoluteBounds="3.8899999999999997, 20.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.875 : 21.1065991210938); (6.59375 : 21.1065991210938); (6.59375 : 15.7997054036458)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/gameschedule/gameschedule_matchup" />
+      <nodes>
+        <classShapeMoniker Id="135986b0-d3fc-4098-824d-1144e9e827b3" />
+        <classShapeMoniker Id="a8aae3c6-0ebd-4605-9a7d-40c6dbdf554f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.875 : 20.5845470605469); (6.2968725 : 20.5845470605469); (6.2968725 : 15.7997054036458)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/gameschedule/gameschedule_matchup1" />
+      <nodes>
+        <classShapeMoniker Id="135986b0-d3fc-4098-824d-1144e9e827b3" />
+        <classShapeMoniker Id="a8aae3c6-0ebd-4605-9a7d-40c6dbdf554f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.785159375 : 4.7612939453125); (7.785159375 : 21.6286511816406); (7.58333333333333 : 21.6286511816406 : JumpStart); (7.41666666666667 : 21.6286511816406 : JumpEnd); (5.875 : 21.6286511816406)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/nflteam/nflteam_gameschedule" />
+      <nodes>
+        <classShapeMoniker Id="c5f6e1f3-2911-4616-ac2e-9a806db53922" />
+        <classShapeMoniker Id="135986b0-d3fc-4098-824d-1144e9e827b3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.4125 : 4.7612939453125); (7.4125 : 20.3235210302734); (6.67708333333333 : 20.3235210302734 : JumpStart); (6.51041666666667 : 20.3235210302734 : JumpEnd); (6.38020583333333 : 20.3235210302734 : JumpStart); (6.21353916666667 : 20.3235210302734 : JumpEnd); (5.875 : 20.3235210302734)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/nflteam/nflteam_gameschedule1" />
+      <nodes>
+        <classShapeMoniker Id="c5f6e1f3-2911-4616-ac2e-9a806db53922" />
+        <classShapeMoniker Id="135986b0-d3fc-4098-824d-1144e9e827b3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.9375 : 19.9439925130208); (4.9375 : 20.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/nflseason/nflseason_gameschedule" />
+      <nodes>
+        <classShapeMoniker Id="927369ad-dc6e-4c03-b545-cb52df1af8e6" />
+        <classShapeMoniker Id="135986b0-d3fc-4098-824d-1144e9e827b3" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="5f7e9b71-4ca1-4ad1-bf33-65000cbb4981" absoluteBounds="1.625, 15, 2, 1.9631982421875">
+      <DataClassMoniker Name="/CoachCueDataContext/users_view" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e4aefb8b-6c13-4ae5-9a0d-c0929a53b636" absoluteBounds="1.6400000000000001, 15.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.625 : 1.42674638476563); (2.9375 : 1.42674638476563); (2.9375 : 13.5625); (1.8125 : 13.5625); (1.8125 : 14.90625); (2.625 : 14.90625); (2.625 : 15)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/accounttype/accounttype_users_view" />
+      <nodes>
+        <classShapeMoniker Id="e818a634-2291-4369-b20d-dee49f9263a2" />
+        <classShapeMoniker Id="5f7e9b71-4ca1-4ad1-bf33-65000cbb4981" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="d35d7668-2a14-40e9-9b63-52b03df09d8a" absoluteBounds="4.25, 28, 2, 1.3862939453125">
+      <DataClassMoniker Name="/CoachCueDataContext/message_user" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a86fad56-31ef-437e-bb85-3672066116c9" absoluteBounds="4.265, 28.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="933eb135-9052-477e-ae19-c9990be1f36c" absoluteBounds="3.875, 32.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/CoachCueDataContext/message_player" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bf999a9e-10fd-4601-9ba6-dab9c9da8e2c" absoluteBounds="3.8899999999999997, 32.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.421878 : 5.4920068359375); (2.421878 : 6.00649251302083); (2.85416666666667 : 6.00649251302083 : JumpStart); (3.08333333333333 : 6.00649251302083 : JumpEnd); (3.625 : 6.00649251302083); (3.625 : 7.94399251302083); (6.57291666666667 : 7.94399251302083 : JumpStart); (6.73958333333333 : 7.94399251302083 : JumpEnd); (7.32916666666667 : 7.94399251302083 : JumpStart); (7.49583333333333 : 7.94399251302083 : JumpEnd); (7.5 : 7.94399251302083); (7.5 : 33.0681469726563); (6.45833333333333 : 33.0681469726563 : JumpStart); (6.29166666666667 : 33.0681469726563 : JumpEnd); (5.875 : 33.0681469726563)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/nflplayer/nflplayer_message_player" />
+      <nodes>
+        <classShapeMoniker Id="2568dc9a-fcbe-41ef-a1b6-1f3ad7435504" />
+        <classShapeMoniker Id="933eb135-9052-477e-ae19-c9990be1f36c" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="d0ba0155-ef84-4990-893b-099686e4b885" absoluteBounds="7.375, 1.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/CoachCueDataContext/signup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4bebbb11-3cc1-4447-880b-a68b3a779765" absoluteBounds="7.39, 1.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2b4de96d-8451-4f7c-a9b6-81fac369f669" absoluteBounds="4, 34.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/CoachCueDataContext/users_trophy" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b26fd9ee-a1de-4163-be03-dc03b85fbc2a" absoluteBounds="4.015, 34.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cc12ff58-de5e-4b3e-98c3-b93aab256b04" absoluteBounds="0.75, 34.125, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/CoachCueDataContext/trophy" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cbf8e6e4-2f36-4a27-9130-298937d979b1" absoluteBounds="0.76500000000000012, 34.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 34.707148844401); (3.16666666666667 : 34.707148844401 : JumpStart); (3.33333333333333 : 34.707148844401 : JumpEnd); (4 : 34.707148844401)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/trophy/trophy_users_trophy" />
+      <nodes>
+        <classShapeMoniker Id="cc12ff58-de5e-4b3e-98c3-b93aab256b04" />
+        <classShapeMoniker Id="2b4de96d-8451-4f7c-a9b6-81fac369f669" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.281252 : 7.7612939453125); (2.281252 : 8.375); (1.92785456410256 : 8.375 : JumpStart); (1.66666666666667 : 8.375 : JumpEnd); (1.33333333333333 : 8.375 : JumpStart); (1.16666666666667 : 8.375 : JumpEnd); (0.852727937728938 : 8.375 : JumpStart); (0.686061271062271 : 8.375 : JumpEnd); (0.375 : 8.375); (0.375 : 35.0104484049479); (0.75 : 35.0104484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/status/status_trophy" />
+      <nodes>
+        <classShapeMoniker Id="f84eaf78-50f8-4772-a5e8-9bc4f1406a2b" />
+        <classShapeMoniker Id="cc12ff58-de5e-4b3e-98c3-b93aab256b04" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="dfbfb8cc-c468-4dcc-9861-cb0bd4fe23af" absoluteBounds="0.875, 36.375, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/CoachCueDataContext/mediaType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="63a1c68c-4359-42e0-b7e3-ff130e8a2fd4" absoluteBounds="0.89000000000000012, 36.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d38b9a56-672d-4fbb-9d6b-2822114b14bf" absoluteBounds="0.625, 30, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/CoachCueDataContext/message" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9131a4be-37e9-42be-a423-ac311cd48bf4" absoluteBounds="0.64000000000000012, 30.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.625 : 31.7844962565104); (6.09375 : 31.7844962565104); (6.09375 : 29.3862939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/message/message_message_user" />
+      <nodes>
+        <classShapeMoniker Id="d38b9a56-672d-4fbb-9d6b-2822114b14bf" />
+        <classShapeMoniker Id="d35d7668-2a14-40e9-9b63-52b03df09d8a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.625 : 32.6498527018229); (3.875 : 32.6498527018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/message/message_message_player" />
+      <nodes>
+        <classShapeMoniker Id="d38b9a56-672d-4fbb-9d6b-2822114b14bf" />
+        <classShapeMoniker Id="933eb135-9052-477e-ae19-c9990be1f36c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.875 : 36.375); (3.25 : 36); (3.25 : 33.2997054036458); (3.00153946153846 : 33.2997054036458); (2.625 : 32.9231659421074)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/mediaType/mediaType_message" />
+      <nodes>
+        <classShapeMoniker Id="dfbfb8cc-c468-4dcc-9861-cb0bd4fe23af" />
+        <classShapeMoniker Id="d38b9a56-672d-4fbb-9d6b-2822114b14bf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.125 : 30.5969962565104); (2.625 : 30.5969962565104)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/messagecontexttype/messagecontexttype_message" />
+      <nodes>
+        <classShapeMoniker Id="4b5baca4-6804-46e8-a862-d12b72c50b2f" />
+        <classShapeMoniker Id="d38b9a56-672d-4fbb-9d6b-2822114b14bf" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="9db66108-ee22-4449-8c30-62ea1737bb8b" absoluteBounds="0.75, 18.375, 2, 4.0785139973958326">
+      <DataClassMoniker Name="/CoachCueDataContext/user" />
+      <nestedChildShapes>
+        <elementListCompartment Id="adc337eb-88cc-4182-9548-fd4509037962" absoluteBounds="0.76500000000000012, 18.835, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 18.53125); (2.97916666666667 : 18.53125 : JumpStart); (3.14583333333333 : 18.53125 : JumpEnd); (3.29166666666667 : 18.53125 : JumpStart); (3.45833333333333 : 18.53125 : JumpEnd); (3.85416666666667 : 18.53125 : JumpStart); (4.02083333333333 : 18.53125 : JumpEnd); (6.21353916666667 : 18.53125 : JumpStart); (6.38020583333333 : 18.53125 : JumpEnd); (6.51041666666667 : 18.53125 : JumpStart); (6.67708333333333 : 18.53125 : JumpEnd); (6.8906275 : 18.53125); (6.8906275 : 15.7997054036458)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/user/user_matchup" />
+      <nodes>
+        <classShapeMoniker Id="9db66108-ee22-4449-8c30-62ea1737bb8b" />
+        <classShapeMoniker Id="a8aae3c6-0ebd-4605-9a7d-40c6dbdf554f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.875 : 22.4535139973958); (1.875 : 22.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/user/user_users_account" />
+      <nodes>
+        <classShapeMoniker Id="9db66108-ee22-4449-8c30-62ea1737bb8b" />
+        <classShapeMoniker Id="e7e17bd3-acbb-4007-acee-70caac7fb638" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 20.5236339986979); (2.97916666666667 : 20.5236339986979 : JumpStart); (3.14583333333333 : 20.5236339986979 : JumpEnd); (3.375 : 20.5236339986979); (3.375 : 18.125); (3.85416666666667 : 18.125 : JumpStart); (4.08333333333333 : 18.125 : JumpEnd); (4.78125 : 18.125); (4.78125 : 12.2131982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/user/user_users_matchup" />
+      <nodes>
+        <classShapeMoniker Id="9db66108-ee22-4449-8c30-62ea1737bb8b" />
+        <classShapeMoniker Id="ec2b00e5-850f-4a5f-9c5f-3ebb5fedf14f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(0.78125 : 22.4535139973958); (0.78125 : 24.53125); (0.822916666666667 : 24.53125 : JumpStart); (0.989583333333333 : 24.53125 : JumpEnd); (3.375 : 24.53125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/user/user_user_login" />
+      <nodes>
+        <classShapeMoniker Id="9db66108-ee22-4449-8c30-62ea1737bb8b" />
+        <classShapeMoniker Id="5e0b76e0-191c-412e-be02-5526f33ebb4d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(0.75 : 22.4042832281651); (0.433925565098879 : 22.7203576630662 : JumpStart); (0.316074434901121 : 22.8382087932639 : JumpEnd); (0.263269230769229 : 22.8910139973958); (0.291666666666667 : 22.8910139973958 : JumpStart); (0.458333333333333 : 22.8910139973958 : JumpEnd); (0.5 : 22.8910139973958); (0.5 : 26.5); (0.625 : 26.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/user/user_notification" />
+      <nodes>
+        <classShapeMoniker Id="9db66108-ee22-4449-8c30-62ea1737bb8b" />
+        <classShapeMoniker Id="fef9a0b7-78aa-4f7a-aa3d-70ee4fe343af" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(0.749999999999995 : 22.4535139973958); (0.375 : 22.5785139973958); (0.625 : 22.5785139973958); (0.625 : 26.5757702307692); (0.67422976923077 : 26.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/user/user_notification1" />
+      <nodes>
+        <classShapeMoniker Id="9db66108-ee22-4449-8c30-62ea1737bb8b" />
+        <classShapeMoniker Id="fef9a0b7-78aa-4f7a-aa3d-70ee4fe343af" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(0.90625 : 22.4535139973958); (0.90625 : 24.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/user/user_users_setting" />
+      <nodes>
+        <classShapeMoniker Id="9db66108-ee22-4449-8c30-62ea1737bb8b" />
+        <classShapeMoniker Id="824746cf-f45f-43a6-b308-7fa074737802" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.1875 : 18.375); (2.1875 : 16.9631982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/user/user_users_view" />
+      <nodes>
+        <classShapeMoniker Id="9db66108-ee22-4449-8c30-62ea1737bb8b" />
+        <classShapeMoniker Id="5f7e9b71-4ca1-4ad1-bf33-65000cbb4981" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 22.2315991210938); (2.97916666666667 : 22.2315991210938 : JumpStart); (3.14583333333333 : 22.2315991210938 : JumpEnd); (3.54166666666667 : 22.2315991210938 : JumpStart); (3.70833333333333 : 22.2315991210938 : JumpEnd); (3.72916666666667 : 22.2315991210938 : JumpStart); (3.89583333333333 : 22.2315991210938 : JumpEnd); (6.21875 : 22.2315991210938); (6.21875 : 28)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/user/user_message_user" />
+      <nodes>
+        <classShapeMoniker Id="9db66108-ee22-4449-8c30-62ea1737bb8b" />
+        <classShapeMoniker Id="d35d7668-2a14-40e9-9b63-52b03df09d8a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 19.527441999349); (2.97916666666667 : 19.527441999349 : JumpStart); (3.14583333333333 : 19.527441999349 : JumpEnd); (3.29166666666667 : 19.527441999349 : JumpStart); (3.45833333333333 : 19.527441999349 : JumpEnd); (3.625 : 19.527441999349); (3.625 : 24.125); (5.625 : 24.125); (5.625 : 26.125); (3.875 : 26.125); (3.875 : 29.75); (6.01041666666667 : 29.75 : JumpStart); (6.17708333333333 : 29.75 : JumpEnd); (6.375 : 29.75); (6.375 : 34); (5 : 34); (5 : 34.375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/user/user_users_trophy" />
+      <nodes>
+        <classShapeMoniker Id="9db66108-ee22-4449-8c30-62ea1737bb8b" />
+        <classShapeMoniker Id="2b4de96d-8451-4f7c-a9b6-81fac369f669" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(0.799229769230768 : 22.4535139973958); (0.54922976923077 : 22.7035139973958); (0.534102564102562 : 22.7035139973958 : JumpStart); (0.367435897435896 : 22.7035139973958 : JumpEnd); (0.3125 : 22.7035139973958); (0.3125 : 29.6875); (0.316074434901121 : 29.6910744349011 : JumpStart); (0.433925565098879 : 29.8089255650989 : JumpEnd); (0.625 : 30)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CoachCueDataContext/user/user_message" />
+      <nodes>
+        <classShapeMoniker Id="9db66108-ee22-4449-8c30-62ea1737bb8b" />
+        <classShapeMoniker Id="d38b9a56-672d-4fbb-9d6b-2822114b14bf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4 : 22.6589659187825); (3.89583333333333 : 22.6589659187825 : JumpStart); (3.72916666666667 : 22.6589659187825 : JumpEnd); (3.70833333333333 : 22.6589659187825 : JumpStart); (3.54166666666667 : 22.6589659187825 : JumpEnd); (3.125 : 22.6589659187825); (3.125 : 22.5625); (1.390625 : 22.5625); (1.390625 : 22.4535139973958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/avatar/avatar_user" />
+      <nodes>
+        <classShapeMoniker Id="a8134596-6646-41ef-af58-c0df96b15d26" />
+        <classShapeMoniker Id="9db66108-ee22-4449-8c30-62ea1737bb8b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.25 : 7.7612939453125); (1.25 : 8.5); (0.906299366300367 : 8.5 : JumpStart); (0.7396326996337 : 8.5 : JumpEnd); (0.5 : 8.5); (0.5 : 20.3583896140825); (0.75 : 20.3583896140825)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CoachCueDataContext/status/status_user" />
+      <nodes>
+        <classShapeMoniker Id="f84eaf78-50f8-4772-a5e8-9bc4f1406a2b" />
+        <classShapeMoniker Id="9db66108-ee22-4449-8c30-62ea1737bb8b" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

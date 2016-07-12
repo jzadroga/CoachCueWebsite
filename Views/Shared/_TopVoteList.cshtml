@@ -1,0 +1,39 @@
+﻿@model List<VotedPlayers>
+@using CoachCue.Model;
+
+   <div class="span4 pod pod-child" id="player-listing">
+
+        <h4>Top Voted Players</h4>
+
+       <!--
+        <ul id="trend-list" class="nav nav-pills">
+            <li class="active"><a class="trending-view" data-position="" href="#">All</a></li>
+            <li><a class="trending-view" data-position="RB" href="#">RB</a></li>
+            <li><a class="trending-view" data-position="QB" href="#">QB</a></li>
+            <li><a class="trending-view" data-position="WR" href="#">WR</a></li>
+            <li><a class="trending-view" data-position="TE" href="#">TE</a></li>
+        </ul>
+           -->
+
+        <div id="search-results">
+            <div id="top-voted-filter">
+            @foreach (VotedPlayers player in Model)
+            {
+                <div class="item clear player-item">
+                    <div class="content">
+                        <div class="content-header">
+                            <a data-player-img="@player.Player.profilePic" data-player-name="@player.Player.fullName" data-player-pos="@player.Player.position.positionName&nbsp;|&nbsp;@player.Player.nflteam.teamSlug" data-player-id="@player.Player.playerID" class=" player-popover username" href="@Url.Action("Index", "Player", new { id = player.Player.playerID, name = player.Player.linkFullName })">@player.Player.shortName</a>
+                            <span>@player.Player.position.positionName&nbsp;|&nbsp;@player.Player.nflteam.teamSlug</span>
+                        </div>
+                        
+                        <img class="avatar player-item-avatar" src="@player.Player.profilePic" alt="@player.Player.fullName">     
+                        <a href="@Url.Action("Index", "Player", new { id = player.Player.playerID, name = player.Player.linkFullName })">
+                            <span style="width: @player.Percent" class="badge trending-badge">@player.Votes</span>
+                        </a>                       
+                    </div>
+                </div>
+            }
+            </div>
+        </div>
+
+    </div>

@@ -1,0 +1,56 @@
+﻿@model CoachCue.ViewModels.ConversationViewModel
+@using CoachCue.Model;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Message</title>
+
+</head>
+<body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.scroll-pane').jScrollPane();
+
+
+            if ($("#reply-post").length > 0) {
+                var $textArea = $("#reply-post").find(".reply-message-input-textarea");
+                setCaretToPos($textArea.get(0), ($textArea.val().length));
+                $textArea.limiter(140, $("#reply-post").find(".message-charNum"));
+                $textArea.focus();
+            }
+        });
+    </script>
+
+    <div class="msg-container">
+    
+    @if( Model.IsReply ){
+        <!-- header -->
+        <h3 style="margin-left: 18px">
+            <i class="icon-reply"></i>
+            <span style="margin-left: 8px;">Reply</span>
+        </h3>
+        { Html.RenderPartial("_ReplyCtrl", model: Model); }
+    }
+    else
+    {
+         <!-- header -->
+        <h3 style="margin-left: 18px">
+            <i class="icon-comment"></i>
+            <span style="margin-left: 8px;">Conversation</span>
+        </h3>
+        { Html.RenderPartial("_MessageCtrl", model: Model); }     
+    }   
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿@model CoachCue.ViewModels.SearchResultViewModel
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section topbar
+{
+     <div class="row show-grid">
+        <div class="span10 offset1">
+            <div class="topbar">
+                <h3 class="search-header">Search Results</h3>
+                <form id="search-header" class="form-inline searchit">
+                    <input type="text" class="searchit-val input-xlarge focused" value='@Model.SearchTerm' />
+                    <button type="submit" class="btn">Search</button>
+                </form>
+            </div>
+        </div>
+        <div class="span1"></div>
+    </div>
+}
+
+@section pagescripts
+{
+    <script type="text/javascript">
+        $(function () {
+            search.init();
+        });
+    </script>
+    <script src="@Url.Content("~/assets/js/search.js")" type="text/javascript"></script>
+ }
+
+@{Html.RenderPartial("_AccountList", model: Model);}
+   

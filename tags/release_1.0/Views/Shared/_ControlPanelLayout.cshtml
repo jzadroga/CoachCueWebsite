@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow">
+    <title>ControlPanel</title>
+    <link href='@Url.Content("~/assets//css/bootstrap.css")' rel="stylesheet" type="text/css" />
+ 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/bootstrap.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/controlPanel.js")" type="text/javascript"></script>
+
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                
+                <a class="brand" href="#">CoachCue</a>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li><a href='@Url.Action("TeamRoster", "ControlPanel")'>Teams</a></li>
+                        <li><a href='@Url.Action("JournalistAccounts", "ControlPanel")'>Journalists</a></li>             
+                        <li><a href='@Url.Action("Matchups", "ControlPanel")'>Matchups</a></li>
+                        <li><a href='@Url.Action("Messages", "ControlPanel")'>Messages</a></li>
+                        <li><a href='@Url.Action("Users", "ControlPanel")'>Users</a></li>
+                    </ul>
+                    @if (User.Identity.IsAuthenticated){
+                    <ul class="nav pull-right">
+                        <li><a href="#">@User.Identity.Name</a></li>
+                        <li class="divider-vertical"></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    }
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 50px">
+         @RenderBody()
+    </div> <!-- /container -->
+</body>
+</html>

@@ -1,0 +1,20 @@
+﻿@model CoachCue.Model.UserVoteData
+@using CoachCue.Model;
+
+    <div class="content">
+        <div class="content-header">
+            <a class="username" href="@Url.Action("Index", "Coach", new { id = Model.userID, name = Model.fullName })">@Model.fullName</a><span class="user">@Model.correctPercentage</span>
+        </div>
+        <img class="avatar profile-avatar" src="@Model.profileImg">
+        
+        @if( ViewData["MatchupStatus"].ToString() == "Active" ){
+            <span><i class='icon-small icon-thumbs-up'></i>@Model.SelectedPlayer</span>
+        }else{                           
+            if (Model.CorrectMatchup){
+            <span class="coach-correct"><i class='icon-small icon-thumbs-up'></i>@Model.SelectedPlayer</span>
+            }
+            else{
+            <span class="coach-wrong"><i class='icon-small icon-thumbs-down'></i>@Model.SelectedPlayer</span>
+            }
+        }               
+    </div>

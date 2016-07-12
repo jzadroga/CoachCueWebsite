@@ -1,0 +1,71 @@
+﻿@model CoachCue.ViewModels.FollowingModel
+@using CoachCue.Model;
+
+@{
+    ViewBag.Title = "CoachCue - " + Model.Name  + " Following";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="ssection pod">
+
+    <div class="panel panel-default user-panel player-header">
+        <div class="panel-heading">
+            <div class="avatar user-avatar-large height" style='background: url(@Url.Content("~/assets/img/avatar/" + Model.UserDetail.avatar.imageName)) 50% 50% no-repeat;'></div>
+
+            @if (!Model.UserDetail.isFollowing)
+            {
+                <a data-account-type="users" data-account='@Model.UserDetail.userID' class="btn btn-success btn-mini follow action" href="#"><i class="icon-plus-sign"></i>Follow</a>
+            }
+            else
+            {
+                <a data-account-type="users" data-account='@Model.UserDetail.userID' class="btn btn-danger unfollow btn-mini action" href="#"><i class="icon-minus-sign"></i>Unfollow</a>
+            }
+            <div class="header-details">
+                <h4 class='username'>@Model.UserDetail.fullName</h4>
+                <span>@@@Model.UserDetail.userName</span>
+            </div>
+        </div>
+        <div class="panel-body" style="padding-top: 15px !important">
+
+            <div class="user-stats-container">
+                <ul class="stats stats-list">
+                    <li>
+                        <a>
+                            Following<strong>@Model.FollowingCount</strong>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <table class="table">
+        <tr class="info">
+            <td><h4>Users</h4></td>
+        </tr>
+        @foreach (CoachCue.Model.user coach in Model.FollowingCoaches)
+        {
+            <tr>
+                <td class="follow-item">
+                    @{ Html.RenderPartial("_CoachItem", model: coach); }
+                </td>
+            </tr>}
+        <tr class="info">
+            <td><h4>Players</h4></td>
+        </tr>
+        @foreach (CoachCue.Model.AccountData player in Model.FollowingPlayers)
+        {
+            <tr>
+                <td class="follow-item">
+                    @{ Html.RenderPartial("_PlayerItem", model: player); }
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>
+
+@section rightcolumn {
+   @{ Html.RenderPartial("_RightColumnBase", model: Model); }
+}

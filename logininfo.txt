@@ -1,0 +1,10 @@
+gmail login: info@gmail.com / coachcue_12
+godaddy: 43722271 / Coachcue_12
+ftp: coachcue / LQTvzfacTljtGfGa4ARHZwnmx26ASblzbsDbpzSAXsCgAiSAgSQzjRsibxpq
+azure: jason.zadroga@gmail.com / coachcue_12
+twitter: coachcue / thecue_12
+mailchimp: coachcue / coachcue_12
+beanstalk svn:
+    url: https://coachcue.svn.beanstalkapp.com/website
+    email: jason.zadroga@gmail.com
+bank: coachcue / thecue12  (also answers to questions i think)

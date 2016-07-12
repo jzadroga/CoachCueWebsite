@@ -1,0 +1,17 @@
+﻿@model List<AccountData>
+@using CoachCue.Model;
+
+   <div class="span4 pod pod-child">
+
+        <h4>Recently Viewed</h4>
+
+        <div id="search-results">
+            
+            @foreach (AccountData account in Model)
+            {
+                { Html.RenderPartial("_PlayerItem", model: account); }
+            }
+            
+        </div>
+
+    </div>

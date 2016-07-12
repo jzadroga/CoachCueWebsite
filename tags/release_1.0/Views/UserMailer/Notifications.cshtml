@@ -1,0 +1,26 @@
+@model CoachCue.ViewModels.MailNotificationsViewModel
+@using CoachCue.Models;
+
+ <table cellpadding="0" border="0" style="line-height: 1.2em; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; border-spacing: 0px; font-size: 100%; border: 0" cellspacing="0" width="585">
+        <tbody>
+            <tr>
+                <td width="50">
+                    <img src="http://coachcue.com/assets/img/mailsp.gif" style="border-style: none" height="1" width="1"></td>
+                <td width="485">
+                    <table cellpadding="0" border="0" style="line-height: 1.2em; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; border-spacing: 0px; font-size: 100%; border: 0" cellspacing="0" width="485">
+                        <tbody>
+                            @foreach (MatchupNotification notice in Model.Notices) 
+                            {
+                            <tr>
+                                <td width="100%" align="center" style="padding: 20px 0 0">@notice.VoteCount coaches voted on <a style="padding-bottom: 10px" target="_blank" href="http://coachcue.com/matchup?mt=@notice.ID">@notice.Match</a></td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </td>
+                <td width="50">
+                    <img src="http://coachcue.com/assets/img/mailsp.gif" style="border-style: none" height="1" width="1"></td>
+            </tr>
+        </tbody>
+    </table>
+    

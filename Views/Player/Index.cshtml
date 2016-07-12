@@ -1,0 +1,98 @@
+﻿@model CoachCue.ViewModels.PlayerViewModel
+@using CoachCue.Model
+
+@{
+    ViewBag.Title = "Fantasy football realtime news and comments for " + Model.PlayerDetail.fullName;
+    ViewBag.Description = "Fantasy football realtime news and comments for " + Model.PlayerDetail.fullName;
+    ViewBag.Keywords = "fantasy football, News, " + Model.PlayerDetail.fullName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="span8 section" id="playerdetail">
+
+
+    <div class="panel panel-default user-panel player-header" data-player='@Model.PlayerDetail.playerID'>
+        <div class="panel-heading">
+            <img class='avatar large' src='@Model.PlayerDetail.profilePicLarge' />
+
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <a data-account-type="players" data-account='@Model.PlayerDetail.playerID' class="btn btn-success btn-mini action" data-toggle="modal" href="#register-modal"><i class="icon-plus-sign"></i>Follow</a>
+            }
+            else
+            {
+                if (!Model.PlayerDetail.isFollowing)
+                {
+                    <a data-account-type="players" data-account='@Model.PlayerDetail.playerID' class="btn btn-success btn-mini follow action playerdetail" href="#"><i class="icon-plus-sign"></i>Follow</a>
+                }
+                else
+                {
+                    <a data-account-type="players" data-account='@Model.PlayerDetail.playerID' class="btn btn-danger unfollow btn-mini action" href="#"><i class="icon-minus-sign"></i>Unfollow</a>
+                }
+            }
+            <div class="header-details">
+                <span class='username'>@Model.PlayerDetail.fullName</span>
+                <span>@Model.PlayerDetail.position.positionName&nbsp;|&nbsp;@Model.PlayerDetail.nflteam.teamSlug</span>
+            </div>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="user-stats-container">
+                <ul class="stats stats-list">
+                    <li>
+                        <h1>Latest news on @Model.PlayerDetail.fullName</h1>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    @{Html.RenderPartial("_ShareCtrl");}
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Player Stream</h3>
+        </div>
+        <div class="panel-body clear-body">
+            <div id="stream-area">
+                <div id="player-message-stream">
+
+                    <div id="@Model.PlayerDetail.playerID" class="player-stream message-list-stream stream-matchups stream-messages">
+                        @foreach (StreamContent streamItem in Model.PlayerStream)
+                        { Html.RenderPartial("_StreamItem", streamItem, new ViewDataDictionary { { "UserImage", Model.Avatar } }); }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section rightcolumn {
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="row">
+            @{ Html.RenderPartial("_UserPod", model: Model); }
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Join CoachCue!</h3>
+                </div>
+                <div class="panel-body">
+                    <strong><a data-toggle="modal" href="#register-modal">Join CoachCue!</a></strong> to follow all your players, get the latest news and post matchup questions.
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="row">
+        @{ Html.RenderPartial("_TwitterFeed", model: Model.TwitterContent); }
+    </div>
+}

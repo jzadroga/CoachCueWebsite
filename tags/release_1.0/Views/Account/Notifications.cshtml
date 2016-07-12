@@ -1,0 +1,43 @@
+﻿@model CoachCue.ViewModels.NotificationsViewModel
+@using CoachCue.Model;
+
+@{
+    ViewBag.Title = "Notifications";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="span6 offset1 section" style="background-color: #fff;">
+    
+    <div style="padding: 10px 20px 10px 20px; font-size: 12px">
+        <h4>Notifications</h4>
+        <table class="table table-hover table-condensed">
+            @foreach (notification notice in Model.Notifications.Take(100))
+            {
+                switch( notice.notification_type.type ){
+                    case "voteMatchup":
+                    case "voteRequested":   
+                    <tr>
+                        <td>@notice.dateCreated.ToShortDateString()</td>
+                        <td class="notice-img"><img src="@Url.Action("GetThumbnail", "Account", new { fileName = notice.noticeUser.avatar.imageName, size = 25 })" /></td>
+                        <td>@notice.noticeUser.fullName @notice.noticeMessage <a href="@Url.Action("Index", "Matchup", new {mt = @notice.linkData.ID, gud = @notice.linkData.Guid})">@notice.linkData.Message</a></td>
+                    </tr>
+                    break;
+                    case "messageMention":
+                    <tr>
+                        <td>@notice.dateCreated.ToShortDateString()</td>
+                        <td class="notice-img"><img src="@Url.Action("GetThumbnail", "Account", new { fileName = notice.noticeUser.avatar.imageName, size = 25 })" /></td>
+                        <td>@notice.noticeUser.fullName <a href="@Url.Action("Index", "Coach", new {mt = @notice.entityID, id = notice.noticeUser.userID, name = notice.noticeUser.fullName })">@notice.noticeMessage</a></td>
+                    </tr>
+                    break;
+                }
+            }
+        </table>
+    </div>
+</div>
+
+@section playerlist
+{
+    <div class="row">
+        @{ Html.RenderPartial("_TrendingList", model: Model.TrendingItems); }
+    </div>
+}

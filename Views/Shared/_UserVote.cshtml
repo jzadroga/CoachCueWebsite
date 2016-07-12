@@ -1,0 +1,27 @@
+﻿@model CoachCue.Model.UserVoteData
+@using CoachCue.Model;
+
+    <div class="content">
+        <div class="content-header">
+            <a class="username" href="@Url.Action("Index", "Coach", new { id = Model.userID, name = Model.fullName })">@Model.fullName</a><span class="user" style="font-size: 12px;">@if(!string.IsNullOrEmpty(Model.correctPercentage)){<text>@Model.correctPercentage Accurate</text>}</span>
+            @if (Model.Verified) { 
+            <img class="user-verified-small" src='@Url.Content("~/assets/img/verified_small.png")' alt="Fantasy Pro" />
+            }
+        </div>
+        <img class="avatar player-item-avatar" src="@Model.profileImg">
+        
+        @if (ViewData["MatchupStatus"].ToString() == "Active")
+        {
+            <span class="matchup-selection"><i class='icon-small icon-thumbs-up'></i>@Model.SelectedPlayer</span>
+        }
+        else
+        {
+            if (Model.CorrectMatchup)
+            {
+            <span class="coach-correct"><i class='icon-small icon-thumbs-up'></i>@Model.SelectedPlayer</span>
+            }
+            else{
+            <span class="coach-wrong"><i class='icon-small icon-thumbs-down'></i>@Model.SelectedPlayer</span>
+            }
+        }   
+       </div>

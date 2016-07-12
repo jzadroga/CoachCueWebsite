@@ -1,0 +1,18 @@
+@model CoachCue.ViewModels.MailMentionViewModel
+
+ <table cellpadding="0" border="0" style="line-height: 1.2em; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; border-spacing: 0px; font-size: 100%; border: 0" cellspacing="0" width="585">
+        <tbody>
+            <tr>
+                <td width="75" style="padding-left: 10px;">
+                    <img src="@Model.FromAvatarSrc" alt="" width="64" height="64" border="0" align="left" style="border:0;display:block;border-radius:4px;width:64px;height:64px">
+                </td>
+                <td width="465" style="padding:5px 0 10px 10px">
+                    <div style="color: #333333; font-size: 22px; line-height: 25px; font-family: Georgia,'Times New Roman',serif; ">
+                        <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;margin:0;padding:0;font-size:14px;line-height:14px;font-weight:bold;text-decoration:none;color:#333333;display:block"> <a href="@Model.UserMessageLink" style="border:none;color:#0084b4;text-decoration:none;font-weight:bold;font-size:14px;color:#333333" target="_blank">@Model.FullName</a> </div>
+                        <div style="padding-top: 8px;">@Html.Raw(Model.MessageLink.Message)</div>
+                    </div>            
+                </td>
+                </tr>
+        </tbody>
+    </table>
+    

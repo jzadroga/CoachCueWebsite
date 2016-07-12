@@ -1,0 +1,90 @@
+﻿@model CoachCue.ViewModels.HomeViewModel
+@using CoachCue.Model
+
+@{
+    ViewBag.Title = "Who Should I Start? - Fantasy Football 2015";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="home-header">CoachCue is crowd sourced Who Should I Start advice, news and much more</h1>
+
+@{Html.RenderPartial("_ShareCtrl");}
+
+<div id="msg-list">
+    
+    <input type="hidden" id="load-matchups" value="@Model.LoadMatchups" />
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Stream</h3>
+            <ul id="main-stream-tabs" class="nav nav-tabs">
+                <li id="matchups-tab" @if (Model.LoadMatchups) { <text> class="active" </text> }><a class="home-stream" href="#matchupstream" data-toggle="tab">Matchups</a></li>
+                <li id="all-tab" @if( !Model.LoadMatchups ){<text>class="active"</text>}><a class="home-stream" href="#allstream" data-toggle="tab">All</a></li>
+            </ul>
+        </div>
+        <div class="panel-body">
+
+            <div id="stream-area">
+                <div class="tab-content">
+
+                    <div class="tab-pane fade @if( !Model.LoadMatchups ){<text>active in</text> }" id="allstream">
+                        <button id="updateBar" style="display: none" data-loading-text="Loading..." class="btn btn-large btn-block" type="button">New Messages</button>
+                        <div id="message-stream" class="message-list-stream stream-matchups stream-messages" data-ticks="@DateTime.UtcNow.GetEasternTime().Ticks">
+
+                            @foreach (StreamContent streamItem in Model.Stream)
+                            { Html.RenderPartial("_StreamItem", model: streamItem); }
+
+                            <!-- message loader -->
+                            <input type="hidden" id="get-more-messages" value="false" />
+                            <div id="all-stream-loader" style="display:none" class="item clear child stream-news message-loader">
+                                <div class="content">
+                                    <div id="loading-messages-spinner"></div>
+                                    <span>Loading more messages...</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane fade @if( Model.LoadMatchups ){<text>active in</text> }" id="matchupstream">
+                        <div id="matchup-loader" class="item clear child stream-news message-loader">
+                            <div class="content">
+                                <div id="loading-mathups-spinner"></div>
+                                <span>Loading Matchups...</span>
+                            </div>
+                        </div>
+                        <div id="matchup-list" class="message-list-stream  stream-matchups" data-loaded="false" data-ticks="@DateTime.UtcNow.GetEasternTime().Ticks">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section rightcolumn {
+    @{ Html.RenderPartial("_RightColumnBase", model: Model); }
+}
+
+<script type="text/javascript">
+    $(function () {
+        var str = '@Model.ShowRegistration';
+        if (str == "True") {
+            $('#register-modal').modal('show')
+        }
+
+        var welcomeStr = '@Model.ShowWelcome';
+        if (welcomeStr == "True") {
+            $('#howto-modal').modal('show')
+        }
+
+        var inviteStr = '@Model.ShowFriendInvite';
+        if (inviteStr == "True") {
+            $('#invite-friend-modal').modal('show')
+        }
+
+    });
+</script>

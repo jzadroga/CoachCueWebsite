@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sample</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".coachcue").click(function () {
+                var item = $(this).attr("data-item");
+                $("#" + item).toggle();
+                return false;
+            });
+        });
+    </script>
+
+    <style type="text/css">
+        .coachcue-frame
+        {
+            display: none; 
+            height: 413px; 
+            width: 350px; 
+            border: 0px
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        <h4>
+            <span>Dez Bryant</span>
+            <a class="coachcue" data-item="dez" href="#">
+                <img src="@Url.Content("~/assets/img/SQ-icon-25px.png")" />
+            </a>
+        </h4>
+        <iframe class="coachcue-frame" id="dez" src="@Url.Action("Index", "PlayerPod", new {id="3648", name="Dez Bryant" })"></iframe>
+    </div>
+</body>
+</html>

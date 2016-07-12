@@ -1,0 +1,70 @@
+﻿@model CoachCue.ViewModels.TeamRosterModel
+@using CoachCue.ViewModels
+@using CoachCue.Model
+
+@{
+    ViewBag.Title = "Team Roster";
+    Layout = "~/Views/Shared/_ControlPanelLayout.cshtml";
+}
+
+<h4>Team Rosters</h4>
+
+<div class="row">
+    <div class="span12">
+
+        <div>
+            <form method="post" action="@Url.Action("TeamRoster", "ControlPanel")" id="frmRoster">
+                <span>Select Team: </span>
+                <select id="team" name="team">
+                    @foreach (nflteam team in Model.Teams.OrderBy(tm => tm.teamName))
+                    {
+                        <option @if(Model.SelectedTeamID == team.teamID){ <text>selected="selected"</text> } value="@team.teamID">@team.teamName</option>
+                    }
+                </select>
+            </form>
+        </div>
+                 
+        <table class="table table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th style="width: 250px"></th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Number</th>
+                    <th>Twitter Username</th>
+                    <th>Profile Pic</th>
+                    <th style="width: 125px">Description</th>
+                    </tr>
+            </thead>
+            <tbody>
+                @foreach (nflplayer player in Model.Players.OrderBy(ply => ply.lastName))
+                {
+                <tr>
+                    <td>
+                        <a href='@Url.Action("PlayerDelete", "ControlPanel", new { id = @player.playerID, teamID = @Model.SelectedTeamID })' id="delete-account" class="btn btn-danger btn-mini"><i class="icon-white icon-remove"></i> Delete</a>
+                        &nbsp;<a href='@Url.Action("UpdatePlayerTwitter", "ControlPanel", new { playerID = @player.playerID, teamID = @Model.SelectedTeamID })' class="btn btn-primary btn-mini"> Update Twitter</a>
+                        &nbsp;<a href='@Url.Action("DeletePlayerTwitter", "ControlPanel", new { playerID = @player.playerID, teamID = @Model.SelectedTeamID })' class="btn btn-primary btn-mini"> Delete Twitter</a>
+                    </td>
+                    <td>@player.fullName</td>
+                    <td>@player.position.positionName</td>
+                    <td>@player.number</td>
+                    <td><a target="_blank" href='http://twitter.com/@player.twitterUsername'>@player.twitterUsername</a></td>
+                    @if (string.IsNullOrEmpty(player.twitterProfilePic)){
+                        <td></td>
+                    }else{
+                    <td><img src="@player.twitterProfilePic" /></td>
+                    }
+                    <td>@player.twitterDescription</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+        
+        <div class="btn-toolbar toolbar-share">
+            <a href='@Url.Action("ImportRoster", "ControlPanel", new {teamID = @Model.SelectedTeamID})' id="import-roster" class="btn btn-primary"><i class="icon-white icon-pencil"></i> Import Roster</a>
+            <a href='@Url.Action("BuildTeamTwitter", "ControlPanel", new {teamID = @Model.SelectedTeamID})' id="import-twitter-accounts" class="btn btn-primary"><i class="icon-white icon-pencil"></i> Update All Twitter Accounts</a>
+            <a href='@Url.Action("BuildPlayerJson", "ControlPanel")' class="btn btn-primary"><i class="icon-white"></i> Generate Players JSON File</a>
+        </div>
+          
+    </div>
+</div>

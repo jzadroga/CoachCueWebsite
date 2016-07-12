@@ -1,0 +1,55 @@
+﻿@model AccountData
+@using CoachCue.Model;
+
+
+@switch( Model.accountType ){
+    case "player":
+    <div class="item clear player-item">
+        <div class="content">
+
+            <div class="content-header">
+                <a class="username" href="@Url.Action("Index", "Player", new { id = Model.accountID, name = Model.linkFullName })">@Model.fullName</a>
+                <span class="user"></span>
+            </div>
+            <div class="item-hover-menu" style="display: none">
+            @if (!User.Identity.IsAuthenticated){
+                <a data-account-type="players" data-account='@Model.accountID' class="btn btn-success btn-mini action" data-toggle="modal" href="#register-modal">Follow</a>
+            }else{
+                if (Model.following <= 0){
+                    <a data-account-type="players" data-account='@Model.accountID' class="btn btn-success btn-mini follow action" href="#">Follow</a>
+                    }else{
+                    <a data-account-type="players" data-account='@Model.accountID' class="btn btn-inverse unfollow btn-mini action" href="#">Unfollow</a>
+                }
+            }
+            </div>
+            <img class="avatar player-item-avatar" src="@Model.profileImg" alt="@Model.fullName">
+            <span>@Model.position&nbsp;|&nbsp;@Model.teamSlug</span>
+        </div>
+    </div>
+    break;
+
+    case "users":
+    <div class="item clear player-item">
+        <div class="content">
+
+            <div class="content-header">
+                <img class="newsiconright" src="images/comment_banner.png">
+                <a class="username" href="@Url.Action("Index", "Coach", new { id = Model.accountID, name = Model.fullName })">@Model.fullName</a>
+                <span class="user"></span>
+            </div>
+            <div class="item-hover-menu" style="display: none">
+            @if (!User.Identity.IsAuthenticated){
+                <a data-account-type="users" data-account='@Model.accountID' class="btn btn-success btn-mini action" data-toggle="modal" href="#register-modal">Follow</a>
+            }else{
+                if (Model.following <= 0){
+                    <a data-account-type="users" data-account='@Model.accountID' class="btn btn-success btn-mini follow action" href="#">Follow</a>
+                    }else{
+                    <a data-account-type="users" data-account='@Model.accountID' class="btn btn-inverse unfollow btn-mini action" href="#">Unfollow</a>
+                }
+            }
+            </div>
+            <img class="avatar player-item-avatar" src="assets/img/avatar/@Model.profileImg" alt="@Model.fullName">
+        </div>
+    </div>
+    break;    
+}

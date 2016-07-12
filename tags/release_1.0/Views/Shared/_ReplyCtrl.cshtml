@@ -1,0 +1,31 @@
+﻿@model CoachCue.ViewModels.ConversationViewModel
+@using CoachCue.Model;
+   
+    <!-- parent message -->
+    <div data-player="@Model.ParentMessage.playerID" id="msg-@Model.ParentMessage.messageID" class="user-message item child clear stream-news conversation-parent">
+        <div class="content">
+            <div class="content-header">
+                <a data-ajax="false" class="username" href="@Url.Action("Index", "Coach", new { id = Model.ParentMessage.userID, name = Model.ParentMessage.user.fullName })">@Model.ParentMessage.user.fullName</a>
+            </div>
+            <div class="avatar user-avatar height" style='background: url(@Url.Content("~/assets/img/avatar/" + Model.ParentMessage.user.avatar.imageName)) 50% 50% no-repeat;'></div>
+            <span>@Html.Raw(@Model.ParentMessage.messageText)</span>
+            <span class="time">@twitter.GetRelativeTime(Model.ParentMessage.dateCreated)</span>
+        </div>
+            
+    </div>
+    
+    <div class="reply-message-post sidepanel">
+        <div style="display: none" id="reply-posted"></div>
+        <form id="reply-post" data-msg="@Model.ParentMessage.messageID" data-plyid="@Model.ParentMessage.playerID" class="form-inline reply-post-form" >
+            <div class="new-message-text">
+                <img class="avatar player-item-avatar" src='@Url.Content("~/assets/img/avatar/" + Model.Avatar)' />
+                <textarea rows="5" maxlength="140" class="reply-message-input-textarea">@@@Model.ParentMessage.MessageUser.userName </textarea>
+                <div class="message-charNum">140</div>
+            </div>
+            
+            <div class="reply-message-buttons">
+                <button class="btn btn-small btn-success post-sidepanel-reply" type="submit">Post</button>
+            </div>
+        </form>
+    </div>
+   

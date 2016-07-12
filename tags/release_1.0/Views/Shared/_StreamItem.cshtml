@@ -1,0 +1,144 @@
+﻿@model StreamContent
+@using CoachCue.Model;
+
+    @switch( Model.ContentType ){
+        case "empty-news":
+        <div class="item clear empty child stream-news">
+            <div class="content">
+                <div class="content-header">
+                </div>
+                <span>No Recent News</span>
+            </div>
+        </div>  
+        break;
+        
+        case "empty-matchup":
+        <div class="item clear empty child stream-matchup over-limit" style="display: none">
+            <div class="content">
+                <div class="content-header">
+                </div>
+                <span>No Recent Matchups</span>
+            </div>
+        </div>  
+        break;
+
+        case "empty-messages":
+        <div class="item clear empty child stream-news">
+            <div class="content">
+                <div class="content-header">
+                </div>
+                <span>No Messages</span>
+            </div>
+        </div>  
+        break;
+        
+        case "tweet":
+        <div class="item clear child stream-news @Model.CssClass" data-player="@Model.PlayerID">
+            <div class="content">
+                <div class="content-header">
+                    <a title="first tooltip" class="username" target="_blank" href="http://twitter.com/@Model.UserName">@Model.FullName</a>
+                </div>
+                <img class="avatar" src="@Model.ProfileImg" />
+                <img class="newsiconright" src="@Url.Content("~/assets/img/tweet-news.png")">
+                <span>@Html.Raw(Model.Tweet.Message)</span>
+                <a class="time" target="_blank" href="http://twitter.com/@Model.FullName/statuses/@Model.Tweet.ID">@Model.TimeAgo</a>
+            </div>
+        </div>  
+        break;
+        
+        case "matchup":
+        <div class="stream-matchup @Model.CssClass">
+            <div data-player="@Model.PlayerID" data-matchup-id="@Model.MatchupItem.MatchupID" class="matchup-item matchup-item-pick" data-ticks="@Model.DateTicks">
+                        
+                <div class="item clear child">
+                    <div class="content-header">
+                        <div class="content-matchup-player content-player1">
+                            <img class="avatar normal" src="@Model.MatchupItem.Player1.Image" />
+                            <a href="@Url.Action("Index", "Player", new { id = Model.MatchupItem.Player1.PlayerID, name = Model.MatchupItem.Player1.linkFullName })">@Model.MatchupItem.Player1.PlayerName</a>
+                            <div>@Model.MatchupItem.Player1.GameInfo</div>
+                            <div class="votes"><a data-player-id="@Model.MatchupItem.Player1.PlayerID" href="@Model.MatchupItem.Player1.Href" class="btn btn-warning btn-mini action @Model.MatchupItem.Player1.CssClass" @if (!User.Identity.IsAuthenticated){ <text>data-toggle="modal"</text> }else{ <text> data-loading-text="Saving..."</text>}><i class="icon-large icon-thumbs-up icon-white"></i></a></div>
+                        </div>
+                        <div class="content-matchup-player content-player2">
+                            <img class="avatar normal" src="@Model.MatchupItem.Player2.Image" />
+                            <a href="@Url.Action("Index", "Player", new { id = Model.MatchupItem.Player2.PlayerID, name = Model.MatchupItem.Player2.linkFullName })">@Model.MatchupItem.Player2.PlayerName</a>
+                            <div>@Model.MatchupItem.Player2.GameInfo</div>
+                            <div class="votes"><a data-player-id="@Model.MatchupItem.Player2.PlayerID" href="@Model.MatchupItem.Player2.Href" class="btn btn-warning btn-mini action @Model.MatchupItem.Player2.CssClass" @if (!User.Identity.IsAuthenticated){ <text>data-toggle="modal"</text>}else{ <text> data-loading-text="Saving..."</text>} }><i class="icon-large icon-thumbs-up icon-white"></i></a></div>
+                        </div>
+                    </div>
+                    <a class="time" href="#">Week @Model.MatchupItem.WeekNumber</a>       
+                    <div class="scoring-format">Scoring Format: <b>@Model.MatchupItem.ScoringFormat</b></div>
+                </div>
+                
+            </div>
+        </div>
+        break;
+        
+        case "matchupSelected" :
+        <div class="stream-matchup @Model.CssClass">
+            <div data-player="@Model.PlayerID" data-matchup-id="@Model.MatchupItem.MatchupID" class="matchup-item matchup-item-pick" data-ticks="@Model.DateTicks">
+                <div class="item clear child">
+                    <div class="content-header">
+                        <div class="content-matchup-player content-player1">
+                            <img class="avatar normal" src="@Model.MatchupItem.Player1.Image" />
+                            <a data-ajax="false" href="@Url.Action("Index", "Player", new { id = Model.MatchupItem.Player1.PlayerID, name = Model.MatchupItem.Player1.linkFullName })">@Model.MatchupItem.Player1.PlayerName</a>
+                            <div>@Model.MatchupItem.Player1.GameInfo</div>
+                            <div class="votes">@Model.MatchupItem.Player1.TotalVotes</div>
+                        </div>
+                        <div class="content-matchup-player content-player2">
+                            <img class="avatar normal" src="@Model.MatchupItem.Player2.Image" />
+                            <a data-ajax="false" href="@Url.Action("Index", "Player", new { id = Model.MatchupItem.Player2.PlayerID, name = Model.MatchupItem.Player2.linkFullName })">@Model.MatchupItem.Player2.PlayerName</a>
+                            <div>@Model.MatchupItem.Player2.GameInfo</div>
+                            <div class="votes">@Model.MatchupItem.Player2.TotalVotes</div>
+                        </div>
+                    </div>
+                    <a class="time" href="@Url.Action("Index", "Matchup", new {mt = Model.MatchupItem.MatchupID })">Week @Model.MatchupItem.WeekNumber</a>       
+                    <div class="stats">
+                        @foreach( UserVoteData vote in Model.MatchupItem.Coaches.Take(10).ToList() ){
+                        <a data-ajax="false" href="@Url.Action("Index", "Coach", new { id = vote.userID, name = vote.fullName })" rel='tooltip' data-toggle="tooltip" data-placement="top" title="" data-original-title="@vote.fullName (@vote.SelectedPlayer)" class="user-avatar-small height" style="background: url(@vote.profileImg) 50% 50% no-repeat;"></a>
+                        }
+                    </div>
+                    <div class="matchup-details">
+                        <a data-ajax="false" href="@Url.Action("Index", "Matchup", new {mt = Model.MatchupItem.MatchupID })">Details</a> 
+                        <div class="scoring-format">Scoring Format: <b>@Model.MatchupItem.ScoringFormat</b></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        break;
+        
+        case "message" :      
+        <div data-player="@Model.PlayerID" id="msg-@Model.MessageItem.messageID" class="user-message item child clear stream-news @Model.CssClass" data-ticks="@Model.DateTicks">
+            <div class="content">
+                <div class="content-header">
+                    <img class="newsiconright" src="@Url.Content("~/assets/img/comment_news.png")">
+                    <a data-ajax="false" class="username" href="@Url.Action("Index", "Coach", new { id = Model.MessageItem.userID, name = Model.FullName })">@Model.FullName</a>
+                </div>
+                <div class="avatar user-avatar height" style='background: url(@Url.Content("~/assets/img/avatar/" + Model.ProfileImg)) 50% 50% no-repeat;'></div>
+                <span>@Html.Raw(@Model.MessageItem.messageText)</span>
+                <span class="time">@Model.TimeAgo</span>
+            </div>
+            
+
+            <div class="message-tools">
+                @if (Model.MessageItem.HasConversation)
+                {
+                <div class="message-conversation">
+                    <a data-slidepanel="panel" data-msg="@Model.MessageItem.messageID" role="button" class="with-icn ms-action-conversation" href="@Url.Action("Message", "Player", new { msgID = Model.MessageItem.messageID })">
+                        <i class="icon-comment"></i>View conversation
+                    </a>
+                </div>
+                }
+
+                <ul class="message-actions">
+                    <li class="action-reply-container">
+                        <a  data-slidepanel="panel" data-msg="@Model.MessageItem.messageID" role="button" class="with-icn ms-action-reply" href="@Url.Action("Message", "Player", new { msgID = Model.MessageItem.messageID, rply = true })">
+                            <i class="icon-reply"></i>Reply
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        break;
+    }
+    

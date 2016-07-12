@@ -1,0 +1,19 @@
+@model CoachCue.ViewModels.MailRequestVoteViewModel
+@using CoachCue.Models;
+
+ <table cellpadding="0" border="0" style="line-height: 1.2em; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; border-spacing: 0px; font-size: 100%; border: 0" cellspacing="0" width="585">
+        <tbody>
+            <tr>
+                <td width="65">
+                &nbsp;
+                </td>
+                <td width="485" style="padding:5px 0 10px 10px">
+                <div style="font-size:12px;line-height:1.4em;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif">
+                    <strong>To view and vote on the matchup, click here:<br><a style="color:#538dc2" href="http://coachcue.com/matchup?mt=@Model.MatchupLink.ID&gud=@Model.MatchupLink.Guid" target="_blank">@Model.MatchupLink.Message</a></strong><br></div>
+                <br>Thanks,<br>The CoachCue Team
+            
+                </td>
+                </tr>
+        </tbody>
+    </table>
+    

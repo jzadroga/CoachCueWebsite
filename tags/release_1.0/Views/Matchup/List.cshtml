@@ -1,0 +1,111 @@
+﻿@model CoachCue.ViewModels.MatchupsListViewModel
+@using CoachCue.Model;
+
+@{
+    ViewBag.Title = "CoachCue - Who Do I Start Matchups for Week " + Model.WeekNumber;
+    ViewBag.Description = "CoachCue Who Do I Start Matchup questions for Week " + Model.WeekNumber;
+    ViewBag.Keywords = "fantasy football, Who Do I Start, matchup questions";
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<input type="hidden" id="find-coachID" />         
+
+<div class="span9 section">
+    <img src="@Url.Content("~/assets/img/MatchupsHEaderGraphic_700px.png")" alt="Weekly WDIS Matchups">
+    <ul style="display:none" class="nav nav-pills weeklist">
+        <li id="weeks-label" class="disabled">Weeks</li>
+        @foreach( GameWeek week in Model.Weeks ){
+        <li @if( week.ID == Model.SelectedWeek ){<text>class="active"</text>}>
+            <a href="@Url.Action("List", "Matchup", new { week = @week.ID })">@week.Label</a>
+        </li>
+        }
+    </ul>
+</div>
+
+@if( Model.ShowMatchupAdd ){
+<div style="margin-top: 10px" class="span9 section">
+ <!-- pick a player -->
+    <div class="controls matchup-list" id="select-player-controls">
+        <input type="text" data-plyid="0" id="player1" placeholder="Type a Player Name to Add a Matchup Question" />
+    </div>
+
+    <div id="share-controls" style="display: none;">
+        <!-- display the player -->
+        <div id="player-selected" class="item clear large">
+            <button id="close-player-select" class="close">&times;</button>
+            <div class="content large">
+                <div class="content-header">
+                    <span id="player-selected-name" class="username"></span>
+                    <span id="player-selected-bio" class="username"></span>
+                </div>
+                <!-- give the options to post message or create matchup -->
+                <div class="controls">
+                    <div class="control-group">
+                        <div class="controls">
+                            <input type="text" data-plyid="0" class="new-matchup-input-text" id="player2" placeholder="Vs." />
+                        </div>
+                    </div>
+                   
+                    @{ Html.RenderPartial("_PlayerPostingCtrl", new ViewDataDictionary { { "PostContext", "matchup" }}); }
+                </div>
+                <img id="player-selected-img" class="avatar large" src="/assets/img/teams/PIT.jpg">
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+<div class="span9 section">
+
+    @if (!User.Identity.IsAuthenticated){
+        <div class="alert alert-info matchup-alert">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong><a data-toggle="modal" href="#register-modal">Join CoachCue!</a></strong> to follow all your players, get the latest news and post matchup questions.
+        </div>
+    }
+
+    @if( Model.MyMatchups.Count() > 0 ){
+    <div id="myCarousel" data-interval="false" class="carousel slide" style="width: 500px; margin-left: 115px">        
+        <!-- Carousel items -->
+        <div id="matchup-carousel-inner" class="carousel-inner">
+        
+            @foreach( WeeklyMatchups weekMatchup in Model.MyMatchups ){
+                <div class="carousel-matchup-item @if( Model.MyMatchups.IndexOf(weekMatchup) == 0 ){<text>active</text>} item" style="width: 400px">
+                    @{Html.RenderPartial("_CarouselMatchupItem", model: weekMatchup);}
+                </div>
+            }
+
+        </div>
+        <!-- Carousel nav -->
+        <a style="left: -75px" class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+        <a style="right: 0px" class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+    }
+
+    <div id="matchup-list">
+        @foreach( WeeklyMatchups weekMatchup in Model.AllMatchups ){
+            { Html.RenderPartial("_MatchupItem", model: weekMatchup); }
+        }
+    </div>
+
+</div>
+
+@section playerlist
+{
+    <!-- player search -->
+    <div class="row" style="position: relative">
+        <form class="form-search" id="frm-search">
+            <span class="add-on search-icon">
+                <i class="icon-search"></i>
+            </span>                   
+            <input autocomplete="off" id="player-search" type="text" class="searchit-val search-box input-large search-query" placeholder="Search for Player or User" /> 
+        </form>
+    </div>
+
+    <div class="row">
+        @{ Html.RenderPartial("_TrendingList", model: Model.TrendingItems); }
+    </div>
+}
+
+

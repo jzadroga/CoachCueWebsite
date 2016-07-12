@@ -1,0 +1,63 @@
+﻿@model CoachCue.ViewModels.TeamJournalistModel
+@using CoachCue.ViewModels
+@using CoachCue.Model
+
+@{
+    ViewBag.Title = "Team Journalist Accounts";
+    Layout = "~/Views/Shared/_ControlPanelLayout.cshtml";
+}
+
+<h2>Team Journalist Accounts</h2>
+
+<div class="row">
+    <div class="span12">
+
+         <div>
+            <form method="post" action="@Url.Action("JournalistAccounts", "ControlPanel")" id="frmRoster">
+                <span>Select Team: </span>
+                <select id="team" name="team">
+                    @foreach (nflteam team in Model.Teams.OrderBy(tm => tm.teamName))
+                    {
+                        <option @if(Model.SelectedTeamID == team.teamID){ <text>selected="selected"</text> } value="@team.teamID">@team.teamName</option>
+                    }
+                </select>
+            </form>
+        </div>
+
+        <table class="table table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th style="width: 160px"></th>
+                    <th>Name</th>
+                    <th>Twitter Username</th>
+                    <th style="width: 125px">Description</th>
+                    </tr>
+            </thead>
+            <tbody>
+                @foreach (twitteraccount journalist in Model.Journalists.OrderBy(jrn => jrn.twitterName))
+                {
+                <tr>
+                    <td>
+                        <a href='@Url.Action("DeleteTwitterAccount", "ControlPanel", new { id = @journalist.twitterAccountID, teamID = @Model.SelectedTeamID })' id="delete-account" class="btn btn-danger btn-mini"><i class="icon-white icon-remove"></i> Delete</a>
+                    </td>
+                    <td>@journalist.twitterName</td>
+                    <td><a target="_blank" href='http://twitter.com/@journalist.twitterUsername'>@journalist.twitterUsername</a></td>
+                    <td>@journalist.description</td>
+                </tr>
+                }
+                <tr>
+                    <form action="@Url.Action("AddTwitterAccount", "ControlPanel")" method="post">
+                        <td>
+                            <input type="hidden" id="teamID" name="teamID" value="@Model.SelectedTeamID" />
+                            <input type="submit" class="btn btn-primary btn-mini" value="Add New" />
+                        </td> 
+                        <td><input type="text" id="name" name="name" /></td>
+                        <td><input type="text" id="username" name="username" /></td>
+                        <td></td>
+                    </form>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

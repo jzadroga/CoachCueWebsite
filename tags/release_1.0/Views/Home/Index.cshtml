@@ -1,0 +1,115 @@
+﻿@model CoachCue.ViewModels.HomeViewModel
+@using CoachCue.Model
+
+@{
+    ViewBag.Title = "CoachCue - Social network for fantasy sports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- player list modal -->
+<div class="modal fade" id="player-list-modal" style="display: none" tabindex="-1" data-width="620" data-height="400">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal">×</button>
+        <h3>Player List</h3>
+    </div>
+
+    <div class="modal-body">
+        <div id="player-find-list">
+        @foreach (AccountData playerItem in Model.AllTrendingItems)
+        {  
+            { Html.RenderPartial("_PlayerItem", model: playerItem); }
+        }
+        </div>
+    </div>
+
+    <div class="modal-footer">
+    </div>
+
+</div>
+
+<div class="span9 section" id="msg-list">
+
+    @if (User.Identity.IsAuthenticated)  {
+
+    <!-- welcome -->
+    <div class="relative">
+        <h4 class="welcome-user">Hello, @Model.Name</h4>
+        <img class="avatar player-item-avatar welcome-avatar" src='@Url.Content("~/assets/img/avatar/" + @Model.Avatar)' />
+    </div>
+    }
+
+    <!-- pick a player -->
+    <div class="controls" id="select-player-controls">
+        <input type="text" data-plyid="0"  id="player1" placeholder="Type a Player and add a Message or Matchup" />
+    </div>
+
+    <div id="share-controls" style="display: none;">
+        <!-- display the player -->
+        <div id="player-selected" class="item clear large">
+            <button id="close-player-select" class="close">&times;</button>
+            <div class="content large">
+                <div class="content-header">
+                    <span id="player-selected-name" class="username"></span>
+                    <span id="player-selected-bio" class="username"></span>
+                </div>
+                <!-- give the options to post message or create matchup -->
+                <div class="controls">
+                    <div class="control-group">
+                        <div class="controls">
+                            <textarea rows="4" maxlength="140" id="user-message" class="new-message-input-textarea-large" placeholder="Type message about player"></textarea>
+                            <input style="display: none" type="text" data-plyid="0" class="new-matchup-input-text" id="player2" placeholder="Vs." />
+                        </div>
+                    </div>
+                   
+                    @{ Html.RenderPartial("_PlayerPostingCtrl", new ViewDataDictionary { { "PostContext", "home" }}); }
+                </div>
+                <img id="player-selected-img" class="avatar large" src="/assets/img/teams/PIT.jpg">
+            </div>
+        </div>
+    </div>
+    
+    <div id="stream-area">
+        <button id="updateBar" data-loading-text="Loading..." style="display:none" class="btn btn-large btn-block" type="button">New Player Updates</button>
+        <div id="message-stream" class="message-list-stream">
+        @{ Html.RenderPartial("_StreamItemList", Model.Stream, new ViewDataDictionary { { "UserImage", Model.Avatar } }); }
+        </div>
+    </div>
+
+</div>
+
+@section playerlist
+{
+    <!-- player search -->
+    <div class="row" style="position: relative">
+        <form class="form-search" id="frm-search">
+            <span class="add-on search-icon">
+                <i class="icon-search"></i>
+            </span>                   
+            <input autocomplete="off" id="player-search" type="text" class="searchit-val search-box input-large search-query" placeholder="Search for Player or User" /> 
+        </form>
+    </div>
+
+    <div class="row">
+        @{ Html.RenderPartial("_TrendingList", model: Model.TrendingItems); }
+    </div>
+}
+
+<script type="text/javascript">
+    $(function () {
+        var str = '@Model.ShowRegistration';
+        if (str == "True") {
+            $('#register-modal').modal('show')
+        }
+
+        var welcomeStr = '@Model.ShowWelcome';
+        if (welcomeStr == "True") {
+            $('#howto-modal').modal('show')
+        }
+
+        var inviteStr = '@Model.ShowFriendInvite';
+        if (inviteStr == "True") {
+            $('#invite-friend-modal').modal('show')
+        }
+
+    });
+</script>

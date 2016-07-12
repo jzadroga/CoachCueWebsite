@@ -1,0 +1,41 @@
+﻿@model CoachCue.ViewModels.FollowingModel
+@using CoachCue.Model;
+
+@{
+    ViewBag.Title = "CoachCue - " + Model.Name  + " Following";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="span6 offset1 section pod">
+    <h2>Following @Model.FollowingCount</h2>   
+
+    <table class="table table-hover">
+        <tr class="info">
+            <td><h4>Coaches</h4></td>
+        </tr>
+        @foreach (CoachCue.Model.user coach in Model.FollowingCoaches){
+        <tr>
+            <td class="follow-item">             
+                @{ Html.RenderPartial("_CoachItem", model: coach); }
+            </td>
+        </tr>}
+        <tr class="info">
+            <td><h4>Players</h4></td>
+        </tr>
+        @foreach (CoachCue.Model.AccountData player in Model.FollowingPlayers){
+        <tr>
+            <td class="follow-item">             
+                @{ Html.RenderPartial("_PlayerItem", model: player); }
+            </td>
+        </tr>
+        }
+    </table>
+
+</div>
+
+@section playerlist
+{
+    <div class="row">
+        @{ Html.RenderPartial("_TrendingList", model: Model.TrendingItems); }
+    </div>
+}

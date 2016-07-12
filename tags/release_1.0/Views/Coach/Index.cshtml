@@ -1,0 +1,57 @@
+﻿@model CoachCue.ViewModels.UserViewModel
+@using CoachCue.Model;
+
+@{
+    ViewBag.Title = "CoachCue - " + Model.UserDetail.fullName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="span6 section" id="userdetail">
+
+    <div class='item parent player-header'>
+        <div class='content'>
+            <div class='content-header'>
+                @if (!Model.UserDetail.isFollowing){
+                <a data-account-type="users" data-account='@Model.UserDetail.userID' class="btn btn-success btn-mini follow action" href="#">Follow</a>
+                }else{
+                <a data-account-type="users" data-account='@Model.UserDetail.userID' class="btn btn-inverse unfollow btn-mini action" href="#">Unfollow</a>
+                }
+                <span class='username'>@Model.UserDetail.fullName</span>
+            </div>
+            <div class="avatar user-avatar-large height" style='background: url(@Url.Content("~/assets/img/avatar/" + Model.UserDetail.avatar.imageName)) 50% 50% no-repeat;'></div>
+            <div class="detail-info"><a id="coachfollow-count-@Model.UserDetail.userID" href="@Url.Action("Index", "Followers", new { id = Model.UserDetail.userID, type = "users",  name = Model.UserDetail.fullName })">@Model.Followers Followers</a></div>
+        </div>
+    </div>
+
+    <div id="stream-area">
+        <div id="user-message-stream">
+        
+            <div class="player-stream @if(Model.MessageDetails){<text>message-details</text>}">
+            @foreach (StreamContent streamItem in Model.UserStream)
+            {
+                if (!Model.MessageDetails){
+                    Html.RenderPartial("_PlayerItem", model: streamItem.PlayerAccount);
+                }
+                else if( !streamItem.MessageItem.messageContextID.HasValue)  {
+                    Html.RenderPartial("_PlayerItem", model: streamItem.PlayerAccount);
+                }
+              
+                Html.RenderPartial("_StreamItem", model: streamItem); 
+            }
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+@section playerlist
+{
+    <div class="row">
+        @{ Html.RenderPartial("_TrendingList", model: Model.TrendingItems); }
+    </div>
+}
+
+<div class="span3 section">
+    @{Html.RenderPartial("_TopCoaches", model: Model.WeeklyTopCoaches.Take(25).ToList());}
+</div>

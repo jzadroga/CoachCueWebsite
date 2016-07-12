@@ -1,0 +1,33 @@
+﻿@model List<notification>
+@using CoachCue.Model;
+
+    
+    @foreach (notification notice in Model)
+    {
+        switch( notice.notification_type.type ){
+            case "messageMention":
+            <li>        
+                <div class="item clear notice-item">
+                    <div class="content">
+                        <img class="avatar player-item-avatar" src="@Url.Action("GetThumbnail", "Account", new { fileName = notice.noticeUser.avatar.imageName, size = 25 })" />
+                        <a href="@Url.Action("Index", "Coach", new {mt = @notice.entityID, id = notice.noticeUser.userID, name = notice.noticeUser.fullName })">@notice.noticeUser.fullName @notice.noticeMessage</a>
+                        <span class="time">@notice.dateCreated.ToShortDateString()</span>
+                    </div>
+                </div>  
+            </li>
+                break;
+            case "voteMatchup":
+            case "voteRequested":    
+            <li>        
+                <div class="item clear notice-item">
+                    <div class="content">
+                        <img class="avatar player-item-avatar" src="@Url.Action("GetThumbnail", "Account", new { fileName = notice.noticeUser.avatar.imageName, size = 25 })" />
+                        <a href="@Url.Action("Index", "Matchup", new {mt = @notice.linkData.ID, gud = @notice.linkData.Guid})">@notice.noticeUser.fullName @notice.noticeMessage @notice.linkData.Message</a>
+                        <span class="time">@notice.dateCreated.ToShortDateString()</span>
+                    </div>
+                </div>  
+            </li>
+            break;
+        }
+    }
+    

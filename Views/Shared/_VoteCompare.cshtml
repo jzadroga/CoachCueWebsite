@@ -1,0 +1,38 @@
+﻿@model PlayerPopover
+@using CoachCue.Model;
+
+<div class="player-votes">
+    <h4>Total Votes</h4>
+    <div class="item clear player-item">
+        <div class="content">
+            <div class="content-header">
+                <a class="username" href="@Url.Action("Index", "Player", new { id = Model.Voting.CurrentPlayer.Player.playerID, name = Model.Voting.CurrentPlayer.Player.linkFullName })">@Model.Voting.CurrentPlayer.Player.shortName</a>
+                <span>@Model.Voting.CurrentPlayer.Player.position.positionName&nbsp;|&nbsp;@Model.Voting.CurrentPlayer.Player.nflteam.teamSlug</span>
+            </div>
+
+            <img class="avatar user-avatar-small" src="@Model.Voting.CurrentPlayer.Player.profilePic" alt="@Model.Voting.CurrentPlayer.Player.fullName">
+            <a href="@Url.Action("Index", "Player", new { id = Model.Voting.CurrentPlayer.Player.playerID, name = Model.Voting.CurrentPlayer.Player.linkFullName })">
+                <span style="width: @Model.Voting.CurrentPlayer.Percent" class="badge trending-badge">@Model.Voting.CurrentPlayer.Votes</span>
+            </a>
+        </div>
+    </div>
+
+    <h4>Compared To</h4>
+    @foreach (VotedPlayers player in Model.Voting.ComparedPlayers)
+    {
+        <div class="item clear player-item">
+            <div class="content">
+                <div class="content-header">
+                    <a class="username" href="@Url.Action("Index", "Player", new { id = player.Player.playerID, name = player.Player.linkFullName })">@player.Player.shortName</a>
+                    <span>@player.Player.position.positionName&nbsp;|&nbsp;@player.Player.nflteam.teamSlug</span>
+                </div>
+
+                <img class="avatar user-avatar-small" src="@player.Player.profilePic" alt="@player.Player.fullName">
+                <a href="@Url.Action("Index", "Player", new { id = player.Player.playerID, name = player.Player.linkFullName })">
+                    <span style="width: @player.Percent" class="badge trending-badge">@player.Votes</span>
+                </a>
+            </div>
+        </div>
+    }
+
+</div>

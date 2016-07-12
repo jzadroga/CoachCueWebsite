@@ -1,0 +1,11 @@
+﻿@model CoachCue.ViewModels.HomeViewModel
+@using CoachCue.Model
+
+@{
+    ViewBag.Title = "CoachCue - Social community for fantasy sports";
+    Layout = "~/Views/Shared/_MobileLayout.cshtml";
+}
+
+<div id="message-stream" class="message-list-stream">
+    @{ Html.RenderPartial("_StreamItemList", Model.Stream, new ViewDataDictionary { { "UserImage", Model.Avatar } }); }
+</div>

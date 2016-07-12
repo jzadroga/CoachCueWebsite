@@ -1,0 +1,423 @@
+﻿@model CoachCue.ViewModels.BaseViewModel
+@using CoachCue.Helpers;
+@using System.Web.Optimization;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    @if(ViewBag.Description != null){
+    <meta name="description" content="@ViewBag.Description" />
+    }
+    else
+    {
+        <meta name="description" content="Get instant advice for all of your Who Should I Start? questions. View results from 100+ player matchups." />
+    }
+    @if (ViewBag.Keywords != null){
+    <meta name="keywords" content="@ViewBag.Keywords" />
+    }else{
+    <meta name="keywords" content="fantasy sports, fantasy football, Who should I Start" />
+    }
+
+    @if (ViewBag.twitterCard != null)
+    {
+    <meta name="twitter:card" content="@ViewBag.twitterCard" />
+    }
+    
+    @if (ViewBag.twitterSite != null)
+    {
+    <meta name="twitter:site" content="@ViewBag.twitterSite" />
+    }
+    
+    @if (ViewBag.twitterTitle != null)
+    {
+    <meta name="twitter:title" content="@ViewBag.twitterTitle" />
+    }
+    
+    @if (ViewBag.twitterDescription != null)
+    {
+    <meta name="twitter:description" content="@ViewBag.twitterDescription" />
+    }
+    
+    @if (ViewBag.twitterImage != null)
+    {
+    <meta name="twitter:image" content="@ViewBag.twitterImage" />
+    }
+
+    @if (ViewBag.twitterUrl != null)
+    {
+    <meta name="twitter:url" content="@ViewBag.twitterUrl" />
+    }
+    
+    <meta name="author" content="" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/js/libs/slidepanel/css/jquery.slidepanel.css")">
+    @Styles.Render("~/assets/css/bundle")
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>    
+    <script src="@Url.Content("~/assets/js/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/jquery.placeholder.min.js")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            setValidation();
+        });
+
+        function loginSuccess(data) {
+            $("#login-error").hide();
+            if (data.Success) {
+                location.reload(true);
+            }
+            else {
+                $("#login-error").show();
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        window.twttr = (function (d, s, id) { var t, js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) { return } js = d.createElement(s); js.id = id; js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } }) }(document, "script", "twitter-wjs"));
+    </script>
+
+    @{Html.RenderPartial("_GoogleAnalytics");}
+</head>
+
+<body>
+
+    <nav id="main-nav-bar" class="navbar navbar-fixed-top" role="navigation">       
+        <div class="container">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand brand logo" href="@Url.Action("Index", "Home")">CoachCue</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="main-navbar-collapse">
+                <ul class="nav navbar-nav nav-main-links">
+                    <li>
+                        <form class="navbar-form">
+                            <div class="form-group">
+                                <input id="main-search" type="text" class="form-control" placeholder="Search" value="">
+                            </div>
+                        </form>
+                    </li>
+                    <li class="@Html.ActiveSection("Home")"><a href='@Url.Action("Index", "Home")'>Home</a></li>
+                    <li title="Notifications <a class='view-all-notifications' href='/account/notifications'>View All</a>" data-content='<ul id="notice-list"></ul>' data-toggle="popover" id="user-notifications" class="@Html.ActiveSection("Account")"><span class="badge badge-important notice-number">@Model.NoticeCount</span><span class="glyphicon glyphicon-bell"></span><a class="notices" href='#'>Notifications</a></li>
+            <li class="@Html.ActiveSection("Leaderboard")"><a href='@Url.Action("Index", "Leaderboard")'>Leaderboard</a></li>
+            </ul>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown you-dropdown @Html.ActiveSection("Account")">
+
+                        <a class="dropdown-toggle profile-link" data-toggle="dropdown" href="#">
+                            <span class="glyphicon glyphicon-user"></span>Me<b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu profile-nav-links">
+                            <li><a href='@Url.Action("Profile", "Account")'>Profile</a></li>
+                            <li class="divider"></li>
+                            <li><a id="invite-btn" data-toggle="modal" href='#invite-friend-modal'>Invite a Friend</a></li>
+                            <li class="divider"></li>
+                            <li><a href='@Url.Action("Settings", "Account")'>Settings</a></li>
+                            <li><a href='@Url.Action("LogOff", "Account")'>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            }
+
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a style="color: #fff;" data-toggle="modal" href="#register-modal">Register</a></li>
+                    <li class="divider-vertical"></li>
+                    <li><a style="color: #fff;" href='#login-modal' data-toggle="modal">Login</a></li>
+                </ul>
+            }
+
+        </div>
+
+        </div>
+    </nav>
+
+    <div class="container">
+           
+        <!-- main body -->
+        <div class="col-md-8 section">
+
+            @if (!User.Identity.IsAuthenticated){
+                <div class="row">
+                    <div class="alert alert-info signup-alert">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong><a data-toggle="modal" href="#register-modal">Join CoachCue!</a></strong> to follow all your players, get the latest news and post matchup questions.
+                    </div>
+                </div>
+            }
+
+            <div class="row">
+                @RenderBody()
+            </div>
+        </div>
+
+        <!-- right hand side -->
+        <div class="col-md-4 right-side pull-right hidden-xs hidden-sm">
+
+            @RenderSection("rightColumn", required: true)
+
+            <div class="row pod-ads">
+                <div class="panel panel-default partners">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Partners</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a target="_blank" href="http://numberfire.com"><img class="lazy-load" data-src="@Url.Content("~/assets/img/partners/numberfire.jpg")"></a>
+                            </li>
+                            <li class="list-group-item">
+                                <a target="_blank" href="http://thesportsquotient.com"><img class="lazy-load" data-src="@Url.Content("~/assets/img/partners/sq.png")"></a>
+                            </li>
+                            <li class="list-group-item">
+                                <a target="_blank" href="http://www.4for4.com/fantasy-football/get-unlimited-access-most-accurate-fantasy-football-website-19-bucks-36-discount"><img class="lazy-load" data-src="@Url.Content("~/assets/img/partners/4for4.jpg")"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="pod pod-child span4">
+
+                    <ul class="footer icons">
+                        <li><a target="_blank" href="https://twitter.com/coachcue"><img src="@Url.Content("~/assets/img/social/twitter.png")"></a></li>
+                        <li><a target="_blank" href="https://www.facebook.com/coachcue"><img src="@Url.Content("~/assets/img/social/facebook.png")"></a></li>
+                        <li><a href="#"><img src="@Url.Content("~/assets/img/social/wordpress.png")"></a></li>
+                        <li><a href="#contact-modal" data-toggle="modal"><img src="@Url.Content("~/assets/img/social/cue.png")"></a></li>
+                    </ul>
+
+                    <ul class="footer links">
+                        <li><a href="#contact-modal" data-toggle="modal">About</a>&nbsp;|</li>
+                        <li class="copyright">©2015 CoachCue LLC</li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+   
+
+        <!-- invite a friend modal -->
+        <div class="modal fade" role="dialog" id="invite-friend-modal" style="display: none">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">Invite Friends to CoachCue</h4>
+                    </div>
+
+                    <form id="frmSendInvite" method="post" class="validate form-horizontal">
+
+                        <div class="modal-body">
+                            <div id="invite-sent" style="display: none" class="alert alert-info fade in">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                Thanks! Your invite has been sent.
+                            </div>
+                            <div class="form-group">
+                                <label class="standout">Enter the email address of a friend</label>
+                                <input type="text" id="inviteEmail" placeholder="Email Address" name="inviteEmail" class="form-control email" data-required="true" />
+                                <span style="display: none" class="help-inline validation-message">Oops we need your friends email address</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label standout" for="username">Add Personal Message (optional)</label>
+                                <div class="controls">
+                                    <textarea id="inviteMsg" rows="6" style="width: 315px;" name="inviteMsg" class="bubble">Hey, check out a site I like called CoachCue. It's a social network website for fantasy sports.</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div style="margin-left: 330px" class="sending-spinner"></div>
+                            <button type="submit" id="btnSendInvite" class="btn btn-warning btn-primary">Send Invite</button>
+                            <button data-dismiss="modal" class="btn">CLOSE</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- contact modal -->
+        <div class="modal fade" role="dialog" id="contact-modal" style="display: none">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Tell us anything, we love hearing from you!</h4>
+                    </div>
+
+                    <form id="frmContactUs" method="post" class="validate form-horizontal">
+
+                        <div class="modal-body">
+                            <div id="contact-sent" style="display: none" class="alert alert-info fade in">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                Thanks! Your message has been sent.
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label standout" for="username">Email Address</label>
+                                <div class="controls">
+                                    <input type="text" id="cntEmail" name="cntEmail" class="bubble email" data-required="true" />
+                                    <span style="display: none" class="help-inline validation-message">Oops we need your email address</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label standout" for="username">Message</label>
+                                <div class="controls">
+                                    <textarea id="message" rows="10" style="width: 315px;" name="message" class="bubble" data-required="true"></textarea>
+                                    <span style="display: none" class="help-inline validation-message">Tell us something</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div style="margin-left: 410px" class="sending-spinner" id="sending"></div>
+                            <button type="submit" id="btnSend" class="btn btn-warning btn-primary">Send Message</button>
+                            <button data-dismiss="modal" class="btn">CLOSE</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- flyout notices -->
+        <div id="alertmsg" class="alert alert-warning flyover flyover-top">
+            <h1>Oh Snap!</h1>
+            <p>Something bad happened.  You should try to fix it before it gets worse.</p>
+        </div>
+
+        <!-- hidden modal -->
+        <div class="modal fade hidden" id="hidden-modal" style="display: none">
+        </div>
+
+        <!-- register modal -->
+        <div class="modal fade" id="register-modal" role="dialog" style="display: none">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <form id="frmRegister" method="post" action="@Url.Action("CreateAccount", "Account")" class="validate form-horizontal">
+                            <div class="help-block">
+                                <h3>Create your CoachCue Account</h3>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Type your Name" id="regname" name="regname" class="form-control" data-required="true" />
+                                <span style="display: none" class="help-inline validation-message">Please list your full name</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Type your Email Address" id="regemail" name="regemail" class="form-control" data-validate-email="true" data-required="true" />
+                                <span style="display: none" class="help-inline validation-message email-validation-message">Oops that Email Address already exists or is invalid</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="Type your Password" id="regwrd" name="regwrd" class="form-control" data-required="true" />
+                                <span style="display: none" class="help-inline validation-message">Don't forget your password</span>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="button" id="btnCreateAccount" class="btn btn-warning">Create Account</button>
+                                <span class="validation-message">Already a member? <a id="already-member-link" href="#">Sign in</a></span>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- login modal -->
+        <div class="modal fade" id="login-modal" role="dialog" style="display: none">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        @using (Ajax.BeginForm("LogOnAjax", "Account", null, new AjaxOptions { HttpMethod = "post", OnSuccess = "loginSuccess" }, new { @class = "validate form-horizontal" }))
+                        {
+                            <div id="login-error" style="display:none" class="control-group error">
+                                <label class="standout">Email Address or Password is invalid</label>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" placeholder="Email Address" id="username" name="username" class="form-control" data-required="true" />
+                                <span style="display: none" class="help-inline validation-message">Gotta have an email address</span>
+                            </div>
+
+                            <div class="form-group">
+                                <input placeholder="Password" type="password" id="password" name="password" class="form-control" data-required="true" />
+                                <span style="display: none" class="help-inline validation-message">Gotta have a password</span>
+                            </div>
+
+                            <label style="display: none" class="control-label" for="rememberMe"></label>
+                            <div style="display: none" class="controls">
+                                <input type="checkbox" id="rememberMe" name="rememberMe" />
+                                <span class="help-inline standout">Remember Me</span>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="controls">
+                                    <a id="forgot-password-link" href="#">Forgot your Password?</a>
+                                </div>
+                            </div>
+
+                            <div id="forgot-password-controls" style="display: none">
+                                <input style="display: inline" placeholder="Email Address" type="text" id="forgot-username" class="form-control" />
+                                <button type="submit" id="btnGetPassword" class="btn btn-default btn-sm">Get Password</button>
+
+                                <div class="control-group">
+                                    <label class="control-label standout"></label>
+                                    <div class="controls">
+                                        <span id="forgot-password-message" style="display: none" class="help-inline standout"> </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" id="btnlogin" class="btn btn-warning btn-lg">Login</button>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    @RenderSection("pagescripts", required: false) 
+
+    <!-- javascript placed at the end of the document so the pages load faster -->   
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="@Url.Content("~/assets/js/bootstrap-tagsinput.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/assets/js/typeahead.min.js")"></script>
+    <!-- end of bootstrap libraries -->
+
+    @Scripts.Render("~/assets/js/bundle")
+
+    <script type="text/javascript" src="@Url.Content("~/assets/js/libs/slidepanel/js/jquery.slidepanel.js")"></script>
+    <script src="@Url.Content("~/assets/js/jquery.unveil.js")" type="text/javascript"></script>
+
+</body>
+</html>

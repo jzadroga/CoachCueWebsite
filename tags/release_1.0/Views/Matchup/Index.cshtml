@@ -1,0 +1,28 @@
+﻿@model CoachCue.ViewModels.MyMatchupViewModel
+@using CoachCue.Model;
+
+@{
+    ViewBag.Description = "Fantasy football WDIS Matchup " + Model.MyMatchup.Player1.PlayerName + " vs. " + Model.MyMatchup.Player2.PlayerName;
+    ViewBag.Keywords = "fantasy football, WDIS matchup, " + Model.MyMatchup.Player1.PlayerName + ", " + Model.MyMatchup.Player2.PlayerName;
+    ViewBag.Title = "CoachCue - " + Model.MyMatchup.Player1.PlayerName + " vs. " + Model.MyMatchup.Player2.PlayerName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<input type="hidden" id="find-coachID" />         
+<div class="span6 section">
+
+    @{Html.RenderPartial("_MatchupItem", model: Model.MyMatchup);}
+
+</div>
+
+@section playerlist
+{
+    <div class="row">
+        @{ Html.RenderPartial("_TrendingList", model: Model.TrendingItems); }
+    </div>
+}
+
+<div class="span3 section">
+
+    @{Html.RenderPartial("_TopCoaches", model: Model.WeeklyTopCoaches.Take(25).ToList());}
+
+</div>

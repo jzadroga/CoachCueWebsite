@@ -1,0 +1,12 @@
+﻿@model List<nflplayer>
+@using CoachCue.ViewModels
+@using CoachCue.Model
+    
+        
+    @foreach (nflplayer player in Model){
+    <tr class="@player.PositionCss" style="@(player.PositionCss == "other-position" ? "display: none" : "")">
+        <td><a href='@Url.Action("PlayerDelete", "ControlPanel", new { id = @player.playerID })' id="delete-account" class="btn btn-danger btn-mini"><i class="icon-white icon-remove"></i> Delete</a></td>
+        <td>@player.fullName</td>
+        <td>@if( player.HasTwitter ){<a target="_blank" href='http://twitter.com/@player.twitteraccount.twitterUsername'>@player.twitteraccount.twitterUsername</a>}</td>
+    </tr>
+    }

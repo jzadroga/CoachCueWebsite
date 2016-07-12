@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CoachCue" EntityNamespace="CoachCue.Model" ContextNamespace="CoachCue.Model" Class="CoachCueDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=tcp:qcfn08fzds.database.windows.net,1433;Initial Catalog=CoachCue;User ID=CoachCue@qcfn08fzds" SettingsObjectName="CoachCueModels.Properties.Settings" SettingsPropertyName="CoachCueConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.positiontype" Member="positiontypes">
+    <Type Name="positiontype">
+      <Column Name="positionTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="positionTypeName" Type="System.String" DbType="NVarChar(45) NOT NULL" CanBeNull="false" />
+      <Association Name="positiontype_position" Member="positions" ThisKey="positionTypeID" OtherKey="positionTypeID" Type="position" />
+    </Type>
+  </Table>
+  <Table Name="dbo.positions" Member="positions">
+    <Type Name="position">
+      <Column Name="positionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="positionName" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="positionTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="position_nflplayer" Member="nflplayers" ThisKey="positionID" OtherKey="positionID" Type="nflplayer" />
+      <Association Name="positiontype_position" Member="positiontype" ThisKey="positionTypeID" OtherKey="positionTypeID" Type="positiontype" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.status" Member="status">
+    <Type Name="status">
+      <Column Name="statusID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="statusName" Type="System.String" DbType="NVarChar(45) NOT NULL" CanBeNull="false" />
+      <Column Name="componentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="status_nflplayer" Member="nflplayers" ThisKey="statusID" OtherKey="statusID" Type="nflplayer" />
+      <Association Name="status_twitteraccount" Member="twitteraccounts" ThisKey="statusID" OtherKey="statusID" Type="twitteraccount" />
+      <Association Name="status_matchup" Member="matchups" ThisKey="statusID" OtherKey="statusID" Type="matchup" />
+      <Association Name="status_avatar" Member="avatars" ThisKey="statusID" OtherKey="statusID" Type="avatar" />
+      <Association Name="status_notification" Member="notifications" ThisKey="statusID" OtherKey="statusID" Type="notification" />
+      <Association Name="status_user" Member="users" ThisKey="statusID" OtherKey="statusID" Type="user" />
+      <Association Name="component_status" Member="component" ThisKey="componentID" OtherKey="componentID" Type="component" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.components" Member="components">
+    <Type Name="component">
+      <Column Name="componentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="componentName" Type="System.String" DbType="NVarChar(45) NOT NULL" CanBeNull="false" />
+      <Association Name="component_status" Member="status" ThisKey="componentID" OtherKey="componentID" Type="status" />
+    </Type>
+  </Table>
+  <Table Name="dbo.nflteams" Member="nflteams">
+    <Type Name="nflteam">
+      <Column Name="teamID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="teamName" Type="System.String" DbType="NVarChar(45)" CanBeNull="true" />
+      <Column Name="teamSlug" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Association Name="nflteam_nflplayer" Member="nflplayers" ThisKey="teamID" OtherKey="teamID" Type="nflplayer" />
+      <Association Name="nflteam_nflteams_twitteraccount" Member="nflteams_twitteraccounts" ThisKey="teamID" OtherKey="teamID" Type="nflteams_twitteraccount" />
+      <Association Name="nflteam_gameschedule" Member="gameschedules" ThisKey="teamID" OtherKey="nflTeamHome" Type="gameschedule" />
+      <Association Name="nflteam_gameschedule1" Member="gameschedules1" ThisKey="teamID" OtherKey="nflTeamAway" Type="gameschedule" />
+    </Type>
+  </Table>
+  <Table Name="dbo.twitteraccounttype" Member="twitteraccounttypes">
+    <Type Name="twitteraccounttype">
+      <Column Name="twitterAccountTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="accountType" Type="System.String" DbType="NVarChar(45)" CanBeNull="true" />
+      <Association Name="twitteraccounttype_twitteraccount" Member="twitteraccounts" ThisKey="twitterAccountTypeID" OtherKey="twitterAccountTypeID" Type="twitteraccount" />
+    </Type>
+  </Table>
+  <Table Name="dbo.nflplayers" Member="nflplayers">
+    <Type Name="nflplayer">
+      <Column Name="playerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="firstName" Type="System.String" DbType="NVarChar(45)" CanBeNull="true" />
+      <Column Name="lastName" Type="System.String" DbType="NVarChar(45)" CanBeNull="true" />
+      <Column Name="teamID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="twitterAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="statusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="hasTwitterAccount" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="featured" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="positionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="college" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="yearsExperience" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="nflplayer_matchup" Member="matchups" ThisKey="playerID" OtherKey="player1ID" Type="matchup" />
+      <Association Name="nflplayer_matchup1" Member="matchups1" ThisKey="playerID" OtherKey="player2ID" Type="matchup" />
+      <Association Name="nflplayer_users_matchup" Member="users_matchups" ThisKey="playerID" OtherKey="selectedPlayerID" Type="users_matchup" />
+      <Association Name="nflplayer_message" Member="messages" ThisKey="playerID" OtherKey="playerID" Type="message" />
+      <Association Name="position_nflplayer" Member="position" ThisKey="positionID" OtherKey="positionID" Type="position" IsForeignKey="true" />
+      <Association Name="status_nflplayer" Member="status" ThisKey="statusID" OtherKey="statusID" Type="status" IsForeignKey="true" />
+      <Association Name="nflteam_nflplayer" Member="nflteam" ThisKey="teamID" OtherKey="teamID" Type="nflteam" IsForeignKey="true" />
+      <Association Name="twitteraccount_nflplayer" Member="twitteraccount" ThisKey="twitterAccountID" OtherKey="twitterAccountID" Type="twitteraccount" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.twitteraccounts" Member="twitteraccounts">
+    <Type Name="twitteraccount">
+      <Column Name="twitterAccountID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="twitterID" Type="System.String" DbType="NVarChar(45)" CanBeNull="true" />
+      <Column Name="twitterUsername" Type="System.String" DbType="NVarChar(45)" CanBeNull="true" />
+      <Column Name="twitterAccountTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="statusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="profileImageUrl" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="twitterName" Type="System.String" DbType="NVarChar(45)" CanBeNull="true" />
+      <Column Name="dateModified" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="twitteraccount_nflplayer" Member="nflplayers" ThisKey="twitterAccountID" OtherKey="twitterAccountID" Type="nflplayer" />
+      <Association Name="twitteraccount_nflteams_twitteraccount" Member="nflteams_twitteraccounts" ThisKey="twitterAccountID" OtherKey="twitterAccountID" Type="nflteams_twitteraccount" />
+      <Association Name="status_twitteraccount" Member="status" ThisKey="statusID" OtherKey="statusID" Type="status" IsForeignKey="true" />
+      <Association Name="twitteraccounttype_twitteraccount" Member="twitteraccounttype" ThisKey="twitterAccountTypeID" OtherKey="twitterAccountTypeID" Type="twitteraccounttype" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.nflteams_twitteraccounts" Member="nflteams_twitteraccounts">
+    <Type Name="nflteams_twitteraccount">
+      <Column Name="teamAccountID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="teamID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="twitterAccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="nflteam_nflteams_twitteraccount" Member="nflteam" ThisKey="teamID" OtherKey="teamID" Type="nflteam" IsForeignKey="true" />
+      <Association Name="twitteraccount_nflteams_twitteraccount" Member="twitteraccount" ThisKey="twitterAccountID" OtherKey="twitterAccountID" Type="twitteraccount" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.matchups" Member="matchups">
+    <Type Name="matchup">
+      <Column Name="matchupID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="player1ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="player2ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="statusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="player1Points" Type="System.Decimal" DbType="Decimal(6,2)" CanBeNull="true" />
+      <Column Name="player2Points" Type="System.Decimal" DbType="Decimal(6,2)" CanBeNull="true" />
+      <Column Name="player1gameschedulleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="player2gamescheduleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="createdBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="scoringTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="matchup_users_matchup" Member="users_matchups" ThisKey="matchupID" OtherKey="matchupID" Type="users_matchup" />
+      <Association Name="nflplayer_matchup" Member="nflplayer" ThisKey="player1ID" OtherKey="playerID" Type="nflplayer" IsForeignKey="true" />
+      <Association Name="nflplayer_matchup1" Member="nflplayer1" ThisKey="player2ID" OtherKey="playerID" Type="nflplayer" IsForeignKey="true" />
+      <Association Name="status_matchup" Member="status" ThisKey="statusID" OtherKey="statusID" Type="status" IsForeignKey="true" />
+      <Association Name="matchupscoringtype_matchup" Member="matchupscoringtype" ThisKey="scoringTypeID" OtherKey="scoringTypeID" Type="matchupscoringtype" IsForeignKey="true" />
+      <Association Name="gameschedule_matchup" Member="gameschedule" ThisKey="player1gameschedulleID" OtherKey="gamescheduleID" Type="gameschedule" IsForeignKey="true" />
+      <Association Name="gameschedule_matchup1" Member="gameschedule1" ThisKey="player2gamescheduleID" OtherKey="gamescheduleID" Type="gameschedule" IsForeignKey="true" />
+      <Association Name="user_matchup" Member="user" ThisKey="createdBy" OtherKey="userID" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.matchupscoringtype" Member="matchupscoringtypes">
+    <Type Name="matchupscoringtype">
+      <Column Name="scoringTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="scoringType" Type="System.String" DbType="NVarChar(45) NOT NULL" CanBeNull="false" />
+      <Association Name="matchupscoringtype_matchup" Member="matchups" ThisKey="scoringTypeID" OtherKey="scoringTypeID" Type="matchup" />
+    </Type>
+  </Table>
+  <Table Name="dbo.nflseason" Member="nflseasons">
+    <Type Name="nflseason">
+      <Column Name="seasonID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="year" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="nflseason_gameschedule" Member="gameschedules" ThisKey="seasonID" OtherKey="seasonID" Type="gameschedule" />
+    </Type>
+  </Table>
+  <Table Name="dbo.users_accounts" Member="users_accounts">
+    <Type Name="users_account">
+      <Column Name="userAccountID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="accountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="accountTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="accounttype_users_account" Member="accounttype" ThisKey="accountTypeID" OtherKey="accounttypeID" Type="accounttype" IsForeignKey="true" />
+      <Association Name="user_users_account" Member="user" ThisKey="userID" OtherKey="userID" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.users_matchups" Member="users_matchups">
+    <Type Name="users_matchup">
+      <Column Name="userMatchupID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="selectedPlayerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="matchupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="correctMatchup" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="matchup_users_matchup" Member="matchup" ThisKey="matchupID" OtherKey="matchupID" Type="matchup" IsForeignKey="true" />
+      <Association Name="nflplayer_users_matchup" Member="nflplayer" ThisKey="selectedPlayerID" OtherKey="playerID" Type="nflplayer" IsForeignKey="true" />
+      <Association Name="user_users_matchup" Member="user" ThisKey="userID" OtherKey="userID" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.avatars" Member="avatars">
+    <Type Name="avatar">
+      <Column Name="avatarID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="imageName" Type="System.String" DbType="NVarChar(145) NOT NULL" CanBeNull="false" />
+      <Column Name="statusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="avatar_user" Member="users" ThisKey="avatarID" OtherKey="avatarID" Type="user" />
+      <Association Name="status_avatar" Member="status" ThisKey="statusID" OtherKey="statusID" Type="status" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.user_logins" Member="user_logins">
+    <Type Name="user_login">
+      <Column Name="loginID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="loginDate" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Association Name="user_user_login" Member="user" ThisKey="userID" OtherKey="userID" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.notifications" Member="notifications">
+    <Type Name="notification">
+      <Column Name="notificationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="notificationGUID" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="sentTo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sentFrom" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="statusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="typeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="entityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dateCreated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="dateUpdated" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="status_notification" Member="status" ThisKey="statusID" OtherKey="statusID" Type="status" IsForeignKey="true" />
+      <Association Name="notification_type_notification" Member="notification_type" ThisKey="typeID" OtherKey="notificationTypeID" Type="notification_type" IsForeignKey="true" />
+      <Association Name="user_notification" Member="user" ThisKey="sentFrom" OtherKey="userID" Type="user" IsForeignKey="true" />
+      <Association Name="user_notification1" Member="user1" ThisKey="sentTo" OtherKey="userID" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.notification_types" Member="notification_types">
+    <Type Name="notification_type">
+      <Column Name="notificationTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="type" Type="System.String" DbType="NVarChar(45) NOT NULL" CanBeNull="false" />
+      <Association Name="notification_type_notification" Member="notifications" ThisKey="notificationTypeID" OtherKey="typeID" Type="notification" />
+    </Type>
+  </Table>
+  <Table Name="dbo.users_settings" Member="users_settings">
+    <Type Name="users_setting">
+      <Column Name="userSettingsID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="emailNotifications" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="user_users_setting" Member="user" ThisKey="userID" OtherKey="userID" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.accounttype" Member="accounttypes">
+    <Type Name="accounttype">
+      <Column Name="accounttypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="accountName" Type="System.String" DbType="NVarChar(45) NOT NULL" CanBeNull="false" />
+      <Association Name="accounttype_users_account" Member="users_accounts" ThisKey="accounttypeID" OtherKey="accountTypeID" Type="users_account" />
+      <Association Name="accounttype_users_view" Member="users_views" ThisKey="accounttypeID" OtherKey="accounttypeID" Type="users_view" />
+    </Type>
+  </Table>
+  <Table Name="dbo.messagecontexttype" Member="messagecontexttypes">
+    <Type Name="messagecontexttype">
+      <Column Name="messageContextTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="messageContextTypeName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="messagecontexttype_message" Member="messages" ThisKey="messageContextTypeID" OtherKey="messageContextTypeID" Type="message" />
+    </Type>
+  </Table>
+  <Table Name="dbo.messages" Member="messages">
+    <Type Name="message">
+      <Column Name="messageID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="messageText" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="userID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="messageContextID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="messageContextTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="playerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="nflplayer_message" Member="nflplayer" ThisKey="playerID" OtherKey="playerID" Type="nflplayer" IsForeignKey="true" />
+      <Association Name="messagecontexttype_message" Member="messagecontexttype" ThisKey="messageContextTypeID" OtherKey="messageContextTypeID" Type="messagecontexttype" IsForeignKey="true" />
+      <Association Name="user_message" Member="user" ThisKey="userID" OtherKey="userID" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.gameschedule" Member="gameschedules">
+    <Type Name="gameschedule">
+      <Column Name="gamescheduleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="seasonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nflTeamHome" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nflTeamAway" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="gameDate" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="weekNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="gameschedule_matchup" Member="matchups" ThisKey="gamescheduleID" OtherKey="player1gameschedulleID" Type="matchup" />
+      <Association Name="gameschedule_matchup1" Member="matchups1" ThisKey="gamescheduleID" OtherKey="player2gamescheduleID" Type="matchup" />
+      <Association Name="nflteam_gameschedule" Member="nflteam" ThisKey="nflTeamHome" OtherKey="teamID" Type="nflteam" IsForeignKey="true" />
+      <Association Name="nflteam_gameschedule1" Member="nflteam1" ThisKey="nflTeamAway" OtherKey="teamID" Type="nflteam" IsForeignKey="true" />
+      <Association Name="nflseason_gameschedule" Member="nflseason" ThisKey="seasonID" OtherKey="seasonID" Type="nflseason" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.users_views" Member="users_views">
+    <Type Name="users_view">
+      <Column Name="viewID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="viewObjectID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="accounttypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dateViewed" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ipAddress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="accounttype_users_view" Member="accounttype" ThisKey="accounttypeID" OtherKey="accounttypeID" Type="accounttype" IsForeignKey="true" />
+      <Association Name="user_users_view" Member="user" ThisKey="userID" OtherKey="userID" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.users" Member="users">
+    <Type Name="user">
+      <Column Name="userID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="fullName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="userName" Type="System.String" DbType="NVarChar(45)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(45)" CanBeNull="true" />
+      <Column Name="statusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="avatarID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dateCreated" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="userGuid" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="isAdmin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="openID" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="user_matchup" Member="matchups" ThisKey="userID" OtherKey="createdBy" Type="matchup" />
+      <Association Name="user_users_account" Member="users_accounts" ThisKey="userID" OtherKey="userID" Type="users_account" />
+      <Association Name="user_users_matchup" Member="users_matchups" ThisKey="userID" OtherKey="userID" Type="users_matchup" />
+      <Association Name="user_user_login" Member="user_logins" ThisKey="userID" OtherKey="userID" Type="user_login" />
+      <Association Name="user_notification" Member="notifications" ThisKey="userID" OtherKey="sentFrom" Type="notification" />
+      <Association Name="user_notification1" Member="notifications1" ThisKey="userID" OtherKey="sentTo" Type="notification" />
+      <Association Name="user_users_setting" Member="users_settings" ThisKey="userID" OtherKey="userID" Type="users_setting" />
+      <Association Name="user_message" Member="messages" ThisKey="userID" OtherKey="userID" Type="message" />
+      <Association Name="user_users_view" Member="users_views" ThisKey="userID" OtherKey="userID" Type="users_view" />
+      <Association Name="avatar_user" Member="avatar" ThisKey="avatarID" OtherKey="avatarID" Type="avatar" IsForeignKey="true" />
+      <Association Name="status_user" Member="status" ThisKey="statusID" OtherKey="statusID" Type="status" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

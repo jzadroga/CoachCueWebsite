@@ -1,0 +1,123 @@
+﻿@model CoachCue.ViewModels.ProfileViewModel
+
+@{
+    ViewBag.Title = "CoachCue - Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="span8 section">
+
+    @if (Model.DisplayMessage)
+    {
+        <div class="alert alert-info fade in">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            @Model.Message;
+        </div>
+    }
+
+    <ul class="nav nav-tabs" id="profileTab">
+        <li @( Model.CurrentTab == "profile" ? "class=active" : "")><a href="#profile" data-toggle="tab">Profile</a></li>
+        <li @( Model.CurrentTab == "picture" ? "class=active" : "")><a href="#picture" data-toggle="tab">Picture</a></li>
+        <li @( Model.CurrentTab == "password" ? "class=active" : "")><a href="#profpassword" data-toggle="tab">Password</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div class='@( Model.CurrentTab == "profile" ? "tab-pane pod active" : "tab-pane pod")' id="profile">
+
+            @using (Html.BeginForm("UpdateProfileBasic", "Account", FormMethod.Post, new { @class = "validate" }))
+            {
+                <div class="form-groupp">
+                    <label class="control-label standout" for="username">Name</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(m => m.FullName, new { @class = "bubble xlarge", data_required = "true" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label standout" for="username">Username</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(m => m.AccountUserName, new { @class = "bubble xlarge" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label standout" for="username">Email Address</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "bubble xlarge", data_required = "true" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="controls">
+                        <button type="submit" id="btnSave" class="btn btn-primary btn-large">Save</button>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+        <div class='@( Model.CurrentTab == "picture" ? "tab-pane pod active" : "tab-pane pod")' id="picture">
+            @using (Html.BeginForm("UploadAvatar", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="form-group">
+                    <label class="control-label standout" for="picture">Picture</label>
+                    <div class="controls">
+                        <img alt="Coach" src='@Url.Action("GetThumbnail", "Account", new { fileName = Model.Avatar, size = 40 })' />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="controls">
+                        <input type="file" id="avatar" name="avatar" style="width: 400px" />
+                        <span class="help-block">Maximum size of 700k. JPG, GIF, PNG.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="controls">
+                        <button type="submit" id="btnUploadPic" class="btn btn-large btn-primary">Upload</button>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class='@( Model.CurrentTab == "profpassword" ? "tab-pane pod active" : "tab-pane pod")' id="profpassword">
+            @using (Html.BeginForm("UpdatePassword", "Account", FormMethod.Post, new { @class = "validate" }))
+            {
+                <div class="form-group">
+                    <label class="control-label standout" for="password">Current Password</label>
+                    <div class="controls">
+                        @Html.PasswordFor(m => m.CurrentPassword, new { @class = "bubble xlarge", data_required = "true" })
+                        <span style="display: none" class="help-inline validation-message">This field is required</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label standout" for="password">New Password</label>
+                    <div class="controls">
+                        @Html.PasswordFor(m => m.Password, new { @class = "bubble xlarge", data_required = "true" })
+                        <span class="help-inline ms-validation-message">@Html.ValidationMessageFor(m => m.Password)</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label standout" for="password">Confirm New Password</label>
+                    <div class="controls">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "bubble xlarge", data_required = "true" })
+                        <span class="help-inline ms-validation-message">@Html.ValidationMessageFor(m => m.ConfirmPassword)</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="controls">
+                        <button type="submit" id="btnPassword" class="btn btn-large btn-primary">Change Password</button>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
+
+@section rightcolumn {
+    @{ Html.RenderPartial("_RightColumnBase", model: Model); }
+}
+
+@section pagescripts
+{
+    <script src="@Url.Content("~/assets/js/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+} 

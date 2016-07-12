@@ -1,0 +1,4 @@
+﻿# robots.txt
+User-agent: *
+Disallow: 
+Disallow: /controlpanel/

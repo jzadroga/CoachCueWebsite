@@ -1,0 +1,75 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sample</title>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>    
+    <script type="text/javascript" src="@Url.Content("~/assets/js/typeahead.min.js")"></script>
+    <script src="http://twitter.github.com/hogan.js/builds/2.0.0/hogan-2.0.0.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".coachcue").click(function () {
+                var item = $(this).attr("data-item");
+                $("#" + item).toggle();
+                return false;
+            });
+
+            // construct template string
+            var template = '<p class="repo-language">{{language}}</p><p class="repo-name">{{name}}</p><p class="repo-description">{{description}}</p>';
+
+            // compile template
+            var hello = Hogan.compile(template);
+
+            $("#gobtn").click(function () {
+                $("#slidepanel").html('<input class="typeahead" id="players" type="text" />').trigger('added');
+
+            });
+
+            //$('.typeahead')
+
+
+            $('#slidepanel').on('added', function () {
+                $('#players').typeahead({
+                    name: 'countries2',
+                    prefetch: '/assets/data/repos.json',
+                    template: hello.render.bind(hello),
+                    engine: Hogan
+                });
+            });
+            
+        });
+    </script>
+
+    <style type="text/css">
+        .coachcue-frame
+        {
+            display: none; 
+            height: 413px; 
+            width: 350px; 
+            border: 0px
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+         <div id="slidepanel">heelo</div>
+        <input id="gobtn" type="button" value="go" />
+
+        <h4>
+            <span>Dez Bryant</span>
+            <a class="coachcue" data-item="dez" href="#">
+                <img src="@Url.Content("~/assets/img/SQ-icon-25px.png")" />
+            </a>
+        </h4>
+        <iframe class="coachcue-frame" id="dez" src="@Url.Action("Index", "PlayerPod", new {id="3648", name="Dez Bryant" })"></iframe>
+    </div>
+</body>
+</html>

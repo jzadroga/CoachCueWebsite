@@ -1,0 +1,26 @@
+﻿@model CoachCue.ViewModels.BaseViewModel
+
+@if (User.Identity.IsAuthenticated)
+{
+
+<div id="myprofile">
+    <img class="profile-avatar" alt="Coach" src='@Url.Action("GetThumbnail", "Account", new { fileName = Model.Avatar, size = 32 })'  />
+    <a href='@Url.Action("Profile", "Account")'>@Model.Name</a>
+    <span>Manage profile settings</span>
+</div>
+}
+<div id="mystarters" style="display: none">
+    
+    <ul class="profile-stats">
+        <li><span class="profile-stats-header">My Matchups</span></li>
+        <li><a data-account-id='@Model.AccountID' class="show-weekly-starters" id="view-weekly-starters" data-toggle="modal" href="#all-starters-modal"><strong><span id="matchup-select-count" class="badge badge-warning">@Model.TotalStarters</span></strong>Picks</a></li>
+        <li><a href="#"><strong><span class="badge badge-success">@Model.CorrectStarters</span></strong>Correct</a></li>
+        <li><a data-account-id='@Model.AccountID' class="show-my-matchups" id="view-created-matchups" data-toggle="modal" href="#my-matchups-modal"><strong><span class="badge badge-inverse">@Model.TotalCreatedMatchups</span></strong>Created</a></li>
+    </ul>
+    <ul class="profile-stats">
+        <li><span class="profile-stats-header">Following</span></li>
+        <li><a href='@Url.Action("Index","FollowPlayers")'><strong><span id="follow-player-count" class="badge badge-player">@Model.Players</span></strong>Players</a></li>
+        <li><a href="#"><strong><span class="badge badge-info">0</span></strong>Coaches</a></li>
+    </ul>
+
+</div>

@@ -1,0 +1,7 @@
+﻿@model List<AccountData>
+@using CoachCue.Model;
+
+    @foreach (AccountData playerItem in Model)
+    {  
+        { Html.RenderPartial("_PlayerItem", model: playerItem); }
+    }

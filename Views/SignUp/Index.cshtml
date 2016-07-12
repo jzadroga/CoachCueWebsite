@@ -1,0 +1,192 @@
+﻿@{
+    Layout = null;
+}
+@model CoachCue.ViewModels.SignupViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CoachCue is a social network for fantasy sports." />
+    <meta name="keywords" content="social network, fantasy sports, fantasy football" />
+    <meta name="author" content="" />
+
+    <title>CoachCue - Get Advice for your Fantasy Football Team</title>
+
+    <link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="@Url.Content("~/assets/signup/css/signup.css")">
+
+    
+</head>
+<body>
+    <!-- /.intro-header -->
+
+    <div class="content-section-a" id="about">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <div class="clearfix">
+                        <img class="img-responsive" src="@Url.Content("~/assets/signup/img/cc_logo-2.png" )" width="450" height="90" />
+                    </div>              
+                    <h1>Win your fantasy football league in 2014! </h1>
+                    <p class="head-lead">
+                        Sign up now to get news, matchup advice and more...<br>
+                    </p>
+                    <p class="lead">&nbsp;</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <div class="content-section-a-right">
+                        <span>Already have an account? </span>
+                        <form class="validate" role="form" id="frmlogin" method="post" action="@Url.Action("Login", "Account")">
+                            <div class="form-group">
+                                <input type="text" placeholder="Email Address" id="username" name="username" class="form-control" data-required="true" />
+                            </div>
+
+                            <div class="form-group">
+                                <input placeholder="Password" type="password" id="password" name="passwrd" class="form-control" data-required="true" />
+                                <input type="hidden" value="on" name="rememberMe" id="rememberMe" />
+                            </div>
+                            @if (Model.InvalidLogin) { 
+                            <span class="help-inline validation-message">Email Address and/or Password is invalid</span>
+                            }
+                            <button type="submit" class="btn btn-primary-sign-in">Sign in</button>
+                            <a id="forgot-password-link" class="help-inline validation-message forgot-password" href="#">Forgot your Password?</a>
+                            <div id="forgot-password-controls" style="display: none">
+                                <input style="display: inline" placeholder="Email Address" type="text" id="forgot-username" class="form-control" />
+                                <button type="submit" id="btnGetPassword" class="btn btn-primary-sign-in btn-sm">Get Password</button>
+
+                                <div class="control-group">
+                                    <label class="control-label standout"></label>
+                                    <div class="controls">
+                                        <span id="forgot-password-message" style="display: none" class="help-inline standout"> </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <form class="validate" role="form" id="frmRegister" method="post" action="@Url.Action("CreateAccount", "Account")">
+
+                            <div class="help-block">
+                                <h3>
+                                    <br>
+                                    Create your  Account
+                                </h3>
+                            </div>
+
+                            <div class="form-group">
+                                <input data-watermark="Type your Name" data-required="true" type="text" placeholder="Type your Name" id="regname" name="regname" class="form-control" />
+                                <span style="display: none" class="help-inline validation-message">Please list your full name</span>
+                            </div>
+
+                            <div class="form-group">
+
+                                <input data-watermark="Type your Email Address" data-required="true" type="text" placeholder="Type your Email Address" id="regemail" name="regemail" class="form-control data-validate-email" data-validate-email="true" />
+                                <span style="display: none" class="help-inline validation-message email-validation-message">Oops that Email Address already exists or is invalid</span>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <input data-watermark="Type your Password" data-required="true" type="password" placeholder="Type your Password" id="regwrd" name="regwrd" class="form-control" />
+                                <span style="display: none" class="help-inline validation-message">Don't forget your password</span>
+
+                            </div>
+
+                            <div class="form-group">
+                                <button type="button" id="btnCreateAccount" class="btn btn-primary-sign-in">Create Account</button>
+                                <div style="margin-left: 10px" class="sending-spinner"></div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+    <div class="content-section-b" id="services">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <h2>
+                        Get the insights and advice you need to win
+                        your fantasy league<br>
+                        <br>
+                    </h2>
+                    <div>
+                        <img class="ccicons" src="@Url.Content("~/assets/signup/img/matchups_orange.png")" width="60" height="60" />
+                        <p class="lead">
+                            Post player matchups and get advice from the community on who to start or sit<br>
+                        </p>
+                    </div>
+                    <div>
+                        <p>&nbsp;</p>
+                        <img class="ccicons" src="@Url.Content("~/assets/signup/img/messages.png")" width="60" height="60" />
+                        <p class="lead">Follow your players and other coaches to get relevant news and information</p>
+                    </div>
+                    <div>
+                        <p>&nbsp;</p>
+                        <img class="ccicons" src="@Url.Content("~/assets/signup/img/trophy_Icon.png")" width="60" height="60" />
+                        <p class="lead">Earn badges by correctly choosing matchups</p>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                    <img class="img-responsive" src="@Url.Content("~/assets/signup/img/screenshot_1.jpg")" alt="" />
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li></li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li><a href="https://twitter.com/coachcue" title="twitter"><img src="@Url.Content("~/assets/signup/img/twitter_orange.png")" /></a></li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li><a href="http://facebook.com/coachcue" title="facebook"><img src="@Url.Content("~/assets/signup/img/facebook_orange.png")" /></a></li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li><a href="#">About</a></li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="mailto:info@coachcue.com">Contact</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; CoachCue LLC 2014. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://twitter.github.com/hogan.js/builds/2.0.0/hogan-2.0.0.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/assets/js/typeahead.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/assets/js/libs/slidepanel/js/jquery.slidepanel.js")"></script>
+    <script src="@Url.Content("~/assets/js/helpers.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/tasks.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/assets/js/main.js")" type="text/javascript"></script>
+
+</body>
+</html>

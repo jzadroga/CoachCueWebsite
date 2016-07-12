@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+    <div class="row">
+        <div class="span8 offset2 pod">
+
+        <form id="frmLogin" action='@Url.Content("~/account/login")' method="post" class="validate form-horizontal">
+            <fieldset>
+                <legend>Login</legend>
+                <div class="control-group error">
+                    <label class="standout">@ViewData["valid"]</label>
+                </div>
+                <div class="control-group">
+                    <label class="control-label standout" for="username">Email Address</label>
+                    <div class="controls">
+                        <input type="text" id="username" name="username" class="bubble xxlarge" data-required="true" />
+                        <span class="help-inline validation-message">This field is required</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label standout" for="password">Password</label>
+                    <div class="controls">
+                        <input type="password" id="passwrd" name="passwrd" class="bubble xxlarge" data-required="true" />
+                        <span class="help-inline validation-message">This field is required</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="rememberMe"></label>
+                    <div class="controls">                
+                        <input type="checkbox" id="rememberMe" name="rememberMe" />
+                        <span class="help-inline standout">Remember Me</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">  
+                        <button type="submit" id="btnlogin" class="btn btn-warning btn-large">Login</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+
+        </div>
+
+        <div class="span2"></div>
+    </div>
+  

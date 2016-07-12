@@ -1,0 +1,93 @@
+﻿    @model CoachCue.ViewModels.BaseViewModel
+    @using CoachCue.Model;
+
+    <!--
+    <h1>Select Your Weekly Starters<a href="#" rel="tooltip" data-placement="top" class="help-tip matchup-tool-tip" title="Add a matchup for Coaches to vote on or become a Top Coach by selecting the better performing player for each matchup in the upcoming games."><i class="icon-large icon-question-sign icon-white"></i></a></h1>
+    
+    <a style="width: 90%" data-toggle="modal" @if( (bool)ViewData["loggedIn"]){ <text>href="#add-matchup-modal" id="btn-add-matchup"</text> }else{ <text>href="#login-modal"</text> } class="btn btn-inverse"><i class="icon-plus icon-white"></i> ADD NEW MATCHUP</a>
+    -->
+    <!-- add matchup modal -->
+    <div class="modal fade" id="add-matchup-modal" style="display: none">
+        <div class="modal-header">
+            <button class="close" data-dismiss="modal">×</button>
+            <h3>Add New Matchup</h3>
+        </div>
+
+        <div class="modal-body">    
+            <div id="matchup-pick">
+                <div class="add-matchup-item">
+                    <span>Player 1 </span><input type="text" id="player1" autocomplete="off" />
+                    <input type="hidden" id="player1ID" />
+                </div>
+                <div class="add-matchup-item">
+                    <span>Player 2 </span><input type="text" id="player2" autocomplete="off" />
+                    <input type="hidden" id="player2ID" />
+                </div>
+                <div id="scoring-format" class="add-matchup-item btn-group" data-toggle="buttons-radio">
+                    <span>Scoring Format </span>
+                    <button type="button" data-id="1" id="scoring-standard" class="btn active">Standard</button>
+                    <button type="button" data-id="2" id="scoring-ppr" class="btn">PPR</button>
+                </div>
+                <div class="add-new-matchup">
+                    <div class="add-new-matchup-left" id="adding-matchup"></div>
+ 
+                    <div class="add-new-matchup-right">
+                        <a id="add-user-matchup" href="#" class="btn btn-warning btn-small action"><i class="icon-save icon-white"></i> CREATE</a>
+                        <button data-dismiss="modal" class="btn btn-small">CANCEL</button>
+                    </div>
+                </div>
+            </div>    
+            
+            <div id="matchup-selected" style="display: none">
+                <input type="hidden" id="matchup-new-id" />
+            </div>           
+
+            <div id="invite-answer">
+
+                <div class="invite-answer-header">
+                    <span>Invite Coaches to Answer</span>
+                </div>
+
+                <div>
+                    <table class="table table-condensed invite-table">
+                        <tr>
+                            <td width="90px;" style="width: 90px;"><span class="find-invite-coach-header">Find a Coach </span></td>
+                            <td width="225px;" style="width: 225px;"><input type="text" id="find-coach" /></td>
+                            <td>          
+                                <button data-loading-text="Sending..." class="btn btn-mini matchup-invite find-invite-coach-button" id="ask-coach-matchup-find">Ask</button>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <input type="hidden" id="find-coachID" />
+                </div>
+
+                <input type="hidden" id="invite-coach-macthup-id" />
+                <ul class="nav nav-tabs nav-stacked" id="ask-coaches-list">
+                    @foreach (user coach in Model.AskCoaches)
+                    {
+                        <li class="relative-style">
+                            <img class="invite-answer-avatar" src="@Url.Action("GetThumbnail", "Account", new { fileName = coach.avatar.imageName, size = 25 })" />
+                            <a class="invite-answer-coach" href="#">@coach.fullName
+                                <span>@coach.CorrectPercentage%</span>
+                                <button data-loading-text="Sending..." id="coach-@coach.userID" data-id="@coach.userID" class="btn btn-mini ask-coach-matchup matchup-invite">Ask</button>
+                            </a>
+                        </li>
+                    }
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button style="display: none;" id="close-add-matchup" data-dismiss="modal" class="btn btn-small">CLOSE</button>
+        </div>
+    </div>
+
+<!--
+    <div id="matchup-list">
+        <div id="matchup-item-list">
+             @{Html.RenderPartial("_MatchupList", model: Model.Matchups);}
+        </div>
+    </div>
+-->

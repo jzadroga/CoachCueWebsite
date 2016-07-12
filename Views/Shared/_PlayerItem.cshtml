@@ -1,0 +1,45 @@
+﻿@model AccountData
+@using CoachCue.Model;
+
+@if( Model.accountID != 0 ){
+<div class="item clear player-item">
+    <div class="content">
+        <div class="content-header">
+            @if (Model.accountType == "players")
+            {
+                <a data-player-img="@Model.profileImg" data-player-name="@Model.fullName" data-player-pos="@Model.position&nbsp;|&nbsp;@Model.teamSlug" data-player-id="@Model.accountID" class="player-popover username" href="@Url.Action("Index", "Player", new { id = Model.accountID, name = Model.linkFullName })">@Model.fullName</a>
+            }
+            else
+            {
+            <a data-account-id='@Model.accountID' class="username" href="@Url.Action("Index", "Coach", new { id = Model.accountID, name = Model.fullName })">@Model.fullName</a>
+            }
+        </div>
+        <div class="item-hover-menu">
+        @if (!User.Identity.IsAuthenticated){
+            <a data-account-type="@Model.accountType" data-account='@Model.accountID' class="btn btn-success btn-mini action" data-toggle="modal" href="#register-modal"><i class="icon-plus-sign"></i>follow</a>
+        }
+        else
+        { 
+            if( @Model.accountID != @Model.currentUserID ){
+                if (Model.following <= 0){
+                    <a data-account-type="@Model.accountType" data-account='@Model.accountID' class="btn btn-success btn-mini follow action" href="#"><i class="icon-plus-sign"></i>follow</a>
+                }
+                else
+                {
+                    <a data-account-type="@Model.accountType" data-account='@Model.accountID' class="btn btn-danger unfollow btn-mini action" href="#"><i class="icon-minus-sign"></i>unfollow</a>
+                }
+            }
+        }
+        </div>
+        @if (Model.accountType == "players") {
+            <img class="avatar player-item-avatar lazy-load" data-src="@Model.profileImg" alt="@Model.fullName">     
+            <span>@Model.position&nbsp;|&nbsp;@Model.teamSlug</span>
+        }
+        else
+        {
+            <img class="avatar player-item-avatar lazy-load" data-src="/assets/img/avatar/@Model.profileImg" alt="@Model.fullName">
+            <span>@@@Model.username</span>
+        }
+    </div>
+</div>
+}

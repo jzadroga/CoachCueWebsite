@@ -1,0 +1,45 @@
+﻿@model CoachCue.Model.WeeklyMatchups
+@using CoachCue.Model;
+
+    <div class="carousel-matchup" data-matchup="@Model.MatchupID">
+        <span class="mymatchup-title">Week @Model.WeekNumber Matchup</span>
+        <div class="content matchup-player1">
+            <div class="content-header">
+                <a class="username" href="@Url.Action("Index", "Player", new { id = Model.Player1.PlayerID, name = Model.Player1.linkFullName })">@Model.Player1.PlayerName</a>
+            </div>
+            @if (Model.AllowVote){
+                <a data-matchup="@Model.MatchupID" data-loading-text="Saving..." id="@Model.Player1.PlayerID" href="#" class="btn btn-warning btn-small action select-starter-from-carousel"><i class="icon-large icon-thumbs-up icon-white"></i></a>
+            }else{
+                if (!User.Identity.IsAuthenticated){
+                <a data-matchup="@Model.MatchupID" data-toggle="modal" href="#register-modal" class="btn btn-warning btn-small action"><i class="icon-large icon-thumbs-up icon-white"></i></a>
+                }else{
+                <div class="votes">@Model.Player1.TotalVotes</div>
+                }
+            }
+            <img class="avatar" alt="@Model.Player1.PlayerName" src="@Model.Player1.Image">
+            <p class="bio">@Model.Player1.PlayerDescription</p>
+            <span class="gamedetails">@Model.Player1.GameInfo</span>
+        </div>
+        <div class="matchup-vs">- VS -</div>
+        <div class="content matchup-player2">
+            <div class="content-header">
+                <a class="username" href="@Url.Action("Index", "Player", new { id = Model.Player2.PlayerID, name = Model.Player2.linkFullName })">@Model.Player2.PlayerName</a>
+            </div>
+            @if (Model.AllowVote){
+                <a data-matchup="@Model.MatchupID" data-loading-text="Saving..." id="@Model.Player2.PlayerID" href="#" class="btn btn-warning btn-small action select-starter-from-carousel"><i class="icon-large icon-thumbs-up icon-white"></i></a>
+            }else{
+                if (!User.Identity.IsAuthenticated){
+                <a data-matchup="@Model.MatchupID" data-toggle="modal" href="#register-modal" class="btn btn-warning btn-small action"><i class="icon-large icon-thumbs-up icon-white"></i></a>
+                }else{
+                <div class="votes">@Model.Player2.TotalVotes</div>
+                }
+            }
+            <img class="avatar" alt="@Model.Player2.PlayerName" src="@Model.Player2.Image">
+            <p class="bio">@Model.Player2.PlayerDescription</p>
+            <span class="gamedetails">@Model.Player2.GameInfo</span>
+        </div>
+        <div class="matchup-details">
+            <a href="@Url.Action("Index", "Matchup", new {mt = Model.MatchupID })">Details</a> 
+            <div class="scoring-format">Scoring Format: <b>@Model.ScoringFormat</b></div>
+        </div>
+    </div>

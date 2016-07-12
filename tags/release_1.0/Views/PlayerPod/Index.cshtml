@@ -1,0 +1,60 @@
+﻿@model CoachCue.ViewModels.PlayerViewModel
+@using CoachCue.Model
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CoachCue - @Model.PlayerDetail.fullName;</title>
+    <meta name="keywords" content="fantasy football, News, @Model.PlayerDetail.fullName" />
+    <meta name="description" content="Fantasy football realtime news and comments for @Model.PlayerDetail.fullName" />
+    
+    <link href='@Url.Content("~/assets/css/global.css")' rel="stylesheet" type="text/css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/jquery.slimscroll.min.js")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".message-tools").hide();
+            $('#content-holder').slimScroll({
+                height: '300px'
+            });
+        });
+    </script>
+</head>
+<body class="playerpod">
+    <div class="player-container">
+
+        <div class="top-bar"><a href="http://coachcue.com/" target="_blank">
+            <img src="@Url.Content("~/assets/img/Logo_PlayerPod_Header_2.png")" width="340" height="30" alt="CoachCue - Social Media for Fantasy Sports"></a>
+        </div>
+
+        <div class="item parent player-header">
+            <div class="content">
+                <div class="content-header">
+                    <a target="_blank" class="username" href="@Url.Action("Index", "Player", new { id = Model.PlayerDetail.playerID, name = Model.PlayerDetail.linkFullName })">@Model.PlayerDetail.fullName</a>
+                </div>
+                <img class="avatar" src="@Model.PlayerDetail.profilePic">
+                <p class="bio">@Model.PlayerDetail.position.positionName&nbsp;|&nbsp;@Model.PlayerDetail.nflteam.teamSlug</p>
+
+            </div>
+        </div>
+        
+        <div class="player-stream">
+            <div id="content-holder">
+            @foreach (StreamContent streamItem in Model.PlayerStream)
+            { Html.RenderPartial("_StreamItem", streamItem, new ViewDataDictionary { { "UserImage", Model.Avatar } }); }
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿@model CoachCue.ViewModels.BaseViewModel
+ 
+<div class="panel panel-default user-panel">
+    <div class="panel-heading">
+        <img class="avatar large welcome-avatar" src='@Url.Content("~/assets/img/avatar/" + @Model.Avatar)' />
+
+        <div class="user-profile">
+            <span class="welcome-user"><a href="@Url.Action("Index", "Coach", new { id = Model.AccountID, name = Model.Name })">@Model.Name</a></span>
+            <span class="welcome-username"><a href="@Url.Action("Index", "Coach", new { id = Model.AccountID, name = Model.Name })">@Model.Username</a></span>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <!-- container for info -->
+        <div class="user-stats-container">
+
+            <ul class="stats stats-list">
+                <li class="first">
+                    <a href="@Url.Action("Index", "Coach", new { id = Model.AccountID, name = Model.Name })">
+                        Messages<strong id="message-count">@Model.MessageCount</strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Following", "Account")">
+                        Following<strong id="following-count">@Model.FollowingCount</strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Followers", new { id = Model.AccountID, type = "users", name = Model.Name })">
+                        Followers<strong>@Model.FollowersCount</strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Matchup", "Coach", new { id = Model.AccountID, name = Model.Name })">
+                        Matchups<strong>@Model.MatchupCount</strong>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="user-trophy-case" style="display: none">
+            <h5>TROPHY CASE</h5>
+            <ul class="stats trophy-list">
+                <li><img src='@Url.Content("~/assets/img/trophy-1.png")' /></li>
+            </ul>
+        </div>
+    </div>
+</div>
