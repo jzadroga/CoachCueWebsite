@@ -5,6 +5,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using HtmlAgilityPack;
+using System.Net.Http;
+using System.Xml;
+using System.Globalization;
 
 namespace CoachCue.Model
 {
@@ -21,7 +24,7 @@ namespace CoachCue.Model
                 var ret = (from mt in db.gameschedules
                           from plyrs in db.nflplayers 
                           where ( mt.nflTeamAway == plyrs.teamID || mt.nflTeamHome == plyrs.teamID )
-                          && plyrs.playerID == playerID && mt.gameDate > DateTime.UtcNow.GetEasternTime() && mt.seasonID == 4
+                          && plyrs.playerID == playerID && mt.gameDate > DateTime.UtcNow.GetEasternTime() && mt.seasonID == 5
                           select mt).FirstOrDefault();
 
                 if( ret != null )
@@ -110,83 +113,38 @@ namespace CoachCue.Model
             catch (Exception) { }
         }
 
-        public static void ImportSchedule(int seasonID, int week)
+        public static void ImportSchedule(int seasonID)
         {
-            //get the schedule from espn.com and parse the html
-            //string scheduleURL = "http://espn.go.com/nfl/schedule/_/week/" + week.ToString();
+            var client = new HttpClient();
 
-            string scheduleURL = "http://espn.go.com/nfl/schedule/_/seasontype/2/week/" + week.ToString();
-            HttpWebRequest request = WebRequest.Create(scheduleURL) as HttpWebRequest;
-            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+            // Request headers
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "5b3576f351cb417a853030e21265dabc");
+
+            var uri = "https://api.fantasydata.net/nfl/v2/{format}/Schedules/2016";
+
+            HttpResponseMessage response = client.GetAsync(uri).Result;  // Blocking call!
+            if (response.IsSuccessStatusCode)
             {
-                // Load data into a htmlagility doc   
-                var receiveStream = response.GetResponseStream();
-                if (receiveStream != null)
+                // Parse the response body. Blocking!
+                var dataObjects = response.Content.ReadAsStringAsync().Result;
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(dataObjects);
+
+                foreach( XmlNode schedule in doc.SelectNodes("//Schedule") )
                 {
-                    var stream = new StreamReader(receiveStream);
-                    HtmlDocument roster = new HtmlDocument();
-                    roster.Load(stream);
-
-                    foreach (HtmlNode weeklyTable in roster.DocumentNode.SelectNodes("//table[@class='schedule has-team-logos align-left']"))
+                    int week = Convert.ToInt32(schedule.SelectSingleNode("Week").InnerText);
+                    if (week > 3)
                     {
-                        DateTime gameDate = new DateTime();
-
-                        //get the date
-                        HtmlNode caption = weeklyTable.SelectSingleNode("caption");
-                        string date = caption.InnerText;
-                        gameDate = DateTime.ParseExact(date.Split(',')[1].Trim() + " 2015 00:00", "MMMM d yyyy HH:mm",
-                                       System.Globalization.CultureInfo.InvariantCulture);
-
-                        foreach (HtmlNode gameRow in weeklyTable.SelectNodes("//tr"))
+                        string date = schedule.SelectSingleNode("Date").InnerText.Replace("T", " ");
+                        if (!string.IsNullOrEmpty(date))
                         {
-                            if (gameRow.Attributes["class"] != null)
-                            {
-                                string rowClass = gameRow.Attributes["class"].Value;
-                                if (rowClass.Contains( "odd" ) || rowClass.Contains( "even" ))
-                                {
-                                    bool addGame = false;
-                                    int? homeTeam = null;
-                                    int? awayTeam = null;
+                            DateTime gameDate = DateTime.ParseExact(date, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
 
-                                    //get the teams and time
-                                    HtmlNodeCollection cellNodes = gameRow.SelectNodes("td");
-                                    for (int i = 0; i < cellNodes.Count; i++)
-                                    {
-                                        switch (i)
-                                        {
-                                            case 0:
-                                                HtmlNode awayNodes = cellNodes[i].SelectSingleNode("a[@class='team-name']/span");
-                                                if (awayNodes != null)
-                                                    awayTeam = nflteam.GetIDByEspnName(awayNodes.InnerText);
-                                                break;
-                                            case 1:
-                                                HtmlNode homeNodes = cellNodes[i].SelectSingleNode("a[@class='team-name']/span");
-                                                if (homeNodes != null)
-                                                    homeTeam = nflteam.GetIDByEspnName(homeNodes.InnerText);
-                                                break;
-                                            case 2:
-                                                //string time = cellNodes[i].SelectSingleNode("a").InnerText;
-                                                //int hour = Convert.ToInt32(time.Split(':')[0]) + 12;
-                                                //TimeSpan ts = new TimeSpan(hour, Convert.ToInt32(time.Split(':')[1].Replace(" AM", "").Replace(" PM", "")), 0);
-                                                TimeSpan ts = new TimeSpan(13, 0, 0);
-                                                gameDate = gameDate.Date + ts;
-                                                addGame = true;
-                                                break;
-                                        }
-                                    }
+                            int homeTeam = nflteam.GetID(schedule.SelectSingleNode("AwayTeam").InnerText);
+                            int awayTeam = nflteam.GetID(schedule.SelectSingleNode("HomeTeam").InnerText);
 
-                                    if (addGame)
-                                    {
-                                        if (homeTeam.HasValue && awayTeam.HasValue)
-                                            SaveGame(homeTeam.Value, awayTeam.Value, gameDate, week, seasonID);
-                                        
-                                        addGame = false;
-                                    }
-                                }
-                            }
+                            SaveGame(homeTeam, awayTeam, gameDate, week, seasonID);
                         }
-    
-                        //SavePlayer(firstName, lastName, position, number, college, years, teamID);
                     }
                 }
             }
