@@ -8,3 +8,4 @@ obj/Debug/CoachCue.pdb
 *.dll
 bin/CoachCue.pdb
 /CoachCueModels/app.config
+/CoachCueModels/obj/Debug/CoachCueModels.csprojResolveAssemblyReference.cache
