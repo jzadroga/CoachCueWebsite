@@ -1,0 +1,7 @@
+.vs/CoachCue/v14/.suo
+*.suo
+bin/CoachCue.dll
+bin/CoachCue.pdb
+*.dll
+CoachCueModels/obj/Debug/CoachCueModels.csproj.FileListAbsolute.txt
+obj/Debug/CoachCue.pdb
