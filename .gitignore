@@ -7,3 +7,4 @@ CoachCueModels/obj/Debug/CoachCueModels.csproj.FileListAbsolute.txt
 obj/Debug/CoachCue.pdb
 *.dll
 bin/CoachCue.pdb
+/CoachCueModels/app.config
