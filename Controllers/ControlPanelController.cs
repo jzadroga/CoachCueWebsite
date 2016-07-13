@@ -105,10 +105,9 @@ namespace CoachCue.Controllers
             return RedirectToAction("TeamRoster", new { team=teamID });
         }
 
-        public ActionResult ImportSchedule()
+        public ActionResult ImportSchedule(int weekNumber)
         {
-
-            gameschedule.ImportSchedule(5);
+            gameschedule.ImportSchedule(5, weekNumber);
             return RedirectToAction("Index");
         }
 
