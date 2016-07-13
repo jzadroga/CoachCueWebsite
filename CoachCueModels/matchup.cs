@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace CoachCue.Model
@@ -734,7 +735,7 @@ namespace CoachCue.Model
         }
 
         //get the matchups based on the date
-        public static List<WeeklyMatchups> GetList(int userID, DateTime fromDate, bool futureTimeline)
+        public async static Task<List<WeeklyMatchups>> GetList(int userID, DateTime fromDate, bool futureTimeline)
         {
             List<WeeklyMatchups> userMatchups = new List<WeeklyMatchups>();
             CoachCueDataContext db = new CoachCueDataContext();
@@ -750,7 +751,8 @@ namespace CoachCue.Model
 
                 if (mtQuery.Count() > 0)
                 {
-                    foreach (matchup item in mtQuery.OrderByDescending(mtch => mtch.dateCreated).Take(40).ToList())
+                    var matchups = mtQuery.OrderByDescending(mtch => mtch.dateCreated).Take(40).ToList();
+                    foreach (matchup item in matchups.ToList())
                     {
                         //don't add dups
                         if (userMatchups.Where(mt => mt.MatchupID == item.matchupID).Count() == 0)

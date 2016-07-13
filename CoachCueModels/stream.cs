@@ -382,14 +382,14 @@ namespace CoachCue.Model
             return stream;
         }
 
-        public static int GetUpdateStreamCount( int userID, string timeTicks )
+        public async static Task<int> GetUpdateStreamCount( int userID, string timeTicks )
         {
             int count = 0;
 
             try
             {
                 DateTime lastDate = new DateTime(Convert.ToInt64(timeTicks));
-                List<StreamContent> timeStream = GetStream(userID, true, lastDate);
+                List<StreamContent> timeStream = await GetStream(userID, true, lastDate);
                 timeStream = timeStream.Where( ts => ts.ContentType != "empty-news" && ts.ContentType != "empty-matchup" && ts.ContentType != "empty-messages").ToList();
                 count = timeStream.Count();
             }        
@@ -402,7 +402,7 @@ namespace CoachCue.Model
         }
 
         //gets the latest stream for a user - main function for stream
-        public static List<StreamContent> GetStream(int userID, bool futureTimeline, DateTime? fromDate = null)
+        public async static Task<List<StreamContent>> GetStream(int userID, bool futureTimeline, DateTime? fromDate = null)
         {
             List<StreamContent> stream = new List<StreamContent>();
             CoachCueDataContext db = new CoachCueDataContext();
@@ -428,7 +428,7 @@ namespace CoachCue.Model
                     followUsers.Add(userID);
 
                 //gets the matchups for the stream
-                List<WeeklyMatchups> usrMatchups = matchup.GetList(userID, fromDate.Value, futureTimeline);
+                List<WeeklyMatchups> usrMatchups = await matchup.GetList(userID, fromDate.Value, futureTimeline);
                 stream = usrMatchups.Select(usrmtch => new StreamContent
                 {
                     MatchupItem = usrmtch,

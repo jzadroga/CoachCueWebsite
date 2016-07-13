@@ -12,6 +12,7 @@ using CoachCue.Helpers;
 using System.Web.Script.Serialization;
 using CoachCue.Utility;
 using System.Globalization;
+using System.Threading.Tasks;
 
 namespace CoachCue.Controllers
 {
@@ -124,7 +125,7 @@ namespace CoachCue.Controllers
 
         [NoCacheAttribute]
         [HttpPost]
-        public ActionResult GetStreamUpdateCount(string tms)
+        public async Task<ActionResult> GetStreamUpdateCount(string tms)
         {
             bool updated = false;
             int updateCount = 0;
@@ -133,7 +134,7 @@ namespace CoachCue.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 userID = user.GetUserID(User.Identity.Name);
-                updateCount = stream.GetUpdateStreamCount((int)userID, tms);
+                updateCount = await stream.GetUpdateStreamCount((int)userID, tms);
                 if (updateCount > 0)
                     updated = true;
             }
@@ -196,7 +197,7 @@ namespace CoachCue.Controllers
         }
 
         [NoCacheAttribute]
-        public ActionResult GetStream(string tms, bool ftr)
+        public async Task<ActionResult> GetStream(string tms, bool ftr)
         {
             List<StreamContent> streamList = new List<StreamContent>();
 
@@ -205,7 +206,7 @@ namespace CoachCue.Controllers
             {
                 DateTime lastDate = new DateTime(Convert.ToInt64(tms));
                 userID = user.GetUserID(User.Identity.Name);
-                streamList = stream.GetStream((int)userID, ftr, lastDate);
+                streamList = await stream.GetStream((int)userID, ftr, lastDate);
             }
 
             string streamData = this.PartialViewToString("_StreamItemList", streamList);

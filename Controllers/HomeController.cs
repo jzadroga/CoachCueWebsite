@@ -12,6 +12,7 @@ using System.Web.Security;
 using System.Configuration;
 using CoachCue.Helpers;
 using CoachCue.Utility;
+using System.Threading.Tasks;
 
 namespace CoachCue.Controllers
 {
@@ -19,7 +20,7 @@ namespace CoachCue.Controllers
     {
         public string COACHCUE_AUTH_COOKIE = "coachcue_auth";
 
-        public ActionResult Index([DefaultValue("")] string gu, [DefaultValue("")] string tb)
+        public async Task<ActionResult> Index([DefaultValue("")] string gu, [DefaultValue("")] string tb)
         {
             if (ConfigurationManager.AppSettings["showSignup"] == "true")
                 return RedirectToAction("Index", "Signup");
@@ -42,7 +43,7 @@ namespace CoachCue.Controllers
                 //if (logins <= 1)
                 //    homeVM.ShowWelcome = true;
 
-                homeVM.Stream = stream.GetStream(userID, true);
+                homeVM.Stream = await stream.GetStream(userID, true);
             }
             else
             {
@@ -65,7 +66,7 @@ namespace CoachCue.Controllers
                 //else
                     //not logged in so get random players
                 List<nflplayer> trendingPlayers = nflplayer.GetTrending(5);
-                homeVM.Stream = stream.GetStream(43, true);//stream.GetPlayersStream(trendingPlayers.ToList());
+                homeVM.Stream = await stream.GetStream(43, true);//stream.GetPlayersStream(trendingPlayers.ToList());
             }
 
             //user is coming in from an invite email
