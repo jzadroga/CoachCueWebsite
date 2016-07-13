@@ -14,7 +14,7 @@ namespace CoachCue.Tests
         [Test]
         public void ImportSchedule()
         {
-            gameschedule.ImportSchedule(2);
+            gameschedule.ImportSchedule(2); 
 
             Assert.Pass();
         }
