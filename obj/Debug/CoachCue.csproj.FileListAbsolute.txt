@@ -17,10 +17,6 @@ C:\Users\jzadroga\Documents\GitHub\CoachCueWebsite\bin\System.Web.WebPages.dll
 C:\Users\jzadroga\Documents\GitHub\CoachCueWebsite\bin\System.Web.WebPages.Razor.dll
 C:\Users\jzadroga\Documents\GitHub\CoachCueWebsite\bin\WebGrease.dll
 C:\Users\jzadroga\Documents\GitHub\CoachCueWebsite\bin\HtmlAgilityPack.dll
-C:\Users\jzadroga\Documents\GitHub\CoachCueWebsite\bin\System.Net.Http.Primitives.dll
-C:\Users\jzadroga\Documents\GitHub\CoachCueWebsite\bin\System.Reactive.Linq.dll
-C:\Users\jzadroga\Documents\GitHub\CoachCueWebsite\bin\System.Reactive.Core.dll
-C:\Users\jzadroga\Documents\GitHub\CoachCueWebsite\bin\System.Reactive.Interfaces.dll
 C:\Users\jzadroga\Documents\GitHub\CoachCueWebsite\bin\CoachCueModels.pdb
 C:\Users\jzadroga\Documents\GitHub\CoachCueWebsite\bin\Antlr3.Runtime.pdb
 C:\Users\jzadroga\Documents\GitHub\CoachCueWebsite\bin\Newtonsoft.Json.xml
