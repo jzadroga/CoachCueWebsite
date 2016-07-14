@@ -43,7 +43,7 @@ namespace CoachCue.Controllers
                 //if (logins <= 1)
                 //    homeVM.ShowWelcome = true;
 
-                homeVM.Stream = await stream.GetStream(userID, true);
+                homeVM.Stream = await stream.GetStream(userID, true).ConfigureAwait(false);
             }
             else
             {
@@ -66,7 +66,7 @@ namespace CoachCue.Controllers
                 //else
                     //not logged in so get random players
                 List<nflplayer> trendingPlayers = nflplayer.GetTrending(5);
-                homeVM.Stream = await stream.GetStream(43, true);//stream.GetPlayersStream(trendingPlayers.ToList());
+                homeVM.Stream = await stream.GetStream(43, true).ConfigureAwait(false);//stream.GetPlayersStream(trendingPlayers.ToList());
             }
 
             //user is coming in from an invite email

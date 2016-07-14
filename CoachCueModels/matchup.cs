@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -757,7 +758,7 @@ namespace CoachCue.Model
                         //don't add dups
                         if (userMatchups.Where(mt => mt.MatchupID == item.matchupID).Count() == 0)
                         {
-                            WeeklyMatchups match = GetWeeklyMatchup(item, false, false, userID);
+                            WeeklyMatchups match = GetWeeklyMatchup(item, false, false, userID); // await GetWeeklyMatchupAsync(item, false, false, userID);
                             userMatchups.Add(match);
                         }
                     }
@@ -861,6 +862,80 @@ namespace CoachCue.Model
 
             return weekMatchups;
         }
+
+        public static async Task<WeeklyMatchups> GetWeeklyMatchupAsync(matchup item, bool showAllVotes, bool getMessages, int? userID = null)
+        {
+            //first check the cache
+            WeeklyMatchups weeklyMatchup = new WeeklyMatchups();
+
+            CoachCueDataContext db = new CoachCueDataContext();
+            int selectedUserID = (userID.HasValue) ? userID.Value : 0;
+            bool isCompleted = (item.status.statusName == "Archive") ? true : false;
+
+            IEnumerable<UserVoteData> usersVoted = new List<UserVoteData>();
+
+            PlayerMatchup player1 = getPlayerMatchupInfo(item.gameschedule, item.nflplayer, item.player1Points, item.player2Points, isCompleted, getMessages, userID);
+            PlayerMatchup player2 = getPlayerMatchupInfo(item.gameschedule1, item.nflplayer1, item.player1Points, item.player2Points, isCompleted, getMessages, userID);
+
+            //get the users who have voted on this matchup              
+            usersVoted = item.users_matchups.Select(um => um).Select(usrMatch => new UserVoteData
+            {
+                email = usrMatch.user.email,
+                DateCreated = usrMatch.dateCreated,
+                fullName = usrMatch.user.fullName,
+                profileImg = "/assets/img/avatar/" + usrMatch.user.avatar.imageName,
+                username = usrMatch.user.userName,
+                userID = usrMatch.userID,
+                correctPercentage = (usrMatch.user.CorrectPercentage != 0) ? usrMatch.user.CorrectPercentage + "%" : string.Empty,
+                CorrectMatchup = (usrMatch.correctMatchup.HasValue) ? usrMatch.correctMatchup.Value : false,
+                SelectedPlayerID = usrMatch.selectedPlayerID,
+                SelectedPlayer = (userID.HasValue) ? usrMatch.nflplayer.fullName : usrMatch.nflplayer.firstName.Substring(0, 1) + ". " + usrMatch.nflplayer.lastName
+            });
+
+            player1.TotalVotes = usersVoted.Where(usrVote => usrVote.SelectedPlayerID == player1.PlayerID).Count();
+            player2.TotalVotes = usersVoted.Where(usrVote => usrVote.SelectedPlayerID == player2.PlayerID).Count();
+
+            int voteCount = usersVoted.Count();
+            if (voteCount <= 0)
+                usersVoted = new List<UserVoteData>();
+
+            List<message> messages = await db.messages.Where(msg => msg.messageContextID == item.matchupID).ToListAsync();
+
+            weeklyMatchup = new WeeklyMatchups
+            {
+                ShowFollow = (userID.HasValue) ? true : false,
+                LastDate = (voteCount > 0) ? usersVoted.OrderByDescending(vt => vt.DateCreated).FirstOrDefault().DateCreated : item.dateCreated,
+                WeekNumber = item.gameschedule.weekNumber,
+                NoVotes = (voteCount > 0) ? false : true,
+                TotalVotes = voteCount,
+                //ShowCoaches = (showAllVotes) ? usersVoted.OrderByDescending(vt => vt.DateCreated).ToList() : usersVoted.OrderByDescending(vt => vt.DateCreated).Take(2).ToList(),
+                // HideCoaches = (showAllVotes) ? new List<UserVoteData>() : usersVoted.OrderByDescending(vt => vt.DateCreated).Skip(2).ToList(),
+                Coaches = usersVoted.OrderBy(vt => vt.DateCreated).ToList(),
+                //InvitedCoaches = notification.GetInvitedToAnswer(item.matchupID),
+                MatchupID = item.matchupID,
+                Player1 = player1,
+                Player2 = player2,
+                Status = item.status.statusName,
+                ScoringFormat = item.matchupscoringtype.scoringType,
+                DateCreated = item.dateCreated,
+                CreatedBy = item.user,
+                AllowInvite = (item.user.userID == selectedUserID && item.gameschedule.gameDate > DateTime.UtcNow.GetEasternTime() && item.gameschedule1.gameDate > DateTime.UtcNow.GetEasternTime()) ? true : false,
+                MessageCount = messages.Count(),
+                Messages = messages,
+                GameDate = (item.gameschedule.gameDate < item.gameschedule1.gameDate) ? item.gameschedule.gameDate : item.gameschedule1.gameDate
+            };
+
+            //see if the user has a vote
+            if (userID.HasValue)
+            {
+                UserVoteData userVote = usersVoted.Where(uv => uv.userID == userID.Value).FirstOrDefault();
+                if (userVote != null)
+                    weeklyMatchup.UserSelectedPlayer = userVote.SelectedPlayer;
+            }
+
+            return weeklyMatchup;
+        }
+
 
         public static WeeklyMatchups GetWeeklyMatchup(matchup item, bool showAllVotes, bool getMessages, int? userID = null)
         {
