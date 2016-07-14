@@ -1253,7 +1253,7 @@ namespace CoachCue.Model
 
                     //now record as a notification - let user know someone has voted on it
                     matchup matchupItem = matchup.Get(matchupID);
-                    WeeklyMatchups weeklyMatchupItem = matchup.GetWeeklyMatchup(matchupItem, false, false);
+                    WeeklyMatchups weeklyMatchupItem = matchup.GetWeeklyMatchup(matchupItem, false, false, HttpContext.Current.Request.Browser.IsMobileDevice);
 
                     notification.Add("voteMatchup", matchupID, userID, matchupItem.createdBy, dateCreated);
 
@@ -1282,7 +1282,7 @@ namespace CoachCue.Model
             try
             {
                 AddMatchup(userID, playerID, matchupID);
-                matchupChoice = matchup.GetWeeklyMatchup(matchup.Get(matchupID), false, false, userID);
+                matchupChoice = matchup.GetWeeklyMatchup(matchup.Get(matchupID), false, false, HttpContext.Current.Request.Browser.IsMobileDevice, userID);
             }
             catch (Exception) { }
 
