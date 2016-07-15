@@ -13,24 +13,7 @@
             {
             <a data-account-id='@Model.accountID' class="username" href="@Url.Action("Index", "Coach", new { id = Model.accountID, name = Model.fullName })">@Model.fullName</a>
             }
-        </div>
-        <div class="item-hover-menu">
-        @if (!User.Identity.IsAuthenticated){
-            <a data-account-type="@Model.accountType" data-account='@Model.accountID' class="btn btn-success btn-mini action" data-toggle="modal" href="#register-modal"><i class="icon-plus-sign"></i>follow</a>
-        }
-        else
-        { 
-            if( @Model.accountID != @Model.currentUserID ){
-                if (Model.following <= 0){
-                    <a data-account-type="@Model.accountType" data-account='@Model.accountID' class="btn btn-success btn-mini follow action" href="#"><i class="icon-plus-sign"></i>follow</a>
-                }
-                else
-                {
-                    <a data-account-type="@Model.accountType" data-account='@Model.accountID' class="btn btn-danger unfollow btn-mini action" href="#"><i class="icon-minus-sign"></i>unfollow</a>
-                }
-            }
-        }
-        </div>
+        </div>     
         @if (Model.accountType == "players") {
             <img class="avatar player-item-avatar lazy-load" data-src="@Model.profileImg" alt="@Model.fullName">     
             <span>@Model.position&nbsp;|&nbsp;@Model.teamSlug</span>

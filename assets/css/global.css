@@ -2482,9 +2482,7 @@ div#message-stream[style]
 
 ul.footer
 {
-    line-height: 18px;
     text-align: center;
-    height: 40px;
     margin: 0;
     padding: 0;
 }
@@ -2494,7 +2492,6 @@ ul.footer.links{
 }
 
 ul.footer li {
-    float: left;
     padding-right: 4px;
     display: inline;
 }

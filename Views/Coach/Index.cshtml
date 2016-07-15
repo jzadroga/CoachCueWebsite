@@ -11,17 +11,7 @@
     <div class="panel panel-default user-panel player-header">
         <div class="panel-heading">
             <a href="@Url.Action("Index", "Coach", new { id = Model.UserDetail.userID, name = Model.UserDetail.fullName })" class="avatar user-avatar-large height" style="background: url('@Url.Content("~/assets/img/avatar/" + Model.UserDetail.avatar.imageName)') 50% 50% no-repeat;"></a>
-
-            @if (Model.AccountID != Model.UserDetail.userID) { 
-                if (!Model.UserDetail.isFollowing)
-                {
-                    <a data-account-type="users" data-account='@Model.UserDetail.userID' class="btn btn-success btn-mini follow action" href="#"><i class="icon-plus-sign"></i>Follow</a>
-                }
-                else
-                {
-                    <a data-account-type="users" data-account='@Model.UserDetail.userID' class="btn btn-danger unfollow btn-mini action" href="#"><i class="icon-minus-sign"></i>Unfollow</a>
-                }
-            }
+        
             <div class="header-details">
                 <h4 class='username'>
                     @Model.UserDetail.fullName

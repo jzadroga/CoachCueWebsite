@@ -14,22 +14,7 @@
     <div class="panel panel-default user-panel player-header" data-player='@Model.PlayerDetail.playerID'>
         <div class="panel-heading">
             <img class='avatar large' src='@Model.PlayerDetail.profilePicLarge' />
-
-            @if (!User.Identity.IsAuthenticated)
-            {
-                <a data-account-type="players" data-account='@Model.PlayerDetail.playerID' class="btn btn-success btn-mini action" data-toggle="modal" href="#register-modal"><i class="icon-plus-sign"></i>Follow</a>
-            }
-            else
-            {
-                if (!Model.PlayerDetail.isFollowing)
-                {
-                    <a data-account-type="players" data-account='@Model.PlayerDetail.playerID' class="btn btn-success btn-mini follow action playerdetail" href="#"><i class="icon-plus-sign"></i>Follow</a>
-                }
-                else
-                {
-                    <a data-account-type="players" data-account='@Model.PlayerDetail.playerID' class="btn btn-danger unfollow btn-mini action" href="#"><i class="icon-minus-sign"></i>Unfollow</a>
-                }
-            }
+       
             <div class="header-details">
                 <span class='username'>@Model.PlayerDetail.fullName</span>
                 <span>@Model.PlayerDetail.position.positionName&nbsp;|&nbsp;@Model.PlayerDetail.nflteam.teamSlug</span>
