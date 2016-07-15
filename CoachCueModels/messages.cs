@@ -16,6 +16,8 @@ namespace CoachCue.Model
 {
     public partial class message
     {
+        private const string _messageCacheID = "generalMessagesCache";
+
         public string CssClass { get; set; }
 
         public int ParentID
@@ -172,6 +174,9 @@ namespace CoachCue.Model
 
             try
             {
+                //clear the message cache
+                HttpContext.Current.Cache.Remove(_messageCacheID);
+
                 CoachCueDataContext db = new CoachCueDataContext();
 
                 if (string.IsNullOrEmpty(message)) //don't save if too big or empty
@@ -522,73 +527,39 @@ namespace CoachCue.Model
             return msgs;
         }
 
-        public static List<message> GetRecentList( int userID,  List<int> followIDs, List<int> playerIDs, bool futureTimeline, DateTime fromDate )
+        public static List<message> GetRecentList( bool futureTimeline, DateTime fromDate )
         {
             List<message> messages = new List<message>();
             CoachCueDataContext db = new CoachCueDataContext();
 
             try
             {
-                List<int> messageIDs = new List<int>();
-
-                //messages about users user is following
-                /*var msgQuery = from msg in db.messages
-                               where (followIDs.Contains(msg.userID) && msg.messagecontexttype.messageContextTypeName == "general") 
-                               select msg;*/
-
-                //don't filter messages
-                var msgQueryAll = from msg in db.messages
-                               where msg.messagecontexttype.messageContextTypeName == "general"
-                               select msg;
-
-                if (msgQueryAll.Count() > 0)
+                if (HttpContext.Current.Cache[_messageCacheID] != null)
+                    messages = (List<message>)HttpContext.Current.Cache[_messageCacheID];
+                else
                 {
-                    var msgQueryDate = (futureTimeline) ? msgQueryAll.Where(msgs => msgs.dateCreated >= fromDate) : msgQueryAll.Where(msgs => msgs.dateCreated < fromDate);
-                    messages = msgQueryDate.Where(msg => msg.messageContextID.HasValue == false).OrderByDescending(msg => msg.dateCreated).Take(20).ToList();
-                    foreach( message msgItem in messages )
+                    List<int> messageIDs = new List<int>();
+
+                    //don't filter messages
+                    var msgQueryAll = from msg in db.messages
+                                      where msg.messagecontexttype.messageContextTypeName == "general"
+                                      select msg;
+
+                    if (msgQueryAll.Count() > 0)
                     {
-                        msgItem.ConversationMessages = new List<message>();
-                        var convo = msgQueryAll.Where(msg => msg.messageContextID.Value == msgItem.messageID);
-                        if (convo.Count() > 0)
-                            msgItem.ConversationMessages = convo.ToList();
+                        var msgQueryDate = (futureTimeline) ? msgQueryAll.Where(msgs => msgs.dateCreated >= fromDate) : msgQueryAll.Where(msgs => msgs.dateCreated < fromDate);
+                        messages = msgQueryDate.Where(msg => msg.messageContextID.HasValue == false).OrderByDescending(msg => msg.dateCreated).Take(20).ToList();
+                        foreach (message msgItem in messages)
+                        {
+                            msgItem.ConversationMessages = new List<message>();
+                            var convo = msgQueryAll.Where(msg => msg.messageContextID.Value == msgItem.messageID);
+                            if (convo.Count() > 0)
+                                msgItem.ConversationMessages = convo.ToList();
+                        }
                     }
+
+                    HttpContext.Current.Cache.Insert(_messageCacheID, messages, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(24, 0, 0));
                 }
-                
-
-                //grab all messages for right now - just to see if more message action kicks off
-
-                /*if (messages.Count() > 0)
-                    messageIDs = messages.Select(msg => msg.messageID).ToList();
-
-                //messages about players user is folowing
-                var msgPlayerQuery = from msg in db.messages
-                               join playermsgs in db.message_players on
-                               msg.messageID equals playermsgs.messageID
-                               where playerIDs.Contains(playermsgs.playerID) && !msg.messageContextID.HasValue &&
-                               msg.userID != userID && !messageIDs.Contains(playermsgs.messageID)
-                               select msg;
-
-                if (msgPlayerQuery.Count() > 0)
-                {
-                    msgPlayerQuery = (futureTimeline) ? msgPlayerQuery.Where(msgs => msgs.dateCreated >= fromDate) : msgPlayerQuery.Where(msgs => msgs.dateCreated < fromDate);
-                    messages.AddRange( msgPlayerQuery.ToList() );
-                }
-
-                if( messages.Count() > 0 )
-                    messageIDs = messages.Select(msg => msg.messageID).ToList();
-
-                //make sure we don't get the same message twice
-                var msgUserQuery = from msgs in db.messages
-                                join usrmsgs in db.message_users on
-                                msgs.messageID equals usrmsgs.messageID
-                                where usrmsgs.userID == userID &&
-                                !messageIDs.Contains(usrmsgs.messageID) && msgs.messagecontexttype.messageContextTypeName == "general"
-                               select msgs;
-
-                msgUserQuery = (futureTimeline) ? msgUserQuery.Where(msgs => msgs.dateCreated >= fromDate) : msgUserQuery.Where(msgs => msgs.dateCreated < fromDate);
-
-                if (msgUserQuery.Count() > 0)
-                    messages.AddRange(msgUserQuery.ToList());*/
             }
             catch( Exception){}
 

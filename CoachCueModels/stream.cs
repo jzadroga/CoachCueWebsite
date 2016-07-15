@@ -415,17 +415,7 @@ namespace CoachCue.Model
                     fromDate = DateTime.UtcNow.GetEasternTime().AddDays(-280);
 
                 user currentUser = user.Get(userID);
-
-                //removing the follow concept for now
-                // List<users_account> followList = user.GetFollowAll(userID);
-              //  List<int> followPlayers = followList.Where(usaccnt => usaccnt.accounttype.accountName == "players").Select(usaccnt => usaccnt.accountID).ToList();
-              //  List<int> followUsers = followList.Where(usaccnt => usaccnt.accounttype.accountName == "users").Select(usaccnt => usaccnt.accountID).ToList();
-                List<int> followPlayers = new List<int>();
-                List<int> followUsers = new List<int>();
-
-                //always include the user too, unless in the future which have been added already
-                if (!futureTimeline || !includeFromDate)
-                    followUsers.Add(userID);
+                string profileImage = (currentUser.userID != 0) ? currentUser.avatar.imageName : string.Empty;
 
                 //gets the matchups for the stream
                 List<WeeklyMatchups> usrMatchups = await matchup.GetList(userID, fromDate.Value, futureTimeline);
@@ -434,7 +424,7 @@ namespace CoachCue.Model
                     MatchupItem = usrmtch,
                     DateTicks = usrmtch.DateCreated.Ticks.ToString(),
                     ProfileImg = usrmtch.CreatedBy.avatar.imageName,
-                    UserProfileImg = (currentUser.userID != 0 ) ? currentUser.avatar.imageName : string.Empty,
+                    UserProfileImg = profileImage,
                     UserName = usrmtch.CreatedBy.userName,
                     FullName = usrmtch.CreatedBy.fullName,
                     ContentType = GetMatchupContentType( usrmtch ),
@@ -443,7 +433,7 @@ namespace CoachCue.Model
                 
 
                 //get all the user messages for following a user or player
-                List<message> msgs = message.GetRecentList(userID, followUsers, followPlayers, futureTimeline, fromDate.Value);
+                List<message> msgs = message.GetRecentList(futureTimeline, fromDate.Value);
                 stream.AddRange( msgs.Select(msg => new StreamContent
                 {
                     MessageItem = msg,
@@ -453,7 +443,7 @@ namespace CoachCue.Model
                     FullName = msg.user.fullName,
                     ContentType = "message",
                     DateCreated = msg.dateCreated,
-                    UserProfileImg = (currentUser.userID != 0) ? currentUser.avatar.imageName : string.Empty,
+                    UserProfileImg = profileImage,
                     TimeAgo = twitter.GetRelativeTime(msg.dateCreated)
                 }).ToList());
                 
