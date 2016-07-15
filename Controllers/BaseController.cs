@@ -31,8 +31,6 @@ namespace CoachCue.Controllers
                         {
                             userID = userItem.userID;
                             model.Name = (string.IsNullOrEmpty(userItem.fullName)) ? userItem.userName : userItem.fullName;
-                            model.FollowingCount = userItem.FollowingCount;
-                            model.FollowersCount = user.GetFollowersCount(userItem.userID);
                             model.MatchupCount = userItem.MatchupCreatedCount;
                             model.Avatar = userItem.avatar.imageName;
                             model.MessageCount = userItem.MessageCount;
@@ -40,7 +38,6 @@ namespace CoachCue.Controllers
                             model.CorrectStarters = userItem.TotalCorrectVotes;
                             model.AccountID = userItem.userID;
                             model.NoticeCount = userItem.NotificationCount;
-                            //model.RecentlyViewedItems = users_view.GetRecent(userID);
                             model.Email = userItem.email;
                             model.Username = userItem.DisplayUserName;
                         }

@@ -34,17 +34,6 @@
                         </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Following", "Account", new { id = Model.UserDetail.userID })">
-                            Following<strong id=" following-count">
-                            @Model.UserDetail.FollowingCount</strong>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Index", "Followers", new { id = Model.UserDetail.userID, type = "users",  name = Model.UserDetail.fullName })">
-                            Followers<strong id="coachfollow-count-@Model.UserDetail.userID">@Model.Followers</strong>
-                        </a>
-                    </li>
-                    <li>
                         <a href="@Url.Action("Matchup", "Coach", new { id = Model.UserDetail.userID, name = Model.UserDetail.fullName })">
                             Matchups<strong>@Model.UserDetail.MatchupCreatedCount</strong>
                         </a>

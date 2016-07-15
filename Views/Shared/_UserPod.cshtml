@@ -21,20 +21,21 @@
                     </a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Following", "Account")">
-                        Following<strong id="following-count">@Model.FollowingCount</strong>
-                    </a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "Followers", new { id = Model.AccountID, type = "users", name = Model.Name })">
-                        Followers<strong>@Model.FollowersCount</strong>
-                    </a>
-                </li>
-                <li>
                     <a href="@Url.Action("Matchup", "Coach", new { id = Model.AccountID, name = Model.Name })">
                         Matchups<strong>@Model.MatchupCount</strong>
                     </a>
                 </li>
+                <li>
+                    <a href="@Url.Action("Index", "Coach", new { id = Model.AccountID, name = Model.Name })">
+                        Total Votes<strong>@Model.TotalStarters</strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Coach", new { id = Model.AccountID, name = Model.Name })">
+                        Correct<strong>@Model.CorrectStarters</strong>
+                    </a>
+                </li>
+                
             </ul>
         </div>
 
