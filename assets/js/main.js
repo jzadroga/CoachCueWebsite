@@ -616,6 +616,14 @@ $(document).ready(function () {
 
         });
 
+        //send analytics event
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'News',
+            eventAction: 'click',
+            eventLabel: 'Latest News'
+        });
+
         return false;
     });
 

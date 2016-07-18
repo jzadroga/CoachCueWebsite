@@ -5,16 +5,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 class="home-header">CoachCue is crowd sourced Who Should I Start advice, news and much more</h1>
 
-<h3>Who Should I Start</h3>
-<p>Each Matchup is voted on by the community so that you can get a pulse for what the crowd thinks.  Rather than depending on a few experts opinions, you get the opinion of the masses. After each week we calculate the winner of the matchup and score the voters to create a top list. The person with the most correct votes wins the week!</p>
+<div class="pod">
+    <h1 class="home-header">CoachCue is crowd sourced Who Should I Start advice, news and much more</h1>
 
-<h3>Fantasy Football Community</h3>
-<p>Along with the crowdsourced matchups, users can post information, articles or questions and tag them by the relevant player(s).  Visting a players detail page will show all related postings and matchups.</p>
+    <h3>Who Should I Start</h3>
+    <p>Each Matchup is voted on by the community so that you can get a pulse for what the crowd thinks.  Rather than depending on a few experts opinions, you get the opinion of the masses. After each week we calculate the winner of the matchup and score the voters to create a top list. The person with the most correct votes wins the week!</p>
 
-<h3>Latest Player News</h3>
-<p>We’ve compiled a list of NFL Beat Writers per team and followed their twitter accounts, along with a number of accounts that are typically fast to announce player news and injuries.  These tweets are then parsed per player and given to you so that you are always informed with the latest breaking news.</p>
+    <h3>Fantasy Football Community</h3>
+    <p>Along with the crowd sourced matchups, members can post information, articles or questions and tag them by the relevant player(s).  Visting a players detail page will show all related postings and matchups.</p>
+
+    <h3>Latest Player News</h3>
+    <p>We’ve compiled a list of NFL Beat Writers per team and followed their twitter accounts, along with a number of accounts that are typically fast to announce player news and injuries.  These tweets are then parsed per player and given to you so that you are always informed with the latest breaking news.</p>
+</div>
 
 @section rightcolumn {
     @{ Html.RenderPartial("_RightColumnBase", model: Model); }

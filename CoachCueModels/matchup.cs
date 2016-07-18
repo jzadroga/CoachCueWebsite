@@ -758,7 +758,8 @@ namespace CoachCue.Model
                         //don't add dups
                         if (userMatchups.Where(mt => mt.MatchupID == item.matchupID).Count() == 0)
                         {
-                            WeeklyMatchups match = await Task.Run( () => GetWeeklyMatchup(item, false, false, isMobile, userID));
+                            WeeklyMatchups match = GetWeeklyMatchup(item, false, false, isMobile, userID);
+                            //WeeklyMatchups match = await Task.Run( () => GetWeeklyMatchup(item, false, false, isMobile, userID));
                             userMatchups.Add(match);
                         }
                     }
