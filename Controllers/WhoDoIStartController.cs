@@ -53,7 +53,7 @@ namespace CoachCue.Controllers
                 else //allowing guest votes
                 {
                     int weekNumber = gameschedule.GetCurrentWeekID();
-                    if (myMatchVM.MyMatchup.WeekNumber >= weekNumber)
+                    if (myMatchVM.MyMatchup.WeekNumber >= weekNumber && weekNumber != 0)
                         myMatchVM.MyMatchup.AllowVote = true;
                 }
                 

@@ -36,6 +36,11 @@ namespace CoachCue.ViewModels
         }
     }
 
+    public class PageViewModel : BaseViewModel
+    {
+        public string Content { get; set; }
+    }
+
     public class HomeViewModel : BaseViewModel
     {
         public bool ShowWelcome { get; set; }

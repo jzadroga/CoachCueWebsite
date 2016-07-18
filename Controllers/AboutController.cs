@@ -11,11 +11,11 @@ using System.IO;
 
 namespace CoachCue.Controllers
 {
-    public class AboutController : Controller
+    public class AboutController : BaseController
     {
         public ActionResult Index()
         {
-            return View();
+            return View(new PageViewModel());
         }
     }
 }
