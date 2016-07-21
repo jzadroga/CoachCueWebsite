@@ -758,9 +758,8 @@ namespace CoachCue.Model
                         //don't add dups
                         if (userMatchups.Where(mt => mt.MatchupID == item.matchupID).Count() == 0)
                         {
-                            WeeklyMatchups match = GetWeeklyMatchup(item, false, false, isMobile, userID);
                             //WeeklyMatchups match = await Task.Run( () => GetWeeklyMatchup(item, false, false, isMobile, userID));
-                            userMatchups.Add(match);
+                            userMatchups.Add(GetWeeklyMatchup(item, false, false, isMobile, userID));
                         }
                     }
                 }
@@ -869,12 +868,19 @@ namespace CoachCue.Model
 
         public static WeeklyMatchups GetWeeklyMatchup(matchup item, bool showAllVotes, bool getMessages, bool isMobile, int? userID = null)
         {
-            //first check the cache
             WeeklyMatchups weeklyMatchup = new WeeklyMatchups();
-            
+            string cacheID = "matchup" + item.matchupID;
+
             CoachCueDataContext db = new CoachCueDataContext();
             int selectedUserID = (userID.HasValue) ? userID.Value : 0;
             bool isCompleted = (item.status.statusName == "Archive") ? true : false;
+
+            //try and grab from cache if it is archived
+            if( isCompleted )
+            {
+                if (HttpContext.Current.Cache[cacheID] != null)
+                    return (WeeklyMatchups)(HttpContext.Current.Cache[cacheID]);
+            }
 
             IEnumerable<UserVoteData> usersVoted = new List<UserVoteData>();
 
@@ -937,6 +943,7 @@ namespace CoachCue.Model
                     weeklyMatchup.UserSelectedPlayer = userVote.SelectedPlayer;
             }
 
+            HttpContext.Current.Cache.Insert(cacheID, weeklyMatchup, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(500, 0, 0));
             return weeklyMatchup;
         }
 

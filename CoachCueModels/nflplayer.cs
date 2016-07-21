@@ -310,6 +310,7 @@ namespace CoachCue.Model
 
         public static void ImportRoster(string teamSlug)
         {
+            List<int> foundPlayers = new List<int>();
             int teamID = nflteam.GetID(teamSlug);
             if (teamID != 0)
             {
@@ -364,7 +365,19 @@ namespace CoachCue.Model
                                 }
                             }
 
-                            SavePlayer(firstName, lastName, position, number, college, years, teamID);
+                            foundPlayers.Add(SavePlayer(firstName, lastName, position, number, college, years, teamID).playerID);
+                        }
+
+                        //clean out any players not on the roster
+                        foreach(nflplayer ply in nflteam.Get(teamID).nflplayers)
+                        {
+                            if (ply.lastName == "Defense")
+                                continue;
+
+                            if(!foundPlayers.Contains(ply.playerID))
+                            {
+                                Delete(ply.playerID);
+                            }
                         }
                     }
                 }
@@ -447,6 +460,7 @@ namespace CoachCue.Model
                 player.number = string.IsNullOrEmpty(number) ? null : (int?)Convert.ToInt32(number);
                 player.college = college;
                 player.yearsExperience = Convert.ToInt32(years);
+                player.statusID = status.GetID("Active", "nflplayers");
             }
 
             db.SubmitChanges();
