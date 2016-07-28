@@ -92,7 +92,8 @@ h1.home-header{
     font-size: 14px;
     color: #333;
     font-weight: bold;
-    margin-top: 5px;
+    margin-top: -80px;
+    float: right;
 }
 
 .notice-item .time{

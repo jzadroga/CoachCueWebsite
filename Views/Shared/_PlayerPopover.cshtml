@@ -4,19 +4,28 @@
 <div class="player-tweets">
 
     <div class="tweet-list">
-        @foreach (StreamContent streamItem in Model.TwitterContent)
+        @if (Model.TwitterContent.Count() <= 0)
         {
-            <div class="item player-item clear" data-player="@streamItem.PlayerID">
-                <div class="content">
-                    <img class="avatar player-item-avatar" src="@streamItem.ProfileImg" />
-
-                    <div class="content-header">
-                        <a title="first tooltip" class="username" target="_blank" href="http://twitter.com/@streamItem.UserName">@streamItem.FullName</a>
-                        <span class="time">@streamItem.TimeAgo</span>
-                    </div>
-                    <span class="matchup-message">@Html.Raw(streamItem.Tweet.Message)</span>
+            <div class="item player-item clear" data-player="">
+                <div class="content">                 
+                    <span class="matchup-message">No current news</span>
                 </div>
             </div>
+        } else {
+            foreach (StreamContent streamItem in Model.TwitterContent)
+            {
+                <div class="item player-item clear" data-player="@streamItem.PlayerID">
+                    <div class="content">
+                        <img class="avatar player-item-avatar" src="@streamItem.ProfileImg" />
+
+                        <div class="content-header">
+                            <a title="first tooltip" class="username" target="_blank" href="http://twitter.com/@streamItem.UserName">@streamItem.FullName</a>
+                            <span class="time">@streamItem.TimeAgo</span>
+                        </div>
+                        <span class="matchup-message">@Html.Raw(streamItem.Tweet.Message)</span>
+                    </div>
+                </div>
+            }
         }
     </div>
 
