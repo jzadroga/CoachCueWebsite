@@ -32,7 +32,8 @@
 }
 
 .tt-hint {
-  color: #999
+  color: #999;
+  width: 100%;
 }
 
 .tt-dropdown-menu {
