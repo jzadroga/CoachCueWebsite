@@ -1325,7 +1325,7 @@ namespace CoachCue.Model
                             }
                             else
                             {
-                                var weeklyMatchups = coach.users_matchups.Where(us => us.matchup.gameschedule1.weekNumber == week && us.matchup.gameschedule1.seasonID == 4 && us.matchup.status.statusName != "Deleted" && (us.correctMatchup == true || us.correctMatchup == false));
+                                var weeklyMatchups = coach.users_matchups.Where(us => us.matchup.gameschedule1.weekNumber == week && us.matchup.gameschedule1.seasonID == seasonID && us.matchup.status.statusName != "Deleted" && (us.correctMatchup == true || us.correctMatchup == false));
                                 if (weeklyMatchups != null)
                                 {
                                     topCoach.Total = weeklyMatchups.Count();

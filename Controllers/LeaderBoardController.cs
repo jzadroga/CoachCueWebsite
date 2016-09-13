@@ -35,7 +35,7 @@ namespace CoachCue.Controllers
             leaderVM.SelectedWeek = week;
             leaderVM.Sort = (string.IsNullOrEmpty(sort)) ? "correct" : sort.ToLower();
             leaderVM.Direction = (string.IsNullOrEmpty(dr)) ? "asc" : dr.ToLower();
-            leaderVM.LeaderCoaches = user.GetTopCoachesByWeek(100, week, 4);
+            leaderVM.LeaderCoaches = user.GetTopCoachesByWeek(100, week, 5);
 
             switch( leaderVM.Sort )
             {

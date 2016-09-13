@@ -216,6 +216,11 @@ namespace CoachCue.ViewModels
         public bool ShowFollow { get; set; }
     }
 
+    public class TopPlayersViewModel : BaseViewModel
+    {
+        public List<VotedPlayers> Players { get; set; }
+    }
+
     public class SignupViewModel
     {
         public string Message { get; set; }

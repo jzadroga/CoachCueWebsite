@@ -504,6 +504,15 @@ $(document).ready(function () {
                 mode: 'overlay'
             });
         });
+
+        //send analytics event
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'Vote',
+            eventAction: 'click',
+            eventLabel: 'Matchup Vote'
+        });
+
         return false;
     });
 

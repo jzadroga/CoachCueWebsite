@@ -62,6 +62,21 @@
     <script src="~/assets/js/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
     <script src="~/assets/js/jquery.placeholder.min.js" type="text/javascript"></script>
 
+    <script type="application/ld+json">
+        {
+        "@@context" : "http://schema.org",
+        "@@type" : "Organization",
+        "name" : "CoachCue",
+        "url" : "http://www.CoachCue.com/",
+        "logo": "http://coachcue.com/assets/img/cc_logo-2.png",
+        "sameAs" : [
+        "https://twitter.com/coachcue",
+        "https://www.facebook.com/coachcue",
+        "https://medium.com/@@CoachCue"
+        ]
+        }
+    </script>
+
     <script type="text/javascript">
         $(function () {
             setValidation();
@@ -103,7 +118,7 @@
             <div class="collapse navbar-collapse" id="main-navbar-collapse">
                 <ul class="nav navbar-nav nav-main-links">               
                     <li title="Notifications <a class='view-all-notifications' href='/account/notifications'>View All</a>" data-content='<ul id="notice-list"></ul>' data-toggle="popover" id="user-notifications" class="@Html.ActiveSection("Account")"><span class="badge badge-important notice-number">@Model.NoticeCount</span><span class="glyphicon glyphicon-bell"></span><a class="notices" href='#'>Notifications</a></li>
-                    <li class="@Html.ActiveSection("Leaderboard")"><a href='@Url.Action("Index", "Leaderboard")'>Leaderboard</a></li>
+                    <li class="@Html.ActiveSection("Leaderboard")"><a href='@Url.Action("Index", "Leaderboard", new { week = 1 })'>Leaderboard</a></li>
                 </ul>
 
             @if (User.Identity.IsAuthenticated)
@@ -149,7 +164,7 @@
                 <div class="row">
                     <div class="alert alert-info signup-alert">
                         <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong><a data-toggle="modal" href="#register-modal">Join CoachCue!</a></strong> to follow all your players, get the latest news and post matchup questions.
+                        <strong><a data-toggle="modal" href="#register-modal">Join CoachCue!</a></strong> to get help with Who Should I Start decisions from an awesome community.
                     </div>
                 </div>
             }

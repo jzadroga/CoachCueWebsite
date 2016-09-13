@@ -92,7 +92,7 @@ h1.home-header{
     font-size: 14px;
     color: #333;
     font-weight: bold;
-    margin-top: -80px;
+    margin-top: -100px;
     float: right;
 }
 
@@ -3506,6 +3506,10 @@ div.new-message-text-controls  div.message-charNum{
 
     .content-header .player-card-news {
         left: 0px;
+    }
+
+    .player-card-news{
+        display: none;
     }
 }
 

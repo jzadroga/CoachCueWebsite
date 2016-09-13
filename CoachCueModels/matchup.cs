@@ -379,7 +379,7 @@ namespace CoachCue.Model
             return playerVote;
         }
 
-        public static List<VotedPlayers> GetTopMathupVotes(int weekID, string positionName = "")
+        public static List<VotedPlayers> GetTopMathupVotes(int weekID, bool all, string positionName = "")
         {
             List<VotedPlayers> playerVotes = new List<VotedPlayers>();
 
@@ -391,19 +391,31 @@ namespace CoachCue.Model
                 if( !string.IsNullOrEmpty( positionName ))
                 {
                     userVotes = (from vote in db.users_matchups
-                                 where vote.matchup.gameschedule.weekNumber == weekID && vote.matchup.gameschedule.seasonID == 4 && vote.nflplayer.position.positionName == positionName
+                                 where vote.matchup.gameschedule.weekNumber == weekID && vote.matchup.gameschedule.seasonID == 5 && vote.nflplayer.position.positionName == positionName
                                     group vote by vote.selectedPlayerID into g
                                     orderby g.Count() descending
                                     select new Trending { playerID = g.Key, count = g.Count() }).Take(5).ToList();  
                 }
                 else
                 {
-                    userVotes = (from vote in db.users_matchups
-                                 where vote.matchup.gameschedule.weekNumber == weekID && vote.matchup.gameschedule.seasonID == 4
-                                    group vote by vote.selectedPlayerID into g
-                                    orderby g.Count() descending
-                                    select new Trending { playerID = g.Key, count = g.Count() }).Take(5).ToList();
+                    if (all)
+                    {
+                        userVotes = (from vote in db.users_matchups
+                                     where vote.matchup.gameschedule.weekNumber == weekID && vote.matchup.gameschedule.seasonID == 5
+                                     group vote by vote.selectedPlayerID into g
+                                     orderby g.Count() descending
+                                     select new Trending { playerID = g.Key, count = g.Count() }).ToList();
+                    }
+                    else
+                    {
+                        userVotes = (from vote in db.users_matchups
+                                     where vote.matchup.gameschedule.weekNumber == weekID && vote.matchup.gameschedule.seasonID == 5
+                                     group vote by vote.selectedPlayerID into g
+                                     orderby g.Count() descending
+                                     select new Trending { playerID = g.Key, count = g.Count() }).Take(5).ToList();
+                    }
                 }
+
                 if (userVotes.Count > 0)
                 {
                     int count = 0;
@@ -736,7 +748,7 @@ namespace CoachCue.Model
         }
 
         //get the matchups based on the date
-        public async static Task<List<WeeklyMatchups>> GetList(int userID, DateTime fromDate, bool futureTimeline)
+        public static List<WeeklyMatchups> GetList(int userID, DateTime fromDate, bool futureTimeline)
         {
             List<WeeklyMatchups> userMatchups = new List<WeeklyMatchups>();
             CoachCueDataContext db = new CoachCueDataContext();
@@ -752,7 +764,7 @@ namespace CoachCue.Model
                 var isMobile = HttpContext.Current.Request.Browser.IsMobileDevice;
                 if (mtQuery.Count() > 0)
                 {
-                    var matchups = mtQuery.OrderByDescending(mtch => mtch.dateCreated).Take(40).ToList();
+                    var matchups = mtQuery.OrderByDescending(mtch => mtch.dateCreated).Take(80).ToList();
                     foreach (matchup item in matchups.ToList())
                     {
                         //don't add dups

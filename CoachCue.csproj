@@ -367,6 +367,7 @@
     <Content Include="assets\signup\img\twitter.png" />
     <Content Include="assets\signup\img\twitter_orange.png" />
     <Content Include="Global.asax" />
+    <Content Include="sitemap.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -461,6 +462,7 @@
     <Content Include="Views\WhoDoIStart\Index.cshtml" />
     <Content Include="Views\Shared\_VoteCompare.cshtml" />
     <None Include="Properties\PublishProfiles\CoachCue - Web Deploy.pubxml" />
+    <Content Include="Views\WhoDoIStart\TopPlayers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="CoachCueModels\CoachCueModels.csproj">

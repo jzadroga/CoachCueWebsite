@@ -382,14 +382,14 @@ namespace CoachCue.Model
             return stream;
         }
 
-        public async static Task<int> GetUpdateStreamCount( int userID, string timeTicks )
+        public static int GetUpdateStreamCount( int userID, string timeTicks )
         {
             int count = 0;
 
             try
             {
                 DateTime lastDate = new DateTime(Convert.ToInt64(timeTicks));
-                List<StreamContent> timeStream = await GetStream(userID, true, lastDate);
+                List<StreamContent> timeStream = GetStream(userID, true, lastDate);
                 timeStream = timeStream.Where( ts => ts.ContentType != "empty-news" && ts.ContentType != "empty-matchup" && ts.ContentType != "empty-messages").ToList();
                 count = timeStream.Count();
             }        
@@ -402,7 +402,7 @@ namespace CoachCue.Model
         }
 
         //gets the latest stream for a user - main function for stream
-        public async static Task<List<StreamContent>> GetStream(int userID, bool futureTimeline, DateTime? fromDate = null)
+        public static List<StreamContent> GetStream(int userID, bool futureTimeline, DateTime? fromDate = null)
         {
             List<StreamContent> stream = new List<StreamContent>();
             CoachCueDataContext db = new CoachCueDataContext();
@@ -418,7 +418,7 @@ namespace CoachCue.Model
                 string profileImage = (currentUser.userID != 0) ? currentUser.avatar.imageName : string.Empty;
 
                 //gets the matchups for the stream
-                List<WeeklyMatchups> usrMatchups = await matchup.GetList(userID, fromDate.Value, futureTimeline);
+                List<WeeklyMatchups> usrMatchups = matchup.GetList(userID, fromDate.Value, futureTimeline);
                 stream = usrMatchups.Select(usrmtch => new StreamContent
                 {
                     MatchupItem = usrmtch,
@@ -448,7 +448,7 @@ namespace CoachCue.Model
                 }).ToList());
                 
                 //sort everything by date
-                stream = (futureTimeline) ? stream.OrderByDescending(str => str.DateCreated).Take(50).ToList() : stream.OrderByDescending(str => str.DateCreated).Take(20).ToList();
+                stream = (futureTimeline) ? stream.OrderByDescending(str => str.DateCreated).Take(80).ToList() : stream.OrderByDescending(str => str.DateCreated).Take(20).ToList();
             }
             catch (Exception) { }
 

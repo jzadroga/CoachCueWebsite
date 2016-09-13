@@ -15,8 +15,11 @@ namespace CoachCue.Controllers
 {
     public class WhoDoIStartController : BaseController
     {
-        public ActionResult Index(int id, string name)
+        public ActionResult Index([DefaultValue(0)]int id, [DefaultValue("")]string name)
         {
+            if (id == 0 && string.IsNullOrEmpty(name))
+                return RedirectToAction("Index", "Home");
+
             MyMatchupViewModel myMatchVM = new MyMatchupViewModel();
             myMatchVM.MyMatchup = new WeeklyMatchups();
             myMatchVM.MyMatchup.ShowFollow = false;
@@ -69,6 +72,13 @@ namespace CoachCue.Controllers
             myMatchVM.RelatedMatchups = matchup.GetRelated((userID.HasValue) ? userID.Value : 0, myMatchVM.MyMatchup);
 
             return View(myMatchVM);
+        }
+
+        public ActionResult TopPlayers()
+        {
+            return View(new TopPlayersViewModel() {
+                    Players = matchup.GetTopMathupVotes(gameschedule.GetCurrentWeekID(), true)
+            });
         }
     }
 }
