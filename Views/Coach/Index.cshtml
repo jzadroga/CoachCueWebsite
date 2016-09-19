@@ -27,12 +27,7 @@
         <div class="panel-body">
 
             <div class="user-stats-container">
-                <ul class="stats stats-list">
-                    <li>
-                        <a>
-                            Messages<strong id="message-count">@Model.UserDetail.MessageCount</strong>
-                        </a>
-                    </li>
+                <ul class="stats stats-list">               
                     <li>
                         <a href="@Url.Action("Matchup", "Coach", new { id = Model.UserDetail.userID, name = Model.UserDetail.fullName })">
                             Matchups<strong>@Model.UserDetail.MatchupCreatedCount</strong>
@@ -63,12 +58,7 @@
         </div>
     </div>
 
-    @{Html.RenderPartial("_ShareCtrl");}
-
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">User Stream</h3>
-        </div>
         <div class="panel-body clear-body">
             <div id="stream-area">
                 <div id="user-message-stream" class="message-list-stream">

@@ -47,7 +47,7 @@ namespace CoachCue.Model
 
             try
             {
-                weeklyMatchup = GetWeeklyMatchup(Get(matchupID), true, true, HttpContext.Current.Request.Browser.IsMobileDevice, userID);
+                weeklyMatchup = GetWeeklyMatchup(Get(matchupID), true, true, HttpContext.Current.Request.Browser.IsMobileDevice, false, userID);
             }
             catch (Exception) { }
 
@@ -68,7 +68,7 @@ namespace CoachCue.Model
                 matchup existingMatchup = Get(player1ID, player2ID, game1, game2);
                 if (existingMatchup.matchupID != 0)
                 {
-                    matchup = GetWeeklyMatchup(existingMatchup, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, userID);
+                    matchup = GetWeeklyMatchup(existingMatchup, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, true, userID);
                     matchup.ExistingMatchup = true;
                 }
                 else
@@ -86,7 +86,7 @@ namespace CoachCue.Model
                     db.matchups.InsertOnSubmit(mtup);
                     db.SubmitChanges();
 
-                    matchup = GetWeeklyMatchup(mtup, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, userID);
+                    matchup = GetWeeklyMatchup(mtup, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, true, userID);
                     matchup.ExistingMatchup = false;
                 }
             }
@@ -262,7 +262,7 @@ namespace CoachCue.Model
 
                     streamContent = userMatchups.Select(usrmtch => new StreamContent
                     {
-                        MatchupItem = GetWeeklyMatchup(usrmtch, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, currentUserID),
+                        MatchupItem = GetWeeklyMatchup(usrmtch, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, true, currentUserID),
                         DateTicks = usrmtch.dateCreated.Ticks.ToString(),
                         ProfileImg = usrmtch.user.avatar.imageName,
                         UserName = usrmtch.user.userName,
@@ -301,7 +301,7 @@ namespace CoachCue.Model
                     var weeklyMatchups = ret.ToList().Where(r => r.gameschedule.weekNumber == weekID);
                     foreach (matchup item in weeklyMatchups)
                     {
-                        WeeklyMatchups match = GetWeeklyMatchup(item, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, userID);
+                        WeeklyMatchups match = GetWeeklyMatchup(item, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, true, userID);
                         match.Status = item.status.statusName;
                         match.AllowVote = false;
                         //only let them ivite people if the game isnt over
@@ -461,7 +461,7 @@ namespace CoachCue.Model
                 {
                     foreach (matchup item in weeklyMatchups)
                     {
-                        WeeklyMatchups match = GetWeeklyMatchup(item, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, currentUser);
+                        WeeklyMatchups match = GetWeeklyMatchup(item, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, true, currentUser);
                         match.AllowVote = false;
 
                         DateTime eastTime = DateTime.UtcNow.GetEasternTime();
@@ -619,7 +619,7 @@ namespace CoachCue.Model
                 {
                     foreach (matchup item in mtQuery.OrderByDescending(mtch => mtch.dateCreated).ToList())
                     {
-                        WeeklyMatchups match = GetWeeklyMatchup(item, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, userID);
+                        WeeklyMatchups match = GetWeeklyMatchup(item, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, false, userID);
                         if( userMatchups.Where( mt => mt.MatchupID == item.matchupID ).Count() == 0 )
                             userMatchups.Add(match);
                     }
@@ -652,7 +652,7 @@ namespace CoachCue.Model
                         //don't add dups
                         if (userMatchups.Where(mt => mt.MatchupID == item.matchupID).Count() == 0)
                         {
-                            WeeklyMatchups match = GetWeeklyMatchup(item, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, userID);
+                            WeeklyMatchups match = GetWeeklyMatchup(item, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, false, userID);
                             userMatchups.Add(match);
                         }
                     }
@@ -686,7 +686,7 @@ namespace CoachCue.Model
                         //don't add dups
                         if (userMatchups.Where(mt => mt.MatchupID == item.matchupID).Count() == 0)
                         {
-                            WeeklyMatchups match = GetWeeklyMatchup(item, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, userID);
+                            WeeklyMatchups match = GetWeeklyMatchup(item, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, false, userID);
                             userMatchups.Add(match);
                         }
                     }
@@ -721,7 +721,7 @@ namespace CoachCue.Model
                         //don't add dups
                         if (userMatchups.Where(mt => mt.MatchupID == item.matchupID).Count() == 0)
                         {
-                            WeeklyMatchups match = GetWeeklyMatchup(item, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, userID);
+                            WeeklyMatchups match = GetWeeklyMatchup(item, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, false, userID);
                             userMatchups.Add(match);
                         }
                     }
@@ -771,7 +771,7 @@ namespace CoachCue.Model
                         if (userMatchups.Where(mt => mt.MatchupID == item.matchupID).Count() == 0)
                         {
                             //WeeklyMatchups match = await Task.Run( () => GetWeeklyMatchup(item, false, false, isMobile, userID));
-                            userMatchups.Add(GetWeeklyMatchup(item, false, false, isMobile, userID));
+                            userMatchups.Add(GetWeeklyMatchup(item, false, false, isMobile, false, userID));
                         }
                     }
                 }
@@ -865,7 +865,7 @@ namespace CoachCue.Model
   
                     foreach (matchup item in weeklyMatchups)
                     {
-                        userMatchups.Add(GetWeeklyMatchup(item, false, false, HttpContext.Current.Request.Browser.IsMobileDevice));
+                        userMatchups.Add(GetWeeklyMatchup(item, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, false));
                     }
 
                     weekMatchups.Add(new MatchupByWeek { WeekNumber = i, Matchups = userMatchups });
@@ -878,7 +878,7 @@ namespace CoachCue.Model
             return weekMatchups;
         }
 
-        public static WeeklyMatchups GetWeeklyMatchup(matchup item, bool showAllVotes, bool getMessages, bool isMobile, int? userID = null)
+        public static WeeklyMatchups GetWeeklyMatchup(matchup item, bool showAllVotes, bool getMessages, bool isMobile, bool getAllVoters, int? userID = null)
         {
             WeeklyMatchups weeklyMatchup = new WeeklyMatchups();
             string cacheID = "matchup" + item.matchupID;
@@ -899,8 +899,10 @@ namespace CoachCue.Model
             PlayerMatchup player1 = getPlayerMatchupInfo(item.gameschedule, item.nflplayer, item.player1Points, item.player2Points, isCompleted, getMessages, userID, isMobile);
             PlayerMatchup player2 = getPlayerMatchupInfo(item.gameschedule1, item.nflplayer1, item.player1Points, item.player2Points, isCompleted, getMessages, userID, isMobile);
 
+            var userVotes = (showAllVotes) ? item.users_matchups : item.users_matchups.Take(8);
+
             //get the users who have voted on this matchup              
-            usersVoted = item.users_matchups.Select(um => um).Select(usrMatch => new UserVoteData
+            usersVoted = userVotes.Select(um => um).Select(usrMatch => new UserVoteData
             {
                 email = usrMatch.user.email,
                 DateCreated = usrMatch.dateCreated,
@@ -914,14 +916,14 @@ namespace CoachCue.Model
                 SelectedPlayer = (userID.HasValue) ? usrMatch.nflplayer.fullName : usrMatch.nflplayer.firstName.Substring(0, 1) + ". " + usrMatch.nflplayer.lastName
             });
                
-            player1.TotalVotes = usersVoted.Where(usrVote => usrVote.SelectedPlayerID == player1.PlayerID).Count();
-            player2.TotalVotes = usersVoted.Where(usrVote => usrVote.SelectedPlayerID == player2.PlayerID).Count();
+            player1.TotalVotes = item.users_matchups.Where(usrVote => usrVote.selectedPlayerID == player1.PlayerID).Count();
+            player2.TotalVotes = item.users_matchups.Where(usrVote => usrVote.selectedPlayerID == player2.PlayerID).Count();
 
-            int voteCount = usersVoted.Count();
+            int voteCount = player1.TotalVotes + player2.TotalVotes;
             if (voteCount <= 0)
                 usersVoted = new List<UserVoteData>();
 
-            List<message> messages = db.messages.Where(msg => msg.messageContextID == item.matchupID).ToList();
+            List<message> messages = db.messages.Where(msg => msg.messageContextID == item.matchupID).OrderBy(msg => msg.dateCreated).ToList();
 
             weeklyMatchup = new WeeklyMatchups
             {

@@ -221,6 +221,11 @@ namespace CoachCue.ViewModels
         public List<VotedPlayers> Players { get; set; }
     }
 
+    public class TrendingNewsViewModel : BaseViewModel
+    {
+        public List<AccountData> Players { get; set; }
+    }
+
     public class SignupViewModel
     {
         public string Message { get; set; }

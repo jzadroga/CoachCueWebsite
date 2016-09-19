@@ -137,6 +137,28 @@ namespace CoachCue.Model
             {
                 int percent = 0;
 
+                /* if (this.users_matchups != null)
+                 {
+                     int userID = this.userID;
+                     CoachCueDataContext db = new CoachCueDataContext();
+                     var seasonMatchups = (from usrMtch in db.users_matchups
+                                         where usrMtch.userID == userID && usrMtch.matchup.gameschedule1.seasonID == 5
+                                         select new
+                                         {
+                                             correctMatchup = (usrMtch.correctMatchup.HasValue) ? (bool?)usrMtch.correctMatchup.Value : null
+                                         }).ToList();
+
+                     int allGuesses = seasonMatchups.Where(um => um.correctMatchup == true || um.correctMatchup == false).Count();
+                     if (allGuesses == 0)
+                         percent = 0;
+                     else
+                     {
+                         int correct = seasonMatchups.Where(um => um.correctMatchup == true).Count();
+                         percent = correct * 100 / allGuesses;
+                     }
+                 }
+                 */
+
                 if (this.users_matchups != null)
                 {
                     int allGuesses = this.users_matchups.Where(um => um.correctMatchup == true || um.correctMatchup == false).Count();
@@ -1253,7 +1275,7 @@ namespace CoachCue.Model
 
                     //now record as a notification - let user know someone has voted on it
                     matchup matchupItem = matchup.Get(matchupID);
-                    WeeklyMatchups weeklyMatchupItem = matchup.GetWeeklyMatchup(matchupItem, false, false, HttpContext.Current.Request.Browser.IsMobileDevice);
+                    WeeklyMatchups weeklyMatchupItem = matchup.GetWeeklyMatchup(matchupItem, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, true);
 
                     notification.Add("voteMatchup", matchupID, userID, matchupItem.createdBy, dateCreated);
 
@@ -1282,7 +1304,7 @@ namespace CoachCue.Model
             try
             {
                 AddMatchup(userID, playerID, matchupID);
-                matchupChoice = matchup.GetWeeklyMatchup(matchup.Get(matchupID), false, false, HttpContext.Current.Request.Browser.IsMobileDevice, userID);
+                matchupChoice = matchup.GetWeeklyMatchup(matchup.Get(matchupID), false, false, HttpContext.Current.Request.Browser.IsMobileDevice, true, userID);
             }
             catch (Exception) { }
 

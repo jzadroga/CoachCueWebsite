@@ -23,7 +23,7 @@ namespace CoachCue.Controllers
 
             int currentWeek = gameschedule.GetCurrentWeekID();
             if (week == 50)
-                week = 0;//;currentWeek - 1;
+                week = currentWeek - 1;
 
             //set up the past weeks
             for (int i = 1; i <= currentWeek; i++)

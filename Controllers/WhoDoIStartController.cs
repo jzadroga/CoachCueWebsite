@@ -80,5 +80,13 @@ namespace CoachCue.Controllers
                     Players = matchup.GetTopMathupVotes(gameschedule.GetCurrentWeekID(), true)
             });
         }
+
+        public ActionResult News()
+        {
+            return View(new TrendingNewsViewModel()
+            {
+                Players = user.GetAccountsFromPlayers(nflplayer.GetTrending(40), null)
+            });
+        }
     }
 }

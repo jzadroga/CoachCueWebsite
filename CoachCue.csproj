@@ -463,6 +463,7 @@
     <Content Include="Views\Shared\_VoteCompare.cshtml" />
     <None Include="Properties\PublishProfiles\CoachCue - Web Deploy.pubxml" />
     <Content Include="Views\WhoDoIStart\TopPlayers.cshtml" />
+    <Content Include="Views\WhoDoIStart\News.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="CoachCueModels\CoachCueModels.csproj">

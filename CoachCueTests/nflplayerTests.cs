@@ -14,7 +14,7 @@ namespace CoachCue.Tests
         [Test]
         public void GetPlayerVotes()
         {
-            matchup.GetTopMathupVotes(8);
+            matchup.GetTopMathupVotes(8, false);
 
             Assert.Pass();
         }

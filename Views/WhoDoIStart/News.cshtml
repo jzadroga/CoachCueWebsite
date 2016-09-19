@@ -1,0 +1,43 @@
+﻿@model CoachCue.ViewModels.TrendingNewsViewModel
+@using CoachCue.Model;
+
+@{
+    ViewBag.Description = "Fantasy football Who Should I Start? Trending Player News";
+    ViewBag.Keywords = "fantasy football, Who Should I Start, News";
+    ViewBag.Title = "Who Should I Start? Trending Player News";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="span8 section matchup-details-item">
+    <h1>Who Should I Start? Trending Player News</h1>
+
+    <div id="search-results">
+        @foreach (AccountData player in Model.Players)
+        {
+            <div class="item clear player-item">
+                <div class="content">
+                    <div class="content-header">                     
+                        <a data-player-img="@player.profileImg" data-player-name="@player.fullName" data-player-pos="@player.position&nbsp;|&nbsp;@player.teamSlug" data-player-id="@player.accountID" class="player-popover username" href="@Url.Action("Index", "Player", new { id = player.accountID, name = player.linkFullName })">@player.fullName</a>                      
+                    </div>
+                   
+                    <img class="avatar player-item-avatar lazy-load" data-src="@player.profileImg" alt="@player.fullName">
+                    <span>@player.position&nbsp;|&nbsp;@player.teamSlug</span>       
+                                        
+                    <button style="margin-top: -15px;" data-loading-text="Loading..." class="player-card-news btn btn-info pull-right btn-sm" data-matchup-id="@player.accountID" data-player-id="@player.accountID">
+                        Latest News
+                    </button>           
+                </div>
+            </div>
+
+            <div id="@player.accountID-latest-news" class="player-latest-news clear" style="overflow: hidden; margin-bottom: 3px;">
+                <div class='player-pop-details'>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section rightcolumn {
+    @{ Html.RenderPartial("_RightColumnBase", model: Model); }
+}

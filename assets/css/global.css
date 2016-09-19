@@ -4,6 +4,44 @@
     padding-top: 60px;
 }
 
+
+#main-wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+  height: 60px;
+}
+
+#footer a{
+    color: #656565;
+    text-decoration: none;
+}
+
+#footer a:hover{
+    color: #F18A20;
+}
+
+#bottomNav {
+	padding: 5px;
+}
+
+/* used for the leaderboard */
+.stacktable.large-only { display: table; }
+.stacktable.small-only { display: none; }
+
+@media (max-width: 800px) {
+  .stacktable.large-only { display: none; }
+  .stacktable.small-only { display: table; }
+}
+
 .btn:focus 
 {
     outline:0 !important;

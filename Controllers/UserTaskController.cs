@@ -98,9 +98,20 @@ namespace CoachCue.Controllers
         public ActionResult SetStreamMatchupChoice(int playerID, int matchupID)
         {
             //adding a guest account to see what happens with voting
-            int currentUser = (User.Identity.IsAuthenticated) ? user.GetUserID(User.Identity.Name) : 15754; 
+            bool showLogin = false;
+            bool isAuthenticated = User.Identity.IsAuthenticated;
+            int currentUser = (isAuthenticated) ? user.GetUserID(User.Identity.Name) : 15754;
 
-            //Request.UserHostAddress
+            if (!isAuthenticated)
+            {
+                string hostAddress = Request.UserHostAddress;
+                if (Session[hostAddress] == null)
+                {
+                    showLogin = true;
+                    Session[hostAddress] = "set";
+                }
+            }
+
             WeeklyMatchups userVote = user.AddStreamSelectedMatchup(currentUser, playerID, matchupID);
             StreamContent streamItem = stream.ConvertToStream(userVote, playerID, true, currentUser);
 
@@ -111,7 +122,8 @@ namespace CoachCue.Controllers
                 ID = matchupID,
                 UserVotedID = currentUser,
                 Type = "matchupSelected",
-                Inline = false
+                Inline = false,
+                ShowSignup = showLogin
             }, JsonRequestBehavior.AllowGet);
         }
 
