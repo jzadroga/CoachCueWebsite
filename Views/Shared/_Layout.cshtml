@@ -13,12 +13,12 @@
     }
     else
     {
-        <meta name="description" content="Get instant advice for all of your Who Should I Start? questions. View results from 100+ player matchups." />
+        <meta itemprop="description" name="description" content="Get instant advice for all of your Who Should I Start? questions. View results from 100+ player matchups." />
     }
     @if (ViewBag.Keywords != null){
     <meta name="keywords" content="@ViewBag.Keywords" />
     }else{
-    <meta name="keywords" content="fantasy sports, fantasy football, Who should I Start" />
+    <meta name="keywords" content="nfl,football,fantasy,fantasy sports,fantasy football,Who should I Start" />
     }
 
     @if (ViewBag.twitterCard != null)
@@ -178,6 +178,21 @@
             <div class="col-md-4 right-side pull-right hidden-xs hidden-sm">
 
                 @RenderSection("rightColumn", required: true)
+
+                <div class="row pod-ads">
+                    <div class="panel panel-default partners">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Partners</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='250' height='250' src="http://wlfanduel.adsrv.eacdn.com/I.ashx?btag=a_12748b_1411c_&affid=8951&siteid=12748&adid=1411&c="></iframe>                                
+                                </li>                               
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="pod pod-child span4">

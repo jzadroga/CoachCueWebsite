@@ -2,7 +2,7 @@
 @using CoachCue.Model;
 
 <div class="span4 pod pod-child">
-    <h4>Top Correct Votes Week 1</h4>
+    <h4>Top Correct Votes Week 2</h4>
 
     <div id="top-overall-coaches">
         @foreach (LeaderboardCoach coach in Model)
@@ -31,6 +31,6 @@
                 </div>
             </div>
         }
-        <a style="white-space: nowrap;" class="link" href="@Url.Action("Index", "Leaderboard", new { week = 1 })">View Full Leaderboard</a>
+        <a style="white-space: nowrap;" class="link" href="@Url.Action("Index", "Leaderboard", new { week = 2 })">View Full Leaderboard</a>
     </div>
 </div>
