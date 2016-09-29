@@ -110,7 +110,7 @@
                             case "match":
                                 loadMatchupPlayerTypeahead();
                                 loadMatchupInviteTypeahead();
-                                break;
+                                break;                     
                         }
 
                         loadUserTypeahead();
@@ -154,6 +154,7 @@
         $(".message-charNum").html("140").removeClass("warn");
         $(".bootstrap-tagsinput input.tt-query").attr("placeholder", "+ Add a player");
         $('#hidden-modal').modal('show');
+        loadRegistration();
     };
 
     Slidepanel.prototype.collapse = function() {
@@ -185,6 +186,19 @@
     }
 
 })(jQuery, window);
+
+function loadRegistration() {
+    $('#frmRegisterLogin, #frmLoginReg').find('span.help-inline').each(function () {
+        $(this).hide();
+    });
+
+    $('#frmRegisterLogin, #frmLoginReg').find('.form-group').removeClass('has-error');
+    $("#forgot-password-error").hide();
+    $("#forgot-password-controls").hide();
+    $("#login-error").hide();
+    $('#frmRegisterLogin').show();
+    $('#frmLoginReg').hide();
+}
 
 function loadUserTypeahead() {
     $.ajaxSetup({

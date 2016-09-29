@@ -105,5 +105,11 @@ namespace CoachCue.Controllers
 
             return View(msgVM);
         }
+
+        [NoCacheAttribute]
+        public ActionResult LoginRegister()
+        {
+            return View();
+        }
     }
 }

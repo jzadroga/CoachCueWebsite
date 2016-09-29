@@ -80,17 +80,7 @@
     <script type="text/javascript">
         $(function () {
             setValidation();
-        });
-
-        function loginSuccess(data) {
-            $("#login-error").hide();
-            if (data.Success) {
-                location.reload(true);
-            }
-            else {
-                $("#login-error").show();
-            }
-        }
+        });     
     </script>
 
     <script type="text/javascript">
@@ -144,9 +134,9 @@
                     @if (!User.Identity.IsAuthenticated)
             {
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a style="color: #fff;" data-toggle="modal" href="#register-modal">Register</a></li>
+                            <li><a style="color: #fff;" data-slidepanel="panel" class="login-register" href="/Post/LoginRegister">Register</a></li>
                             <li class="divider-vertical"></li>
-                            <li><a style="color: #fff;" href='#login-modal' data-toggle="modal">Login</a></li>
+                            <li><a style="color: #fff;" data-slidepanel="panel" class="login-register" href="/Post/LoginRegister">Login</a></li>
                         </ul>
             }
 
@@ -164,7 +154,7 @@
                     <div class="row">
                         <div class="alert alert-info signup-alert">
                             <button type="button" class="close" data-dismiss="alert">×</button>
-                            <strong><a data-toggle="modal" href="#register-modal">Join CoachCue!</a></strong> to get help with Who Should I Start decisions from an awesome community.
+                            <strong><a data-slidepanel="panel" class="login-register" href="/Post/LoginRegister">Join CoachCue!</a></strong> to get help with Who Should I Start decisions from an awesome community.
                         </div>
                     </div>
             }
@@ -306,104 +296,6 @@
             <!-- hidden modal -->
             <div class="modal fade hidden" id="hidden-modal" style="display: none">
             </div>
-
-            <!-- register modal -->
-            <div class="modal fade" id="register-modal" role="dialog" style="display: none">
-
-                <div class="modal-dialog">
-                    <div class="modal-content">
-
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-
-                        <div class="modal-body">
-
-                            <form id="frmRegister" method="post" action="@Url.Action("CreateAccount", "Account")" class="validate form-horizontal">
-                                <div class="help-block">
-                                    <h3>Create your CoachCue Account</h3>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Type your Name" id="regname" name="regname" class="form-control" data-required="true" />
-                                    <span style="display: none" class="help-inline validation-message">Please list your full name</span>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Type your Email Address" id="regemail" name="regemail" class="form-control" data-validate-email="true" data-required="true" />
-                                    <span style="display: none" class="help-inline validation-message email-validation-message">Oops that Email Address already exists or is invalid</span>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" placeholder="Type your Password" id="regwrd" name="regwrd" class="form-control" data-required="true" />
-                                    <span style="display: none" class="help-inline validation-message">Don't forget your password</span>
-                                </div>
-
-                                <div class="form-group">
-                                    <button type="button" id="btnCreateAccount" class="btn btn-warning">Create Account</button>
-                                    <span class="validation-message">Already a member? <a id="already-member-link" href="#">Sign in</a></span>
-                                </div>
-                            </form>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- login modal -->
-            <div class="modal fade" id="login-modal" role="dialog" style="display: none">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-
-                        <div class="modal-body">
-
-                            @using (Ajax.BeginForm("LogOnAjax", "Account", null, new AjaxOptions { HttpMethod = "post", OnSuccess = "loginSuccess" }, new { @class = "validate form-horizontal" }))
-                        {
-                                <div id="login-error" style="display:none" class="control-group error">
-                                    <label class="standout">Email Address or Password is invalid</label>
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" placeholder="Email Address" id="username" name="username" class="form-control" data-required="true" />
-                                    <span style="display: none" class="help-inline validation-message">Gotta have an email address</span>
-                                </div>
-
-                                <div class="form-group">
-                                    <input placeholder="Password" type="password" id="password" name="password" class="form-control" data-required="true" />
-                                    <span style="display: none" class="help-inline validation-message">Gotta have a password</span>
-                                </div>
-
-                                <label style="display: none" class="control-label" for="rememberMe"></label>
-                                <div style="display: none" class="controls">
-                                    <input type="checkbox" id="rememberMe" name="rememberMe" />
-                                    <span class="help-inline standout">Remember Me</span>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="controls">
-                                        <a id="forgot-password-link" href="#">Forgot your Password?</a>
-                                    </div>
-                                </div>
-
-                                <div id="forgot-password-controls" style="display: none">
-                                    <input style="display: inline" placeholder="Email Address" type="text" id="forgot-username" class="form-control" />
-                                    <button type="submit" id="btnGetPassword" class="btn btn-default btn-sm">Get Password</button>
-
-                                    <div class="control-group">
-                                        <label class="control-label standout"></label>
-                                        <div class="controls">
-                                            <span id="forgot-password-message" style="display: none" class="help-inline standout"> </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="submit" id="btnlogin" class="btn btn-warning btn-lg">Login</button>
-                        }
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 
@@ -412,7 +304,7 @@
             <div class="row" id="bottomNav">
                 <div class="col-xs-3 text-center">
                     @if (!User.Identity.IsAuthenticated) {
-                        <a role="button" data-toggle="modal" href="#register-modal"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
+                        <a role="button" data-slidepanel="panel" class="login-register" href="/Post/LoginRegister"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
                     } else {
                         <a href="@Url.Action("Index", "Coach", new { id = Model.AccountID, name = Model.Name })"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
                     }

@@ -102,7 +102,7 @@ namespace CoachCue.Controllers
             bool isAuthenticated = User.Identity.IsAuthenticated;
             int currentUser = (isAuthenticated) ? user.GetUserID(User.Identity.Name) : 15754;
 
-            if (!isAuthenticated)
+            /*if (!isAuthenticated)
             {
                 string hostAddress = Request.UserHostAddress;
                 if (Session[hostAddress] == null)
@@ -110,7 +110,7 @@ namespace CoachCue.Controllers
                     showLogin = true;
                     Session[hostAddress] = "set";
                 }
-            }
+            }*/
 
             WeeklyMatchups userVote = user.AddStreamSelectedMatchup(currentUser, playerID, matchupID);
             StreamContent streamItem = stream.ConvertToStream(userVote, playerID, true, currentUser);

@@ -16,7 +16,7 @@
                         <a data-account-id="@Model.MessageItem.userID" class="username" href="@Url.Action("Index", "Coach", new { id = Model.MessageItem.userID, name = Model.FullName })">@Model.FullName</a>
                         <span>@Model.TimeAgo</span>
                     </div>
-                    <img class="matchup-msg-item-avatar lazy-load img-circle" data-src="@Url.Content("~/assets/img/avatar/" + Model.ProfileImg)">
+                    <img alt="@Model.UserName" class="matchup-msg-item-avatar lazy-load img-circle" data-src="@Url.Content("~/assets/img/avatar/" + Model.ProfileImg)">
                     <span class="matchup-message">@Html.Raw(@Model.MessageItem.messageText)</span>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                 <div class="row matchup-header">
                     <div class="col-md-6 col-xs-6">
                         <a href="@Url.Action("Index", "Coach", new { id = Model.MatchupItem.CreatedBy.userID, name = Model.MatchupItem.CreatedBy.fullName })">
-                            <img class="avatar player-item-avatar lazy-load" data-src="/assets/img/avatar/@Model.MatchupItem.CreatedBy.avatar.imageName" />
+                            <img alt="@Model.UserName" class="avatar player-item-avatar lazy-load" data-src="/assets/img/avatar/@Model.MatchupItem.CreatedBy.avatar.imageName" />
                             <span class="created-by-name">@Model.MatchupItem.CreatedBy.fullName</span>
                         </a>
                         <span class="created-by-type">@Model.MatchupItem.ScoringFormat</span>
@@ -61,7 +61,7 @@
                     <!-- player 1 -->
                     <div class="col-md-5 col-xs-5 ">
                         <div class="text-center content-header">
-                            <img class='xlarge img-rounded lazy-load' data-src='@Model.MatchupItem.Player1.Image' />
+                            <img alt="@Model.MatchupItem.Player1.DisplayPlayerName" class='xlarge img-rounded lazy-load' data-src='@Model.MatchupItem.Player1.Image' />
                             <button data-loading-text="Loading..." class="player-card-news btn btn-info" data-matchup-id="@Model.MatchupItem.MatchupID" data-player-img="@Model.MatchupItem.Player1.Image" data-player-name="@Model.MatchupItem.Player1.PlayerName" data-player-pos="@Model.MatchupItem.Player1.PlayerDescription" data-player-id="@Model.MatchupItem.Player1.PlayerID">
                                 Latest News
                             </button>
@@ -89,13 +89,13 @@
 
                     <!-- center section -->
                     <div class="col-md-2 col-xs-2 text-center matchup-middle text-center">
-                        <img src='@Url.Content("~/assets/img/cc_vs_icon_70.png")' />
+                        <img alt="Who do I start? @Model.MatchupItem.Player1.DisplayPlayerName or @Model.MatchupItem.Player2.DisplayPlayerName" src='@Url.Content("~/assets/img/cc_vs_icon_70.png")' />
                     </div>
 
                     <!-- player 2 -->
                     <div class="col-md-5 col-xs-5 matchup-player2">
                         <div class="text-center content-header">
-                            <img class='xlarge img-rounded lazy-load' data-src='@Model.MatchupItem.Player2.Image' />
+                            <img alt="@Model.MatchupItem.Player2.DisplayPlayerName" class='xlarge img-rounded lazy-load' data-src='@Model.MatchupItem.Player2.Image' />
                             <button data-loading-text="Loading..." class="player-card-news btn btn-info" data-matchup-id="@Model.MatchupItem.MatchupID" data-player-img="@Model.MatchupItem.Player2.Image" data-player-name="@Model.MatchupItem.Player2.PlayerName" data-player-pos="@Model.MatchupItem.Player2.PlayerDescription" data-player-id="@Model.MatchupItem.Player2.PlayerID">
                                 Latest News
                             </button>
@@ -224,14 +224,14 @@
                                     @if (!User.Identity.IsAuthenticated)
                                     {
                                         <form class="form-inline" role="form">
-                                            <a role="button" data-toggle="modal" href="#register-modal">
+                                            <a role="button" data-slidepanel="panel" class="login-register" href="/Post/LoginRegister">
                                                 <input style="width: 100%" class="form-control" type="text" placeholder="Add a comment.." />
                                             </a>
                                         </form>
                                     }
                                     else
                                     {
-                                        <img class="img-circle matchup-new-msg-item-avatar lazy-load" data-src="@Url.Content("~/assets/img/avatar/" + Model.UserProfileImg)" />
+                                        <img alt="@Model.UserName" class="img-circle matchup-new-msg-item-avatar lazy-load" data-src="@Url.Content("~/assets/img/avatar/" + Model.UserProfileImg)" />
 
                                         <form class="form-inline" role="form">
                                             <a data-slidepanel="panel" data-msg="" class="reply-message-panel" href="@Url.Action("NewMatchupMessage", "Post", new { mtchpID = Model.MatchupItem.MatchupID })">
@@ -254,7 +254,7 @@
         <div id="msg-@Model.MessageItem.messageID" class="user-message item child clear stream-news @Model.CssClass" data-ticks="@Model.DateTicks">
             <div class="content">
                 <a class="username" href="@Url.Action("Index", "Coach", new { id = Model.MessageItem.userID, name = Model.FullName })">
-                    <img class="avatar user-avatar lazy-load" data-src="@Url.Content("~/assets/img/avatar/" + Model.ProfileImg)" />
+                    <img alt="@Model.UserName" class="avatar user-avatar lazy-load" data-src="@Url.Content("~/assets/img/avatar/" + Model.ProfileImg)" />
                 </a>
                 <div class="content-header">          
                     <a class="username" href="@Url.Action("Index", "Coach", new { id = Model.MessageItem.userID, name = Model.FullName })">@Model.FullName</a>
@@ -313,7 +313,7 @@
                                                         <a data-account-id="@msg.MessageUser.userID" class="username" href="@Url.Action("Index", "Coach", new { id = msg.MessageUser.userID, name = msg.MessageUser.fullName })">@msg.MessageUser.fullName</a>
                                                         <span>@msg.TimeAgo</span>
                                                     </div>
-                                                    <img class="matchup-msg-item-avatar lazy-load img-circle" data-src="@Url.Content("~/assets/img/avatar/" + msg.MessageUser.avatar.imageName)">
+                                                    <img alt="@Model.UserName" class="matchup-msg-item-avatar lazy-load img-circle" data-src="@Url.Content("~/assets/img/avatar/" + msg.MessageUser.avatar.imageName)">
                                                     <span class="matchup-message">@Html.Raw(msg.messageText)</span>
                                                 </div>
                                             </div>
@@ -330,7 +330,7 @@
                                                     <a data-account-id="@msg.MessageUser.userID" class="username" href="@Url.Action("Index", "Coach", new { id = msg.MessageUser.userID, name = msg.MessageUser.fullName })">@msg.MessageUser.fullName</a>
                                                     <span>@msg.TimeAgo</span>
                                                 </div>
-                                                <img class="matchup-msg-item-avatar lazy-load img-circle" data-src="@Url.Content("~/assets/img/avatar/" + msg.MessageUser.avatar.imageName)">
+                                                <img alt="@Model.UserName" class="matchup-msg-item-avatar lazy-load img-circle" data-src="@Url.Content("~/assets/img/avatar/" + msg.MessageUser.avatar.imageName)">
                                                 <span class="matchup-message">@Html.Raw(msg.messageText)</span>
                                             </div>
                                         </div>
@@ -345,14 +345,14 @@
                                 @if (!User.Identity.IsAuthenticated)
                                 {
                                     <form class="form-inline" role="form">
-                                        <a role="button" data-toggle="modal" href="#register-modal">
+                                        <a role="button" data-slidepanel="panel" class="login-register" href="/Post/LoginRegister">
                                             <input style="width: 100%" class="form-control" type="text" placeholder="Add a comment.." />
                                         </a>
                                     </form>
                                 }
                                 else
                                 {
-                                    <img class="img-circle matchup-new-msg-item-avatar lazy-load" data-src ="@Url.Content("~/assets/img/avatar/" + Model.UserProfileImg)" />
+                                    <img alt="@Model.UserName" class="img-circle matchup-new-msg-item-avatar lazy-load" data-src ="@Url.Content("~/assets/img/avatar/" + Model.UserProfileImg)" />
 
                                     <form class="form-inline" role="form">
                                         <a data-slidepanel="panel" data-msg="@Model.MessageItem.messageID" class="reply-message-panel" href="@Url.Action("ReplyMessage", "Post", new { msgID = Model.MessageItem.messageID })">

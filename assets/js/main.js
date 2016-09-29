@@ -103,8 +103,14 @@ $(document).ready(function () {
         }
     })
 
+    //sidepanel action - login/register
+    $(".login-register").slidepanel({
+        orientation: 'left',
+        mode: 'overlay'
+    });
+
     //sidepanel action - new message
-    $("#new-message-panel").slidepanel({
+    $("#select-new-message").slidepanel({
         orientation: 'left',
         mode: 'overlay'
     });
@@ -116,7 +122,7 @@ $(document).ready(function () {
     });
 
     //sidepanel action - matchups
-    $("#select-new-matchup").slidepanel({
+    $(".select-new-matchup").slidepanel({
         orientation: 'left',
         mode: 'overlay'
     });
@@ -127,7 +133,7 @@ $(document).ready(function () {
         mode: 'overlay'
     });
 
-    $("#select-new-matchup").click(function () {
+    $(".select-new-matchup").click(function () {
         var dt = new Date();
         var href = $(this).attr("href");
         if (href.indexOf("?daz=") >= 0) {
@@ -146,10 +152,9 @@ $(document).ready(function () {
     });
 
     //register modal
-    $("#already-member-link").click(function () {
-
-        $('#register-modal').modal('hide');
-        $('#login-modal').modal('show');
+    $("body").on("click", '#already-member-link', function (e) {
+        $('#frmRegisterLogin').hide();
+        $('#frmLoginReg').show();
 
         return false;
     });
@@ -409,14 +414,14 @@ $(document).ready(function () {
     });
 
     //forgot password
-    $("#forgot-password-link").click(function () {
+    $("body").on("click", '#forgot-password-link', function (e) {
         $("#forgot-password-message").hide();
         $("#forgot-password-error").hide();
         $("#forgot-password-controls").slideDown();
         return false;
     });
 
-    $("#btnGetPassword").click(function () {
+    $("body").on("click", '#btnGetPassword', function (e) {
         if ($("#forgot-username").val() == "") {
             $("#forgot-password-error").show();
         }
@@ -426,20 +431,38 @@ $(document).ready(function () {
         return false;
     });
 
-    $("#btnCreateAccount").click(function () {
-        var valid = validateForm("#frmRegister");
+    //create new account
+    $("body").on("click", '#btnCreateAccount', function (e) {
+        var valid = validateForm("#frmRegisterLogin");
         if (valid) {
             task.validEmail($("#regemail").val(), function (data) {
                 if (data.Valid) {
-                    $("#frmRegister").submit();
+                    $("#frmRegisterLogin").submit();
                 }
                 else {
                     $(".email-validation-message").css('display', 'inline-block');
                 }
             });
-
         }
 
+        return false;
+    });
+
+    //login
+    $("body").on("click", '#btnlogin', function (e) {
+        $("#login-error").hide();
+        var valid = validateForm("#frmLoginReg");
+        if (valid) {
+            task.validLogin($('#username').val(), $('#password').val(), function (data){
+                if (data.Success) {
+                    location.reload(true);
+                }
+                else {
+                    $("#login-error").show();
+                }
+            });
+        }
+        
         return false;
     });
 

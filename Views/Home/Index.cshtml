@@ -40,23 +40,3 @@
 @section rightcolumn {
     @{ Html.RenderPartial("_RightColumnBase", model: Model); }
 }
-
-<script type="text/javascript">
-    $(function () {
-        var str = '@Model.ShowRegistration';
-        if (str == "True") {
-            $('#register-modal').modal('show')
-        }
-
-        var welcomeStr = '@Model.ShowWelcome';
-        if (welcomeStr == "True") {
-            $('#howto-modal').modal('show')
-        }
-
-        var inviteStr = '@Model.ShowFriendInvite';
-        if (inviteStr == "True") {
-            $('#invite-friend-modal').modal('show')
-        }
-
-    });
-</script>

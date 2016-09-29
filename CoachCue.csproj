@@ -258,6 +258,7 @@
     <Content Include="assets\img\Logo_PlayerPod_Header_2.png" />
     <Content Include="assets\img\mailsp.gif" />
     <Content Include="assets\img\MatchupsHEaderGraphic_700px.png" />
+    <Content Include="assets\img\matchupsicon.png" />
     <Content Include="assets\img\matchups_grey.png" />
     <Content Include="assets\img\matchups_grey_btn.png" />
     <Content Include="assets\img\matchups_orange.png" />
@@ -406,7 +407,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_AccountList.cshtml" />
     <Content Include="Views\Shared\_BasicLayout.cshtml" />
-    <Content Include="Views\Shared\_CoachItem.cshtml" />
     <Content Include="Views\Shared\_ControlPanelLayout.cshtml" />
     <Content Include="Views\Shared\_GoogleAnalytics.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -414,10 +414,8 @@
     <Content Include="Views\Shared\_NoticeList.cshtml" />
     <Content Include="Views\Shared\_PlayerItem.cshtml" />
     <Content Include="Views\Shared\_PlayerItemList.cshtml" />
-    <Content Include="Views\Shared\_PlayerPostingCtrl.cshtml" />
     <Content Include="Views\Shared\_StreamItem.cshtml" />
     <Content Include="Views\Shared\_StreamItemList.cshtml" />
-    <Content Include="Views\Shared\_StreamPlayerHeader.cshtml" />
     <Content Include="Views\Shared\_TopCoaches.cshtml" />
     <Content Include="Views\Task\BuildPlayers.cshtml" />
     <Content Include="Views\Task\UpdatePlayerTwitterAccounts.cshtml" />
@@ -427,17 +425,13 @@
     <Content Include="Views\UserMailer\RequestVote.cshtml" />
     <Content Include="Views\UserMailer\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_SearchItemList.cshtml" />
-    <Content Include="Views\Shared\_SearchItem.cshtml" />
     <Content Include="Views\Shared\_TrendingList.cshtml" />
     <Content Include="Views\Shared\_MessageConversation.cshtml" />
     <Content Include="Views\Shared\_MessageCtrl.cshtml" />
     <Content Include="Views\PlayerPod\Index.cshtml" />
     <Content Include="Views\PlayerPod\Sample.cshtml" />
-    <Content Include="Views\Shared\_CarouselMatchupItem.cshtml" />
     <Content Include="Views\Shared\_UserVote.cshtml" />
     <Content Include="Views\ControlPanel\Messages.cshtml" />
-    <Content Include="Views\Shared\_MatchupDetail.cshtml" />
     <Content Include="Views\Post\NewMessage.cshtml" />
     <Content Include="Views\Shared\_PostLayout.cshtml" />
     <Content Include="Views\Post\ReplyMessage.cshtml" />
@@ -464,6 +458,7 @@
     <None Include="Properties\PublishProfiles\CoachCue - Web Deploy.pubxml" />
     <Content Include="Views\WhoDoIStart\TopPlayers.cshtml" />
     <Content Include="Views\WhoDoIStart\News.cshtml" />
+    <Content Include="Views\Post\LoginRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="CoachCueModels\CoachCueModels.csproj">

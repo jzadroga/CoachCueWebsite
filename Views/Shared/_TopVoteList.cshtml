@@ -26,7 +26,7 @@
                             <span>@player.Player.position.positionName&nbsp;|&nbsp;@player.Player.nflteam.teamSlug</span>
                         </div>
                         
-                        <img class="avatar player-item-avatar" src="@player.Player.profilePic" alt="@player.Player.fullName">     
+                        <img alt="@player.Player.fullName" class="avatar player-item-avatar" src="@player.Player.profilePic" alt="@player.Player.fullName">     
                         <a href="@Url.Action("Index", "Player", new { id = player.Player.playerID, name = player.Player.linkFullName })">
                             <span style="width: @player.Percent" class="badge trending-badge">@player.Votes</span>
                         </a>                       

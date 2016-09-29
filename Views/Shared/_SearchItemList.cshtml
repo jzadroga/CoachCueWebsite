@@ -1,7 +1,0 @@
-﻿@model List<AccountData>
-@using CoachCue.Model;
-
-    @foreach (AccountData searchItem in Model)
-    {
-        { Html.RenderPartial("_SearchItem", model: searchItem); }
-    }

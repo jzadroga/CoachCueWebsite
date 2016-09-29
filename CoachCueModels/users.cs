@@ -1323,7 +1323,7 @@ namespace CoachCue.Model
                 {
                     CoachCueDataContext db = new CoachCueDataContext();
                     var coaches = (from usr in db.users
-                                   where usr.status.statusName == "Active"
+                                   where usr.status.statusName == "Active" && usr.userID != 15754
                                    select usr).ToList();
 
                     foreach (user coach in coaches)

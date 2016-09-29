@@ -116,14 +116,14 @@ function setValidation() {
 }
 
 function validateForm(form) {
-    $(form).find( $('span.validation-message') ).each(function () {
+    $(form).find($('span.help-inline.validation-message')).each(function () {
         $(this).hide();
     });
 
     var valid = true;
     $(form).find($('input[data-required="true"]')).each(function () {
         if ($(this).val() == $(this).attr("data-watermark") || $(this).val() == "") {
-            $(this).parents("div.control-group").addClass("error");
+            $(this).parents("div.form-group").addClass("has-error");
             $(this).siblings(".validation-message").css('display', 'inline-block');
             valid = false;
         }
@@ -131,7 +131,7 @@ function validateForm(form) {
 
     if ($(this).hasClass("data-validate-email")) {
         if (!validEmail($(this).val().toLowerCase())) {
-            $(this).parents("div.control-group").addClass("error");
+            $(this).parents("div.form-group").addClass("has-error");
             $(this).next(".validation-message").css('display', 'inline-block');
             valid = false;
         }

@@ -22,7 +22,20 @@ var task = function () {
                  callback(data);
              }
          })
-     },
+    },
+
+    validLogin = function (usr, pass, callback) {
+        $.ajax({
+            url: "/Account/LogOnAjax",
+            data: { username: usr, password: pass, rememberMe: "true" },
+            cache: false,
+            traditional: true,
+            type: "POST",
+            success: function (data) {
+                callback(data);
+            }
+        })
+    },
 
     getStreamUpdateCount = function (lastTime, callback) {
         $.ajax({
@@ -318,6 +331,7 @@ var task = function () {
         sendMatchupMessageEmail: sendMatchupMessageEmail,
         sendMatchupVoteEmail: sendMatchupVoteEmail,
         sendFollowNoticeEmail: sendFollowNoticeEmail,
-        validEmail: validEmail
+        validEmail: validEmail,
+        validLogin: validLogin
     };
 } ();

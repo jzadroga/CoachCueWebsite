@@ -15,7 +15,7 @@
             }
         </div>     
         @if (Model.accountType == "players") {
-            <img class="avatar player-item-avatar lazy-load" data-src="@Model.profileImg" alt="@Model.fullName">     
+            <img alt="@Model.fullName" class="avatar player-item-avatar lazy-load" data-src="@Model.profileImg" alt="@Model.fullName">     
             <span>@Model.position&nbsp;|&nbsp;@Model.teamSlug</span>
         }
         else

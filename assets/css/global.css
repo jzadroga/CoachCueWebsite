@@ -21,7 +21,7 @@
 }
 
 #footer a{
-    color: #656565;
+    color: #DDDDDD;
     text-decoration: none;
 }
 
@@ -2780,12 +2780,8 @@ a.brand.logo {
     border-bottom: none;
 }
 
-#forgot-password-link, #already-member-link{
-    color: #fff;
-}
-
-#forgot-username{
-    width: 250px;
+#btnGetPassword{
+    margin-top: 5px;
 }
 
 /*  player stream */
@@ -3186,6 +3182,7 @@ ul.stats li {
 
 .message-share .panel-body{
     height: 70px;
+    padding-top: 5px;
 }
 
 .message-share .nav-tabs{
@@ -3193,7 +3190,6 @@ ul.stats li {
 }
 
 .message-share .tab-content {
-    padding: 10px;
     border-bottom: 0px;
 }
 
@@ -3219,7 +3215,20 @@ ul.stats li {
 }
 
 a#select-new-message{
-     background: transparent url('../img/message_gray_btn.png') left top no-repeat;
+    background: transparent url('../img/message_gray_btn.png') left top no-repeat;
+    width: 200px;
+    text-align: right;
+}
+
+a.post-matchup-msg{
+    background: transparent url('../img/matchupsicon.png') right top no-repeat;
+}
+
+a.post-matchup-msg span{
+    color: #555;
+    padding-top: 18px;
+    display: inline-block;
+    font-weight: bold;
 }
 
 a#new-message-panel{
@@ -3235,19 +3244,19 @@ a#select-new-message:hover {
    background-image: url('../img/message_orange_btn.png');
 }
 
-.message-share .nav-tabs > .active > a.select-new-matchup{
+.message-share .nav-tabs > .active > a.new-matchup-tab{
      background: #fff url('../img/matchups_orange_btn.png') left top no-repeat;
      width: 200px;
      text-align: right;
 }
 
-a.select-new-matchup{
+a.new-matchup-tab{
      background: transparent url('../img/matchups_grey_btn.png') left top no-repeat;
      width: 200px;
      text-align: right;
 }
 
-a.select-new-matchup:hover {
+a.new-matchup-tab:hover {
    background-image: url('../img/matchups_orange_btn.png');
 }
 
@@ -3564,12 +3573,12 @@ div.new-message-text-controls  div.message-charNum{
         display: none;
     }
 
-    #select-new-message, #select-new-matchup, .select-new-message, .select-new-matchup{
-        width: 100px !important;
+    #select-new-message, .new-matchup-tab{
+        width: 70px !important;
         height: 40px;
     }
 
-    #select-new-message span, #select-new-matchup span, .select-new-message span, .select-new-matchup span{
+    #select-new-message span, .new-matchup-tab span{
         display: none;
     }
 

@@ -899,10 +899,7 @@ namespace CoachCue.Model
             PlayerMatchup player1 = getPlayerMatchupInfo(item.gameschedule, item.nflplayer, item.player1Points, item.player2Points, isCompleted, getMessages, userID, isMobile);
             PlayerMatchup player2 = getPlayerMatchupInfo(item.gameschedule1, item.nflplayer1, item.player1Points, item.player2Points, isCompleted, getMessages, userID, isMobile);
 
-            var userVotes = (showAllVotes) ? item.users_matchups : item.users_matchups.Take(8);
-
-            //get the users who have voted on this matchup              
-            usersVoted = userVotes.Select(um => um).Select(usrMatch => new UserVoteData
+            usersVoted = item.users_matchups.Select(um => um).Select(usrMatch => new UserVoteData
             {
                 email = usrMatch.user.email,
                 DateCreated = usrMatch.dateCreated,
@@ -910,16 +907,16 @@ namespace CoachCue.Model
                 profileImg = "/assets/img/avatar/" + usrMatch.user.avatar.imageName,
                 username = usrMatch.user.userName,
                 userID = usrMatch.userID,
-                correctPercentage = (usrMatch.user.CorrectPercentage != 0) ? usrMatch.user.CorrectPercentage + "%" : string.Empty,
+                correctPercentage = /*(usrMatch.user.CorrectPercentage != 0) ? usrMatch.user.CorrectPercentage + "%" : */string.Empty,
                 CorrectMatchup = (usrMatch.correctMatchup.HasValue) ? usrMatch.correctMatchup.Value : false,
                 SelectedPlayerID = usrMatch.selectedPlayerID,
                 SelectedPlayer = (userID.HasValue) ? usrMatch.nflplayer.fullName : usrMatch.nflplayer.firstName.Substring(0, 1) + ". " + usrMatch.nflplayer.lastName
             });
-               
-            player1.TotalVotes = item.users_matchups.Where(usrVote => usrVote.selectedPlayerID == player1.PlayerID).Count();
-            player2.TotalVotes = item.users_matchups.Where(usrVote => usrVote.selectedPlayerID == player2.PlayerID).Count();
 
-            int voteCount = player1.TotalVotes + player2.TotalVotes;
+            player1.TotalVotes = usersVoted.Where(usrVote => usrVote.SelectedPlayerID == player1.PlayerID).Count();
+            player2.TotalVotes = usersVoted.Where(usrVote => usrVote.SelectedPlayerID == player2.PlayerID).Count();
+
+            int voteCount = usersVoted.Count();
             if (voteCount <= 0)
                 usersVoted = new List<UserVoteData>();
 
