@@ -389,7 +389,7 @@ namespace CoachCue.Model
             try
             {
                 DateTime lastDate = new DateTime(Convert.ToInt64(timeTicks));
-                List<StreamContent> timeStream = GetStream(userID, true, lastDate);
+                List<StreamContent> timeStream = GetStream(userID, true, string.Empty, lastDate);
                 timeStream = timeStream.Where( ts => ts.ContentType != "empty-news" && ts.ContentType != "empty-matchup" && ts.ContentType != "empty-messages").ToList();
                 count = timeStream.Count();
             }        
@@ -402,7 +402,7 @@ namespace CoachCue.Model
         }
 
         //gets the latest stream for a user - main function for stream
-        public static List<StreamContent> GetStream(int userID, bool futureTimeline, DateTime? fromDate = null)
+        public static List<StreamContent> GetStream(int userID, bool futureTimeline, string position, DateTime? fromDate = null)
         {
             List<StreamContent> stream = new List<StreamContent>();
             CoachCueDataContext db = new CoachCueDataContext();
@@ -418,7 +418,7 @@ namespace CoachCue.Model
                 string profileImage = (currentUser.userID != 0) ? currentUser.avatar.imageName : string.Empty;
 
                 //gets the matchups for the stream
-                List<WeeklyMatchups> usrMatchups = matchup.GetList(userID, fromDate.Value, futureTimeline);
+                List<WeeklyMatchups> usrMatchups = matchup.GetList(userID, fromDate.Value, position, futureTimeline);
                 stream = usrMatchups.Select(usrmtch => new StreamContent
                 {
                     MatchupItem = usrmtch,
@@ -430,22 +430,24 @@ namespace CoachCue.Model
                     ContentType = GetMatchupContentType( usrmtch ),
                     DateCreated = usrmtch.LastDate
                 }).ToList();
-                
 
-                //get all the user messages for following a user or player
-                List<message> msgs = message.GetRecentList(futureTimeline, fromDate.Value);
-                stream.AddRange( msgs.Select(msg => new StreamContent
+                if (string.IsNullOrEmpty(position))
                 {
-                    MessageItem = msg,
-                    DateTicks = msg.dateCreated.Ticks.ToString(),
-                    ProfileImg = msg.user.avatar.imageName,
-                    UserName = msg.user.userName,
-                    FullName = msg.user.fullName,
-                    ContentType = "message",
-                    DateCreated = msg.dateCreated,
-                    UserProfileImg = profileImage,
-                    TimeAgo = twitter.GetRelativeTime(msg.dateCreated)
-                }).ToList());
+                    //get all the user messages for following a user or player
+                    List<message> msgs = message.GetRecentList(futureTimeline, fromDate.Value);
+                    stream.AddRange(msgs.Select(msg => new StreamContent
+                    {
+                        MessageItem = msg,
+                        DateTicks = msg.dateCreated.Ticks.ToString(),
+                        ProfileImg = msg.user.avatar.imageName,
+                        UserName = msg.user.userName,
+                        FullName = msg.user.fullName,
+                        ContentType = "message",
+                        DateCreated = msg.dateCreated,
+                        UserProfileImg = profileImage,
+                        TimeAgo = twitter.GetRelativeTime(msg.dateCreated)
+                    }).ToList());
+                }
                 
                 //sort everything by date
                 stream = (futureTimeline) ? stream.OrderByDescending(str => str.DateCreated).Take(80).ToList() : stream.OrderByDescending(str => str.DateCreated).Take(20).ToList();

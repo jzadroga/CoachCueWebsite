@@ -96,6 +96,11 @@ input.email
     padding-left: 24px !important;
 }
 
+.affix {
+    top:50px;
+    position:fixed;
+}
+
 .navbar-search .tt-hint, .navbar-search .tt-query
 {
     width: 200px;
@@ -1533,6 +1538,12 @@ span.success-message
     left: -12px !important;
 }
 
+.small-spinner-matchup
+{
+    top: 18px !important;
+    left: 15px !important;
+}
+
 form.validate
 {
     margin: 0;
@@ -2567,14 +2578,6 @@ ul.footer li.copyright{
 {
     padding: 0;
     margin-bottom: 0px;
-    float: right;
-}
-
-.nav-pills.stream-filter > li > a
-{
-    padding-top: 3px;
-    padding-bottom: 3px;
-    font-size: 12px;
 }
 
 .nav-pills a{
@@ -2631,13 +2634,13 @@ ul.footer li.copyright{
     color: #333;
 }
 
-.stream-filter.nav-pills > .active > a, .stream-filter.nav-pills > .active > a:hover
+.stream-filter.nav-pills .active > a, .stream-filter.nav-pills .active > a:hover, .stream-filter.nav-pills .active > a:focus
 {
     color: #ffffff;
     background-color: #F18A20;
 }
 
-.stream-filter.nav > li > a:hover{
+.stream-filter.nav a:hover{
     text-decoration: none;
     background-color: #333;
     color: #fff;
@@ -3558,6 +3561,10 @@ div.new-message-text-controls  div.message-charNum{
     .player-card-news{
         display: none;
     }
+
+    .nav-pills.stream-filter li a{
+        padding: 8px 10px !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -3608,5 +3615,9 @@ div.new-message-text-controls  div.message-charNum{
         -webkit-transform: none; 
         -ms-transform: none; 
         transform: none;
+    }
+
+    .nav-pills.stream-filter li a{
+        padding: 8px 10px !important;
     }
 }

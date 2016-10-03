@@ -10,15 +10,41 @@
 
 @{Html.RenderPartial("_ShareCtrl");}
 
+ <!-- first try at filtering -->
+<ul class="nav nav-pills stream-filter">
+    <li class="active">
+        <a class="stream-filter-item" data-position="" href="#">Recent</a>
+    </li>
+    <li>
+        <a class="stream-filter-item" data-position="RB" href="#">RB</a>
+    </li>
+    <li>
+        <a class="stream-filter-item" data-position="QB" href="#">QB</a>
+    </li>
+    <li>
+        <a class="stream-filter-item" data-position="WR" href="#">WR</a>
+    </li>
+    <li>
+        <a class="stream-filter-item" data-position="TE" href="#">TE</a>
+    </li>
+    <li>
+        <a class="stream-filter-item" data-position="DEF" href="#">DEF / K</a>
+    </li>
+    <li>
+        <div id="filter-matchup-spinner"></div>
+    </li>
+</ul>
+
 <div id="msg-list">
     
     <input type="hidden" id="load-matchups" value="@Model.LoadMatchups" />
 
     <div class="panel panel-default">
         <div class="panel-body">
-            <div id="stream-area">
-                
-                <div id="message-stream" class="message-list-stream stream-matchups stream-messages" data-ticks="@DateTime.UtcNow.GetEasternTime().Ticks">
+
+            <div id="stream-area">                         
+
+                <div id="message-stream" class="message-list-stream stream-matchups stream-messages" data-ticks="@DateTime.UtcNow.GetEasternTime().Ticks">                 
 
                     @foreach (StreamContent streamItem in Model.Stream)
                     { Html.RenderPartial("_StreamItem", model: streamItem); }

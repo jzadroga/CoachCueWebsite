@@ -67,6 +67,23 @@ var smalSpinnerOpts = {
     left: 'auto' // Left position relative to parent in px
 };
 
+var matchupFilterSpin = {
+    lines: 10, // The number of lines to draw
+    length: 7, // The length of each line
+    width: 2, // The line thickness
+    radius: 2, // The radius of the inner circle
+    rotate: 41, // The rotation offset
+    color: '#000', // #rgb or #rrggbb
+    speed: 1, // Rounds per second
+    trail: 60, // Afterglow percentage
+    shadow: false, // Whether to render a shadow
+    hwaccel: false, // Whether to use hardware acceleration
+    className: 'small-spinner-matchup', // The CSS class to assign to the spinner
+    zIndex: 2e9, // The z-index (defaults to 2000000000)
+    top: '18px', // Top position relative to parent in px
+    left: 'auto' // Left position relative to parent in px
+};
+
 jQuery.fn.exists = function () { return this.length > 0; }
 
 $.fn.spin = function (opts) {

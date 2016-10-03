@@ -177,19 +177,12 @@ namespace CoachCue.Controllers
         }
 
         [NoCacheAttribute]
-        public JsonResult GetMatchupStream(string tms, bool update)
+        public JsonResult GetMatchupStream(string pos)
         {
-            int userID = (User.Identity.IsAuthenticated) ? user.GetUserID(User.Identity.Name) : 0;
+            int userID = (User.Identity.IsAuthenticated) ? user.GetUserID(User.Identity.Name) : 43;
             
-            int currentWeek = gameschedule.GetCurrentWeekID();
-            List<StreamContent> streamContent = stream.GetStreamMatchupsByWeek(userID, currentWeek);
-            
-            if( currentWeek > 1 && streamContent.Count() < 10 )  
-            {
-                List<StreamContent> lastWeekMatchupList = stream.GetStreamMatchupsByWeek(userID, currentWeek - 1);
-                streamContent.AddRange(lastWeekMatchupList.OrderByDescending( lw => lw.MatchupItem.TotalVotes).Take(7).ToList());
-            }
-
+            List<StreamContent> streamContent = stream.GetStream(userID, true, pos);
+      
             string streamData = this.PartialViewToString("_StreamItemList", streamContent);
                         
             return Json(new
@@ -218,7 +211,7 @@ namespace CoachCue.Controllers
             {
                 DateTime lastDate = new DateTime(Convert.ToInt64(tms));
                 userID = user.GetUserID(User.Identity.Name);
-                streamList = stream.GetStream((int)userID, ftr, lastDate);
+                streamList = stream.GetStream((int)userID, ftr, string.Empty, lastDate);
             }
 
             string streamData = this.PartialViewToString("_StreamItemList", streamList);

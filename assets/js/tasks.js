@@ -72,10 +72,10 @@ var task = function () {
         })
     },
 
-    getMatchupStream = function (lastTime, update, callback) {
+    getMatchupStream = function (position, callback) {
          $.ajax({
              url: "/UserTask/GetMatchupStream",
-             data: { tms: lastTime, update: update },
+             data: { pos: position },
              cache: false,
              success: function (data) {
                  callback(data);

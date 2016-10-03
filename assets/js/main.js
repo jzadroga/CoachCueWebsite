@@ -2,106 +2,33 @@
 var pollRate = 40000;
 var streamTimer;
 
-//popover for players
-var originalLeave = $.fn.popover.Constructor.prototype.leave;
-$.fn.popover.Constructor.prototype.leave = function (obj) {
-    var self = obj instanceof this.constructor ?
-        obj : $(obj.currentTarget)[this.type](this.getDelegateOptions()).data('bs.' + this.type)
-    var container, timeout;
-
-    originalLeave.call(this, obj);
-
-    if (obj.currentTarget) {
-        container = $(obj.currentTarget).siblings('.popover')
-        timeout = self.timeout;
-        container.one('mouseenter', function () {
-            //We entered the actual popover – call off the dogs
-            clearTimeout(timeout);
-            //Let's monitor popover content instead
-            container.one('mouseleave', function () {
-                $.fn.popover.Constructor.prototype.leave.call(self, self);
-            });
-        })
-    }
-};
-
 $(document).ready(function () {
 
     $.ajaxSetup({
         cache: false
     });
 
-    //infinite scrolling
-    $(window).scroll(function()
-    {
-        if($(window).scrollTop() == $(document).height() - $(window).height())
-        {
-            var $tabSelected = $("ul#main-stream-tabs li.active");
-            if( $tabSelected.length > 0 ){
-                if ($tabSelected.attr("id") == "all-tab") {
-
-                    if ($("#get-more-messages").val() == "false") {
-                        $("#get-more-messages").val("true");
-                        var $lastTime = $('#message-stream div[data-ticks]').last();
-                        $("#loading-messages-spinner").spin(smalSpinnerBlackOpts);
-                        $("#all-stream-loader").show();
-                        task.getStream($lastTime.attr("data-ticks"), false, updatePastStream);
-                    }
-                }
-            }
-        }
-    });
-
     //tooltips
     $("[rel='tooltip']").tooltip();
 
-    //polls the db for new messages
-    /*streamTimer = setInterval(function () {
-        var lastTime = $("#message-stream").attr("data-ticks");
-        if ($("#get-more-messages").val() == "false") {
-            task.getStreamUpdateCount(lastTime, updateStreamCount)
-        }
-    }, pollRate);*/
+    //fitler matchups
+    $('a.stream-filter-item').click(function () {
+        $('ul.nav.stream-filter li').removeClass('active');
+        $(this).parent().addClass('active');
+        $("#filter-matchup-spinner").spin(matchupFilterSpin);
 
-    $("#updateBar").click(function () {
-        $(this).button('loading');
-        var lastTime = $("#message-stream").attr("data-ticks");
-        task.getStream(lastTime, true, updateStream);
+        loadMatchupStream($(this).attr('data-position'));
+
+        //send analytics event
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'Filter',
+            eventAction: 'click',
+            eventLabel: 'Matchup Filter'
+        });
+
         return false;
     });
-
-    //top search
-    var playerTemplate = '<a href="{{link}}"><img class="typeahead-avatar" src="{{profileImg}}" alt=""><span class="typeahead-bio">{{name}} | {{position}} | {{team}}</span></a>';
-    var nflPlayers = Hogan.compile(playerTemplate);
-
-    var userTemplate = '<a href="{{link}}"><img class="typeahead-avatar" src="{{image}}" alt=""><span class="typeahead-bio">{{name}} | @{{username}}</span></a>';
-    var users = Hogan.compile(userTemplate);
-
-    $('#main-search').typeahead('destroy');  //destroy first to refresh data
-    $('#main-search').typeahead([
-        {
-            header: '<h4>Players</h4>',
-            template: nflPlayers.render.bind(nflPlayers),
-            prefetch: '/assets/data/players.json'
-        },
-        {
-            header: '<h4>Users</h4>',
-            template: users.render.bind(users),
-            prefetch: '/assets/data/users.json'
-        }
-    ]);
-
-    //stream tabs
-    var tb = getUrlVars()["tb"];
-    if (tb != undefined) {
-        loadMatchupStream();
-    }
-
-    $('a.home-stream[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-        if (e.target.href.indexOf("#matchupstream") != -1) {
-            loadMatchupStream();
-        }
-    })
 
     //sidepanel action - login/register
     $(".login-register").slidepanel({
@@ -381,38 +308,6 @@ $(document).ready(function () {
         return false;
     });
 
-    //follow a player or user
-    $("body").on("click", '.follow', function (e) {
-        var id = $(this).attr("data-account");
-        var type = $(this).attr("data-account-type");
-        var $btn = $(this);
-
-        updateFollowCount(type, id, true);
-        $btn.removeClass("btn-success follow").addClass("btn-danger unfollow").html("Unfollow");
-
-        task.follow(id, type, function (data) {
-            if (type == "users") {
-                task.sendFollowNoticeEmail(id);
-            }
-        });
-
-        return false;
-    });
-
-    //unfollow player or user
-    $("body").on("click", '.unfollow', function (e) {
-        var id = $(this).attr("data-account");
-        var type = $(this).attr("data-account-type");
-        var $btn = $(this);
-
-        updateFollowCount(type, id, false);
-        $btn.removeClass("btn-danger unfollow").addClass("btn-success follow").html("Follow");
-
-        task.unfollow(id, type, function (data) {
-        });
-        return false;
-    });
-
     //forgot password
     $("body").on("click", '#forgot-password-link', function (e) {
         $("#forgot-password-message").hide();
@@ -626,6 +521,7 @@ $(document).ready(function () {
     //images
     loadImages();
 
+    //show latest news from twitter
     $("body").on("click", '.player-card-news', function (e) {
         $(".player-latest-news").css("overflow", "hidden");
 
@@ -658,40 +554,27 @@ $(document).ready(function () {
 
         return false;
     });
-
 });
 
-function loadMatchupStream() {
-    //add the matchup content
-    var lastTime = $("#matchup-list").attr("data-ticks");
+function loadMatchupStream(position) { 
+    task.getMatchupStream(position, function (data) {
+        //$("#matchup-list").attr("data-loaded", "true");
+        $("#message-stream").html(data.StreamData);
+        $("#filter-matchup-spinner").empty();
 
-    if ($("#matchup-list").attr("data-loaded") == "false") {
-        $("#loading-mathups-spinner").spin(smalSpinnerBlackOpts);
-        $("#matchup-loader").show();
-
-        task.getMatchupStream(lastTime, false, function (data) {
-            $("#matchup-list").attr("data-loaded", "true");
-            $("#matchup-list").append(data.StreamData);
-            $("#matchup-loader").hide();
-
-            $(".reply-message-panel").slidepanel({
-                orientation: 'left',
-                mode: 'overlay'
-            });
-
-            $(".invite-matchup-panel").slidepanel({
-                orientation: 'left',
-                mode: 'overlay'
-            });
-
-            loadImages();
-            $.getScript("http://platform.twitter.com/widgets.js");
+        $(".reply-message-panel").slidepanel({
+            orientation: 'left',
+            mode: 'overlay'
         });
-    }
-}
 
-function loadPlayerPopovers() {
-   
+        $(".invite-matchup-panel").slidepanel({
+            orientation: 'left',
+            mode: 'overlay'
+        });
+
+        loadImages();
+        $.getScript("http://platform.twitter.com/widgets.js");
+    });
 }
 
 function loadMatchupInviteTypeahead() {
@@ -745,27 +628,6 @@ function updateStream(data) {
     });
 }
 
-function updatePastStream(data) {
-    //add older messages
-    $("#all-stream-loader").before(data.StreamData);
-    $("#all-stream-loader").hide();
-    $("#get-more-messages").val("false");
-    $("[rel='tooltip']").tooltip();
-    $(".reply-message-panel").slidepanel({
-        orientation: 'left',
-        mode: 'overlay'
-    });
-    loadImages();
-}
-
-function updateFollowCount(type, id, add) {
-    var $playerFollow = $("#following-count");
-    if ($playerFollow.length > 0) {
-        var followCount = (add == true) ? parseInt($playerFollow.text()) + 1 : parseInt($playerFollow.text()) - 1;
-        $playerFollow.text(followCount);
-    }
-}
-
 function passwordSent(data) {
     $("#forgot-password-message").show();
     if (data.Sent) {
@@ -791,43 +653,6 @@ function inviteSent(data) {
     $(".sending-spinner").hide();
     $('#invite-sent').show();
     $("#btnSendInvite").hide();
-}
-
-function showUserMatchups(data) {
-    var weeks = 1;
-    $.each(data.WeeklyMatchup, function (i, matchup) {
-        if (matchup.Matchups.length > 0) {
-            $("#weekly-page").append("<li class='paging-items' id='page-week-" + matchup.WeekNumber + "'><a class='page-number' data-week='" + matchup.WeekNumber + "' data-page-id='week-votes" + matchup.WeekNumber + "' href='#'>" + matchup.WeekNumber + "</a></li>")
-            $("#my-matchup-item").append("<div class='my-matchup-week' id='week-votes" + matchup.WeekNumber + "'></div>");
-            buildUserMatchup(matchup);
-            
-            weeks = matchup.WeekNumber;
-        }
-    });
-    $(".my-matchup-week").hide();
-    $("div#week-votes" + weeks).show();
-
-    $("div#week-votes" + weeks).find("li.matchup-tab").first().addClass("active");
-    $("div#week-votes" + weeks).find("div.votes-panel").first().addClass("active");
-
-    $("li#page-week-" + weeks).addClass("active");
-    $("#my-matchups-loader").hide();
-    $("#weekly-title").show();
-}
-
-function showStarters(data) {
-    var weeks = 1;
-    $.each(data.WeeklyMatchup, function (i, matchup) {
-        if (matchup.Matchups.length > 0) {
-            $("#weekly-tabs").append("<li id='nav-week-" + matchup.WeekNumber + "'><a href='#week" + matchup.WeekNumber + "' data-toggle='tab'>" + matchup.WeekNumber + "</a></li>")
-            $("#weekly-content").append("<div class='tab-pane' id='week" + matchup.WeekNumber + "'></div>");
-            buildMatchup(matchup);
-            weeks = matchup.WeekNumber;
-        }
-    });
-    $("div#week" + weeks).addClass("active");
-    $("li#nav-week-" + weeks).addClass("active");
-    $("#starters-loader").hide();
 }
 
 function buildUserMatchup(matchup) {

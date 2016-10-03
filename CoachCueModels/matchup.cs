@@ -604,20 +604,14 @@ namespace CoachCue.Model
             try
             {
                 var mtQuery = from mtch in db.matchups
-                              where (mtch.player1ID == playerID || mtch.player2ID == playerID) && mtch.status.statusName == "Active"
+                              where (mtch.player1ID == playerID || mtch.player2ID == playerID) && mtch.status.statusName != "Deleted"
                               select mtch;
-
-                if (fromDate.HasValue)
-                {
-                    if( futureTimeline )
-                        mtQuery = mtQuery.Where(match => match.dateCreated > fromDate);
-                    else
-                        mtQuery = mtQuery.Where(match => match.dateCreated < fromDate);
-                }
 
                 if (mtQuery.Count() > 0)
                 {
-                    foreach (matchup item in mtQuery.OrderByDescending(mtch => mtch.dateCreated).ToList())
+                    var matchups = mtQuery.OrderByDescending(mtch => mtch.dateCreated).Take(25).ToList();
+
+                    foreach (matchup item in matchups)
                     {
                         WeeklyMatchups match = GetWeeklyMatchup(item, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, false, userID);
                         if( userMatchups.Where( mt => mt.MatchupID == item.matchupID ).Count() == 0 )
@@ -748,7 +742,7 @@ namespace CoachCue.Model
         }
 
         //get the matchups based on the date
-        public static List<WeeklyMatchups> GetList(int userID, DateTime fromDate, bool futureTimeline)
+        public static List<WeeklyMatchups> GetList(int userID, DateTime fromDate, string position, bool futureTimeline)
         {
             List<WeeklyMatchups> userMatchups = new List<WeeklyMatchups>();
             CoachCueDataContext db = new CoachCueDataContext();
@@ -760,6 +754,19 @@ namespace CoachCue.Model
                               select mtch;
 
                 mtQuery = (!futureTimeline) ? mtQuery.Where(mtch => mtch.dateCreated < fromDate) : mtQuery.Where(mtch => mtch.dateCreated >= fromDate);
+                if (!string.IsNullOrEmpty(position))
+                {
+                    if (position == "DEF")
+                    {
+                        mtQuery = mtQuery.Where(mtch => mtch.nflplayer.position.positionName == position
+                                || mtch.nflplayer1.position.positionName == position
+                                || mtch.nflplayer.position.positionName == "K"
+                                || mtch.nflplayer1.position.positionName == "K");
+                    }
+                    else
+                        mtQuery = mtQuery.Where(mtch => mtch.nflplayer.position.positionName == position 
+                                || mtch.nflplayer1.position.positionName == position);
+                }
 
                 var isMobile = HttpContext.Current.Request.Browser.IsMobileDevice;
                 if (mtQuery.Count() > 0)
