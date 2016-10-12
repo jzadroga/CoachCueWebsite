@@ -88,6 +88,8 @@ $(document).ready(function () {
 
     //replies need a unique href to make sure they don't cache
     $("body").on("click", '.reply-message-panel', function (e) {
+        e.preventDefault();
+
         var dt = new Date();
         var href = $(this).attr("href");
         if (href.indexOf("&daz=") >= 0) {
@@ -100,6 +102,7 @@ $(document).ready(function () {
 
     //submit the new message
     $("#slidepanel").on("click", '#share-post', function (e) {
+        e.preventDefault();
 
         //$msgPanel.data("plugin_slidepanel").collapse();
         var message = $("#share-message").val();
@@ -215,7 +218,7 @@ $(document).ready(function () {
     //user notifications
     $('#user-notifications').popover({
         trigger: 'click',
-        placement: 'bottom',
+        placement: 'left',
         html: true
     });
   

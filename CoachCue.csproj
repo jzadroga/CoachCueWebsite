@@ -239,6 +239,8 @@
     <Content Include="assets\css\global.css" />
     <Content Include="assets\css\global.mobile.css" />
     <Content Include="assets\css\typeahead.css" />
+    <Content Include="assets\font\fonts\icomoon.svg" />
+    <Content Include="assets\font\style.css" />
     <Content Include="assets\img\asktwitter.png" />
     <Content Include="assets\img\avatar\profile.jpg" />
     <Content Include="assets\img\avatar\sm_profile.jpg" />
@@ -320,6 +322,9 @@
     <Content Include="assets\js\helpers.js" />
     <Content Include="assets\data\players.json" />
     <Content Include="assets\data\users.json" />
+    <Content Include="assets\font\fonts\icomoon.eot" />
+    <Content Include="assets\font\fonts\icomoon.ttf" />
+    <Content Include="assets\font\fonts\icomoon.woff" />
     <None Include="assets\js\jquery-1.5.1-vsdoc.js" />
     <Content Include="assets\js\hogan.js" />
     <Content Include="assets\js\jquery.masonry.min.js" />
@@ -466,6 +471,7 @@
       <Name>CoachCueModels</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../font/fonts/icomoon.eot?k88sc6');
+  src:  url('../font/fonts/icomoon.eot?k88sc6#iefix') format('embedded-opentype'),
+    url('../font/fonts/icomoon.ttf?k88sc6') format('truetype'),
+    url('../font/fonts/icomoon.woff?k88sc6') format('woff'),
+    url('../font/fonts/icomoon.svg?k88sc6#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="navicon-"], [class*=" navicon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.navicon-CC2016_Message_Icon_03{
+    font-size: 50px;
+    width: 44px !important;
+    display: block !important;
+    height: 37px;
+    top: -8px;
+    color: #70CCE3;
+}
+
+.navicon-CC2016_Matchup_Icon{
+    font-size: 50px;
+    width: 64px !important;
+    display: block !important;
+    height: 30px;
+    top: -8px;
+}
+
+.navicon-CC2016_Message_Icon_03:before {
+  content: "\e900";
+}
+.navicon-CC2016_Matchup_Icon .path1:before {
+  content: "\e901";
+  color: rgb(240, 145, 51);
+}
+.navicon-CC2016_Matchup_Icon .path2:before {
+  content: "\e902";
+  margin-left: -1em;
+  color: rgb(253, 251, 250);
+}
+.navicon-CC2016_Matchup_Icon .path3:before {
+  content: "\e903";
+  margin-left: -1em;
+  color: rgb(253, 251, 250);
+}
+.navicon-CC2016_Matchup_Icon .path4:before {
+  content: "\e904";
+  margin-left: -1em;
+  color: rgb(253, 251, 250);
+}
+.navicon-CC2016_Matchup_Icon .path5:before {
+  content: "\e905";
+  margin-left: -1em;
+  color: rgb(240, 145, 51);
+}
+

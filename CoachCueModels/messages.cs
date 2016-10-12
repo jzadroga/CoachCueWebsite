@@ -521,6 +521,14 @@ namespace CoachCue.Model
                 List<message> messageList = msgQuery.OrderByDescending(msg => msg.dateCreated).Take(25).ToList();
                 if (messageList.Count() > 0)
                     msgs = messageList;
+
+                foreach (message msgItem in msgs)
+                {
+                    msgItem.ConversationMessages = new List<message>();
+                    var convo = db.messages.Where(msg => msg.messageContextID.Value == msgItem.messageID && msg.messagecontexttype.messageContextTypeName == "general").OrderBy(msg => msg.dateCreated);
+                    if (convo.Count() > 0)
+                        msgItem.ConversationMessages = convo.ToList();
+                }
             }
             catch (Exception) { }
 
@@ -552,7 +560,7 @@ namespace CoachCue.Model
                         foreach (message msgItem in messages)
                         {
                             msgItem.ConversationMessages = new List<message>();
-                            var convo = msgQueryAll.Where(msg => msg.messageContextID.Value == msgItem.messageID);
+                            var convo = msgQueryAll.Where(msg => msg.messageContextID.Value == msgItem.messageID).OrderBy(msg => msg.dateCreated);
                             if (convo.Count() > 0)
                                 msgItem.ConversationMessages = convo.ToList();
                         }

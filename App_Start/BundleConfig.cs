@@ -20,7 +20,8 @@ namespace CoachCue
             bundles.Add(new StyleBundle("~/assets/css/bundle").Include(
                       "~/assets/css/bootstrap-tagsinput.css",
                       "~/assets/css/typeahead.css",
-                      "~/assets/css/global.css"));
+                      "~/assets/css/global.css",
+                      "~/assets/font/style.css"));
         }
     }
 }
