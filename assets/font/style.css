@@ -25,20 +25,18 @@
 }
 
 .navicon-CC2016_Message_Icon_03{
-    font-size: 50px;
-    width: 44px !important;
+    font-size: 70px;
+    width: 84px !important;
     display: block !important;
-    height: 37px;
-    top: -8px;
-    color: #70CCE3;
+    height: 50px !important;
+    color: #fff;
 }
 
 .navicon-CC2016_Matchup_Icon{
-    font-size: 50px;
-    width: 64px !important;
+    font-size: 70px;
+    width: 84px !important;
     display: block !important;
-    height: 30px;
-    top: -8px;
+    height: 50px !important;
 }
 
 .navicon-CC2016_Message_Icon_03:before {
@@ -46,26 +44,39 @@
 }
 .navicon-CC2016_Matchup_Icon .path1:before {
   content: "\e901";
-  color: rgb(240, 145, 51);
+  color:  rgb(253, 251, 250);
 }
 .navicon-CC2016_Matchup_Icon .path2:before {
   content: "\e902";
   margin-left: -1em;
-  color: rgb(253, 251, 250);
+  color:rgb(240, 145, 51);
 }
 .navicon-CC2016_Matchup_Icon .path3:before {
   content: "\e903";
   margin-left: -1em;
-  color: rgb(253, 251, 250);
+  color:rgb(240, 145, 51);
 }
 .navicon-CC2016_Matchup_Icon .path4:before {
   content: "\e904";
   margin-left: -1em;
-  color: rgb(253, 251, 250);
+  color: rgb(240, 145, 51);
 }
 .navicon-CC2016_Matchup_Icon .path5:before {
   content: "\e905";
   margin-left: -1em;
-  color: rgb(240, 145, 51);
+  color:  rgb(253, 251, 250);
 }
 
+@media (max-width: 480px) {
+    .navicon-CC2016_Message_Icon_03{
+        font-size: 45px;
+        width: 47px !important;
+        height: 30px !important;
+    }
+
+    .navicon-CC2016_Matchup_Icon{
+        font-size: 45px;
+        width: 50px !important;
+        height: 30px !important;
+    }
+}

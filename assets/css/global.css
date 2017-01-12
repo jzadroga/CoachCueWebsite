@@ -33,6 +33,54 @@
 	padding: 5px;
 }
 
+/* Global buttons */
+
+div.global-button-items{
+    position: fixed; 
+    bottom: 8rem; 
+    right: 2rem;
+}
+
+div.global-button-item{
+    border-radius: 50%; 
+    background-color: #f5f5f5; 
+    height: 86px; 
+    width: 86px; 
+}
+
+div.global-button-item div.global-button-item-sub {
+    height: 100%;  
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;
+}
+
+div.global-button-item div a, div.global-button-item div a:hover, div.global-button-item div a:visited{
+    text-decoration: none
+}
+
+div.global-button-item-message{
+    border: 1px solid #70CCE3;   
+    margin: 0 0 16px;
+    background-color: #70CCE3;
+}
+
+div.global-button-item-message div a, div.global-button-item-message div a:hover, div.global-button-item-message div a:visited {
+    color: #fff;
+}
+
+div.global-button-item-matchup{
+    border: 1px solid #F18A21; 
+    background-color: #F18A21;
+}
+
+div.global-button-item-matchup div a, div.global-button-item-matchup div a:visited, div.global-button-item-matchup div a:hover
+{
+    color :#fff;
+}
+
+/* End Global buttons */
+
 /* used for the leaderboard */
 .stacktable.large-only { display: table; }
 .stacktable.small-only { display: none; }
@@ -104,6 +152,16 @@ input.email
 .navbar-search .tt-hint, .navbar-search .tt-query
 {
     width: 200px;
+}
+
+.navbar-nav > li > a.profile-link {
+    padding-top: 5px !important;
+    padding-bottom: 2px !important;
+}
+
+.my-account-image{
+    height: 40px; 
+    width: 40px;
 }
 
 .nav-main-links .popover{
@@ -2740,8 +2798,6 @@ ul.footer li.copyright{
 
 #main-nav-bar .brand {
     position: absolute;
-    left: 50%;
-    margin-left: -50px !important;  /* 50% of your logo width */
     display: block;
 }
 
@@ -3597,6 +3653,19 @@ div.new-message-text-controls  div.message-charNum{
 }
 
 @media (max-width: 480px) {
+    div.global-button-item-message{
+        margin: 0 0 10px;
+    }
+
+    div.global-button-item{
+        height: 50px; 
+        width: 50px; 
+    }
+
+    .global-button-item-text{
+        display: none;
+    }
+
     .navbar-right .popover {        
         width: 250px !important;
     }
@@ -3609,36 +3678,16 @@ div.new-message-text-controls  div.message-charNum{
         width: 170px;
     }
 
-     #main-nav-bar .brand {
-        display: none;
-    }
-
     #main-nav-bar ul.nav-main-links li a {
         padding-right: 5px;
     }
 
-    #main-nav-bar .brand {
-        left: 65%;
-    }
-
-    a.brand.logo {
-        background-size: 85%;
-    }
-
-    a.brand.logo {
-        background-size: 100%;
-        text-indent: -9999px;
-        padding: 8px 25px !important;
-        background-image: url(../img/CC2016_Icon.png);
-        background-repeat: no-repeat;
+    .about-player-tip{
+        display: none;
     }
 
     .message-post .msg-container, .message-post .matchup-invite, .msg-players .share-players {
          margin-left: 0px !important;
-    }
-
-    .about-player-tip{
-        display: none;
     }
 
     .message-post .user-avatar.large{
