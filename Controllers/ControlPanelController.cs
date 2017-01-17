@@ -99,9 +99,9 @@ namespace CoachCue.Controllers
             return View(users);
         }
 
-        public ActionResult ImportRoster(int teamID)
+        public async Task<ActionResult> ImportRoster(int teamID)
         {
-            CoachCue.Model.nflplayer.ImportRoster(CoachCue.Model.nflteam.Get(teamID).teamSlug);
+            await CoachCue.Model.nflplayer.ImportRoster(CoachCue.Model.nflteam.Get(teamID));
             return RedirectToAction("TeamRoster", new { team=teamID });
         }
 

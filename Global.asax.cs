@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoachCue.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,6 +22,8 @@ namespace CoachCue
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            DocumentDBRepository<CoachCue.Models.Player>.Initialize();
         }
 
         protected void Application_Error(object sender, EventArgs e)

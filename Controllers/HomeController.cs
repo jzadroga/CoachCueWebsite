@@ -13,6 +13,8 @@ using System.Configuration;
 using CoachCue.Helpers;
 using CoachCue.Utility;
 using System.Threading.Tasks;
+using CoachCue.Repository;
+using CoachCue.Models;
 
 namespace CoachCue.Controllers
 {
@@ -20,8 +22,12 @@ namespace CoachCue.Controllers
     {
         public string COACHCUE_AUTH_COOKIE = "coachcue_auth";
 
-        public ActionResult Index([DefaultValue("")] string gu, [DefaultValue("")] string tb)
+        public async Task<ActionResult> Index([DefaultValue("")] string gu, [DefaultValue("")] string tb)
         {
+           
+
+            //await DocumentDBRepository<Item>.CreateItemAsync(item);
+
             if (ConfigurationManager.AppSettings["showSignup"] == "true")
                 return RedirectToAction("Index", "Signup");
 

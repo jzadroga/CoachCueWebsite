@@ -3,6 +3,12 @@
 
 bin/
 
+bin/Debug/
+
+obj/Debug/
+
+CoachCueModels/bin/Debug/
+
 # User-specific files
 *.suo
 *.user
