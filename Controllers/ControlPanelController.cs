@@ -12,6 +12,7 @@ using CoachCue.Model;
 using System.IO;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using CoachCue.Service;
 
 namespace CoachCue.Controllers
 {
@@ -101,7 +102,7 @@ namespace CoachCue.Controllers
 
         public async Task<ActionResult> ImportRoster(int teamID)
         {
-            await CoachCue.Model.nflplayer.ImportRoster(CoachCue.Model.nflteam.Get(teamID));
+            await PlayerService.ImportRoster(CoachCue.Model.nflteam.Get(teamID));
             return RedirectToAction("TeamRoster", new { team=teamID });
         }
 
@@ -254,8 +255,10 @@ namespace CoachCue.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult BuildUserJson()
+        public async Task<ActionResult> BuildUserJson()
         {
+            await UserService.ImportUsers();
+
             using (FileStream fs = System.IO.File.Open(Server.MapPath("~/assets/data/users.json"), FileMode.Create))
             using (StreamWriter sw = new StreamWriter(fs))
             using (JsonWriter jw = new JsonTextWriter(sw))

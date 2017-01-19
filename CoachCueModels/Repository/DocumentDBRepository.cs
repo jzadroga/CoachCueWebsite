@@ -70,8 +70,6 @@
         public static void Initialize()
         {
             client = new DocumentClient(new Uri(ConfigurationManager.AppSettings["endpoint"]), ConfigurationManager.AppSettings["authKey"]);
-           // CreateDatabaseIfNotExistsAsync().Wait();
-          //  CreateCollectionIfNotExistsAsync().Wait();
         }
 
         private static async Task CreateDatabaseIfNotExistsAsync()
@@ -93,7 +91,7 @@
             }
         }
 
-        private static async Task CreateCollectionIfNotExistsAsync(string collection)
+        public static async Task CreateCollectionIfNotExistsAsync(string collection)
         {
             try
             {

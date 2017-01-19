@@ -24,6 +24,7 @@ namespace CoachCue
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             DocumentDBRepository<CoachCue.Models.Player>.Initialize();
+            DocumentDBRepository<CoachCue.Models.User>.Initialize();
         }
 
         protected void Application_Error(object sender, EventArgs e)

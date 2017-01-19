@@ -100,7 +100,8 @@
     <Compile Include="Models\Team.cs" />
     <Compile Include="Models\TwitterAccount.cs" />
     <Compile Include="OpenGraph.cs" />
-    <Compile Include="PlayerService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\PlayerService.cs" />
     <Compile Include="Repository\DocumentDBRepository.cs" />
     <Compile Include="signup.cs" />
     <Compile Include="avatar.cs" />

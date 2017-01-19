@@ -11,6 +11,9 @@ namespace CoachCue.Models
         [JsonProperty(PropertyName = "fullName")]
         public string Name { get; set; }
 
+        [JsonProperty(PropertyName = "userName")]
+        public string UserName { get; set; }
+
         [JsonProperty(PropertyName = "email")]
         public string Email { get; set; }
 
