@@ -92,6 +92,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Media.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Matchup.cs" />
+    <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\MatchupVote.cs" />
+    <Compile Include="Models\MatchupPlayer.cs" />
     <Compile Include="Models\UserStatistics.cs" />
     <Compile Include="Models\UserSettings.cs" />
     <Compile Include="Models\UserProfile.cs" />
@@ -100,6 +106,7 @@
     <Compile Include="Models\Team.cs" />
     <Compile Include="Models\TwitterAccount.cs" />
     <Compile Include="OpenGraph.cs" />
+    <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\PlayerService.cs" />
     <Compile Include="Repository\DocumentDBRepository.cs" />
