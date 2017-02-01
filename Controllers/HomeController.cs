@@ -24,32 +24,24 @@ namespace CoachCue.Controllers
 
         public async Task<ActionResult> Index([DefaultValue("")] string gu, [DefaultValue("")] string tb)
         {
-           
-
-            //await DocumentDBRepository<Item>.CreateItemAsync(item);
-
-            if (ConfigurationManager.AppSettings["showSignup"] == "true")
-                return RedirectToAction("Index", "Signup");
-
             HomeViewModel homeVM = new HomeViewModel();
             homeVM.ShowWelcome = false;
             homeVM.LoggedIn = false;
             homeVM.LoadMatchups = (!string.IsNullOrEmpty(tb)) ? true : false;
-            //homeVM.LoadMatchups = false;
 
             if (!string.IsNullOrEmpty(tb))
                 HttpContext.Session["media"] = tb;
 
-            int userID = (User.Identity.IsAuthenticated) ? user.GetUserID(User.Identity.Name) : 0;
-            if( userID != 0 )
+            string userID = (User.Identity.IsAuthenticated) ? CoachCueUserData.GetUserData(User.Identity.Name).UserId : string.Empty;
+            if(!string.IsNullOrEmpty(userID))
             {
                 homeVM.LoggedIn = true;
                
-                int logins = user.SaveLogin(userID);
+                int logins = user.SaveLogin(Convert.ToInt32(userID));
                 //if (logins <= 1)
                 //    homeVM.ShowWelcome = true;
 
-                homeVM.Stream = stream.GetStream(userID, true, string.Empty);
+                homeVM.Stream = stream.GetStream(Convert.ToInt32(userID), true, string.Empty);
             }
             else
             {
@@ -66,18 +58,9 @@ namespace CoachCue.Controllers
                     }
                 }
                 
-                //not logged in so redirect to signup
-                //if( string.IsNullOrEmpty(tb) && string.IsNullOrEmpty(gu) )
-                //    return RedirectToAction("Index", "Signup");
-                //else
-                    //not logged in so get random players
                 List<nflplayer> trendingPlayers = nflplayer.GetTrending(5);
                 homeVM.Stream = stream.GetStream(43, true, string.Empty);//stream.GetPlayersStream(trendingPlayers.ToList());
             }
-
-            //user is coming in from an invite email
-            homeVM.ShowRegistration = (userID == 0 && gu == "xyyyy-567-0gtr") ? true : false;
-            homeVM.ShowFriendInvite = (gu.ToLower() == "invitefriend") ? true : false;
 
             return View(homeVM);         
         }

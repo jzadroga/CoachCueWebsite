@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Media.cs" />
+    <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Matchup.cs" />
     <Compile Include="Models\Game.cs" />

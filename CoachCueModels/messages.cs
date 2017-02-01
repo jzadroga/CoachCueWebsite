@@ -172,7 +172,7 @@ namespace CoachCue.Model
             message msg = new message();
             SavedMessage savedMsg = new SavedMessage();
 
-            try
+           /* try
             {
                 //clear the message cache
                 HttpContext.Current.Cache.Remove(_messageCacheID);
@@ -245,7 +245,7 @@ namespace CoachCue.Model
                 savedMsg.UserMessage = msg;
             }
             catch (Exception) { }
-
+            */
             return savedMsg;
         }
 
@@ -573,57 +573,6 @@ namespace CoachCue.Model
 
             return messages;
         }
-
-        public static FormattedMessage FormatMessage(string txt)
-        {
-            FormattedMessage messageItem = new FormattedMessage();
-            //spilt the message into words
-            List<string> words = txt.Replace("https", "http").Split(' ').ToList();
-            List<string> domains = new string[]{".com", ".org", ".net", ".mil", ".edu"}.ToList();
-            string message = string.Empty;
-
-            foreach (string word in words)
-            {
-                //check for link format
-                if (domains.Any(w => word.ToLower().Contains(w)))
-                    message += (word.ToLower().StartsWith("http://")) ? word : "http://" + word;
-                else if (word.StartsWith("@")) //check for user
-                {
-                    user userItem = user.GetByAccountUsername(word.Substring(1));
-                    if (userItem != null)
-                    {
-                        messageItem.userIncluded = true;
-                        messageItem.userList.Add( userItem );
-                        if (userItem.userID != 0)
-                            message += "<a href='/coach/" + userItem.userID + "/" + userItem.fullName + "'>" + word + "</a>";
-                    }
-                }
-                else
-                    message += word;
-
-                message += " ";
-            }
-
-            message = message.Trim();
-
-            //build urls if links are inlcuded
-            Regex regx = new Regex("http://([\\w+?\\.\\w+])+([a-zA-Z0-9\\~\\!\\@\\#\\$\\%\\^\\&amp;\\*\\(\\)_\\-\\=\\+\\\\\\/\\?\\.\\:\\;\\'\\,]*)?", RegexOptions.IgnoreCase);
-            MatchCollection mactches = regx.Matches(message);
-
-            foreach (Match match in mactches)
-            {
-                string googleUrl = GoogleAPI.GetShortUrl(match.Value);
-
-                //check for opengraph data
-                messageItem.openGraph = OpenGraph.Parse(match.Value);
-
-                string showUrl = (match.Value.Length > 25 ) ? googleUrl : match.Value;
-                message = message.Replace(match.Value, "<a target='_blank' href='" + googleUrl + "'>" + showUrl + "</a>");
-            }
-
-            messageItem.messageText = message;
-            return messageItem;
-        }
     }
 
     public partial class messagecontexttype
@@ -641,20 +590,6 @@ namespace CoachCue.Model
             return contextTypeID;
         }
 
-    }
-
-    public class FormattedMessage
-    {
-        public string messageText { get; set; }
-        public OpenGraphResponse openGraph { get; set; }
-        public bool userIncluded { get; set; }
-        public List<user> userList { get; set; }
-
-        public FormattedMessage()
-        {
-            this.userList = new List<user>();
-            this.openGraph = new OpenGraphResponse();
-        }
     }
 
     public class MentionNotice

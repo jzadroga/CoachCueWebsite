@@ -13,6 +13,7 @@ using System.Web.Script.Serialization;
 using CoachCue.Utility;
 using System.Globalization;
 using System.Threading.Tasks;
+using CoachCue.Service;
 
 namespace CoachCue.Controllers
 {
@@ -226,12 +227,27 @@ namespace CoachCue.Controllers
 
         [SiteAuthorization]
         [NoCacheAttribute]
-        public ActionResult SaveMessage(string plyID, string msg, int prnt, string type, bool inline)
+        public async Task<ActionResult> SaveMessage(string plyID, string msg, int prnt, string type, bool inline)
         {   
-            int userID = user.GetUserID(User.Identity.Name);
-            SavedMessage userMessage = message.Save(userID, plyID, msg, type, (prnt == 0) ? null : (int?)prnt);
+            string userID = CoachCueUserData.GetUserData(User.Identity.Name).UserId;
+            //SavedMessage userMessage = message.Save(userID, plyID, msg, type, (prnt == 0) ? null : (int?)prnt);
+            var message = await MessageService.Save(userID, plyID, msg, "message");
 
-            StreamContent streamItem = stream.ConvertToStream(userMessage.UserMessage, type, userID);
+
+            StreamContent streamItem = new StreamContent
+            {
+                //MessageItem = msg,
+                DateTicks = message.DateCreated.Ticks.ToString(),
+               // ProfileImg = message.
+                UserName = userID,
+               // FullName = msg.user.fullName,
+                ContentType = "message",
+                DateCreated = message.DateCreated,
+                TimeAgo = twitter.GetRelativeTime(message.DateCreated),
+                HideActions = (type == "matchup") ? true : false,
+                //UserProfileImg = (currentUser.userID != 0) ? currentUser.avatar.imageName : string.Empty
+            };
+
             if (inline && prnt != 0) 
                 streamItem.CssClass = "conversation-message";
 
@@ -253,9 +269,9 @@ namespace CoachCue.Controllers
                 ID = plyID,
                 Type = type,
                 Inline = inline,
-                MentionNotices = userMessage.MentionNotices,
-                //LastUpdateTicks = streamItem.DateTicks,
-                AddPlayerHeader = false,
+                MentionNotices = new List<MentionNotice>(),
+            //LastUpdateTicks = streamItem.DateTicks,
+            AddPlayerHeader = false,
                 ParentID = prnt
             }, JsonRequestBehavior.AllowGet);
         }

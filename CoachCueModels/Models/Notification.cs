@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace CoachCue.Models
 {
-    public class Message
+    public class Notification
     {
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
@@ -18,16 +18,13 @@ namespace CoachCue.Models
         [JsonProperty(PropertyName = "createdBy")]
         public string CreatedBy { get; set; }
 
-        [JsonProperty(PropertyName = "media")]
-        public Media Media { get; set; }
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; set; }
 
-        [JsonProperty(PropertyName = "playerMentions")]
-        public List<string> PlayerMentions { get; set; }
+        [JsonProperty(PropertyName = "userFrom")]
+        public User UserFrom { get; set; }
 
-        [JsonProperty(PropertyName = "userMentions")]
-        public List<string> UserMentions { get; set; }
-
-        [JsonProperty(PropertyName = "reply")]
-        public List<Message> Reply { get; set; }
+        [JsonProperty(PropertyName = "userTo")]
+        public User UserTo { get; set; }
     }
 }
