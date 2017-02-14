@@ -109,7 +109,7 @@
                             <li class="dropdown you-dropdown @Html.ActiveSection("Account")">
 
                                 <a class="dropdown-toggle profile-link" data-toggle="dropdown" href="#">                                  
-                                    <img alt="@Model.Name" class="img-rounded my-account-image" src="@Url.Content("~/assets/img/avatar/" + Model.Avatar)" />
+                                    <img alt="@Model.UserData.Name" class="img-rounded my-account-image" src="@Url.Content("~/assets/img/avatar/" + Model.UserData.ProfileImage)" />
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu profile-nav-links">
@@ -308,8 +308,77 @@
                 <p>Something bad happened.  You should try to fix it before it gets worse.</p>
             </div>
 
-            <!-- hidden modal -->
-            <div class="modal fade hidden" id="hidden-modal" style="display: none">
+            <a class="reply-message-panel" data-backdrop="static" data-keyboard="false" href="#modal-fullscreen" data-toggle="modal" data-target="#modal-fullscreen">
+                <input style="width: 100%" class="form-control" type="text" placeholder="Add a comment.." />
+            </a>
+            <!-- full screen modal -->        
+            <div class="modal modal-fullscreen" id="modal-fullscreen" tabindex="-1" role="dialog" aria-hidden="true">
+                <input type="hidden" id="msgType" value="general" />
+                <input type="hidden" id="prnt-id" value="" />
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                            </button>
+                            <h4 class="modal-title"></h4>
+                            <div class="post">
+                                <button id="share-post" class="btn btn-warning disabled" type="button">Share</button>
+                                <div class="message-charNum">140</div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="user-img">
+                                    <img class="img-rounded avatar large img-responsive" src='@Url.Content("~/assets/img/avatar/" + @Model.UserData.ProfileImage)' />
+                                </div>
+                                <div class="user">
+                                    <span>
+                                        <span class="full-name">@Model.UserData.Name</span>
+                                        <span class="user-name">@@@Model.UserData.UserName</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="textarea-wrap">                               
+                                <textarea class="users-typeahead" id="share-message" placeholder="Share some news (Add relevant players below)"></textarea>
+                            </div>
+                            <div class="row" style="padding-top: 8px;">
+                                <div class="msg-players">
+                                    <div class="ply-label">
+                                        About Player(s):
+                                    </div>
+                                    <div class="share-players">
+                                        <input data-role="tagsinput" style="width: 100%" type="text" data-plyid="0" id="players" /> @* @if (Model.MessagePlayers.Count() <= 0) { <text> placeholder="+ Add player(s) in message" </text>   } />*@
+                                       @* @foreach (nflplayer player in Model.MessagePlayers)
+    {
+        <input type="hidden" class="player-tags" data-img="@player.profilePic" data-name="@player.shortName" value="@player.playerID" />
+    }*@
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="modal-footer">
+                            <div class="photo" aria-label="Add photos">
+                                <div tabindex="-1" class="photo-container" role="presentation">
+                                    <div>
+                                        <svg class="CQTbeRtL" viewBox="0 0 70 72" style="display: inline-block; fill: currentcolor; height: 1.25em; max-width: 100%; position: relative; user-select: none; vertical-align: text-bottom;">
+                                            <g><path d="M59 14h-8.824a90.98 90.98 0 0 0-1.687-2.827C47.306 9.308 45.887 9 44.14 9H25.994c-1.748 0-3.166.308-4.35 2.173A91.165 91.165 0 0 0 19.958 14H11a8 8 0 0 0-8 8v30a8 8 0 0 0 8 8h48a8 8 0 0 0 8-8V22a8 8 0 0 0-8-8zM35.001 52.001c-8.823 0-16.001-7.178-16.001-16C19 27.178 26.178 20 35.001 20 43.823 20 51 27.178 51 36.001c0 8.822-7.177 16-15.999 16zm21-24.001a3 3 0 1 1 0-6.001A3 3 0 0 1 56 28z"></path><circle cx="35.001" cy="36" r="10"></circle></g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                                          
+                                            <div class="input-group image-preview">                                                                                           
+                                                <input type="file" accept="image/png, image/jpeg, image/gif" class="photo-file" id="input-file-preview" />                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -321,7 +390,7 @@
                     @if (!User.Identity.IsAuthenticated) {
                         <a role="button" data-slidepanel="panel" class="login-register" href="/Post/LoginRegister"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
                     } else {
-                        <a href="@Url.Action("Index", "Coach", new { id = Model.AccountID, name = Model.Name })"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
+                        <a href="@Url.Action("Index", "Coach", new { id = Model.UserData.UserId, name = Model.UserData.Name })"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
                     }
                 </div>
                 <div class="col-xs-3 text-center">

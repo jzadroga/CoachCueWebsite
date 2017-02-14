@@ -11,6 +11,7 @@ using System.Web;
 using HtmlAgilityPack;
 using CoachCue;
 using System.Configuration;
+using CoachCue.Service;
 
 namespace CoachCue.Model
 {
@@ -159,7 +160,7 @@ namespace CoachCue.Model
             {
                 foreach (StreamContent streamItem in stream)
                 {
-                    if (streamItem.MessageItem.messageID == messageContextID)
+                    //if (streamItem.MessageItem.messageID == messageContextID)
                         show = false;
                 }
             }

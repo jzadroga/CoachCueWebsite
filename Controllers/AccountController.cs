@@ -16,6 +16,7 @@ using DotNetOpenAuth.OpenId.RelyingParty;
 using DotNetOpenAuth.OpenId;
 using DotNetOpenAuth.OpenId.Extensions.AttributeExchange;
 using DotNetOpenAuth.OpenId.Extensions.SimpleRegistration;
+using CoachCue.Repository;
 
 namespace CoachCue.Controllers
 {
@@ -211,7 +212,7 @@ namespace CoachCue.Controllers
                 if (MembershipService.ValidateUser(username, password))
                 {
                     var usr = user.GetUserByEmail(username);
-                    CoachCueUserData.SetUserData(usr.userID.ToString(), usr.fullName, usr.userName); 
+                    CoachCueUserData.SetUserData(usr.userID.ToString(), usr.fullName, usr.userName, usr.avatar.imageName); 
 
                     //always have the rememberme cookie set
                     FormsService.SignIn(username, true);
@@ -431,7 +432,7 @@ namespace CoachCue.Controllers
             ProfileViewModel pVM = new ProfileViewModel(userItem);
             if (!string.IsNullOrEmpty(fileName))
             {
-                pVM.Avatar = fileName;
+//                pVM.Avatar = fileName;
                 pVM.DisplayMessage = true;
                 pVM.Message = "Thanks, your picture has been updated";
             }
@@ -446,41 +447,4 @@ namespace CoachCue.Controllers
             return new ThumbnailImageResult(imagePath, size);
         }
     }
-}
-
-public class CoachCueUserData
-{
-    public string UserId { get; set; }
-    public string Name { get; set; }
-    public string UserName { get; set; }
-
-    public static void SetUserData(string id, string name, string userName)
-    {
-        HttpContext.Current.Session["UserId"] = id;
-        HttpContext.Current.Session["Name"] = name;
-        HttpContext.Current.Session["UserName"] = userName;
-    }
-
-    public static CoachCueUserData GetUserData(string email)
-    {
-        if (HttpContext.Current.Session["UserId"] == null ||
-                HttpContext.Current.Session["Name"] == null ||
-                 HttpContext.Current.Session["UserName"] == null )
-        {
-            var currentUser = user.GetUserByEmail(email);
-            SetUserData(currentUser.userID.ToString(), currentUser.fullName, currentUser.userName);
-
-            return new CoachCueUserData(){ UserId = currentUser.userID.ToString(),
-                                             Name = currentUser.fullName,
-                                             UserName = currentUser.userName };
-        }
-
-        return new CoachCueUserData()
-        {
-            UserId = HttpContext.Current.Session["UserId"].ToString(),
-            Name = HttpContext.Current.Session["Name"].ToString(),
-            UserName = HttpContext.Current.Session["UserName"].ToString()
-        };
-    }
-
 }

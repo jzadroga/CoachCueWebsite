@@ -16,7 +16,7 @@ namespace CoachCue.Service
     public static class MessageService
     { 
         //save a message document to the Messages collection
-        public static async Task<Message> Save(string userID, string playerIDs, string text, string type, int? parentID = null)
+        public static async Task<Message> Save(CoachCueUserData userData, string playerIDs, string text, string type, string parentID)
         {
             Message message = new Message();
 
@@ -26,11 +26,14 @@ namespace CoachCue.Service
                     return message;
 
                 FormattedMessage messageItem = await FormatMessage(text);
-                message.CreatedBy = userID;
+                message.CreatedBy = userData.UserId;
                 message.Text = messageItem.messageText;
 
                 DateTime messageCreated = DateTime.UtcNow.GetEasternTime();
                 message.DateCreated = messageCreated;
+                message.UserName = userData.UserName;
+                message.Name = userData.Name;
+                message.ProfileImage = userData.ProfileImage;
 
                 //check for opengraph info
                 Media media = new Media();
@@ -58,35 +61,58 @@ namespace CoachCue.Service
                         players.Add(playerID);
                     }
                 }
-                message.PlayerMentions = players;
+                message.PlayerMentions = new List<Player>();
 
+                message.Reply = new List<Message>();
+                message.UserMentions = new List<User>();
                 //add a notifications and user mention joins
-               /* if (messageItem.userIncluded)
-                {
-                    foreach (user mention in messageItem.userList)
-                    {
-                        AddUserMention(msg.messageID, mention.userID);
-                        notification mentionNotice = notification.Add("messageMention", msg.messageID, userID, mention.userID, messageCreated);
-                        savedMsg.MentionNotices.Add(new MentionNotice { fromUser = userID, toUser = mention.userID, messageID = msg.messageID, noticeGuid = mentionNotice.notificationGUID });
-                    }
-                }
+                /* if (messageItem.userIncluded)
+                 {
+                     foreach (user mention in messageItem.userList)
+                     {
+                         AddUserMention(msg.messageID, mention.userID);
+                         notification mentionNotice = notification.Add("messageMention", msg.messageID, userID, mention.userID, messageCreated);
+                         savedMsg.MentionNotices.Add(new MentionNotice { fromUser = userID, toUser = mention.userID, messageID = msg.messageID, noticeGuid = mentionNotice.notificationGUID });
+                     }
+                 }
 
-                //also add notification if its a message about the user created matchup
-                if (type == "matchup" && parentID.HasValue)
-                {
-                    matchup matchupItem = matchup.Get(parentID.Value);
-                    notification matchupNotice = notification.Add("matchupMessage", matchupItem.matchupID, userID, matchupItem.createdBy, messageCreated);
-                    savedMsg.MentionNotices.Add(new MentionNotice { fromUser = userID, toUser = matchupItem.createdBy, messageID = matchupItem.matchupID, noticeGuid = matchupNotice.notificationGUID });
-                }
-                */
+                 //also add notification if its a message about the user created matchup
+                 if (type == "matchup" && parentID.HasValue)
+                 {
+                     matchup matchupItem = matchup.Get(parentID.Value);
+                     notification matchupNotice = notification.Add("matchupMessage", matchupItem.matchupID, userID, matchupItem.createdBy, messageCreated);
+                     savedMsg.MentionNotices.Add(new MentionNotice { fromUser = userID, toUser = matchupItem.createdBy, messageID = matchupItem.matchupID, noticeGuid = matchupNotice.notificationGUID });
+                 }
+                 */
 
-                //here we need to figure out if it is a top level message or we are adding to an existing object - matchup or message
-                //if not a child to either message or matchup then create new
-                await DocumentDBRepository<Message>.CreateItemAsync(message, "Messages");
+                //it has a parent (matchup or message) so update with message
+                if (!string.IsNullOrEmpty(parentID))
+                {
+                    message.Id = "parent-" + parentID;
+                    var parentMsg = await Get(parentID);
+                    parentMsg.Reply.Add(message);
+
+                    await DocumentDBRepository<Message>.UpdateItemAsync(parentMsg.Id, parentMsg, "Messages");
+                }
+                else //if not a child to either message or matchup then create new
+                    await DocumentDBRepository<Message>.CreateItemAsync(message, "Messages");
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+            }
               
             return message;
+        }
+
+        public static async Task<IEnumerable<Message>> GetList(DateTime endDate)
+        {
+            return await DocumentDBRepository<Message>.GetItemsAsync(d => d.DateCreated > endDate, "Messages");
+        }
+
+        public static async Task<Message> Get(string id)
+        {
+            return await DocumentDBRepository<Message>.GetItemAsync(id, "Messages");
         }
 
         public static async Task<FormattedMessage> FormatMessage(string txt)

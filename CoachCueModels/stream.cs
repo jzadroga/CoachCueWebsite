@@ -9,14 +9,15 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using LinqToTwitter;
 using System.Web;
+using CoachCue.Service;
 
 namespace CoachCue.Model
 {
     public class stream
     {
-        public static List<StreamContent> GetPlayersStream(List<int> players, int userID, bool futureTimeline, DateTime fromDate)
+        public static List<Service.StreamContent> GetPlayersStream(List<int> players, int userID, bool futureTimeline, DateTime fromDate)
         {
-            List<StreamContent> playersStream = new List<StreamContent>();
+            List<Service.StreamContent> playersStream = new List<Service.StreamContent>();
             CoachCueDataContext db = new CoachCueDataContext();
 
             try
@@ -32,9 +33,9 @@ namespace CoachCue.Model
             return playersStream;
         }
 
-        public static List<StreamContent> GetPlayersStream(List<nflplayer> players)
+        public static List<Service.StreamContent> GetPlayersStream(List<nflplayer> players)
         {
-            List<StreamContent> playersStream = new List<StreamContent>();
+            List<Service.StreamContent> playersStream = new List<Service.StreamContent>();
             CoachCueDataContext db = new CoachCueDataContext();
 
             try
@@ -53,9 +54,9 @@ namespace CoachCue.Model
         }
 
         //stream types - matchup, message, matchupSelected, matchupVote, tweet, empty-matchup, empty-news
-        public static List<StreamContent> GetBasicStream()
+        public static List<Service.StreamContent> GetBasicStream()
         {
-            List<StreamContent> playersStream = new List<StreamContent>();
+            List<Service.StreamContent> playersStream = new List<Service.StreamContent>();
             CoachCueDataContext db = new CoachCueDataContext();
 
             try
@@ -72,9 +73,9 @@ namespace CoachCue.Model
             return playersStream;
         }
 
-        public static List<StreamContent> GetStreamMatchupsByWeek(int userID, int weekID)
+        public static List<Service.StreamContent> GetStreamMatchupsByWeek(int userID, int weekID)
         {
-            List<StreamContent> stream = new List<StreamContent>();
+            List<Service.StreamContent> stream = new List<Service.StreamContent>();
 
             try
             {
@@ -83,7 +84,7 @@ namespace CoachCue.Model
 
                 if (matchupList.Count() > 0)
                 {
-                    stream = matchupList.Select(usrmtch => new StreamContent
+                    stream = matchupList.Select(usrmtch => new Service.StreamContent
                     {
                         MatchupItem = usrmtch,
                         DateTicks = usrmtch.DateCreated.Ticks.ToString(),
@@ -107,9 +108,9 @@ namespace CoachCue.Model
         }
 
 
-        public static List<StreamContent> GetPlayerStream(int playerID, int userID, bool quickView)
+        public static List<Service.StreamContent> GetPlayerStream(int playerID, int userID, bool quickView)
         {
-            List<StreamContent> stream = new List<StreamContent>();
+            List<Service.StreamContent> stream = new List<Service.StreamContent>();
 
             try
             {
@@ -128,18 +129,18 @@ namespace CoachCue.Model
             return stream;
         }
 
-        public static List<StreamContent> GetPlayerTwitterStream(nflplayer player)
+        public static List<Service.StreamContent> GetPlayerTwitterStream(nflplayer player)
         {
-            List<StreamContent> stream = new List<StreamContent>();
+            List<Service.StreamContent> stream = new List<Service.StreamContent>();
             CoachCueDataContext db = new CoachCueDataContext();
             try
             {
                 //get all the tweets
                 List<Search> playerTweets = twitter.SearchPlayer(player, true);
-                stream = new List<StreamContent>();
+                stream = new List<Service.StreamContent>();
                 if (playerTweets.Count() > 0)
                 {
-                    stream = playerTweets.Single().Statuses.Select(tweet => new StreamContent
+                    stream = playerTweets.Single().Statuses.Select(tweet => new Service.StreamContent
                     {
                         DateTicks = tweet.CreatedAt.Ticks.ToString(),
                         ProfileImg = tweet.User.ProfileImageUrl,
@@ -158,18 +159,18 @@ namespace CoachCue.Model
             return stream;
         }
 
-        public static List<StreamContent> GetRandomPlayerStream(nflplayer player)
+        public static List<Service.StreamContent> GetRandomPlayerStream(nflplayer player)
         {
-            List<StreamContent> stream = new List<StreamContent>();
-            CoachCueDataContext db = new CoachCueDataContext();
+            List<Service.StreamContent> stream = new List<Service.StreamContent>();
+            /*CoachCueDataContext db = new CoachCueDataContext();
             try
             {
                 //get all the tweets
                 List<Search> playerTweets = twitter.SearchPlayer(player, true);
-                List<StreamContent> newsStream = new List<StreamContent>();
+                List<Service.StreamContent> newsStream = new List<Service.StreamContent>();
                 if (playerTweets.Count() > 0)
                 {
-                    newsStream = playerTweets.Single().Statuses.Select(tweet => new StreamContent
+                    newsStream = playerTweets.Single().Statuses.Select(tweet => new Service.StreamContent
                     {
                         DateTicks = tweet.CreatedAt.Ticks.ToString(),
                         ProfileImg = tweet.User.ProfileImageUrl,
@@ -185,7 +186,7 @@ namespace CoachCue.Model
                 
                 //get all the messages
                 List<message> msgs = message.GetRecentList(player.playerID, true, null);
-                newsStream.AddRange(msgs.Select(msg => new StreamContent
+                newsStream.AddRange(msgs.Select(msg => new Service.StreamContent
                 {
                     MessageItem = msg,
                     DateTicks = msg.dateCreated.Ticks.ToString(),
@@ -210,13 +211,13 @@ namespace CoachCue.Model
                 }
             }
             catch (Exception) { }
-
+            */
             return stream;
         }
 
-        public static List<StreamContent> GetPlayerStream(nflplayer player, int? userID, bool quickView, bool futureTimeline, DateTime? fromDate = null)
+        public static List<Service.StreamContent> GetPlayerStream(nflplayer player, int? userID, bool quickView, bool futureTimeline, DateTime? fromDate = null)
         {
-            List<StreamContent> stream = new List<StreamContent>();
+            List<Service.StreamContent> stream = new List<Service.StreamContent>();
             CoachCueDataContext db = new CoachCueDataContext();
             try
             {
@@ -227,7 +228,7 @@ namespace CoachCue.Model
 
                 user currentUser = (userID.HasValue) ? user.Get(userID.Value) : new user();
 
-                stream = usrMatchups.Select(usrmtch => new StreamContent
+                stream = usrMatchups.Select(usrmtch => new Service.StreamContent
                 {
                     MatchupItem = usrmtch,
                     DateTicks = usrmtch.DateCreated.Ticks.ToString(),
@@ -242,7 +243,7 @@ namespace CoachCue.Model
                 }).ToList();
 
                 if (stream.Count() <= 0)
-                    stream.Add(new StreamContent { ContentType = "empty-matchup" });
+                    stream.Add(new Service.StreamContent { ContentType = "empty-matchup" });
 
                 stream.AddRange(GetNewsStream(player, quickView, futureTimeline, userID, fromDate));
                 
@@ -262,17 +263,17 @@ namespace CoachCue.Model
             return stream;
         }
 
-        public static List<StreamContent> GetNewsStream(nflplayer player, bool quickView, bool futureTimeline, int? userID, DateTime? fromDate = null)
+        public static List<Service.StreamContent> GetNewsStream(nflplayer player, bool quickView, bool futureTimeline, int? userID, DateTime? fromDate = null)
         {
              //get all the tweets
-            List<StreamContent> newsStream = new List<StreamContent>();
+            List<Service.StreamContent> newsStream = new List<Service.StreamContent>();
 
-            user currentUser = (userID.HasValue) ? user.Get(userID.Value) : new user();
+            /*user currentUser = (userID.HasValue) ? user.Get(userID.Value) : new user();
 
 
             //get all the messages
             List<message> msgs = message.GetRecentList(player.playerID, futureTimeline, fromDate);
-            newsStream.AddRange(msgs.Select(msg => new StreamContent
+            newsStream.AddRange(msgs.Select(msg => new Service.StreamContent
             {
                 MessageItem = msg,
                 DateTicks = msg.dateCreated.Ticks.ToString(),
@@ -290,8 +291,8 @@ namespace CoachCue.Model
                 newsStream = newsStream.OrderByDescending(str => str.DateCreated).Take(5).ToList();
 
             if (newsStream.Count <= 0)
-                newsStream.Add(new StreamContent { ContentType = "empty-news" });
-
+                newsStream.Add(new Service.StreamContent { ContentType = "empty-news" });
+                */
             return newsStream.OrderByDescending(str => str.DateCreated).ToList();
         }
 
@@ -308,14 +309,14 @@ namespace CoachCue.Model
             return css;
         }
 
-        public static List<StreamContent> GetDetails(int messageID)
+        public static List<Service.StreamContent> GetDetails(int messageID)
         {
-            List<StreamContent> stream = new List<StreamContent>();
+            List<Service.StreamContent> stream = new List<Service.StreamContent>();
 
-            try
+           /* try
             {
                 List<message> msgs = message.GetDetails(messageID);
-                stream.AddRange(msgs.Select(msg => new StreamContent
+                stream.AddRange(msgs.Select(msg => new Service.StreamContent
                 {
                     MessageItem = msg,
                     DateTicks = msg.dateCreated.Ticks.ToString(),
@@ -330,20 +331,20 @@ namespace CoachCue.Model
                 }).ToList());
 
                 if (stream.Count <= 0)
-                    stream.Add(new StreamContent { ContentType = "empty-messages" });
+                    stream.Add(new Service.StreamContent { ContentType = "empty-messages" });
 
                 stream = stream.OrderBy(str => str.DateCreated).ToList();
             }
             catch (Exception)
             { }
-
+            */
             return stream;
         }
 
-        public static List<StreamContent> GetUserStream(int userID, bool quickView, int currentUserID, DateTime? fromDate = null)
+        public static List<Service.StreamContent> GetUserStream(int userID, bool quickView, int currentUserID, DateTime? fromDate = null)
         {
-            List<StreamContent> stream = new List<StreamContent>();
-            CoachCueDataContext db = new CoachCueDataContext();
+            List<Service.StreamContent> stream = new List<Service.StreamContent>();
+           /* CoachCueDataContext db = new CoachCueDataContext();
             try
             {
                 //kill the recent list cache
@@ -354,7 +355,7 @@ namespace CoachCue.Model
                 user currentUser = user.Get(currentUserID);
 
                 List<message> msgs = message.GetUserRecentList(userID);
-                stream.AddRange(msgs.Select(msg => new StreamContent
+                stream.AddRange(msgs.Select(msg => new Service.StreamContent
                 {
                     MessageItem = msg,
                     DateTicks = msg.dateCreated.Ticks.ToString(),
@@ -372,13 +373,13 @@ namespace CoachCue.Model
                 stream.AddRange(matchup.GetAllUserMatchups(userID, 15, currentUserID));
 
                 if (stream.Count <= 0)
-                    stream.Add(new StreamContent { ContentType = "empty-messages" });
+                    stream.Add(new Service.StreamContent { ContentType = "empty-messages" });
 
                 stream = stream.OrderByDescending(str => str.DateCreated).Take(50).ToList();
             }
             catch( Exception )
             {}
-
+            */
             return stream;
         }
 
@@ -389,7 +390,7 @@ namespace CoachCue.Model
             try
             {
                 DateTime lastDate = new DateTime(Convert.ToInt64(timeTicks));
-                List<StreamContent> timeStream = GetStream(userID, true, string.Empty, lastDate);
+                List<Service.StreamContent> timeStream = GetStream(userID, true, string.Empty, lastDate);
                 timeStream = timeStream.Where( ts => ts.ContentType != "empty-news" && ts.ContentType != "empty-matchup" && ts.ContentType != "empty-messages").ToList();
                 count = timeStream.Count();
             }        
@@ -402,10 +403,10 @@ namespace CoachCue.Model
         }
 
         //gets the latest stream for a user - main function for stream
-        public static List<StreamContent> GetStream(int userID, bool futureTimeline, string position, DateTime? fromDate = null)
+        public static List<Service.StreamContent> GetStream(int userID, bool futureTimeline, string position, DateTime? fromDate = null)
         {
-            List<StreamContent> stream = new List<StreamContent>();
-            CoachCueDataContext db = new CoachCueDataContext();
+            List<Service.StreamContent> stream = new List<Service.StreamContent>();
+            /*CoachCueDataContext db = new CoachCueDataContext();
 
             try
             {
@@ -419,7 +420,7 @@ namespace CoachCue.Model
 
                 //gets the matchups for the stream
                 List<WeeklyMatchups> usrMatchups = matchup.GetList(userID, fromDate.Value, position, futureTimeline);
-                stream = usrMatchups.Select(usrmtch => new StreamContent
+                stream = usrMatchups.Select(usrmtch => new Service.StreamContent
                 {
                     MatchupItem = usrmtch,
                     DateTicks = usrmtch.DateCreated.Ticks.ToString(),
@@ -435,7 +436,7 @@ namespace CoachCue.Model
                 {
                     //get all the user messages for following a user or player
                     List<message> msgs = message.GetRecentList(futureTimeline, fromDate.Value);
-                    stream.AddRange(msgs.Select(msg => new StreamContent
+                    stream.AddRange(msgs.Select(msg => new Service.StreamContent
                     {
                         MessageItem = msg,
                         DateTicks = msg.dateCreated.Ticks.ToString(),
@@ -453,13 +454,13 @@ namespace CoachCue.Model
                 stream = (futureTimeline) ? stream.OrderByDescending(str => str.DateCreated).Take(80).ToList() : stream.OrderByDescending(str => str.DateCreated).Take(20).ToList();
             }
             catch (Exception) { }
-
+            */
             return stream;
         }
 
-        public static List<StreamContent> GetMatchupVoteStream(List<WeeklyMatchups> usrMatchups, int userID, List<int> followIDs)
+        public static List<Service.StreamContent> GetMatchupVoteStream(List<WeeklyMatchups> usrMatchups, int userID, List<int> followIDs)
         {
-            List<StreamContent> stream = new List<StreamContent>();
+            List<Service.StreamContent> stream = new List<Service.StreamContent>();
 
             var userCreatedMatchups = usrMatchups.Where(urmtch => urmtch.CreatedBy.userID == userID && urmtch.NoVotes == false);
 
@@ -492,15 +493,15 @@ namespace CoachCue.Model
         }
 
         //converts the base item to a common stream type
-        public static StreamContent ConvertToStream(WeeklyMatchups matchup, int playerID, bool showVotes, int currentUser)
+        public static Service.StreamContent ConvertToStream(WeeklyMatchups matchup, int playerID, bool showVotes, int currentUser)
         {
-            StreamContent streamItem = null;
+            Service.StreamContent streamItem = null;
             user currentUserItem = new user();
 
             if (currentUser != 0)
                 currentUserItem = user.Get(currentUser);
 
-            streamItem = new StreamContent
+            streamItem = new Service.StreamContent
             {
                 MatchupItem = matchup,
                 ContentType = (!matchup.HasVoted && matchup.AllowVote) ? "matchup" : "matchupSelected",
@@ -517,15 +518,15 @@ namespace CoachCue.Model
             return streamItem;
         }
 
-        public static StreamContent ConvertToStream(message msg, string type, int userID)
+        public static Service.StreamContent ConvertToStream(message msg, string type, int userID)
         {
             user currentUser = new user();
             if( userID != 0 )
                 currentUser = user.Get(userID);
 
-            StreamContent streamItem = new StreamContent
+            Service.StreamContent streamItem = new Service.StreamContent
             {
-                MessageItem = msg,
+                //MessageItem = msg,
                 DateTicks = msg.dateCreated.Ticks.ToString(),
                 ProfileImg = msg.user.avatar.imageName,
                 UserName = msg.user.userName,
@@ -559,7 +560,7 @@ namespace CoachCue.Model
     {
         public bool BuildPlayerHeader { get; set; }
         public nflplayer Player { get; set; }
-        public List<StreamContent> StreamItems { get; set; }
+        public List<Service.StreamContent> StreamItems { get; set; }
         public DateTime? LastUpdate { get; set; }
         public string LastUpdateTicks{
             get
@@ -571,28 +572,8 @@ namespace CoachCue.Model
 
     public class PlayerPopover
     {
-        public List<StreamContent> TwitterContent { get; set; }
+        public List<Service.StreamContent> TwitterContent { get; set; }
         public VotedPlayersByPosition Voting { get; set; }
 
-    }
-
-    public class StreamContent
-    {
-        public string UserProfileImg { get; set; }
-        public string DateTicks { get; set; }
-        public string TimeAgo { get; set; }
-        public string ProfileImg { get; set; }
-        public string UserName { get; set; }
-        public DateTime DateCreated { get; set; }
-        public string FullName { get; set; }
-        public string ContentType { get; set; }
-        public message MessageItem { get; set; }
-        public WeeklyMatchups MatchupItem { get; set; }
-        public TweetContent Tweet { get; set; }
-        public int PlayerID { get; set; }
-        public string CssClass { get; set; }
-        public nflplayer Player { get; set; }
-        public string Source { get; set; }
-        public bool HideActions { get; set; }
     }
 }

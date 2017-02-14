@@ -30,6 +30,61 @@ $(document).ready(function () {
         return false;
     });
 
+    //full page modal
+    $(".modal-fullscreen").on('show.bs.modal', function () {
+        setTimeout(function () {
+            $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+        }, 0);
+        loadUserTypeahead();
+    });
+
+    $(".modal-fullscreen").on('hidden.bs.modal', function () {
+        $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+        $(".users-typeahead").val("");
+    });
+
+    //image preview
+    $(document).on('click', '#close-preview', function () {
+        $('.image-preview').popover('hide');
+        $('.image-preview').attr("data-content", "");
+    });
+
+    $(function () {
+        // Create the close button
+        var closebtn = $('<button/>', {
+            type: "button",
+            text: 'x',
+            id: 'close-preview',
+            style: 'font-size: initial;',
+        });
+        closebtn.attr("class", "close pull-right");
+        // Set the popover default content
+        $('.image-preview').popover({
+            trigger: 'manual',
+            html: true,
+            title: "<strong>Preview</strong>" + $(closebtn)[0].outerHTML,
+            content: "There's no image",
+            placement: 'right'
+        });
+       
+        // Create the preview image
+        $("#input-file-preview").change(function () {
+            var img = $('<img/>', {
+                id: 'dynamic',
+                width: 250,
+                height: 200
+            });
+            var file = this.files[0];
+            var reader = new FileReader();
+            // Set preview image into the popover data-content
+            reader.onload = function (e) {
+                img.attr('src', e.target.result);
+                $(".image-preview").attr("data-content", $(img)[0].outerHTML).popover("show");
+            }
+            reader.readAsDataURL(file);
+        });
+    });
+
     //sidepanel action - login/register
     $(".login-register").slidepanel({
         orientation: 'left',
@@ -43,10 +98,10 @@ $(document).ready(function () {
     });
 
     //sidepanel action - reply message
-    $(".reply-message-panel").slidepanel({
-        orientation: 'left',
-        mode: 'overlay'
-    });
+    //$(".reply-message-panel").slidepanel({
+    //    orientation: 'left',
+    //    mode: 'overlay'
+   // });
 
     //sidepanel action - matchups
     $(".select-new-matchup").slidepanel({
@@ -87,7 +142,7 @@ $(document).ready(function () {
     });
 
     //replies need a unique href to make sure they don't cache
-    $("body").on("click", '.reply-message-panel', function (e) {
+   /* $("body").on("click", '.reply-message-panel', function (e) {
         e.preventDefault();
 
         var dt = new Date();
@@ -98,13 +153,12 @@ $(document).ready(function () {
             $(this).attr("href", href + "&daz=" + dt.getMilliseconds());
         }
         return false;
-    });
+    });*/
 
     //submit the new message
-    $("#slidepanel").on("click", '#share-post', function (e) {
+    $("#modal-fullscreen").on("click", '#share-post', function (e) {
         e.preventDefault();
 
-        //$msgPanel.data("plugin_slidepanel").collapse();
         var message = $("#share-message").val();
         
         if ($(this).hasClass("disabled") || message.length <= 0) {
@@ -126,12 +180,7 @@ $(document).ready(function () {
                     $("div." + parentID + "-message-block").find("div.show-message-block").append(data.StreamData);
                     $("div." + parentID + "-message-block").find("div.hidden-message-block").append(data.StreamData);
                 }
-
-                $(".reply-message-panel").slidepanel({
-                    orientation: 'left',
-                    mode: 'overlay'
-                });
-
+         
                 loadImages();
 
                 //send out email notifications
@@ -148,6 +197,7 @@ $(document).ready(function () {
             showNotice("Message Posted", "Thanks for sharing. Your message has been posted.");
         });
         
+        $(".modal-fullscreen").modal('hide');
         return false;
     });
 
@@ -832,3 +882,69 @@ function showNotice(header, msg) {
         }, 3200);
     }
 }
+
+//typeahead
+function loadUserTypeahead() {
+    $.ajaxSetup({
+        cache: false
+    });
+
+    var $textArea = $(".users-typeahead");
+    if ($textArea.length > 0) {
+        setCaretToPos($textArea.get(0), ($textArea.val().length));
+        $textArea.limiter(140, $(".message-charNum"));
+    }
+
+    //load the user typeahead
+    $.getJSON("/assets/data/users.json", function (data) {
+        $(".users-typeahead").mention({
+            delimiter: '@',
+            sensitive: false,
+            users: data
+        });
+    });
+}
+
+//text limiter
+$.fn.extend({
+    limiter: function (limit, elem) {
+        $(this).on("input propertychange", function () {
+            setCount(this, elem);
+        });
+        function getTextLength(chars) {
+            var count = chars.length;
+            var domains = [".com", ".org", ".net", ".mil", ".edu"];
+            var msg = new String(chars);
+
+            var words = msg.split(' ');
+            words.forEach(function (word) {
+                for (var i = 0; i < domains.length; i++) {
+                    if (word.indexOf(domains[i]) != -1) {
+                        //update the count of the message to account for a long url
+                        if (word.length > 20) {
+                            count = (count - word.length) + 20;
+                        }
+                    }
+                }
+            });
+
+            return count;
+        }
+        function setCount(src, elem) {
+            var chars = getTextLength(src.value);
+            if (chars > limit) {
+                $(elem).addClass("warn");
+                $("#share-post").addClass("disabled");
+            } else {
+                $(elem).removeClass("warn");
+                if (chars == 0) {
+                    $("#share-post").addClass("disabled");
+                } else {
+                    $("#share-post").removeClass("disabled");
+                }
+            }
+            elem.html(limit - chars);
+        }
+        setCount($(this)[0], elem);
+    }
+});

@@ -17,11 +17,11 @@
 
 <div class="reply-message">
     <div class="row">
-        <div class="user-avatar height" style="background: url(/assets/img/avatar/@Model.ParentMessage.user.avatar.imageName) 50% 50% no-repeat;"></div>
+        <div class="user-avatar height" style="background: url(/assets/img/avatar/@Model.User.ProfileImage) 50% 50% no-repeat;"></div>
         <div class="msg-text">
-            <div class="reply-username">@Model.ParentMessage.user.fullName <span class="reply-time">@@@Model.ParentMessage.user.userName</span></div>
-            <div class="reply-time">@Model.ParentMessage.dateCreated.ToLongDateString() @Model.ParentMessage.dateCreated.ToShortTimeString()</div>
-            <div class="reply-text">@Html.Raw(Model.ParentMessage.messageText)</div>
+            <div class="reply-username">@Model.ParentMessage.Name <span class="reply-time">@@@Model.ParentMessage.UserName</span></div>
+            <div class="reply-time">@Model.ParentMessage.DateCreated.ToLongDateString() @Model.ParentMessage.DateCreated.ToShortTimeString()</div>
+            <div class="reply-text">@Html.Raw(Model.ParentMessage.Text)</div>
         </div>
     </div>
 </div>

@@ -1,5 +1,7 @@
-﻿@model StreamContent
-@using CoachCue.Model;    
+﻿@model CoachCue.Service.StreamContent
+@using CoachCue.Service;    
+@using CoachCue.Models;
+@using CoachCue.Model;
 
     @switch (Model.ContentType)
     {
@@ -13,11 +15,11 @@
             <div class="item player-item">
                 <div class="content">
                     <div class="content-header">
-                        <a data-account-id="@Model.MessageItem.userID" class="username" href="@Url.Action("Index", "Coach", new { id = Model.MessageItem.userID, name = Model.FullName })">@Model.FullName</a>
+                        <a data-account-id="@Model.MessageItem.CreatedBy" class="username" href="@Url.Action("Index", "Coach", new { id = Model.MessageItem.CreatedBy, name = Model.FullName })">@Model.FullName</a>
                         <span>@Model.TimeAgo</span>
                     </div>
                     <img alt="@Model.UserName" class="matchup-msg-item-avatar lazy-load img-circle" data-src="@Url.Content("~/assets/img/avatar/" + Model.ProfileImg)">
-                    <span class="matchup-message">@Html.Raw(@Model.MessageItem.messageText)</span>
+                    <span class="matchup-message">@Html.Raw(@Model.MessageItem.Text)</span>
                 </div>
             </div>
         break;
@@ -251,35 +253,32 @@
         break;
 
         case "message":
-        <div id="msg-@Model.MessageItem.messageID" class="user-message item child clear stream-news @Model.CssClass" data-ticks="@Model.DateTicks">
+        <div id="msg-@Model.MessageItem.Id" class="user-message item child clear stream-news @Model.CssClass" data-ticks="@Model.DateTicks">
             <div class="content">
-                <a class="username" href="@Url.Action("Index", "Coach", new { id = Model.MessageItem.userID, name = Model.FullName })">
+                <a class="username" href="@Url.Action("Index", "Coach", new { id = Model.MessageItem.CreatedBy, name = Model.FullName })">
                     <img alt="@Model.UserName" class="avatar user-avatar lazy-load" data-src="@Url.Content("~/assets/img/avatar/" + Model.ProfileImg)" />
                 </a>
                 <div class="content-header">          
-                    <a class="username" href="@Url.Action("Index", "Coach", new { id = Model.MessageItem.userID, name = Model.FullName })">@Model.FullName</a>
+                    <a class="username" href="@Url.Action("Index", "Coach", new { id = Model.MessageItem.CreatedBy, name = Model.FullName })">@Model.FullName</a>
                     <span class="time">@Model.TimeAgo</span>
                 </div>
-                <span>@Html.Raw(@Model.MessageItem.messageText)</span>
-                @if (Model.MessageItem.MessagePlayers.Count() > 0) { 
+                <span>@Html.Raw(@Model.MessageItem.Text)</span>
+                @if (Model.MessageItem.PlayerMentions.Count() > 0) { 
                     <div class="player-tags">
-                    @foreach (nflplayer player in Model.MessageItem.MessagePlayers)
-                    {
-                        <a data-player-img="@player.profilePic" data-player-name="@player.fullName" data-player-pos="@player.position.positionName&nbsp;|&nbsp;@player.nflteam.teamSlug" data-player-id="@player.playerID" class="player-tag-container player-popover" href="@Url.Action("Index", "Player", new { id = player.playerID, name = player.linkFullName })">
-                            <span>
-                                <img class="lazy-load" data-src="@Url.Content("~/assets/img/Player_Icon_1-orange.png")" />@player.shortName @player.position.positionName | @player.nflteam.teamSlug
-                            </span>
-                        </a>
-                    }
+                        @*
+    @foreach (nflplayer player in Model.MessageItem.PlayerMentions)
+    {
+        <a data-player-img="@player.profilePic" data-player-name="@player.fullName" data-player-pos="@player.position.positionName&nbsp;|&nbsp;@player.nflteam.teamSlug" data-player-id="@player.playerID" class="player-tag-container player-popover" href="@Url.Action("Index", "Player", new { id = player.playerID, name = player.linkFullName })">
+            <span>
+                <img class="lazy-load" data-src="@Url.Content("~/assets/img/Player_Icon_1-orange.png")" />@player.shortName @player.position.positionName | @player.nflteam.teamSlug
+            </span>
+        </a>
+    }*@
                     </div>
                 }
-                @if (!string.IsNullOrEmpty(Model.MessageItem.mediaObjectUrl)){
-                    <div class="msg-media">
-                        @if (Model.MessageItem.mediaType != null) { 
-                            if (Model.MessageItem.mediaType.mediaTypeName == "image"){
-                                <a href="@Model.MessageItem.mediaUrl" target="_blank"><img class="lazy-load" data-src="@Model.MessageItem.mediaObjectUrl" /></a>
-                            }
-                        }
+                @if (!string.IsNullOrEmpty(Model.MessageItem.Media.Url)){
+                    <div class="msg-media">                                                  
+                        <a href="@Model.MessageItem.Media.Url" target="_blank"><img class="lazy-load" data-src="@Model.MessageItem.Media.ObjectUrl" /></a>                                            
                     </div>
                 }
             </div>
@@ -292,46 +291,19 @@
 
                     <div class="row">
                         <div class="col-md-12 col-xs-12 matchup-message-block">
-
-                            @if (Model.MessageItem.ConversationMessages.Count() > 3)
-                            {
-                                <div class="comment-count" id="@(Model.MessageItem.messageID + "-hidden-messages")">
-                                    <a href="#" data-count="@Model.MessageItem.ConversationMessages.Count()" data-src="@Model.Source" class="ms-action-conversation"><i class="glyphicon glyphicon-chevron-down"></i> @Model.MessageItem.ConversationMessages.Count() comments</a>
-                                </div>
-                            }
-
-                            <div class="@(Model.MessageItem.messageID + "-message-block")">
-
-                                @if (Model.MessageItem.ConversationMessages.Count() > 3)
-                                {
-                                    <div style="display: none" class="hidden-message-block">
-                                        @foreach (message msg in Model.MessageItem.ConversationMessages)
-                                        {
-                                            <div class="item player-item">
-                                                <div class="content">
-                                                    <div class="content-header">
-                                                        <a data-account-id="@msg.MessageUser.userID" class="username" href="@Url.Action("Index", "Coach", new { id = msg.MessageUser.userID, name = msg.MessageUser.fullName })">@msg.MessageUser.fullName</a>
-                                                        <span>@msg.TimeAgo</span>
-                                                    </div>
-                                                    <img alt="@Model.UserName" class="matchup-msg-item-avatar lazy-load img-circle" data-src="@Url.Content("~/assets/img/avatar/" + msg.MessageUser.avatar.imageName)">
-                                                    <span class="matchup-message">@Html.Raw(msg.messageText)</span>
-                                                </div>
-                                            </div>
-                                        }
-                                    </div>
-                                }
-
+                          
+                            <div class="@(Model.MessageItem.Id + "-message-block")">                            
                                 <div class="show-message-block">
-                                    @foreach (message msg in Model.MessageItem.ConversationMessages.Skip(Model.MessageItem.ConversationMessages.Count() - 3))
+                                    @foreach (Message msg in Model.MessageItem.Reply)
                                     {
                                         <div class="item player-item">
                                             <div class="content">
                                                 <div class="content-header">
-                                                    <a data-account-id="@msg.MessageUser.userID" class="username" href="@Url.Action("Index", "Coach", new { id = msg.MessageUser.userID, name = msg.MessageUser.fullName })">@msg.MessageUser.fullName</a>
+                                                    <a data-account-id="@msg.CreatedBy" class="username" href="@Url.Action("Index", "Coach", new { id = msg.CreatedBy, name = msg.Name })">@msg.Name</a>
                                                     <span>@msg.TimeAgo</span>
                                                 </div>
-                                                <img alt="@Model.UserName" class="matchup-msg-item-avatar lazy-load img-circle" data-src="@Url.Content("~/assets/img/avatar/" + msg.MessageUser.avatar.imageName)">
-                                                <span class="matchup-message">@Html.Raw(msg.messageText)</span>
+                                                <img alt="@Model.UserName" class="matchup-msg-item-avatar lazy-load img-circle" data-src="@Url.Content("~/assets/img/avatar/" + msg.ProfileImage)">
+                                                <span class="matchup-message">@Html.Raw(msg.Text)</span>
                                             </div>
                                         </div>
                                     }
@@ -341,7 +313,7 @@
 
                         @if (!Model.HideActions) {
                         <div class="row">
-                            <div class="col-xs-12 message-post-@Model.MessageItem.messageID @if (Model.MessageItem.ConversationMessages.Count() == 0){ <text>empty-message-block</text>}">
+                            <div class="col-xs-12 message-post-@Model.MessageItem.Id @if (Model.MessageItem.Reply.Count() == 0){ <text>empty-message-block</text>}">
                                 @if (!User.Identity.IsAuthenticated)
                                 {
                                     <form class="form-inline" role="form">
@@ -354,8 +326,15 @@
                                 {
                                     <img alt="@Model.UserName" class="img-circle matchup-new-msg-item-avatar lazy-load" data-src ="@Url.Content("~/assets/img/avatar/" + Model.UserProfileImg)" />
 
+                                    @*
                                     <form class="form-inline" role="form">
-                                        <a data-slidepanel="panel" data-msg="@Model.MessageItem.messageID" class="reply-message-panel" href="@Url.Action("ReplyMessage", "Post", new { msgID = Model.MessageItem.messageID })">
+                                        <a data-slidepanel="panel" data-msg="@Model.MessageItem.Id" class="reply-message-panel" href="@Url.Action("ReplyMessage", "Post", new { msgID = Model.MessageItem.Id })">
+                                            <input style="width: 100%" class="form-control" type="text" placeholder="Add a comment.." />
+                                        </a>
+                                    </form>
+                                    *@
+                                    <form class="form-inline" role="form">
+                                        <a class="reply-message-panel" data-backdrop="static" data-keyboard="false" href="#modal-fullscreen" data-toggle="modal" data-target="#modal-fullscreen">
                                             <input style="width: 100%" class="form-control" type="text" placeholder="Add a comment.." />
                                         </a>
                                     </form>

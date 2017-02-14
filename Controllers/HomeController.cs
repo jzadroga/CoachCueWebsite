@@ -15,6 +15,7 @@ using CoachCue.Utility;
 using System.Threading.Tasks;
 using CoachCue.Repository;
 using CoachCue.Models;
+using CoachCue.Service;
 
 namespace CoachCue.Controllers
 {
@@ -32,16 +33,13 @@ namespace CoachCue.Controllers
             if (!string.IsNullOrEmpty(tb))
                 HttpContext.Session["media"] = tb;
 
-            string userID = (User.Identity.IsAuthenticated) ? CoachCueUserData.GetUserData(User.Identity.Name).UserId : string.Empty;
-            if(!string.IsNullOrEmpty(userID))
+            if(!string.IsNullOrEmpty(homeVM.UserData.UserId))
             {
                 homeVM.LoggedIn = true;
                
-                int logins = user.SaveLogin(Convert.ToInt32(userID));
+                int logins = user.SaveLogin(Convert.ToInt32(homeVM.UserData.UserId));
                 //if (logins <= 1)
                 //    homeVM.ShowWelcome = true;
-
-                homeVM.Stream = stream.GetStream(Convert.ToInt32(userID), true, string.Empty);
             }
             else
             {
@@ -56,11 +54,10 @@ namespace CoachCue.Controllers
 
                         return Redirect("~/Account/LoginByCookie?usr=" + userGuid + "&url=" + redirectURL);
                     }
-                }
-                
-                List<nflplayer> trendingPlayers = nflplayer.GetTrending(5);
-                homeVM.Stream = stream.GetStream(43, true, string.Empty);//stream.GetPlayersStream(trendingPlayers.ToList());
+                }                
             }
+
+            //homeVM.Stream = await StreamService.GetHomeStream(homeVM.UserData);
 
             return View(homeVM);         
         }

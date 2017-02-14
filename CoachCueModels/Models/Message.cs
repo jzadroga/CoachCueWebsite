@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using CoachCue.Model;
+using Microsoft.Azure.Documents;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -22,12 +24,29 @@ namespace CoachCue.Models
         public Media Media { get; set; }
 
         [JsonProperty(PropertyName = "playerMentions")]
-        public List<string> PlayerMentions { get; set; }
+        public List<Player> PlayerMentions { get; set; }
 
         [JsonProperty(PropertyName = "userMentions")]
-        public List<string> UserMentions { get; set; }
+        public List<User> UserMentions { get; set; }
 
         [JsonProperty(PropertyName = "reply")]
         public List<Message> Reply { get; set; }
+
+        [JsonProperty(PropertyName = "fullName")]
+        public string Name { get; set; }
+
+        [JsonProperty(PropertyName = "userName")]
+        public string UserName { get; set; }
+
+        [JsonProperty(PropertyName = "profileImage")]
+        public string ProfileImage { get; set; }
+
+        public string TimeAgo
+        {
+            get
+            {
+                return twitter.GetRelativeTime(this.DateCreated);
+            }
+        }
     }
 }

@@ -5,21 +5,19 @@ using System.Web;
 using CoachCue.Model;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using CoachCue.Service;
+using CoachCue.Models;
+using CoachCue.Repository;
 
 namespace CoachCue.ViewModels
 {
     public class BaseViewModel
     {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Username {get; set;}
         public int FollowingCount { get; set; }
         public int FollowersCount { get; set; }
         public int MessageCount { get; set; }
-        public string Avatar { get; set; }
         public int TotalStarters { get; set; }
         public int CorrectStarters { get; set; }
-        public int AccountID { get; set; }
         public int MatchupCount { get; set; }
         public int NoticeCount { get; set; }
         public string PlayerID { get; set; }
@@ -28,11 +26,13 @@ namespace CoachCue.ViewModels
         public List<VotedPlayers> TopVotedPlayers { get; set; }
         public bool IsMobile { get; set; }
         public List<LeaderboardCoach> TopCoaches { get; set; }
+        public CoachCueUserData UserData { get; set; }
 
         public BaseViewModel()
         {
             this.RecentlyViewedItems = new List<AccountData>();
             this.TrendingItems = new List<AccountData>();
+            this.UserData = CoachCueUserData.GetUserData(HttpContext.Current.User.Identity.Name);
         }
     }
 
@@ -54,7 +54,7 @@ namespace CoachCue.ViewModels
 
         public HomeViewModel()
         {
-            this.Stream = new List<StreamContent>();
+            this.Stream = new List<Service.StreamContent>();
             this.CurrentMatchups = new List<WeeklyMatchups>();
             this.MyMatchups = new List<WeeklyMatchups>();
         }
@@ -146,18 +146,18 @@ namespace CoachCue.ViewModels
 
     public class MessageViewModel
     {
-        public user User { get; set; }
-        public message ParentMessage { get; set; }
+        public CoachCueUserData User { get; set; }
+        public Message ParentMessage { get; set; }
         public List<nflplayer> MessagePlayers { get; set; }
         public string Type { get; set; }
         public matchup Matchup { get; set; }
-        public int ParentID { get; set; }
+        public string ParentID { get; set; }
         public List<user> MatchupInvites { get; set; }
 
         public MessageViewModel()
         {
             this.MessagePlayers = new List<nflplayer>();
-            this.ParentMessage = new message();
+            this.ParentMessage = new Message();
             this.Matchup = new matchup();
             this.MatchupInvites = new List<user>();
         }
@@ -184,7 +184,7 @@ namespace CoachCue.ViewModels
             this.FullName = userAccount.fullName;
             this.CurrentTab = "profile";
             this.DisplayMessage = false;
-            this.Avatar = userAccount.avatar.imageName;
+            //this.Avatar = userAccount.avatar.imageName;
         }
 
         public bool DisplayMessage { get; set; }

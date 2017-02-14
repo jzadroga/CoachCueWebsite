@@ -2,11 +2,11 @@
  
 <div class="panel panel-default user-panel">
     <div class="panel-heading">
-        <img class="avatar large welcome-avatar" src='@Url.Content("~/assets/img/avatar/" + @Model.Avatar)' />
+        <img class="avatar large welcome-avatar" src='@Url.Content("~/assets/img/avatar/" + @Model.UserData.ProfileImage)' />
 
         <div class="user-profile">
-            <span class="welcome-user"><a href="@Url.Action("Index", "Coach", new { id = Model.AccountID, name = Model.Name })">@Model.Name</a></span>
-            <span class="welcome-username"><a href="@Url.Action("Index", "Coach", new { id = Model.AccountID, name = Model.Name })">@Model.Username</a></span>
+            <span class="welcome-user"><a href="@Url.Action("Index", "Coach", new { id = Model.UserData.UserId, name = Model.UserData.Name })">@Model.UserData.Name</a></span>
+            <span class="welcome-username"><a href="@Url.Action("Index", "Coach", new { id = Model.UserData.UserId, name = Model.UserData.Name })">@Model.UserData.UserName</a></span>
         </div>
     </div>
 
@@ -16,22 +16,22 @@
 
             <ul class="stats stats-list">
                 <li class="first">
-                    <a href="@Url.Action("Index", "Coach", new { id = Model.AccountID, name = Model.Name })">
+                    <a href="@Url.Action("Index", "Coach", new { id = Model.UserData.UserId, name = Model.UserData.Name })">
                         Messages<strong id="message-count">@Model.MessageCount</strong>
                     </a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Matchup", "Coach", new { id = Model.AccountID, name = Model.Name })">
+                    <a href="@Url.Action("Matchup", "Coach", new { id = Model.UserData.UserId, name = Model.UserData.Name })">
                         Matchups<strong>@Model.MatchupCount</strong>
                     </a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Index", "Coach", new { id = Model.AccountID, name = Model.Name })">
+                    <a href="@Url.Action("Index", "Coach", new { id = Model.UserData.UserId, name = Model.UserData.Name })">
                         Total Votes<strong>@Model.TotalStarters</strong>
                     </a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Index", "Coach", new { id = Model.AccountID, name = Model.Name })">
+                    <a href="@Url.Action("Index", "Coach", new { id = Model.UserData.UserId, name = Model.UserData.Name })">
                         Correct<strong>@Model.CorrectStarters</strong>
                     </a>
                 </li>

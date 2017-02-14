@@ -14,6 +14,7 @@ using CoachCue.Utility;
 using System.Globalization;
 using System.Threading.Tasks;
 using CoachCue.Service;
+using CoachCue.Repository;
 
 namespace CoachCue.Controllers
 {
@@ -227,28 +228,27 @@ namespace CoachCue.Controllers
 
         [SiteAuthorization]
         [NoCacheAttribute]
-        public async Task<ActionResult> SaveMessage(string plyID, string msg, int prnt, string type, bool inline)
+        public async Task<ActionResult> SaveMessage(string plyID, string msg, string prnt, string type, bool inline)
         {   
-            string userID = CoachCueUserData.GetUserData(User.Identity.Name).UserId;
-            //SavedMessage userMessage = message.Save(userID, plyID, msg, type, (prnt == 0) ? null : (int?)prnt);
-            var message = await MessageService.Save(userID, plyID, msg, "message");
+            var userData = CoachCueUserData.GetUserData(User.Identity.Name);
 
+            var message = await MessageService.Save(userData, plyID, msg, "message", prnt);
 
             StreamContent streamItem = new StreamContent
             {
-                //MessageItem = msg,
+                MessageItem = message,
                 DateTicks = message.DateCreated.Ticks.ToString(),
-               // ProfileImg = message.
-                UserName = userID,
-               // FullName = msg.user.fullName,
+                ProfileImg = userData.ProfileImage,
+                UserName = userData.UserName,
+                FullName = userData.ProfileImage,
                 ContentType = "message",
                 DateCreated = message.DateCreated,
                 TimeAgo = twitter.GetRelativeTime(message.DateCreated),
                 HideActions = (type == "matchup") ? true : false,
-                //UserProfileImg = (currentUser.userID != 0) ? currentUser.avatar.imageName : string.Empty
+                UserProfileImg = userData.ProfileImage
             };
 
-            if (inline && prnt != 0) 
+            if (inline && !string.IsNullOrEmpty(prnt)) 
                 streamItem.CssClass = "conversation-message";
 
             string streamData = string.Empty;
@@ -258,7 +258,7 @@ namespace CoachCue.Controllers
 
             if (type == "matchup")
                 streamItem.ContentType = "matchupMessage";
-            else if (type == "general" && prnt != 0)
+            else if (type == "general" && !string.IsNullOrEmpty(prnt))
                 streamItem.ContentType = "replyMessage";
 
             streamData = this.PartialViewToString("_StreamItem", streamItem);

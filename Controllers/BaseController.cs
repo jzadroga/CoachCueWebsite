@@ -8,6 +8,7 @@ using System.ComponentModel;
 using CoachCue.ViewModels;
 using System.Net;
 using System.IO;
+using CoachCue.Repository;
 
 namespace CoachCue.Controllers
 {
@@ -19,29 +20,15 @@ namespace CoachCue.Controllers
             if (model != null)
             {
                 model.IsMobile = Request.Browser.IsMobileDevice;
-                int userID = 0;
+               // model.UserData = CoachCueUserData.GetUserData(User.Identity.Name);
 
-                model.Avatar = "sm_profile.jpg";
-                if (!string.IsNullOrEmpty(User.Identity.Name))
+                if (!string.IsNullOrEmpty(model.UserData.UserId))
                 {
-                    user userItem = user.GetByUsername(User.Identity.Name);
-                    if (userItem != null)
-                    {
-                        if (userItem.userID != 0)
-                        {
-                            userID = userItem.userID;
-                            model.Name = (string.IsNullOrEmpty(userItem.fullName)) ? userItem.userName : userItem.fullName;
-                            model.MatchupCount = userItem.MatchupCreatedCount;
-                            model.Avatar = userItem.avatar.imageName;
-                            model.MessageCount = userItem.MessageCount;
-                            model.TotalStarters = userItem.TotalMatchupVotes;
-                            model.CorrectStarters = userItem.TotalCorrectVotes;
-                            model.AccountID = userItem.userID;
-                            model.NoticeCount = userItem.NotificationCount;
-                            model.Email = userItem.email;
-                            model.Username = userItem.DisplayUserName;
-                        }
-                    }
+                   // model.MatchupCount = userItem.MatchupCreatedCount;
+                   // model.MessageCount = userItem.MessageCount;
+                  //  model.TotalStarters = userItem.TotalMatchupVotes;
+                  //  model.CorrectStarters = userItem.TotalCorrectVotes;
+                  //  model.NoticeCount = userItem.NotificationCount;
                 }
 
                 model.TopVotedPlayers = new List<VotedPlayers>(); // (Request.Browser.IsMobileDevice) ? new List<VotedPlayers>() : matchup.GetTopMathupVotes(gameschedule.GetCurrentWeekID(), false);

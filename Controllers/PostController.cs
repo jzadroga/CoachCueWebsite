@@ -7,6 +7,9 @@ using CoachCue.Helpers;
 using CoachCue.Model;
 using CoachCue.ViewModels;
 using System.ComponentModel;
+using System.Threading.Tasks;
+using CoachCue.Repository;
+using CoachCue.Service;
 
 namespace CoachCue.Controllers
 {
@@ -17,9 +20,9 @@ namespace CoachCue.Controllers
         {
             MessageViewModel msgVM = new MessageViewModel();
 
-            msgVM.User = user.GetByUsername(User.Identity.Name);
+            msgVM.User = CoachCueUserData.GetUserData(User.Identity.Name);
             msgVM.Type = "general";
-            msgVM.ParentID = 0;
+            msgVM.ParentID = string.Empty;
 
             if (!string.IsNullOrEmpty(ply))
             {
@@ -32,15 +35,15 @@ namespace CoachCue.Controllers
         }
 
         [NoCacheAttribute]
-        public ActionResult ReplyMessage(int msgID)
+        public async Task<ActionResult> ReplyMessage(string msgID)
         {
             MessageViewModel msgVM = new MessageViewModel();
 
-            msgVM.User = user.GetByUsername(User.Identity.Name);
-            msgVM.ParentMessage = message.Get(msgID);
-            msgVM.MessagePlayers = msgVM.ParentMessage.MessagePlayers;
+            msgVM.User = CoachCueUserData.GetUserData(User.Identity.Name);
+            msgVM.ParentMessage = await MessageService.Get(msgID);
+           // msgVM.MessagePlayers = msgVM.ParentMessage.PlayerMentions;
             msgVM.Type = "general";
-            msgVM.ParentID = msgVM.ParentMessage.messageID;
+            msgVM.ParentID = msgVM.ParentMessage.Id;
 
             return View(msgVM);
         }
@@ -50,7 +53,7 @@ namespace CoachCue.Controllers
         {
             MessageViewModel msgVM = new MessageViewModel();
 
-            msgVM.User = user.GetByUsername(User.Identity.Name);
+            msgVM.User = CoachCueUserData.GetUserData(User.Identity.Name);
             matchup currentMatch = matchup.Get(mtchpID);
             msgVM.Matchup = currentMatch;
 
@@ -59,7 +62,7 @@ namespace CoachCue.Controllers
             players.Add(currentMatch.nflplayer1);
             msgVM.MessagePlayers = players;
             msgVM.Type = "matchup";
-            msgVM.ParentID = currentMatch.matchupID;
+            msgVM.ParentID = currentMatch.matchupID.ToString();
 
             return View(msgVM);
         }
@@ -69,15 +72,15 @@ namespace CoachCue.Controllers
         {
             MessageViewModel msgVM = new MessageViewModel();
 
-            msgVM.User = user.GetByUsername(User.Identity.Name);
-            
+            msgVM.User = CoachCueUserData.GetUserData(User.Identity.Name);
+
             //get list of potential people to invite to answer the matchup
             List<user> askUsers = new List<user>();
 
             if (Request.Browser.IsMobileDevice)
                 msgVM.MatchupInvites = new List<user>();
-            else
-                msgVM.MatchupInvites = user.GetInviteUser(msgVM.User.userID, 4);
+           // else
+           //     msgVM.MatchupInvites = user.GetInviteUser(msgVM.User.UserId, 4);
 
             if (ply1 != 0)
             {
@@ -94,14 +97,14 @@ namespace CoachCue.Controllers
         {
             MessageViewModel msgVM = new MessageViewModel();
 
-            msgVM.User = user.GetByUsername(User.Identity.Name);
+            msgVM.User = CoachCueUserData.GetUserData(User.Identity.Name);
             msgVM.Matchup = matchup.Get(mtchpID);
 
             int userCount = (Request.Browser.IsMobileDevice) ? 1 : 4;
 
             //get list of potential people to invite to answer the matchup
             List<user> askUsers = new List<user>();
-            msgVM.MatchupInvites = user.GetInviteUser(msgVM.User.userID, msgVM.Matchup, userCount);
+           // msgVM.MatchupInvites = user.GetInviteUser(msgVM.User.userID, msgVM.Matchup, userCount);
 
             return View(msgVM);
         }
