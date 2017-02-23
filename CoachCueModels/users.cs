@@ -649,7 +649,7 @@ namespace CoachCue.Model
             string fileName = string.Empty;
             try
             {
-                if (avatarFile.ContentLength > 716800)
+                if (avatarFile.ContentLength > 3000000)
                     return fileName;
 
                 //if( avatarFile.ContentType

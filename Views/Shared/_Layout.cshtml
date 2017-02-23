@@ -1,6 +1,7 @@
 ﻿@model CoachCue.ViewModels.BaseViewModel
 @using CoachCue.Helpers;
 @using System.Web.Optimization;
+@using CoachCue.Models;
 
 <!DOCTYPE html>
 <html lang="en">
@@ -150,7 +151,7 @@
                             <strong><a data-slidepanel="panel" class="login-register" href="/Post/LoginRegister">Join CoachCue!</a></strong> to get help with Who Should I Start decisions from an awesome community.
                         </div>
                     </div>
-            }
+                }
 
                 <div class="row">
                     @RenderBody()
@@ -189,7 +190,7 @@
                         <ul class="footer links">
                             <li><a target="_blank" href="https://medium.com/&#64;CoachCue">Blog</a>&nbsp;|</li>
                             <li><a href="@Url.Action("Index", "About")">About</a>&nbsp;|</li>
-                            <li class="copyright">©2016 CoachCue LLC</li>
+                            <li class="copyright">©2017 CoachCue LLC</li>
                         </ul>
 
                     </div>
@@ -202,7 +203,8 @@
 
                 <div class="global-button-item global-button-item-message">
                     <div class="global-button-item-sub">
-                        <a data-slidepanel="panel" href=@((!User.Identity.IsAuthenticated) ? "/Post/LoginRegister" : "/Post/NewMessage") class="button select-new-matchup">
+                        @*<a data-slidepanel="panel" href=@((!User.Identity.IsAuthenticated) ? "/Post/LoginRegister" : "/Post/NewMessage") class="button select-new-matchup">*@
+                        <a data-backdrop="static" data-keyboard="false" href="#modal-fullscreen" data-toggle="modal" data-target="#modal-fullscreen">
                             <span class="navicon-CC2016_Message_Icon_03"></span>
                             <span class="global-button-item-text">Message</span>
                         </a>
@@ -308,9 +310,6 @@
                 <p>Something bad happened.  You should try to fix it before it gets worse.</p>
             </div>
 
-            <a class="reply-message-panel" data-backdrop="static" data-keyboard="false" href="#modal-fullscreen" data-toggle="modal" data-target="#modal-fullscreen">
-                <input style="width: 100%" class="form-control" type="text" placeholder="Add a comment.." />
-            </a>
             <!-- full screen modal -->        
             <div class="modal modal-fullscreen" id="modal-fullscreen" tabindex="-1" role="dialog" aria-hidden="true">
                 <input type="hidden" id="msgType" value="general" />
@@ -342,36 +341,27 @@
                             <div class="textarea-wrap">                               
                                 <textarea class="users-typeahead" id="share-message" placeholder="Share some news (Add relevant players below)"></textarea>
                             </div>
-                            <div class="row" style="padding-top: 8px;">
-                                <div class="msg-players">
-                                    <div class="ply-label">
-                                        About Player(s):
-                                    </div>
+                            <div style="padding-top: 8px;">
+                                <div class="msg-players">                                 
                                     <div class="share-players">
-                                        <input data-role="tagsinput" style="width: 100%" type="text" data-plyid="0" id="players" /> @* @if (Model.MessagePlayers.Count() <= 0) { <text> placeholder="+ Add player(s) in message" </text>   } />*@
-                                       @* @foreach (nflplayer player in Model.MessagePlayers)
-    {
-        <input type="hidden" class="player-tags" data-img="@player.profilePic" data-name="@player.shortName" value="@player.playerID" />
-    }*@
+                                        <input class="form-control" type="text" data-plyid="0" id="players" @if (Model.MessagePlayers.Count() <= 0) { <text> placeholder="+ Add Player(s) included in the message" </text>   } />
+                                        @foreach (Player player in Model.MessagePlayers)
+                                        {
+                                            <input type="hidden" class="player-tags" data-img="@player.Twitter.ProfileImage" data-name="@player.ShortName" value="@player.Id" />
+                                        }
                                     </div>
                                 </div>
                             </div> 
                         </div>
                         <div class="modal-footer">
                             <div class="photo" aria-label="Add photos">
-                                <div tabindex="-1" class="photo-container" role="presentation">
+                                <div tabindex="-1" class="photo-container" id="photo-upload-container" role="presentation">
                                     <div>
                                         <svg class="CQTbeRtL" viewBox="0 0 70 72" style="display: inline-block; fill: currentcolor; height: 1.25em; max-width: 100%; position: relative; user-select: none; vertical-align: text-bottom;">
                                             <g><path d="M59 14h-8.824a90.98 90.98 0 0 0-1.687-2.827C47.306 9.308 45.887 9 44.14 9H25.994c-1.748 0-3.166.308-4.35 2.173A91.165 91.165 0 0 0 19.958 14H11a8 8 0 0 0-8 8v30a8 8 0 0 0 8 8h48a8 8 0 0 0 8-8V22a8 8 0 0 0-8-8zM35.001 52.001c-8.823 0-16.001-7.178-16.001-16C19 27.178 26.178 20 35.001 20 43.823 20 51 27.178 51 36.001c0 8.822-7.177 16-15.999 16zm21-24.001a3 3 0 1 1 0-6.001A3 3 0 0 1 56 28z"></path><circle cx="35.001" cy="36" r="10"></circle></g>
                                         </svg>
-                                    </div>
-                                </div>
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                                          
-                                            <div class="input-group image-preview">                                                                                           
-                                                <input type="file" accept="image/png, image/jpeg, image/gif" class="photo-file" id="input-file-preview" />                                              
-                                            </div>
+                                        <div class="image-preview">
+                                            <input type="file" accept="image/png, image/jpeg, image/gif" class="photo-file" id="input-file-preview" />
                                         </div>
                                     </div>
                                 </div>

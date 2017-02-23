@@ -8,6 +8,8 @@ $(document).ready(function () {
         cache: false
     });
 
+    loadPlayersTypeahead();
+
     //tooltips
     $("[rel='tooltip']").tooltip();
 
@@ -41,6 +43,10 @@ $(document).ready(function () {
     $(".modal-fullscreen").on('hidden.bs.modal', function () {
         $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
         $(".users-typeahead").val("");
+        $('.image-preview').popover('hide');
+        $('.image-preview').attr("data-content", "");
+        $('#players').tagsinput('removeAll');
+        $(".bootstrap-tagsinput input.tt-query").attr("placeholder", "+ Add Player(s) included in the message");
     });
 
     //image preview
@@ -55,8 +61,9 @@ $(document).ready(function () {
             type: "button",
             text: 'x',
             id: 'close-preview',
-            style: 'font-size: initial;',
+            style: 'font-size: initial; display: block;',
         });
+
         closebtn.attr("class", "close pull-right");
         // Set the popover default content
         $('.image-preview').popover({
@@ -64,7 +71,7 @@ $(document).ready(function () {
             html: true,
             title: "<strong>Preview</strong>" + $(closebtn)[0].outerHTML,
             content: "There's no image",
-            placement: 'right'
+            placement: 'top'
         });
        
         // Create the preview image
@@ -90,18 +97,6 @@ $(document).ready(function () {
         orientation: 'left',
         mode: 'overlay'
     });
-
-    //sidepanel action - new message
-    $("#select-new-message").slidepanel({
-        orientation: 'left',
-        mode: 'overlay'
-    });
-
-    //sidepanel action - reply message
-    //$(".reply-message-panel").slidepanel({
-    //    orientation: 'left',
-    //    mode: 'overlay'
-   // });
 
     //sidepanel action - matchups
     $(".select-new-matchup").slidepanel({
@@ -141,20 +136,6 @@ $(document).ready(function () {
         return false;
     });
 
-    //replies need a unique href to make sure they don't cache
-   /* $("body").on("click", '.reply-message-panel', function (e) {
-        e.preventDefault();
-
-        var dt = new Date();
-        var href = $(this).attr("href");
-        if (href.indexOf("&daz=") >= 0) {
-            $(this).attr("href", href.replace(/(daz=)[^\&]+/, '$1' + dt.getMilliseconds()));
-        } else {
-            $(this).attr("href", href + "&daz=" + dt.getMilliseconds());
-        }
-        return false;
-    });*/
-
     //submit the new message
     $("#modal-fullscreen").on("click", '#share-post', function (e) {
         e.preventDefault();
@@ -170,7 +151,9 @@ $(document).ready(function () {
         var $parentMsg = (msgType == "general") ? $("#msg-" + parentID) : $("#match-" + parentID);
         var inline = ($parentMsg.attr("data-parent") === undefined) ? false : true;
 
-        task.postUserMessage(message, $("#players").val(), parentID, msgType, inline, function (data) {
+        var file = $('#input-file-preview')[0].files[0];
+
+        task.postUserMessage(message, $("#players").val(), parentID, msgType, inline, file, function (data) {
             if (msgType == "general" || msgType == "matchup") {
     
                 if (parentID == 0) {
@@ -708,71 +691,6 @@ function inviteSent(data) {
     $("#btnSendInvite").hide();
 }
 
-function buildUserMatchup(matchup) {
-
-    var template = "<div class='small-item tabbable tabs-left'>" +
-                        "<ul class='nav nav-tabs matchup-data'>" +
-                            "{{#Matchups}}<li class='matchup-tab'>" +
-                            "<a href='#votes{{MatchupID}}' data-toggle='tab'>" +
-                                "<div class='relative-style' style='padding-bottom: 4px'>" +
-                                    "<div class='content-matchup'>" +
-                                        "<div class='content-header'><span class='badge'>{{Player1.TotalVotes}}</span><span class='username'>{{Player1.PlayerName}}</span></div>" +
-                                        "<img alt='' src='{{Player1.Image}}' class='matchup-avatar' />" +
-                                        "<span class='game-text'>{{Player1.GameInfo}}</span>" +
-                                    "</div>" +
-                                "</div>" +
-                                "<div class='relative-style'>" +
-                                    "<div class='content-matchup'>" +
-                                        "<div class='content-header'><span class='badge'>{{Player2.TotalVotes}}</span><span class='username'>{{Player2.PlayerName}}</span></div>" +
-                                        "<img alt='' src='{{Player2.Image}}' class='matchup-avatar' />" +
-                                        "<span class='game-text'>{{Player2.GameInfo}}</span>" +
-                                    "</div>" +
-                                "</div>" +
-                            "</a>" +
-                            "</li>{{/Matchups}}" +
-                        "</ul>" +
-                    "<div class='tab-content'>" +
-                        "{{#Matchups}}<div class='tab-pane votes-panel' id='votes{{MatchupID}}'>" +
-                            "<ul class='nav nav-tabs nav-stacked'>" +
-                                "{{#Coaches}}<li class='relative-style {{#CorrectMatchup}}coach-correct{{/CorrectMatchup}}'>" +
-                                    "<img class='matchup-user-vote-avatar' src='{{profileImg}}' />" +
-                                    "<a class='matchup-user-vote' href='#'>{{fullName}} <span class='matchup-vote'><i class='icon-small icon-thumbs-up icon-white'></i>{{SelectedPlayer}}</span></a>" +
-                                "</li>{{/Coaches}}" +
-                                "{{#NoVotes}}<li><a class='matchup-user-vote' href='#'>No Starters Selected</a></li>{{/NoVotes}}" +
-                            "</ul>" +
-                        "</div>{{/Matchups}}" +
-                    "</div>" +
-                "</div>";
-
-    var html = Mustache.to_html(template, matchup);
-    $("#week-votes" + matchup.WeekNumber).append(html);
-}
-
-
-function buildMatchup(matchup) {
-    var template = "{{#Matchups}}<div class='item' {{#MatchUpCorrect}}style='background-color: #468847;'{{/MatchUpCorrect}}><div class='content mystarter-item'>" +
-                "{{#Player1.Selected}}<div class='mystarter-selected-icon'><i class='icon-large icon-thumbs-up icon-white'></i></div>{{/Player1.Selected}}" +
-                "<div class='content-header'>" +
-                    "<span style='color: #333' class='username'>{{Player1.PlayerName}}</span>" +
-                "</div>" +
-                "<img alt='{{Player1.PlayerName}}' src='{{Player1.Image}}' class='avatar mystarter-item-image'>" +
-                "<p class='bio mystarter-item-bio'>{{Player1.PlayerDescription}}</p>" +
-                "<span class='gamedetails mystarter-item-gamedetails'>{{Player1.GameInfo}}</span>" +
-            "</div>" +
-            "<div class='content mystarter-item'>" +
-                "{{#Player2.Selected}}<div class='mystarter-selected-icon'><i class='icon-large icon-thumbs-up icon-white'></i></div>{{/Player2.Selected}}" +
-                "<div class='content-header'>" +
-                    "<span style='color: #333' class='username'>{{Player2.PlayerName}}</span>" +
-                "</div>" +
-                "<img alt='{{Player2.PlayerName}}' src='{{Player2.Image}}' class='avatar mystarter-item-image'>" +
-                "<p class='bio mystarter-item-bio'>{{Player2.PlayerDescription}}</p>" +
-                "<span class='gamedetails mystarter-item-gamedetails'>{{Player2.GameInfo}}</span>" +
-            "</div></div>{{/Matchups}}";
-
-    var html = Mustache.to_html(template, matchup);
-    $("#week" + matchup.WeekNumber).append(html);
-}
-
 function inviteAdded(data) {
     $(".matchup-invite").button('reset');
 
@@ -883,7 +801,7 @@ function showNotice(header, msg) {
     }
 }
 
-//typeahead
+//typeaheads
 function loadUserTypeahead() {
     $.ajaxSetup({
         cache: false
@@ -902,6 +820,44 @@ function loadUserTypeahead() {
             sensitive: false,
             users: data
         });
+    });
+}
+
+function loadPlayersTypeahead() {
+    $.ajaxSetup({
+        cache: false
+    });
+
+    //load the typeahead template
+    // construct template string
+    var template = '<img class="typeahead-avatar" src="{{profileImage}}" alt=""><span class="typeahead-bio">{{name}} | {{position}} | {{team.name}}</span>';
+    var nflPlayers = Hogan.compile(template);
+
+    //load the player typeahead
+    $('#players').tagsinput({
+        itemValue: 'id',
+        itemText: function (item) {
+            console.log(item);
+            var item = '<img class="user-avatar-small" src="' + item.profileImage + '" /><span>' + item.shortName + '</span>';
+            return item;
+        }
+    });
+
+    $('#players').tagsinput('input').typeahead({
+        prefetch: '/assets/data/players.json',
+        template: nflPlayers.render.bind(nflPlayers),
+        limit: 10,
+        engine: Hogan
+    }).bind('typeahead:selected', $.proxy(function (obj, datum) {
+        console.log(obj);
+        this.tagsinput('add', datum);
+        this.tagsinput('input').typeahead('setQuery', '');
+    }, $('#players')));
+
+    //get any prepopulated players for the data attribute
+    $("input.player-tags").each(function (index) {
+        var playerName = $(this).attr("data-name");
+        $('#players').tagsinput('add', { name: playerName, value: playerName, username: "", shortName: playerName, accountID: $(this).val(), profileImg: $(this).attr("data-img") });
     });
 }
 

@@ -228,11 +228,12 @@ namespace CoachCue.Controllers
 
         [SiteAuthorization]
         [NoCacheAttribute]
-        public async Task<ActionResult> SaveMessage(string plyID, string msg, string prnt, string type, bool inline)
+        [HttpPost]
+        public async Task<ActionResult> SaveMessage(string plyID, string msg, string prnt, string type, bool inline, HttpPostedFileBase img)
         {   
             var userData = CoachCueUserData.GetUserData(User.Identity.Name);
 
-            var message = await MessageService.Save(userData, plyID, msg, "message", prnt);
+            var message = await MessageService.Save(userData, plyID, msg, "message", prnt, img);
 
             StreamContent streamItem = new StreamContent
             {
@@ -240,7 +241,7 @@ namespace CoachCue.Controllers
                 DateTicks = message.DateCreated.Ticks.ToString(),
                 ProfileImg = userData.ProfileImage,
                 UserName = userData.UserName,
-                FullName = userData.ProfileImage,
+                FullName = userData.Name,
                 ContentType = "message",
                 DateCreated = message.DateCreated,
                 TimeAgo = twitter.GetRelativeTime(message.DateCreated),

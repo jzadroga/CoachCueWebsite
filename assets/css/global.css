@@ -1461,15 +1461,15 @@ div.asked-to-amswer span
     padding: 0;
     cursor: pointer;
     overflow: hidden;
-    max-height: 220px;
+    max-height: 400px;
     border-radius: 5px;
 }
 
 .msg-media img{
     display: block;
-    max-height: none;
+    max-height: 400px;
     vertical-align: top;
-    width: 100%;
+    width: auto;
 }
 
 .more-less-tweets-bar {
@@ -2973,6 +2973,8 @@ div.player-latest-news div.item:hover {
     flex-grow: 1;
     max-width: 100%;
     justify-content: center;
+    top: 0 !important;
+    left: 0 !important;
 }
 
 .modal-fullscreen .modal-footer .photo-container svg
@@ -3017,7 +3019,7 @@ div.player-latest-news div.item:hover {
   }
 }
 
-/* modal image preview  */
+/* modal image preview  
 .container{
     margin-top:20px;
 }
@@ -3039,7 +3041,7 @@ div.player-latest-news div.item:hover {
 	cursor: pointer;
 	opacity: 0;
 	filter: alpha(opacity=0);
-}
+}*/
 
 /* message actions */
 div.message-tools

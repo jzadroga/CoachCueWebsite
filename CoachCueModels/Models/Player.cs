@@ -13,6 +13,24 @@ namespace CoachCue.Models
         [JsonProperty(PropertyName = "lastName")]
         public string LastName { get; set; }
 
+        [JsonProperty(PropertyName = "shortName")]
+        public string ShortName
+        {
+            get { return this.FirstName.Substring(0, 1) + ". " + this.LastName; }
+        }
+
+        [JsonProperty(PropertyName = "name")]
+        public string Name
+        {
+            get { return this.FirstName + " " + this.LastName; }
+        }
+
+        [JsonProperty(PropertyName = "value")]
+        public string Value
+        {
+            get { return this.FirstName + " " + this.LastName; }
+        }
+
         [JsonProperty(PropertyName = "position")]
         public string Position { get; set; }
 
@@ -27,5 +45,28 @@ namespace CoachCue.Models
 
         [JsonProperty(PropertyName = "team")]
         public Team Team { get; set; }
+
+        [JsonProperty(PropertyName = "profileImage")]
+        public string ProfileImage
+        {
+            get
+            {
+                var image = "/assets/img/teams/" + this.Team.Slug + ".jpg";
+                if (!string.IsNullOrEmpty(this.Twitter.ProfileImage))
+                    image = this.Twitter.ProfileImage;
+
+                return image;
+            }
+        }
+
+        [JsonProperty(PropertyName = "link")]
+        public string Link
+        {
+            get
+            {
+                string name = this.Name.Replace(".", "").Replace("-", "").Replace("'", "");
+                return name;
+            }
+        }
     }
 }

@@ -83,10 +83,22 @@ var task = function () {
          })
      },
 
-    postUserMessage = function (message, plyID, prnt, type, inline, callback) {
+    postUserMessage = function (message, plyID, prnt, type, inline, img, callback) {
+        var postData = new FormData();
+
+        postData.append('msg', message);
+        postData.append('plyID', plyID);
+        postData.append('prnt', prnt);
+        postData.append('type', type);
+        postData.append('inline', inline);
+        postData.append('img', img);
+        
         $.ajax({
+            contentType: false,
+            processData: false,
+            type: "POST",
             url: "/UserTask/SaveMessage",
-            data: { msg: message, plyID: plyID, prnt: prnt, type: type, inline: inline },
+            data: postData,
             cache: false,
             success: function (data) {
                 callback(data);

@@ -147,5 +147,15 @@ namespace CoachCue.Service
             }
             return player;
         }
+
+        public static async Task<IEnumerable<Player>> GetList()
+        {
+            return await DocumentDBRepository<Player>.GetItemsAsync(d => d.Active == true, "Players");
+        }
+
+        public static async Task<IEnumerable<Player>> GetListByIds(List<string> playerIds)
+        {
+            return await DocumentDBRepository<Player>.GetItemsAsync(d => playerIds.Contains(d.Id), "Players");
+        }
     }
 }

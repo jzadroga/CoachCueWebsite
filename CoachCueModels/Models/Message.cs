@@ -8,6 +8,14 @@ namespace CoachCue.Models
 {
     public class Message
     {
+        public Message()
+        {
+            this.PlayerMentions = new List<Player>();
+            this.Reply = new List<Message>();
+            this.UserMentions = new List<User>();
+            this.Media = new List<Media>();
+        }
+
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
@@ -21,7 +29,7 @@ namespace CoachCue.Models
         public string CreatedBy { get; set; }
 
         [JsonProperty(PropertyName = "media")]
-        public Media Media { get; set; }
+        public List<Media> Media { get; set; }
 
         [JsonProperty(PropertyName = "playerMentions")]
         public List<Player> PlayerMentions { get; set; }

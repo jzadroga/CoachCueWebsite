@@ -264,21 +264,28 @@
                 </div>
                 <span>@Html.Raw(@Model.MessageItem.Text)</span>
                 @if (Model.MessageItem.PlayerMentions.Count() > 0) { 
-                    <div class="player-tags">
-                        @*
-    @foreach (nflplayer player in Model.MessageItem.PlayerMentions)
-    {
-        <a data-player-img="@player.profilePic" data-player-name="@player.fullName" data-player-pos="@player.position.positionName&nbsp;|&nbsp;@player.nflteam.teamSlug" data-player-id="@player.playerID" class="player-tag-container player-popover" href="@Url.Action("Index", "Player", new { id = player.playerID, name = player.linkFullName })">
-            <span>
-                <img class="lazy-load" data-src="@Url.Content("~/assets/img/Player_Icon_1-orange.png")" />@player.shortName @player.position.positionName | @player.nflteam.teamSlug
-            </span>
-        </a>
-    }*@
+                    <div class="player-tags">                      
+                    @foreach (Player player in Model.MessageItem.PlayerMentions)
+                    {
+                        <a data-player-img="@player.ProfileImage" data-player-name="@player.Name" data-player-pos="@player.Position&nbsp;|&nbsp;@player.Team.Slug" data-player-id="@player.Id" class="player-tag-container player-popover" href="@Url.Action("Index", "Player", new { id = player.Id, name = player.Link })">
+                            <span>
+                                <img class="lazy-load" data-src="@Url.Content("~/assets/img/Player_Icon_1-orange.png")" />@player.ShortName @player.Position | @player.Team.Slug
+                            </span>
+                        </a>
+                    }
                     </div>
                 }
-                @if (!string.IsNullOrEmpty(Model.MessageItem.Media.Url)){
-                    <div class="msg-media">                                                  
-                        <a href="@Model.MessageItem.Media.Url" target="_blank"><img class="lazy-load" data-src="@Model.MessageItem.Media.ObjectUrl" /></a>                                            
+                @foreach(var mediaObj in Model.MessageItem.Media ){
+                    <div class="msg-media">
+                        @if (mediaObj.Type == "openGraphImage") {
+                            <a href="@mediaObj.Url" target="_blank">
+                                <img src="@mediaObj.ObjectUrl" />
+                            </a>
+                        }
+                        else
+                        {
+                            <img src='@Url.Content("~/assets/img/avatar/" + mediaObj.Url)' />
+                        }
                     </div>
                 }
             </div>
@@ -324,15 +331,7 @@
                                 }
                                 else
                                 {
-                                    <img alt="@Model.UserName" class="img-circle matchup-new-msg-item-avatar lazy-load" data-src ="@Url.Content("~/assets/img/avatar/" + Model.UserProfileImg)" />
-
-                                    @*
-                                    <form class="form-inline" role="form">
-                                        <a data-slidepanel="panel" data-msg="@Model.MessageItem.Id" class="reply-message-panel" href="@Url.Action("ReplyMessage", "Post", new { msgID = Model.MessageItem.Id })">
-                                            <input style="width: 100%" class="form-control" type="text" placeholder="Add a comment.." />
-                                        </a>
-                                    </form>
-                                    *@
+                                    <img alt="@Model.UserName" class="img-circle matchup-new-msg-item-avatar lazy-load" data-src ="@Url.Content("~/assets/img/avatar/" + Model.UserProfileImg)" />                                
                                     <form class="form-inline" role="form">
                                         <a class="reply-message-panel" data-backdrop="static" data-keyboard="false" href="#modal-fullscreen" data-toggle="modal" data-target="#modal-fullscreen">
                                             <input style="width: 100%" class="form-control" type="text" placeholder="Add a comment.." />
@@ -349,4 +348,3 @@
         </div>
         break;
     }
-    

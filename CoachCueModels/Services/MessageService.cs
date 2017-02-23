@@ -10,13 +10,14 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace CoachCue.Service
 {
     public static class MessageService
     { 
         //save a message document to the Messages collection
-        public static async Task<Message> Save(CoachCueUserData userData, string playerIDs, string text, string type, string parentID)
+        public static async Task<Message> Save(CoachCueUserData userData, string playerIDs, string text, string type, string parentID, HttpPostedFileBase imgFile)
         {
             Message message = new Message();
 
@@ -36,35 +37,52 @@ namespace CoachCue.Service
                 message.ProfileImage = userData.ProfileImage;
 
                 //check for opengraph info
-                Media media = new Media();
                 if (messageItem.openGraph.IsOpenGraph)
                 {
+                    Media media = new Media();
                     media.Title = messageItem.openGraph.Title;
                     media.Url = messageItem.openGraph.URL;
+
                     if (messageItem.openGraph.MediaTypeID == 1)
                     {
                         media.ObjectUrl = messageItem.openGraph.Video;
+                        media.Type = "openGraphVideo";
                     }
                     else if (messageItem.openGraph.MediaTypeID == 2)
                     {
                         media.ObjectUrl = messageItem.openGraph.Image;
+                        media.Type = "openGraphImage";
+                    }
+                    message.Media.Add(media);
+                }
+
+                //check for message image
+                if (imgFile != null)
+                {
+                    if (imgFile.ContentLength <= 3000000)
+                    {
+                        Media messageMedia = new Media();
+                        //save off message image
+                        var fileName = userData.UserId + "_" + DateTime.Now.Ticks.ToString() + "_" + imgFile.FileName.Substring(imgFile.FileName.LastIndexOf("\\") + 1);
+                        imgFile.SaveAs(HttpContext.Current.Request.PhysicalApplicationPath + "assets\\img\\avatar\\" + fileName);
+
+                        messageMedia.Title = imgFile.FileName;
+                        messageMedia.Url = fileName;
+                        messageMedia.Type = "messageImage";
+
+                        message.Media.Add(messageMedia);
                     }
                 }
-                message.Media = media;
 
                 //add any player mentions
-                List<string> players = new List<string>();
-                foreach (string playerID in playerIDs.Split(',').ToList())
+                if(!string.IsNullOrEmpty(playerIDs))
                 {
-                    if (!string.IsNullOrEmpty(playerID))
-                    {
-                        players.Add(playerID);
-                    }
-                }
-                message.PlayerMentions = new List<Player>();
+                    List<string> players = playerIDs.Split(',').ToList();
+                    var playerList = await PlayerService.GetListByIds(players);
 
-                message.Reply = new List<Message>();
-                message.UserMentions = new List<User>();
+                    message.PlayerMentions.AddRange(playerList);
+                }
+                  
                 //add a notifications and user mention joins
                 /* if (messageItem.userIncluded)
                  {

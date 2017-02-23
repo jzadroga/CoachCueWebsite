@@ -27,12 +27,14 @@ namespace CoachCue.ViewModels
         public bool IsMobile { get; set; }
         public List<LeaderboardCoach> TopCoaches { get; set; }
         public CoachCueUserData UserData { get; set; }
+        public List<Player> MessagePlayers { get; set; }
 
         public BaseViewModel()
         {
             this.RecentlyViewedItems = new List<AccountData>();
             this.TrendingItems = new List<AccountData>();
             this.UserData = CoachCueUserData.GetUserData(HttpContext.Current.User.Identity.Name);
+            this.MessagePlayers = new List<Player>();
         }
     }
 

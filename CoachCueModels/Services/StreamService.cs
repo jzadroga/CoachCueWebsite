@@ -60,7 +60,10 @@ namespace CoachCue.Service
                 //sort everything by date
                 stream = stream.OrderByDescending(str => str.DateCreated).Take(80).ToList();
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                string r = ex.Message;
+            }
 
             return stream;
         }

@@ -57,7 +57,7 @@ namespace CoachCue.Controllers
                 }                
             }
 
-            //homeVM.Stream = await StreamService.GetHomeStream(homeVM.UserData);
+            homeVM.Stream = await StreamService.GetHomeStream(homeVM.UserData);
 
             return View(homeVM);         
         }

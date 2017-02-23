@@ -240,7 +240,7 @@ namespace CoachCue.Controllers
             return RedirectToAction("TeamRoster", new { team = teamID });
         }
 
-        public ActionResult BuildPlayerJson()
+        public async Task<ActionResult> BuildPlayerJson()
         {
             using (FileStream fs = System.IO.File.Open(Server.MapPath("~/assets/data/players.json"), FileMode.Create))
             using (StreamWriter sw = new StreamWriter(fs))
@@ -249,7 +249,8 @@ namespace CoachCue.Controllers
                 jw.Formatting = Formatting.Indented;
 
                 JsonSerializer serializer = new JsonSerializer();
-                serializer.Serialize(jw, nflplayer.GetAllAccounts());
+                var players = await PlayerService.GetList();
+                serializer.Serialize(jw, players);
             }
 
             return RedirectToAction("Index");
