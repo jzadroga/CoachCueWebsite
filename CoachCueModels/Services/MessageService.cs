@@ -82,26 +82,6 @@ namespace CoachCue.Service
 
                     message.PlayerMentions.AddRange(playerList);
                 }
-                  
-                //add a notifications and user mention joins
-                /* if (messageItem.userIncluded)
-                 {
-                     foreach (user mention in messageItem.userList)
-                     {
-                         AddUserMention(msg.messageID, mention.userID);
-                         notification mentionNotice = notification.Add("messageMention", msg.messageID, userID, mention.userID, messageCreated);
-                         savedMsg.MentionNotices.Add(new MentionNotice { fromUser = userID, toUser = mention.userID, messageID = msg.messageID, noticeGuid = mentionNotice.notificationGUID });
-                     }
-                 }
-
-                 //also add notification if its a message about the user created matchup
-                 if (type == "matchup" && parentID.HasValue)
-                 {
-                     matchup matchupItem = matchup.Get(parentID.Value);
-                     notification matchupNotice = notification.Add("matchupMessage", matchupItem.matchupID, userID, matchupItem.createdBy, messageCreated);
-                     savedMsg.MentionNotices.Add(new MentionNotice { fromUser = userID, toUser = matchupItem.createdBy, messageID = matchupItem.matchupID, noticeGuid = matchupNotice.notificationGUID });
-                 }
-                 */
 
                 //it has a parent (matchup or message) so update with message
                 if (!string.IsNullOrEmpty(parentID))
@@ -113,7 +93,33 @@ namespace CoachCue.Service
                     await DocumentDBRepository<Message>.UpdateItemAsync(parentMsg.Id, parentMsg, "Messages");
                 }
                 else //if not a child to either message or matchup then create new
-                    await DocumentDBRepository<Message>.CreateItemAsync(message, "Messages");
+                {
+                   var result = await DocumentDBRepository<Message>.CreateItemAsync(message, "Messages");
+                    message.Id = result.Id;
+                }
+
+                //add a notifications if a user is mentioned
+                //if (messageItem.userIncluded)
+                //{
+                //    foreach (User mention in messageItem.userList)
+                //    {
+                //        NotificationService.Save(userData, )
+                //        notification mentionNotice = notification.Add("messageMention", msg.messageID, userID, mention.userID, messageCreated);
+                //        savedMsg.MentionNotices.Add(new MentionNotice { fromUser = userID, toUser = mention.userID, messageID = msg.messageID, noticeGuid = mentionNotice.notificationGUID });
+                 //   }
+               // }
+
+                //add a notification if replying, send to everyone in chain
+                
+                 
+
+                //also add notification if its a message about the user created matchup
+                //if (type == "matchup" && parentID.HasValue)
+                //{
+                //    matchup matchupItem = matchup.Get(parentID.Value);
+                //    notification matchupNotice = notification.Add("matchupMessage", matchupItem.matchupID, userID, matchupItem.createdBy, messageCreated);
+                //     savedMsg.MentionNotices.Add(new MentionNotice { fromUser = userID, toUser = matchupItem.createdBy, messageID = matchupItem.matchupID, noticeGuid = matchupNotice.notificationGUID });
+                // }
             }
             catch (Exception ex)
             {
@@ -148,13 +154,12 @@ namespace CoachCue.Service
                     message += (word.ToLower().StartsWith("http://")) ? word : "http://" + word;
                 else if (word.StartsWith("@")) //check for user
                 {
-                    user userItem = user.GetByAccountUsername(word.Substring(1));
+                    var userItem = await UserService.GetByUsername(word.Substring(1));
                     if (userItem != null)
                     {
                         messageItem.userIncluded = true;
                         messageItem.userList.Add(userItem);
-                        if (userItem.userID != 0)
-                            message += "<a href='/coach/" + userItem.userID + "/" + userItem.fullName + "'>" + word + "</a>";
+                        message += "<a href='/coach/" + userItem.Id + "/" + userItem.Name + "'>" + word + "</a>";
                     }
                 }
                 else
@@ -191,11 +196,11 @@ namespace CoachCue.Service
         public string messageText { get; set; }
         public OpenGraphResponse openGraph { get; set; }
         public bool userIncluded { get; set; }
-        public List<user> userList { get; set; }
+        public List<User> userList { get; set; }
 
         public FormattedMessage()
         {
-            this.userList = new List<user>();
+            this.userList = new List<User>();
             this.openGraph = new OpenGraphResponse();
         }
     }

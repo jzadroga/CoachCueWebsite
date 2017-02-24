@@ -84,5 +84,12 @@ namespace CoachCue.Service
 
             return user;
         }
+
+        public static async Task<User> GetByUsername(string username)
+        {
+            var user = await DocumentDBRepository<User>.GetItemsAsync(us => us.UserName.ToLower() == username.ToLower(), "Users");
+
+            return user.FirstOrDefault();
+        }
     }
 }

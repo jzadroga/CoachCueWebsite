@@ -33,6 +33,10 @@ $(document).ready(function () {
     });
 
     //full page modal
+    $(document).on('click', '.reply-message-panel', function () {
+        $('#prnt-id').val($(this).attr('data-msg'));
+    });
+
     $(".modal-fullscreen").on('show.bs.modal', function () {
         setTimeout(function () {
             $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
@@ -46,6 +50,8 @@ $(document).ready(function () {
         $('.image-preview').popover('hide');
         $('.image-preview').attr("data-content", "");
         $('#players').tagsinput('removeAll');
+        $('#input-file-preview').val('');
+        $('#prnt-id').val('');
         $(".bootstrap-tagsinput input.tt-query").attr("placeholder", "+ Add Player(s) included in the message");
     });
 
@@ -161,12 +167,16 @@ $(document).ready(function () {
                 } else {
                     $("div.message-post-" + parentID).removeClass("empty-message-block");
                     $("div." + parentID + "-message-block").find("div.show-message-block").append(data.StreamData);
-                    $("div." + parentID + "-message-block").find("div.hidden-message-block").append(data.StreamData);
                 }
          
-                loadImages();
-
                 //send out email notifications
+
+                //change this to be a seperate process
+                //send off the current message id to the new method
+                //that method will then look at any notifications that reference this message by matching the ids
+                //** still have to figure out how this will work with matchups
+
+
                 if (data.Type == "matchup") {
                     $.getScript("http://platform.twitter.com/widgets.js");
                     task.sendMatchupMessageEmail(data.MentionNotices, function (emailSent) {

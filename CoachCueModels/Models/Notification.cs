@@ -26,5 +26,8 @@ namespace CoachCue.Models
 
         [JsonProperty(PropertyName = "userTo")]
         public User UserTo { get; set; }
+
+        [JsonProperty(PropertyName = "message")]
+        public Message Message { get; set; }
     }
 }
