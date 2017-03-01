@@ -46,6 +46,9 @@ namespace CoachCue.Models
         [JsonProperty(PropertyName = "userName")]
         public string UserName { get; set; }
 
+        [JsonProperty(PropertyName = "email")]
+        public string Email { get; set; }
+
         [JsonProperty(PropertyName = "profileImage")]
         public string ProfileImage { get; set; }
 

@@ -16,11 +16,11 @@ namespace CoachCue.Controllers
     public class PostController : Controller
     {
         [NoCacheAttribute]
-        public ActionResult NewMessage( [DefaultValue("")] string ply)
+        public async Task<ActionResult> NewMessage( [DefaultValue("")] string ply)
         {
             MessageViewModel msgVM = new MessageViewModel();
 
-            msgVM.User = CoachCueUserData.GetUserData(User.Identity.Name);
+            msgVM.User = await CoachCueUserData.GetUserData(User.Identity.Name);
             msgVM.Type = "general";
             msgVM.ParentID = string.Empty;
 
@@ -39,7 +39,7 @@ namespace CoachCue.Controllers
         {
             MessageViewModel msgVM = new MessageViewModel();
 
-            msgVM.User = CoachCueUserData.GetUserData(User.Identity.Name);
+            msgVM.User = await CoachCueUserData.GetUserData(User.Identity.Name);
             msgVM.ParentMessage = await MessageService.Get(msgID);
            // msgVM.MessagePlayers = msgVM.ParentMessage.PlayerMentions;
             msgVM.Type = "general";
@@ -49,11 +49,11 @@ namespace CoachCue.Controllers
         }
 
         [NoCacheAttribute]
-        public ActionResult NewMatchupMessage(int mtchpID)
+        public async Task<ActionResult> NewMatchupMessage(int mtchpID)
         {
             MessageViewModel msgVM = new MessageViewModel();
 
-            msgVM.User = CoachCueUserData.GetUserData(User.Identity.Name);
+            msgVM.User = await CoachCueUserData.GetUserData(User.Identity.Name);
             matchup currentMatch = matchup.Get(mtchpID);
             msgVM.Matchup = currentMatch;
 
@@ -68,11 +68,11 @@ namespace CoachCue.Controllers
         }
 
         [NoCacheAttribute]
-        public ActionResult NewMatchup([DefaultValue(0)] int ply1)
+        public async Task<ActionResult> NewMatchup([DefaultValue(0)] int ply1)
         {
             MessageViewModel msgVM = new MessageViewModel();
 
-            msgVM.User = CoachCueUserData.GetUserData(User.Identity.Name);
+            msgVM.User = await CoachCueUserData.GetUserData(User.Identity.Name);
 
             //get list of potential people to invite to answer the matchup
             List<user> askUsers = new List<user>();
@@ -93,11 +93,11 @@ namespace CoachCue.Controllers
         }
 
         [NoCacheAttribute]
-        public ActionResult Invite(int mtchpID)
+        public async Task<ActionResult> Invite(int mtchpID)
         {
             MessageViewModel msgVM = new MessageViewModel();
 
-            msgVM.User = CoachCueUserData.GetUserData(User.Identity.Name);
+            msgVM.User = await CoachCueUserData.GetUserData(User.Identity.Name);
             msgVM.Matchup = matchup.Get(mtchpID);
 
             int userCount = (Request.Browser.IsMobileDevice) ? 1 : 4;

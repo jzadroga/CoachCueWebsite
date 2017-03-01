@@ -182,7 +182,7 @@ $(document).ready(function () {
                     task.sendMatchupMessageEmail(data.MentionNotices, function (emailSent) {
                     });
                 } else {
-                    task.sendMentionEmail(data.MentionNotices, function (emailSent) {
+                    task.sendNotificationEmail(data.ID, function (emailSent) {
                     });
                 }
             }

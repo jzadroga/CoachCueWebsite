@@ -231,7 +231,7 @@ namespace CoachCue.Controllers
         [HttpPost]
         public async Task<ActionResult> SaveMessage(string plyID, string msg, string prnt, string type, bool inline, HttpPostedFileBase img)
         {   
-            var userData = CoachCueUserData.GetUserData(User.Identity.Name);
+            var userData = await CoachCueUserData.GetUserData(User.Identity.Name);
 
             var message = await MessageService.Save(userData, plyID, msg, "message", prnt, img);
 
@@ -267,43 +267,25 @@ namespace CoachCue.Controllers
             return Json(new
             {
                 StreamData = streamData,
-                ID = plyID,
+                ID = message.Id,
                 Type = type,
                 Inline = inline,
                 MentionNotices = new List<MentionNotice>(),
             //LastUpdateTicks = streamItem.DateTicks,
-            AddPlayerHeader = false,
+                AddPlayerHeader = false,
                 ParentID = prnt
             }, JsonRequestBehavior.AllowGet);
         }
 
         [SiteAuthorization]
         [HttpPost]
-        public ActionResult SendMentionEmail(List<MentionNotice> mentions) 
+        public async Task<ActionResult> SendMessageNotifications(string messageId)
         {
-            if (mentions != null)
-            {
-                //send off mention emails
-                foreach (MentionNotice mention in mentions)
-                {
-                    EmailHelper.SendMentionEmail(mention.fromUser, mention.toUser, mention.messageID, mention.noticeGuid);
-                }
-            }
-   
-            return Json(new
-            {
-                Sent = true
-            }, JsonRequestBehavior.AllowGet);
-        }
+            var notifications = await NotificationService.GetByMessage(messageId);
 
-        [SiteAuthorization]
-        [HttpPost]
-        public ActionResult SendFollowEmail(int follow)
-        {
-            int userID = user.GetUserID(User.Identity.Name);
-
-            //send off mention emails
-            EmailHelper.SendFollowEmail(userID, follow);
+            //send off mention/reply emails
+            if( notifications.Count() > 0 )
+                await EmailHelper.SendMessageNotificationEmails(notifications.ToList());
 
             return Json(new
             {

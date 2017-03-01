@@ -12,7 +12,8 @@
 
     public static class DocumentDBRepository<T> where T : class
     {
-        private static readonly string DatabaseId = "CoachCueData";
+        //private static readonly string DatabaseId = "CoachCueData";
+        private static readonly string DatabaseId = "coachcue";
         private static DocumentClient client;
 
         public static async Task<T> GetItemAsync(string id, string collection)

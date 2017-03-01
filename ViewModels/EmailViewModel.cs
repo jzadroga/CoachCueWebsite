@@ -5,6 +5,7 @@ using System.Web;
 using CoachCue.Model;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using CoachCue.Service;
 
 namespace CoachCue.ViewModels
 {

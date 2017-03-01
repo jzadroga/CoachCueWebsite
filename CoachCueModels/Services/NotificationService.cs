@@ -32,7 +32,8 @@ namespace CoachCue.Service
                     Id = userData.UserId,
                     UserName = userData.UserName,
                     Name = userData.Name,
-                    Profile = new UserProfile() { Image = userData.ProfileImage }
+                    Profile = new UserProfile() { Image = userData.ProfileImage },
+                    Email = userData.Email
                 };
                 notification.UserTo = toUser;
                 notification.Message = message;
@@ -57,5 +58,17 @@ namespace CoachCue.Service
         {
             return await DocumentDBRepository<Notification>.GetItemAsync(id, "Notifications");
         }
+
+        public static async Task<IEnumerable<Notification>> GetByMessage(string messageId)
+        {
+            return await DocumentDBRepository<Notification>.GetItemsAsync(d => d.Message.Id == messageId && d.Sent == false, "Notifications");
+        }
+    }
+
+    public class LinkData
+    {
+        public string Message { get; set; }
+        public string ID { get; set; }
+        public string Guid { get; set; }
     }
 }

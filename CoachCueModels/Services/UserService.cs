@@ -91,5 +91,12 @@ namespace CoachCue.Service
 
             return user.FirstOrDefault();
         }
+
+        public static async Task<User> GetByEmail(string email)
+        {
+            var user = await DocumentDBRepository<User>.GetItemsAsync(us => us.Email.ToLower() == email.ToLower(), "Users");
+
+            return user.FirstOrDefault();
+        }
     }
 }

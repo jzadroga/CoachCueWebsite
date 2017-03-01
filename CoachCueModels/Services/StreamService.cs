@@ -43,18 +43,18 @@ namespace CoachCue.Service
                 var endDate = DateTime.UtcNow.GetEasternTime().AddDays(-280);
 
                 var msgs = await MessageService.GetList(endDate);
-                    stream.AddRange(msgs.Select(msg => new StreamContent
-                    {
-                        MessageItem = msg,
-                        DateTicks = msg.DateCreated.Ticks.ToString(),
-                        ProfileImg = msg.ProfileImage,
-                        UserName = msg.UserName,
-                        FullName = msg.Name,
-                        ContentType = "message",
-                        DateCreated = msg.DateCreated,
-                        UserProfileImg = profileImage,
-                        TimeAgo = twitter.GetRelativeTime(msg.DateCreated)
-                    }).ToList());
+                stream.AddRange(msgs.Select(msg => new StreamContent
+                {
+                    MessageItem = msg,
+                    DateTicks = msg.DateCreated.Ticks.ToString(),
+                    ProfileImg = msg.ProfileImage,
+                    UserName = msg.UserName,
+                    FullName = msg.Name,
+                    ContentType = "message",
+                    DateCreated = msg.DateCreated,
+                    UserProfileImg = profileImage,
+                    TimeAgo = twitter.GetRelativeTime(msg.DateCreated)
+                }).ToList());
                 
 
                 //sort everything by date

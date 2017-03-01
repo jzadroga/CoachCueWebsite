@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoachCue.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -30,7 +31,7 @@ namespace CoachCue.Model
             }
         }
 
-        public LinkData linkData
+        /*public LinkData linkData
         {
             get
             {
@@ -64,7 +65,7 @@ namespace CoachCue.Model
 
                 return link;
             }
-        }
+        }*/
 
         public string noticeMessage
         {
@@ -102,7 +103,7 @@ namespace CoachCue.Model
                 if (matchupItem.matchupID != 0)
                 {
                     link.Message = matchupItem.nflplayer.fullName + " vs " + matchupItem.nflplayer1.fullName;
-                    link.ID = matchupItem.matchupID;
+                    link.ID = matchupItem.matchupID.ToString();
                     link.Guid = guid;
                 }
             }
@@ -120,7 +121,7 @@ namespace CoachCue.Model
                 if (msg.messageID != 0)
                 {
                     link.Message = msg.messageText;
-                    link.ID = msg.messageID;
+                    link.ID = msg.messageID.ToString();
                     link.Guid = guid;
                 }
             }
@@ -293,13 +294,6 @@ namespace CoachCue.Model
 
             return typeID;
         }
-    }
-
-    public class LinkData
-    {
-        public string Message { get; set; }
-        public int ID { get; set;}
-        public string Guid { get; set; }
     }
 
     public class MatchupNotification

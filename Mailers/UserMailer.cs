@@ -6,6 +6,8 @@ using Mvc.Mailer;
 using System.Configuration;
 using System.Web;
 using System.Web.Mvc;
+using CoachCue.Models;
+using CoachCue.Service;
 
 namespace CoachCue.Mailers
 { 
@@ -33,23 +35,36 @@ namespace CoachCue.Mailers
 			});
 		}
 
-        public virtual MvcMailMessage Notifications(string emailTo, string guid, string name, List<MatchupNotification> info)
+        public virtual MvcMailMessage Notifications(Notification notification)
 		{
-            ViewData["Title"] = name + ", you have some notifications";
-            ViewData["UserGuid"] = guid;
+            LinkData link = new LinkData()
+            {
+                Message = notification.Message.Text,
+                ID = notification.Message.Id,
+                Guid = notification.UserFrom.Id
+            };
 
-            MailNotificationsViewModel notVM = new MailNotificationsViewModel();
-            notVM.FullName = name;
-            notVM.Notices = info;
-            ViewData.Model = notVM;
-			return Populate(x =>
-			{
-                x.Subject = "Here's some activity you may have missed on CoachCue";
-				x.ViewName = "Notifications";
-                x.To.Add(emailTo);
+            UrlHelper helper = new UrlHelper(HttpContext.Current.Request.RequestContext);
+            string msgLink = helper.Action("Index", "Coach", new { mt = link.ID, id = notification.UserFrom.Id, name = notification.UserFrom.Name });
+            msgLink = ConfigurationManager.AppSettings["MvcMailer.BaseURL"] + msgLink;
+
+            ViewData["Title"] = notification.Text;
+            ViewData["UserGuid"] = notification.UserFrom.Id;
+
+            MailMentionViewModel voteVM = new MailMentionViewModel();
+            voteVM.FullName = notification.UserFrom.Name;
+            voteVM.MessageLink = link;
+            voteVM.UserMessageLink = msgLink;
+            voteVM.FromAvatarSrc = "http://coachcue.com/assets/img/avatar/" + notification.UserFrom.Profile.Image;
+            ViewData.Model = voteVM;
+            return Populate(x =>
+            {
+                x.Subject = notification.Text;
+                x.ViewName = "MentionNotice";
+                x.To.Add(notification.UserTo.Email);
                 x.From = new MailAddress(fromAddress, "CoachCue");
-			});
-		}
+            });
+        }
 
         public virtual MvcMailMessage RequestVote(string emailTo, string guid, int fromUserID, LinkData link)
         {

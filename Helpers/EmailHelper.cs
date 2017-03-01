@@ -8,6 +8,9 @@ using System.Net;
 using CoachCue.Mailers;
 using CoachCue.Model;
 using Mvc.Mailer;
+using System.Threading.Tasks;
+using CoachCue.Models;
+using CoachCue.Service;
 
 namespace CoachCue.Helpers
 {
@@ -59,42 +62,25 @@ namespace CoachCue.Helpers
             catch (Exception) { }
         }
 
-        public static void SendFollowEmail(int userID, int followID)
+        public static async Task<bool> SendMessageNotificationEmails(List<Notification> notifications)
         {
             try
-            {
-                //don't send if voting on matchup that user created
-                if (userID != 0 && followID != 0)
-                {
-                    CoachCue.Mailers.IUserMailer UserMailer = new UserMailer();
-
-                    SmtpClientWrapper wrapper = new SmtpClientWrapper(getSmtpConfig());
-                    //check the users settings before sending
-                    if (user.GetSettings(followID).emailNotifications.Value == true)
-                        UserMailer.Follow(userID, followID).Send(wrapper);
-                }
-            }
-            catch (Exception) { }
-        }
-
-        public static void SendMentionEmail(int fromID, int toID, int messageID, string noticeGuid)
-        {
-            try
-            {
-                LinkData link = notification.GetMentionLink(messageID, noticeGuid);
-                string fromName = user.Get(fromID).fullName;
-
-                user userToItem = user.Get(toID);
-                string toEmail = userToItem.email;
-
+            {              
                 CoachCue.Mailers.IUserMailer UserMailer = new UserMailer();
 
-                SmtpClientWrapper wrapper = new SmtpClientWrapper(getSmtpConfig());
                 //check the users settings before sending
-                if (user.GetSettings(toID).emailNotifications.Value == true)
-                    UserMailer.UserMention(toEmail, fromID, userToItem.userGuid, fromName, link).Send(wrapper);
+                foreach (var notification in notifications)
+                {
+                    if (notification.UserTo.Settings.EmailNotifications == true)
+                        UserMailer.Notifications(notification).Send(new SmtpClientWrapper(getSmtpConfig()));
+                }           
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+
+            return true;
         }
 
         public static void SendMatchupMessageEmail(int fromID, int toID, int matchupID, string noticeGuid)
@@ -115,52 +101,6 @@ namespace CoachCue.Helpers
                     UserMailer.MatchupMessage(userToItem, fromID, link).Send(wrapper);
             }
             catch (Exception) { }
-        }
-
-        public static int SendNotificationEmail()
-        {
-            int sent = 0;
-            
-            /*CoachCue.Mailers.IUserMailer UserMailer = new UserMailer();
-
-            foreach (user userItem in user.List())
-            {
-                List<MatchupNotification> matchupNotices = new List<MatchupNotification>();
-
-                List<notification> notices = notification.GetByUserID(userItem.userID, false).Where( not => not.status.statusName == "Active" ).ToList();
-                if (notices.Count() > 0)
-                {
-                    List<LinkData> links = new List<LinkData>();
-                    foreach (notification notice in notices)
-                    {
-                        List<int> matchups = notice.user1.matchups.Where(mt => mt.createdBy == notice.sentTo).Select(mt => mt.matchupID).ToList();
-                        users_matchup userMatch = notice.user.users_matchups.Where(usm => matchups.Contains(usm.matchupID) && usm.dateCreated == notice.dateCreated).FirstOrDefault();
-                        if (userMatch != null)
-                        {
-                            links.Add(new LinkData { Message = userMatch.matchup.nflplayer.fullName + " vs " + userMatch.matchup.nflplayer1.fullName, ID = userMatch.matchupID });
-                        }
-                    }
-
-                    var matchupGroups = from n in links
-                                        group n by n.ID into g
-                                        select new MatchupNotification { ID = g.Key, VoteCount = g.Count(), Match = links.Where( ln => ln.ID == g.Key ).FirstOrDefault().Message };
-
-                    matchupNotices = matchupGroups.ToList();
-
-                    if (matchupNotices.Count() > 0)
-                    {
-                        SmtpClientWrapper wrapper = new SmtpClientWrapper(getSmtpConfig());
-                        //check the users settings before sending
-                        if (user.GetSettings(userItem.userID).emailNotifications.Value == true)
-                        {
-                            UserMailer.Notifications(userItem.email, userItem.userGuid, userItem.fullName, matchupNotices).Send(wrapper);
-                            sent++;
-                        }
-                    }
-                }
-            }*/
-
-            return sent;
         }
 
         public static void Send(string toAddress, string emailLabel, string inviteMessage) 

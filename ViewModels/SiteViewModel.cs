@@ -33,7 +33,6 @@ namespace CoachCue.ViewModels
         {
             this.RecentlyViewedItems = new List<AccountData>();
             this.TrendingItems = new List<AccountData>();
-            this.UserData = CoachCueUserData.GetUserData(HttpContext.Current.User.Identity.Name);
             this.MessagePlayers = new List<Player>();
         }
     }

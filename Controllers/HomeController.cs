@@ -26,6 +26,7 @@ namespace CoachCue.Controllers
         public async Task<ActionResult> Index([DefaultValue("")] string gu, [DefaultValue("")] string tb)
         {
             HomeViewModel homeVM = new HomeViewModel();
+            homeVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
             homeVM.ShowWelcome = false;
             homeVM.LoggedIn = false;
             homeVM.LoadMatchups = (!string.IsNullOrEmpty(tb)) ? true : false;
@@ -37,7 +38,7 @@ namespace CoachCue.Controllers
             {
                 homeVM.LoggedIn = true;
                
-                int logins = user.SaveLogin(Convert.ToInt32(homeVM.UserData.UserId));
+                //int logins = user.SaveLogin(Convert.ToInt32(homeVM.UserData.UserId));
                 //if (logins <= 1)
                 //    homeVM.ShowWelcome = true;
             }

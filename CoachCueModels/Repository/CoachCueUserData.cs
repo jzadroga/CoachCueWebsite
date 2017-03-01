@@ -1,4 +1,5 @@
 ﻿using CoachCue.Model;
+using CoachCue.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,39 +15,31 @@ namespace CoachCue.Repository
         public string Name { get; set; }
         public string UserName { get; set; }
         public string ProfileImage { get; set; }
+        public string Email { get; set; }
 
-        public static void SetUserData(string id, string name, string userName, string profileImage)
+        public static void SetUserData(string id, string name, string userName, string profileImage, string email)
         {
             HttpContext.Current.Session["UserId"] = id;
             HttpContext.Current.Session["Name"] = name;
             HttpContext.Current.Session["UserName"] = userName;
             HttpContext.Current.Session["ProfileImage"] = profileImage;
+            HttpContext.Current.Session["Email"] = email;
         }
 
-        public static CoachCueUserData GetUserData(string email)
+        public async static Task<CoachCueUserData> GetUserData(string email)
         {
             if (string.IsNullOrEmpty(email))
             {
-                SetUserData(string.Empty, string.Empty, string.Empty, "sm_profile.jpg");
+                SetUserData(string.Empty, string.Empty, string.Empty, "sm_profile.jpg", email);
             }
             else
             {
                 if (HttpContext.Current.Session["UserId"] == null ||
                         HttpContext.Current.Session["Name"] == null ||
                          HttpContext.Current.Session["UserName"] == null)
-                {
-                
-               
-                        var currentUser = user.GetUserByEmail(email);
-                        SetUserData(currentUser.userID.ToString(), currentUser.fullName, currentUser.userName, currentUser.avatar.imageName);
-                    
-                    /*return new CoachCueUserData()
-                    {
-                        UserId = currentUser.userID.ToString(),
-                        Name = currentUser.fullName,
-                        UserName = currentUser.userName,
-                        ProfileImage = currentUser.avatar.imageName
-                    };*/
+                {         
+                    var currentUser = await UserService.GetByEmail(email);
+                    SetUserData(currentUser.Id, currentUser.Name, currentUser.UserName, currentUser.Profile.Image, currentUser.Email);
                 }
             }
 
@@ -55,7 +48,8 @@ namespace CoachCue.Repository
                 UserId = HttpContext.Current.Session["UserId"].ToString(),
                 Name = HttpContext.Current.Session["Name"].ToString(),
                 UserName = HttpContext.Current.Session["UserName"].ToString(),
-                ProfileImage = HttpContext.Current.Session["ProfileImage"].ToString()
+                ProfileImage = HttpContext.Current.Session["ProfileImage"].ToString(),
+                Email = HttpContext.Current.Session["Email"].ToString()
             };
         }
     }

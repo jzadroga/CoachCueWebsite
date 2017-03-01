@@ -17,6 +17,8 @@ using DotNetOpenAuth.OpenId;
 using DotNetOpenAuth.OpenId.Extensions.AttributeExchange;
 using DotNetOpenAuth.OpenId.Extensions.SimpleRegistration;
 using CoachCue.Repository;
+using CoachCue.Service;
+using System.Threading.Tasks;
 
 namespace CoachCue.Controllers
 {
@@ -204,15 +206,15 @@ namespace CoachCue.Controllers
         }
 
         [HttpPost]
-        public JsonResult LogOnAjax(string username, string password, string rememberMe)
+        public async Task<JsonResult> LogOnAjax(string username, string password, string rememberMe)
         {
             bool success = false;
             if (ModelState.IsValid)
             {
                 if (MembershipService.ValidateUser(username, password))
                 {
-                    var usr = user.GetUserByEmail(username);
-                    CoachCueUserData.SetUserData(usr.userID.ToString(), usr.fullName, usr.userName, usr.avatar.imageName); 
+                    var usr = await UserService.GetByEmail(username);
+                    CoachCueUserData.SetUserData(usr.Id, usr.Name, usr.UserName, usr.Profile.Image, usr.Email); 
 
                     //always have the rememberme cookie set
                     FormsService.SignIn(username, true);

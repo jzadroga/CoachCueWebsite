@@ -106,13 +106,16 @@ var task = function () {
         })
     },
 
-    sendMentionEmail = function (mentions, callback) {
+    sendNotificationEmail = function (msgId, callback) {
+        var postData = new FormData();
+        postData.append('messageId', msgId);
+
         $.ajax({
             type: "POST",
-            contentType: 'application/json',
-            dataType: 'json',
-            url: "/UserTask/SendMentionEmail",
-            data: JSON.stringify(mentions),
+            contentType: false,
+            processData: false,
+            url: "/UserTask/SendMessageNotifications",
+            data: postData,
             cache: false,
             success: function (data) {
                 callback(data);
@@ -339,7 +342,7 @@ var task = function () {
         getConversation: getConversation,
         getDetails: getDetails,
         getTrending: getTrending,
-        sendMentionEmail: sendMentionEmail,
+        sendNotificationEmail: sendNotificationEmail,
         sendMatchupMessageEmail: sendMatchupMessageEmail,
         sendMatchupVoteEmail: sendMatchupVoteEmail,
         sendFollowNoticeEmail: sendFollowNoticeEmail,

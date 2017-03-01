@@ -35,6 +35,7 @@ namespace CoachCue.Service
                 message.UserName = userData.UserName;
                 message.Name = userData.Name;
                 message.ProfileImage = userData.ProfileImage;
+                message.Email = userData.Email;
 
                 //check for opengraph info
                 if (messageItem.openGraph.IsOpenGraph)
@@ -99,19 +100,20 @@ namespace CoachCue.Service
                 }
 
                 //add a notifications if a user is mentioned
-                //if (messageItem.userIncluded)
-                //{
-                //    foreach (User mention in messageItem.userList)
-                //    {
-                //        NotificationService.Save(userData, )
-                //        notification mentionNotice = notification.Add("messageMention", msg.messageID, userID, mention.userID, messageCreated);
-                //        savedMsg.MentionNotices.Add(new MentionNotice { fromUser = userID, toUser = mention.userID, messageID = msg.messageID, noticeGuid = mentionNotice.notificationGUID });
-                 //   }
-               // }
+                if (messageItem.userIncluded)
+                {
+                    foreach (User mention in messageItem.userList)
+                    {
+                        await NotificationService.Save(userData, mention, userData.Name + " Posted a new message, mentioning you.", "mention", message);
+                    }
+                }
 
                 //add a notification if replying, send to everyone in chain
-                
-                 
+                if (!string.IsNullOrEmpty(parentID))
+                {
+
+                }
+
 
                 //also add notification if its a message about the user created matchup
                 //if (type == "matchup" && parentID.HasValue)
@@ -131,7 +133,9 @@ namespace CoachCue.Service
 
         public static async Task<IEnumerable<Message>> GetList(DateTime endDate)
         {
-            return await DocumentDBRepository<Message>.GetItemsAsync(d => d.DateCreated > endDate, "Messages");
+            //return await DocumentDBRepository<Message>.GetItemsAsync(d => d.DateCreated > endDate, "Messages");
+            return await DocumentDBRepository<Message>.GetItemsAsync(d => d.UserName == "JasonZ", "Messages");
+
         }
 
         public static async Task<Message> Get(string id)
