@@ -66,14 +66,18 @@ namespace CoachCue.Helpers
         {
             try
             {              
-                CoachCue.Mailers.IUserMailer UserMailer = new UserMailer();
+                IUserMailer UserMailer = new UserMailer();
 
                 //check the users settings before sending
                 foreach (var notification in notifications)
                 {
                     if (notification.UserTo.Settings.EmailNotifications == true)
                         UserMailer.Notifications(notification).Send(new SmtpClientWrapper(getSmtpConfig()));
-                }           
+
+                    //mark as sent
+                    notification.Sent = true;
+                    await NotificationService.UpdateToSent(notification);
+                }                         
             }
             catch (Exception ex)
             {

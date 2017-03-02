@@ -1,16 +1,12 @@
 ﻿using CoachCue.Model;
 using CoachCue.Models;
 using CoachCue.Repository;
-using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace CoachCue.Service
 {
@@ -61,7 +57,35 @@ namespace CoachCue.Service
 
         public static async Task<IEnumerable<Notification>> GetByMessage(string messageId)
         {
-            return await DocumentDBRepository<Notification>.GetItemsAsync(d => d.Message.Id == messageId && d.Sent == false, "Notifications");
+            return await DocumentDBRepository<Notification>.GetItemsAsync(d => d.Message.Id == messageId 
+                && d.Sent == false 
+                && (d.Type == "mention" || d.Type == "reply"), 
+                "Notifications");
+        }
+
+        public static async Task<Microsoft.Azure.Documents.Document> UpdateToSent(Notification notification)
+        {
+            return await DocumentDBRepository<Notification>.UpdateItemAsync(notification.Id, notification, "Notifications");
+        }
+
+        public static async Task<List<User>> GetReplyNotificationUsers(string userId, Message message)
+        {
+            List<string> userIds = new List<string>();
+
+            //don't include if user is replying to own message
+            if(userId != message.CreatedBy)
+                userIds.Add(message.CreatedBy);
+
+            foreach (Message reply in message.Reply)
+            {
+                //don't send a reply if the user creating the message is already in the chain
+                if (!userIds.Contains(reply.CreatedBy) && reply.CreatedBy != userId) 
+                    userIds.Add(reply.CreatedBy);
+            }
+
+            var replies = await UserService.GetListByIds(userIds);
+
+            return replies.ToList();
         }
     }
 

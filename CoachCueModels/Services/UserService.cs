@@ -98,5 +98,10 @@ namespace CoachCue.Service
 
             return user.FirstOrDefault();
         }
+
+        public static async Task<IEnumerable<User>> GetListByIds(List<string> userIds)
+        {
+            return await DocumentDBRepository<User>.GetItemsAsync(d => userIds.Contains(d.Id), "Users");
+        }
     }
 }

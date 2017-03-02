@@ -89,8 +89,15 @@ namespace CoachCue.Service
                 {
                     message.Id = "parent-" + parentID;
                     var parentMsg = await Get(parentID);
-                    parentMsg.Reply.Add(message);
 
+                    //add a notification if replying, send to everyone in chain
+                    var replyUsers = await NotificationService.GetReplyNotificationUsers(userData.UserId, parentMsg);
+                    foreach (var replyUser in replyUsers)
+                    {
+                        await NotificationService.Save(userData, replyUser, userData.Name + " Posted a new reply message.", "reply", message);
+                    }
+
+                    parentMsg.Reply.Add(message);
                     await DocumentDBRepository<Message>.UpdateItemAsync(parentMsg.Id, parentMsg, "Messages");
                 }
                 else //if not a child to either message or matchup then create new
@@ -107,14 +114,7 @@ namespace CoachCue.Service
                         await NotificationService.Save(userData, mention, userData.Name + " Posted a new message, mentioning you.", "mention", message);
                     }
                 }
-
-                //add a notification if replying, send to everyone in chain
-                if (!string.IsNullOrEmpty(parentID))
-                {
-
-                }
-
-
+             
                 //also add notification if its a message about the user created matchup
                 //if (type == "matchup" && parentID.HasValue)
                 //{
@@ -134,7 +134,7 @@ namespace CoachCue.Service
         public static async Task<IEnumerable<Message>> GetList(DateTime endDate)
         {
             //return await DocumentDBRepository<Message>.GetItemsAsync(d => d.DateCreated > endDate, "Messages");
-            return await DocumentDBRepository<Message>.GetItemsAsync(d => d.UserName == "JasonZ", "Messages");
+            return await DocumentDBRepository<Message>.GetItemsAsync(d => d.UserName != "", "Messages");
 
         }
 
