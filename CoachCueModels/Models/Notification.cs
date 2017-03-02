@@ -9,6 +9,7 @@ namespace CoachCue.Models
         public Notification()
         {
             this.Sent = false;
+            this.Read = false;
         }
 
         [JsonProperty(PropertyName = "id")]
@@ -37,5 +38,8 @@ namespace CoachCue.Models
 
         [JsonProperty(PropertyName = "sent")]
         public bool Sent { get; set; }
+
+        [JsonProperty(PropertyName = "read")]
+        public bool Read { get; set; }
     }
 }

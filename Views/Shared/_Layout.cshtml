@@ -105,7 +105,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <ul class="nav navbar-nav navbar-right">
-                            <li title="Notifications <a class='view-all-notifications' href='/account/notifications'>View All</a>" data-content='<ul id="notice-list"></ul>'  data-toggle="popover" id="user-notifications" class="@Html.ActiveSection("Account")"><span class="badge badge-important notice-number">@Model.NoticeCount</span><span id="notice-bell" class="glyphicon glyphicon-bell"></span><a class="notices" href='#'></a></li>
+                            <li title="Notifications" id="user-notifications" class="@Html.ActiveSection("Account")"><span class="badge badge-important notice-number">@Model.UserData.NotificationCount</span><span id="notice-bell" class="glyphicon glyphicon-bell"></span><a class="notices" href='#'></a></li>
 
                             <li class="dropdown you-dropdown @Html.ActiveSection("Account")">
 

@@ -214,7 +214,10 @@ namespace CoachCue.Controllers
                 if (MembershipService.ValidateUser(username, password))
                 {
                     var usr = await UserService.GetByEmail(username);
-                    CoachCueUserData.SetUserData(usr.Id, usr.Name, usr.UserName, usr.Profile.Image, usr.Email); 
+                    var notifications = await NotificationService.GetList(usr.Id);
+                    int count = (notifications.Count() > 0) ? notifications.Where(n => n.Read == false).Count() : 0;
+
+                    CoachCueUserData.SetUserData(usr.Id, usr.Name, usr.UserName, usr.Profile.Image, usr.Email, count); 
 
                     //always have the rememberme cookie set
                     FormsService.SignIn(username, true);

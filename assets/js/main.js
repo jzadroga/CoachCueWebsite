@@ -258,24 +258,6 @@ $(document).ready(function () {
         return false;
     });
 
-    //user notifications
-    $('#user-notifications').popover({
-        trigger: 'click',
-        placement: 'left',
-        html: true
-    });
-  
-    $('#user-notifications').on('shown.bs.popover', function () {
-        $("#notice-list").before("<div id='notice-loading'><div class='notice-spinner'></div><span>Loading Notifications</span</div>");
-        $("#notice-loading").show();
-        $(".notice-spinner").spin(smalSpinnerBlackOpts);
-        task.getNotices(function (data) {
-            $("#notice-list").append(data.Notices);
-            $(".notice-number").text("0");
-            $("#notice-loading").hide();
-        });
-    })
-
     //filter trending views
     $(".trending-view").on('click', function (e) {
         var listItem = $(this).parent();

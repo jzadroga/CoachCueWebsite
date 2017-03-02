@@ -19,7 +19,6 @@ namespace CoachCue.ViewModels
         public int TotalStarters { get; set; }
         public int CorrectStarters { get; set; }
         public int MatchupCount { get; set; }
-        public int NoticeCount { get; set; }
         public string PlayerID { get; set; }
         public List<AccountData> TrendingItems { get; set; }
         public List<AccountData> RecentlyViewedItems { get; set; }

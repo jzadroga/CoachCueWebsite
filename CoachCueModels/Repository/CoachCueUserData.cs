@@ -16,21 +16,23 @@ namespace CoachCue.Repository
         public string UserName { get; set; }
         public string ProfileImage { get; set; }
         public string Email { get; set; }
+        public int NotificationCount { get; set; }
 
-        public static void SetUserData(string id, string name, string userName, string profileImage, string email)
+        public static void SetUserData(string id, string name, string userName, string profileImage, string email, int notificationCount)
         {
             HttpContext.Current.Session["UserId"] = id;
             HttpContext.Current.Session["Name"] = name;
             HttpContext.Current.Session["UserName"] = userName;
             HttpContext.Current.Session["ProfileImage"] = profileImage;
             HttpContext.Current.Session["Email"] = email;
+            HttpContext.Current.Session["NotificationCount"] = notificationCount;
         }
 
         public async static Task<CoachCueUserData> GetUserData(string email)
         {
             if (string.IsNullOrEmpty(email))
             {
-                SetUserData(string.Empty, string.Empty, string.Empty, "sm_profile.jpg", email);
+                SetUserData(string.Empty, string.Empty, string.Empty, "sm_profile.jpg", email, 0);
             }
             else
             {
@@ -39,7 +41,9 @@ namespace CoachCue.Repository
                          HttpContext.Current.Session["UserName"] == null)
                 {         
                     var currentUser = await UserService.GetByEmail(email);
-                    SetUserData(currentUser.Id, currentUser.Name, currentUser.UserName, currentUser.Profile.Image, currentUser.Email);
+                    var notifications = await NotificationService.GetList(currentUser.Id);
+                    int count = (notifications.Count() > 0) ? notifications.Where(n => n.Read == false).Count() : 0;
+                    SetUserData(currentUser.Id, currentUser.Name, currentUser.UserName, currentUser.Profile.Image, currentUser.Email, count);
                 }
             }
 
@@ -49,7 +53,8 @@ namespace CoachCue.Repository
                 Name = HttpContext.Current.Session["Name"].ToString(),
                 UserName = HttpContext.Current.Session["UserName"].ToString(),
                 ProfileImage = HttpContext.Current.Session["ProfileImage"].ToString(),
-                Email = HttpContext.Current.Session["Email"].ToString()
+                Email = HttpContext.Current.Session["Email"].ToString(),
+                NotificationCount = (int)HttpContext.Current.Session["NotificationCount"]
             };
         }
     }
