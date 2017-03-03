@@ -32,7 +32,7 @@ $(document).ready(function () {
         return false;
     });
 
-    //full page modal
+    //full page modal for message and matchup
     $(document).on('click', '.reply-message-panel', function () {
         $('#prnt-id').val($(this).attr('data-msg'));
     });
@@ -104,34 +104,10 @@ $(document).ready(function () {
         mode: 'overlay'
     });
 
-    //sidepanel action - matchups
-    $(".select-new-matchup").slidepanel({
-        orientation: 'left',
-        mode: 'overlay'
-    });
-
     //slidepanel action - invites
     $(".invite-matchup-panel").slidepanel({
         orientation: 'left',
         mode: 'overlay'
-    });
-
-    $(".select-new-matchup").click(function () {
-        var dt = new Date();
-        var href = $(this).attr("href");
-        if (href.indexOf("?daz=") >= 0) {
-            $(this).attr("href", href.replace(/(daz=)[^\&]+/, '$1' + dt.getMilliseconds()));
-        } else {
-            $(this).attr("href", href + "?daz=" + dt.getMilliseconds());
-        }
-        return false;
-    });
-
-    $(".social-login").click(function () {
-        $("#provider").val($(this).attr("data-provider"));
-
-        $(this).parent().submit();
-        return false;
     });
 
     //register modal
@@ -143,7 +119,7 @@ $(document).ready(function () {
     });
 
     //submit the new message
-    $("#modal-fullscreen").on("click", '#share-post', function (e) {
+    $("#modal-message").on("click", '#share-post', function (e) {
         e.preventDefault();
 
         var message = $("#share-message").val();
@@ -190,7 +166,7 @@ $(document).ready(function () {
             showNotice("Message Posted", "Thanks for sharing. Your message has been posted.");
         });
         
-        $(".modal-fullscreen").modal('hide');
+        $("#modal-message").modal('hide');
         return false;
     });
 
@@ -290,7 +266,7 @@ $(document).ready(function () {
     });
 
     //add new matchup
-    $("#slidepanel").on("click", '#share-matchup', function (e) {
+    $("#modal-matchup").on("click", '#share-matchup', function (e) {
         var player1 = $("#player1-id").val();
         var player2 = $("#player2-id").val();
 

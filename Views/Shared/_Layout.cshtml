@@ -204,7 +204,7 @@
                 <div class="global-button-item global-button-item-message">
                     <div class="global-button-item-sub">
                         @*<a data-slidepanel="panel" href=@((!User.Identity.IsAuthenticated) ? "/Post/LoginRegister" : "/Post/NewMessage") class="button select-new-matchup">*@
-                        <a data-backdrop="static" data-keyboard="false" href="#modal-fullscreen" data-toggle="modal" data-target="#modal-fullscreen">
+                        <a data-backdrop="static" data-keyboard="false" href="#modal-message" data-toggle="modal" data-target="#modal-message">
                             <span class="navicon-CC2016_Message_Icon_03"></span>
                             <span class="global-button-item-text">Message</span>
                         </a>
@@ -213,7 +213,8 @@
 
                 <div class="global-button-item global-button-item-matchup">
                     <div class="global-button-item-sub">
-                        <a data-slidepanel="panel" href=@((!User.Identity.IsAuthenticated) ? "/Post/LoginRegister" : "/Post/NewMatchup") class="button select-new-matchup">
+                        @*<a data-slidepanel="panel" href=@((!User.Identity.IsAuthenticated) ? "/Post/LoginRegister" : "/Post/NewMatchup") class="button select-new-matchup">*@
+                        <a data-backdrop="static" data-keyboard="false" href="#modal-matchup" data-toggle="modal" data-target="#modal-matchup">
                             <span class="glyphicon navicon-CC2016_Matchup_Icon">
                                 <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span>
                             </span><span class="global-button-item-text">Matchup</span>
@@ -262,7 +263,7 @@
                 </div>
             </div>
 
-            <!-- contact modal -->
+            <!-- contact modal ***Remove this to make a page*** -->
             <div class="modal fade" role="dialog" id="contact-modal" style="display: none">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -310,8 +311,8 @@
                 <p>Something bad happened.  You should try to fix it before it gets worse.</p>
             </div>
 
-            <!-- full screen modal -->        
-            <div class="modal modal-fullscreen" id="modal-fullscreen" tabindex="-1" role="dialog" aria-hidden="true">
+            <!-- full screen message modal -->        
+            <div class="modal modal-fullscreen" id="modal-message" tabindex="-1" role="dialog" aria-hidden="true">
                 <input type="hidden" id="msgType" value="general" />
                 <input type="hidden" id="prnt-id" value="" />
                 <div class="modal-dialog">
@@ -367,6 +368,57 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- full screen matchup modal -->
+            <div class="modal modal-fullscreen" id="modal-matchup" tabindex="-1" role="dialog" aria-hidden="true">
+                <input type="hidden" id="msgType" value="general" />
+                <input type="hidden" id="prnt-id" value="" />
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                            </button>
+                            <h4 class="modal-title"></h4>
+                            <div class="post">
+                                <button id="share-matchup" class="btn btn-warning disabled" type="button">Share</button>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="user-img">
+                                    <img class="img-rounded avatar large img-responsive" src='@Url.Content("~/assets/img/avatar/" + @Model.UserData.ProfileImage)' />
+                                </div>
+                                <div class="user">
+                                    <span>
+                                        <span class="full-name">@Model.UserData.Name</span>
+                                        <span class="user-name">@@@Model.UserData.UserName</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="textarea-wrap">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <input type="text" data-plyid="0" class="matchup-player-select form-control" id="player1" placeholder="Player Choice 1" />
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input type="text" data-plyid="0" class="matchup-player-select form-control" id="player2" placeholder="Player Choice 2" />
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input type="text" data-plyid="0" class="matchup-player-select form-control" id="player3" placeholder="Player Choice 3" />
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input type="text" data-plyid="0" class="matchup-player-select form-control" id="player4" placeholder="Player Choice 4" />
+                                    </li>
+                                    <li class="list-group-item list-group-item-warning">
+                                        <a href="#"> + Add a player</a>                                       
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>                      
                     </div>
                 </div>
             </div>
