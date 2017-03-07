@@ -400,21 +400,61 @@
                                 </div>
                             </div>
                             <div class="textarea-wrap">
-                                <ul class="list-group">
+                                <ul class="list-group" style="margin-bottom: 0">
                                     <li class="list-group-item">
+                                        <div class="selected-player" style="display: none">
+                                            <input type="hidden" id="player1-id" class="player-id" />
+                                            <div class="content player-selected">
+                                                <div class="content-header">
+                                                    <span class="player-selected-name username"></span>
+                                                    <span class="player-selected-bio username"></span>
+                                                </div>
+                                                <img class="player-selected-img avatar">
+                                            </div>
+                                        </div>
                                         <input type="text" data-plyid="0" class="matchup-player-select form-control" id="player1" placeholder="Player Choice 1" />
                                     </li>
                                     <li class="list-group-item">
+                                        <div class="selected-player" style="display: none">
+                                            <input type="hidden" id="player2-id" class="player-id" />
+                                            <div class="content player-selected">
+                                                <div class="content-header">
+                                                    <span class="player-selected-name username"></span>
+                                                    <span class="player-selected-bio username"></span>
+                                                </div>
+                                                <img class="player-selected-img avatar">
+                                            </div>
+                                        </div>
                                         <input type="text" data-plyid="0" class="matchup-player-select form-control" id="player2" placeholder="Player Choice 2" />
                                     </li>
-                                    <li class="list-group-item">
-                                        <input type="text" data-plyid="0" class="matchup-player-select form-control" id="player3" placeholder="Player Choice 3" />
+                                    <li class="list-group-item" style="display: none">
+                                        <div class="selected-player" style="display: none">
+                                            <input type="hidden" id="player3-id" class="player-id" />
+                                            <div class="content player-selected">
+                                                <div class="content-header">
+                                                    <span class="player-selected-name username"></span>
+                                                    <span class="player-selected-bio username"></span>
+                                                </div>
+                                                <img class="player-selected-img avatar">
+                                            </div>
+                                        </div>
+                                        <input type="text" data-plyid="0" class="matchup-player-select form-control" id="player3" placeholder="Player Choice 3 (optional)" />
                                     </li>
-                                    <li class="list-group-item">
-                                        <input type="text" data-plyid="0" class="matchup-player-select form-control" id="player4" placeholder="Player Choice 4" />
+                                    <li class="list-group-item" style="display: none">
+                                        <div class="selected-player" style="display: none">
+                                            <input type="hidden" id="player4-id" class="player-id" />
+                                            <div class="content player-selected">
+                                                <div class="content-header">
+                                                    <span class="player-selected-name username"></span>
+                                                    <span class="player-selected-bio username"></span>
+                                                </div>
+                                                <img class="player-selected-img avatar">
+                                            </div>
+                                        </div>
+                                        <input type="text" data-plyid="0" class="matchup-player-select form-control" id="player4" placeholder="Player Choice 4 (optional)" />
                                     </li>
                                     <li class="list-group-item list-group-item-warning">
-                                        <a href="#"> + Add a player</a>                                       
+                                        <a id="add-matchup-player" href="#"> + Add a player</a>                                       
                                     </li>
                                 </ul>
                             </div>

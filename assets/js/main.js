@@ -9,6 +9,7 @@ $(document).ready(function () {
     });
 
     loadPlayersTypeahead();
+    loadMatchupPlayersTypeahead();
 
     //tooltips
     $("[rel='tooltip']").tooltip();
@@ -265,6 +266,21 @@ $(document).ready(function () {
         }
     });
 
+    //add player to matchup
+    $("#modal-matchup").on("click", '#add-matchup-player', function (e) {
+        var $listItem = $(this).parent();
+        $listItem.siblings("li.list-group-item").each(function (index) {
+            if (!$(this).is(':visible')) {
+                $(this).show();
+
+                if (index == 3) {
+                    $listItem.hide();
+                }
+                return false;
+            }
+        });
+    });
+
     //add new matchup
     $("#modal-matchup").on("click", '#share-matchup', function (e) {
         var player1 = $("#player1-id").val();
@@ -296,17 +312,6 @@ $(document).ready(function () {
                 }
 
                 $.getScript("http://platform.twitter.com/widgets.js");
-                loadImages();
-
-                $(".invite-matchup-panel").slidepanel({
-                    orientation: 'left',
-                    mode: 'overlay'
-                });
-
-                $(".reply-message-panel").slidepanel({
-                    orientation: 'left',
-                    mode: 'overlay'
-                });
             }
         });
         return false;
@@ -805,7 +810,6 @@ function loadPlayersTypeahead() {
     $('#players').tagsinput({
         itemValue: 'id',
         itemText: function (item) {
-            console.log(item);
             var item = '<img class="user-avatar-small" src="' + item.profileImage + '" /><span>' + item.shortName + '</span>';
             return item;
         }
@@ -828,6 +832,34 @@ function loadPlayersTypeahead() {
         $('#players').tagsinput('add', { name: playerName, value: playerName, username: "", shortName: playerName, accountID: $(this).val(), profileImg: $(this).attr("data-img") });
     });
 }
+
+function loadMatchupPlayersTypeahead() {
+    var template = '<img class="typeahead-avatar" src="{{profileImage}}" alt=""><span class="typeahead-bio">{{name}} | {{position}} | {{team.name}}</span>';
+    var nflPlayers = Hogan.compile(template);
+
+    $('#player1, #player2, #player3, #player4').typeahead({
+        prefetch: '/assets/data/players.json',
+        template: nflPlayers.render.bind(nflPlayers),
+        limit: 10,
+        engine: Hogan
+    });
+
+    $('#player1, #player2, #player3, #player4').bind('typeahead:selected', function (obj, datum, name) {
+        var $selected = $(obj.target).parent().prev();
+        $selected.find(".player-selected-name").text(datum.name);
+        $selected.find(".player-selected-img").attr("src", datum.profileImage);
+        $selected.find(".player-selected-bio").text(datum.number + " " + datum.position + " " + datum.team.name);
+        $selected.find(".player-id").val(datum.id);
+
+        $(obj.target).typeahead('destroy');
+        $(obj.target).hide('fast', function () { $selected.show(); });
+
+        if ($("#player1-id").val().length > 0 && $("#player2-id").val().length > 0) {
+            $("#share-matchup").removeClass("disabled");
+        }
+    });
+}
+
 
 //text limiter
 $.fn.extend({

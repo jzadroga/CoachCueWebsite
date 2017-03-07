@@ -8,12 +8,12 @@
 .tt-hint {
   height: 30px;
   padding: 8px 12px;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 30px;
-  border: 2px solid #ccc;
-  -webkit-border-radius: 8px;
-     -moz-border-radius: 8px;
-          border-radius: 8px;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
   outline: none;
 }
 
@@ -70,5 +70,8 @@
   font-size: 14px;
 }
 
+.share-players .twitter-typeahead{
+    display: inline-block !important;
+}
 
 
