@@ -345,7 +345,7 @@
                             <div style="padding-top: 8px;">
                                 <div class="msg-players">                                 
                                     <div class="share-players">
-                                        <input class="form-control" type="text" data-plyid="0" id="players" @if (Model.MessagePlayers.Count() <= 0) { <text> placeholder="+ Add Player(s) included in the message" </text>   } />
+                                        <input class="form-control" type="text" data-plyid="0" id="players" placeholder="+ Add Player(s) included in the message" />
                                         @foreach (Player player in Model.MessagePlayers)
                                         {
                                             <input type="hidden" class="player-tags" data-img="@player.Twitter.ProfileImage" data-name="@player.ShortName" value="@player.Id" />
@@ -400,6 +400,15 @@
                                 </div>
                             </div>
                             <div class="textarea-wrap">
+                                <select id="matchup-type" class="form-control">
+                                    <option>Who Do I Start? (Standard)</option>
+                                    <option>Who Do I Start? (PPR)</option>
+                                    <option>Who Do I Keep?</option>
+                                    <option>Who Do I Add? (Waiver Wire)</option>
+                                    <option>Who Do I Drop? (Waiver Wire)</option>
+                                    <option>Who Do I Draft?</option>
+                                </select>
+
                                 <ul class="list-group" style="margin-bottom: 0">
                                     <li class="list-group-item">
                                         <div class="selected-player" style="display: none">

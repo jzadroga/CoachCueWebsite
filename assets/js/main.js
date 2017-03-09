@@ -35,7 +35,23 @@ $(document).ready(function () {
 
     //full page modal for message and matchup
     $(document).on('click', '.reply-message-panel', function () {
-        $('#prnt-id').val($(this).attr('data-msg'));
+        var id = $(this).attr('data-msg');
+        $('#prnt-id').val(id);
+        $('#msgType').val($(this).attr('data-msg-type'));
+
+        $('#players').tagsinput('removeAll');
+        $('#players').tagsinput('input').attr('readonly', false).val('');
+
+        //get any prepopulated players for the data attribute
+        $('div#match-' + id).find('input.player-tags').each(function (index) {
+            var playerName = $(this).attr("data-name");
+            $('#players').tagsinput('add', { name: playerName, value: playerName, username: "", shortName: playerName, id: $(this).val(), profileImage: $(this).attr("data-img") });
+            if (index == 0) {
+                $('#players').tagsinput('input').removeAttr('placeholder').attr('readonly', true);
+            }
+        });
+
+        $('#players').tagsinput('refresh');
     });
 
     $(".modal-fullscreen").on('show.bs.modal', function () {
@@ -285,16 +301,18 @@ $(document).ready(function () {
     $("#modal-matchup").on("click", '#share-matchup', function (e) {
         var player1 = $("#player1-id").val();
         var player2 = $("#player2-id").val();
+        var player3 = $("#player3-id").val();
+        var player4 = $("#player4-id").val();
 
         if ($(this).hasClass("disabled") || player1.length <= 0 || player2.length <= 0) {
             return false;
         }
 
-        var inviteUsers = $("div.new-invite-sent.sent")
-              .map(function () { return $(this).attr("data-user"); }).get();
+        //var inviteUsers = $("div.new-invite-sent.sent")
+        //      .map(function () { return $(this).attr("data-user"); }).get();
 
-        var scoringType = $("input:radio[name='scoringOptions']:checked").val();
-        task.addMatchupItem(player1, player2, scoringType, function (data) {
+        //var scoringType = $("input:radio[name='scoringOptions']:checked").val();
+        task.addMatchupItem(player1, player2, player3, player4, $('#matchup-type').val(), function (data) {
            
             if (data.Existing) {
                 window.location = "/Matchup?mt=" + data.MatchupID;
@@ -314,6 +332,7 @@ $(document).ready(function () {
                 $.getScript("http://platform.twitter.com/widgets.js");
             }
         });
+        $("#modal-matchup").modal('hide');
         return false;
     });
 
@@ -825,12 +844,6 @@ function loadPlayersTypeahead() {
         this.tagsinput('add', datum);
         this.tagsinput('input').typeahead('setQuery', '');
     }, $('#players')));
-
-    //get any prepopulated players for the data attribute
-    $("input.player-tags").each(function (index) {
-        var playerName = $(this).attr("data-name");
-        $('#players').tagsinput('add', { name: playerName, value: playerName, username: "", shortName: playerName, accountID: $(this).val(), profileImg: $(this).attr("data-img") });
-    });
 }
 
 function loadMatchupPlayersTypeahead() {

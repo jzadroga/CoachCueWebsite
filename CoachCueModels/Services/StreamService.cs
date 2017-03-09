@@ -23,25 +23,31 @@ namespace CoachCue.Service
             {
                 string profileImage = userData.ProfileImage;
 
-                //gets the matchups for the stream
-                /*List<WeeklyMatchups> usrMatchups = matchup.GetList(userID, fromDate.Value, position, futureTimeline);
-                stream = usrMatchups.Select(usrmtch => new Service.StreamContent
-                {
-                    MatchupItem = usrmtch,
-                    DateTicks = usrmtch.DateCreated.Ticks.ToString(),
-                    ProfileImg = usrmtch.CreatedBy.avatar.imageName,
-                    UserProfileImg = profileImage,
-                    UserName = usrmtch.CreatedBy.userName,
-                    FullName = usrmtch.CreatedBy.fullName,
-                    ContentType = GetMatchupContentType(usrmtch),
-                    DateCreated = usrmtch.LastDate
-                }).ToList();
-                */
-
-
                 //get all the user messages for following a user or player
                 var endDate = DateTime.UtcNow.GetEasternTime().AddDays(-280);
 
+                //gets the matchups for the stream
+                string contentType = "matchupSelected";
+                /*if (string.IsNullOrEmpty(matchup.UserSelectedPlayer))
+                {
+                    //make sure the game hasn't passed too
+                    if (DateTime.UtcNow.GetEasternTime() < matchup.GameDate)
+                        contentType = "matchup";
+                }*/
+                var matchups = await MatchupService.GetList(endDate);
+                stream = matchups.Select(usrmtch => new Service.StreamContent
+                {
+                    MatchupItem = usrmtch,
+                    DateTicks = usrmtch.DateCreated.Ticks.ToString(),
+                    ProfileImg = usrmtch.ProfileImage,
+                    UserProfileImg = profileImage,
+                    UserName = usrmtch.UserName,
+                    FullName = usrmtch.Name,
+                    ContentType = contentType,
+                    DateCreated = usrmtch.DateCreated,
+                    TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated)
+                }).ToList();
+                
                 var msgs = await MessageService.GetList(endDate);
                 stream.AddRange(msgs.Select(msg => new StreamContent
                 {
@@ -56,7 +62,6 @@ namespace CoachCue.Service
                     TimeAgo = twitter.GetRelativeTime(msg.DateCreated)
                 }).ToList());
                 
-
                 //sort everything by date
                 stream = stream.OrderByDescending(str => str.DateCreated).Take(80).ToList();
             }
@@ -80,7 +85,7 @@ namespace CoachCue.Service
         public string FullName { get; set; }
         public string ContentType { get; set; }
         public Message MessageItem { get; set; }
-        public WeeklyMatchups MatchupItem { get; set; }
+        public Matchup MatchupItem { get; set; }
         public TweetContent Tweet { get; set; }
         public int PlayerID { get; set; }
         public string CssClass { get; set; }

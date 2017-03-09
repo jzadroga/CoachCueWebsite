@@ -84,7 +84,7 @@ namespace CoachCue.Model
 
                 if (matchupList.Count() > 0)
                 {
-                    stream = matchupList.Select(usrmtch => new Service.StreamContent
+                    /*stream = matchupList.Select(usrmtch => new Service.StreamContent
                     {
                         MatchupItem = usrmtch,
                         DateTicks = usrmtch.DateCreated.Ticks.ToString(),
@@ -96,7 +96,7 @@ namespace CoachCue.Model
                         TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated),
                         Source = "mtchtab",
                         UserProfileImg = (currentUser.userID != 0 ) ? currentUser.avatar.imageName : string.Empty
-                    }).OrderByDescending(str => str.DateCreated).ToList();
+                    }).OrderByDescending(str => str.DateCreated).ToList();*/
                 }
             }
             catch (Exception)
@@ -228,7 +228,7 @@ namespace CoachCue.Model
 
                 user currentUser = (userID.HasValue) ? user.Get(userID.Value) : new user();
 
-                stream = usrMatchups.Select(usrmtch => new Service.StreamContent
+                /*stream = usrMatchups.Select(usrmtch => new Service.StreamContent
                 {
                     MatchupItem = usrmtch,
                     DateTicks = usrmtch.DateCreated.Ticks.ToString(),
@@ -240,7 +240,7 @@ namespace CoachCue.Model
                     TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated),
                     PlayerID = player.playerID,
                     UserProfileImg = (currentUser.userID != 0 ) ? currentUser.avatar.imageName : string.Empty
-                }).ToList();
+                }).ToList();*/
 
                 if (stream.Count() <= 0)
                     stream.Add(new Service.StreamContent { ContentType = "empty-matchup" });
@@ -501,7 +501,7 @@ namespace CoachCue.Model
             if (currentUser != 0)
                 currentUserItem = user.Get(currentUser);
 
-            streamItem = new Service.StreamContent
+            /*streamItem = new Service.StreamContent
             {
                 MatchupItem = matchup,
                 ContentType = (!matchup.HasVoted && matchup.AllowVote) ? "matchup" : "matchupSelected",
@@ -513,7 +513,7 @@ namespace CoachCue.Model
                 PlayerID = playerID,
                 TimeAgo = twitter.GetRelativeTime(matchup.DateCreated),
                 UserProfileImg = (currentUserItem.userID != 0 ) ? currentUserItem.avatar.imageName : string.Empty
-            };
+            };*/
 
             return streamItem;
         }

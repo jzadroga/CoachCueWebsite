@@ -63,6 +63,10 @@ namespace CoachCue.Model
                                     ogResponse.IsOpenGraph = true;
                                     ogResponse.Video = metaRow.GetAttributeValue("content", string.Empty);
                                     break;
+                                case "og:description":
+                                    ogResponse.IsOpenGraph = true;
+                                    ogResponse.Description = metaRow.GetAttributeValue("content", string.Empty);
+                                    break;
                             }
                         }
                     }
@@ -87,6 +91,7 @@ namespace CoachCue.Model
         public string SiteName { get; set; }
         public string Video { get; set; }
         public bool IsOpenGraph { get; set; }
+        public string Description { get; set; }
 
         public OpenGraphResponse()
         {

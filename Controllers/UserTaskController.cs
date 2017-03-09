@@ -233,7 +233,7 @@ namespace CoachCue.Controllers
         {   
             var userData = await CoachCueUserData.GetUserData(User.Identity.Name);
 
-            var message = await MessageService.Save(userData, plyID, msg, "message", prnt, img);
+            var message = await MessageService.Save(userData, plyID, msg, type, prnt, img);
 
             StreamContent streamItem = new StreamContent
             {
@@ -370,12 +370,34 @@ namespace CoachCue.Controllers
 
         [SiteAuthorization]
         [NoCacheAttribute]
-        public ActionResult AddMatchupItem(int player1, int player2, int scoringTypeID)
+        public async Task<ActionResult> AddMatchupItem(string player1, string player2, string player3, string player4, string type)
         {
-            int? userID = user.GetUserID(User.Identity.Name);
-            WeeklyMatchups usrMatchup = matchup.AddUserMatchup(player1, player2, scoringTypeID, (int)userID);
-            usrMatchup.AllowVote = true;
-            StreamContent streamItem = stream.ConvertToStream(usrMatchup, player1, false, (int)userID);
+            var userData = await CoachCueUserData.GetUserData(User.Identity.Name);
+
+            List<string> players = new List<string>();
+            players.Add(player1);
+            players.Add(player2);
+            if (!string.IsNullOrEmpty(player3))
+                players.Add(player3);
+            if (!string.IsNullOrEmpty(player4))
+                players.Add(player4);
+
+            var matchup = await MatchupService.Save(userData, players, type);
+            //usrMatchup.AllowVote = true;
+            StreamContent streamItem = new StreamContent
+            {
+                MatchupItem = matchup,
+                DateTicks = matchup.DateCreated.Ticks.ToString(),
+                ProfileImg = userData.ProfileImage,
+                UserName = userData.UserName,
+                FullName = userData.Name,
+                ContentType = "matchup",
+                DateCreated = matchup.DateCreated,
+                TimeAgo = twitter.GetRelativeTime(matchup.DateCreated),
+                HideActions = true,
+                UserProfileImg = userData.ProfileImage
+            };
+
             string streamData = this.PartialViewToString("_StreamItem", streamItem);
 
             return Json(new
@@ -383,8 +405,8 @@ namespace CoachCue.Controllers
                 MatchupData = streamData,
                 ID = player1,
                 Type = "matchup",
-                Existing = usrMatchup.ExistingMatchup,
-                MatchupID = usrMatchup.MatchupID
+                Existing = false, //usrMatchup.ExistingMatchup,
+                MatchupID = matchup.Id //usrMatchup.MatchupID
             }, JsonRequestBehavior.AllowGet);
         }
 

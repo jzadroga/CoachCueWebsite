@@ -2,11 +2,8 @@
 
 namespace CoachCue.Models
 {
-    public class MatchupPlayer
+    public class MatchupPlayer : Player
     {
-        [JsonProperty(PropertyName = "playerId")]
-        public string PlayerId { get; set; }
-
         [JsonProperty(PropertyName = "points")]
         public decimal? Points { get; set; }
 

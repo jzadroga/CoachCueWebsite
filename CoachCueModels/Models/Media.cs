@@ -16,5 +16,11 @@ namespace CoachCue.Models
 
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
+
+        [JsonProperty(PropertyName = "site")]
+        public string Site { get; set; }
+
+        [JsonProperty(PropertyName = "description")]
+        public string Description { get; set; }
     }
 }

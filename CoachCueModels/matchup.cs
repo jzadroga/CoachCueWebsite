@@ -261,7 +261,7 @@ namespace CoachCue.Model
 
                     user currentUser = user.Get(currentUserID);
 
-                    streamContent = userMatchups.Select(usrmtch => new StreamContent
+                    /*streamContent = userMatchups.Select(usrmtch => new StreamContent
                     {
                         MatchupItem = GetWeeklyMatchup(usrmtch, false, false, HttpContext.Current.Request.Browser.IsMobileDevice, true, currentUserID),
                         DateTicks = usrmtch.dateCreated.Ticks.ToString(),
@@ -275,7 +275,7 @@ namespace CoachCue.Model
                     {
                         content.ContentType = stream.GetMatchupContentType(content.MatchupItem);
                         content.DateCreated = content.MatchupItem.LastDate;
-                    }
+                    }*/
                 }
             }
             catch( Exception){}
@@ -722,7 +722,7 @@ namespace CoachCue.Model
                     }
                 }
 
-                streamItems = userMatchups.Select(usrmtch => new StreamContent
+                /*streamItems = userMatchups.Select(usrmtch => new StreamContent
                 {
                     MatchupItem = usrmtch,
                     DateTicks = usrmtch.DateCreated.Ticks.ToString(),
@@ -732,7 +732,7 @@ namespace CoachCue.Model
                     FullName = usrmtch.CreatedBy.fullName,
                     ContentType = stream.GetMatchupContentType(usrmtch),
                     DateCreated = usrmtch.LastDate
-                }).ToList();
+                }).ToList();*/
             }
             catch( Exception )
             {

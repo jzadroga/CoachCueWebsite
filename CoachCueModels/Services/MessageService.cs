@@ -43,6 +43,8 @@ namespace CoachCue.Service
                     Media media = new Media();
                     media.Title = messageItem.openGraph.Title;
                     media.Url = messageItem.openGraph.URL;
+                    media.Site = messageItem.openGraph.SiteName;
+                    media.Description = messageItem.openGraph.Description;
 
                     if (messageItem.openGraph.MediaTypeID == 1)
                     {
@@ -87,18 +89,27 @@ namespace CoachCue.Service
                 //it has a parent (matchup or message) so update with message
                 if (!string.IsNullOrEmpty(parentID))
                 {
-                    message.Id = "parent-" + parentID;
-                    var parentMsg = await Get(parentID);
-
-                    //add a notification if replying, send to everyone in chain
-                    var replyUsers = await NotificationService.GetReplyNotificationUsers(userData.UserId, parentMsg);
-                    foreach (var replyUser in replyUsers)
+                    if (type == "matchup")
                     {
-                        await NotificationService.Save(userData, replyUser, userData.Name + " Posted a new reply message.", "reply", message);
+                        var parentMatchup = await MatchupService.Get(parentID);
+                        parentMatchup.Messages.Add(message);
+                        await DocumentDBRepository<Matchup>.UpdateItemAsync(parentMatchup.Id, parentMatchup, "Matchups");
                     }
+                    else
+                    {
+                        message.Id = "parent-" + parentID;
+                        var parentMsg = await Get(parentID);
 
-                    parentMsg.Reply.Add(message);
-                    await DocumentDBRepository<Message>.UpdateItemAsync(parentMsg.Id, parentMsg, "Messages");
+                        //add a notification if replying, send to everyone in chain
+                        var replyUsers = await NotificationService.GetReplyNotificationUsers(userData.UserId, parentMsg);
+                        foreach (var replyUser in replyUsers)
+                        {
+                            await NotificationService.Save(userData, replyUser, userData.Name + " Posted a new reply message.", "reply", message);
+                        }
+
+                        parentMsg.Reply.Add(message);
+                        await DocumentDBRepository<Message>.UpdateItemAsync(parentMsg.Id, parentMsg, "Messages");
+                    }
                 }
                 else //if not a child to either message or matchup then create new
                 {

@@ -307,10 +307,10 @@ var task = function () {
         })
     },
 
-    addMatchupItem = function (player1, player2, scoringType, callback) {
+    addMatchupItem = function (player1, player2, player3, player4, type, callback) {
         $.ajax({
             url: "/UserTask/AddMatchupItem",
-            data: { player1: player1, player2: player2, scoringTypeID: scoringType },
+            data: { player1: player1, player2: player2, player3: player3, player4: player4, type: type },
             cache: false,
             success: function (data) {
                 callback(data);
