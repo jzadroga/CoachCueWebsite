@@ -22,18 +22,7 @@
                     <span class="matchup-message">@Html.Raw(@Model.MessageItem.Text)</span>
                     @foreach (var mediaObj in Model.MessageItem.Media)
                     {
-                        <div class="msg-media">
-                            @if (mediaObj.Type == "openGraphImage")
-                            {
-                                <a href="@mediaObj.Url" target="_blank">
-                                    <img src="@mediaObj.ObjectUrl" />
-                                </a>
-                            }
-                            else
-                            {
-                                <img src='@Url.Content("~/assets/img/avatar/" + mediaObj.Url)' />
-                            }
-                        </div>
+                        { Html.RenderPartial("_StreamItemMedia", model: mediaObj); }
                     }
                 </div>
             </div>
@@ -211,18 +200,7 @@
                                                     <span class="matchup-message">@Html.Raw(msg.Text)</span>
                                                     @foreach (var mediaObj in msg.Media)
                                                     {
-                                                        <div class="msg-media">
-                                                            @if (mediaObj.Type == "openGraphImage")
-                                                            {
-                                                                <a href="@mediaObj.Url" target="_blank">
-                                                                    <img src="@mediaObj.ObjectUrl" />
-                                                                </a>
-                                                            }
-                                                            else
-                                                            {
-                                                                <img src='@Url.Content("~/assets/img/avatar/" + mediaObj.Url)' />
-                                                            }
-                                                        </div>
+                                                        { Html.RenderPartial("_StreamItemMedia", model: mediaObj); }
                                                     }
                                                 </div>
                                             </div>
@@ -286,17 +264,7 @@
                     </div>
                 }
                 @foreach(var mediaObj in Model.MessageItem.Media ){
-                    <div class="msg-media">
-                        @if (mediaObj.Type == "openGraphImage") {
-                            <a href="@mediaObj.Url" target="_blank">
-                                <img src="@mediaObj.ObjectUrl" />
-                            </a>
-                        }
-                        else
-                        {
-                            <img src='@Url.Content("~/assets/img/avatar/" + mediaObj.Url)' />
-                        }
-                    </div>
+                    { Html.RenderPartial("_StreamItemMedia", model: mediaObj); }
                 }
             </div>
             
@@ -320,18 +288,7 @@
                                                 <span class="matchup-message">@Html.Raw(msg.Text)</span>
                                                 @foreach (var mediaObj in msg.Media)
                                                 {
-                                                    <div class="msg-media">
-                                                        @if (mediaObj.Type == "openGraphImage")
-                                                        {
-                                                            <a href="@mediaObj.Url" target="_blank">
-                                                                <img src="@mediaObj.ObjectUrl" />
-                                                            </a>
-                                                        }
-                                                        else
-                                                        {
-                                                            <img src='@Url.Content("~/assets/img/avatar/" + mediaObj.Url)' />
-                                                        }
-                                                    </div>
+                                                    { Html.RenderPartial("_StreamItemMedia", model: mediaObj); }
                                                 }
                                             </div>
                                         </div>
@@ -355,7 +312,7 @@
                                 {
                                     <img alt="@Model.UserName" class="img-circle matchup-new-msg-item-avatar" src ="@Url.Content("~/assets/img/avatar/" + Model.UserProfileImg)" />                                
                                     <form data-msg-type="general" class="form-inline" role="form">
-                                        <a data-msg="@Model.MessageItem.Id" class="reply-message-panel" data-backdrop="static" data-keyboard="false" href="#modal-message" data-toggle="modal" data-target="#modal-message">
+                                        <a data-msg-type="general" data-msg="@Model.MessageItem.Id" class="reply-message-panel" data-backdrop="static" data-keyboard="false" href="#modal-message" data-toggle="modal" data-target="#modal-message">
                                             <input style="width: 100%" class="form-control" type="text" placeholder="Add a comment.." />
                                         </a>
                                     </form>

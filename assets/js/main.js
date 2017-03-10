@@ -163,21 +163,10 @@ $(document).ready(function () {
                 }
          
                 //send out email notifications
-
-                //change this to be a seperate process
-                //send off the current message id to the new method
-                //that method will then look at any notifications that reference this message by matching the ids
-                //** still have to figure out how this will work with matchups
-
-
-                if (data.Type == "matchup") {
-                    $.getScript("http://platform.twitter.com/widgets.js");
-                    task.sendMatchupMessageEmail(data.MentionNotices, function (emailSent) {
-                    });
-                } else {
-                    task.sendNotificationEmail(data.ID, function (emailSent) {
-                    });
-                }
+                task.sendNotificationEmail(data.ID, function (emailSent) {
+                });
+                
+                $.getScript("http://platform.twitter.com/widgets.js");
             }
 
             showNotice("Message Posted", "Thanks for sharing. Your message has been posted.");

@@ -471,6 +471,7 @@
     <Content Include="Views\WhoDoIStart\TopPlayers.cshtml" />
     <Content Include="Views\WhoDoIStart\News.cshtml" />
     <Content Include="Views\Post\LoginRegister.cshtml" />
+    <Content Include="Views\Shared\_StreamItemMedia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="CoachCueModels\CoachCueModels.csproj">

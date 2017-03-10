@@ -67,6 +67,27 @@ namespace CoachCue.Service
         {
             return await DocumentDBRepository<Notification>.UpdateItemAsync(notification.Id, notification, "Notifications");
         }
+       
+        public static async Task<List<User>> GetMatchupNotificationUsers(string userId, Matchup matchup)
+        {
+            List<string> userIds = new List<string>();
+
+            if(userId != matchup.CreatedBy)
+                userIds.Add(matchup.CreatedBy);
+
+            //don't include if user is replying to own message
+            foreach (Message reply in matchup.Messages)
+            {
+                //don't send a reply if the user creating the message is already in the chain
+                if (!userIds.Contains(reply.CreatedBy) && reply.CreatedBy != userId)
+                    userIds.Add(reply.CreatedBy);
+            }
+
+            var replies = await UserService.GetListByIds(userIds);
+
+            return replies.ToList();
+        }
+
 
         public static async Task<List<User>> GetReplyNotificationUsers(string userId, Message message)
         {

@@ -123,20 +123,6 @@ var task = function () {
         })
     },
 
-     sendMatchupMessageEmail = function (mentions, callback) {
-         $.ajax({
-             type: "POST",
-             contentType: 'application/json',
-             dataType: 'json',
-             url: "/UserTask/SendMatchupMessageEmail",
-             data: JSON.stringify(mentions),
-             cache: false,
-             success: function (data) {
-                 callback(data);
-             }
-         })
-     },
-
     sendMatchupVoteEmail = function (mtchid, voterid) {
         $.ajax({
             type: "POST",
@@ -343,7 +329,6 @@ var task = function () {
         getDetails: getDetails,
         getTrending: getTrending,
         sendNotificationEmail: sendNotificationEmail,
-        sendMatchupMessageEmail: sendMatchupMessageEmail,
         sendMatchupVoteEmail: sendMatchupVoteEmail,
         sendFollowNoticeEmail: sendFollowNoticeEmail,
         validEmail: validEmail,

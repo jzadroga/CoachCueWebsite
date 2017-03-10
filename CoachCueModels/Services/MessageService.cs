@@ -92,6 +92,15 @@ namespace CoachCue.Service
                     if (type == "matchup")
                     {
                         var parentMatchup = await MatchupService.Get(parentID);
+                        message.Id = parentMatchup.Id;
+
+                        //add a notification if replying, send to everyone in matchup chain
+                        var matchupUsers = await NotificationService.GetMatchupNotificationUsers(userData.UserId, parentMatchup);
+                        foreach (var matchupUser in matchupUsers)
+                        {
+                            await NotificationService.Save(userData, matchupUser, userData.Name + " Posted a new message about a matchup you are following.", "reply", message);
+                        }
+
                         parentMatchup.Messages.Add(message);
                         await DocumentDBRepository<Matchup>.UpdateItemAsync(parentMatchup.Id, parentMatchup, "Matchups");
                     }
@@ -124,15 +133,7 @@ namespace CoachCue.Service
                     {
                         await NotificationService.Save(userData, mention, userData.Name + " Posted a new message, mentioning you.", "mention", message);
                     }
-                }
-             
-                //also add notification if its a message about the user created matchup
-                //if (type == "matchup" && parentID.HasValue)
-                //{
-                //    matchup matchupItem = matchup.Get(parentID.Value);
-                //    notification matchupNotice = notification.Add("matchupMessage", matchupItem.matchupID, userID, matchupItem.createdBy, messageCreated);
-                //     savedMsg.MentionNotices.Add(new MentionNotice { fromUser = userID, toUser = matchupItem.createdBy, messageID = matchupItem.matchupID, noticeGuid = matchupNotice.notificationGUID });
-                // }
+                }             
             }
             catch (Exception ex)
             {
@@ -197,7 +198,7 @@ namespace CoachCue.Service
                 messageItem.openGraph = OpenGraph.Parse(match.Value);
 
                 string showUrl = (match.Value.Length > 25) ? googleUrl : match.Value;
-                message = message.Replace(match.Value, "<a target='_blank' href='" + googleUrl + "'>" + showUrl + "</a>");
+                message = (messageItem.openGraph.IsOpenGraph ) ? message.Replace(match.Value,"") : message.Replace(match.Value, "<a target='_blank' href='" + googleUrl + "'>" + showUrl + "</a>");
             }
 
             messageItem.messageText = message;

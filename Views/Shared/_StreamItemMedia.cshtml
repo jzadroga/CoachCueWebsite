@@ -1,0 +1,25 @@
+﻿@model CoachCue.Models.Media
+
+    <div class="msg-media">
+
+    @if (Model.Type == "openGraphImage")
+    {
+        <a href="@Model.Url" target="_blank" class="list-group-item">
+            <div class="media">
+                <div class="media-left">
+                    <img class="small media-object img-responsive center-block" src="@Model.ObjectUrl" />
+                </div>
+                <div class="media-body">
+                    <h4 style="color: #000; font-weight: bold" class="media-heading">@Html.Raw(Model.Title)</h4>
+                    <p style="color: #000; font-size: 14px;">@Html.Raw(Model.Description)</p>
+                    <span>@Model.Site</span>
+                </div>
+            </div>
+        </a>
+    }
+    else
+    {
+        <img class="full img-responsive center-block" src='@Url.Content("~/assets/img/avatar/" + Model.Url)' />
+    }
+
+    </div>

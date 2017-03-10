@@ -295,25 +295,6 @@ namespace CoachCue.Controllers
 
         [SiteAuthorization]
         [HttpPost]
-        public ActionResult SendMatchupMessageEmail(List<MentionNotice> mentions)
-        {
-            if (mentions != null)
-            {
-                //send off mention emails
-                foreach (MentionNotice mention in mentions)
-                {
-                    EmailHelper.SendMatchupMessageEmail(mention.fromUser, mention.toUser, mention.messageID, mention.noticeGuid);
-                }
-            }
-
-            return Json(new
-            {
-                Sent = true
-            }, JsonRequestBehavior.AllowGet);
-        }
-
-        [SiteAuthorization]
-        [HttpPost]
         public ActionResult SendMatchupVoteEmail(int mtchid, int voterid)
         {
             //send off mention emails
