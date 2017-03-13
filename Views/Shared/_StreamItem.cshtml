@@ -63,17 +63,20 @@
 
                 <!-- matchup body -->
                 <div class="row matchup-body">
-
-                    <!-- players -->
-                    @foreach (var player in Model.MatchupItem.Players)
-                    {
-                    <div class="col-md-5 col-xs-5 ">
-                        <div class="text-center content-header">
-                            @player.Name
-                            <input type="hidden" class="player-tags" data-img="@player.ProfileImage" data-name="@player.ShortName" value="@player.Id" />
+                    <div class="col-md-12 col-xs-12 ">
+                        <div class="list-group">
+                            <!-- players -->
+                            @foreach (var player in Model.MatchupItem.Players)
+                            {
+                                <a href="#" data-player-name="@player.Name" data-player-id="@player.Id" class="list-group-item stream-select-starter">                                
+                                    <img alt="@player.Name" class='img-rounded large' src='@player.ProfileImage' />
+                                    @player.Name
+                                    <span id="vote-@Model.MatchupItem.Id@player.Id" style="background-color: #F18A20; display: none" class="badge vote-count">@Model.MatchupItem.Votes.Where( pl => pl.PlayerId  == player.Id).Count()</span>
+                                    <input type="hidden" class="player-tags" data-img="@player.ProfileImage" data-name="@player.ShortName" value="@player.Id" />                                  
+                                </a>
+                            }
                         </div>
                     </div>
-                    }
                     @*
                         <img alt="@Model.MatchupItem.Player1.DisplayPlayerName" class='xlarge img-rounded lazy-load' data-src='@Model.MatchupItem.Player1.Image' />
                         <button data-loading-text="Loading..." class="player-card-news btn btn-info" data-matchup-id="@Model.MatchupItem.MatchupID" data-player-img="@Model.MatchupItem.Player1.Image" data-player-name="@Model.MatchupItem.Player1.PlayerName" data-player-pos="@Model.MatchupItem.Player1.PlayerDescription" data-player-id="@Model.MatchupItem.Player1.PlayerID">
@@ -143,41 +146,77 @@
 
                 <!-- matchup controls -->
                 <div class="row matchup-controls matchup-item-pick">
-                    <div class="col-md-12 col-xs-12">@*
-    @if (Model.MatchupItem.Coaches.Count() > 0 || Model.MatchupItem.AllowInvite)
+                    <div class="col-md-12 col-xs-12">
+                    @if (Model.MatchupItem.Votes.Count() > 0 ) //|| Model.MatchupItem.AllowInvite)
+                    {
+                    <div style="padding-right: 3px" class="stats">
+                        @if (Model.MatchupItem.Votes.Count() > 0)
+                        {
+                        <ul>
+                            <li class="vote-total">
+                                <a href="#" class="ms-action-details"><i class="glyphicon glyphicon-chevron-down"></i> <span class="vote-count-total">@Model.MatchupItem.Votes.Count()</span> votes</a>
+                            </li>
+                            @foreach (var vote in Model.MatchupItem.Votes.Take(8))
+                            {
+                                <li>
+                                    <a href="@Url.Action("Index", "Coach", new { id = vote.UserId, name = vote.Name })" rel='tooltip' data-toggle="tooltip" data-placement="top" title="" data-original-title="@vote.Name (@vote.PlayerName)" class="user-avatar-small height" style="background: url('@Url.Content("~/assets/img/avatar/" + vote.ProfileImage)') 50% 50% no-repeat;"></a>
+                                </li>
+                            }
+                        </ul>
+                        }
+
+                        @*
+    @if (Model.MatchupItem.AllowInvite)
     {
-    <div style="padding-right: 3px" class="stats">
-        @if (Model.MatchupItem.Coaches.Count() > 0)
-        {
-        <ul>
-            <li class="vote-total">
-                <a href="#" data-src="@Model.Source" data-mtch="@Model.MatchupItem.MatchupID" class="ms-action-details"><i class="glyphicon glyphicon-chevron-down"></i> @Model.MatchupItem.TotalVotes votes</a>
-                <span class="get-votes-wait"></span>
-            </li>
-            @foreach (UserVoteData vote in Model.MatchupItem.Coaches.Take(8).ToList())
-            {
-                <li>
-                    <a href="@Url.Action("Index", "Coach", new { id = vote.userID, name = vote.fullName })" rel='tooltip' data-toggle="tooltip" data-placement="top" title="" data-original-title="@vote.fullName (@vote.SelectedPlayer)" class="user-avatar-small height" style="background: url('@vote.profileImg') 50% 50% no-repeat;"></a>
-                </li>
-            }
-        </ul>
-        }
+        <div class="more-votes-callout">
+            <span>Need more votes?</span>
+            <a data-slidepanel="panel" role="button" class="btn btn-warning btn-xs with-icn invite-matchup-panel" href="@Url.Action("Invite", "Post", new { mtchpID = Model.MatchupItem.Id })">
+                <i class="glyphicon glyphicon-bullhorn"></i> Ask
+            </a>
 
-        @if (Model.MatchupItem.AllowInvite)
-        {
-            <div class="more-votes-callout">
-                <span>Need more votes?</span>
-                <a data-slidepanel="panel" role="button" class="btn btn-warning btn-xs with-icn invite-matchup-panel" href="@Url.Action("Invite", "Post", new { mtchpID = Model.MatchupItem.MatchupID })">
-                    <i class="glyphicon glyphicon-bullhorn"></i> Ask
-                </a>
-
-                <a class="ask-twitter-button btn-info btn btn-xs" href="https://twitter.com/intent/tweet?count=none&hashtags=FantasyFootball&via=coachcue&url=http://coachcue.com/matchup?mt=@Model.MatchupItem.MatchupID&text=Who should I Start? @Model.MatchupItem.Player1.PlayerName or @Model.MatchupItem.Player2.PlayerName!">Ask Twitter</a>
-            </div>
-        }
-
-        <div class="vote-details" style="display: none;"></div>
-    </div>
+            <a class="ask-twitter-button btn-info btn btn-xs" href="https://twitter.com/intent/tweet?count=none&hashtags=FantasyFootball&via=coachcue&url=http://coachcue.com/matchup?mt=@Model.MatchupItem.Id&text=Who should I Start? @Model.MatchupItem.Player1.PlayerName or @Model.MatchupItem.Player2.PlayerName!">Ask Twitter</a>
+        </div>
     }*@
+
+                        <div class="vote-details" style="display: none;">
+                            @foreach (var vote in Model.MatchupItem.Votes)
+                            {
+                                <div class="item player-item clear">
+                                    <div class="content">
+                                        <div class="content-header">
+                                            <a class="username" href="@Url.Action("Index", "Coach", new { id = vote.UserId, name = vote.Name })">@vote.Name</a>
+                                            @*
+                                            <span class="user" style="font-size: 12px;">
+                                            @if (!string.IsNullOrEmpty(Model.correctPercentage))
+                                            {<text>@Model.correctPercentage Accurate</text>}</span>
+                                            @if (Model.Verified)
+                                            {
+                                                <img class="user-verified-small" src='@Url.Content("~/assets/img/verified_small.png")' alt="Fantasy Pro" />
+                                            }*@
+                                        </div>
+                                        <img class="avatar player-item-avatar" src="@Url.Content("~/assets/img/avatar/" + vote.ProfileImage)">
+
+                                        @if (!Model.MatchupItem.Completed)
+                                        {
+                                            <span class="matchup-selection"><i class='icon-small icon-thumbs-up'></i>@vote.PlayerName</span>
+                                        }
+                                        else
+                                        {
+                                            if (vote.IsCorrect)
+                                            {
+                                                <span class="coach-correct"><i class='icon-small icon-thumbs-up'></i>@vote.PlayerName</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="coach-wrong"><i class='icon-small icon-thumbs-down'></i>@vote.PlayerName</span>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    }
                     </div>
                 </div>
 
@@ -222,7 +261,7 @@
                                 }
                                 else
                                 {
-                                    <img alt="@Model.UserName" class="img-circle matchup-new-msg-item-avatar lazy-load" data-src="@Url.Content("~/assets/img/avatar/" + Model.UserProfileImg)" />
+                                    <img alt="@Model.UserName" class="img-circle matchup-new-msg-item-avatar" src="@Url.Content("~/assets/img/avatar/" + Model.UserProfileImg)" />
                                     <form class="form-inline" role="form">
                                         <a data-msg-type="matchup" data-msg="@Model.MatchupItem.Id" class="reply-message-panel" data-backdrop="static" data-keyboard="false" href="#modal-message" data-toggle="modal" data-target="#modal-message">
                                             <input style="width: 100%" class="form-control" type="text" placeholder="Add a comment.." />

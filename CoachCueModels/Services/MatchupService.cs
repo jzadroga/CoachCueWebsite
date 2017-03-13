@@ -60,6 +60,30 @@ namespace CoachCue.Service
             return matchup;
         }
 
+        public static async Task<Matchup> AddVote(string playerId, string playerName, string matchupId, CoachCueUserData userData)
+        {
+            var matchup = await Get(matchupId);
+                
+            MatchupVote vote = new MatchupVote();
+            vote.DateCreated = DateTime.UtcNow.GetEasternTime();
+            vote.PlayerId = playerId;
+            vote.PlayerName = playerName;
+
+            if (userData != null)
+            {
+                vote.UserId = userData.UserId;
+                vote.ProfileImage = userData.ProfileImage;
+                vote.Email = userData.Email;
+                vote.Name = userData.Name;
+            }
+
+            matchup.Votes.Add(vote);
+
+            await DocumentDBRepository<Matchup>.UpdateItemAsync(matchupId, matchup, "Matchups");
+
+            return matchup;
+        }
+
         public static async Task<IEnumerable<Matchup>> GetList(DateTime endDate)
         {
             return await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true, "Matchups");

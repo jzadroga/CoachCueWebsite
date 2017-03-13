@@ -152,28 +152,6 @@ var task = function () {
         })
     },
 
-    getConversation = function (id, src, type, callback) {
-        $.ajax({
-            url: "/UserTask/GetConversation",
-            data: { objID: id, srcID: src, type: type },
-            cache: false,
-            success: function (data) {
-                callback(data);
-            }
-        })
-    },
-
-    getDetails = function (id, callback) {
-        $.ajax({
-            url: "/UserTask/GetDetails",
-            data: { objID: id },
-            cache: false,
-            success: function (data) {
-                callback(data);
-            }
-        })
-    },
-
     followAccount = function (accountID, typeName, callback) {
         $.getJSON('/UserTask/Follow', { accountID: accountID, type: typeName }, function (data) {
             if ($("#follow-player-count").exists()) {
@@ -282,10 +260,10 @@ var task = function () {
         })
     },
 
-    setStreamMatchupChoice = function (plyID, mtchID, callback) {
+    setStreamMatchupChoice = function (plyID, ply, mtchID, callback) {
         $.ajax({
             url: "/UserTask/SetStreamMatchupChoice",
-            data: { playerID: plyID, matchupID: mtchID },
+            data: { id: plyID, player: ply, matchup: mtchID },
             cache: false,
             success: function (data) {
                 callback(data);
@@ -325,8 +303,6 @@ var task = function () {
         inviteAnswer: inviteAnswer,
         addMatchupChoice: addMatchupChoice,
         setStreamMatchupChoice : setStreamMatchupChoice,
-        getConversation: getConversation,
-        getDetails: getDetails,
         getTrending: getTrending,
         sendNotificationEmail: sendNotificationEmail,
         sendMatchupVoteEmail: sendMatchupVoteEmail,

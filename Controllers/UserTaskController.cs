@@ -95,15 +95,14 @@ namespace CoachCue.Controllers
             return Json(new { User = userData, Matchup = matchupID }, JsonRequestBehavior.AllowGet);
         }
 
-       // [SiteAuthorization]
         [NoCacheAttribute]
-        public ActionResult SetStreamMatchupChoice(int playerID, int matchupID)
+        public async Task<ActionResult> SetStreamMatchupChoice(string id, string player, string matchup)
         {
             //adding a guest account to see what happens with voting
             bool showLogin = false;
-            bool isAuthenticated = User.Identity.IsAuthenticated;
-            int currentUser = (isAuthenticated) ? user.GetUserID(User.Identity.Name) : 15754;
 
+            var userData = (User.Identity.IsAuthenticated) ? await CoachCueUserData.GetUserData(User.Identity.Name) : null;
+             
             /*if (!isAuthenticated)
             {
                 string hostAddress = Request.UserHostAddress;
@@ -114,15 +113,16 @@ namespace CoachCue.Controllers
                 }
             }*/
 
-            WeeklyMatchups userVote = user.AddStreamSelectedMatchup(currentUser, playerID, matchupID);
-            StreamContent streamItem = stream.ConvertToStream(userVote, playerID, true, currentUser);
-
-            string streamData = this.PartialViewToString("_StreamItem", streamItem);
+            //WeeklyMatchups userVote = user.AddStreamSelectedMatchup(currentUser, playerID, matchupID);
+            //StreamContent streamItem = stream.ConvertToStream(userVote, playerID, true, currentUser);
+            var matchupItem = await MatchupService.AddVote(id, player, matchup, userData);
+            //string streamData = this.PartialViewToString("_StreamItem", streamItem);
             return Json(new
             {
-                StreamData = streamData,
-                ID = matchupID,
-                UserVotedID = currentUser,
+                //StreamData = streamData,
+                PlayerID = id,
+                ID = matchup,
+                Matchup = matchupItem,
                 Type = "matchupSelected",
                 Inline = false,
                 ShowSignup = showLogin
@@ -303,49 +303,6 @@ namespace CoachCue.Controllers
             return Json(new
             {
                 Sent = true
-            }, JsonRequestBehavior.AllowGet);
-        }
-
-        [NoCacheAttribute]
-        public ActionResult GetConversation(int objID, int srcID, string type)
-        {
-            ConversationViewModel cVM = new ConversationViewModel();
-            cVM.Messages = message.GetConversation(objID, srcID, type);
-            cVM.SourceMessageID = objID;
-            cVM.Type = type;
-            cVM.ShowInlineMessage = false;
-            cVM.IsTopMessage = (srcID == 0) ? true : false;
-
-            if (User.Identity.IsAuthenticated)
-            {
-                cVM.Avatar = user.GetByEmail(User.Identity.Name).avatar.imageName;
-                cVM.ShowInlineMessage = true;
-            }
-
-            string streamData = this.PartialViewToString("_MessageConversation", cVM);
-
-            return Json(new
-            {
-                StreamData = streamData,
-                ID = objID,
-                Type = "message",
-                IsTopMessage = cVM.IsTopMessage
-            }, JsonRequestBehavior.AllowGet);
-        }
-
-        [NoCacheAttribute]
-        public ActionResult GetDetails(int objID)
-        {
-            VoteList voterInfo = new VoteList();
-            voterInfo.Votes = matchup.GetMatchupVotes(objID);
-            voterInfo.Status = "Active";
-            voterInfo.MatchupID = objID;
-
-            string detailsData = this.PartialViewToString("_UserVoteList", voterInfo);
-
-            return Json(new
-            {
-                DetailsData = detailsData,
             }, JsonRequestBehavior.AllowGet);
         }
 

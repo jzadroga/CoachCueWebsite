@@ -177,36 +177,23 @@ $(document).ready(function () {
     });
 
     //show matchup votes
-    $("body").on("click", '.ms-action-details', function (e) {
-        var matchupID = $(this).attr("data-mtch");
-        var src = $(this).attr("data-src");
-        var $this = $(this);
-        var wait = $(this).next(".get-votes-wait");
-        $(wait).spin(smalSpinnerBlackOpts);
-        $(wait).show();
-        task.getDetails(matchupID, function (data) {
-            var $parent = $this.parents("div.stats");
-            $parent.find("div.vote-details").html(data.DetailsData).slideDown();
-            $this.find("i.glyphicon").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
-            $this.addClass("ms-action-hide-details");
-            $this.removeClass("ms-action-details");
-            $(wait).hide();
-        });
-
+    $("body").on("click", '.ms-action-details', function (e) {     
+        var $parent = $(this).parents("div.stats");
+        $parent.find("div.vote-details").slideDown();
+        $(this).find("i.glyphicon").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
+        $(this).addClass("ms-action-hide-details");
+        $(this).removeClass("ms-action-details");
+        
         return false;
     });
 
     //hide matchup votes
-    $("body").on("click", '.ms-action-hide-details', function (e) {
-        var matchupID = $(this).attr("data-mtch");
-        var src = $(this).attr("data-src");
-        var $this = $(this);
-        
-        var $parent = $this.parents("div.stats");
+    $("body").on("click", '.ms-action-hide-details', function (e) {  
+        var $parent = $(this).parents("div.stats");
         $parent.find("div.vote-details").slideUp();
-        $this.find("i.glyphicon").removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
-        $this.removeClass("ms-action-hide-details");
-        $this.addClass("ms-action-details");
+        $(this).find("i.glyphicon").removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
+        $(this).removeClass("ms-action-hide-details");
+        $(this).addClass("ms-action-details");
 
         return false;
     });
@@ -300,7 +287,6 @@ $(document).ready(function () {
         //var inviteUsers = $("div.new-invite-sent.sent")
         //      .map(function () { return $(this).attr("data-user"); }).get();
 
-        //var scoringType = $("input:radio[name='scoringOptions']:checked").val();
         task.addMatchupItem(player1, player2, player3, player4, $('#matchup-type').val(), function (data) {
            
             if (data.Existing) {
@@ -414,30 +400,23 @@ $(document).ready(function () {
         return false;
     });
 
-    //select a matchup starter - from matchup page
-    $("a.select-starter-from-matchup").on("click", function () {
-        $(this).button('loading');
-          
-        task.addMatchupChoice($(this).attr("id"), $(this).attr("data-matchup"), matchupChoiceAdded);
-        return false;
-    });
-
     //select a matchup starter in stream
     $("body").on("click", 'a.stream-select-starter', function (e) {
-        $(this).button('loading');
-        var current = $(this).parents("div.matchup-item");
+        var $current = $(this).parents("div.matchup-item");
 
-        task.setStreamMatchupChoice($(this).attr("data-player-id"), $(current).attr("data-matchup-id"), function (data) {
-            $('.matchup-item[data-matchup-id="' + data.ID + '"]').replaceWith(data.StreamData);
-            task.sendMatchupVoteEmail(data.ID, data.UserVotedID);
+        task.setStreamMatchupChoice($(this).attr("data-player-id"), $(this).attr("data-player-name"), $current.attr("data-matchup-id"), function (data) {
+            //task.sendMatchupVoteEmail(data.ID, data.UserVotedID);
 
-            loadImages();
-            $.getScript("http://platform.twitter.com/widgets.js");
+            $current.find('.vote-count').show();
+            var $total = $current.find('.vote-count-total');
+            $total.text(parseInt($total.text()) + 1);
 
-            $(".reply-message-panel").slidepanel({
-                orientation: 'left',
-                mode: 'overlay'
+            $('#vote-' + data.ID + data.PlayerID).fadeOut(500, function () {
+                var count = parseInt($(this).text()) + 1;
+                $(this).text(count).fadeIn(500);
             });
+            
+            //$.getScript("http://platform.twitter.com/widgets.js");
         });
 
         //send analytics event
