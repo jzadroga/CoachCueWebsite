@@ -45,6 +45,39 @@ namespace CoachCue.Service
             return notification;
         }
 
+        //save a notification document to the Notifications collection
+        public static async Task<Notification> Save(CoachCueUserData userData, User toUser, string text, string type, Matchup matchup)
+        {
+            Notification notification = new Notification();
+
+            try
+            {
+                notification.DateCreated = DateTime.UtcNow.GetEasternTime();
+                notification.CreatedBy = userData.UserId;
+                notification.Text = text;
+                notification.Type = type;
+                notification.UserFrom = new User()
+                {
+                    Id = userData.UserId,
+                    UserName = userData.UserName,
+                    Name = userData.Name,
+                    Profile = new UserProfile() { Image = userData.ProfileImage },
+                    Email = userData.Email
+                };
+                notification.UserTo = toUser;
+                notification.Matchup = matchup;
+
+                var result = await DocumentDBRepository<Notification>.CreateItemAsync(notification, "Notifications");
+                notification.Id = result.Id;
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+            }
+
+            return notification;
+        }
+
         public static async Task<IEnumerable<Notification>> GetList(string userId)
         {
             return await DocumentDBRepository<Notification>.GetItemsAsync(d => d.UserTo.Id == userId, "Notifications");
@@ -61,6 +94,17 @@ namespace CoachCue.Service
                 && d.Sent == false 
                 && (d.Type == "mention" || d.Type == "reply"), 
                 "Notifications");
+        }
+
+        public static async Task<Notification> GetByMatchup(string matchupId, string fromUser)
+        {
+            var notifications = await DocumentDBRepository<Notification>.GetItemsAsync(d => d.Matchup.Id == matchupId
+                && d.Sent == false
+                && d.Type == "vote"
+                && d.UserFrom.Id == fromUser,
+                "Notifications");
+
+            return notifications.FirstOrDefault();
         }
 
         public static async Task<Microsoft.Azure.Documents.Document> UpdateToSent(Notification notification)

@@ -103,20 +103,8 @@ namespace CoachCue.Controllers
 
             var userData = (User.Identity.IsAuthenticated) ? await CoachCueUserData.GetUserData(User.Identity.Name) : null;
              
-            /*if (!isAuthenticated)
-            {
-                string hostAddress = Request.UserHostAddress;
-                if (Session[hostAddress] == null)
-                {
-                    showLogin = true;
-                    Session[hostAddress] = "set";
-                }
-            }*/
-
-            //WeeklyMatchups userVote = user.AddStreamSelectedMatchup(currentUser, playerID, matchupID);
-            //StreamContent streamItem = stream.ConvertToStream(userVote, playerID, true, currentUser);
             var matchupItem = await MatchupService.AddVote(id, player, matchup, userData);
-            //string streamData = this.PartialViewToString("_StreamItem", streamItem);
+
             return Json(new
             {
                 //StreamData = streamData,
@@ -125,16 +113,9 @@ namespace CoachCue.Controllers
                 Matchup = matchupItem,
                 Type = "matchupSelected",
                 Inline = false,
+                UserVotedID = (userData != null) ? userData.UserId : string.Empty,
                 ShowSignup = showLogin
             }, JsonRequestBehavior.AllowGet);
-        }
-
-        [SiteAuthorization]
-        [NoCacheAttribute]
-        public JsonResult SetMatchupChoice(int playerID, int matchupID)
-        {
-            UserVoteData userVote = user.AddMatchup(user.GetUserID(User.Identity.Name), playerID, matchupID);
-            return Json(userVote, JsonRequestBehavior.AllowGet);
         }
 
         [NoCacheAttribute]
@@ -295,10 +276,13 @@ namespace CoachCue.Controllers
 
         [SiteAuthorization]
         [HttpPost]
-        public ActionResult SendMatchupVoteEmail(int mtchid, int voterid)
+        public async Task<ActionResult> SendMatchupVoteEmail(string mtchid, string voterid)
         {
-            //send off mention emails
-            EmailHelper.SendMatchupVoteEmail(voterid, mtchid);
+            var notification = await NotificationService.GetByMatchup(mtchid, voterid);
+
+            //send off voting emails
+            if(notification != null)
+                await EmailHelper.SendMatchupVoteEmail(notification);
 
             return Json(new
             {

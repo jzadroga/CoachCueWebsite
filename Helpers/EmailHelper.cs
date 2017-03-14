@@ -39,27 +39,22 @@ namespace CoachCue.Helpers
             }
         }
 
-        public static void SendMatchupVoteEmail(int fromID, int matchupID)
+        public static async Task<bool> SendMatchupVoteEmail(Notification notification)
         {
             try
             {
-                LinkData link = notification.GetMatchupLink(matchupID, string.Empty);
+                IUserMailer UserMailer = new UserMailer();
 
-                matchup matchupItem = matchup.Get(matchupID);
-                user userToItem = matchupItem.user;
+                if (notification.UserTo.Settings.EmailNotifications == true)
+                    UserMailer.MatchupVoted(notification).Send(new SmtpClientWrapper(getSmtpConfig()));
 
-                //don't send if voting on matchup that user created
-                if (matchupItem.createdBy != fromID)
-                {
-                    CoachCue.Mailers.IUserMailer UserMailer = new UserMailer();
-
-                    SmtpClientWrapper wrapper = new SmtpClientWrapper(getSmtpConfig());
-                    //check the users settings before sending
-                    if (user.GetSettings(matchupItem.createdBy).emailNotifications.Value == true)
-                        UserMailer.MatchupVoted(userToItem, fromID, link).Send(wrapper);
-                }
+                //mark as sent
+                notification.Sent = true;
+                await NotificationService.UpdateToSent(notification);             
             }
             catch (Exception) { }
+
+            return true;
         }
 
         public static async Task<bool> SendMessageNotificationEmails(List<Notification> notifications)

@@ -249,17 +249,6 @@ var task = function () {
         })
     },
 
-    addMatchupChoice = function (playerID, matchupID, callback) {
-        $.ajax({
-            url: "/UserTask/SetMatchupChoice",
-            data: { playerID: playerID, matchupID: matchupID },
-            cache: false,
-            success: function (data) {
-                callback(data);
-            }
-        })
-    },
-
     setStreamMatchupChoice = function (plyID, ply, mtchID, callback) {
         $.ajax({
             url: "/UserTask/SetStreamMatchupChoice",
@@ -301,7 +290,6 @@ var task = function () {
         getPlayerTwitterStream: getPlayerTwitterStream,
         getUserMatchup: getUserMatchup,
         inviteAnswer: inviteAnswer,
-        addMatchupChoice: addMatchupChoice,
         setStreamMatchupChoice : setStreamMatchupChoice,
         getTrending: getTrending,
         sendNotificationEmail: sendNotificationEmail,

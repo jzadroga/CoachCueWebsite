@@ -81,6 +81,17 @@ namespace CoachCue.Service
 
             await DocumentDBRepository<Matchup>.UpdateItemAsync(matchupId, matchup, "Matchups");
 
+            //add voted notification
+            if (userData != null)
+            {
+                if (userData.UserId != matchup.CreatedBy)
+                {
+                    var toUser = await UserService.Get(matchup.CreatedBy);
+
+                    await NotificationService.Save(userData, toUser, userData.Name + " voted on your CoachCue matchup.", "vote", matchup);
+                }
+            }
+
             return matchup;
         }
 

@@ -112,25 +112,39 @@ namespace CoachCue.Mailers
             });
         }
 
-        public virtual MvcMailMessage MatchupVoted(user toUser, int fromUserID, LinkData link)
+        public virtual MvcMailMessage MatchupVoted(Notification notification)
         {
-            user fromUser = user.Get(fromUserID);
+            string msg = notification.Matchup.Type + " ";
+            for( int i=0; i < notification.Matchup.Players.Count; i++ )
+            {
+                if (notification.Matchup.Players.Count > 2 && i < notification.Matchup.Players.Count - 2)
+                    msg += notification.Matchup.Players[i].Name + ", ";
+                else
+                    msg += ((i + 1) != notification.Matchup.Players.Count) ? notification.Matchup.Players[i].Name + " or " : notification.Matchup.Players[i].Name;
+            }
+
+            LinkData link = new LinkData()
+            {
+                Message = msg, 
+                ID = notification.Matchup.Id,
+                Guid = notification.UserFrom.Id
+            };
 
             MailRequestVoteViewModel voteVM = new MailRequestVoteViewModel();
-            voteVM.FullName = fromUser.fullName;
+            voteVM.FullName = notification.UserFrom.Name;
             voteVM.MatchupLink = link;
-            voteVM.FromAvatarSrc = "http://coachcue.com/assets/img/avatar/" + fromUser.avatar.imageName;
+            voteVM.FromAvatarSrc = "http://coachcue.com/assets/img/avatar/" + notification.UserFrom.Profile.Image;
 
             ViewData.Model = voteVM;
 
-            ViewData["Title"] = fromUser.fullName + " voted on your matchup<br/>";
+            ViewData["Title"] = notification.UserFrom.Name + " voted on your matchup<br/>";
             ViewData["UserGuid"] = string.Empty;
 
             return Populate(x =>
             {
-                x.Subject = fromUser.fullName + "  voted on your CoachCue matchup";
+                x.Subject = notification.UserFrom.Name + "  voted on your CoachCue matchup";
                 x.ViewName = "MatchupVote";
-                x.To.Add(toUser.email);
+                x.To.Add(notification.UserTo.Email);
                 x.From = new MailAddress(fromAddress, "CoachCue");
             });
         }

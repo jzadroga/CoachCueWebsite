@@ -405,7 +405,7 @@ $(document).ready(function () {
         var $current = $(this).parents("div.matchup-item");
 
         task.setStreamMatchupChoice($(this).attr("data-player-id"), $(this).attr("data-player-name"), $current.attr("data-matchup-id"), function (data) {
-            //task.sendMatchupVoteEmail(data.ID, data.UserVotedID);
+            task.sendMatchupVoteEmail(data.ID, data.UserVotedID);
 
             $current.find('.vote-count').show();
             var $total = $current.find('.vote-count-total');

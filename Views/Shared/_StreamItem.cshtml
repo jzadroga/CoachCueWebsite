@@ -69,7 +69,7 @@
                             @foreach (var player in Model.MatchupItem.Players)
                             {
                                 <a href="#" data-player-name="@player.Name" data-player-id="@player.Id" class="list-group-item stream-select-starter">                                
-                                    <img alt="@player.Name" class='img-rounded large' src='@player.ProfileImage' />
+                                    <img alt="@player.Name" class='avatar large ' src='@player.ProfileImage.Replace("normal", "bigger")' />
                                     @player.Name
                                     <span id="vote-@Model.MatchupItem.Id@player.Id" style="background-color: #F18A20; display: none" class="badge vote-count">@Model.MatchupItem.Votes.Where( pl => pl.PlayerId  == player.Id).Count()</span>
                                     <input type="hidden" class="player-tags" data-img="@player.ProfileImage" data-name="@player.ShortName" value="@player.Id" />                                  

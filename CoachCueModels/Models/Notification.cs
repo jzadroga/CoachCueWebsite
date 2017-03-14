@@ -36,6 +36,9 @@ namespace CoachCue.Models
         [JsonProperty(PropertyName = "message")]
         public Message Message { get; set; }
 
+        [JsonProperty(PropertyName = "matchup")]
+        public Matchup Matchup { get; set; }
+
         [JsonProperty(PropertyName = "sent")]
         public bool Sent { get; set; }
 
