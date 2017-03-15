@@ -59,6 +59,15 @@ namespace CoachCue.Models
             }
         }
 
+        [JsonProperty(PropertyName = "profileImageLarge")]
+        public string ProfileImageLarge
+        {
+            get
+            {
+                return this.ProfileImage.Replace("normal", "bigger");
+            }
+        }
+
         [JsonProperty(PropertyName = "link")]
         public string Link
         {

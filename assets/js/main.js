@@ -10,6 +10,7 @@ $(document).ready(function () {
 
     loadPlayersTypeahead();
     loadMatchupPlayersTypeahead();
+    loadMatchupInviteTypeahead();
 
     //tooltips
     $("[rel='tooltip']").tooltip();
@@ -51,7 +52,7 @@ $(document).ready(function () {
             }
         });
 
-        $('#players').tagsinput('refresh');
+        //$('#players').tagsinput('refresh');
     });
 
     $(".modal-fullscreen").on('show.bs.modal', function () {
@@ -485,9 +486,6 @@ $(document).ready(function () {
         }
     });
 
-    //matchup inviting
-    loadMatchupInviteTypeahead();
-
     //invite any user
     $("#slidepanel").on("click", '.invite-coach-matchup', function (e) {
         if ($(this).hasClass("disabled")) {
@@ -683,33 +681,6 @@ function matchupInviteAdded(data) {
     $(invited).insertAfter($('.asked-to-amswer').last());
     loadMatchupInviteTypeahead();
     $("#matchup-ask-" + data.Matchup).addClass('disabled');
-}
-
-function matchupChoiceAdded(voteData) {
-    if (voteData.MatchupID != 0) {
-        var $matchupItem = $('.mymatchup[data-matchup="' + voteData.MatchupID + '"]');
-        $matchupItem.find("a.select-starter-from-matchup").remove();
-        $matchupItem.find("div.matchup-player1 div.player-matchup-details").append('<div class="total-votes">' + voteData.Player1TotalVotes + '</div>');
-        $matchupItem.find("div.matchup-player2 div.player-matchup-details").append('<div class="total-votes">' + voteData.Player2TotalVotes + '</div>');
-
-        var vote = "<div class='item clear child'>" +
-            "<div class='content'>" +
-                "<div class='content-header'><a rel='tooltip' title='first tooltip' class='username' href='#'>" + voteData.fullName + "</a><span class='user'></span></div>" +
-                "<img class='avatar profile-avatar' src='" + voteData.profileImg + "'>" +
-            "<span><i class='icon-small icon-thumbs-up'></i>" + voteData.SelectedPlayer + "</span></div></div>";
-
-        var noVotes = $("div#" + voteData.MatchupID).find("div.no-votes");
-        if (noVotes.length > 0) {
-            $(noVotes).remove();
-        }
-        $("div#" + voteData.MatchupID).prepend(vote);
-        loadImages();
-        task.sendMatchupVoteEmail(voteData.MatchupID, voteData.userVoteID);
-        $(".reply-message-panel").slidepanel({
-            orientation: 'left',
-            mode: 'overlay'
-        });
-    }
 }
 
 function setSelectionRange(input, selectionStart, selectionEnd) {

@@ -72,6 +72,125 @@ namespace CoachCue.Service
 
             return stream;
         }
+
+        public static async Task<List<StreamContent>> GetPlayerStream(CoachCueUserData userData, string playerId)
+        {
+            List<StreamContent> stream = new List<StreamContent>();
+
+            try
+            {
+                string profileImage = userData.ProfileImage;
+
+                //get all the user messages for following a user or player
+                var endDate = DateTime.UtcNow.GetEasternTime().AddDays(-280);
+
+                //gets the matchups for the stream
+                string contentType = "matchupSelected";
+                /*if (string.IsNullOrEmpty(matchup.UserSelectedPlayer))
+                {
+                    //make sure the game hasn't passed too
+                    if (DateTime.UtcNow.GetEasternTime() < matchup.GameDate)
+                        contentType = "matchup";
+                }*/
+                var matchups =  MatchupService.GetListByPlayer(endDate, playerId);
+                stream = matchups.Select(usrmtch => new Service.StreamContent
+                {
+                    MatchupItem = usrmtch,
+                    DateTicks = usrmtch.DateCreated.Ticks.ToString(),
+                    ProfileImg = usrmtch.ProfileImage,
+                    UserProfileImg = profileImage,
+                    UserName = usrmtch.UserName,
+                    FullName = usrmtch.Name,
+                    ContentType = contentType,
+                    DateCreated = usrmtch.DateCreated,
+                    TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated)
+                }).ToList();
+
+                var msgs = await MessageService.GetListByPlayer(endDate, playerId);
+                stream.AddRange(msgs.Select(msg => new StreamContent
+                {
+                    MessageItem = msg,
+                    DateTicks = msg.DateCreated.Ticks.ToString(),
+                    ProfileImg = msg.ProfileImage,
+                    UserName = msg.UserName,
+                    FullName = msg.Name,
+                    ContentType = "message",
+                    DateCreated = msg.DateCreated,
+                    UserProfileImg = profileImage,
+                    TimeAgo = twitter.GetRelativeTime(msg.DateCreated)
+                }).ToList());
+
+                //sort everything by date
+                stream = stream.OrderByDescending(str => str.DateCreated).Take(80).ToList();
+            }
+            catch (Exception ex)
+            {
+                string r = ex.Message;
+            }
+
+            return stream;
+        }
+
+        public static async Task<List<StreamContent>> GetUserStream(CoachCueUserData userData, string userId, bool matchupsOnly)
+        {
+            List<StreamContent> stream = new List<StreamContent>();
+
+            try
+            {
+                string profileImage = userData.ProfileImage;
+
+                //get all the user messages for following a user or player
+                var endDate = DateTime.UtcNow.GetEasternTime().AddDays(-280);
+
+                //gets the matchups for the stream
+                string contentType = "matchupSelected";
+                /*if (string.IsNullOrEmpty(matchup.UserSelectedPlayer))
+                {
+                    //make sure the game hasn't passed too
+                    if (DateTime.UtcNow.GetEasternTime() < matchup.GameDate)
+                        contentType = "matchup";
+                }*/
+                var matchups = await MatchupService.GetListByUser(endDate, userId);
+                stream = matchups.Select(usrmtch => new Service.StreamContent
+                {
+                    MatchupItem = usrmtch,
+                    DateTicks = usrmtch.DateCreated.Ticks.ToString(),
+                    ProfileImg = usrmtch.ProfileImage,
+                    UserProfileImg = profileImage,
+                    UserName = usrmtch.UserName,
+                    FullName = usrmtch.Name,
+                    ContentType = contentType,
+                    DateCreated = usrmtch.DateCreated,
+                    TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated)
+                }).ToList();
+
+                if (!matchupsOnly)
+                {
+                    var msgs = await MessageService.GetListByUser(endDate, userId);
+                    stream.AddRange(msgs.Select(msg => new StreamContent
+                    {
+                        MessageItem = msg,
+                        DateTicks = msg.DateCreated.Ticks.ToString(),
+                        ProfileImg = msg.ProfileImage,
+                        UserName = msg.UserName,
+                        FullName = msg.Name,
+                        ContentType = "message",
+                        DateCreated = msg.DateCreated,
+                        UserProfileImg = profileImage,
+                        TimeAgo = twitter.GetRelativeTime(msg.DateCreated)
+                    }).ToList());
+                }
+
+                //sort everything by date
+                stream = stream.OrderByDescending(str => str.DateCreated).Take(80).ToList();
+            }
+            catch (Exception ex)
+            {
+                string r = ex.Message;
+            }
+
+            return stream;
+        }
     }
 
     public class StreamContent

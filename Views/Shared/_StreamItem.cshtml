@@ -15,7 +15,7 @@
             <div class="item player-item">
                 <div class="content">
                     <div class="content-header">
-                        <a data-account-id="@Model.MessageItem.CreatedBy" class="username" href="@Url.Action("Index", "Coach", new { id = Model.MessageItem.CreatedBy, name = Model.FullName })">@Model.FullName</a>
+                        <a data-account-id="@Model.MessageItem.CreatedBy" class="username" href="@Url.Action("Index", "Coach", new { name = Model.MessageItem.UserLink })">@Model.FullName</a>
                         <span>@Model.TimeAgo</span>
                     </div>
                     <img alt="@Model.UserName" class="matchup-msg-item-avatar img-circle" src="@Url.Content("~/assets/img/avatar/" + Model.ProfileImg)" />
@@ -50,7 +50,7 @@
                 <!-- matchup header -->
                 <div class="row matchup-header">
                     <div class="col-md-6 col-xs-6">
-                        <a href="@Url.Action("Index", "Coach", new { id = Model.MatchupItem.CreatedBy, name = Model.MatchupItem.Name })">
+                        <a href="@Url.Action("Index", "Coach", new { name = Model.MatchupItem.UserLink })">
                             <img alt="@Model.UserName" class="avatar player-item-avatar" src="/assets/img/avatar/@Model.MatchupItem.ProfileImage" />
                             <span class="created-by-name">@Model.MatchupItem.Name</span>
                         </a>
@@ -69,7 +69,7 @@
                             @foreach (var player in Model.MatchupItem.Players)
                             {
                                 <a href="#" data-player-name="@player.Name" data-player-id="@player.Id" class="list-group-item stream-select-starter">                                
-                                    <img alt="@player.Name" class='avatar large ' src='@player.ProfileImage.Replace("normal", "bigger")' />
+                                    <img alt="@player.Name" class='avatar large ' src='@player.ProfileImageLarge' />
                                     @player.Name
                                     <span id="vote-@Model.MatchupItem.Id@player.Id" style="background-color: #F18A20; display: none" class="badge vote-count">@Model.MatchupItem.Votes.Where( pl => pl.PlayerId  == player.Id).Count()</span>
                                     <input type="hidden" class="player-tags" data-img="@player.ProfileImage" data-name="@player.ShortName" value="@player.Id" />                                  
@@ -159,7 +159,7 @@
                             @foreach (var vote in Model.MatchupItem.Votes.Take(8))
                             {
                                 <li>
-                                    <a href="@Url.Action("Index", "Coach", new { id = vote.UserId, name = vote.Name })" rel='tooltip' data-toggle="tooltip" data-placement="top" title="" data-original-title="@vote.Name (@vote.PlayerName)" class="user-avatar-small height" style="background: url('@Url.Content("~/assets/img/avatar/" + vote.ProfileImage)') 50% 50% no-repeat;"></a>
+                                    <a href="@Url.Action("Index", "Coach", new { name = vote.UserLink })" rel='tooltip' data-toggle="tooltip" data-placement="top" title="" data-original-title="@vote.Name (@vote.PlayerName)" class="user-avatar-small height" style="background: url('@Url.Content("~/assets/img/avatar/" + vote.ProfileImage)') 50% 50% no-repeat;"></a>
                                 </li>
                             }
                         </ul>
@@ -184,7 +184,7 @@
                                 <div class="item player-item clear">
                                     <div class="content">
                                         <div class="content-header">
-                                            <a class="username" href="@Url.Action("Index", "Coach", new { id = vote.UserId, name = vote.Name })">@vote.Name</a>
+                                            <a class="username" href="@Url.Action("Index", "Coach", new { name = vote.UserLink })">@vote.Name</a>
                                             @*
                                             <span class="user" style="font-size: 12px;">
                                             @if (!string.IsNullOrEmpty(Model.correctPercentage))
@@ -232,7 +232,7 @@
                                             <div class="item player-item">
                                                 <div class="content">
                                                     <div class="content-header">
-                                                        <a data-account-id="@msg.CreatedBy" class="username" href="@Url.Action("Index", "Coach", new { id = msg.CreatedBy, name = msg.Name })">@msg.Name</a>
+                                                        <a data-account-id="@msg.CreatedBy" class="username" href="@Url.Action("Index", "Coach", new { name = msg.UserLink })">@msg.Name</a>
                                                         <span>@msg.TimeAgo</span>
                                                     </div>
                                                     <img class="matchup-msg-item-avatar img-circle" src="@Url.Content("~/assets/img/avatar/" + msg.ProfileImage)">
@@ -282,11 +282,11 @@
         case "message":
         <div id="msg-@Model.MessageItem.Id" class="user-message item child clear stream-news @Model.CssClass" data-ticks="@Model.DateTicks">
             <div class="content" style="min-height: 45px;">
-                <a class="username" href="@Url.Action("Index", "Coach", new { id = Model.MessageItem.CreatedBy, name = Model.FullName })">
+                <a class="username" href="@Url.Action("Index", "Coach", new { name = Model.MessageItem.UserLink })">
                     <img alt="@Model.UserName" class="avatar user-avatar" src="@Url.Content("~/assets/img/avatar/" + Model.ProfileImg)" />
                 </a>
                 <div class="content-header">          
-                    <a class="username" href="@Url.Action("Index", "Coach", new { id = Model.MessageItem.CreatedBy, name = Model.FullName })">@Model.FullName</a>
+                    <a class="username" href="@Url.Action("Index", "Coach", new { name = Model.MessageItem.UserLink })">@Model.FullName</a>
                     <span class="time">@Model.TimeAgo</span>
                 </div>
                 <span>@Html.Raw(@Model.MessageItem.Text)</span>
@@ -294,7 +294,7 @@
                     <div class="player-tags">                      
                     @foreach (Player player in Model.MessageItem.PlayerMentions)
                     {
-                        <a data-player-img="@player.ProfileImage" data-player-name="@player.Name" data-player-pos="@player.Position&nbsp;|&nbsp;@player.Team.Slug" data-player-id="@player.Id" class="player-tag-container player-popover" href="@Url.Action("Index", "Player", new { id = player.Id, name = player.Link })">
+                        <a data-player-img="@player.ProfileImage" data-player-name="@player.Name" data-player-pos="@player.Position&nbsp;|&nbsp;@player.Team.Slug" data-player-id="@player.Id" class="player-tag-container player-popover" href="@Url.Action("Index", "Player", new { team = player.Team.Slug, name = player.Link })">
                             <span>
                                 <img src="@Url.Content("~/assets/img/Player_Icon_1-orange.png")" />@player.ShortName @player.Position | @player.Team.Slug
                             </span>
@@ -320,7 +320,7 @@
                                         <div class="item player-item">
                                             <div class="content">
                                                 <div class="content-header">
-                                                    <a data-account-id="@msg.CreatedBy" class="username" href="@Url.Action("Index", "Coach", new { id = msg.CreatedBy, name = msg.Name })">@msg.Name</a>
+                                                    <a data-account-id="@msg.CreatedBy" class="username" href="@Url.Action("Index", "Coach", new { name = msg.UserLink })">@msg.Name</a>
                                                     <span>@msg.TimeAgo</span>
                                                 </div>
                                                 <img alt="@Model.UserName" class="matchup-msg-item-avatar img-circle" src="@Url.Content("~/assets/img/avatar/" + msg.ProfileImage)" />

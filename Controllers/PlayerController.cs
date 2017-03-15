@@ -9,22 +9,24 @@ using CoachCue.ViewModels;
 using System.Net;
 using System.IO;
 using CoachCue.Helpers;
+using System.Threading.Tasks;
+using CoachCue.Service;
+using CoachCue.Repository;
 
 namespace CoachCue.Controllers
 {
     public class PlayerController : BaseController
     {
-        public ActionResult Index(int id, string name)
+        public async Task<ActionResult> Index(string team, string name)
         {
             PlayerViewModel playerVM = new PlayerViewModel();
             playerVM.LoggedIn = false;
 
-            int userID = (User.Identity.IsAuthenticated) ? user.GetUserID(User.Identity.Name) : 0;
-            
-            playerVM.PlayerDetail = nflplayer.Get(id);
-            playerVM.PlayerStream = stream.GetPlayerStream(id, userID, false);
-            playerVM.Followers = nflplayer.FollowersCount(id);
-            playerVM.TwitterContent = stream.GetPlayerTwitterStream(playerVM.PlayerDetail);
+            playerVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
+
+            playerVM.PlayerDetail = await PlayerService.GetByDescription(team, name);
+            playerVM.PlayerStream = await StreamService.GetPlayerStream(playerVM.UserData, playerVM.PlayerDetail.Id);
+            playerVM.TwitterContent = new List<StreamContent>();//stream.GetPlayerTwitterStream(playerVM.PlayerDetail);
 
             return View(playerVM);
         }

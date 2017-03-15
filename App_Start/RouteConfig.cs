@@ -21,7 +21,7 @@ namespace CoachCue
 
             routes.MapRoute(
                "Players",
-               "Player/{id}/{name}",
+               "Player/{team}/{name}",
                new { controller = "Player", action = "Index" }
             );
 
@@ -39,13 +39,13 @@ namespace CoachCue
 
             routes.MapRoute(
               "Coaches",
-              "Coach/{id}/{name}",
+              "Coach/{name}",
               new { controller = "Coach", action = "Index" }
            );
 
             routes.MapRoute(
               "CoacheMatchups",
-              "Coach/Matchup/{id}/{name}",
+              "Coach/Matchup/{name}",
               new { controller = "Coach", action = "Matchup" }
            );
 

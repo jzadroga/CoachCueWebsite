@@ -9,20 +9,21 @@ using CoachCue.ViewModels;
 using System.Net;
 using System.IO;
 using CoachCue.Helpers;
+using CoachCue.Service;
+using System.Threading.Tasks;
 
 namespace CoachCue.Controllers
 {
     public class PlayerPodController : Controller
     {
-        public ActionResult Index(int id, string name)
+        public async Task<ActionResult> Index(string id, string name)
         {
             PlayerViewModel playerVM = new PlayerViewModel();
             playerVM.LoggedIn = false;
 
             int userID = (User.Identity.IsAuthenticated) ? user.GetUserID(User.Identity.Name) : 0;
-            playerVM.PlayerDetail = nflplayer.Get(id);
-            playerVM.PlayerStream = stream.GetPlayerStream(id, userID, false).Take(12).ToList();
-            playerVM.Followers = nflplayer.FollowersCount(id);
+            playerVM.PlayerDetail = await PlayerService.Get(id);
+            playerVM.PlayerStream = new List<StreamContent>(); //stream.GetPlayerStream(id, userID, false).Take(12).ToList();
 
             return View(playerVM);
         }

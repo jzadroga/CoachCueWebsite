@@ -2,22 +2,22 @@
 @using CoachCue.Model
 
 @{
-    ViewBag.Title = "Fantasy football realtime news and comments for " + Model.PlayerDetail.fullName;
-    ViewBag.Description = "Fantasy football realtime news and comments for " + Model.PlayerDetail.fullName;
-    ViewBag.Keywords = "fantasy football, News, " + Model.PlayerDetail.fullName;
+    ViewBag.Title = "Fantasy football realtime news and comments for " + Model.PlayerDetail.Name;
+    ViewBag.Description = "Fantasy football realtime news and comments for " + Model.PlayerDetail.Name;
+    ViewBag.Keywords = "fantasy football, News, " + Model.PlayerDetail.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="span8 section" id="playerdetail">
 
 
-    <div class="panel panel-default user-panel player-header" data-player='@Model.PlayerDetail.playerID'>
+    <div class="panel panel-default user-panel player-header" data-player='@Model.PlayerDetail.Id'>
         <div class="panel-heading">
-            <img class='avatar large' src='@Model.PlayerDetail.profilePicLarge' />
+            <img class='avatar large' src='@Model.PlayerDetail.ProfileImageLarge' />
        
             <div class="header-details">
-                <span class='username'>@Model.PlayerDetail.fullName</span>
-                <span>@Model.PlayerDetail.position.positionName&nbsp;|&nbsp;@Model.PlayerDetail.nflteam.teamSlug</span>
+                <span class='username'>@Model.PlayerDetail.Name</span>
+                <span>@Model.PlayerDetail.Position&nbsp;|&nbsp;@Model.PlayerDetail.Team.Slug</span>
             </div>
         </div>
 
@@ -26,7 +26,7 @@
             <div class="user-stats-container">
                 <ul class="stats stats-list">
                     <li>
-                        <h1>Latest news on @Model.PlayerDetail.fullName</h1>
+                        <h1>Latest news on @Model.PlayerDetail.Name</h1>
                     </li>
                 </ul>
             </div>
@@ -42,9 +42,9 @@
             <div id="stream-area">
                 <div id="player-message-stream">
 
-                    <div id="@Model.PlayerDetail.playerID" class="player-stream message-list-stream stream-matchups stream-messages">
-                        @foreach (StreamContent streamItem in Model.PlayerStream)
-                        { Html.RenderPartial("_StreamItem", streamItem, new ViewDataDictionary { { "UserImage", Model.Avatar } }); }
+                    <div id="@Model.PlayerDetail.Id" class="player-stream message-list-stream stream-matchups stream-messages">
+                        @foreach (var streamItem in Model.PlayerStream)
+                        { Html.RenderPartial("_StreamItem", streamItem, new ViewDataDictionary { { "UserImage", Model.UserData.ProfileImage } }); }
                     </div>
 
                 </div>

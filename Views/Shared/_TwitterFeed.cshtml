@@ -1,12 +1,13 @@
 ﻿@model List<StreamContent>
 @using CoachCue.Model;
+@using CoachCue.Service;
 
    <div class="span4 pod pod-child">
 
         <h4>Beat Writer Tweets</h4>
 
         <div class="tweet-list">
-        @foreach (StreamContent streamItem in Model)
+        @foreach (var streamItem in Model)
         {
            <div class="item clear child player-item @streamItem.CssClass" data-player="@streamItem.PlayerID">
             <div class="content">

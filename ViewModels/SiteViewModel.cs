@@ -63,18 +63,15 @@ namespace CoachCue.ViewModels
     public class PlayerViewModel : BaseViewModel
     {
         public bool LoggedIn { get; set; }
-        public nflplayer PlayerDetail { get; set; }
+        public Player PlayerDetail { get; set; }
         public List<StreamContent> PlayerStream { get; set; }
-        public int Followers { get; set; }
         public List<StreamContent> TwitterContent { get; set; }
     }
 
     public class UserViewModel : BaseViewModel
     {
-        public user UserDetail { get; set; }
+        public User UserDetail { get; set; }
         public List<StreamContent> UserStream { get; set; }
-        public int Followers { get; set; }
-        public bool MessageDetails {get; set;}
     }
 
     public class LeaderBoardModel : BaseViewModel

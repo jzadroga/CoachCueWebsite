@@ -64,5 +64,14 @@ namespace CoachCue.Models
                 return twitter.GetRelativeTime(this.DateCreated);
             }
         }
+
+        public string UserLink
+        {
+            get
+            {
+                string name = this.UserName.Replace(".", "").Replace("-", "").Replace("'", "");
+                return name;
+            }
+        }
     }
 }

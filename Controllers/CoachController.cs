@@ -4,39 +4,33 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CoachCue.Model;
-using System.ComponentModel;
 using CoachCue.ViewModels;
-using System.Net;
-using System.IO;
+using CoachCue.Service;
+using System.Threading.Tasks;
+using CoachCue.Repository;
 
 namespace CoachCue.Controllers
 {
     public class CoachController : BaseController
     {
-        public ActionResult Index(int id, string name, [DefaultValue(0)]int mt)
+        public async Task<ActionResult> Index(string name)
         {
             UserViewModel userVM = new UserViewModel();
 
-            int userID = (User.Identity.IsAuthenticated) ? user.GetUserID(User.Identity.Name) : 0;
-            userVM.UserDetail = user.Get(id);
+            userVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
 
-            userVM.UserStream = (mt == 0) ? stream.GetUserStream(id, false, userID) : stream.GetDetails(mt);
-            userVM.MessageDetails = (mt == 0) ? false : true;
-            userVM.Followers = user.GetFollowersCount(id);
-
+            userVM.UserDetail = await UserService.GetByLink(name);
+            userVM.UserStream = await StreamService.GetUserStream(userVM.UserData, userVM.UserDetail.Id, false);
             return View(userVM);
         }
 
-        public ActionResult Matchup(int id, string name, [DefaultValue(0)]int mt)
+        public async Task<ActionResult> Matchup(string name)
         {
             UserViewModel userVM = new UserViewModel();
 
-            int userID = (User.Identity.IsAuthenticated) ? user.GetUserID(User.Identity.Name) : 0;
-            userVM.UserDetail = user.Get(id);
-
-            userVM.UserStream = (mt == 0) ? matchup.GetAllUserMatchups(id, 30, userID) : stream.GetDetails(mt);
-            userVM.MessageDetails = (mt == 0) ? false : true;
-            userVM.Followers = user.GetFollowersCount(id);
+            userVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
+            userVM.UserDetail = await UserService.GetByLink(name);
+            userVM.UserStream = await StreamService.GetUserStream(userVM.UserData, userVM.UserDetail.Id, true);
 
             return View("Index", userVM);
         }

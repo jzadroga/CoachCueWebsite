@@ -37,10 +37,7 @@ namespace CoachCue.Controllers
             if(!string.IsNullOrEmpty(homeVM.UserData.UserId))
             {
                 homeVM.LoggedIn = true;
-               
-                //int logins = user.SaveLogin(Convert.ToInt32(homeVM.UserData.UserId));
-                //if (logins <= 1)
-                //    homeVM.ShowWelcome = true;
+                await UserService.UpdateLoginStats(homeVM.UserData.UserId);
             }
             else
             {

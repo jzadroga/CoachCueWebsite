@@ -37,5 +37,14 @@ namespace CoachCue.Models
 
         [JsonProperty(PropertyName = "dateCreated")]
         public DateTime DateCreated { get; set; }
+
+        public string UserLink
+        {
+            get
+            {
+                string name = this.UserName.Replace(".", "").Replace("-", "").Replace("'", "");
+                return name;
+            }
+        }
     }
 }

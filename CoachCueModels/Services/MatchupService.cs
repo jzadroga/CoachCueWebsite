@@ -2,8 +2,10 @@
 using CoachCue.Models;
 using CoachCue.Repository;
 using HtmlAgilityPack;
+using Microsoft.Azure.Documents.Client;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -50,7 +52,9 @@ namespace CoachCue.Service
                 }
 
                 var result = await DocumentDBRepository<Matchup>.CreateItemAsync(matchup, "Matchups");
-                matchup.Id = result.Id;   
+                matchup.Id = result.Id;
+
+                await UserService.UpdateMatchupCount(userData.UserId);
             }
             catch (Exception ex)
             {
@@ -75,6 +79,7 @@ namespace CoachCue.Service
                 vote.ProfileImage = userData.ProfileImage;
                 vote.Email = userData.Email;
                 vote.Name = userData.Name;
+                vote.UserName = userData.UserName;
             }
 
             matchup.Votes.Add(vote);
@@ -84,10 +89,11 @@ namespace CoachCue.Service
             //add voted notification
             if (userData != null)
             {
+                await UserService.UpdateVoteCount(userData.UserId);
+
                 if (userData.UserId != matchup.CreatedBy)
                 {
                     var toUser = await UserService.Get(matchup.CreatedBy);
-
                     await NotificationService.Save(userData, toUser, userData.Name + " voted on your CoachCue matchup.", "vote", matchup);
                 }
             }
@@ -98,7 +104,16 @@ namespace CoachCue.Service
         public static async Task<IEnumerable<Matchup>> GetList(DateTime endDate)
         {
             return await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true, "Matchups");
+        }
 
+        public static IEnumerable<Matchup> GetListByPlayer(DateTime endDate, string playerId)
+        {
+            return DocumentDBRepository<Matchup>.GetPlayerMatchups(playerId);
+        }
+
+        public static async Task<IEnumerable<Matchup>> GetListByUser(DateTime endDate, string userId)
+        {
+            return await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true && d.CreatedBy == userId, "Matchups");
         }
 
         public static async Task<Matchup> Get(string id)

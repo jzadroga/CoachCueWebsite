@@ -2916,8 +2916,9 @@ div.player-latest-news div.item:hover {
 }
 
 .modal-fullscreen .modal-header{
-    height: 3.5rem;
+    min-height: 70px;
     border-bottom: none;
+    padding: 15px 15px 0 15px;
 }
 
 .modal-fullscreen .modal-header .close {
@@ -2929,6 +2930,10 @@ div.player-latest-news div.item:hover {
 
 .modal-fullscreen .modal-header .post {
     float: right;
+}
+
+.modal-fullscreen .modal-body{
+    padding: 0px 15px 15px 15px;
 }
 
 .modal-fullscreen .modal-content {

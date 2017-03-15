@@ -2,7 +2,7 @@
 @using CoachCue.Model;
 
 @{
-    ViewBag.Title = "CoachCue - " + Model.UserDetail.fullName;
+    ViewBag.Title = "CoachCue - " + Model.UserDetail.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,17 +10,17 @@
 
     <div class="panel panel-default user-panel player-header">
         <div class="panel-heading">
-            <a href="@Url.Action("Index", "Coach", new { id = Model.UserDetail.userID, name = Model.UserDetail.fullName })" class="avatar user-avatar-large height" style="background: url('@Url.Content("~/assets/img/avatar/" + Model.UserDetail.avatar.imageName)') 50% 50% no-repeat;"></a>
+            <a href="@Url.Action("Index", "Coach", new { name = Model.UserDetail.Link })" class="avatar user-avatar-large height" style="background: url('@Url.Content("~/assets/img/avatar/" + Model.UserDetail.Profile.Image)') 50% 50% no-repeat;"></a>
         
             <div class="header-details">
                 <h4 class='username'>
-                    @Model.UserDetail.fullName
-                    @if (Model.UserDetail.verified)
+                    @Model.UserDetail.Name
+                    @if (Model.UserDetail.Verified)
                     {
                         <img class="user-verified" src='@Url.Content("~/assets/img/verified.png")' alt="Fantasy Pro" />
                     }
                 </h4>
-                <span>@@@Model.UserDetail.userName</span>
+                <span>@@@Model.UserDetail.UserName</span>
             </div>
         </div>
 
@@ -29,18 +29,18 @@
             <div class="user-stats-container">
                 <ul class="stats stats-list">               
                     <li>
-                        <a href="@Url.Action("Matchup", "Coach", new { id = Model.UserDetail.userID, name = Model.UserDetail.fullName })">
-                            Matchups<strong>@Model.UserDetail.MatchupCreatedCount</strong>
+                        <a href="@Url.Action("Matchup", "Coach", new {name = Model.UserDetail.Link })">
+                            Matchups<strong>@Model.UserDetail.Statistics.MatchupCount</strong>
                         </a>
                     </li>
                     <li>
                         <a>
-                            Total Votes<strong>@Model.UserDetail.TotalMatchupVotes</strong>
+                            Total Votes<strong>@Model.UserDetail.Statistics.VoteCount</strong>
                         </a>
                     </li>
                     <li>
                         <a>
-                            Correct Votes<strong>@Model.UserDetail.TotalCorrectVotes</strong>
+                            Correct Votes<strong>@Model.UserDetail.Statistics.CorrectVoteCount</strong>
                         </a>
                     </li>
                 </ul>
@@ -48,11 +48,11 @@
         </div>
 
         <div class="panel-footer">
-            <span>Joined: @Model.UserDetail.DateJoined</span>
-            @if(!string.IsNullOrEmpty(Model.UserDetail.website)){
+            <span>Joined: @Model.UserDetail.DateCreated.ToShortTimeString()</span>
+            @if(!string.IsNullOrEmpty(Model.UserDetail.Profile.Website)){
                 <div class="user-website">
                     <span class="glyphicon glyphicon-globe"></span>
-                    <a class="user-website-link" target="_blank" href="@Model.UserDetail.website">@Model.UserDetail.website</a>
+                    <a class="user-website-link" target="_blank" href="@Model.UserDetail.Profile.Website">@Model.UserDetail.Profile.Website</a>
                 </div>
                 }
         </div>
@@ -62,7 +62,7 @@
         <div class="panel-body clear-body">
             <div id="stream-area">
                 <div id="user-message-stream" class="message-list-stream">
-                    @foreach (StreamContent streamItem in Model.UserStream)
+                    @foreach (var streamItem in Model.UserStream)
                     {
                         Html.RenderPartial("_StreamItem", model: streamItem);
                     }

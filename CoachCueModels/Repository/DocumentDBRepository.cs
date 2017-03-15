@@ -9,6 +9,7 @@
     using Microsoft.Azure.Documents;
     using Microsoft.Azure.Documents.Client;
     using Microsoft.Azure.Documents.Linq;
+    using Models;
 
     public static class DocumentDBRepository<T> where T : class
     {
@@ -52,6 +53,15 @@
 
             return results;
         }
+
+        public static IEnumerable<Matchup> GetPlayerMatchups(string playerId)
+        {
+            var matchups = client.CreateDocumentQuery<Matchup>(UriFactory.CreateDocumentCollectionUri(DatabaseId, "Matchups"))
+                    .SelectMany(s => s.Players.Where(c => c.Id == playerId).Select(c => s));
+
+            return matchups;
+        }
+
 
         public static async Task<Document> CreateItemAsync(T item, string collection)
         {

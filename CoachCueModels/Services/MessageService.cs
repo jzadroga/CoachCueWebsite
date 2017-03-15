@@ -147,6 +147,17 @@ namespace CoachCue.Service
         {
             //return await DocumentDBRepository<Message>.GetItemsAsync(d => d.DateCreated > endDate, "Messages");
             return await DocumentDBRepository<Message>.GetItemsAsync(d => d.UserName != "", "Messages");
+        }
+
+        public static async Task<IEnumerable<Message>> GetListByUser(DateTime endDate, string userId)
+        {
+            //return await DocumentDBRepository<Message>.GetItemsAsync(d => d.DateCreated > endDate, "Messages");
+            return await DocumentDBRepository<Message>.GetItemsAsync(d => d.CreatedBy == userId, "Messages");
+        }
+
+        public static async Task<IEnumerable<Message>> GetListByPlayer(DateTime endDate, string playerId)
+        {
+            return await DocumentDBRepository<Message>.GetItemsAsync(d => d.PlayerMentions.Any( ply => ply.Id == playerId), "Messages");
 
         }
 

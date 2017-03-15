@@ -323,7 +323,7 @@
                             </button>
                             <h4 class="modal-title"></h4>
                             <div class="post">
-                                <button id="share-post" class="btn btn-warning disabled" type="button">Share</button>
+                                <button id="share-post" class="btn btn-warning disabled btn-lg" type="button">Share</button>
                                 <div class="message-charNum">140</div>
                             </div>
                         </div>
@@ -377,14 +377,21 @@
                 <input type="hidden" id="msgType" value="general" />
                 <input type="hidden" id="prnt-id" value="" />
                 <div class="modal-dialog">
-                    <div class="modal-content">
+                    <div id="matchup-invite" class="modal-content">
+                        <div class="content ask-any-user">
+                            <input type="text" placeholder="Ask any User" class="ask-a-coach" />
+                            <button id="matchup-ask-" data-matchup="" data-loading-text="Sending" class="btn btn-small btn-warning invite-coach-matchup">Ask</button>
+                        </div>
+                    </div>
+
+                    <div id="matchup-select" class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">
                                 <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
                             </button>
                             <h4 class="modal-title"></h4>
                             <div class="post">
-                                <button id="share-matchup" class="btn btn-warning disabled" type="button">Share</button>
+                                <button id="share-matchup" class="btn btn-warning btn-lg disabled" type="button">Share</button>
                             </div>
                         </div>
                         <div class="modal-body">
@@ -399,6 +406,7 @@
                                     </span>
                                 </div>
                             </div>
+                            <div 
                             <div class="textarea-wrap">
                                 <select id="matchup-type" class="form-control">
                                     <option>Who Do I Start? (Standard)</option>

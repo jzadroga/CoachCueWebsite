@@ -85,6 +85,36 @@ namespace CoachCue.Service
             return user;
         }
 
+        public static async Task<User> UpdateLoginStats(string id)
+        {
+            var user = await Get(id);
+            user.Statistics.LoginCount = user.Statistics.LoginCount + 1;
+            user.Statistics.LastLogin = DateTime.UtcNow.GetEasternTime();
+            await DocumentDBRepository<User>.UpdateItemAsync(id, user, "Users");
+
+            return user;
+        }
+
+        public static async Task<User> UpdateVoteCount(string id)
+        {
+            var user = await Get(id);
+            user.Statistics.VoteCount = user.Statistics.VoteCount + 1;
+
+            await DocumentDBRepository<User>.UpdateItemAsync(id, user, "Users");
+
+            return user;
+        }
+
+        public static async Task<User> UpdateMatchupCount(string id)
+        {
+            var user = await Get(id);
+            user.Statistics.MatchupCount = user.Statistics.MatchupCount + 1;
+
+            await DocumentDBRepository<User>.UpdateItemAsync(id, user, "Users");
+
+            return user;
+        }
+
         public static async Task<User> Get(string id)
         {
             return await DocumentDBRepository<User>.GetItemAsync(id, "Users");
@@ -93,6 +123,13 @@ namespace CoachCue.Service
         public static async Task<User> GetByUsername(string username)
         {
             var user = await DocumentDBRepository<User>.GetItemsAsync(us => us.UserName.ToLower() == username.ToLower(), "Users");
+
+            return user.FirstOrDefault();
+        }
+
+        public static async Task<User> GetByLink(string link)
+        {
+            var user = await DocumentDBRepository<User>.GetItemsAsync(us => us.Link.ToLower() == link.ToLower(), "Users");
 
             return user.FirstOrDefault();
         }

@@ -1,10 +1,21 @@
-﻿using Newtonsoft.Json;
+﻿using CoachCue.Model;
+using Newtonsoft.Json;
 using System;
 
 namespace CoachCue.Models
 {
     public class User
     {
+        public User()
+        {
+            this.Statistics = new UserStatistics() { VoteCount = 0,
+                                                    LoginCount = 0,
+                                                    LastLogin = DateTime.UtcNow.GetEasternTime(),
+                                                    MatchupCount = 0,
+                                                    CorrectVoteCount = 0
+                                                    };
+        }
+
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
@@ -43,5 +54,15 @@ namespace CoachCue.Models
 
         [JsonProperty(PropertyName = "stats")]
         public UserStatistics Statistics { get; set; }
+
+        [JsonProperty(PropertyName = "link")]
+        public string Link
+        {
+            get
+            {
+                string name = this.UserName.Replace(".", "").Replace("-", "").Replace("'", "");
+                return name;
+            }
+        }
     }
 }
