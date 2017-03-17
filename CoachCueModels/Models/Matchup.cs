@@ -57,6 +57,10 @@ namespace CoachCue.Models
         [JsonProperty(PropertyName = "profileImage")]
         public string ProfileImage { get; set; }
 
+        [JsonProperty(PropertyName = "link")]
+        public string Link { get; set; }
+        //should be the matchup type, then the week number, then the players names seperated by -
+
         public string TimeAgo
         {
             get

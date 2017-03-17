@@ -120,6 +120,19 @@ namespace CoachCue.Service
             return await DocumentDBRepository<User>.GetItemAsync(id, "Users");
         }
 
+        public static async Task<IEnumerable<User>> GetRandomTopVotes(int total)
+        {
+            var users = await DocumentDBRepository<User>.GetItemsAsync(us => us.Active == true, "Users");
+
+            Random rnd = new Random();
+            int start = rnd.Next(0, 25);
+
+            start = 0; //remove this when going live
+            users = users.OrderBy(us => us.Statistics.VoteCount).Skip(start).Take(total);
+
+            return users;
+        }
+
         public static async Task<User> GetByUsername(string username)
         {
             var user = await DocumentDBRepository<User>.GetItemsAsync(us => us.UserName.ToLower() == username.ToLower(), "Users");

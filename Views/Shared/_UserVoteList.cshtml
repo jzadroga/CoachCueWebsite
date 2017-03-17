@@ -1,9 +1,0 @@
-﻿@model CoachCue.Model.VoteList
-@using CoachCue.Model;
-
-    @foreach (UserVoteData vote in Model.Votes)
-    {
-        <div data-parent="match-vote-@Model.MatchupID" class="item player-item clear">
-            @{Html.RenderPartial("_UserVote", vote, new ViewDataDictionary { { "MatchupStatus", Model.Status } });}
-        </div>
-    }

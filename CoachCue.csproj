@@ -442,7 +442,6 @@
     <Content Include="Views\Shared\_MessageCtrl.cshtml" />
     <Content Include="Views\PlayerPod\Index.cshtml" />
     <Content Include="Views\PlayerPod\Sample.cshtml" />
-    <Content Include="Views\Shared\_UserVote.cshtml" />
     <Content Include="Views\ControlPanel\Messages.cshtml" />
     <Content Include="Views\Post\NewMessage.cshtml" />
     <Content Include="Views\Shared\_PostLayout.cshtml" />
@@ -455,7 +454,6 @@
     <Content Include="Views\Shared\_RecentlyViewed.cshtml" />
     <Content Include="Views\LeaderBoard\Index.cshtml" />
     <Content Include="Views\Shared\_UserPod.cshtml" />
-    <Content Include="Views\Shared\_UserVoteList.cshtml" />
     <Content Include="Views\Shared\_ShareCtrl.cshtml" />
     <Content Include="Views\Post\Invite.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
@@ -466,12 +464,12 @@
     <Content Include="Views\Shared\_RightColumnBase.cshtml" />
     <Content Include="packages.config" />
     <Content Include="Views\WhoDoIStart\Index.cshtml" />
-    <Content Include="Views\Shared\_VoteCompare.cshtml" />
     <None Include="Properties\PublishProfiles\CoachCue - Web Deploy.pubxml" />
     <Content Include="Views\WhoDoIStart\TopPlayers.cshtml" />
     <Content Include="Views\WhoDoIStart\News.cshtml" />
     <Content Include="Views\Post\LoginRegister.cshtml" />
     <Content Include="Views\Shared\_StreamItemMedia.cshtml" />
+    <Content Include="Views\Shared\_InviteVote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="CoachCueModels\CoachCueModels.csproj">

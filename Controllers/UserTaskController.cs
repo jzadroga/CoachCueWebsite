@@ -296,6 +296,7 @@ namespace CoachCue.Controllers
         {
             var userData = await CoachCueUserData.GetUserData(User.Identity.Name);
 
+            //add all the players included
             List<string> players = new List<string>();
             players.Add(player1);
             players.Add(player2);
@@ -305,7 +306,9 @@ namespace CoachCue.Controllers
                 players.Add(player4);
 
             var matchup = await MatchupService.Save(userData, players, type);
+
             //usrMatchup.AllowVote = true;
+
             StreamContent streamItem = new StreamContent
             {
                 MatchupItem = matchup,
@@ -316,15 +319,20 @@ namespace CoachCue.Controllers
                 ContentType = "matchup",
                 DateCreated = matchup.DateCreated,
                 TimeAgo = twitter.GetRelativeTime(matchup.DateCreated),
-                HideActions = true,
+                HideActions = false,
                 UserProfileImg = userData.ProfileImage
             };
 
             string streamData = this.PartialViewToString("_StreamItem", streamItem);
 
+            //get list of users to invite
+            var invites = await UserService.GetRandomTopVotes(10);
+            string userInvites = this.PartialViewToString("_InviteVote", invites.ToList());
+
             return Json(new
             {
                 MatchupData = streamData,
+                InviteData = userInvites,
                 ID = player1,
                 Type = "matchup",
                 Existing = false, //usrMatchup.ExistingMatchup,

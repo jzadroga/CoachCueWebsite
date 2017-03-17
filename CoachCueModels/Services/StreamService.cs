@@ -45,7 +45,8 @@ namespace CoachCue.Service
                     FullName = usrmtch.Name,
                     ContentType = contentType,
                     DateCreated = usrmtch.DateCreated,
-                    TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated)
+                    TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated),
+                    HideActions = (usrmtch.CreatedBy == userData.UserId) ? false : true,
                 }).ToList();
                 
                 var msgs = await MessageService.GetList(endDate);
@@ -103,7 +104,8 @@ namespace CoachCue.Service
                     FullName = usrmtch.Name,
                     ContentType = contentType,
                     DateCreated = usrmtch.DateCreated,
-                    TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated)
+                    TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated),
+                    HideActions = (usrmtch.CreatedBy == userData.UserId) ? false : true
                 }).ToList();
 
                 var msgs = await MessageService.GetListByPlayer(endDate, playerId);
@@ -161,7 +163,8 @@ namespace CoachCue.Service
                     FullName = usrmtch.Name,
                     ContentType = contentType,
                     DateCreated = usrmtch.DateCreated,
-                    TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated)
+                    TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated),
+                    HideActions = (usrmtch.CreatedBy == userData.UserId) ? false : true
                 }).ToList();
 
                 if (!matchupsOnly)

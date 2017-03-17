@@ -1,0 +1,17 @@
+﻿@model List<User>
+@using CoachCue.Models;
+
+<div class="row" id="invite-user-list">
+    <div class="col-md-12 col-xs-12">
+        <div class="list-group">
+            <!-- users -->
+            @foreach (var user in Model)
+            {
+                <a href="#" data-user-id="@user.Id" class="list-group-item">
+                    <img alt="@user.Name" class='avatar' src="/assets/img/avatar/@user.Profile.Image" />
+                    @user.Name
+                </a>
+            }
+        </div>
+    </div>
+</div>

@@ -62,7 +62,8 @@ $(document).ready(function () {
         loadUserTypeahead();
     });
 
-    $(".modal-fullscreen").on('hidden.bs.modal', function () {
+    //close message modal
+    $("#modal-message").on('hidden.bs.modal', function () {
         $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
         $(".users-typeahead").val("");
         $('.image-preview').popover('hide');
@@ -71,6 +72,22 @@ $(document).ready(function () {
         $('#input-file-preview').val('');
         $('#prnt-id').val('');
         $(".bootstrap-tagsinput input.tt-query").attr("placeholder", "+ Add Player(s) included in the message");
+    });
+
+    //close matchup modal - reset everything
+    $("#modal-matchup").on('hidden.bs.modal', function () {
+        $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+        $('#matchup-invite').hide();
+        $('#matchup-select').show();
+
+        $('#matchup-select').find('div.selected-player').hide();
+        $('#matchup-select').find('input.matchup-player-select').val('').show();
+        $('#player3-id').parents('li.list-group-item').hide();
+        $('#player4-id').parents('li.list-group-item').hide();
+        $('#add-matchup-player').parent().show();
+        $('#invite-user-list').remove();
+
+        loadMatchupPlayersTypeahead();
     });
 
     //image preview
@@ -298,17 +315,23 @@ $(document).ready(function () {
 
                 showNotice("Matchup Posted", "Thanks for sharing. Your matchup has been posted.");
 
+                //show the invite page
+                $('#invite-body').append(data.InviteData);
+
+                $('#matchup-select').hide();
+                $('#matchup-invite').show();
                 //send out invites if any exist
-                if (inviteUsers.length > 0) {
+                /*if (inviteUsers.length > 0) {
                     $.each(inviteUsers, function (i) {
                         task.inviteAnswer(inviteUsers[i], data.MatchupID, function () { });
                     });
-                }
+                }*/
 
                 $.getScript("http://platform.twitter.com/widgets.js");
             }
         });
-        $("#modal-matchup").modal('hide');
+        //$("#modal-matchup").modal('hide');
+
         return false;
     });
 
@@ -417,7 +440,7 @@ $(document).ready(function () {
                 $(this).text(count).fadeIn(500);
             });
             
-            //$.getScript("http://platform.twitter.com/widgets.js");
+            $.getScript("http://platform.twitter.com/widgets.js");
         });
 
         //send analytics event
@@ -435,22 +458,6 @@ $(document).ready(function () {
         $("#invite-sent").hide();
         $("#inviteEmail").val("");
         $("#btnSendInvite").show();
-        });
-
-    $("#btn-add-matchup").click(function () {
-        $("#matchup-pick").show();
-        $("#matchup-selected").hide();
-
-        $("#invite-answer").hide();
-        $("#close-add-matchup").hide();
-    });
-
-    $("#cancel-user-matchup").click(function () {
-        $("#add-matchup").slideUp(function () {
-            $("#matchup-list").show();
-        });
-
-        return false;
     });
 
     $("#regemail").change(function () {
