@@ -208,18 +208,21 @@
     <Compile Include="Controllers\LeaderBoardController.cs" />
     <Compile Include="Controllers\CoachController.cs" />
     <Compile Include="Controllers\ControlPanelController.cs" />
-    <Compile Include="Controllers\MatchupsController.cs" />
     <Compile Include="Controllers\PlayerPodController.cs" />
-    <Compile Include="Controllers\FollowersController.cs" />
     <Compile Include="Controllers\FollowPlayersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MatchupController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Controllers\UserTaskController.cs" />
-    <Compile Include="Controllers\WhoDoIStartController.cs" />
+    <Compile Include="Controllers\WhoDoIDraftController.cs" />
+    <Compile Include="Controllers\WhoDoIAddWaiverWireController.cs" />
+    <Compile Include="Controllers\WhoDoIDropWaiverWireController .cs" />
+    <Compile Include="Controllers\WhoDoIKeepController.cs" />
+    <Compile Include="Controllers\WhoDoIStartDailyFantasyController .cs" />
+    <Compile Include="Controllers\WhoDoIStartPPRController.cs" />
+    <Compile Include="Controllers\WhoDoIStartStandardController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -463,13 +466,19 @@
     <Content Include="Views\Shared\_TwitterFeed.cshtml" />
     <Content Include="Views\Shared\_RightColumnBase.cshtml" />
     <Content Include="packages.config" />
-    <Content Include="Views\WhoDoIStart\Index.cshtml" />
+    <Content Include="Views\WhoDoIStartStandard\Index.cshtml" />
     <None Include="Properties\PublishProfiles\CoachCue - Web Deploy.pubxml" />
-    <Content Include="Views\WhoDoIStart\TopPlayers.cshtml" />
-    <Content Include="Views\WhoDoIStart\News.cshtml" />
+    <Content Include="Views\WhoDoIStartStandard\TopPlayers.cshtml" />
+    <Content Include="Views\WhoDoIStartStandard\News.cshtml" />
     <Content Include="Views\Post\LoginRegister.cshtml" />
     <Content Include="Views\Shared\_StreamItemMedia.cshtml" />
     <Content Include="Views\Shared\_InviteVote.cshtml" />
+    <Content Include="Views\WhoDoIAddWaiverWire\Index.cshtml" />
+    <Content Include="Views\WhoDoIDraft\Index.cshtml" />
+    <Content Include="Views\WhoDoIDropWaiverWire\Index.cshtml" />
+    <Content Include="Views\WhoDoIKeep\Index.cshtml" />
+    <Content Include="Views\WhoDoIStartDailyFantasy\Index.cshtml" />
+    <Content Include="Views\WhoDoIStartPPR\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="CoachCueModels\CoachCueModels.csproj">

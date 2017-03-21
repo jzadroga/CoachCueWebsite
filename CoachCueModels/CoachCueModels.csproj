@@ -108,6 +108,7 @@
     <Compile Include="Models\TwitterAccount.cs" />
     <Compile Include="OpenGraph.cs" />
     <Compile Include="Repository\CoachCueUserData.cs" />
+    <Compile Include="Services\GameScheduleService.cs" />
     <Compile Include="Services\MatchupService.cs" />
     <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Services\StreamService.cs" />

@@ -74,7 +74,9 @@ namespace CoachCue.Models
             get
             {
                 string name = this.Name.Replace(".", "").Replace("-", "").Replace("'", "");
-                return name;
+                
+                //finally seperate first and last by -
+                return name.Replace(" ", "-").ToLower();
             }
         }
     }

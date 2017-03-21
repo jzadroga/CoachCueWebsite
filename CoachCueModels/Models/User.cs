@@ -8,12 +8,13 @@ namespace CoachCue.Models
     {
         public User()
         {
-            this.Statistics = new UserStatistics() { VoteCount = 0,
-                                                    LoginCount = 0,
-                                                    LastLogin = DateTime.UtcNow.GetEasternTime(),
-                                                    MatchupCount = 0,
-                                                    CorrectVoteCount = 0
-                                                    };
+            this.Statistics = new UserStatistics()
+                { VoteCount = 0,
+                    LoginCount = 0,
+                    LastLogin = DateTime.UtcNow.GetEasternTime(),
+                    MatchupCount = 0,
+                    CorrectVoteCount = 0
+                };
         }
 
         [JsonProperty(PropertyName = "id")]
@@ -61,7 +62,7 @@ namespace CoachCue.Models
             get
             {
                 string name = this.UserName.Replace(".", "").Replace("-", "").Replace("'", "");
-                return name;
+                return name.Replace(" ", "-").ToLower();
             }
         }
     }

@@ -5,6 +5,13 @@ namespace CoachCue.Models
 {
     public class Game
     {
+        public Game()
+        {
+            this.AwayTeam = new Team();
+            this.HomeTeam = new Team();
+            this.Season = 2017;
+        }
+
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 

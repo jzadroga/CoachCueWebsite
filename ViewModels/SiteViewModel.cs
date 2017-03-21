@@ -105,10 +105,8 @@ namespace CoachCue.ViewModels
 
     public class MyMatchupViewModel : BaseViewModel
     {
-        public WeeklyMatchups MyMatchup { get; set; }
         public StreamContent Matchup { get; set; }
         public bool LoggedIn { get; set; }
-        public ConversationViewModel Messages { get; set; }
         public List<StreamContent> RelatedMatchups { get; set; }
     }
 

@@ -35,7 +35,7 @@ namespace CoachCue.Models
         //WDIS
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
-
+        
         [JsonProperty(PropertyName = "votes")]
         public List<MatchupVote> Votes { get; set; }
 
@@ -74,7 +74,7 @@ namespace CoachCue.Models
             get
             {
                 string name = this.UserName.Replace(".", "").Replace("-", "").Replace("'", "");
-                return name;
+                return name.Replace(" ", "-").ToLower();
             }
         }
     }

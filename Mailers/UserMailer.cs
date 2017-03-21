@@ -45,7 +45,7 @@ namespace CoachCue.Mailers
             };
 
             UrlHelper helper = new UrlHelper(HttpContext.Current.Request.RequestContext);
-            string msgLink = helper.Action("Index", "Coach", new { mt = link.ID, id = notification.UserFrom.Id, name = notification.UserFrom.Name });
+            string msgLink = helper.Action("Index", "Coach", new { name = notification.UserFrom.Link });
             msgLink = ConfigurationManager.AppSettings["MvcMailer.BaseURL"] + msgLink;
 
             ViewData["Title"] = notification.Text;
@@ -134,6 +134,7 @@ namespace CoachCue.Mailers
             voteVM.FullName = notification.UserFrom.Name;
             voteVM.MatchupLink = link;
             voteVM.FromAvatarSrc = "http://coachcue.com/assets/img/avatar/" + notification.UserFrom.Profile.Image;
+            voteVM.FullLink = "http://coachcue.com/" + notification.Matchup.Link;
 
             ViewData.Model = voteVM;
 

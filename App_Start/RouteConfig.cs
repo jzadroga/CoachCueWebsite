@@ -26,10 +26,46 @@ namespace CoachCue
             );
 
             routes.MapRoute(
-              "WhoDoIStart",
-              "WhoDoIStart/{id}/{name}",
-              new { controller = "WhoDoIStart", action = "Index" }
+                "WhoDoIAddWaiverWire",
+                "WhoDoIAddWaiverWire/{week}/{players}",
+                new { controller = "WhoDoIAddWaiverWire", action = "Index" }
+            );
+
+            routes.MapRoute(
+               "WhoDoIDraft",
+               "WhoDoIDraft/{week}/{players}",
+               new { controller = "WhoDoIDraft", action = "Index" }
+            );
+
+            routes.MapRoute(
+               "WhoDoIDropWaiverWire",
+               "WhoDoIDropWaiverWire/{week}/{players}",
+               new { controller = "WhoDoIDropWaiverWire", action = "Index" }
+            );
+
+            routes.MapRoute(
+              "WhoDoIKeep",
+              "WhoDoIKeep/{week}/{players}",
+              new { controller = "WhoDoIKeep", action = "Index" }
            );
+
+            routes.MapRoute(
+             "WhoDoIStartDailyFantasy",
+             "WhoDoIStartDailyFantasy/{week}/{players}",
+             new { controller = "WhoDoIStartDailyFantasy", action = "Index" }
+           );
+
+            routes.MapRoute(
+             "WhoDoIStartPPR",
+             "WhoDoIStartPPR/{week}/{players}",
+             new { controller = "WhoDoIStartPPR", action = "Index" }
+           );
+
+            routes.MapRoute(
+              "WhoDoIStartStandard",
+              "WhoDoIStartStandard/{week}/{players}",
+              new { controller = "WhoDoIStartStandard", action = "Index" }
+            );
 
             routes.MapRoute(
               "PlayerPods",

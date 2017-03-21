@@ -57,7 +57,7 @@
                         <span class="created-by-type">@Model.MatchupItem.Type</span>
                     </div>
                     <div class="col-md-6 col-xs-6 text-right">
-                        <a class="matchup-time" href="@Url.Action("Index", "WhoDoIStart", new { id = Model.MatchupItem.Id, name = (Model.MatchupItem.Id + "-or-" + Model.MatchupItem.Id) })"> @Model.MatchupItem.Type</a>
+                        <a class="matchup-time" href="@Href("~/" + Model.MatchupItem.Link)"> Details</a>
                     </div>
                 </div>
 
@@ -214,7 +214,7 @@
                                 <i class="glyphicon glyphicon-bullhorn"></i> Ask
                             </a>
 
-                            <a class="ask-twitter-button btn-info btn btn-xs" href="https://twitter.com/intent/tweet?count=none&hashtags=FantasyFootball&via=coachcue&url=http://coachcue.com/matchup?mt=@Model.MatchupItem.Id&text=Who should I Start? @Model.MatchupItem.Players[0].Name or @Model.MatchupItem.Players[1].Name!">Ask Twitter</a>
+                            <a class="ask-twitter-button btn-info btn btn-xs" href="https://twitter.com/intent/tweet?count=none&hashtags=FantasyFootball&via=coachcue&url=http://coachcue.com/@Model.MatchupItem.Link&text=@Model.MatchupItem.Type @Model.MatchupItem.Players.Select( ply => ply.ShortName).Aggregate((current, next) => current + ", " + next)">Ask Twitter</a>
                         </div>
                     }
                 </div>

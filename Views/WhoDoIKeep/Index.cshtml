@@ -1,0 +1,36 @@
+﻿@model CoachCue.ViewModels.MyMatchupViewModel
+@using CoachCue.Model;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<input type="hidden" id="find-coachID" />
+<div class="span8 section matchup-details-item">
+    @*<h1 style="display: none">Who Should I Start? @Model.MyMatchup.Player1.PlayerName or @Model.MyMatchup.Player2.PlayerName</h1>*@
+
+    <div id="matchup-details">
+        <div class="weekly-matchup-item mymatchup" data-matchup="@Model.Matchup.MatchupItem.Id">
+
+            @{ Html.RenderPartial("_StreamItem", model: Model.Matchup); }
+
+        </div>
+
+        @if (Model.RelatedMatchups.Count() > 0)
+        {
+            <h2 class="related-matchups">@Model.Matchup.MatchupItem.Type Related Matchups</h2>
+
+            foreach (var relatedMatchup in Model.RelatedMatchups)
+            {
+                <div class="weekly-matchup-item mymatchup" data-matchup="@relatedMatchup.MatchupItem.Id">
+                    @{Html.RenderPartial("_StreamItem", model: relatedMatchup); }
+                </div>
+                            }
+                        }
+
+    </div>
+</div>
+
+@section rightcolumn {
+    @{ Html.RenderPartial("_RightColumnBase", model: Model); }
+}

@@ -25,6 +25,8 @@ namespace CoachCue.Service
 
             try
             {
+                string link = type.Replace(" ", "").Replace("?", "").Replace("(", "").Replace(")", "");
+
                 matchup.CreatedBy = userData.UserId;
                 matchup.Type = type;
                 matchup.Active = true;
@@ -36,21 +38,32 @@ namespace CoachCue.Service
                 matchup.ProfileImage = userData.ProfileImage;
                 matchup.Email = userData.Email;
 
-                foreach( var player in await PlayerService.GetListByIds(players) )
+                var playerList = await PlayerService.GetListByIds(players);
+                var matchupPlayers = playerList.ToList();
+
+                for(int i=0; i < matchupPlayers.Count; i++)
                 {
+                    var gameWeek = await GameScheduleService.GetCurrentWeek(matchupPlayers[i].Team.Slug);
+
                     matchup.Players.Add(new MatchupPlayer()
                     {
-                        Id = player.Id,
-                        Number = player.Number,
-                        FirstName = player.FirstName,
-                        LastName = player.LastName,
-                        Position = player.Position,
-                        Team = player.Team,
-                        Twitter = player.Twitter,
-                        GameId = "0"
+                        Id = matchupPlayers[i].Id,
+                        Number = matchupPlayers[i].Number,
+                        FirstName = matchupPlayers[i].FirstName,
+                        LastName = matchupPlayers[i].LastName,
+                        Position = matchupPlayers[i].Position,
+                        Team = matchupPlayers[i].Team,
+                        Twitter = matchupPlayers[i].Twitter,
+                        GameWeek = gameWeek
                     });
+
+                    if (i == 0)
+                        link += "/" + gameWeek.Week + "/";
+
+                    link += (i < (matchupPlayers.Count - 1)) ? matchupPlayers[i].Link + "-or-" : matchupPlayers[i].Link;
                 }
 
+                matchup.Link = link.ToLower();
                 var result = await DocumentDBRepository<Matchup>.CreateItemAsync(matchup, "Matchups");
                 matchup.Id = result.Id;
 
@@ -101,6 +114,12 @@ namespace CoachCue.Service
             return matchup;
         }
 
+        public static async Task<Matchup> GetByLink(string link)
+        {
+            var matchup = await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true && d.Link == link, "Matchups");
+            return matchup.FirstOrDefault();
+        }
+
         public static async Task<IEnumerable<Matchup>> GetList(DateTime endDate)
         {
             return await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true, "Matchups");
@@ -114,6 +133,15 @@ namespace CoachCue.Service
         public static async Task<IEnumerable<Matchup>> GetListByUser(DateTime endDate, string userId)
         {
             return await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true && d.CreatedBy == userId, "Matchups");
+        }
+
+        public static async Task<IEnumerable<Matchup>> GetRelatedList(DateTime endDate, Matchup matchup)
+        {
+            var matchups = await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true && d.Type == matchup.Type && d.Id != matchup.Id, "Matchups");
+
+            matchups = matchups.OrderByDescending(d => d.DateCreated).ThenBy(d => d.Votes.Count).Take(15);
+
+            return matchups;
         }
 
         public static async Task<Matchup> Get(string id)

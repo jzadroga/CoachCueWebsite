@@ -74,6 +74,65 @@ namespace CoachCue.Service
             return stream;
         }
 
+        public static async Task<StreamContent> GetDetailStream(CoachCueUserData userData, string link)
+        {
+            StreamContent stream = new StreamContent();
+
+            string profileImage = userData.ProfileImage;
+
+            var matchup = await MatchupService.GetByLink(link);
+            string contentType = "matchupSelected";
+
+            if (matchup != null)
+            {
+                stream.MatchupItem = matchup;
+                stream.DateTicks = matchup.DateCreated.Ticks.ToString();
+                stream.ProfileImg = matchup.ProfileImage;
+                stream.UserProfileImg = profileImage;
+                stream.UserName = matchup.UserName;
+                stream.FullName = matchup.Name;
+                stream.ContentType = contentType;
+                stream.DateCreated = matchup.DateCreated;
+                stream.TimeAgo = twitter.GetRelativeTime(matchup.DateCreated);
+                stream.HideActions = (matchup.CreatedBy == userData.UserId) ? false : true;
+            }
+
+            return stream;           
+        }
+
+        public static async Task<List<StreamContent>> GetRelatedStream(CoachCueUserData userData, Matchup matchup)
+        {
+            List<StreamContent> stream = new List<StreamContent>();
+
+            try
+            {
+                string profileImage = userData.ProfileImage;
+
+                string contentType = "matchupSelected";
+                var endDate = DateTime.UtcNow.GetEasternTime().AddDays(-280);
+
+                var matchups = await MatchupService.GetRelatedList(endDate, matchup);
+                stream = matchups.Select(usrmtch => new Service.StreamContent
+                {
+                    MatchupItem = usrmtch,
+                    DateTicks = usrmtch.DateCreated.Ticks.ToString(),
+                    ProfileImg = usrmtch.ProfileImage,
+                    UserProfileImg = profileImage,
+                    UserName = usrmtch.UserName,
+                    FullName = usrmtch.Name,
+                    ContentType = contentType,
+                    DateCreated = usrmtch.DateCreated,
+                    TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated),
+                    HideActions = (usrmtch.CreatedBy == userData.UserId) ? false : true
+                }).ToList();
+            }
+            catch (Exception)
+            {
+            }
+
+            return stream;
+        }
+
         public static async Task<List<StreamContent>> GetPlayerStream(CoachCueUserData userData, string playerId)
         {
             List<StreamContent> stream = new List<StreamContent>();

@@ -153,9 +153,12 @@ namespace CoachCue.Service
             return await DocumentDBRepository<Player>.GetItemAsync(id, "Players");
         }
 
-        public static async Task<Player> GetByDescription(string slug, string name)
+        public static async Task<Player> GetByDescription(string slug, string link)
         {
-            var players = await DocumentDBRepository<Player>.GetItemsAsync(d => d.Active == true && d.Link == name && d.Team.Slug == slug, "Players");
+            var players = await DocumentDBRepository<Player>.GetItemsAsync(d => d.Active == true 
+                && d.Link.ToLower() == link.ToLower() 
+                && d.Team.Slug == slug, "Players");
+
             return players.FirstOrDefault();
         }
 
