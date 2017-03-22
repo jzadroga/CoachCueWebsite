@@ -15,6 +15,7 @@ using System.Globalization;
 using System.Threading.Tasks;
 using CoachCue.Service;
 using CoachCue.Repository;
+using CoachCue.Models;
 
 namespace CoachCue.Controllers
 {
@@ -46,16 +47,6 @@ namespace CoachCue.Controllers
             return Json(new { Result = true, ID = accountID }, JsonRequestBehavior.AllowGet);
         }
 
-        [NoCacheAttribute]
-        public JsonResult Get()
-        {
-            if (User.Identity.IsAuthenticated)
-                return Json(new { Auth = true, Accounts = user.GetAccounts(user.GetUserID(User.Identity.Name)) }, JsonRequestBehavior.AllowGet);
-
-            //get random accounts for users just visiting
-            return Json(new { Auth = false, Accounts = user.GetRandomAccounts(10) }, JsonRequestBehavior.AllowGet);
-        }
-
         [SiteAuthorization]
         [NoCacheAttribute]
         public JsonResult GetUserData(int userID)
@@ -74,25 +65,33 @@ namespace CoachCue.Controllers
 
         [SiteAuthorization]
         [NoCacheAttribute]
-        public JsonResult InviteAnswer(int userID, int matchupID)
+        [HttpPost]
+        public async Task<JsonResult> InviteAnswer(List<string> users, string matchupID)
         {
-            UserData userData = new UserData();
+            var matchup = await MatchupService.Get(matchupID);
+            var toUsers = await UserService.GetListByIds(users);
+            var fromUser = await UserService.GetByEmail(User.Identity.Name);
 
-            notification notice = notification.Add("voteRequested", matchupID, user.GetUserID(User.Identity.Name), userID, DateTime.UtcNow.GetEasternTime());
-            if (!string.IsNullOrEmpty(notice.notificationGUID))
+            string players = string.Empty;
+            for (int i = 0; i < matchup.Players.Count; i++)
             {
-                //emails are all sent later
-                EmailHelper.SendVoteRequestEmail(user.GetUserID(User.Identity.Name), userID, matchupID, notice.notificationGUID);
-
-                user userItem = user.Get(userID);
-                userData.username = userItem.userName;
-                userData.userID = userItem.userID;
-                userData.profileImg = "/assets/img/avatar/" + userItem.avatar.imageName;
-                userData.correctPercentage = (userItem.CorrectPercentage != 0) ? userItem.CorrectPercentage.ToString() + "%" : string.Empty;
-                userData.fullName = userItem.fullName;
+                if (matchup.Players.Count > 2 && i < matchup.Players.Count - 2)
+                    players += matchup.Players[i].Name + ", ";
+                else
+                    players += ((i + 1) != matchup.Players.Count) ? matchup.Players[i].Name + " or " : matchup.Players[i].Name;
             }
 
-            return Json(new { User = userData, Matchup = matchupID }, JsonRequestBehavior.AllowGet);
+            List<Notification> notifications = new List<Notification>();
+            //add the notifications and send
+            foreach (var toUser in toUsers)
+            {
+                string msg = fromUser.Name + " asked you to answer a matchup. " + matchup.Type + " " + players;
+                notifications.Add( await NotificationService.Save(fromUser, toUser, msg, "voteRequested", matchup) );
+            }
+
+            await EmailHelper.SendVoteRequestEmail(notifications);
+
+            return Json(new { Matchup = matchupID }, JsonRequestBehavior.AllowGet);
         }
 
         [NoCacheAttribute]
@@ -327,7 +326,7 @@ namespace CoachCue.Controllers
 
             //get list of users to invite
             var invites = await UserService.GetRandomTopVotes(10);
-            string userInvites = this.PartialViewToString("_InviteVote", invites.ToList());
+            string userInvites = this.PartialViewToString("_InviteVote", new InviteViewModel() { MatchupItem = matchup, Users = invites.ToList() });
 
             return Json(new
             {

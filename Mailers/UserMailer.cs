@@ -66,25 +66,38 @@ namespace CoachCue.Mailers
             });
         }
 
-        public virtual MvcMailMessage RequestVote(string emailTo, string guid, int fromUserID, LinkData link)
+        public virtual MvcMailMessage RequestVote(Notification notification)
         {
-            user fromUser = user.Get(fromUserID);
-            string fromName = fromUser.fullName;
+            ViewData["Title"] = notification.Text;
+            ViewData["UserGuid"] = notification.UserFrom.Id;
 
-            ViewData["Title"] = fromName + " asked you to answer the matchup<br/>" + link.Message;
-            ViewData["UserGuid"] = guid;
+            string msg = notification.Matchup.Type + " ";
+            for (int i = 0; i < notification.Matchup.Players.Count; i++)
+            {
+                if (notification.Matchup.Players.Count > 2 && i < notification.Matchup.Players.Count - 2)
+                    msg += notification.Matchup.Players[i].Name + ", ";
+                else
+                    msg += ((i + 1) != notification.Matchup.Players.Count) ? notification.Matchup.Players[i].Name + " or " : notification.Matchup.Players[i].Name;
+            }
+
+            LinkData link = new LinkData()
+            {
+                Message = msg,
+                ID = notification.Matchup.Id,
+                Guid = notification.UserFrom.Id
+            };
 
             MailRequestVoteViewModel voteVM = new MailRequestVoteViewModel();
-            voteVM.FullName = fromName;
+            voteVM.FullName = notification.UserFrom.Name;
             voteVM.MatchupLink = link;
-            voteVM.FullLink = ConfigurationManager.AppSettings["MvcMailer.BaseURL"] + "/matchup?mt=" + link.ID + "&gud=" + link.Guid;
-            voteVM.FromAvatarSrc = "http://coachcue.com/assets/img/avatar/" + fromUser.avatar.imageName;
+            voteVM.FullLink = ConfigurationManager.AppSettings["MvcMailer.BaseURL"] + "/" + notification.Matchup.Link;
+            voteVM.FromAvatarSrc = "http://coachcue.com/assets/img/avatar/" + notification.UserFrom.Profile.Image;
             ViewData.Model = voteVM;
             return Populate(x =>
             {
-                x.Subject = fromName + " asked you to answer the matchup " + link.Message;
+                x.Subject = notification.Text;
                 x.ViewName = "RequestVote";
-                x.To.Add(emailTo);
+                x.To.Add(notification.UserTo.Email);
                 x.From = new MailAddress(fromAddress, "CoachCue");
             });
         }

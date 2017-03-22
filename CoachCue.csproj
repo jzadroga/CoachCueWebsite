@@ -201,6 +201,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -479,6 +480,7 @@
     <Content Include="Views\WhoDoIKeep\Index.cshtml" />
     <Content Include="Views\WhoDoIStartDailyFantasy\Index.cshtml" />
     <Content Include="Views\WhoDoIStartPPR\Index.cshtml" />
+    <Content Include="Views\ContactUs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="CoachCueModels\CoachCueModels.csproj">

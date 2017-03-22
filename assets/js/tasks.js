@@ -227,11 +227,13 @@ var task = function () {
          })
      },
 
-    inviteAnswer = function (userID, matchupID, callback) {
+    inviteAnswer = function (users, matchupID, callback) {
         $.ajax({
             url: "/UserTask/InviteAnswer",
-            data: { userID: userID, matchupID: matchupID },
+            data: { users: users, matchupID: matchupID },
             cache: false,
+            traditional: true,
+            type: "POST",
             success: function (data) {
                 callback(data);
             }

@@ -258,7 +258,7 @@ namespace CoachCue.Controllers
 
         public async Task<ActionResult> BuildUserJson()
         {
-            await UserService.ImportUsers();
+            //await UserService.ImportUsers();
 
             using (FileStream fs = System.IO.File.Open(Server.MapPath("~/assets/data/users.json"), FileMode.Create))
             using (StreamWriter sw = new StreamWriter(fs))
@@ -267,7 +267,17 @@ namespace CoachCue.Controllers
                 jw.Formatting = Formatting.Indented;
 
                 JsonSerializer serializer = new JsonSerializer();
-                serializer.Serialize(jw, user.GetAllAccounts());
+                var users = await UserService.GetList();
+                var jsonUser = users.Select( us => new {
+                    name = us.Name,
+                    username =  us.UserName,
+                    image = "/assets/img/avatar/" + us.Profile.Image,
+                    value = us.Name,
+                    userID = us.Id,
+                    link = us.Link 
+                }).ToList();
+
+                serializer.Serialize(jw, jsonUser);
             }
 
             return RedirectToAction("Index");

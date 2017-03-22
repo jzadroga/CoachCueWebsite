@@ -48,22 +48,29 @@ namespace CoachCue.Service
         //save a notification document to the Notifications collection
         public static async Task<Notification> Save(CoachCueUserData userData, User toUser, string text, string type, Matchup matchup)
         {
+            User userFrom = new User()
+            {
+                Id = userData.UserId,
+                UserName = userData.UserName,
+                Name = userData.Name,
+                Profile = new UserProfile() { Image = userData.ProfileImage },
+                Email = userData.Email
+            };
+
+            return await Save(userFrom, toUser, text, type, matchup);
+        }
+
+        public static async Task<Notification> Save(User userFrom, User toUser, string text, string type, Matchup matchup)
+        {
             Notification notification = new Notification();
 
             try
             {
                 notification.DateCreated = DateTime.UtcNow.GetEasternTime();
-                notification.CreatedBy = userData.UserId;
+                notification.CreatedBy = userFrom.Id;
                 notification.Text = text;
                 notification.Type = type;
-                notification.UserFrom = new User()
-                {
-                    Id = userData.UserId,
-                    UserName = userData.UserName,
-                    Name = userData.Name,
-                    Profile = new UserProfile() { Image = userData.ProfileImage },
-                    Email = userData.Email
-                };
+                notification.UserFrom = userFrom;
                 notification.UserTo = toUser;
                 notification.Matchup = matchup;
 

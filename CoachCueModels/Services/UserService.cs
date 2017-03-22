@@ -158,5 +158,10 @@ namespace CoachCue.Service
         {
             return await DocumentDBRepository<User>.GetItemsAsync(d => userIds.Contains(d.Id), "Users");
         }
+
+        public static async Task<IEnumerable<User>> GetList()
+        {
+            return await DocumentDBRepository<User>.GetItemsAsync(d => d.Active == true, "Users");
+        }
     }
 }

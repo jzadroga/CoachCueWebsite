@@ -10,7 +10,7 @@ namespace CoachCue.Mailers
     {
         MvcMailMessage Invite(string emailTo, string label, string inviteMessage);
         MvcMailMessage Notifications(Notification notification);
-        MvcMailMessage RequestVote(string emailTo, string guid, int fromUserID, LinkData link);
+        MvcMailMessage RequestVote(Notification notification);
         MvcMailMessage MatchupVoted(Notification notification);
         MvcMailMessage MatchupMessage(user toUser, int fromUserID, LinkData link);
     }

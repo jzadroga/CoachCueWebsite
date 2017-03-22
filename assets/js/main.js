@@ -51,8 +51,6 @@ $(document).ready(function () {
                 $('#players').tagsinput('input').removeAttr('placeholder').attr('readonly', true);
             }
         });
-
-        //$('#players').tagsinput('refresh');
     });
 
     $(".modal-fullscreen").on('show.bs.modal', function () {
@@ -139,12 +137,6 @@ $(document).ready(function () {
         mode: 'overlay'
     });
 
-    //slidepanel action - invites
-    $(".invite-matchup-panel").slidepanel({
-        orientation: 'left',
-        mode: 'overlay'
-    });
-
     //register modal
     $("body").on("click", '#already-member-link', function (e) {
         $('#frmRegisterLogin').hide();
@@ -182,9 +174,7 @@ $(document).ready(function () {
          
                 //send out email notifications
                 task.sendNotificationEmail(data.ID, function (emailSent) {
-                });
-                
-                $.getScript("http://platform.twitter.com/widgets.js");
+                });                
             }
 
             showNotice("Message Posted", "Thanks for sharing. Your message has been posted.");
@@ -262,18 +252,21 @@ $(document).ready(function () {
     });
 
     //send out matchup ask invites
-    $("#slidepanel").on("click", '#send-invites', function (e) {
-        var inviteUsers = $("div.new-invite-sent.sent")
+    $("#modal-matchup").on("click", '#send-invites', function (e) {
+        var inviteUsers = $("#invite-user-list input:checkbox:checked")
              .map(function () { return $(this).attr("data-user"); }).get();
 
         showNotice("Invites Sent", "Your Ask requests have been sent.");
-        var matchupID = $(".invite-coach-matchup").attr("data-matchup");
+        var matchupID = $("#invite-user-list").attr("data-matchup");
+
         //send out invites if any exist
         if (inviteUsers.length > 0) {
-            $.each(inviteUsers, function (i) {
-                task.inviteAnswer(inviteUsers[i], matchupID, function () { });
-            });
+            task.inviteAnswer(inviteUsers, matchupID, function () { });          
         }
+
+        $("#modal-matchup").modal('hide');
+
+        return false;
     });
 
     //add player to matchup
@@ -302,9 +295,6 @@ $(document).ready(function () {
             return false;
         }
 
-        //var inviteUsers = $("div.new-invite-sent.sent")
-        //      .map(function () { return $(this).attr("data-user"); }).get();
-
         task.addMatchupItem(player1, player2, player3, player4, $('#matchup-type').val(), function (data) {
            
             if (data.Existing) {
@@ -317,20 +307,14 @@ $(document).ready(function () {
 
                 //show the invite page
                 $('#invite-body').append(data.InviteData);
+                $('.user-invite').bootstrapToggle();
 
                 $('#matchup-select').hide();
                 $('#matchup-invite').show();
-                //send out invites if any exist
-                /*if (inviteUsers.length > 0) {
-                    $.each(inviteUsers, function (i) {
-                        task.inviteAnswer(inviteUsers[i], data.MatchupID, function () { });
-                    });
-                }*/
-
+                
                 $.getScript("http://platform.twitter.com/widgets.js");
             }
         });
-        //$("#modal-matchup").modal('hide');
 
         return false;
     });
@@ -388,16 +372,6 @@ $(document).ready(function () {
         return false;
     });
 
-    $("form#frmContactUs").submit(function () {
-        var valid = validateForm("#frmContactUs");
-        if (valid) {
-            $(".sending-spinner").spin(smalSpinnerBlackOpts);
-            task.sendContactUs($("#cntEmail").val(), $("#message").val(), processContactUs);
-        }
-
-        return false;
-    });
-
     $("form#frmSendInvite").submit(function () {
         var valid = validateForm("#frmSendInvite");
         if (valid) {
@@ -438,9 +412,7 @@ $(document).ready(function () {
             $('#vote-' + data.ID + data.PlayerID).fadeOut(500, function () {
                 var count = parseInt($(this).text()) + 1;
                 $(this).text(count).fadeIn(500);
-            });
-            
-            $.getScript("http://platform.twitter.com/widgets.js");
+            });            
         });
 
         //send analytics event
@@ -493,32 +465,6 @@ $(document).ready(function () {
         }
     });
 
-    //invite any user
-    $("#slidepanel").on("click", '.invite-coach-matchup', function (e) {
-        if ($(this).hasClass("disabled")) {
-            return false;
-        }
-
-        $('.ask-a-coach').typeahead('destroy');
-        $(this).button('loading');
-        var userID = $(this).parent().find("input.ask-a-coach").attr("data-user");
-
-        task.getUserData(userID, matchupInviteAdded);
-        return false;
-    });
-
-    //invite suggested users
-    $("#slidepanel").on("click", '.invite-coach-new-matchup', function (e) {
-        $(this).text('Sending');
-
-        var parent = $(this).parent();
-        $(parent).hide();
-        $(parent).next().show().attr("data-user", $(this).attr("data-user")).addClass("sent");
-        $(this).hide();
-
-        return false;
-    });
-
     //images
     loadImages();
 
@@ -562,19 +508,6 @@ function loadMatchupStream(position) {
         //$("#matchup-list").attr("data-loaded", "true");
         $("#message-stream").html(data.StreamData);
         $("#filter-matchup-spinner").empty();
-
-        $(".reply-message-panel").slidepanel({
-            orientation: 'left',
-            mode: 'overlay'
-        });
-
-        $(".invite-matchup-panel").slidepanel({
-            orientation: 'left',
-            mode: 'overlay'
-        });
-
-        loadImages();
-        $.getScript("http://platform.twitter.com/widgets.js");
     });
 }
 
@@ -589,8 +522,17 @@ function loadMatchupInviteTypeahead() {
     });
 
     $('.ask-a-coach').bind('typeahead:selected', function (obj, datum, name) {
-        $(this).attr("data-user", datum.userID);
-        $(this).parent().parent().find(".invite-coach-matchup").removeClass("disabled");
+        //add the new toggle with unique id 
+        var selected = "<li class='list-group-item'>";         
+        selected += "<input data-user='" + datum.userID + "' checked id='" + datum.userID + "' data-style='invite-select' class='user-invite' type='checkbox' data-toggle='toggle' data-on='<i class=\"glyphicon glyphicon-ok\"></i> Invite will be sent<br/>to " + datum.name + "' data-off='<img class=\"typeahead-avatar\" src=\"" + datum.image + "\" /> Invite " + datum.name + "<br/>to answer'>";
+        selected += "</li>";
+
+        $("#invite-user-list").find("ul.list-group").prepend(selected);
+
+        //initialize it 
+        $('#' + datum.userID).bootstrapToggle();
+        //clear the typeahead
+        $(this).val("");
     });
 }
 
@@ -654,40 +596,6 @@ function inviteSent(data) {
     $(".sending-spinner").hide();
     $('#invite-sent').show();
     $("#btnSendInvite").hide();
-}
-
-function inviteAdded(data) {
-    $(".matchup-invite").button('reset');
-
-    var inviteBtn = $("button#coach-" + data.User.userID);
-    if ($(inviteBtn).length > 0) {
-        $(inviteBtn).text("Invite Sent").removeClass("ask-coach-matchup").addClass("disabled").attr("href", "#");
-    } else {
-        //new item so add to the list
-        var inviteSent = "<li class='relative-style'><img class='invite-answer-avatar' src='" + data.User.profileImg + "' />" +
-            "<a class='invite-answer-coach' href='#'>" + data.User.fullName + " <span> " + data.User.correctPercentage + "</span>" +
-            "<button id='coach-" + data.User.userID + "' data-id='" + data.User.userID + "' class='btn btn-mini disabled'>Invite Sent</button></a></li>";
-
-        $("#ask-coaches-list").append(inviteSent)
-    }
-}
-
-function matchupInviteAdded(data) {
-    $(".invite-coach-matchup").button('reset');
-    $(".ask-a-coach").val("");
-
-    var matchupParent = $("div#invite-users div.matchup-invite");
-    var count = $(matchupParent).length;
-
-    var invited = "<div class='item clear child asked-to-amswer'><div class='content'>" +
-        "<div class='content-header'><a class='username' href='#'>" + data.User.fullName + "</a><span class='user'>" + data.User.correctPercentage + "</span></div>" +
-        "<img class='avatar profile-avatar' src='" + data.User.profileImg + "' />" +
-        "<div data-user='" + data.User.userID + "' class='new-invite-sent sent'><span>Asked to Answer<span></div>" +
-        "</div></div>";
-
-    $(invited).insertAfter($('.asked-to-amswer').last());
-    loadMatchupInviteTypeahead();
-    $("#matchup-ask-" + data.Matchup).addClass('disabled');
 }
 
 function setSelectionRange(input, selectionStart, selectionEnd) {

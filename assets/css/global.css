@@ -1999,6 +1999,11 @@ div.add-new-matchup .add-new-matchup-right
     float: right
 }
 
+.invite-select{
+    width: 80% !important;
+    height: 50px !important;
+}
+
 .invite-answer-header
 {
     margin: 3px -15px 8px -15px; 
@@ -2065,24 +2070,10 @@ a.invite-answer-coach
   background-color: #000;
 }
 
-#mystarters ul
-{
-    margin: 3px 0 0 8px;
-}
-
 #starters-loader
 {
     height: 100px;
     width: 100%;
-}
-
-#all-starters-modal div.item
-{
-    background-color: #fff;
-}
-
-#all-starters-modal div.item p {
-    margin: 0 0 1px;
 }
 
 .spinner-starters
@@ -2091,43 +2082,6 @@ a.invite-answer-coach
     left: 50% !important;
     top: 100px !important;
 }
-
-.mystarter-item
-{
-    float: left !important; 
-    width: 180px !important; 
-    position: relative !important; 
-    padding: 0px !important;
-}
-
-.mystarter-selected-icon
-{
-    font-size: 24px !important; 
-    position: absolute !important; 
-    top: 22px !important; 
-    right: 120px !important; 
-    color: #B8B8B8 !important;
-}
-
-.mystarter-item-image
-{
-    left: -58px !important; 
-    top: 3px !important;
-}
-
-.mystarter-item-bio
-{
-    font-size:10px !important; 
-    line-height: 10px !important; 
-    color: #333 !important;
-}
-
-.mystarter-item-gamedetails
-{
-    font-size: 9px !important; 
-    color: #333 !important;
-}
-
 
 .matchup-item .item .content
 {
@@ -2733,24 +2687,6 @@ ul.footer li.copyright{
 .badge-warning {
     background-color: #FFF;
     color: #F18A20;
-}
-
-.yahoo-button
-{
-  background-color: hsl(273, 93%, 27%) !important;
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#9b2bf7", endColorstr="#4b0484");
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#9b2bf7), to(#4b0484));
-  background-image: -moz-linear-gradient(top, #9b2bf7, #4b0484);
-  background-image: -ms-linear-gradient(top, #9b2bf7, #4b0484);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #9b2bf7), color-stop(100%, #4b0484));
-  background-image: -webkit-linear-gradient(top, #9b2bf7, #4b0484);
-  background-image: -o-linear-gradient(top, #9b2bf7, #4b0484);
-  background-image: linear-gradient(#9b2bf7, #4b0484);
-  border-color: #4b0484 #4b0484 hsl(273, 93%, 19.5%);
-  color: #fff !important;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.49);
-  -webkit-font-smoothing: antialiased;
 }
 
 /*#playerdetail div#scoring-format{

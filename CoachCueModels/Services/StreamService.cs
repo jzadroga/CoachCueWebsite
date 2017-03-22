@@ -270,7 +270,6 @@ namespace CoachCue.Service
         public TweetContent Tweet { get; set; }
         public int PlayerID { get; set; }
         public string CssClass { get; set; }
-        public nflplayer Player { get; set; }
         public string Source { get; set; }
         public bool HideActions { get; set; }
     }

@@ -16,11 +16,11 @@ namespace CoachCue.Helpers
 {
     public class EmailHelper
     {
-        public static void SendVoteRequestEmail(int fromID, int toID, int matchupID, string noticeGuid)
+        public static async Task <bool> SendVoteRequestEmail(List<Notification> notifications)
         {
             try
             {
-                LinkData link = notification.GetMatchupLink(matchupID, noticeGuid);
+                /*LinkData link = notification.GetMatchupLink(matchupID, noticeGuid);
                 string fromName = user.Get(fromID).fullName;
                 
                 user userToItem = user.Get(toID);
@@ -31,12 +31,24 @@ namespace CoachCue.Helpers
                 SmtpClientWrapper wrapper = new SmtpClientWrapper(getSmtpConfig());
                 //check the users settings before sending
                 if( user.GetSettings( toID ).emailNotifications.Value == true )
-                    UserMailer.RequestVote(toEmail, userToItem.userGuid, fromID, link).Send(wrapper);
+                    UserMailer.RequestVote(toEmail, userToItem.userGuid, fromID, link).Send(wrapper);*/
+
+                IUserMailer UserMailer = new UserMailer();
+
+                //check the users settings before sending
+                foreach (var notification in notifications)
+                {
+                    if (notification.UserTo.Settings.EmailNotifications == true)
+                        UserMailer.RequestVote(notification).Send(new SmtpClientWrapper(getSmtpConfig()));
+
+                    //mark as sent
+                    notification.Sent = true;
+                    await NotificationService.UpdateToSent(notification);
+                }
             }
-            catch(Exception ex)
-            {
-                string msg = ex.Message;
-            }
+            catch(Exception){}
+
+            return true;
         }
 
         public static async Task<bool> SendMatchupVoteEmail(Notification notification)

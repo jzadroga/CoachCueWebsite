@@ -139,6 +139,12 @@ namespace CoachCue.ViewModels
         }
     }
 
+    public class InviteViewModel
+    {
+        public Matchup MatchupItem { get; set; }
+        public List<User> Users { get; set; }
+    }
+
     public class MessageViewModel
     {
         public CoachCueUserData User { get; set; }
