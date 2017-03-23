@@ -222,6 +222,7 @@
     <Compile Include="Controllers\WhoDoIKeepController.cs" />
     <Compile Include="Controllers\WhoDoIStartDailyFantasyController .cs" />
     <Compile Include="Controllers\WhoDoIStartPPRController.cs" />
+    <Compile Include="Controllers\TopVotedPlayersController .cs" />
     <Compile Include="Controllers\WhoDoIStartStandardController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -344,10 +345,8 @@
     <Content Include="assets\js\jquery.validate.min.js" />
     <Content Include="assets\js\jquery.validate.unobtrusive.min.js" />
     <Content Include="assets\js\main.js" />
-    <Content Include="assets\js\main.mobile.js" />
     <Content Include="assets\js\mention.js" />
     <Content Include="assets\js\mustache.js" />
-    <Content Include="assets\js\search.js" />
     <Content Include="assets\js\spin.js" />
     <Content Include="assets\js\tasks.js" />
     <Content Include="assets\js\typeahead.min.js" />
@@ -415,12 +414,10 @@
     <Content Include="Views\Player\List.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_AccountList.cshtml" />
     <Content Include="Views\Shared\_BasicLayout.cshtml" />
     <Content Include="Views\Shared\_ControlPanelLayout.cshtml" />
     <Content Include="Views\Shared\_GoogleAnalytics.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\_MatchupList.cshtml" />
     <Content Include="Views\Shared\_NoticeList.cshtml" />
     <Content Include="Views\Shared\_PlayerItem.cshtml" />
     <Content Include="Views\Shared\_PlayerItemList.cshtml" />
@@ -456,7 +453,6 @@
     <Content Include="packages.config" />
     <Content Include="Views\WhoDoIStartStandard\Index.cshtml" />
     <None Include="Properties\PublishProfiles\CoachCue - Web Deploy.pubxml" />
-    <Content Include="Views\WhoDoIStartStandard\TopPlayers.cshtml" />
     <Content Include="Views\WhoDoIStartStandard\News.cshtml" />
     <Content Include="Views\Shared\_StreamItemMedia.cshtml" />
     <Content Include="Views\Shared\_InviteVote.cshtml" />
@@ -467,6 +463,7 @@
     <Content Include="Views\WhoDoIStartDailyFantasy\Index.cshtml" />
     <Content Include="Views\WhoDoIStartPPR\Index.cshtml" />
     <Content Include="Views\ContactUs\Index.cshtml" />
+    <Content Include="Views\TopVotedPlayers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="CoachCueModels\CoachCueModels.csproj">

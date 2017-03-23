@@ -59,44 +59,5 @@ namespace CoachCue.Controllers
 
             return View(homeVM);         
         }
-
-        [NoCacheAttribute]
-        public JsonResult ContactUs(string email, string message)
-        {
-            string bodyMsg = "Message from: " + email;
-            bodyMsg += " Message: " + message;
-
-            string msg = EmailHelper.Send("info@coachcue.com", bodyMsg, "Contact from site", "Info");
-            return Json(new { Result = msg }, JsonRequestBehavior.AllowGet);
-        }
-
-        [NoCacheAttribute]
-        public ActionResult AddMatchup(int player1, int player2, int scoringTypeID)
-        {
-            WeeklyMatchups usrMatchup = new WeeklyMatchups();
-
-            List<WeeklyMatchups> matchups = new List<WeeklyMatchups>();
-
-            if (User.Identity.IsAuthenticated)
-            {
-                int? userID = user.GetUserID(User.Identity.Name);
-                usrMatchup = matchup.AddUserMatchup(player1, player2, scoringTypeID, (int)userID);
-                matchups = matchup.GetUserMatchups(userID);
-
-                //make sure the one just created is first in the list
-                for (int i = 0; i < matchups.Count(); i++)
-                {
-                    if (matchups[i].MatchupID == usrMatchup.MatchupID && usrMatchup.MatchupID != 0)
-                    {
-                        WeeklyMatchups newMatchup = matchups[i];
-                        matchups.Remove(newMatchup);
-                        matchups.Insert(0, newMatchup);
-                        break;
-                    }
-                }
-            }
-
-            return PartialView("_MatchupList", matchups);
-        }
     }
 }

@@ -1,35 +1,40 @@
 ﻿@model CoachCue.ViewModels.SearchResultViewModel
 
 @{
-    ViewBag.Title = "Search";
+    ViewBag.Title = "CoachCue - Search";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section topbar
-{
-     <div class="row show-grid">
-        <div class="span10 offset1">
-            <div class="topbar">
-                <h3 class="search-header">Search Results</h3>
-                <form id="search-header" class="form-inline searchit">
-                    <input type="text" class="searchit-val input-xlarge focused" value='@Model.SearchTerm' />
-                    <button type="submit" class="btn">Search</button>
-                </form>
+<div class="col-md-12">
+    <div class="row">
+       
+        <form class="form-horizontal" role="form">
+            <div class="col-xs-2 col-md-1">
+                <img style="height: 40px; width: 40px" class="img-circle" alt="@Model.UserData.UserName" src="@Url.Content("~/assets/img/avatar/" + Model.UserData.ProfileImage)" />
             </div>
-        </div>
-        <div class="span1"></div>
+            <div class="col-xs-10 col-md-11">
+                <div style="background-color: #fff;">
+                    <input id="main-search" style="height: 40px; font-size: 16px;" class="form-control" type="text" placeholder="Search CoachCue" />
+                </div>
+            </div>
+        </form>
+       
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 style="border-bottom: #F18A20 solid 3px; color: #656565; font-weight: bold">Trending Now</h3>
+
+            <ul class="list-group">
+                <li class="list-group-item">trending 1</li>
+                <li class="list-group-item">trending 2</li>
+                <li class="list-group-item">trending 3</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+@section rightcolumn {
+    @{ Html.RenderPartial("_RightColumnBase", model: Model); }
 }
-
-@section pagescripts
-{
-    <script type="text/javascript">
-        $(function () {
-            search.init();
-        });
-    </script>
-    <script src="@Url.Content("~/assets/js/search.js")" type="text/javascript"></script>
- }
-
-@{Html.RenderPartial("_AccountList", model: Model);}
    

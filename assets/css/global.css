@@ -29,6 +29,10 @@
     color: #F18A20;
 }
 
+#footer a.active{
+    color: #F18A20;
+}
+
 #bottomNav {
 	padding: 5px;
 }

@@ -544,17 +544,17 @@
                     @if (!User.Identity.IsAuthenticated) {
                         <a role="button" data-register="true" data-backdrop="static" data-keyboard="false" href="#modal-register" data-toggle="modal" data-target="#modal-register"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
                     } else {
-                        <a href="@Url.Action("Index", "Coach", new { name = Model.UserData.Link })"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
+                        <a class="@Html.ActiveSection("Coach")" href="@Url.Action("Index", "Coach", new { name = Model.UserData.Link })"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
                     }
                 </div>
                 <div class="col-xs-3 text-center">
-                    <a href="@Url.Action("News", "WhoDoIStart")"><i class="glyphicon glyphicon-fire"></i><br>Trending News</a>
+                    <a class="@Html.ActiveSection("Search")" href="@Url.Action("Index", "Search")"><i class="glyphicon glyphicon-search"></i><br>Search</a>
                 </div>
                 <div class="col-xs-3 text-center">
-                    <a href="@Url.Action("TopPlayers", "WhoDoIStart")"><i class="glyphicon glyphicon-thumbs-up"></i><br>Most Voted</a>
+                    <a class="@Html.ActiveSection("TopVotedPlayers")" href="@Url.Action("Index", "TopVotedPlayers")"><i class="glyphicon glyphicon-thumbs-up"></i><br>Most Voted</a>
                 </div>
                 <div class="col-xs-3 text-center">
-                    <a href='@Url.Action("Index", "Leaderboard")'><i class="glyphicon glyphicon-star"></i><br>Our Experts</a>
+                    <a class="@Html.ActiveSection("Leaderboard")" href='@Url.Action("Index", "Leaderboard")'><i class="glyphicon glyphicon-star"></i><br>Our Experts</a>
                 </div>
             </div>
         </div>

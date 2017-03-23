@@ -8,6 +8,7 @@ $(document).ready(function () {
         cache: false
     });
 
+    loadSearchTypeahead();
     loadPlayersTypeahead();
     loadMatchupPlayersTypeahead();
     loadMatchupInviteTypeahead();
@@ -200,7 +201,6 @@ $(document).ready(function () {
         var $parent = $(this).parents("div.matchup-message-block");
         $parent.find("div.show-message-block").hide("fast", function() {
             $parent.find("div.hidden-message-block").slideDown("slow");
-            loadImages();
         });
         $(this).addClass("ms-action-hideconversation").removeClass("ms-action-conversation").html("<i class='glyphicon glyphicon-chevron-up'></i> Hide comments");
 
@@ -231,8 +231,6 @@ $(document).ready(function () {
         task.getTrending(5, pos, function (data) {
             $("#trending-filter").empty();
             $("#trending-filter").html(data.Results);
-
-            loadImages();
         });
         return false;
     });
@@ -480,9 +478,6 @@ $(document).ready(function () {
         }
     });
 
-    //images
-    loadImages();
-
     //show latest news from twitter
     $("body").on("click", '.player-card-news', function (e) {
         $(".player-latest-news").css("overflow", "hidden");
@@ -638,11 +633,6 @@ function getUrlVars() {
     return vars;
 }
 
-//lazy load images
-function loadImages() {
-    $("img.lazy-load").unveil(300);
-}
-
 //notices
 function showNotice(header, msg) {
     var $notice = $('#alertmsg');
@@ -659,6 +649,29 @@ function showNotice(header, msg) {
 }
 
 //typeaheads
+function loadSearchTypeahead() {
+    //top search
+    var playerTemplate = '<a href="/player/{{team.slug}}/{{link}}"><img class="typeahead-avatar" src="{{profileImage}}" alt=""><span class="typeahead-bio">{{name}} | {{position}} | {{team.name}}</span></a>';
+    var nflPlayers = Hogan.compile(playerTemplate);
+
+    var userTemplate = '<a href="/coach/{{link}}"><img class="typeahead-avatar" src="{{image}}" alt=""><span class="typeahead-bio">{{name}} | @{{username}}</span></a>';
+    var users = Hogan.compile(userTemplate);
+
+    $('#main-search').typeahead('destroy');  //destroy first to refresh data
+    $('#main-search').typeahead([
+        {
+            header: '<h4>Players</h4>',
+            template: nflPlayers.render.bind(nflPlayers),
+            prefetch: '/assets/data/players.json'
+        },
+        {
+            header: '<h4>Users</h4>',
+            template: users.render.bind(users),
+            prefetch: '/assets/data/users.json'
+        }
+    ]);
+}
+
 function loadUserTypeahead() {
     $.ajaxSetup({
         cache: false

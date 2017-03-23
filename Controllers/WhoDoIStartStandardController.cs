@@ -34,14 +34,7 @@ namespace CoachCue.Controllers
 
             return View(myMatchVM);
         }
-
-        public ActionResult TopPlayers()
-        {
-            return View(new TopPlayersViewModel() {
-                    Players = matchup.GetTopMathupVotes(gameschedule.GetCurrentWeekID(), true)
-            });
-        }
-
+ 
         public ActionResult News()
         {
             return View(new TrendingNewsViewModel()
