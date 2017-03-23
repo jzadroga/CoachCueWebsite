@@ -63,25 +63,28 @@ namespace CoachCue.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateAccount(string regname, string regemail, string regwrd)
+        public async Task<ActionResult> CreateAccount(string regname, string regemail, string regwrd)
         {
             //check the email again to avoid dups
             if (user.EmailExists(regemail))
                 return RedirectToAction("Index", "Home");
 
-            user acntUser = user.Create(regname, regemail, regwrd, string.Empty);
+            var acntUser = await UserService.Create(regname, regemail, regwrd, string.Empty);
 
-            if (MembershipService.ValidateUser(acntUser.email, acntUser.password))
-                FormsService.SignIn(acntUser.email, false);
+            if (await MembershipService.ValidateUser(acntUser.Email, acntUser.Password))
+            {
+                CoachCueUserData.SetUserData(acntUser.Id, acntUser.Name, acntUser.UserName, acntUser.Profile.Image, acntUser.Email, 0, acntUser.Link);
+                FormsService.SignIn(acntUser.Email, true);
+            }
 
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult LoginByCookie(string usr, string url)
+        public async Task<ActionResult> LoginByCookie(string usr, string url)
         {
             user userItem = user.GetByGuid(usr);
 
-            if (MembershipService.ValidateUser(userItem.email, userItem.password))
+            if (await MembershipService.ValidateUser(userItem.email, userItem.password))
             {
                 FormsService.SignIn(userItem.email, true);
                 return Redirect(url);
@@ -90,11 +93,11 @@ namespace CoachCue.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-        public ActionResult LoginBySettings(string usr)
+        public async Task<ActionResult> LoginBySettings(string usr)
         {
             user userItem = user.GetByGuid(usr);
 
-            if (MembershipService.ValidateUser(userItem.email, userItem.password))
+            if (await MembershipService.ValidateUser(userItem.email, userItem.password))
             {
                 FormsService.SignIn(userItem.email, true);
                 return RedirectToAction("Settings", "Account", new { usr = usr });
@@ -168,12 +171,12 @@ namespace CoachCue.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult LoginByNotice(string guid, int mt)
+        public async Task<ActionResult> LoginByNotice(string guid, int mt)
         {
             notification notice = notification.GetByGuid(guid);
 
             user userItem = user.Get(notice.sentTo);
-            if (MembershipService.ValidateUser(userItem.email, userItem.password))
+            if (await MembershipService.ValidateUser(userItem.email, userItem.password))
             {
                 FormsService.SignIn(userItem.email, true);
                 return RedirectToAction("Index", "Matchup", new { mt = mt, gud = guid });
@@ -183,11 +186,11 @@ namespace CoachCue.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(string username, string passwrd, string rememberMe, string returnUrl)
+        public async Task<ActionResult> Login(string username, string passwrd, string rememberMe, string returnUrl)
         {
             if (ModelState.IsValid)
             {
-                if (MembershipService.ValidateUser(username, passwrd))
+                if (await MembershipService.ValidateUser(username, passwrd))
                 {
                     FormsService.SignIn(username, (rememberMe == "on") ? true : false);
                     if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
@@ -211,13 +214,13 @@ namespace CoachCue.Controllers
             bool success = false;
             if (ModelState.IsValid)
             {
-                if (MembershipService.ValidateUser(username, password))
+                if (await MembershipService.ValidateUser(username, password))
                 {
                     var usr = await UserService.GetByEmail(username);
                     var notifications = await NotificationService.GetList(usr.Id);
                     int count = (notifications.Count() > 0) ? notifications.Where(n => n.Read == false).Count() : 0;
 
-                    CoachCueUserData.SetUserData(usr.Id, usr.Name, usr.UserName, usr.Profile.Image, usr.Email, count); 
+                    CoachCueUserData.SetUserData(usr.Id, usr.Name, usr.UserName, usr.Profile.Image, usr.Email, count, usr.Link); 
 
                     //always have the rememberme cookie set
                     FormsService.SignIn(username, true);
@@ -240,6 +243,10 @@ namespace CoachCue.Controllers
             coachCueCookie.Expires = DateTime.Now.AddHours(3);
 
             HttpContext.Response.Cookies.Add(coachCueCookie);
+
+            HttpContext.Session["UserId"] = string.Empty;
+            HttpContext.Session["Name"] = string.Empty;
+            HttpContext.Session["UserName"] = string.Empty;
 
             return RedirectToAction("Index", "Home");
         }

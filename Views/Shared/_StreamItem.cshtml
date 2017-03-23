@@ -239,17 +239,17 @@
 
                         <div class="row">
                             <div class="col-xs-12 message-post-@Model.MatchupItem.Id @if (Model.MatchupItem.Messages.Count() == 0){ <text>empty-message-block</text>}">
+                                <img alt="@Model.UserName" class="img-circle matchup-new-msg-item-avatar" src="@Url.Content("~/assets/img/avatar/" + Model.UserProfileImg)" />
                                 @if (!User.Identity.IsAuthenticated)
                                 {
                                     <form class="form-inline" role="form">
-                                        <a role="button" data-slidepanel="panel" class="login-register" href="/Post/LoginRegister">
+                                        <a role="button" data-register="true" data-backdrop="static" data-keyboard="false" href="#modal-register" data-toggle="modal" data-target="#modal-register">
                                             <input style="width: 100%" class="form-control" type="text" placeholder="Add a comment.." />
                                         </a>
                                     </form>
                                 }
                                 else
                                 {
-                                    <img alt="@Model.UserName" class="img-circle matchup-new-msg-item-avatar" src="@Url.Content("~/assets/img/avatar/" + Model.UserProfileImg)" />
                                     <form class="form-inline" role="form">
                                         <a data-msg-type="matchup" data-msg="@Model.MatchupItem.Id" class="reply-message-panel" data-backdrop="static" data-keyboard="false" href="#modal-message" data-toggle="modal" data-target="#modal-message">
                                             <input style="width: 100%" class="form-control" type="text" placeholder="Add a comment.." />
@@ -327,17 +327,17 @@
                         @if (!Model.HideActions) {
                         <div class="row">
                             <div class="col-xs-12 message-post-@Model.MessageItem.Id @if (Model.MessageItem.Reply.Count() == 0){ <text>empty-message-block</text>}">
+                                <img alt="@Model.UserName" class="img-circle matchup-new-msg-item-avatar" src="@Url.Content("~/assets/img/avatar/" + Model.UserProfileImg)" />
                                 @if (!User.Identity.IsAuthenticated)
                                 {
                                     <form class="form-inline" role="form">
-                                        <a role="button" data-slidepanel="panel" class="login-register" href="/Post/LoginRegister">
+                                        <a role="button" data-register="true" data-backdrop="static" data-keyboard="false" href="#modal-register" data-toggle="modal" data-target="#modal-register">
                                             <input style="width: 100%" class="form-control" type="text" placeholder="Add a comment.." />
                                         </a>
                                     </form>
                                 }
                                 else
                                 {
-                                    <img alt="@Model.UserName" class="img-circle matchup-new-msg-item-avatar" src ="@Url.Content("~/assets/img/avatar/" + Model.UserProfileImg)" />                                
                                     <form data-msg-type="general" class="form-inline" role="form">
                                         <a data-msg-type="general" data-msg="@Model.MessageItem.Id" class="reply-message-panel" data-backdrop="static" data-keyboard="false" href="#modal-message" data-toggle="modal" data-target="#modal-message">
                                             <input style="width: 100%" class="form-control" type="text" placeholder="Add a comment.." />

@@ -16,10 +16,13 @@ namespace CoachCue.Controllers
         public async Task<ActionResult> Index(string name)
         {
             UserViewModel userVM = new UserViewModel();
-
+    
             userVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
 
             userVM.UserDetail = await UserService.GetByLink(name);
+            if(userVM.UserDetail == null)
+                return RedirectToAction("Index", "Home");
+
             userVM.UserStream = await StreamService.GetUserStream(userVM.UserData, userVM.UserDetail.Id, false);
             return View(userVM);
         }

@@ -56,7 +56,6 @@
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> 
-    <link rel="stylesheet" type="text/css" href="~/assets/js/libs/slidepanel/css/jquery.slidepanel.css">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     @Styles.Render("~/assets/css/bundle")
 
@@ -129,9 +128,9 @@
                     @if (!User.Identity.IsAuthenticated)
                     {
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a style="color: #fff;" data-slidepanel="panel" class="login-register" href="/Post/LoginRegister">Register</a></li>
+                            <li><a style="color: #fff;" data-register="true" data-backdrop="static" data-keyboard="false" href="#modal-register" data-toggle="modal" data-target="#modal-register">Join</a></li>
                             <li class="divider-vertical"></li>
-                            <li><a style="color: #fff;" data-slidepanel="panel" class="login-register" href="/Post/LoginRegister">Login</a></li>
+                            <li><a style="color: #fff;"  data-register="false" data-backdrop="static" data-keyboard="false" href="#modal-register" data-toggle="modal" data-target="#modal-register">Login</a></li>
                         </ul>
                     }
 
@@ -149,7 +148,7 @@
                     <div class="row">
                         <div class="alert alert-info signup-alert">
                             <button type="button" class="close" data-dismiss="alert">×</button>
-                            <strong><a data-slidepanel="panel" class="login-register" href="/Post/LoginRegister">Join CoachCue!</a></strong> to get help with Who Should I Start decisions from an awesome community.
+                            <strong><a data-register="true" data-backdrop="static" data-keyboard="false" href="#modal-register" data-toggle="modal" data-target="#modal-register">Join CoachCue!</a></strong> to get help with Who Should I Start decisions from an awesome community.
                         </div>
                     </div>
                 }
@@ -204,8 +203,7 @@
 
                 <div class="global-button-item global-button-item-message">
                     <div class="global-button-item-sub">
-                        @*<a data-slidepanel="panel" href=@((!User.Identity.IsAuthenticated) ? "/Post/LoginRegister" : "/Post/NewMessage") class="button select-new-matchup">*@
-                        <a data-backdrop="static" data-keyboard="false" href="#modal-message" data-toggle="modal" data-target="#modal-message">
+                        <a data-register="true" data-backdrop="static" data-keyboard="false" href=@((!User.Identity.IsAuthenticated) ? "#modal-register" : "#modal-message") data-toggle="modal" data-target=@((!User.Identity.IsAuthenticated) ? "#modal-register" : "#modal-message")>
                             <span class="navicon-CC2016_Message_Icon_03"></span>
                             <span class="global-button-item-text">Message</span>
                         </a>
@@ -214,8 +212,7 @@
 
                 <div class="global-button-item global-button-item-matchup">
                     <div class="global-button-item-sub">
-                        @*<a data-slidepanel="panel" href=@((!User.Identity.IsAuthenticated) ? "/Post/LoginRegister" : "/Post/NewMatchup") class="button select-new-matchup">*@
-                        <a data-invite="false" data-backdrop="static" data-keyboard="false" href="#modal-matchup" data-toggle="modal" data-target="#modal-matchup">
+                        <a  data-invite="false" data-register="true" data-backdrop="static" data-keyboard="false" href=@((!User.Identity.IsAuthenticated) ? "#modal-register" : "#modal-matchup") data-toggle="modal" data-target=@((!User.Identity.IsAuthenticated) ? "#modal-register" : "#modal-matchup")>
                             <span class="glyphicon navicon-CC2016_Matchup_Icon">
                                 <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span>
                             </span><span class="global-button-item-text">Matchup</span>
@@ -268,6 +265,91 @@
             <div id="alertmsg" class="alert alert-warning flyover flyover-top">
                 <h1>Oh Snap!</h1>
                 <p>Something bad happened.  You should try to fix it before it gets worse.</p>
+            </div>
+
+            <!-- full screen login/registration modal -->
+             <div class="modal modal-fullscreen" id="modal-register" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                            </button>
+                            <h4 class="modal-title"></h4>                         
+                        </div>
+                        <div class="modal-body">
+                            <div class="message-post">
+                                <div class="row">
+                                    <form id="frmRegisterLogin" method="post" action="@Url.Action("CreateAccount", "Account")" class="validate">                                     
+                                        <h3>Join CoachCue</h3>                                      
+                                        <div class="form-group">
+                                            <input type="text" placeholder="Type your Name" id="regname" name="regname" class="form-control" data-required="true" />
+                                            <span style="display: none" class="help-inline validation-message">Please list your full name</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" placeholder="Type your Email Address" id="regemail" name="regemail" class="form-control" data-validate-email="true" data-required="true" />
+                                            <span style="display: none" class="help-inline validation-message email-validation-message">Oops that Email Address already exists or is invalid</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" placeholder="Type your Password" id="regwrd" name="regwrd" class="form-control" data-required="true" />
+                                            <span style="display: none" class="help-inline validation-message">Don't forget your password</span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button type="button" id="btnCreateAccount" class="btn btn-warning">Create Account</button>
+                                            <span class="validation-message">Already a member? <a id="already-member-link" href="#">Sign in</a></span>
+                                        </div>
+                                    </form>
+
+                                    <form id="frmLoginReg" method="post" action="@Url.Action("LogOnAjax", "Account")" style="display: none" class="validate">
+                                        <h3>CoachCue Login</h3>  
+                                        <div id="login-error" style="display:none">
+                                            <label class="standout">Email Address or Password is invalid</label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" placeholder="Email Address" id="username" name="username" class="form-control" data-required="true" />
+                                            <span style="display: none" class="help-inline validation-message">Gotta have an email address</span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input placeholder="Password" type="password" id="password" name="password" class="form-control" data-required="true" />
+                                            <span style="display: none" class="help-inline validation-message">Gotta have a password</span>
+                                        </div>
+
+                                        <label style="display: none" class="control-label" for="rememberMe"></label>
+                                        <div style="display: none" class="controls">
+                                            <input type="checkbox" id="rememberMe" name="rememberMe" />
+                                            <span class="help-inline standout">Remember Me</span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <a id="forgot-password-link" href="#">Forgot your Password?</a>
+                                            </div>
+                                        </div>
+
+                                        <div id="forgot-password-controls" style="display: none">
+                                            <input style="display: inline" placeholder="Email Address" type="text" id="forgot-username" class="form-control" />
+                                            <button type="submit" id="btnGetPassword" class="btn btn-info btn-sm">Get Password</button>
+
+                                            <div class="control-group">
+                                                <label class="control-label standout"></label>
+                                                <div class="controls">
+                                                    <span id="forgot-password-message" style="display: none" class="help-inline standout"> </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button type="submit" id="btnlogin" class="btn btn-warning btn-lg">Login</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- full screen message modal -->        
@@ -459,9 +541,9 @@
             <div class="row" id="bottomNav">
                 <div class="col-xs-3 text-center">
                     @if (!User.Identity.IsAuthenticated) {
-                        <a role="button" data-slidepanel="panel" class="login-register" href="/Post/LoginRegister"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
+                        <a role="button" data-register="true" data-backdrop="static" data-keyboard="false" href="#modal-register" data-toggle="modal" data-target="#modal-register"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
                     } else {
-                        <a href="@Url.Action("Index", "Coach", new { id = Model.UserData.UserId, name = Model.UserData.Name })"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
+                        <a href="@Url.Action("Index", "Coach", new { name = Model.UserData.Link })"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
                     }
                 </div>
                 <div class="col-xs-3 text-center">
@@ -489,7 +571,6 @@
 
     @Scripts.Render("~/assets/js/bundle")
 
-    <script type="text/javascript" src="~/assets/js/libs/slidepanel/js/jquery.slidepanel.js"></script>
     <script src="~/assets/js/jquery.unveil.js" type="text/javascript"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 

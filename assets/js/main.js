@@ -131,20 +131,6 @@ $(document).ready(function () {
         });
     });
 
-    //sidepanel action - login/register
-    $(".login-register").slidepanel({
-        orientation: 'left',
-        mode: 'overlay'
-    });
-
-    //register modal
-    $("body").on("click", '#already-member-link', function (e) {
-        $('#frmRegisterLogin').hide();
-        $('#frmLoginReg').show();
-
-        return false;
-    });
-
     //submit the new message
     $("#modal-message").on("click", '#share-post', function (e) {
         e.preventDefault();
@@ -315,6 +301,35 @@ $(document).ready(function () {
                 $.getScript("http://platform.twitter.com/widgets.js");
             }
         });
+
+        return false;
+    });
+
+    //toggle register/login view
+    $('#modal-register').on('show.bs.modal', function (event) {
+        var link = $(event.relatedTarget)
+        var showRegister = link.data('register')
+
+        if (!showRegister) {
+            $('#frmRegisterLogin').hide();
+            $('#frmLoginReg').show();
+        }
+    });
+
+    //close - login/register
+    $("#modal-register").on('hidden.bs.modal', function () {
+        $('#frmRegisterLogin').show();
+        $('#frmLoginReg').hide();
+
+        $("#login-error").hide();
+        $("#forgot-password-controls").hide();
+        $("#forgot-password-message").hide();
+    });
+
+    //register modal
+    $("body").on("click", '#already-member-link', function (e) {
+        $('#frmRegisterLogin').hide();
+        $('#frmLoginReg').show();
 
         return false;
     });
@@ -565,10 +580,6 @@ function updateStream(data) {
 
     $("#message-stream").attr("data-ticks", data.LastDate);
     $("[rel='tooltip']").tooltip();
-    $(".reply-message-panel").slidepanel({
-        orientation: 'left',
-        mode: 'overlay'
-    });
 }
 
 function passwordSent(data) {

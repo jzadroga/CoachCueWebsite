@@ -9,6 +9,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Security;
 
 namespace CoachCue.Service
 {
@@ -34,6 +35,53 @@ namespace CoachCue.Service
             */
             return foundPlayers;
         }
+
+        public static async Task<User> Create(string name, string email, string password, string openID)
+        {
+            User user = new User();
+
+            try
+            {
+                DateTime now = DateTime.UtcNow.GetEasternTime();
+
+                user.Email = email;
+                user.Name = name;
+                user.UserName =email.Substring(0, email.IndexOf('@'));
+                user.Password = (string.IsNullOrEmpty(password)) ? Guid.NewGuid().ToString().Take(10).ToString() : password;
+                user.Active = true;
+                user.DateCreated = now;
+                user.Admin = false;
+                user.Verified = false;
+
+                if (HttpContext.Current.Session["media"] != null)
+                {
+                    if (!string.IsNullOrEmpty(HttpContext.Current.Session["media"].ToString()))
+                        user.Referrer = HttpContext.Current.Session["media"].ToString();
+                }
+
+                //add profile
+                UserProfile profile = new UserProfile();
+                profile.Image = "profile.jpg";
+                user.Profile = profile;
+
+                //add the settings
+                UserSettings settings = new UserSettings();
+                settings.EmailNotifications = true;
+                user.Settings = settings;
+
+                //add the stats
+                UserStatistics stats = new UserStatistics();
+                stats.LastLogin = now;
+                stats.LoginCount = 1;
+                user.Statistics = stats;
+
+                await DocumentDBRepository<User>.CreateItemAsync(user, "Users");
+            }
+            catch (Exception) { }
+
+            return user;
+        }
+
 
         //save a user document to the Users collection
         //todo update code for true new user
@@ -163,5 +211,139 @@ namespace CoachCue.Service
         {
             return await DocumentDBRepository<User>.GetItemsAsync(d => d.Active == true, "Users");
         }
+
+        public static async Task<bool> IsValidUser(string username, string password)
+        {
+            bool valid = false;
+            string COACHCUE_AUTH_COOKIE = "coachcue_auth";
+
+            try
+            {
+                var user = await DocumentDBRepository<User>.GetItemsAsync(us => us.Email.ToLower() == username.ToLower()
+                    && us.Password == password && us.Active == true, "Users");
+
+                var userItem = user.FirstOrDefault();
+
+                if (userItem != null)
+                {
+                    valid = true;
+
+                    //also set the cookie
+                    HttpCookie coachCueCookie = new HttpCookie(COACHCUE_AUTH_COOKIE);
+                    coachCueCookie.HttpOnly = false; // Not accessible by JS.
+                    coachCueCookie.Values["userGUID"] = userItem.Id;
+                    coachCueCookie.Expires = DateTime.UtcNow.GetEasternTime().AddYears(3);
+
+                    HttpContext.Current.Response.Cookies.Add(coachCueCookie);
+                }
+            }
+            catch (Exception)
+            {
+                valid = false;
+            }
+
+            return valid;
+        }
     }
+
+    #region Services
+    // The FormsAuthentication type is sealed and contains static members, so it is difficult to
+    // unit test code that calls its members. The interface and helper class below demonstrate
+    // how to create an abstract wrapper around such a type in order to make the AccountController
+    // code unit testable.
+
+    public interface IMembershipService
+    {
+        int MinPasswordLength { get; }
+
+        Task<bool> ValidateUser(string userName, string password);
+        MembershipCreateStatus CreateUser(string userName, string password, string email);
+        bool ChangePassword(string userName, string oldPassword, string newPassword);
+    }
+
+    public class AccountMembershipService : IMembershipService
+    {
+        private readonly MembershipProvider _provider;
+
+        public AccountMembershipService()
+            : this(null)
+        {
+        }
+
+        public AccountMembershipService(MembershipProvider provider)
+        {
+            _provider = provider ?? Membership.Provider;
+        }
+
+        public int MinPasswordLength
+        {
+            get
+            {
+                return _provider.MinRequiredPasswordLength;
+            }
+        }
+
+        public async Task<bool> ValidateUser(string userName, string password)
+        {
+            //if (String.IsNullOrEmpty(userName)) throw new ArgumentException("Value cannot be null or empty.", "userName");
+            //if (String.IsNullOrEmpty(password)) throw new ArgumentException("Value cannot be null or empty.", "password");
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
+                return false;
+
+            return await UserService.IsValidUser(userName, password);
+        }
+
+        public MembershipCreateStatus CreateUser(string userName, string password, string email)
+        {
+            MembershipCreateStatus status = new MembershipCreateStatus();
+            return status;
+        }
+
+        public bool ChangePassword(string userName, string oldPassword, string newPassword)
+        {
+            if (String.IsNullOrEmpty(userName)) throw new ArgumentException("Value cannot be null or empty.", "userName");
+            if (String.IsNullOrEmpty(oldPassword)) throw new ArgumentException("Value cannot be null or empty.", "oldPassword");
+            if (String.IsNullOrEmpty(newPassword)) throw new ArgumentException("Value cannot be null or empty.", "newPassword");
+
+            // The underlying ChangePassword() will throw an exception rather
+            // than return false in certain failure scenarios.
+            try
+            {
+                MembershipUser currentUser = _provider.GetUser(userName, true /* userIsOnline */);
+                return currentUser.ChangePassword(oldPassword, newPassword);
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
+            catch (MembershipPasswordException)
+            {
+                return false;
+            }
+        }
+    }
+
+    public interface IFormsAuthenticationService
+    {
+        void SignIn(string userName, bool createPersistentCookie);
+        void SignOut();
+    }
+
+    public class FormsAuthenticationService : IFormsAuthenticationService
+    {
+        public void SignIn(string userName, bool createPersistentCookie)
+        {
+            if (String.IsNullOrEmpty(userName)) throw new ArgumentException("Value cannot be null or empty.", "userName");
+
+            FormsAuthentication.SetAuthCookie(userName, createPersistentCookie);
+        }
+
+        public void SignOut()
+        {
+            FormsAuthentication.SignOut();
+            HttpContext.Current.Session["CurrentUser"] = null;
+            HttpContext.Current.Session["UserID"] = null;
+        }
+    }
+    #endregion
 }

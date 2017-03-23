@@ -48,7 +48,7 @@
         </div>
 
         <div class="panel-footer">
-            <span>Joined: @Model.UserDetail.DateCreated.ToShortTimeString()</span>
+            <span>Joined: @Model.UserDetail.DateCreated.ToShortDateString()</span>
             @if(!string.IsNullOrEmpty(Model.UserDetail.Profile.Website)){
                 <div class="user-website">
                     <span class="glyphicon glyphicon-globe"></span>

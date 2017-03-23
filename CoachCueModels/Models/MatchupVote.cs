@@ -42,8 +42,7 @@ namespace CoachCue.Models
         {
             get
             {
-                string name = this.UserName.Replace(".", "").Replace("-", "").Replace("'", "");
-                return name;
+                return string.IsNullOrEmpty(this.UserName) ? string.Empty : this.UserName.Replace(".", "").Replace("-", "").Replace("'", "");
             }
         }
     }
