@@ -10,6 +10,7 @@ using System.Net;
 using System.IO;
 using CoachCue.Repository;
 using CoachCue.Models;
+using CoachCue.Service;
 
 namespace CoachCue.Controllers
 {
@@ -21,16 +22,6 @@ namespace CoachCue.Controllers
             if (model != null)
             {
                 model.IsMobile = Request.Browser.IsMobileDevice;
-               // model.UserData = CoachCueUserData.GetUserData(User.Identity.Name);
-
-                if (!string.IsNullOrEmpty(model.UserData.UserId))
-                {
-                   // model.MatchupCount = userItem.MatchupCreatedCount;
-                   // model.MessageCount = userItem.MessageCount;
-                  //  model.TotalStarters = userItem.TotalMatchupVotes;
-                  //  model.CorrectStarters = userItem.TotalCorrectVotes;
-                  //  model.NoticeCount = userItem.NotificationCount;
-                }
 
                 model.TopVotedPlayers = new List<VotedPlayers>(); // (Request.Browser.IsMobileDevice) ? new List<VotedPlayers>() : matchup.GetTopMathupVotes(gameschedule.GetCurrentWeekID(), false);
                 model.TrendingItems = new List<AccountData>(); // (Request.Browser.IsMobileDevice) ? new List<AccountData>() : user.GetAccountsFromPlayers(nflplayer.GetTrending(5), (userID != 0) ? (int?)userID : null);

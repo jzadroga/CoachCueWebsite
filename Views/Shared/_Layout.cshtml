@@ -14,12 +14,12 @@
     }
     else
     {
-        <meta itemprop="description" name="description" content="Get instant advice for all of your Who Should I Start? questions. View results from 100+ player matchups." />
+        <meta itemprop="description" name="description" content="Get instant advice for all of your Who Do I Start? questions. View results from 100+ player matchups." />
     }
     @if (ViewBag.Keywords != null){
     <meta name="keywords" content="@ViewBag.Keywords" />
     }else{
-    <meta name="keywords" content="nfl,football,fantasy,fantasy sports,fantasy football,Who should I Start" />
+    <meta name="keywords" content="nfl,football,fantasy,fantasy sports,fantasy football,Who Do I Start" />
     }
 
     @if (ViewBag.twitterCard != null)
@@ -190,6 +190,7 @@
                         <ul class="footer links">
                             <li><a target="_blank" href="https://medium.com/&#64;CoachCue">Blog</a>&nbsp;|</li>
                             <li><a href="@Url.Action("Index", "About")">About</a>&nbsp;|</li>
+                            <li><a href="@Url.Action("Index", "ContactUs")">Contact Us</a>&nbsp;|</li>
                             <li class="copyright">©2017 CoachCue LLC</li>
                         </ul>
 

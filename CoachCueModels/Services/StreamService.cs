@@ -15,6 +15,49 @@ namespace CoachCue.Service
 {
     public static class StreamService
     {
+        public static List<StreamContent> GetPositionStream(CoachCueUserData userData, string position)
+        {
+            List<StreamContent> stream = new List<StreamContent>();
+
+            try
+            {
+                string profileImage = userData.ProfileImage;
+
+                //get all the user messages for following a user or player
+                var endDate = DateTime.UtcNow.GetEasternTime().AddDays(-280);
+
+                //gets the matchups for the stream
+                string contentType = "matchupSelected";
+                /*if (string.IsNullOrEmpty(matchup.UserSelectedPlayer))
+                {
+                    //make sure the game hasn't passed too
+                    if (DateTime.UtcNow.GetEasternTime() < matchup.GameDate)
+                        contentType = "matchup";
+                }*/
+                var matchups = MatchupService.GetListByPosition(endDate, position).Take(80);
+                stream = matchups.Select(usrmtch => new Service.StreamContent
+                {
+                    MatchupItem = usrmtch,
+                    DateTicks = usrmtch.DateCreated.Ticks.ToString(),
+                    ProfileImg = usrmtch.ProfileImage,
+                    UserProfileImg = profileImage,
+                    UserName = usrmtch.UserName,
+                    FullName = usrmtch.Name,
+                    ContentType = contentType,
+                    DateCreated = usrmtch.DateCreated,
+                    TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated),
+                    HideActions = (usrmtch.CreatedBy == userData.UserId) ? false : true,
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+                string r = ex.Message;
+            }
+
+            return stream;
+        }
+
+
         public static async Task<List<StreamContent>> GetHomeStream(CoachCueUserData userData)
         {
             List<StreamContent> stream = new List<StreamContent>();

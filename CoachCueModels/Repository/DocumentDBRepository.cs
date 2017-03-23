@@ -54,15 +54,6 @@
             return results;
         }
 
-        public static IEnumerable<Matchup> GetPlayerMatchups(string playerId)
-        {
-            var matchups = client.CreateDocumentQuery<Matchup>(UriFactory.CreateDocumentCollectionUri(DatabaseId, "Matchups"))
-                    .SelectMany(s => s.Players.Where(c => c.Id == playerId).Select(c => s));
-
-            return matchups;
-        }
-
-
         public static async Task<Document> CreateItemAsync(T item, string collection)
         {
             return await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri(DatabaseId, collection), item);
@@ -123,5 +114,25 @@
                 }
             }
         }
+
+        #region Matchup
+
+        public static IEnumerable<Matchup> GetPlayerMatchups(string playerId)
+        {
+            var matchups = client.CreateDocumentQuery<Matchup>(UriFactory.CreateDocumentCollectionUri(DatabaseId, "Matchups"))
+                    .SelectMany(s => s.Players.Where(c => c.Id == playerId).Select(c => s));
+
+            return matchups;
+        }
+
+        public static IEnumerable<Matchup> GetPositionMatchups(string position)
+        {
+            var matchups = client.CreateDocumentQuery<Matchup>(UriFactory.CreateDocumentCollectionUri(DatabaseId, "Matchups"))
+                    .SelectMany(s => s.Players.Where(c => c.Position == position).Select(c => s));
+
+            return matchups;
+        }
+
+        #endregion
     }
 }

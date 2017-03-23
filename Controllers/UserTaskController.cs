@@ -159,11 +159,11 @@ namespace CoachCue.Controllers
         }
 
         [NoCacheAttribute]
-        public JsonResult GetMatchupStream(string pos)
+        public async Task<JsonResult> GetMatchupStream(string pos)
         {
-            int userID = (User.Identity.IsAuthenticated) ? user.GetUserID(User.Identity.Name) : 43;
-            
-            List<StreamContent> streamContent = stream.GetStream(userID, true, pos);
+            var userData = (User.Identity.IsAuthenticated) ? await CoachCueUserData.GetUserData(User.Identity.Name) : null;
+
+            List<StreamContent> streamContent = (string.IsNullOrEmpty(pos)) ? await StreamService.GetHomeStream(userData) : StreamService.GetPositionStream(userData, pos);
       
             string streamData = this.PartialViewToString("_StreamItemList", streamContent);
                         

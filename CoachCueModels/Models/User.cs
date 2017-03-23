@@ -13,7 +13,8 @@ namespace CoachCue.Models
                     LoginCount = 0,
                     LastLogin = DateTime.UtcNow.GetEasternTime(),
                     MatchupCount = 0,
-                    CorrectVoteCount = 0
+                    CorrectVoteCount = 0,
+                    MessageCount = 0
                 };
         }
 

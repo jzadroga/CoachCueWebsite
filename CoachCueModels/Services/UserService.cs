@@ -153,6 +153,17 @@ namespace CoachCue.Service
             return user;
         }
 
+        
+        public static async Task<User> UpdateMessageCount(string id)
+        {
+            var user = await Get(id);
+            user.Statistics.MessageCount = user.Statistics.MessageCount + 1;
+
+            await DocumentDBRepository<User>.UpdateItemAsync(id, user, "Users");
+
+            return user;
+        }
+
         public static async Task<User> UpdateMatchupCount(string id)
         {
             var user = await Get(id);

@@ -77,8 +77,11 @@ namespace CoachCue.Service
                     }
                 }
 
+                //update message count
+                await UserService.UpdateMessageCount(userData.UserId);
+
                 //add any player mentions
-                if(!string.IsNullOrEmpty(playerIDs))
+                if (!string.IsNullOrEmpty(playerIDs))
                 {
                     List<string> players = playerIDs.Split(',').ToList();
                     var playerList = await PlayerService.GetListByIds(players);

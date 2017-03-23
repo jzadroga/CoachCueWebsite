@@ -20,5 +20,7 @@ namespace CoachCue.Models
         [JsonProperty(PropertyName = "correctVoteCount")]
         public int CorrectVoteCount { get; set; }
 
+        [JsonProperty(PropertyName = "messageCount")]
+        public int MessageCount { get; set; }
     }
 }

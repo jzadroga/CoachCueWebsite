@@ -122,17 +122,24 @@ namespace CoachCue.Service
 
         public static async Task<IEnumerable<Matchup>> GetList(DateTime endDate)
         {
-            return await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true, "Matchups");
+            var matchups = await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true, "Matchups");
+            return matchups.OrderByDescending(d => d.DateCreated).ThenBy(d => d.Votes.Count);
         }
 
         public static IEnumerable<Matchup> GetListByPlayer(DateTime endDate, string playerId)
         {
-            return DocumentDBRepository<Matchup>.GetPlayerMatchups(playerId);
+            return DocumentDBRepository<Matchup>.GetPlayerMatchups(playerId).OrderByDescending( mtch => mtch.DateCreated);
+        }
+
+        public static IEnumerable<Matchup> GetListByPosition(DateTime endDate, string position)
+        {
+            return DocumentDBRepository<Matchup>.GetPositionMatchups(position).OrderByDescending(mtch => mtch.DateCreated);
         }
 
         public static async Task<IEnumerable<Matchup>> GetListByUser(DateTime endDate, string userId)
         {
-            return await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true && d.CreatedBy == userId, "Matchups");
+            var matchups = await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true && d.CreatedBy == userId, "Matchups");
+            return matchups.OrderByDescending(d => d.DateCreated).ThenBy(d => d.Votes.Count);
         }
 
         public static async Task<IEnumerable<Matchup>> GetRelatedList(DateTime endDate, Matchup matchup)

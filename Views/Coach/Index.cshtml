@@ -27,7 +27,12 @@
         <div class="panel-body">
 
             <div class="user-stats-container">
-                <ul class="stats stats-list">               
+                <ul class="stats stats-list">  
+                    <li>
+                        <a>
+                            Messages<strong>@Model.UserDetail.Statistics.MessageCount</strong>
+                        </a>
+                    </li>             
                     <li>
                         <a href="@Url.Action("Matchup", "Coach", new {name = Model.UserDetail.Link })">
                             Matchups<strong>@Model.UserDetail.Statistics.MatchupCount</strong>

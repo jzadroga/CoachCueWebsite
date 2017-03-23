@@ -1,5 +1,5 @@
 ﻿@model List<StreamContent>
-@using CoachCue.Model;
+@using CoachCue.Service;
 
     @foreach (StreamContent streamItem in Model)
     { Html.RenderPartial("_StreamItem", model: streamItem); }
