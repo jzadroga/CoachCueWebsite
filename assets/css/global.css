@@ -2616,7 +2616,7 @@ ul.footer li.copyright{
     overflow: auto;
 }
 
-.nav.stream-filter
+.nav.stream-filter, .nav.player-filter
 {
     padding: 0;
     margin-bottom: 0px;
@@ -2676,13 +2676,13 @@ ul.footer li.copyright{
     color: #333;
 }
 
-.stream-filter.nav-pills .active > a, .stream-filter.nav-pills .active > a:hover, .stream-filter.nav-pills .active > a:focus
+.stream-filter.nav-pills .active > a, .stream-filter.nav-pills .active > a:hover, .stream-filter.nav-pills .active > a:focus, .player-filter.nav-pills .active > a, .player-filter.nav-pills .active > a:hover, .player-filter.nav-pills .active > a:focus
 {
     color: #ffffff;
     background-color: #F18A20;
 }
 
-.stream-filter.nav a:hover{
+.stream-filter.nav a:hover, .player-filter.nav a:hover{
     text-decoration: none;
     background-color: #333;
     color: #fff;

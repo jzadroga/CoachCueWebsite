@@ -212,9 +212,8 @@ namespace CoachCue.ViewModels
 
     public class SearchResultViewModel : BaseViewModel
     {
-        public List<AccountData> Accounts { get; set; }
+        public List<Player> Trending { get; set; }
         public string SearchTerm { get; set; }
-        public bool ShowFollow { get; set; }
     }
 
     public class TopPlayersViewModel : BaseViewModel

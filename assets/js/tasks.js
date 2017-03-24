@@ -72,6 +72,17 @@ var task = function () {
         })
     },
 
+    getPlayerStream = function (id, view, callback) {
+        $.ajax({
+            url: "/UserTask/GetTwitterStream",
+            data: { playerID: id },
+            cache: true,
+            success: function (data) {
+                callback(data);
+            }
+        })
+    },
+
     getMatchupStream = function (position, callback) {
          $.ajax({
              url: "/UserTask/GetMatchupStream",
@@ -277,7 +288,8 @@ var task = function () {
         getNotices: getNotices,
         getStreamUpdateCount: getStreamUpdateCount,
         getStream: getStream,
-        getMatchupStream : getMatchupStream,
+        getMatchupStream: getMatchupStream,
+        getPlayerStream: getPlayerStream,
         postUserMessage: postUserMessage,
         follow: followAccount,
         unfollow: unfollowAccount,

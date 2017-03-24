@@ -17,7 +17,7 @@ $(document).ready(function () {
     $("[rel='tooltip']").tooltip();
 
     //fitler matchups
-    $('a.stream-filter-item').click(function () {
+    $('ul.stream-filter a.stream-filter-item').click(function () {
         $('ul.nav.stream-filter li').removeClass('active');
         $(this).parent().addClass('active');
         $("#filter-matchup-spinner").spin(matchupFilterSpin);
@@ -30,6 +30,25 @@ $(document).ready(function () {
             eventCategory: 'Filter',
             eventAction: 'click',
             eventLabel: 'Matchup Filter'
+        });
+
+        return false;
+    });
+
+    //filter player page
+    $('ul.player-filter a.stream-filter-item').click(function () {
+        $('ul.nav.player-filter li').removeClass('active');
+        $(this).parent().addClass('active');
+        $("#filter-matchup-spinner").spin(matchupFilterSpin);
+
+        loadPlayerStream($(this).attr('data-player'), $(this).attr('data-view'));
+
+        //send analytics event
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'Filter',
+            eventAction: 'click',
+            eventLabel: 'Player Filter'
         });
 
         return false;
@@ -521,28 +540,10 @@ function loadMatchupStream(position) {
     });
 }
 
-function loadMatchupInviteTypeahead() {
-    var userTemplateNoLink = '<img class="typeahead-avatar" src="{{image}}" alt=""><span class="typeahead-bio">{{name}} | @{{username}}</span>';
-    var usersNoLink = Hogan.compile(userTemplateNoLink);
-
-    $('.ask-a-coach').typeahead({
-        prefetch: '/assets/data/users.json',
-        limit: 5,
-        template: usersNoLink.render.bind(usersNoLink)
-    });
-
-    $('.ask-a-coach').bind('typeahead:selected', function (obj, datum, name) {
-        //add the new toggle with unique id 
-        var selected = "<li class='list-group-item'>";         
-        selected += "<input data-user='" + datum.userID + "' checked id='" + datum.userID + "' data-style='invite-select' class='user-invite' type='checkbox' data-toggle='toggle' data-on='<i class=\"glyphicon glyphicon-ok\"></i> Invite will be sent<br/>to " + datum.name + "' data-off='<img class=\"typeahead-avatar\" src=\"" + datum.image + "\" /> Invite " + datum.name + "<br/>to answer'>";
-        selected += "</li>";
-
-        $("#invite-user-list").find("ul.list-group").prepend(selected);
-
-        //initialize it 
-        $('#' + datum.userID).bootstrapToggle();
-        //clear the typeahead
-        $(this).val("");
+function loadPlayerStream(id, view) {
+    task.getPlayerStream(id, view, function (data) {
+        $("#player-message-stream").html(data.StreamData);
+        $("#filter-matchup-spinner").empty();
     });
 }
 
@@ -662,14 +663,55 @@ function loadSearchTypeahead() {
         {
             header: '<h4>Players</h4>',
             template: nflPlayers.render.bind(nflPlayers),
+            highlight: false,
             prefetch: '/assets/data/players.json'
         },
         {
             header: '<h4>Users</h4>',
+            highlight: false,
             template: users.render.bind(users),
             prefetch: '/assets/data/users.json'
         }
     ]);
+
+    $('#main-search').bind('typeahead:closed', function (obj, datum, name) {
+        $(obj.currentTarget).val("");
+    });
+
+    $('#main-search').bind('typeahead:selected', function (obj, datum, name) {
+        if (name == 0) { //players
+            window.location.href = "/player/" + datum.team.slug + "/" + datum.link;
+        }
+        else if (name == 1) { //users
+            window.location.href = "/coach/" + datum.link;
+        }
+    });
+}
+
+function loadMatchupInviteTypeahead() {
+    var userTemplateNoLink = '<img class="typeahead-avatar" src="{{image}}" alt=""><span class="typeahead-bio">{{name}} | @{{username}}</span>';
+    var usersNoLink = Hogan.compile(userTemplateNoLink);
+
+    $('.ask-a-coach').typeahead({
+        prefetch: '/assets/data/users.json',
+        limit: 5,
+        template: usersNoLink.render.bind(usersNoLink)
+    });
+
+    $('.ask-a-coach').bind('typeahead:selected', function (obj, datum, name) {
+        //add the new toggle with unique id 
+        var selected = "<li class='list-group-item'>";
+        selected += "<input data-user='" + datum.userID + "' checked id='" + datum.userID + "' data-style='invite-select' class='user-invite' type='checkbox' data-toggle='toggle' data-on='<i class=\"glyphicon glyphicon-ok\"></i> Invite will be sent<br/>to " + datum.name + "' data-off='<img class=\"typeahead-avatar\" src=\"" + datum.image + "\" /> Invite " + datum.name + "<br/>to answer'>";
+        selected += "</li>";
+
+        $("#invite-user-list").find("ul.list-group").prepend(selected);
+
+        //initialize it 
+        $('#' + datum.userID).bootstrapToggle();
+        //clear the typeahead
+        $(this).val("");
+        $('.ask-a-coach').typeahead('setQuery', '');
+    });
 }
 
 function loadUserTypeahead() {

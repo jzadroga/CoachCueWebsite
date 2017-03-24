@@ -2,6 +2,7 @@
 using CoachCue.Models;
 using CoachCue.Repository;
 using HtmlAgilityPack;
+using LinqToTwitter;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -57,6 +58,51 @@ namespace CoachCue.Service
             return stream;
         }
 
+        public static async Task<List<Service.StreamContent>> GetPlayerTwitterStream(Player player)
+        {
+            List<Service.StreamContent> stream = new List<Service.StreamContent>();
+
+            try
+            {
+                //get all the tweets
+                List<Search> playerTweets = await twitter.SearchPlayer(player, true);
+                stream = new List<Service.StreamContent>();
+                if (playerTweets.Count() > 0)
+                {
+                    stream = playerTweets.Single().Statuses.Select(tweet => new Service.StreamContent
+                    {
+                        DateTicks = tweet.CreatedAt.Ticks.ToString(),
+                        ProfileImg = tweet.User.ProfileImageUrl,
+                        UserName = tweet.User.ScreenNameResponse,
+                        FullName = tweet.User.Name,
+                        ContentType = "tweet",
+                        DateCreated = tweet.CreatedAt,
+                        TimeAgo = twitter.GetRelativeTime(tweet.CreatedAt, false),
+                        PlayerID = player.Id,
+                        Tweet = new TweetContent { ID = tweet.UserID.ToString(), Message = CoachCue.Model.TwitterExtensions.TextAsHtml(tweet.Text) }
+                    }).ToList();
+                }
+            }
+            catch (Exception) { }
+
+            return stream;
+        }
+
+
+        public static async Task<List<Player>> GetTrendingStream(CoachCueUserData userData)
+        {
+            List<Player> stream = new List<Player>();
+
+            try
+            {
+                //get the most voted on, mentioned or matchup involved players
+                var plys = await PlayerService.GetList();
+                stream = plys.ToList();
+            }
+            catch (Exception) {}
+
+            return stream;
+        }
 
         public static async Task<List<StreamContent>> GetHomeStream(CoachCueUserData userData)
         {
@@ -311,7 +357,7 @@ namespace CoachCue.Service
         public Message MessageItem { get; set; }
         public Matchup MatchupItem { get; set; }
         public TweetContent Tweet { get; set; }
-        public int PlayerID { get; set; }
+        public string PlayerID { get; set; }
         public string CssClass { get; set; }
         public string Source { get; set; }
         public bool HideActions { get; set; }

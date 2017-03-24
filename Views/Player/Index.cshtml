@@ -10,7 +10,6 @@
 
 <div class="span8 section" id="playerdetail">
 
-
     <div class="panel panel-default user-panel player-header" data-player='@Model.PlayerDetail.Id'>
         <div class="panel-heading">
             <img class='avatar large' src='@Model.PlayerDetail.ProfileImageLarge' />
@@ -22,22 +21,23 @@
         </div>
 
         <div class="panel-body">
-
-            <div class="user-stats-container">
-                <ul class="stats stats-list">
-                    <li>
-                        <h1>Latest news on @Model.PlayerDetail.Name</h1>
-                    </li>
-                </ul>
-            </div>
         </div>
 
     </div>
 
+    <ul class="nav nav-pills player-filter">
+        <li class="active">
+            <a class="stream-filter-item" data-player="@Model.PlayerDetail.Id" data-view="" href="#">Recent</a>
+        </li>
+        <li>
+            <a class="stream-filter-item" data-player="@Model.PlayerDetail.Id" data-view="news" href="#">News</a>
+        </li>
+        <li>
+            <div id="filter-matchup-spinner"></div>
+        </li>
+    </ul>
+
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Player Stream</h3>
-        </div>
         <div class="panel-body clear-body">
             <div id="stream-area">
                 <div id="player-message-stream">

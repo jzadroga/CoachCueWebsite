@@ -282,7 +282,7 @@
                     <div class="player-tags">                      
                     @foreach (Player player in Model.MessageItem.PlayerMentions)
                     {
-                        <a data-player-img="@player.ProfileImage" data-player-name="@player.Name" data-player-pos="@player.Position&nbsp;|&nbsp;@player.Team.Slug" data-player-id="@player.Id" class="player-tag-container player-popover" href="@Url.Action("Index", "Player", new { team = player.Team.Slug, name = player.Link })">
+                        <a data-player-img="@player.ProfileImage" data-player-name="@player.Name" data-player-pos="@player.Position&nbsp;|&nbsp;@player.Team.Slug" data-player-id="@player.Id" class="player-tag-container player-popover" href="@Url.Action("Index", "Player", new { team = player.Team.Slug.ToLower(), name = player.Link })">
                             <span>
                                 <img src="@Url.Content("~/assets/img/Player_Icon_1-orange.png")" />@player.ShortName @player.Position | @player.Team.Slug
                             </span>

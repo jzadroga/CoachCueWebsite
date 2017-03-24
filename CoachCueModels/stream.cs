@@ -129,6 +129,7 @@ namespace CoachCue.Model
             return stream;
         }
 
+        /*
         public static List<Service.StreamContent> GetPlayerTwitterStream(nflplayer player)
         {
             List<Service.StreamContent> stream = new List<Service.StreamContent>();
@@ -157,7 +158,7 @@ namespace CoachCue.Model
             catch (Exception) { }
 
             return stream;
-        }
+        }*/
 
         public static List<Service.StreamContent> GetRandomPlayerStream(nflplayer player)
         {

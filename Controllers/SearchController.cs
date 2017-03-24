@@ -11,6 +11,7 @@ using System.IO;
 using CoachCue.Helpers;
 using CoachCue.Repository;
 using System.Threading.Tasks;
+using CoachCue.Service;
 
 namespace CoachCue.Controllers
 {
@@ -21,16 +22,8 @@ namespace CoachCue.Controllers
             SearchResultViewModel srvm = new SearchResultViewModel();
             srvm.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
 
-            srvm.ShowFollow = false;
-
-            int userID = 0;
-            /*if (User.Identity.IsAuthenticated)
-            {
-                userID = user.GetUserID(User.Identity.Name);
-                srvm.ShowFollow = true;
-            }*/
-            //srvm.Accounts = nflplayer.Search(searchterm, userID);
             srvm.SearchTerm = string.Empty;
+            srvm.Trending = await StreamService.GetTrendingStream(srvm.UserData);
 
             return View(srvm);
         }

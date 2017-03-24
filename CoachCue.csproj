@@ -210,7 +210,6 @@
     <Compile Include="Controllers\CoachController.cs" />
     <Compile Include="Controllers\ControlPanelController.cs" />
     <Compile Include="Controllers\PlayerPodController.cs" />
-    <Compile Include="Controllers\FollowPlayersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\SearchController.cs" />

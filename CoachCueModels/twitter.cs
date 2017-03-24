@@ -12,6 +12,8 @@ using System.Xml.Linq;
 using System.Web.Script.Serialization;
 using System.Globalization;
 using System.Configuration;
+using CoachCue.Service;
+using CoachCue.Models;
 
 namespace CoachCue.Model
 {
@@ -95,7 +97,7 @@ namespace CoachCue.Model
         }
 
         //add caching to this search
-        public static List<Search> SearchPlayer(nflplayer player, bool loggedIn, DateTime? fromDate = null)
+        public static async Task<List<Search>> SearchPlayer(Player player, bool loggedIn, DateTime? fromDate = null)
         {
             var tweetJson = string.Empty;
             List<Search> searchResults = new List<Search>();
@@ -107,15 +109,16 @@ namespace CoachCue.Model
                 //the from accounts should be tied to the players team
                 string dateTicks = (fromDate.HasValue) ? fromDate.Value.Ticks.ToString() : "";
 
-                string cacheID = "playerTweets" + player.playerID.ToString() + dateTicks;
+                string cacheID = "playerTweets" + player.Id + dateTicks;
                 if (HttpContext.Current.Cache[cacheID] != null)
                     searchResults = (List<Search>)HttpContext.Current.Cache[cacheID];
                 else
                 {
-                    string searchFilters = getSearchFilters(player);
-                    string query = (string.IsNullOrEmpty(searchFilters)) ? player.lastName + " AND " : player.lastName + searchFilters + " AND ";
+                    string searchFilters = await getSearchFilters(player);
+                    string query = (string.IsNullOrEmpty(searchFilters)) ? player.LastName + " AND " : player.LastName + searchFilters + " AND ";
 
-                    List<TwitterUser> userNames = twitteraccount.GetUserNamesByTeam(player.teamID);
+                    //gotta fix this
+                    List<TwitterUser> userNames = twitteraccount.GetUserNamesByTeam(1);
                     if (userNames.Count > 0)
                     {
                         for (int i = 0; i < userNames.Count; i++)
@@ -224,12 +227,12 @@ namespace CoachCue.Model
             return twitterEntries;
         }
 
-        private static string getSearchFilters(nflplayer player)
+        private static async Task<string> getSearchFilters(Player player)
         {
             string filters = string.Empty;
 
             //exclude all other players with the same first name
-            List<string> names = nflplayer.GetPlayerNotConditions(player.firstName, player.lastName);
+            List<string> names = await PlayerService.GetPlayerNotConditions(player.FirstName, player.LastName);
 
             //dont do more than 6 or the search will fail
             int count = 0;

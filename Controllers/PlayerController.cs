@@ -36,7 +36,7 @@ namespace CoachCue.Controllers
             SearchResultViewModel listVM = new SearchResultViewModel();
 
             int userID = (User.Identity.IsAuthenticated) ? user.GetUserID(User.Identity.Name) : 0;
-            listVM.Accounts = user.GetAccountsFromPlayers(nflplayer.GetTrending(50), (userID != 0) ? (int?)userID : null);
+            //listVM.Accounts = user.GetAccountsFromPlayers(nflplayer.GetTrending(50), (userID != 0) ? (int?)userID : null);
 
 
             return View(listVM);

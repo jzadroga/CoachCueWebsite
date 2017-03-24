@@ -16,7 +16,7 @@
     },
     "team": {
       "name": "Philadelphia Eagles",
-      "slug": "PHI"
+      "slug": "phi"
     },
     "profileImage": "http://pbs.twimg.com/profile_images/685257518516322304/ihDg0Kny_normal.jpg",
     "profileImageLarge": "http://pbs.twimg.com/profile_images/685257518516322304/ihDg0Kny_bigger.jpg",
@@ -39,7 +39,7 @@
     },
     "team": {
       "name": "Philadelphia Eagles",
-      "slug": "PHI"
+      "slug": "phi"
     },
     "profileImage": "http://pbs.twimg.com/profile_images/729378657039343616/qN8qfJcO_normal.jpg",
     "profileImageLarge": "http://pbs.twimg.com/profile_images/729378657039343616/qN8qfJcO_bigger.jpg",
@@ -62,7 +62,7 @@
     },
     "team": {
       "name": "Philadelphia Eagles",
-      "slug": "PHI"
+      "slug": "phi"
     },
     "profileImage": "http://pbs.twimg.com/profile_images/775756519694487553/uykyhTHM_normal.jpg",
     "profileImageLarge": "http://pbs.twimg.com/profile_images/775756519694487553/uykyhTHM_bigger.jpg",
@@ -85,7 +85,7 @@
     },
     "team": {
       "name": "Philadelphia Eagles",
-      "slug": "PHI"
+      "slug": "phi"
     },
     "profileImage": "http://pbs.twimg.com/profile_images/710272426974846981/evl1Ovs-_normal.jpg",
     "profileImageLarge": "http://pbs.twimg.com/profile_images/710272426974846981/evl1Ovs-_bigger.jpg",
@@ -108,10 +108,10 @@
     },
     "team": {
       "name": "Philadelphia Eagles",
-      "slug": "PHI"
+      "slug": "phi"
     },
-    "profileImage": "/assets/img/teams/PHI.jpg",
-    "profileImageLarge": "/assets/img/teams/PHI.jpg",
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
     "link": "chase-daniel"
   },
   {
@@ -131,7 +131,7 @@
     },
     "team": {
       "name": "Baltimore Ravens",
-      "slug": "BAL"
+      "slug": "bal"
     },
     "profileImage": "http://pbs.twimg.com/profile_images/773043496454328320/zKzgaEQk_normal.jpg",
     "profileImageLarge": "http://pbs.twimg.com/profile_images/773043496454328320/zKzgaEQk_bigger.jpg",
@@ -154,7 +154,7 @@
     },
     "team": {
       "name": "Atlanta Falcons",
-      "slug": "ATL"
+      "slug": "atl"
     },
     "profileImage": "http://pbs.twimg.com/profile_images/640579883094118400/A0ZZ_ESc_normal.jpg",
     "profileImageLarge": "http://pbs.twimg.com/profile_images/640579883094118400/A0ZZ_ESc_bigger.jpg",

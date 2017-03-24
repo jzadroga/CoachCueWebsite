@@ -157,7 +157,7 @@ namespace CoachCue.Service
         {
             var players = await DocumentDBRepository<Player>.GetItemsAsync(d => d.Active == true 
                 && d.Link.ToLower() == link.ToLower() 
-                && d.Team.Slug == slug, "Players");
+                && d.Team.Slug.ToLower() == slug.ToLower(), "Players");
 
             return players.FirstOrDefault();
         }
@@ -167,9 +167,47 @@ namespace CoachCue.Service
             return await DocumentDBRepository<Player>.GetItemsAsync(d => d.Active == true, "Players");
         }
 
+        public static async Task<IEnumerable<Player>> GetJsonList()
+        {
+            var players = await DocumentDBRepository<Player>.GetItemsAsync(d => d.Active == true, "Players");
+
+            foreach( var player in players)
+            {
+                player.Team.Slug = player.Team.Slug.ToLower();
+            }
+
+            return players;
+        }
+
         public static async Task<IEnumerable<Player>> GetListByIds(List<string> playerIds)
         {
             return await DocumentDBRepository<Player>.GetItemsAsync(d => playerIds.Contains(d.Id), "Players");
+        }
+
+        public static async Task<List<string>> GetPlayerNotConditions(string firstName, string lastName)
+        {
+            List<string> names = new List<string>();
+            try
+            {
+                //find all players with the same lastname but different last names and players with the first name of last name of the player
+                var fn = await DocumentDBRepository<Player>.GetItemsAsync( ply => (ply.LastName == lastName && ply.FirstName != firstName) || ply.FirstName == ply.LastName, "Players");
+                
+                if (fn.Count() > 0)
+                {
+                    foreach (var player in fn.ToList())
+                    {
+                        if (!names.Contains(player.LastName) && !names.Contains(player.FirstName))
+                            names.Add((player.FirstName == lastName) ? player.LastName : player.FirstName);
+
+                        //also add the team city and mascot
+                        //names.Add(player.nflteam.Mascot);
+                        //names.Add(player.nflteam.ShortCity);
+                    }
+                }
+            }
+            catch (Exception) { }
+
+            return names;
         }
     }
 }

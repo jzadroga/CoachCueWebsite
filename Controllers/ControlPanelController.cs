@@ -249,7 +249,7 @@ namespace CoachCue.Controllers
                 jw.Formatting = Formatting.Indented;
 
                 JsonSerializer serializer = new JsonSerializer();
-                var players = await PlayerService.GetList();
+                var players = await PlayerService.GetJsonList();
                 serializer.Serialize(jw, players);
             }
 
