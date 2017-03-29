@@ -13,13 +13,6 @@ namespace CoachCue.ViewModels
 {
     public class BaseViewModel
     {
-        public int FollowingCount { get; set; }
-        public int FollowersCount { get; set; }
-        public int MessageCount { get; set; }
-        public int TotalStarters { get; set; }
-        public int CorrectStarters { get; set; }
-        public int MatchupCount { get; set; }
-        public string PlayerID { get; set; }
         public List<AccountData> TrendingItems { get; set; }
         public List<AccountData> RecentlyViewedItems { get; set; }
         public List<VotedPlayers> TopVotedPlayers { get; set; }
@@ -83,24 +76,6 @@ namespace CoachCue.ViewModels
         public bool UserIncluded { get; set; }
         public string Sort { get; set; }
         public string Direction { get; set; }
-    }
-
-    public class FollowersModel : BaseViewModel
-    {
-        public string FollowItem { get; set; }
-        public string FollowImg { get; set; }
-        public string FollowLink { get; set; }
-        public List<user> FollowCoaches { get; set; }
-    }
-
-    public class FollowingModel : BaseViewModel
-    {
-        public int FollowingCount { get; set; }
-        public List<user> FollowingCoaches { get; set; }
-        public List<AccountData> FollowingPlayers { get; set; }
-        public user UserDetail { get; set; }
-        public int CurrentUserID { get; set; }
-
     }
 
     public class MyMatchupViewModel : BaseViewModel

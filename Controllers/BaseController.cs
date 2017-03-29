@@ -25,36 +25,10 @@ namespace CoachCue.Controllers
 
                 model.TopVotedPlayers = new List<VotedPlayers>(); // (Request.Browser.IsMobileDevice) ? new List<VotedPlayers>() : matchup.GetTopMathupVotes(gameschedule.GetCurrentWeekID(), false);
                 model.TrendingItems = new List<AccountData>(); // (Request.Browser.IsMobileDevice) ? new List<AccountData>() : user.GetAccountsFromPlayers(nflplayer.GetTrending(5), (userID != 0) ? (int?)userID : null);
-                model.PlayerID = getPlayerID(filterContext);
                 model.TopCoaches = new List<LeaderboardCoach>(); //(Request.Browser.IsMobileDevice) ? new List<LeaderboardCoach>() : user.GetTopCoachesByWeek(5, gameschedule.GetCurrentWeekID()-1, 5);
             }
 
             base.OnActionExecuted(filterContext);
-        }
-
-        private string getPlayerID(ActionExecutedContext filterContext)
-        {
-            string playerID = string.Empty;
-
-            if (filterContext.RouteData != null)
-            {
-                if (filterContext.RouteData.Values.Count() == 4)
-                {
-                    var routeAction = filterContext.RouteData.Values["action"];
-                    var routeController = filterContext.RouteData.Values["controller"];
-                    if (routeAction != null && routeController != null)
-                    {
-                        if (routeAction.ToString().ToLower() == "index" && routeController.ToString().ToLower() == "player")
-                        {
-                            var routePlayer = filterContext.RouteData.Values["id"];
-                            if (routePlayer != null)
-                                playerID = routePlayer.ToString();
-                        }
-                    }
-                }
-            }
-
-            return playerID;
         }
 
         public void SetMatchupPageData(Matchup matchup)
