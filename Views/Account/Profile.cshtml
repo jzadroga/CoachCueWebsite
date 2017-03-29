@@ -59,7 +59,7 @@
                 <div class="form-group">
                     <label class="control-label standout" for="picture">Picture</label>
                     <div class="controls">
-                        <img alt="Coach" src='@Url.Action("GetThumbnail", "Account", new { fileName = Model.Avatar, size = 40 })' />
+                        <img alt="Coach" src='@Url.Action("GetThumbnail", "Account", new { fileName = Model.UserData.ProfileImage, size = 40 })' />
                     </div>
                 </div>
                 <div class="form-group">

@@ -105,7 +105,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <ul class="nav navbar-nav navbar-right">
-                            <li title="Notifications" id="user-notifications" class="@Html.ActiveSection("Account")"><span class="badge badge-important notice-number">@Model.UserData.NotificationCount</span><span id="notice-bell" class="glyphicon glyphicon-bell"></span><a class="notices" href='#'></a></li>
+                            <li title="Notifications" id="user-notifications" class="@Html.ActiveSection("Account")"><span class="badge badge-important notice-number">@Model.UserData.NotificationCount</span><span id="notice-bell" class="glyphicon glyphicon-bell"></span><a class="notices" href='@Url.Action("Notifications", "Account")'></a></li>
 
                             <li class="dropdown you-dropdown @Html.ActiveSection("Account")">
 
@@ -116,7 +116,7 @@
                                 <ul class="dropdown-menu profile-nav-links">
                                     <li><a href='@Url.Action("Profile", "Account")'>Profile</a></li>
                                     <li class="divider"></li>
-                                    <li><a id="invite-btn" data-toggle="modal" href='#invite-friend-modal'>Invite a Friend</a></li>
+                                    <li><a href='@Url.Action("Notifications", "Account")'>Notifications (@Model.UserData.NotificationCount)</a></li>
                                     <li class="divider"></li>
                                     <li><a href='@Url.Action("Settings", "Account")'>Settings</a></li>
                                     <li><a href='@Url.Action("LogOff", "Account")'>Logout</a></li>

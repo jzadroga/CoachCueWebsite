@@ -1,6 +1,7 @@
 ﻿using CoachCue.Model;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace CoachCue.Models
 {
@@ -16,6 +17,7 @@ namespace CoachCue.Models
                     CorrectVoteCount = 0,
                     MessageCount = 0
                 };
+            this.Badges = new List<Badge>();
         }
 
         [JsonProperty(PropertyName = "id")]
@@ -66,5 +68,7 @@ namespace CoachCue.Models
                 return name.Replace(" ", "-").ToLower();
             }
         }
+
+        public List<Badge> Badges { get; set; }
     }
 }

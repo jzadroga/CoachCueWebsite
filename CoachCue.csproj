@@ -390,11 +390,8 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\About\Index.cshtml" />
-    <Content Include="Views\Account\Following.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Notifications.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Settings.cshtml" />
     <Content Include="Views\Coach\Index.cshtml" />
     <Content Include="Views\ControlPanel\Index.cshtml" />
@@ -405,8 +402,6 @@
     <Content Include="Views\ControlPanel\UpdatePlayerTwitter.cshtml" />
     <Content Include="Views\ControlPanel\Users.cshtml" />
     <Content Include="Views\ControlPanel\_TeamPlayerRow.cshtml" />
-    <Content Include="Views\Followers\Index.cshtml" />
-    <Content Include="Views\FollowPlayers\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Matchup\Index.cshtml" />
     <Content Include="Views\Player\Index.cshtml" />

@@ -121,7 +121,7 @@ namespace CoachCue.ViewModels
 
     public class NotificationsViewModel : BaseViewModel
     {
-        public List<notification> Notifications { get; set; }
+        public IEnumerable<Notification> Notifications { get; set; }
     }
 
     public class ConversationViewModel
@@ -178,11 +178,11 @@ namespace CoachCue.ViewModels
     {
         public ProfileViewModel() { }
 
-        public ProfileViewModel(user userAccount)
+        public ProfileViewModel(CoachCueUserData userAccount)
         {
-            this.AccountUserName = userAccount.userName;
-            this.Email = userAccount.email;
-            this.FullName = userAccount.fullName;
+            this.AccountUserName = userAccount.UserName;
+            this.Email = userAccount.Email;
+            this.FullName = userAccount.Name;
             this.CurrentTab = "profile";
             this.DisplayMessage = false;
             //this.Avatar = userAccount.avatar.imageName;

@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <label class="control-label standout" for="username">Receive an email when I have a notification</label>
                     <div class="controls">
-                        @Html.DropDownListFor(m => m.RecieveNotificationEmail, Model.RecieveNotificationEmailOptions)
+                        @Html.DropDownListFor(m => m.RecieveNotificationEmail, Model.RecieveNotificationEmailOptions, new { @class = "form-control" })
                     </div>
                 </div>
                 <div class="form-group">

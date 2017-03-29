@@ -118,12 +118,12 @@ namespace CoachCue.Model
                     string query = (string.IsNullOrEmpty(searchFilters)) ? player.LastName + " AND " : player.LastName + searchFilters + " AND ";
 
                     //gotta fix this
-                    List<TwitterUser> userNames = twitteraccount.GetUserNamesByTeam(1);
-                    if (userNames.Count > 0)
+                    //List<TwitterUser> userNames = twitteraccount.GetUserNamesByTeam(1);
+                    if (player.BeatWriters.Count > 0)
                     {
-                        for (int i = 0; i < userNames.Count; i++)
+                        for (int i = 0; i < player.BeatWriters.Count; i++)
                         {
-                            query += "from:" + userNames[i].userName + (i < userNames.Count - 1 ? " OR " : "");
+                            query += "from:" + player.BeatWriters[i] + (i < player.BeatWriters.Count - 1 ? " OR " : "");
                         }
 
                         TwitterContext twitterCtx = SingleUserLogin();

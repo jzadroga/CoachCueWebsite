@@ -50,11 +50,6 @@ namespace CoachCue.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Register([DefaultValue("")] string code)
-        {
-            return View();
-        }
-
         public JsonResult EmailExists(string email)
         {
             bool exist = user.EmailExists(email);
@@ -297,38 +292,22 @@ namespace CoachCue.Controllers
         }
 
         [SiteAuthorization]
-        public ActionResult Following([DefaultValue(0)] int id)
+        public async Task<ActionResult> Profile()
         {
-            int userID = (id == 0 ) ? user.GetUserID(User.Identity.Name) : id;
-            FollowingModel fvm = new ViewModels.FollowingModel();
-            fvm.CurrentUserID = user.GetUserID(User.Identity.Name);
+            var userData = await CoachCueUserData.GetUserData(User.Identity.Name);
+            ProfileViewModel pVM = new ProfileViewModel(userData);
+            pVM.UserData = userData;
 
-            if (userID != 0)
-            {
-                fvm.FollowingCoaches = user.GetFollowingUsers(userID);
-                fvm.FollowingPlayers = user.GetFollowingPlayers(userID);
-                fvm.UserDetail = user.Get(userID);
-
-                fvm.FollowingCount = fvm.FollowingCoaches.Count() + fvm.FollowingPlayers.Count();
-            }
-
-            return View(fvm);
-        }
-
-        [SiteAuthorization]
-        public ActionResult Profile()
-        {
-            ProfileViewModel pVM = new ProfileViewModel(user.GetByUsername(User.Identity.Name));
             return View(pVM);
         }
 
-        public ActionResult Settings([DefaultValue("")] string usr)
+        [SiteAuthorization]
+        public async Task<ActionResult> Settings()
         {
-            if (!User.Identity.IsAuthenticated)
-                //redirect to the login page so that the user gets automatically logged in 
-                return RedirectToAction("LoginBySettings", "Account", new {usr = usr });
-
             SettingsViewModel settingsVM = new SettingsViewModel();
+
+            settingsVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
+
             settingsVM.DisplayMessage = false;
             settingsVM.CurrentTab = "emailnotices";
 
@@ -338,28 +317,24 @@ namespace CoachCue.Controllers
                 new SelectListItem { Value = "0", Text = "No thanks" },
             };
 
-            user userItem = user.GetByUsername(User.Identity.Name);
-            bool? notices = user.GetSettings( userItem.userID ).emailNotifications;
+            var user = await UserService.GetByEmail(User.Identity.Name);
+            bool notices = user.Settings.EmailNotifications;
 
-            settingsVM.RecieveNotificationEmail = (notices.Value == true) ? "1" : "0";
+            settingsVM.RecieveNotificationEmail = (notices) ? "1" : "0";
 
             return View(settingsVM);
         }
 
         [HttpPost]
         [SiteAuthorization]
-        public ActionResult UpdateSettingsEmailNotices(SettingsViewModel emailSettings)
+        public async Task<ActionResult> UpdateSettingsEmailNotices(SettingsViewModel emailSettings)
         {
-            bool success = false;
-            user userItem = user.GetByUsername(User.Identity.Name);
-            if (ModelState.IsValid)
-            {
-                success = user.UpdateEmailSettings(userItem.userID, emailSettings.RecieveNotificationEmail);
-            }
-
             SettingsViewModel settingsVM = new SettingsViewModel();
-            if (success)
-            {
+            settingsVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
+
+            if (ModelState.IsValid)
+            { 
+                await UserService.UpdateSettings( settingsVM.UserData.UserId, (emailSettings.RecieveNotificationEmail == "1") ? true : false );
                 settingsVM.DisplayMessage = true;
                 settingsVM.Message = "Thanks, your settings have been updated";
             }
@@ -376,80 +351,87 @@ namespace CoachCue.Controllers
         }
 
         [SiteAuthorization]
-        public ActionResult Notifications()
+        public async Task<ActionResult> Notifications()
         {
-            NotificationsViewModel notVM = new NotificationsViewModel();
+            var userData = await CoachCueUserData.GetUserData(User.Identity.Name);
 
-            int userID = (User.Identity.IsAuthenticated) ? user.GetUserID(User.Identity.Name) : 0;
-            notVM.Notifications = notification.GetByUserID(userID, true);
-           
+            NotificationsViewModel notVM = new NotificationsViewModel();
+            notVM.UserData = userData;
+
+            notVM.Notifications = await NotificationService.GetList(userData.UserId);
+
             return View(notVM);
         }
 
         [HttpPost]
         [SiteAuthorization]
-        public ActionResult UpdateProfileBasic(ProfileViewModel basicProfile)
+        public async Task <ActionResult> UpdateProfileBasic(ProfileViewModel basicProfile)
         {
-            bool success = false;
-            user userItem = user.GetByUsername(User.Identity.Name);
+            var userData = await CoachCueUserData.GetUserData(User.Identity.Name);
+            ProfileViewModel pVM = new ProfileViewModel(userData);
+
             if (ModelState.IsValid)
             {
-                success = user.UpdateProfile(userItem.userID, basicProfile.FullName, basicProfile.Email, basicProfile.AccountUserName);
-            }
-
-            ProfileViewModel pVM = new ProfileViewModel(userItem);
-            if (success)
-            {
+                await UserService.UpdateProfile(userData.UserId, basicProfile.FullName, basicProfile.Email, basicProfile.AccountUserName);
                 pVM.DisplayMessage = true;
                 pVM.Message = "Thanks, your profile has been updated";
             }
+            
             pVM.CurrentTab = "profile";
+
+            //reset the session
+            HttpContext.Session["UserId"] = null;
             return View("Profile", pVM);
         }
 
         [HttpPost]
         [SiteAuthorization]
-        public ActionResult UpdatePassword(ProfileViewModel basicProfile)
+        public async  Task<ActionResult> UpdatePassword(ProfileViewModel basicProfile)
         {
-            bool success = false;
+            var userData = await CoachCueUserData.GetUserData(User.Identity.Name);
+            ProfileViewModel pVM = new ProfileViewModel(userData);
 
-            user userItem = user.GetByUsername(User.Identity.Name);
             if (ModelState.IsValid)
             {
-                success = user.UpdatePassword(userItem.userID, basicProfile.Password);
-            }
-
-            ProfileViewModel pVM = new ProfileViewModel(userItem);
-            if( success )
-            {
+                await UserService.UpdatePassword(userData.UserId, basicProfile.Password);
                 pVM.DisplayMessage = true;
                 pVM.Message = "Thanks, your password has been updated";
             }
+
             pVM.CurrentTab = "password";
+
+            //reset the session
+            HttpContext.Session["UserId"] = null;
+
             return View("Profile", pVM);
         }
 
         [HttpPost]
         [SiteAuthorization]
-        public ActionResult UploadAvatar(HttpPostedFileBase avatar)
+        public async Task<ActionResult> UploadAvatar(HttpPostedFileBase avatar)
         {
             string fileName = string.Empty;
-            user userItem = user.GetByUsername(User.Identity.Name);
+            var userData = await CoachCueUserData.GetUserData(User.Identity.Name);
+            ProfileViewModel pVM = new ProfileViewModel(userData);
+            pVM.UserData = userData;
 
             if (avatar != null && !string.IsNullOrEmpty(avatar.FileName))
             {
-                fileName = user.UpdateAvatar(userItem.userID, avatar);
+                fileName = await UserService.UpdateAvatar(userData.UserId, avatar);
+                userData.ProfileImage = fileName;
             }
 
-            ProfileViewModel pVM = new ProfileViewModel(userItem);
             if (!string.IsNullOrEmpty(fileName))
             {
-//                pVM.Avatar = fileName;
                 pVM.DisplayMessage = true;
                 pVM.Message = "Thanks, your picture has been updated";
             }
 
             pVM.CurrentTab = "picture";
+
+            //reset the session
+            HttpContext.Session["UserId"] = null;
+
             return View("Profile", pVM);
         }
 

@@ -1,9 +1,15 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace CoachCue.Models
 {
     public class Player
     {
+        public Player()
+        {
+            this.BeatWriters = new List<string>();
+        }
+
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
@@ -79,5 +85,8 @@ namespace CoachCue.Models
                 return name.Replace(" ", "-").ToLower();
             }
         }
+
+        [JsonProperty(PropertyName = "beatWriters")]
+        public List<string> BeatWriters { get; set; }
     }
 }

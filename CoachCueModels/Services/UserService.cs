@@ -174,6 +174,64 @@ namespace CoachCue.Service
             return user;
         }
 
+        public static async Task<User> UpdateSettings(string id, bool emailNotifications)
+        {
+            var user = await Get(id);
+            user.Settings.EmailNotifications = emailNotifications;
+
+            await DocumentDBRepository<User>.UpdateItemAsync(id, user, "Users");
+
+            return user;
+        }
+
+        public static async Task<User> UpdateProfile(string id, string name, string email, string userName)
+        {
+            var user = await Get(id);
+
+            user.Name = name;
+            user.Email = email;
+            user.UserName = userName;
+
+            await DocumentDBRepository<User>.UpdateItemAsync(id, user, "Users");
+
+            return user;
+        }
+
+        public static async Task<User> UpdatePassword(string id, string password)
+        {
+            var user = await Get(id);
+
+            user.Password = password;
+
+            await DocumentDBRepository<User>.UpdateItemAsync(id, user, "Users");
+
+            return user;
+        }
+
+        public static async Task<string> UpdateAvatar(string id, HttpPostedFileBase avatarFile)
+        {
+            string fileName = string.Empty;
+            var user = await Get(id);
+
+            try
+            {
+                if (avatarFile.ContentLength > 3000000)
+                    return fileName;
+
+                fileName = id + "_" + avatarFile.FileName.Substring(avatarFile.FileName.LastIndexOf("\\") + 1);
+                avatarFile.SaveAs(HttpContext.Current.Request.PhysicalApplicationPath + "assets\\img\\avatar\\" + fileName);
+
+                user.Profile.Image = fileName;
+                await DocumentDBRepository<User>.UpdateItemAsync(id, user, "Users");       
+            }
+            catch (Exception)
+            {
+                fileName = string.Empty;
+            }
+
+            return fileName;
+        }
+
         public static async Task<User> Get(string id)
         {
             return await DocumentDBRepository<User>.GetItemAsync(id, "Users");

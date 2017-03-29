@@ -2,7 +2,7 @@
 @using CoachCue.Model;
 
 @{
-    ViewBag.Title = "Notifications";
+    ViewBag.Title = "CoachCue - Notifications";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,29 +11,29 @@
     <div style="padding: 10px 20px 10px 20px; font-size: 12px">
         <h4>Notifications</h4>
         <table class="table table-hover table-condensed">
-            @foreach (notification notice in Model.Notifications.Take(100))
+            @foreach (var notice in Model.Notifications.Take(100))
             {
-                switch( notice.notification_type.type ){
-                    case "voteMatchup":
+                switch( notice.Type ){
+                    case "vote":
                     case "voteRequested":   
                     <tr>
-                        <td>@notice.dateCreated.ToShortDateString()</td>
-                        <td class="notice-img"><img src="@Url.Action("GetThumbnail", "Account", new { fileName = notice.noticeUser.avatar.imageName, size = 25 })" /></td>
-                        <td>@notice.noticeUser.fullName @notice.noticeMessage <a href="@Url.Action("Index", "Matchup", new {mt = @notice.linkData.ID, gud = @notice.linkData.Guid})">@notice.linkData.Message</a></td>
+                        <td>@notice.DateCreated.ToShortDateString()</td>
+                        <td class="notice-img"><img src="/assets/img/avatar/@notice.UserFrom.Profile.Image" /></td>
+                        <td><a href="@Href("~/" + notice.Matchup.Link)">@Html.Raw(notice.Text)</a></td>
                     </tr>
                     break;
                     case "messageMention":
                     <tr>
-                        <td>@notice.dateCreated.ToShortDateString()</td>
-                        <td class="notice-img"><img src="@Url.Action("GetThumbnail", "Account", new { fileName = notice.noticeUser.avatar.imageName, size = 25 })" /></td>
-                        <td>@notice.noticeUser.fullName <a href="@Url.Action("Index", "Coach", new {mt = @notice.entityID, id = notice.noticeUser.userID, name = notice.noticeUser.fullName })">@notice.noticeMessage</a></td>
+                        <td>@notice.DateCreated.ToShortDateString()</td>
+                        <td class="notice-img"><img src="/assets/img/avatar/@notice.UserFrom.Profile.Image" /></td>
+                        <td>@notice.UserFrom.Name <a href="@Url.Action("Index", "Coach", new { name = notice.UserFrom.Link })">@notice.Text</a></td>
                     </tr>
                     break;
                     case "matchupMessage":
                     <tr>
-                        <td>@notice.dateCreated.ToShortDateString()</td>
-                        <td class="notice-img"><img src="@Url.Action("GetThumbnail", "Account", new { fileName = notice.noticeUser.avatar.imageName, size = 25 })" /></td>
-                        <td>@notice.noticeUser.fullName @notice.noticeMessage <a href="@Url.Action("Index", "Matchup", new {mt = @notice.linkData.ID, gud = @notice.linkData.Guid})">@notice.linkData.Message</a></td>
+                        <td>@notice.DateCreated.ToShortDateString()</td>
+                        <td class="notice-img"><img src"/assets/img/avatar/@notice.UserFrom.Profile.Image" /></td>
+                        <td>@notice.UserFrom.Name @notice.Text <a href="@Href("~/" + notice.Matchup.Link)">@notice.Text</td>
                     </tr>
                     break;
                 }
