@@ -11,7 +11,7 @@
     <div style="padding: 10px 20px 10px 20px; font-size: 12px">
         <h4>Notifications</h4>
         <table class="table table-hover table-condensed">
-            @foreach (var notice in Model.Notifications.Take(100))
+            @foreach (var notice in Model.Notifications)
             {
                 switch( notice.Type ){
                     case "vote":

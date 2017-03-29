@@ -114,11 +114,11 @@ namespace CoachCue.Service
             return notifications.FirstOrDefault();
         }
 
-        public static async Task<Microsoft.Azure.Documents.Document> UpdateToSent(Notification notification)
+        public static async Task<Microsoft.Azure.Documents.Document> Update(Notification notification)
         {
             return await DocumentDBRepository<Notification>.UpdateItemAsync(notification.Id, notification, "Notifications");
         }
-       
+
         public static async Task<List<User>> GetMatchupNotificationUsers(string userId, Matchup matchup)
         {
             List<string> userIds = new List<string>();

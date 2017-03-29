@@ -21,6 +21,12 @@ namespace CoachCue.Repository
         public string Link { get; set; }
         public UserStatistics Stats { get; set; }
 
+        public static void Reset()
+        {
+            //clear out a session variable so next call will reload from database
+            HttpContext.Current.Session["UserId"] = null;
+        }
+
         public static void SetUserData(string id, string name, string userName, string profileImage, string email, int notificationCount, string link, UserStatistics stats)
         {
             HttpContext.Current.Session["UserId"] = id;

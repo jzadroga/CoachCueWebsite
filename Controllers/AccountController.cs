@@ -354,12 +354,25 @@ namespace CoachCue.Controllers
         public async Task<ActionResult> Notifications()
         {
             var userData = await CoachCueUserData.GetUserData(User.Identity.Name);
+            userData.NotificationCount = 0;
 
             NotificationsViewModel notVM = new NotificationsViewModel();
             notVM.UserData = userData;
 
-            notVM.Notifications = await NotificationService.GetList(userData.UserId);
+            var notifications = await NotificationService.GetList(userData.UserId);
+            notifications = notifications.OrderByDescending(nt => nt.DateCreated).Take(200);
 
+            notVM.Notifications = notifications;
+
+            //mark all as read
+            foreach (var notification in notifications)
+            {
+                notification.Read = true;
+                await NotificationService.Update(notification);
+            }
+
+            //reset the session
+            CoachCueUserData.Reset();
             return View(notVM);
         }
 
@@ -380,7 +393,7 @@ namespace CoachCue.Controllers
             pVM.CurrentTab = "profile";
 
             //reset the session
-            HttpContext.Session["UserId"] = null;
+            CoachCueUserData.Reset();
             return View("Profile", pVM);
         }
 
@@ -401,8 +414,7 @@ namespace CoachCue.Controllers
             pVM.CurrentTab = "password";
 
             //reset the session
-            HttpContext.Session["UserId"] = null;
-
+            CoachCueUserData.Reset();
             return View("Profile", pVM);
         }
 
@@ -430,8 +442,7 @@ namespace CoachCue.Controllers
             pVM.CurrentTab = "picture";
 
             //reset the session
-            HttpContext.Session["UserId"] = null;
-
+            CoachCueUserData.Reset();
             return View("Profile", pVM);
         }
 

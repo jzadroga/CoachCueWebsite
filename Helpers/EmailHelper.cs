@@ -43,7 +43,7 @@ namespace CoachCue.Helpers
 
                     //mark as sent
                     notification.Sent = true;
-                    await NotificationService.UpdateToSent(notification);
+                    await NotificationService.Update(notification);
                 }
             }
             catch(Exception){}
@@ -62,7 +62,7 @@ namespace CoachCue.Helpers
 
                 //mark as sent
                 notification.Sent = true;
-                await NotificationService.UpdateToSent(notification);             
+                await NotificationService.Update(notification);             
             }
             catch (Exception) { }
 
@@ -83,7 +83,7 @@ namespace CoachCue.Helpers
 
                     //mark as sent
                     notification.Sent = true;
-                    await NotificationService.UpdateToSent(notification);
+                    await NotificationService.Update(notification);
                 }                         
             }
             catch (Exception ex)
