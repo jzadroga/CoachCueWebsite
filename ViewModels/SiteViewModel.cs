@@ -26,6 +26,7 @@ namespace CoachCue.ViewModels
             this.RecentlyViewedItems = new List<AccountData>();
             this.TrendingItems = new List<AccountData>();
             this.MessagePlayers = new List<Player>();
+            this.UserData = new CoachCueUserData();
         }
     }
 

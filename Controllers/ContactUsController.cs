@@ -9,24 +9,34 @@ using CoachCue.ViewModels;
 using System.Net;
 using System.IO;
 using CoachCue.Helpers;
+using CoachCue.Repository;
+using System.Threading.Tasks;
 
 namespace CoachCue.Controllers
 {
     public class ContactUsController : BaseController
     {
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(new PageViewModel());
+            PageViewModel pgVM = new PageViewModel();
+            pgVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
+            ViewData["sent"] = false;
+            return View(pgVM);
         }
 
         [HttpPost]
-        public JsonResult ContactUs(string email, string message)
+        public async Task<ActionResult> Index(string email, string message)
         {
+            PageViewModel pgVM = new PageViewModel();
+            pgVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
+            ViewData["sent"] = true;
+
             string bodyMsg = "Message from: " + email;
             bodyMsg += " Message: " + message;
 
             string msg = EmailHelper.Send("info@coachcue.com", bodyMsg, "Contact from site", "Info");
-            return Json(new { Result = msg }, JsonRequestBehavior.AllowGet);
+
+            return View(pgVM);
         }
     }
 }

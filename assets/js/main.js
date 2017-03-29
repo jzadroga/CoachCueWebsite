@@ -594,11 +594,6 @@ function processInvite(data) {
     $('#invite-modal').modal('hide');
 }
 
-function processContactUs(data) {
-    $("#sending").hide();
-    $('#contact-sent').show();
-}
-
 function inviteSent(data) {
     $(".sending-spinner").hide();
     $('#invite-sent').show();
