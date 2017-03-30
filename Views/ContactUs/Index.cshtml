@@ -13,7 +13,7 @@
     <form id="frmContactUs" action="@Url.Action("Index", "ContactUs")" method="post" class="validate form-horizontal">
         @if ((bool)ViewData["sent"])
         {
-        <div id="contact-sent" class="alert alert-info fade in">
+        <div class="alert alert-info fade in">
             <button type="button" class="close" data-dismiss="alert">×</button>
             Thanks! Your message has been sent.
         </div>
