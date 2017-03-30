@@ -19,7 +19,7 @@ namespace CoachCue.Controllers
         public async Task<ActionResult> Index()
         {
             PageViewModel pgVM = new PageViewModel();
-            pgVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
+            await LoadBaseViewModel(pgVM);
             ViewData["sent"] = false;
             return View(pgVM);
         }
@@ -28,7 +28,7 @@ namespace CoachCue.Controllers
         public async Task<ActionResult> Index(string email, string message)
         {
             PageViewModel pgVM = new PageViewModel();
-            pgVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
+            await LoadBaseViewModel(pgVM);
             ViewData["sent"] = true;
 
             string bodyMsg = "Message from: " + email;

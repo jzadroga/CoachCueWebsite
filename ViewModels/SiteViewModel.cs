@@ -13,9 +13,8 @@ namespace CoachCue.ViewModels
 {
     public class BaseViewModel
     {
-        public List<AccountData> TrendingItems { get; set; }
+        public List<Player> TrendingItems { get; set; }
         public List<AccountData> RecentlyViewedItems { get; set; }
-        public List<VotedPlayers> TopVotedPlayers { get; set; }
         public bool IsMobile { get; set; }
         public List<LeaderboardCoach> TopCoaches { get; set; }
         public CoachCueUserData UserData { get; set; }
@@ -24,9 +23,7 @@ namespace CoachCue.ViewModels
         public BaseViewModel()
         {
             this.RecentlyViewedItems = new List<AccountData>();
-            this.TrendingItems = new List<AccountData>();
             this.MessagePlayers = new List<Player>();
-            this.UserData = new CoachCueUserData();
         }
     }
 

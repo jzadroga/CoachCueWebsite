@@ -20,10 +20,10 @@ namespace CoachCue.Controllers
         public async Task<ActionResult> Index()
         {
             SearchResultViewModel srvm = new SearchResultViewModel();
-            srvm.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
+            await LoadBaseViewModel(srvm);
 
             srvm.SearchTerm = string.Empty;
-            srvm.Trending = await StreamService.GetTrendingStream(srvm.UserData);
+            srvm.Trending = await StreamService.GetTrendingStream();
 
             return View(srvm);
         }

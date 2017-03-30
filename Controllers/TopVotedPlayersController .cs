@@ -21,7 +21,8 @@ namespace CoachCue.Controllers
         public async Task<ActionResult> Index()
         {
             TopPlayersViewModel topVotedVM = new TopPlayersViewModel();
-            topVotedVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
+            await LoadBaseViewModel(topVotedVM);
+
             topVotedVM.Players = matchup.GetTopMathupVotes(gameschedule.GetCurrentWeekID(), true);
 
             return View(topVotedVM);

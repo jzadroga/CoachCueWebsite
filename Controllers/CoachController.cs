@@ -16,8 +16,7 @@ namespace CoachCue.Controllers
         public async Task<ActionResult> Index(string name)
         {
             UserViewModel userVM = new UserViewModel();
-    
-            userVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
+            await LoadBaseViewModel(userVM);
 
             userVM.UserDetail = await UserService.GetByLink(name);
             if(userVM.UserDetail == null)
@@ -30,8 +29,8 @@ namespace CoachCue.Controllers
         public async Task<ActionResult> Matchup(string name)
         {
             UserViewModel userVM = new UserViewModel();
+            await LoadBaseViewModel(userVM);
 
-            userVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
             userVM.UserDetail = await UserService.GetByLink(name);
             userVM.UserStream = await StreamService.GetUserStream(userVM.UserData, userVM.UserDetail.Id, true);
 

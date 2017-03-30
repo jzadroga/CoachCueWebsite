@@ -20,10 +20,9 @@ namespace CoachCue.Controllers
         public async Task<ActionResult> Index(string team, string name)
         {
             PlayerViewModel playerVM = new PlayerViewModel();
+            await LoadBaseViewModel(playerVM);
+
             playerVM.LoggedIn = false;
-
-            playerVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
-
             playerVM.PlayerDetail = await PlayerService.GetByDescription(team, name);
             playerVM.PlayerStream = await StreamService.GetPlayerStream(playerVM.UserData, playerVM.PlayerDetail.Id);
             playerVM.TwitterContent = new List<StreamContent>();//stream.GetPlayerTwitterStream(playerVM.PlayerDetail);

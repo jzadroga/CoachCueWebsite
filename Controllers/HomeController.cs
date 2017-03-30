@@ -26,7 +26,8 @@ namespace CoachCue.Controllers
         public async Task<ActionResult> Index([DefaultValue("")] string gu, [DefaultValue("")] string tb)
         {
             HomeViewModel homeVM = new HomeViewModel();
-            homeVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
+            await LoadBaseViewModel(homeVM);
+
             homeVM.ShowWelcome = false;
             homeVM.LoggedIn = false;
             homeVM.LoadMatchups = (!string.IsNullOrEmpty(tb)) ? true : false;

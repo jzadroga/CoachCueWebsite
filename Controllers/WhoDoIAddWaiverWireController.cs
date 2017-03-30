@@ -21,8 +21,8 @@ namespace CoachCue.Controllers
         public async Task<ActionResult> Index(string week, string players)
         {
             MyMatchupViewModel myMatchVM = new MyMatchupViewModel();
+            await LoadBaseViewModel(myMatchVM);
 
-            myMatchVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
             myMatchVM.Matchup = await StreamService.GetDetailStream(myMatchVM.UserData, "whodoiaddwaiverwire/" + week + "/" + players);
 
             if (myMatchVM.Matchup.MatchupItem == null)

@@ -11,24 +11,21 @@ using System.IO;
 using CoachCue.Repository;
 using CoachCue.Models;
 using CoachCue.Service;
+using System.Threading.Tasks;
 
 namespace CoachCue.Controllers
 {
     public class BaseController : Controller
     {
-        protected override void OnActionExecuted(ActionExecutedContext filterContext)
+        public async Task<BaseViewModel> LoadBaseViewModel(BaseViewModel bVM)
         {
-            var model = filterContext.Controller.ViewData.Model as BaseViewModel;
-            if (model != null)
-            {
-                model.IsMobile = Request.Browser.IsMobileDevice;
+            bVM.IsMobile = Request.Browser.IsMobileDevice;
+            bVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
 
-                model.TopVotedPlayers = new List<VotedPlayers>(); // (Request.Browser.IsMobileDevice) ? new List<VotedPlayers>() : matchup.GetTopMathupVotes(gameschedule.GetCurrentWeekID(), false);
-                model.TrendingItems = new List<AccountData>(); // (Request.Browser.IsMobileDevice) ? new List<AccountData>() : user.GetAccountsFromPlayers(nflplayer.GetTrending(5), (userID != 0) ? (int?)userID : null);
-                model.TopCoaches = new List<LeaderboardCoach>(); //(Request.Browser.IsMobileDevice) ? new List<LeaderboardCoach>() : user.GetTopCoachesByWeek(5, gameschedule.GetCurrentWeekID()-1, 5);
-            }
+            bVM.TrendingItems = (Request.Browser.IsMobileDevice) ? new List<Player>() :  await StreamService.GetTrendingStream();
+            bVM.TopCoaches = new List<LeaderboardCoach>(); //(Request.Browser.IsMobileDevice) ? new List<LeaderboardCoach>() : user.GetTopCoachesByWeek(5, gameschedule.GetCurrentWeekID()-1, 5);
 
-            base.OnActionExecuted(filterContext);
+            return bVM;
         }
 
         public void SetMatchupPageData(Matchup matchup)

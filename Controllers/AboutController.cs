@@ -18,7 +18,7 @@ namespace CoachCue.Controllers
         public async Task<ActionResult> Index()
         {
             PageViewModel pgVM = new PageViewModel();
-            pgVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
+            await LoadBaseViewModel(pgVM);
 
             return View(pgVM);
         }

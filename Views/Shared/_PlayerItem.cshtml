@@ -1,28 +1,12 @@
-﻿@model AccountData
-@using CoachCue.Model;
+﻿@model Player
+@using CoachCue.Models;
 
-@if( Model.accountID != 0 ){
 <div class="item clear player-item">
     <div class="content">
         <div class="content-header">
-            @if (Model.accountType == "players")
-            {
-                <a data-player-img="@Model.profileImg" data-player-name="@Model.fullName" data-player-pos="@Model.position&nbsp;|&nbsp;@Model.teamSlug" data-player-id="@Model.accountID" class="player-popover username" href="@Url.Action("Index", "Player", new { id = Model.accountID, name = Model.linkFullName })">@Model.fullName</a>
-            }
-            else
-            {
-            <a data-account-id='@Model.accountID' class="username" href="@Url.Action("index", "coach", new { id = Model.accountID, name = Model.fullName })">@Model.fullName</a>
-            }
+            <a data-player-img="@Model.ProfileImage" data-player-name="@Model.Name" data-player-pos="@Model.Position&nbsp;|&nbsp;@Model.Team.Slug" data-player-id="@Model.Id" class="player-popover username" href="@Url.Action("index", "player", new { team = Model.Team.Slug.ToLower(), name = Model.Link })">@Model.Name</a>
         </div>     
-        @if (Model.accountType == "players") {
-            <img alt="@Model.fullName" class="avatar player-item-avatar lazy-load" data-src="@Model.profileImg" alt="@Model.fullName">     
-            <span>@Model.position&nbsp;|&nbsp;@Model.teamSlug</span>
-        }
-        else
-        {
-            <img class="avatar player-item-avatar lazy-load" data-src="/assets/img/avatar/@Model.profileImg" alt="@Model.fullName">
-            <span>@@@Model.username</span>
-        }
+        <img alt="@Model.Name" class="avatar player-item-avatar lazy-load" src="@Model.ProfileImage">     
+        <span>@Model.Position&nbsp;|&nbsp;@Model.Team.Slug</span>
     </div>
 </div>
-}

@@ -296,7 +296,7 @@ namespace CoachCue.Controllers
         {
             var userData = await CoachCueUserData.GetUserData(User.Identity.Name);
             ProfileViewModel pVM = new ProfileViewModel(userData);
-            pVM.UserData = userData;
+            await LoadBaseViewModel(pVM);
 
             return View(pVM);
         }
@@ -306,7 +306,7 @@ namespace CoachCue.Controllers
         {
             SettingsViewModel settingsVM = new SettingsViewModel();
 
-            settingsVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
+            await LoadBaseViewModel(settingsVM);
 
             settingsVM.DisplayMessage = false;
             settingsVM.CurrentTab = "emailnotices";
@@ -330,7 +330,7 @@ namespace CoachCue.Controllers
         public async Task<ActionResult> UpdateSettingsEmailNotices(SettingsViewModel emailSettings)
         {
             SettingsViewModel settingsVM = new SettingsViewModel();
-            settingsVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
+            await LoadBaseViewModel(settingsVM);
 
             if (ModelState.IsValid)
             { 
@@ -357,7 +357,7 @@ namespace CoachCue.Controllers
             userData.NotificationCount = 0;
 
             NotificationsViewModel notVM = new NotificationsViewModel();
-            notVM.UserData = userData;
+            await LoadBaseViewModel(notVM);
 
             var notifications = await NotificationService.GetList(userData.UserId);
             notifications = notifications.OrderByDescending(nt => nt.DateCreated).Take(200);
@@ -382,6 +382,7 @@ namespace CoachCue.Controllers
         {
             var userData = await CoachCueUserData.GetUserData(User.Identity.Name);
             ProfileViewModel pVM = new ProfileViewModel(userData);
+            await LoadBaseViewModel(pVM);
 
             if (ModelState.IsValid)
             {
@@ -403,6 +404,7 @@ namespace CoachCue.Controllers
         {
             var userData = await CoachCueUserData.GetUserData(User.Identity.Name);
             ProfileViewModel pVM = new ProfileViewModel(userData);
+            await LoadBaseViewModel(pVM);
 
             if (ModelState.IsValid)
             {
@@ -425,7 +427,7 @@ namespace CoachCue.Controllers
             string fileName = string.Empty;
             var userData = await CoachCueUserData.GetUserData(User.Identity.Name);
             ProfileViewModel pVM = new ProfileViewModel(userData);
-            pVM.UserData = userData;
+            await LoadBaseViewModel(pVM);
 
             if (avatar != null && !string.IsNullOrEmpty(avatar.FileName))
             {

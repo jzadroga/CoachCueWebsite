@@ -8,9 +8,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.ServiceModel.Syndication;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
+using System.Xml;
 
 namespace CoachCue.Service
 {
@@ -88,16 +91,42 @@ namespace CoachCue.Service
             return stream;
         }
 
-
-        public static async Task<List<Player>> GetTrendingStream(CoachCueUserData userData)
+        public static async Task<List<Player>> GetTrendingStream()
         {
+            //need to cache this list
             List<Player> stream = new List<Player>();
 
             try
             {
-                //get the most voted on, mentioned or matchup involved players
-                var plys = await PlayerService.GetList();
-                stream = plys.ToList();
+                string cacheID = "trendingPlayers";
+                if (HttpContext.Current.Cache[cacheID] != null)
+                    stream = (List<Player>)HttpContext.Current.Cache[cacheID];
+                else
+                {
+                    //try to pull in players from rotoword rss feed and blend with CoachCue
+                    var rotoWorldRss = XmlReader.Create("http://www.rotoworld.com/rss/feed.aspx?sport=nfl&ftype=news&count=12&format=rss");
+                    var players = SyndicationFeed.Load(rotoWorldRss);
+                    rotoWorldRss.Close();
+
+                    foreach (SyndicationItem story in players.Items)
+                    {
+                        if (story.Links != null)
+                        {
+                            var link = story.Links[0];
+                            var playerName = link.Uri.Segments[link.Uri.Segments.Count() - 1];
+
+                            //try and find a matching player
+                            var player = await PlayerService.GetByLink(playerName);
+                            if (player != null)
+                                stream.Add(player);
+                        }
+                    }
+
+                    //get the most voted on or matchup involved players
+                    stream.AddRange(await PlayerService.GetMostVoted());
+
+                    HttpContext.Current.Cache.Insert(cacheID, stream, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(0, 2, 0));
+                }
             }
             catch (Exception) {}
 

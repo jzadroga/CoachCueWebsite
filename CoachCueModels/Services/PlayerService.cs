@@ -162,6 +162,34 @@ namespace CoachCue.Service
             return players.FirstOrDefault();
         }
 
+        public static async Task<Player> GetByLink(string link)
+        {
+            var players = await DocumentDBRepository<Player>.GetItemsAsync(d => d.Active == true
+                && d.Link.ToLower() == link.ToLower(), "Players");
+
+            return players.FirstOrDefault();
+        }
+
+        public static async Task<IEnumerable<Player>> GetMostVoted()
+        {
+            var matchups = await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true, "Matchups");
+
+            //get the 50 most recent
+            matchups = matchups.OrderByDescending(d => d.DateCreated).Take(50);
+
+            //get the 10 most voted on playaers
+            var votedPlayers = matchups.SelectMany(mt => mt.Votes, (mt, votes) => new { mt, votes })
+                        .GroupBy(ply => ply.votes.PlayerId, pair => pair.mt).Select(ply => ply.Key).ToList();
+
+            //get the 10 most mentioned players
+            var mentionPlayers = matchups.SelectMany(mt => mt.Players, (mt, players) => new { mt, players })
+                        .GroupBy(ply => ply.players.Id, pair => pair.mt).Select( ply => ply.Key).ToList();
+
+            votedPlayers.AddRange(mentionPlayers);
+
+            return await GetListByIds(votedPlayers.Distinct().ToList());
+        }
+
         public static async Task<IEnumerable<Player>> GetList()
         {
             return await DocumentDBRepository<Player>.GetItemsAsync(d => d.Active == true, "Players");
