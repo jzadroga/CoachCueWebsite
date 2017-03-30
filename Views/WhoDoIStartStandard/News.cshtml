@@ -18,7 +18,7 @@
             <div class="item clear player-item">
                 <div class="content">
                     <div class="content-header">                     
-                        <a data-player-img="@player.profileImg" data-player-name="@player.fullName" data-player-pos="@player.position&nbsp;|&nbsp;@player.teamSlug" data-player-id="@player.accountID" class="player-popover username" href="@Url.Action("Index", "Player", new { id = player.accountID, name = player.linkFullName })">@player.fullName</a>                      
+                        <a data-player-img="@player.profileImg" data-player-name="@player.fullName" data-player-pos="@player.position&nbsp;|&nbsp;@player.teamSlug" data-player-id="@player.accountID" class="player-popover username" href="@Url.Action("index", "player", new { id = player.accountID, name = player.linkFullName })">@player.fullName</a>                      
                     </div>
                    
                     <img class="avatar player-item-avatar lazy-load" data-src="@player.profileImg" alt="@player.fullName">

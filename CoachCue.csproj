@@ -449,7 +449,6 @@
     <Content Include="Views\Shared\_ControlPanelLayout.cshtml" />
     <Content Include="Views\Shared\_GoogleAnalytics.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\_NoticeList.cshtml" />
     <Content Include="Views\Shared\_PlayerItem.cshtml" />
     <Content Include="Views\Shared\_PlayerItemList.cshtml" />
     <Content Include="Views\Shared\_StreamItem.cshtml" />
@@ -471,7 +470,6 @@
     <Content Include="Views\Shared\_PostLayout.cshtml" />
     <Content Include="Views\UserMailer\MentionNotice.cshtml" />
     <Content Include="Views\UserMailer\MatchupVote.cshtml" />
-    <Content Include="Views\SignUp\Index.cshtml" />
     <Content Include="Views\Shared\_RecentlyViewed.cshtml" />
     <Content Include="Views\LeaderBoard\Index.cshtml" />
     <Content Include="Views\Shared\_UserPod.cshtml" />

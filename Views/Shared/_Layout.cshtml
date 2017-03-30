@@ -109,7 +109,7 @@
             <div class="container">
 
                 <div class="navbar-header">                  
-                    <a class="navbar-brand brand logo" href="@Url.Action("Index", "Home")">CoachCue</a>
+                    <a class="navbar-brand brand logo" href="@Url.Action("index", "home")">CoachCue</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="main-navbar-collapse">                 
@@ -117,7 +117,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <ul class="nav navbar-nav navbar-right">
-                            <li title="Notifications" id="user-notifications" class="@Html.ActiveSection("Account")"><span class="badge badge-important notice-number">@Model.UserData.NotificationCount</span><span id="notice-bell" class="glyphicon glyphicon-bell"></span><a class="notices" href='@Url.Action("Notifications", "Account")'></a></li>
+                            <li title="Notifications" id="user-notifications" class="@Html.ActiveSection("Account")"><span class="badge badge-important notice-number">@Model.UserData.NotificationCount</span><span id="notice-bell" class="glyphicon glyphicon-bell"></span><a class="notices" href='@Url.Action("notifications", "account")'></a></li>
 
                             <li class="dropdown you-dropdown @Html.ActiveSection("Account")">
 
@@ -126,12 +126,12 @@
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu profile-nav-links">
-                                    <li><a href='@Url.Action("Profile", "Account")'>Profile</a></li>
+                                    <li><a href='@Url.Action("profile", "account")'>Profile</a></li>
                                     <li class="divider"></li>
-                                    <li><a href='@Url.Action("Notifications", "Account")'>Notifications (@Model.UserData.NotificationCount)</a></li>
+                                    <li><a href='@Url.Action("notifications", "account")'>Notifications (@Model.UserData.NotificationCount)</a></li>
                                     <li class="divider"></li>
-                                    <li><a href='@Url.Action("Settings", "Account")'>Settings</a></li>
-                                    <li><a href='@Url.Action("LogOff", "Account")'>Logout</a></li>
+                                    <li><a href='@Url.Action("settings", "account")'>Settings</a></li>
+                                    <li><a href='@Url.Action("logoff", "account")'>Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -196,13 +196,13 @@
                         <ul class="footer icons">
                             <li><a target="_blank" href="https://twitter.com/coachcue"><img src="@Url.Content("~/assets/img/social/twitter.png")"></a></li>
                             <li><a target="_blank" href="https://www.facebook.com/coachcue"><img src="@Url.Content("~/assets/img/social/facebook.png")"></a></li>
-                            <li><a href="#contact-modal" data-toggle="modal"><img src="@Url.Content("~/assets/img/social/cue.png")"></a></li>
+                            <li><a href="@Url.Action("index", "contactus")"><img src="@Url.Content("~/assets/img/social/cue.png")"></a></li>
                         </ul>
 
                         <ul class="footer links">
                             <li><a target="_blank" href="https://medium.com/&#64;CoachCue">Blog</a>&nbsp;|</li>
-                            <li><a href="@Url.Action("Index", "About")">About</a>&nbsp;|</li>
-                            <li><a href="@Url.Action("Index", "ContactUs")">Contact Us</a>&nbsp;|</li>
+                            <li><a href="@Url.Action("index", "about")">About</a>&nbsp;|</li>
+                            <li><a href="@Url.Action("index", "contactus")">Contact Us</a>&nbsp;|</li>
                             <li class="copyright">©2017 CoachCue LLC</li>
                         </ul>
 
@@ -293,7 +293,7 @@
                         <div class="modal-body">
                             <div class="message-post">
                                 <div class="row">
-                                    <form id="frmRegisterLogin" method="post" action="@Url.Action("CreateAccount", "Account")" class="validate">                                     
+                                    <form id="frmRegisterLogin" method="post" action="@Url.Action("createAccount", "account")" class="validate">                                     
                                         <h3>Join CoachCue</h3>                                      
                                         <div class="form-group">
                                             <input type="text" placeholder="Type your Name" id="regname" name="regname" class="form-control" data-required="true" />
@@ -314,7 +314,7 @@
                                         </div>
                                     </form>
 
-                                    <form id="frmLoginReg" method="post" action="@Url.Action("LogOnAjax", "Account")" style="display: none" class="validate">
+                                    <form id="frmLoginReg" method="post" action="@Url.Action("logonajax", "account")" style="display: none" class="validate">
                                         <h3>CoachCue Login</h3>  
                                         <div id="login-error" style="display:none">
                                             <label class="standout">Email Address or Password is invalid</label>
@@ -556,17 +556,17 @@
                     @if (!User.Identity.IsAuthenticated) {
                         <a role="button" data-register="true" data-backdrop="static" data-keyboard="false" href="#modal-register" data-toggle="modal" data-target="#modal-register"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
                     } else {
-                        <a class="@Html.ActiveSection("Coach")" href="@Url.Action("Index", "Coach", new { name = Model.UserData.Link })"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
+                        <a class="@Html.ActiveSection("Coach")" href="@Url.Action("index", "coach", new { name = Model.UserData.Link })"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
                     }
                 </div>
                 <div class="col-xs-3 text-center">
-                    <a class="@Html.ActiveSection("Search")" href="@Url.Action("Index", "Search")"><i class="glyphicon glyphicon-search"></i><br>Search</a>
+                    <a class="@Html.ActiveSection("Search")" href="@Url.Action("index", "search")"><i class="glyphicon glyphicon-search"></i><br>Search</a>
                 </div>
                 <div class="col-xs-3 text-center">
-                    <a class="@Html.ActiveSection("TopVotedPlayers")" href="@Url.Action("Index", "TopVotedPlayers")"><i class="glyphicon glyphicon-thumbs-up"></i><br>Most Voted</a>
+                    <a class="@Html.ActiveSection("TopVotedPlayers")" href="@Url.Action("index", "topvotedplayers")"><i class="glyphicon glyphicon-thumbs-up"></i><br>Most Voted</a>
                 </div>
                 <div class="col-xs-3 text-center">
-                    <a class="@Html.ActiveSection("Leaderboard")" href='@Url.Action("Index", "Leaderboard")'><i class="glyphicon glyphicon-star"></i><br>Our Experts</a>
+                    <a class="@Html.ActiveSection("Leaderboard")" href='@Url.Action("index", "leaderboard")'><i class="glyphicon glyphicon-star"></i><br>Our Experts</a>
                 </div>
             </div>
         </div>

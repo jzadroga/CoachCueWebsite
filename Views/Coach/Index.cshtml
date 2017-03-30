@@ -10,7 +10,7 @@
 
     <div class="panel panel-default user-panel player-header">
         <div class="panel-heading">
-            <a href="@Url.Action("Index", "Coach", new { name = Model.UserDetail.Link })" class="avatar user-avatar-large height" style="background: url('@Url.Content("~/assets/img/avatar/" + Model.UserDetail.Profile.Image)') 50% 50% no-repeat;"></a>
+            <a href="@Url.Action("index", "coach", new { name = Model.UserDetail.Link })" class="avatar user-avatar-large height" style="background: url('@Url.Content("~/assets/img/avatar/" + Model.UserDetail.Profile.Image)') 50% 50% no-repeat;"></a>
         
             <div class="header-details">
                 <h4 class='username'>
@@ -34,7 +34,7 @@
                         </a>
                     </li>             
                     <li>
-                        <a href="@Url.Action("Matchup", "Coach", new {name = Model.UserDetail.Link })">
+                        <a href="@Url.Action("matchup", "coach", new {name = Model.UserDetail.Link })">
                             Matchups<strong>@Model.UserDetail.Statistics.MatchupCount</strong>
                         </a>
                     </li>

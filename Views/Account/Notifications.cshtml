@@ -26,7 +26,7 @@
                     <tr>
                         <td>@notice.DateCreated.ToShortDateString()</td>
                         <td class="notice-img"><img src="/assets/img/avatar/@notice.UserFrom.Profile.Image" /></td>
-                        <td>@notice.UserFrom.Name <a href="@Url.Action("Index", "Coach", new { name = notice.UserFrom.Link })">@notice.Text</a></td>
+                        <td>@notice.UserFrom.Name <a href="@Url.Action("index", "coach", new { name = notice.UserFrom.Link })">@notice.Text</a></td>
                     </tr>
                     break;
                     case "matchupMessage":

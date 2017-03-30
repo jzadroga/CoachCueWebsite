@@ -11,7 +11,7 @@
             }
             else
             {
-            <a data-account-id='@Model.accountID' class="username" href="@Url.Action("Index", "Coach", new { id = Model.accountID, name = Model.fullName })">@Model.fullName</a>
+            <a data-account-id='@Model.accountID' class="username" href="@Url.Action("index", "coach", new { id = Model.accountID, name = Model.fullName })">@Model.fullName</a>
             }
         </div>     
         @if (Model.accountType == "players") {

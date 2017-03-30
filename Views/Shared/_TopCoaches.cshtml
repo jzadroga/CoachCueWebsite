@@ -10,7 +10,7 @@
             <div class="item clear player-item">
                 <div class="content">
                     <div class="content-header">
-                        <a data-account-id='@coach.Coach.userID' class="username" href="@Url.Action("Index", "Coach", new { id = coach.Coach.userID, name = coach.Coach.fullName })">@coach.Coach.fullName</a>
+                        <a data-account-id='@coach.Coach.userID' class="username" href="@Url.Action("index", "coach", new { id = coach.Coach.userID, name = coach.Coach.fullName })">@coach.Coach.fullName</a>
                     </div>
                     <div class="item-hover-menu">
                         <ul class="top-coach-list">
@@ -31,6 +31,6 @@
                 </div>
             </div>
         }
-        <a style="white-space: nowrap;" class="link" href="@Url.Action("Index", "Leaderboard")">View Full Leaderboard</a>
+        <a style="white-space: nowrap;" class="link" href="@Url.Action("index", "leaderboard")">View Full Leaderboard</a>
     </div>
 </div>
