@@ -20,7 +20,11 @@
     },
     "profileImage": "http://pbs.twimg.com/profile_images/685257518516322304/ihDg0Kny_normal.jpg",
     "profileImageLarge": "http://pbs.twimg.com/profile_images/685257518516322304/ihDg0Kny_bigger.jpg",
-    "link": "nelson-agholor"
+    "link": "nelson-agholor",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
   },
   {
     "id": "1545878a-221c-4574-862f-e25628059adf",
@@ -30,7 +34,7 @@
     "name": "Kenjon Barner",
     "value": "Kenjon Barner",
     "position": "RB",
-    "number": 34,
+    "number": null,
     "isActive": true,
     "twitter": {
       "isActive": true,
@@ -38,12 +42,13 @@
       "profileImage": "http://pbs.twimg.com/profile_images/729378657039343616/qN8qfJcO_normal.jpg"
     },
     "team": {
-      "name": "Philadelphia Eagles",
-      "slug": "phi"
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
     },
     "profileImage": "http://pbs.twimg.com/profile_images/729378657039343616/qN8qfJcO_normal.jpg",
     "profileImageLarge": "http://pbs.twimg.com/profile_images/729378657039343616/qN8qfJcO_bigger.jpg",
-    "link": "kenjon-barner"
+    "link": "kenjon-barner",
+    "beatWriters": []
   },
   {
     "id": "4fb3f7c8-193a-4cb9-807d-99395c5b6cdb",
@@ -66,7 +71,11 @@
     },
     "profileImage": "http://pbs.twimg.com/profile_images/775756519694487553/uykyhTHM_normal.jpg",
     "profileImageLarge": "http://pbs.twimg.com/profile_images/775756519694487553/uykyhTHM_bigger.jpg",
-    "link": "trey-burton"
+    "link": "trey-burton",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
   },
   {
     "id": "34f51575-a29d-4ee4-848d-133afac7034d",
@@ -89,30 +98,11 @@
     },
     "profileImage": "http://pbs.twimg.com/profile_images/710272426974846981/evl1Ovs-_normal.jpg",
     "profileImageLarge": "http://pbs.twimg.com/profile_images/710272426974846981/evl1Ovs-_bigger.jpg",
-    "link": "brent-celek"
-  },
-  {
-    "id": "3e77dd27-9543-4a33-a227-58d7797ef4b4",
-    "firstName": "Chase",
-    "lastName": "Daniel",
-    "shortName": "C. Daniel",
-    "name": "Chase Daniel",
-    "value": "Chase Daniel",
-    "position": "QB",
-    "number": 10,
-    "isActive": true,
-    "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
-    },
-    "team": {
-      "name": "Philadelphia Eagles",
-      "slug": "phi"
-    },
-    "profileImage": "/assets/img/teams/phi.jpg",
-    "profileImageLarge": "/assets/img/teams/phi.jpg",
-    "link": "chase-daniel"
+    "link": "brent-celek",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
   },
   {
     "id": "8f475c4b-b62b-4aea-99c6-21cfc178001d",
@@ -135,7 +125,8 @@
     },
     "profileImage": "http://pbs.twimg.com/profile_images/773043496454328320/zKzgaEQk_normal.jpg",
     "profileImageLarge": "http://pbs.twimg.com/profile_images/773043496454328320/zKzgaEQk_bigger.jpg",
-    "link": "kenneth-dixon"
+    "link": "kenneth-dixon",
+    "beatWriters": []
   },
   {
     "id": "4359cace-7d9f-4101-a383-e1bacd284fb9",
@@ -158,6 +149,1678 @@
     },
     "profileImage": "http://pbs.twimg.com/profile_images/640579883094118400/A0ZZ_ESc_normal.jpg",
     "profileImageLarge": "http://pbs.twimg.com/profile_images/640579883094118400/A0ZZ_ESc_bigger.jpg",
-    "link": "nick-williams"
+    "link": "nick-williams",
+    "beatWriters": []
+  },
+  {
+    "id": "a658b3ab-8aa6-40df-9694-fafcef568438",
+    "firstName": "Rasheed",
+    "lastName": "Bailey",
+    "shortName": "R. Bailey",
+    "name": "Rasheed Bailey",
+    "value": "Rasheed Bailey",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "rasheed-bailey",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "b30de36e-a867-44c9-ab23-382a0dae78e0",
+    "firstName": "Andrew",
+    "lastName": "Bonnet",
+    "shortName": "A. Bonnet",
+    "name": "Andrew Bonnet",
+    "value": "Andrew Bonnet",
+    "position": "FB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "andrew-bonnet",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "f20b66b1-02dd-4093-adf7-b81f16740a89",
+    "firstName": "Anthony",
+    "lastName": "Denham",
+    "shortName": "A. Denham",
+    "name": "Anthony Denham",
+    "value": "Anthony Denham",
+    "position": "TE",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "anthony-denham",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "66d882f1-06d6-429c-b6df-c5d36725a890",
+    "firstName": "Zach",
+    "lastName": "Ertz",
+    "shortName": "Z. Ertz",
+    "name": "Zach Ertz",
+    "value": "Zach Ertz",
+    "position": "TE",
+    "number": 86,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "zach-ertz",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "1a6289ea-543e-4d75-ac4b-5fe40ac0a80e",
+    "firstName": "Nick",
+    "lastName": "Foles",
+    "shortName": "N. Foles",
+    "name": "Nick Foles",
+    "value": "Nick Foles",
+    "position": "QB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "nick-foles",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "855b2a38-bcc4-4c8e-9fcb-960fdd1bc9c2",
+    "firstName": "Dorial",
+    "lastName": "Green-Beckham",
+    "shortName": "D. Green-Beckham",
+    "name": "Dorial Green-Beckham",
+    "value": "Dorial Green-Beckham",
+    "position": "WR",
+    "number": 18,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "dorial-greenbeckham",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "e7a4c0a2-8f81-4611-854d-b1afd6a5ad86",
+    "firstName": "Alshon",
+    "lastName": "Jeffery",
+    "shortName": "A. Jeffery",
+    "name": "Alshon Jeffery",
+    "value": "Alshon Jeffery",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "alshon-jeffery",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "73250f05-af85-4eac-b4a1-880a494165fc",
+    "firstName": "Marcus",
+    "lastName": "Johnson",
+    "shortName": "M. Johnson",
+    "name": "Marcus Johnson",
+    "value": "Marcus Johnson",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "marcus-johnson",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "a50231bd-0229-40b8-9f3c-acb054269710",
+    "firstName": "Byron",
+    "lastName": "Marshall",
+    "shortName": "B. Marshall",
+    "name": "Byron Marshall",
+    "value": "Byron Marshall",
+    "position": "WR",
+    "number": 39,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "byron-marshall",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "e2801a76-9063-4d37-b97f-04173a3bd7ae",
+    "firstName": "Ryan",
+    "lastName": "Mathews",
+    "shortName": "R. Mathews",
+    "name": "Ryan Mathews",
+    "value": "Ryan Mathews",
+    "position": "RB",
+    "number": 24,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "ryan-mathews",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "97d1da42-e266-4929-90f3-eeb6b92d6025",
+    "firstName": "Jordan",
+    "lastName": "Matthews",
+    "shortName": "J. Matthews",
+    "name": "Jordan Matthews",
+    "value": "Jordan Matthews",
+    "position": "WR",
+    "number": 81,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "jordan-matthews",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "5b90e6f8-21a6-4c47-a2ca-cadc8518f496",
+    "firstName": "Wendell",
+    "lastName": "Smallwood",
+    "shortName": "W. Smallwood",
+    "name": "Wendell Smallwood",
+    "value": "Wendell Smallwood",
+    "position": "RB",
+    "number": 28,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "wendell-smallwood",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "a317a7b2-562a-4d90-9fbb-5fdcc6203cfe",
+    "firstName": "Torrey",
+    "lastName": "Smith",
+    "shortName": "T. Smith",
+    "name": "Torrey Smith",
+    "value": "Torrey Smith",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "torrey-smith",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "92f58314-c9c1-4a08-bd84-bfb251806de1",
+    "firstName": "Darren",
+    "lastName": "Sproles",
+    "shortName": "D. Sproles",
+    "name": "Darren Sproles",
+    "value": "Darren Sproles",
+    "position": "RB",
+    "number": 43,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "darren-sproles",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "cb66c1de-1bf9-4269-a2ff-0503bfa37acb",
+    "firstName": "Caleb",
+    "lastName": "Sturgis",
+    "shortName": "C. Sturgis",
+    "name": "Caleb Sturgis",
+    "value": "Caleb Sturgis",
+    "position": "K",
+    "number": 6,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "caleb-sturgis",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "bda3399d-ec46-4d22-81e0-7c50e2f21fef",
+    "firstName": "Bryce",
+    "lastName": "Treggs",
+    "shortName": "B. Treggs",
+    "name": "Bryce Treggs",
+    "value": "Bryce Treggs",
+    "position": "WR",
+    "number": 16,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "bryce-treggs",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "003bec4b-4582-4714-92d0-af8c8fab78a6",
+    "firstName": "Paul",
+    "lastName": "Turner",
+    "shortName": "P. Turner",
+    "name": "Paul Turner",
+    "value": "Paul Turner",
+    "position": "WR",
+    "number": 19,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "paul-turner",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "a26dc5e7-ba4d-4562-9a07-124a863ebc38",
+    "firstName": "David",
+    "lastName": "Watford",
+    "shortName": "D. Watford",
+    "name": "David Watford",
+    "value": "David Watford",
+    "position": "WR",
+    "number": 9,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "david-watford",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "aec3025c-1f7a-4bbc-a67c-316175097426",
+    "firstName": "Terrell",
+    "lastName": "Watson",
+    "shortName": "T. Watson",
+    "name": "Terrell Watson",
+    "value": "Terrell Watson",
+    "position": "RB",
+    "number": 35,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "terrell-watson",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "43aba08f-f8db-4a4b-8fa3-af683b35421b",
+    "firstName": "Carson",
+    "lastName": "Wentz",
+    "shortName": "C. Wentz",
+    "name": "Carson Wentz",
+    "value": "Carson Wentz",
+    "position": "QB",
+    "number": 11,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "carson-wentz",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "c543f4e8-c1d5-4d96-8e2b-6aec7b24311a",
+    "firstName": "Dom",
+    "lastName": "Williams",
+    "shortName": "D. Williams",
+    "name": "Dom Williams",
+    "value": "Dom Williams",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Philadelphia Eagles",
+      "slug": "phi"
+    },
+    "profileImage": "/assets/img/teams/phi.jpg",
+    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "link": "dom-williams",
+    "beatWriters": [
+      "howardeskin",
+      "Jeff_McLane"
+    ]
+  },
+  {
+    "id": "2dc1b2ab-e1cc-4e8e-8c9c-c2bdf46b284e",
+    "firstName": "Drew",
+    "lastName": "Brees",
+    "shortName": "D. Brees",
+    "name": "Drew Brees",
+    "value": "Drew Brees",
+    "position": "QB",
+    "number": 9,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "drew-brees",
+    "beatWriters": []
+  },
+  {
+    "id": "08389c89-48e4-4b62-b413-08ad2ade734c",
+    "firstName": "Travaris",
+    "lastName": "Cadet",
+    "shortName": "T. Cadet",
+    "name": "Travaris Cadet",
+    "value": "Travaris Cadet",
+    "position": "RB",
+    "number": 38,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "travaris-cadet",
+    "beatWriters": []
+  },
+  {
+    "id": "56a88414-f4ad-470e-868c-95c724d13a46",
+    "firstName": "Brandon",
+    "lastName": "Coleman",
+    "shortName": "B. Coleman",
+    "name": "Brandon Coleman",
+    "value": "Brandon Coleman",
+    "position": "WR",
+    "number": 16,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "brandon-coleman",
+    "beatWriters": []
+  },
+  {
+    "id": "735d37c7-1823-4ff7-be63-d895c6a0b77a",
+    "firstName": "Coby",
+    "lastName": "Fleener",
+    "shortName": "C. Fleener",
+    "name": "Coby Fleener",
+    "value": "Coby Fleener",
+    "position": "TE",
+    "number": 82,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "coby-fleener",
+    "beatWriters": []
+  },
+  {
+    "id": "66939e47-02df-43a8-8be6-57fcc4258c22",
+    "firstName": "Corey",
+    "lastName": "Fuller",
+    "shortName": "C. Fuller",
+    "name": "Corey Fuller",
+    "value": "Corey Fuller",
+    "position": "WR",
+    "number": 11,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "corey-fuller",
+    "beatWriters": []
+  },
+  {
+    "id": "ef66fd78-b4b8-4005-8ffd-5c420dce42b6",
+    "firstName": "Ted",
+    "lastName": "Ginn",
+    "shortName": "T. Ginn",
+    "name": "Ted Ginn",
+    "value": "Ted Ginn",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "ted-ginn",
+    "beatWriters": []
+  },
+  {
+    "id": "75bc601a-a602-45da-8661-842b58ee0258",
+    "firstName": "Garrett",
+    "lastName": "Grayson",
+    "shortName": "G. Grayson",
+    "name": "Garrett Grayson",
+    "value": "Garrett Grayson",
+    "position": "QB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "garrett-grayson",
+    "beatWriters": []
+  },
+  {
+    "id": "6959fc47-6186-4be7-a65a-7bdcaf4a2f5d",
+    "firstName": "Garrett",
+    "lastName": "Griffin",
+    "shortName": "G. Griffin",
+    "name": "Garrett Griffin",
+    "value": "Garrett Griffin",
+    "position": "TE",
+    "number": 45,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "garrett-griffin",
+    "beatWriters": []
+  },
+  {
+    "id": "d73dc155-a32d-458e-8137-5bbc9747843e",
+    "firstName": "Josh",
+    "lastName": "Hill",
+    "shortName": "J. Hill",
+    "name": "Josh Hill",
+    "value": "Josh Hill",
+    "position": "TE",
+    "number": 89,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "josh-hill",
+    "beatWriters": []
+  },
+  {
+    "id": "fa33db00-077a-4b5c-b047-39703ffe7118",
+    "firstName": "Michael",
+    "lastName": "Hoomanawanui",
+    "shortName": "M. Hoomanawanui",
+    "name": "Michael Hoomanawanui",
+    "value": "Michael Hoomanawanui",
+    "position": "TE",
+    "number": 84,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "michael-hoomanawanui",
+    "beatWriters": []
+  },
+  {
+    "id": "da1756c1-8391-4c0a-adfb-1e705be65f6a",
+    "firstName": "Mark",
+    "lastName": "Ingram",
+    "shortName": "M. Ingram",
+    "name": "Mark Ingram",
+    "value": "Mark Ingram",
+    "position": "RB",
+    "number": 22,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "mark-ingram",
+    "beatWriters": []
+  },
+  {
+    "id": "e135a38f-88df-470a-8629-87981db9d966",
+    "firstName": "Jake",
+    "lastName": "Lampman",
+    "shortName": "J. Lampman",
+    "name": "Jake Lampman",
+    "value": "Jake Lampman",
+    "position": "WR",
+    "number": 19,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "jake-lampman",
+    "beatWriters": []
+  },
+  {
+    "id": "7c34998b-809b-4969-a35e-3c0b69c9def8",
+    "firstName": "Daniel",
+    "lastName": "Lasco",
+    "shortName": "D. Lasco",
+    "name": "Daniel Lasco",
+    "value": "Daniel Lasco",
+    "position": "RB",
+    "number": 36,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "daniel-lasco",
+    "beatWriters": []
+  },
+  {
+    "id": "8743be7d-dc10-4b44-a1ab-3931eef27a32",
+    "firstName": "Rashad",
+    "lastName": "Lawrence",
+    "shortName": "R. Lawrence",
+    "name": "Rashad Lawrence",
+    "value": "Rashad Lawrence",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "rashad-lawrence",
+    "beatWriters": []
+  },
+  {
+    "id": "a7677bc0-46fd-41a5-852b-caddac48d336",
+    "firstName": "Tommylee",
+    "lastName": "Lewis",
+    "shortName": "T. Lewis",
+    "name": "Tommylee Lewis",
+    "value": "Tommylee Lewis",
+    "position": "WR",
+    "number": 87,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "tommylee-lewis",
+    "beatWriters": []
+  },
+  {
+    "id": "348a1a33-ffe2-48e8-8c8e-49210cf298a1",
+    "firstName": "Wil",
+    "lastName": "Lutz",
+    "shortName": "W. Lutz",
+    "name": "Wil Lutz",
+    "value": "Wil Lutz",
+    "position": "K",
+    "number": 3,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "wil-lutz",
+    "beatWriters": []
+  },
+  {
+    "id": "c495909e-2c7d-45e9-b698-615014cae210",
+    "firstName": "Luke",
+    "lastName": "McCown",
+    "shortName": "L. McCown",
+    "name": "Luke McCown",
+    "value": "Luke McCown",
+    "position": "QB",
+    "number": 7,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "luke-mccown",
+    "beatWriters": []
+  },
+  {
+    "id": "000c5fa6-a04a-49a9-a882-de8cd29e6a0d",
+    "firstName": "Marcus",
+    "lastName": "Murphy",
+    "shortName": "M. Murphy",
+    "name": "Marcus Murphy",
+    "value": "Marcus Murphy",
+    "position": "RB",
+    "number": 23,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "marcus-murphy",
+    "beatWriters": []
+  },
+  {
+    "id": "a772f381-2f20-4dc7-ae94-89b7bae00beb",
+    "firstName": "John",
+    "lastName": "Phillips",
+    "shortName": "J. Phillips",
+    "name": "John Phillips",
+    "value": "John Phillips",
+    "position": "TE",
+    "number": 86,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "john-phillips",
+    "beatWriters": []
+  },
+  {
+    "id": "c2ded312-0165-465e-91f8-209272cc1c04",
+    "firstName": "Willie",
+    "lastName": "Snead",
+    "shortName": "W. Snead",
+    "name": "Willie Snead",
+    "value": "Willie Snead",
+    "position": "WR",
+    "number": 83,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "willie-snead",
+    "beatWriters": []
+  },
+  {
+    "id": "6c82d9fb-736c-41d7-bfa4-4027a28142d7",
+    "firstName": "Jake",
+    "lastName": "Stoneburner",
+    "shortName": "J. Stoneburner",
+    "name": "Jake Stoneburner",
+    "value": "Jake Stoneburner",
+    "position": "TE",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "jake-stoneburner",
+    "beatWriters": []
+  },
+  {
+    "id": "0d874e53-947e-47ac-870d-1490a3f025cf",
+    "firstName": "Michael",
+    "lastName": "Thomas",
+    "shortName": "M. Thomas",
+    "name": "Michael Thomas",
+    "value": "Michael Thomas",
+    "position": "WR",
+    "number": 13,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "michael-thomas",
+    "beatWriters": []
+  },
+  {
+    "id": "1c07acb8-f657-4cee-a7dd-3a9faa146a31",
+    "firstName": "Jordan",
+    "lastName": "Williams",
+    "shortName": "J. Williams",
+    "name": "Jordan Williams",
+    "value": "Jordan Williams",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "New Orleans Saints",
+      "slug": "no"
+    },
+    "profileImage": "/assets/img/teams/no.jpg",
+    "profileImageLarge": "/assets/img/teams/no.jpg",
+    "link": "jordan-williams",
+    "beatWriters": []
+  },
+  {
+    "id": "a25cbc40-28f2-47ef-b45c-c2d13f590a62",
+    "firstName": "Keenan",
+    "lastName": "Allen",
+    "shortName": "K. Allen",
+    "name": "Keenan Allen",
+    "value": "Keenan Allen",
+    "position": "WR",
+    "number": 13,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "keenan-allen",
+    "beatWriters": []
+  },
+  {
+    "id": "8e1daec9-8116-429e-a21c-41a8d6b17067",
+    "firstName": "Travis",
+    "lastName": "Benjamin",
+    "shortName": "T. Benjamin",
+    "name": "Travis Benjamin",
+    "value": "Travis Benjamin",
+    "position": "WR",
+    "number": 12,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "travis-benjamin",
+    "beatWriters": []
+  },
+  {
+    "id": "7e124991-40e5-4030-b2cc-66764ca9bdeb",
+    "firstName": "Mike",
+    "lastName": "Bercovici",
+    "shortName": "M. Bercovici",
+    "name": "Mike Bercovici",
+    "value": "Mike Bercovici",
+    "position": "QB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "mike-bercovici",
+    "beatWriters": []
+  },
+  {
+    "id": "a68a72c3-d487-44f9-8331-3a78aa8cdfae",
+    "firstName": "Da'Ron",
+    "lastName": "Brown",
+    "shortName": "D. Brown",
+    "name": "Da'Ron Brown",
+    "value": "Da'Ron Brown",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "daron-brown",
+    "beatWriters": []
+  },
+  {
+    "id": "24967dd5-35f9-45cd-9f58-ca352117fd92",
+    "firstName": "Isaiah",
+    "lastName": "Burse",
+    "shortName": "I. Burse",
+    "name": "Isaiah Burse",
+    "value": "Isaiah Burse",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "isaiah-burse",
+    "beatWriters": []
+  },
+  {
+    "id": "5d159a47-b902-4a99-84b4-3c1291865f6b",
+    "firstName": "Kellen",
+    "lastName": "Clemens",
+    "shortName": "K. Clemens",
+    "name": "Kellen Clemens",
+    "value": "Kellen Clemens",
+    "position": "QB",
+    "number": 10,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "kellen-clemens",
+    "beatWriters": []
+  },
+  {
+    "id": "2276af74-8130-41f4-a5be-31c04b484f9a",
+    "firstName": "Asante",
+    "lastName": "Cleveland",
+    "shortName": "A. Cleveland",
+    "name": "Asante Cleveland",
+    "value": "Asante Cleveland",
+    "position": "TE",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "asante-cleveland",
+    "beatWriters": []
+  },
+  {
+    "id": "a3a1e209-5891-4992-a14c-d4a5d321d42a",
+    "firstName": "Geremy",
+    "lastName": "Davis",
+    "shortName": "G. Davis",
+    "name": "Geremy Davis",
+    "value": "Geremy Davis",
+    "position": "WR",
+    "number": 81,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "geremy-davis",
+    "beatWriters": []
+  },
+  {
+    "id": "ca14ceae-bd0f-4cad-9aef-a0da201fa1ce",
+    "firstName": "Kenneth",
+    "lastName": "Farrow",
+    "shortName": "K. Farrow",
+    "name": "Kenneth Farrow",
+    "value": "Kenneth Farrow",
+    "position": "RB",
+    "number": 27,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "kenneth-farrow",
+    "beatWriters": []
+  },
+  {
+    "id": "8363b2dd-d94c-49bc-a41a-7319c9314091",
+    "firstName": "Antonio",
+    "lastName": "Gates",
+    "shortName": "A. Gates",
+    "name": "Antonio Gates",
+    "value": "Antonio Gates",
+    "position": "TE",
+    "number": 85,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "antonio-gates",
+    "beatWriters": []
+  },
+  {
+    "id": "1ef92909-5ab8-4a50-bfb2-56022934e5d1",
+    "firstName": "Melvin",
+    "lastName": "Gordon",
+    "shortName": "M. Gordon",
+    "name": "Melvin Gordon",
+    "value": "Melvin Gordon",
+    "position": "RB",
+    "number": 28,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "melvin-gordon",
+    "beatWriters": []
+  },
+  {
+    "id": "6cd7cb84-5c43-4439-8328-80e8441c468b",
+    "firstName": "Hunter",
+    "lastName": "Henry",
+    "shortName": "H. Henry",
+    "name": "Hunter Henry",
+    "value": "Hunter Henry",
+    "position": "TE",
+    "number": 86,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "hunter-henry",
+    "beatWriters": []
+  },
+  {
+    "id": "d81a73a2-ab39-42cd-a28d-c9330058036b",
+    "firstName": "Javontee",
+    "lastName": "Herndon",
+    "shortName": "J. Herndon",
+    "name": "Javontee Herndon",
+    "value": "Javontee Herndon",
+    "position": "WR",
+    "number": 81,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "javontee-herndon",
+    "beatWriters": []
+  },
+  {
+    "id": "a64ad1dc-4e8c-47d0-b0dc-15cda7d455bb",
+    "firstName": "Dontrelle",
+    "lastName": "Inman",
+    "shortName": "D. Inman",
+    "name": "Dontrelle Inman",
+    "value": "Dontrelle Inman",
+    "position": "WR",
+    "number": 15,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "dontrelle-inman",
+    "beatWriters": []
+  },
+  {
+    "id": "02bd6465-de20-4331-a9f5-f297371941d8",
+    "firstName": "Jamaal",
+    "lastName": "Jones",
+    "shortName": "J. Jones",
+    "name": "Jamaal Jones",
+    "value": "Jamaal Jones",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "jamaal-jones",
+    "beatWriters": []
+  },
+  {
+    "id": "300cd745-a04f-4b15-b440-9d34d5f3630a",
+    "firstName": "Josh",
+    "lastName": "Lambo",
+    "shortName": "J. Lambo",
+    "name": "Josh Lambo",
+    "value": "Josh Lambo",
+    "position": "K",
+    "number": 2,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "josh-lambo",
+    "beatWriters": []
+  },
+  {
+    "id": "42c1b744-a2d3-49d0-ace3-537ae05327f5",
+    "firstName": "Jake",
+    "lastName": "McGee",
+    "shortName": "J. McGee",
+    "name": "Jake McGee",
+    "value": "Jake McGee",
+    "position": "TE",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "jake-mcgee",
+    "beatWriters": []
+  },
+  {
+    "id": "b283c0c2-3405-4811-b522-eefb0abb2162",
+    "firstName": "Sean",
+    "lastName": "McGrath",
+    "shortName": "S. McGrath",
+    "name": "Sean McGrath",
+    "value": "Sean McGrath",
+    "position": "TE",
+    "number": 84,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "sean-mcgrath",
+    "beatWriters": []
+  },
+  {
+    "id": "a52ccaab-6751-4013-82b8-540840162eb8",
+    "firstName": "Branden",
+    "lastName": "Oliver",
+    "shortName": "B. Oliver",
+    "name": "Branden Oliver",
+    "value": "Branden Oliver",
+    "position": "RB",
+    "number": 43,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "branden-oliver",
+    "beatWriters": []
+  },
+  {
+    "id": "27a7ad9b-27a0-442f-8104-912b665eb7ef",
+    "firstName": "Philip",
+    "lastName": "Rivers",
+    "shortName": "P. Rivers",
+    "name": "Philip Rivers",
+    "value": "Philip Rivers",
+    "position": "QB",
+    "number": 17,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "philip-rivers",
+    "beatWriters": []
+  },
+  {
+    "id": "461ac50c-05dc-45a0-b5b9-0b0ee3f8674b",
+    "firstName": "Derek",
+    "lastName": "Watt",
+    "shortName": "D. Watt",
+    "name": "Derek Watt",
+    "value": "Derek Watt",
+    "position": "FB",
+    "number": 34,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "derek-watt",
+    "beatWriters": []
+  },
+  {
+    "id": "8310a79f-7709-426f-b66b-5d9eeea3abc6",
+    "firstName": "Andre",
+    "lastName": "Williams",
+    "shortName": "A. Williams",
+    "name": "Andre Williams",
+    "value": "Andre Williams",
+    "position": "RB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "andre-williams",
+    "beatWriters": []
+  },
+  {
+    "id": "b91db4e8-c54b-42d9-a449-fa001c14778b",
+    "firstName": "Tyrell",
+    "lastName": "Williams",
+    "shortName": "T. Williams",
+    "name": "Tyrell Williams",
+    "value": "Tyrell Williams",
+    "position": "WR",
+    "number": 16,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Los Angeles Chargers",
+      "slug": "lac"
+    },
+    "profileImage": "/assets/img/teams/lac.jpg",
+    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "link": "tyrell-williams",
+    "beatWriters": []
   }
 ]

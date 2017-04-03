@@ -66,13 +66,13 @@ namespace CoachCue.Controllers
             return RedirectToAction("Matchups");
         }
 
-        public ActionResult JournalistAccounts([DefaultValue(0)]int team)
+        public async Task<ActionResult> JournalistAccounts([DefaultValue("PHI")]string slug)
         {
             TeamJournalistModel teamJournalist = new TeamJournalistModel();
             
-            teamJournalist.SelectedTeamID = (team == 0) ? nflteam.List()[0].teamID : team;
-            teamJournalist.Teams = nflteam.List();
-            teamJournalist.Journalists = twitteraccount.ListJournalistsByTeam(teamJournalist.SelectedTeamID);
+            teamJournalist.SelectedTeam = slug;
+            teamJournalist.Teams = Team.GetList();
+            teamJournalist.Journalists = await PlayerService.ListJournalistsByTeam(slug);
             
             return View(teamJournalist);
         }
@@ -121,21 +121,20 @@ namespace CoachCue.Controllers
         }
 
         //deletes a journalist account
-        public ActionResult DeleteTwitterAccount(int id, int teamID)
+        public  async Task<ActionResult> DeleteTwitterAccount(string account, string slug)
         {
-            nflteam.DeleteTwitterAccount(id);
-            twitteraccount.Delete(id);
-            return RedirectToAction("JournalistAccounts", new { team = teamID });
+            await PlayerService.DeleteBeatWriter(slug, account);
+
+            return RedirectToAction("JournalistAccounts", new { slug = slug });
         }
 
         [HttpPost]
-        public ActionResult AddTwitterAccount(int teamID, string name, string username)
+        public async Task<ActionResult> AddTwitterAccount(string slug, string username)
         {
             //adds a journalist twitter account to a team
-            twitteraccount account = twitteraccount.Save(null, string.Empty, username, name, string.Empty, twitteraccounttype.GetTypeID("Journalist"), "Active", string.Empty);
-            nflteam.AddTwitterAccount(account.twitterAccountID, teamID);
+            await PlayerService.AddBeatWriter(slug, username);
 
-            return RedirectToAction("JournalistAccounts", new { team = teamID });
+            return RedirectToAction("JournalistAccounts", new { slug = slug });
         }
 
         public ActionResult PlayerDelete(int id, int teamID)

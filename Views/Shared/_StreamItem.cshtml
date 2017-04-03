@@ -35,9 +35,22 @@
                 
                 <div class="content-header">
                     <a title="first tooltip" class="username" target="_blank" href="http://twitter.com/@Model.UserName">@Model.FullName</a>
+                    <span class="time">@Model.TimeAgo</span>
                 </div>
                 <span>@Html.Raw(Model.Tweet.Message)</span>
-                <span class ="time">@Model.TimeAgo</span>
+                @if (Model.Tweet.PlayerMentions.Count() > 0)
+                {
+                    <div class="player-tags">
+                        @foreach (Player player in Model.Tweet.PlayerMentions)
+                        {
+                            <a class="player-tag-container player-popover" href="@Url.Action("index", "player", new { team = player.Team.Slug.ToLower(), name = player.Link })">
+                                <span>
+                                    <img src="@Url.Content("~/assets/img/Player_Icon_1-orange.png")" />@player.ShortName @player.Position | @player.Team.Slug
+                                </span>
+                            </a>
+                        }
+                    </div>
+                }
             </div>
         </div>
         break;

@@ -173,6 +173,37 @@ namespace CoachCue.Service
             await DocumentDBRepository<Player>.UpdateItemAsync(player.Id, player, "Players");
         }
 
+        public static async Task<List<string>> ListJournalistsByTeam(string teamSlug)
+        {
+            var players = await DocumentDBRepository<Player>.GetItemsAsync(d => d.Active == true && d.Team.Slug == teamSlug, "Players");
+
+            return players.First().BeatWriters;
+        }
+
+        public static async Task<bool> DeleteBeatWriter(string teamSlug, string username)
+        {
+            var players = await DocumentDBRepository<Player>.GetItemsAsync(d => d.Active == true && d.Team.Slug == teamSlug, "Players");
+            foreach (var player in players)
+            {
+                player.BeatWriters.Remove(username);
+                await DocumentDBRepository<Player>.UpdateItemAsync(player.Id, player, "Players");
+            }
+
+            return true;
+        }
+
+        public static async Task<bool> AddBeatWriter(string teamSlug, string username)
+        {
+            var players = await DocumentDBRepository<Player>.GetItemsAsync(d => d.Active == true && d.Team.Slug == teamSlug, "Players");
+            foreach( var player in players )
+            {
+                player.BeatWriters.Add(username);
+                await DocumentDBRepository<Player>.UpdateItemAsync(player.Id, player, "Players");
+            }
+
+            return true;
+        }
+
         public static async Task<IEnumerable<Player>> GetByTeam(string teamSlug)
         {
             return await DocumentDBRepository<Player>.GetItemsAsync(d => d.Active == true && d.Team.Slug == teamSlug, "Players");

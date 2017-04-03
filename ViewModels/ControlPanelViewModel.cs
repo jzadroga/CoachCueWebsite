@@ -21,9 +21,9 @@ namespace CoachCue.ViewModels
 
     public class TeamJournalistModel
     {
-        public List<nflteam> Teams { get; set; }
-        public int SelectedTeamID { get; set; }
-        public List<twitteraccount> Journalists { get; set; }
+        public List<Team> Teams { get; set; }
+        public string SelectedTeam { get; set; }
+        public List<string> Journalists { get; set; }
     }
 
     public class TeamRosterModel

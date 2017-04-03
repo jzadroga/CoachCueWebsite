@@ -115,10 +115,9 @@ namespace CoachCue.Model
                 else
                 {
                     string searchFilters = await getSearchFilters(player);
-                    string query = (string.IsNullOrEmpty(searchFilters)) ? player.LastName + " AND " : player.LastName + searchFilters + " AND ";
+                    string cleanName = player.LastName.Replace(".", "").Replace("-", " ").Replace("'", " ");
+                    string query = (string.IsNullOrEmpty(searchFilters)) ? cleanName + " AND " : cleanName + searchFilters + " AND ";
 
-                    //gotta fix this
-                    //List<TwitterUser> userNames = twitteraccount.GetUserNamesByTeam(1);
                     if (player.BeatWriters.Count > 0)
                     {
                         for (int i = 0; i < player.BeatWriters.Count; i++)
@@ -132,14 +131,17 @@ namespace CoachCue.Model
                                            search.Query == query
                                            select search;
 
-                        searchResults = queryResults.Take(10).ToList();
+                        searchResults = queryResults.Take(50).ToList();
 
 
                         HttpContext.Current.Cache.Insert(cacheID, searchResults, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(0, 5, 0));
                     }
                 }
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+            }
 
             return searchResults;
         }
@@ -454,8 +456,14 @@ namespace CoachCue.Model
 
     public class TweetContent
     {
+        public TweetContent()
+        {
+            this.PlayerMentions = new List<Player>();
+        }
+
         public string ID { get; set; }
         public string Message { get; set; }
+        public List<Player> PlayerMentions { get; set; }
     }
 
     //classes for converting json to obj

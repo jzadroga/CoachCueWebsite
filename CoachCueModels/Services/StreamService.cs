@@ -64,6 +64,8 @@ namespace CoachCue.Service
         public static async Task<List<Service.StreamContent>> GetPlayerTwitterStream(Player player)
         {
             List<Service.StreamContent> stream = new List<Service.StreamContent>();
+            List<Player> playerMentions = new List<Player>();
+            playerMentions.Add(player);
 
             try
             {
@@ -82,7 +84,10 @@ namespace CoachCue.Service
                         DateCreated = tweet.CreatedAt,
                         TimeAgo = twitter.GetRelativeTime(tweet.CreatedAt, false),
                         PlayerID = player.Id,
-                        Tweet = new TweetContent { ID = tweet.UserID.ToString(), Message = CoachCue.Model.TwitterExtensions.TextAsHtml(tweet.Text) }
+                        Tweet = new TweetContent { ID = tweet.UserID.ToString(),
+                            Message = CoachCue.Model.TwitterExtensions.TextAsHtml(tweet.Text),
+                            PlayerMentions = playerMentions
+                        }
                     }).ToList();
                 }
             }
