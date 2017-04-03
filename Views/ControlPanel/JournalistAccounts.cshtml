@@ -15,7 +15,7 @@
          <div>
             <form method="post" action="@Url.Action("JournalistAccounts", "ControlPanel")" id="frmRoster">
                 <span>Select Team: </span>
-                <select id="team" name="team">
+                <select id="team" name="slug">
                     @foreach (var team in Model.Teams.OrderBy(tm => tm.Name))
                     {
                         <option @if(Model.SelectedTeam == team.Slug){ <text>selected="selected"</text> } value="@team.Slug">@team.Name</option>

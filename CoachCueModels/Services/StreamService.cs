@@ -61,9 +61,34 @@ namespace CoachCue.Service
             return stream;
         }
 
-        public static async Task<List<Service.StreamContent>> GetPlayerTwitterStream(Player player)
+        public static async Task<List<StreamContent>> GetTrendingNews()
         {
-            List<Service.StreamContent> stream = new List<Service.StreamContent>();
+            List<StreamContent> stream = new List<Service.StreamContent>();
+
+            try
+            {
+                string cacheID = "trendingPlayerNews";
+                if (HttpContext.Current.Cache[cacheID] != null)
+                    stream = (List<StreamContent>)HttpContext.Current.Cache[cacheID];
+                else
+                {
+                    var trendingPlayers = await GetTrendingStream();
+                    foreach (var trendingPlayer in trendingPlayers.Take(15))
+                    {
+                        stream.AddRange(await GetPlayerTwitterStream(trendingPlayer));
+                    }
+
+                    HttpContext.Current.Cache.Insert(cacheID, stream, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(0, 8, 0));
+                }
+            }
+            catch (Exception) { }
+
+            return stream.OrderByDescending( st => st.DateCreated ).ToList();
+        }
+
+        public static async Task<List<StreamContent>> GetPlayerTwitterStream(Player player)
+        {
+            List<StreamContent> stream = new List<StreamContent>();
             List<Player> playerMentions = new List<Player>();
             playerMentions.Add(player);
 
@@ -71,7 +96,7 @@ namespace CoachCue.Service
             {
                 //get all the tweets
                 List<Search> playerTweets = await twitter.SearchPlayer(player, true);
-                stream = new List<Service.StreamContent>();
+                stream = new List<StreamContent>();
                 if (playerTweets.Count() > 0)
                 {
                     stream = playerTweets.Single().Statuses.Select(tweet => new Service.StreamContent

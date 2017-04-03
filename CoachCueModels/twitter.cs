@@ -118,6 +118,9 @@ namespace CoachCue.Model
                     string cleanName = player.LastName.Replace(".", "").Replace("-", " ").Replace("'", " ");
                     string query = (string.IsNullOrEmpty(searchFilters)) ? cleanName + " AND " : cleanName + searchFilters + " AND ";
 
+                    //always include the rotoworld fantasy football account
+                    player.BeatWriters.Add("Rotoworld_FB");
+
                     if (player.BeatWriters.Count > 0)
                     {
                         for (int i = 0; i < player.BeatWriters.Count; i++)

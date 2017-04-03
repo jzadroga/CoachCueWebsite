@@ -162,7 +162,11 @@ namespace CoachCue.Controllers
         {
             var userData = (User.Identity.IsAuthenticated) ? await CoachCueUserData.GetUserData(User.Identity.Name) : null;
 
-            List<StreamContent> streamContent = (string.IsNullOrEmpty(pos)) ? await StreamService.GetHomeStream(userData) : StreamService.GetPositionStream(userData, pos);
+            List<StreamContent> streamContent = new List<StreamContent>();
+            if (string.IsNullOrEmpty(pos))
+                streamContent = await StreamService.GetHomeStream(userData);
+            else
+                streamContent = (pos == "NEWS") ? await StreamService.GetTrendingNews() : StreamService.GetPositionStream(userData, pos);                             
       
             string streamData = this.PartialViewToString("_StreamItemList", streamContent);
                         

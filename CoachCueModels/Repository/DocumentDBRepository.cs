@@ -127,10 +127,21 @@
 
         public static IEnumerable<Matchup> GetPositionMatchups(string position)
         {
-            var matchups = client.CreateDocumentQuery<Matchup>(UriFactory.CreateDocumentCollectionUri(DatabaseId, "Matchups"))
-                    .SelectMany(s => s.Players.Where(c => c.Position == position).Select(c => s));
-
-            return matchups;
+            if (position == "WR")
+            {
+                return client.CreateDocumentQuery<Matchup>(UriFactory.CreateDocumentCollectionUri(DatabaseId, "Matchups"))
+                        .SelectMany(s => s.Players.Where(c => c.Position == position || c.Position == "TE").Select(c => s));
+            }
+            else if (position == "DEF")
+            {
+                return client.CreateDocumentQuery<Matchup>(UriFactory.CreateDocumentCollectionUri(DatabaseId, "Matchups"))
+                        .SelectMany(s => s.Players.Where(c => c.Position == position || c.Position == "K").Select(c => s));
+            }
+            else
+            {
+               return client.CreateDocumentQuery<Matchup>(UriFactory.CreateDocumentCollectionUri(DatabaseId, "Matchups"))
+                        .SelectMany(s => s.Players.Where(c => c.Position == position).Select(c => s));
+            }
         }
 
         #endregion
