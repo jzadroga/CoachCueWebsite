@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CoachCue.Model;
+using CoachCue.Service;
 
 namespace CoachCue.Utility
 {
@@ -99,8 +100,7 @@ namespace CoachCue.Utility
 
             if (HttpContext.Current.User.Identity.IsAuthenticated)
             {
-                user userItem = user.GetByEmail(HttpContext.Current.User.Identity.Name);
-                if( userItem.isAdmin )
+                if(HttpContext.Current.User.Identity.Name == "jason.zadroga@gmail.com")            
                     auth = true;
             }
 

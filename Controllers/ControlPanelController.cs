@@ -13,6 +13,7 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using CoachCue.Service;
+using CoachCue.Models;
 
 namespace CoachCue.Controllers
 {
@@ -77,14 +78,13 @@ namespace CoachCue.Controllers
         }
 
         //main action to update players and their twitter information
-        public ActionResult TeamRoster([DefaultValue(0)]int team)
+        public async Task<ActionResult> TeamRoster([DefaultValue("PHI")]string slug)
         {
             TeamRosterModel roster = new TeamRosterModel();
 
-            int teamID = (team == 0) ? nflteam.List()[0].teamID : team;
-            roster.Teams = nflteam.List();
-            roster.SelectedTeamID = teamID;
-            roster.Players = nflplayer.GetRoster(teamID, true);
+            roster.Teams = Team.GetList();
+            roster.SelectedTeam = slug;
+            roster.Players = await PlayerService.GetByTeam(slug);
 
             return View(roster);
         }
@@ -100,10 +100,10 @@ namespace CoachCue.Controllers
             return View(users);
         }
 
-        public async Task<ActionResult> ImportRoster(int teamID)
+        public async Task<ActionResult> ImportRoster(string slug)
         {
-            await PlayerService.ImportRoster(CoachCue.Model.nflteam.Get(teamID));
-            return RedirectToAction("TeamRoster", new { team=teamID });
+            await PlayerService.ImportRoster(slug);
+            return RedirectToAction("TeamRoster", new { slug=slug });
         }
 
         public ActionResult ImportSchedule()
@@ -258,8 +258,6 @@ namespace CoachCue.Controllers
 
         public async Task<ActionResult> BuildUserJson()
         {
-            //await UserService.ImportUsers();
-
             using (FileStream fs = System.IO.File.Open(Server.MapPath("~/assets/data/users.json"), FileMode.Create))
             using (StreamWriter sw = new StreamWriter(fs))
             using (JsonWriter jw = new JsonTextWriter(sw))
@@ -281,39 +279,6 @@ namespace CoachCue.Controllers
             }
 
             return RedirectToAction("Index");
-        }
-
-        public ActionResult BuildTeamTwitter(int teamID)
-        {           
-            //set the twitter information
-            /*if (credentials.ConsumerKey == null || credentials.ConsumerSecret == null)
-            {
-                credentials.ConsumerKey = ConfigurationManager.AppSettings["twitterConsumerKey"];
-                credentials.ConsumerSecret = ConfigurationManager.AppSettings["twitterConsumerSecret"];
-            }
-
-            auth = new MvcAuthorizer
-            {
-                Credentials = credentials
-            };
-
-            auth.CompleteAuthorization(Request.Url);
-
-            if (!auth.IsAuthorized)
-            {
-                Uri specialUri = new Uri(Request.Url.ToString());
-                return auth.BeginAuthorization(specialUri);
-            }
-
-            twitterCtx = new TwitterContext(auth);
-
-            foreach (nflplayer player in nflplayer.GetRoster(teamID,false))
-            {     
-                //now check the players twitter account
-                twitteraccount.BuildPlayerTwitterAccount(player, twitterCtx);
-            }*/
-
-            return RedirectToAction("TeamRoster", new { team = teamID });
         }
     }
 }

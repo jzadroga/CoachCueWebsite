@@ -16,12 +16,12 @@ namespace CoachCue.Service
     {
         //inmports the roster from the nfl.com site by team
         //todo - fix the cleanup process and remove nflteam reference
-        public static async Task<List<string>> ImportRoster(nflteam team)
+        public static async Task<List<string>> ImportRoster(string slug)
         {
             List<string> foundPlayers = new List<string>();
 
             //get the roster from nfl.com and parse the html
-            HttpWebRequest request = WebRequest.Create("http://www.nfl.com/teams/buffalobills/roster?team=" + team.teamSlug) as HttpWebRequest;
+            HttpWebRequest request = WebRequest.Create("http://www.nfl.com/teams/buffalobills/roster?team=" + slug) as HttpWebRequest;
             using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
             {
                 // Load data into a htmlagility doc   
@@ -71,21 +71,21 @@ namespace CoachCue.Service
                             }
                         }
 
-                        var player = await SavePlayer(firstName, lastName, position, number, college, years, team);
+                        var player = await SavePlayer(firstName, lastName, position, number, college, years, slug);
                         foundPlayers.Add(player.Id);
                     }
 
                     //clean out any players not on the roster
-                    /*foreach(nflplayer ply in nflteam.Get(teamID).nflplayers)
+                    foreach(var ply in await GetByTeam(slug))
                     {
-                        if (ply.lastName == "Defense")
+                        if (ply.LastName == "Defense")
                             continue;
 
-                        if(!foundPlayers.Contains(ply.playerID))
+                        if(!foundPlayers.Contains(ply.Id))
                         {
-                            Delete(ply.playerID);
+                            await Delete(ply);
                         }
-                    }*/
+                    }
                 }
             }
 
@@ -94,13 +94,13 @@ namespace CoachCue.Service
 
         //save a player document to the Players collection
         public static async Task<Player> SavePlayer(string firstName, string lastName, string position, string number, string college,
-                                     string years, nflteam team)
+                                     string years, string slug)
         {
             Player player = new Player();
 
             if (position == "QB" || position == "TE" || position == "RB" || position == "WR" || position == "K" || position == "FB")
             {
-                var players = await DocumentDBRepository<Player>.GetItemsAsync(d => d.Active, "Players");
+                var players = await DocumentDBRepository<Player>.GetItemsAsync(d => d.Active || !d.Active, "Players");
 
                 //first see if we need to update or add
                 player = players.Where(ply => ply.LastName.ToLower() == lastName.ToLower()
@@ -118,32 +118,27 @@ namespace CoachCue.Service
                     player.Active = true;
 
                     //team info
-                    Team plyTeam = new Team();
-                    plyTeam.Name = team.teamName;
-                    plyTeam.Slug = team.teamSlug;
-                    player.Team = plyTeam;
+                    player.Team = Team.GetTeamBySlug(slug);
 
                     //twitter info - default to empty
                     TwitterAccount twitter = new TwitterAccount();                   
                     player.Twitter = twitter;
 
-                    await DocumentDBRepository<Player>.CreateItemAsync(player, "Players");
+                    var result = await DocumentDBRepository<Player>.CreateItemAsync(player, "Players");
+                    player.Id = result.Id;
                 }
                 else
                 {
                     //update the player
-                    /*player.firstName = firstName;
-                    player.lastName = lastName;
-                    player.teamID = teamID;
-                    player.positionID = CoachCue.Model.position.GetID(position);
-                    player.number = string.IsNullOrEmpty(number) ? null : (int?)Convert.ToInt32(number);
-                    player.college = college;
-                    player.yearsExperience = Convert.ToInt32(years);
-                    player.statusID = status.GetID("Active", "nflplayers");*/
-                }
+                    player.FirstName = firstName;
+                    player.LastName = lastName;
+                    player.Team = Team.GetTeamBySlug(slug);
+                    player.Position = position;
+                    player.Number = string.IsNullOrEmpty(number) ? null : (int?)Convert.ToInt32(number);
+                    player.Active = true;
 
-                //remove the player cache
-                //HttpContext.Current.Cache.Remove("nflplayer" + player.playerID.ToString());
+                    await DocumentDBRepository<Player>.UpdateItemAsync(player.Id, player, "Players");
+                }
             }
             return player;
         }
@@ -168,6 +163,19 @@ namespace CoachCue.Service
                 && d.Link.ToLower() == link.ToLower(), "Players");
 
             return players.FirstOrDefault();
+        }
+
+        public static async Task Delete(Player player)
+        {
+            //mark as not active - if on another team it will get activated then
+            player.Active = false;
+
+            await DocumentDBRepository<Player>.UpdateItemAsync(player.Id, player, "Players");
+        }
+
+        public static async Task<IEnumerable<Player>> GetByTeam(string teamSlug)
+        {
+            return await DocumentDBRepository<Player>.GetItemsAsync(d => d.Active == true && d.Team.Slug == teamSlug, "Players");
         }
 
         public static async Task<IEnumerable<Player>> GetMostVoted()

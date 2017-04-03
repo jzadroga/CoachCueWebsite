@@ -542,7 +542,7 @@ function loadMatchupStream(position) {
 
 function loadPlayerStream(id, view) {
     task.getPlayerStream(id, view, function (data) {
-        $("#player-message-stream").html(data.StreamData);
+        $("div.stream-messages").html(data.StreamData);
         $("#filter-matchup-spinner").empty();
     });
 }

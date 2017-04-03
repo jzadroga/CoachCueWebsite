@@ -141,14 +141,14 @@ namespace CoachCue.Controllers
             });
         }
 
-        public async Task<JsonResult> GetTwitterStream(string playerID)
+        public async Task<JsonResult> GetPlayerStream(string playerID, string view)
         {
             Player player = await PlayerService.Get(playerID);
+            var userData = await CoachCueUserData.GetUserData(User.Identity.Name);
 
-            var tweets = await StreamService.GetPlayerTwitterStream(player);
-            //popoverData.Voting = matchup.GetPlayerProfileVotes(player, gameschedule.GetCurrentWeekID(), player.position.positionID);
+            var items = (view == "stream") ? await StreamService.GetPlayerStream(userData, playerID) : await StreamService.GetPlayerTwitterStream(player);
 
-            string streamData = this.PartialViewToString("_StreamItemList", tweets);
+            string streamData = this.PartialViewToString("_StreamItemList", items);
 
             return Json(new
             {

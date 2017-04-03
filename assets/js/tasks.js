@@ -74,8 +74,8 @@ var task = function () {
 
     getPlayerStream = function (id, view, callback) {
         $.ajax({
-            url: "/UserTask/GetTwitterStream",
-            data: { playerID: id },
+            url: "/UserTask/GetPlayerStream",
+            data: { playerID: id, view: view },
             cache: true,
             success: function (data) {
                 callback(data);

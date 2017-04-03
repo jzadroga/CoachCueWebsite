@@ -27,7 +27,7 @@
 
     <ul class="nav nav-pills player-filter">
         <li class="active">
-            <a class="stream-filter-item" data-player="@Model.PlayerDetail.Id" data-view="" href="#">Recent</a>
+            <a class="stream-filter-item" data-player="@Model.PlayerDetail.Id" data-view="stream" href="#">Stream</a>
         </li>
         <li>
             <a class="stream-filter-item" data-player="@Model.PlayerDetail.Id" data-view="news" href="#">News</a>
@@ -55,27 +55,5 @@
 </div>
 
 @section rightcolumn {
-    @if (User.Identity.IsAuthenticated)
-    {
-        <div class="row">
-            @{ Html.RenderPartial("_UserPod", model: Model); }
-        </div>
-    }
-    else
-    {
-        <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Join CoachCue!</h3>
-                </div>
-                <div class="panel-body">
-                    <strong><a data-register="true" data-backdrop="static" data-keyboard="false" href="#modal-register" data-toggle="modal" data-target="#modal-register">Join CoachCue!</a></strong> to follow all your players, get the latest news and post matchup questions.
-                </div>
-            </div>
-        </div>
-    }
-
-    <div class="row">
-        @{ Html.RenderPartial("_TwitterFeed", model: Model.TwitterContent); }
-    </div>
+    @{ Html.RenderPartial("_RightColumnBase", model: Model); }
 }

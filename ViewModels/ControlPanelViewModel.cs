@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using CoachCue.Model;
+using CoachCue.Models;
 
 namespace CoachCue.ViewModels
 {
@@ -27,9 +28,9 @@ namespace CoachCue.ViewModels
 
     public class TeamRosterModel
     {
-        public List<nflteam> Teams { get; set; }
-        public int SelectedTeamID { get; set; }
-        public List<nflplayer> Players { get; set; }
+        public List<Team> Teams { get; set; }
+        public string SelectedTeam { get; set; }
+        public IEnumerable<Player> Players { get; set; }
     }
 
     public class TeamPlayerAccountModel
