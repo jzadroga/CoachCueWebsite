@@ -37,16 +37,16 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (user coach in Model.Users)
+                @foreach (var coach in Model.Users)
                 {
                 <tr>
-                    <td>@coach.email</td>
-                    <td>@coach.fullName</td>
-                    <td>@coach.status.statusName</td>
-                    <td>@coach.referrer</td>
-                    <td>@coach.LoginCount</td>
-                    <td>@coach.LastLogin</td>
-                    <td>@coach.DateRegistered</td>
+                    <td>@coach.Email</td>
+                    <td>@coach.Name</td>
+                    <td>@coach.Active</td>
+                    <td>@coach.Referrer</td>
+                    <td>@coach.Statistics.LoginCount</td>
+                    <td>@coach.Statistics.LastLogin</td>
+                    <td>@coach.DateCreated</td>
                 </tr>
                 }
             </tbody>

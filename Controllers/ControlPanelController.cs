@@ -68,13 +68,6 @@ namespace CoachCue.Controllers
             return RedirectToAction("Messages");
         }
 
-        [HttpPost]
-        public ActionResult AddMatchup(int player1, int player2)
-        {
-            matchup.Add(player1, player2, user.GetUserID(User.Identity.Name));
-            return RedirectToAction("Matchups");
-        }
-
         public async Task<ActionResult> JournalistAccounts([DefaultValue("PHI")]string slug)
         {
             TeamJournalistModel teamJournalist = new TeamJournalistModel();
@@ -98,13 +91,13 @@ namespace CoachCue.Controllers
             return View(roster);
         }
 
-        public ActionResult Users([DefaultValue(0)]int page, [DefaultValue("")]string srt)
+        public async Task<ActionResult> Users([DefaultValue(0)]int page, [DefaultValue("")]string srt)
         {
             UsersModel users = new UsersModel();
             users.Page = page;
-            users.Users = user.ListByPage(page, srt);
-            users.PageCount = user.UserPageCount() + 1;
-            users.Total = user.GetCount();
+            users.Users = await UserService.ListByPage(page, srt);
+            users.PageCount = await UserService.UserPageCount() + 1;
+            users.Total = await UserService.GetCount();
 
             return View(users);
         }
@@ -146,11 +139,12 @@ namespace CoachCue.Controllers
             return RedirectToAction("JournalistAccounts", new { slug = slug });
         }
 
-        public ActionResult PlayerDelete(int id, int teamID)
+        public async Task<ActionResult> PlayerDelete(string id, string teamID)
         {
-            CoachCue.Model.nflplayer.Delete(id);
+            var player = await PlayerService.Get(id);
+            await PlayerService.Delete(player);
 
-            return RedirectToAction("TeamRoster", new { team = teamID });
+            return RedirectToAction("TeamRoster", new { slug = teamID });
         }
 
         public ActionResult UpdateUsers()
@@ -274,7 +268,7 @@ namespace CoachCue.Controllers
                 serializer.Serialize(jw, jsonUser);
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Users");
         }
     }
 }

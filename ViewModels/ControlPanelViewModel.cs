@@ -41,7 +41,7 @@ namespace CoachCue.ViewModels
 
     public class UsersModel
     {
-        public List<user> Users { get; set; }
+        public List<User> Users { get; set; }
         public int Page { get; set; }
         public int PageCount { get; set; }
         public int Total { get; set; }

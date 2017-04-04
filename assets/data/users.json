@@ -2,7 +2,7 @@
   {
     "name": "Jason Zadroga",
     "username": "JasonZ",
-    "image": "/assets/img/avatar/1_SPR19770110.jpg",
+    "image": "/assets/img/avatar/b9fb906b-43b9-45ae-bcde-39fe48f74a73_1_SPR19770110.jpg",
     "value": "Jason Zadroga",
     "userID": "b9fb906b-43b9-45ae-bcde-39fe48f74a73",
     "link": "jasonz"
@@ -22,5 +22,29 @@
     "value": "Lu Reed",
     "userID": "ab9b8a2e-7662-4725-8059-3df3e554e37a",
     "link": "lureed"
+  },
+  {
+    "name": "SiteTest",
+    "username": "site.test",
+    "image": "/assets/img/avatar/profile.jpg",
+    "value": "SiteTest",
+    "userID": "1eedfb47-31e5-4849-84f4-15718dc5cd82",
+    "link": "sitetest"
+  },
+  {
+    "name": "SiteTest2",
+    "username": "sitetest2",
+    "image": "/assets/img/avatar/profile.jpg",
+    "value": "SiteTest2",
+    "userID": "69e321b6-d26e-4b13-a5ab-0a4788be2d8d",
+    "link": "sitetest2"
+  },
+  {
+    "name": "SiteTest3",
+    "username": "sitetest3",
+    "image": "/assets/img/avatar/profile.jpg",
+    "value": "SiteTest3",
+    "userID": "d9486f43-e097-4fc2-9423-dd07ea852b17",
+    "link": "sitetest3"
   }
 ]

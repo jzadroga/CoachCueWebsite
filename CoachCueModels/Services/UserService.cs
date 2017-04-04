@@ -153,7 +153,53 @@ namespace CoachCue.Service
             return user;
         }
 
-        
+        public static async Task<int> UserPageCount()
+        {
+            int pageSize = 100;
+            var users = await DocumentDBRepository<User>.GetItemsAsync(d => d.Active == true, "Users");
+            int totalCount = users.Count();
+            return (int)(totalCount / pageSize);
+        }
+
+        public static async Task<int> GetCount()
+        {
+            var users = await DocumentDBRepository<User>.GetItemsAsync(d => d.Active == true, "Users");
+            return users.Count();
+        }
+
+        public static async Task<List<User>> ListByPage(int pageIndex, string sort)
+        {
+            List<User> userList = new List<User>();
+            try
+            {
+                int pageSize = 100;
+
+                var usrs = await DocumentDBRepository<User>.GetItemsAsync(d => d.Active == true, "Users");
+
+                if (!string.IsNullOrEmpty(sort))
+                {
+                    switch (sort)
+                    {
+                        case "logins":
+                            usrs = usrs.OrderByDescending(usr => usr.Statistics.LoginCount).ToList();
+                            break;
+                        case "last":
+                            usrs = usrs.OrderByDescending(usr => usr.Statistics.LastLogin).ToList();
+                            break;
+                        case "created":
+                            usrs = usrs.OrderByDescending(usr => usr.DateCreated).ToList();
+                            break;
+                    }
+                }
+
+                if (usrs.Count() > 0)
+                    userList = usrs.Skip((pageIndex) * pageSize).Take(pageSize).ToList();
+            }
+            catch (Exception) { }
+
+            return userList;
+        }
+
         public static async Task<User> UpdateMessageCount(string id)
         {
             var user = await Get(id);
