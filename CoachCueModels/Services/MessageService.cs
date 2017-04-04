@@ -146,6 +146,13 @@ namespace CoachCue.Service
             return message;
         }
 
+        public static async Task<bool> Delete(string id)
+        {
+            await DocumentDBRepository<Message>.DeleteItemAsync(id, "Messages");
+
+            return true;
+        }
+
         public static async Task<IEnumerable<Message>> GetList(DateTime endDate)
         {
             //return await DocumentDBRepository<Message>.GetItemsAsync(d => d.DateCreated > endDate, "Messages");

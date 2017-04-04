@@ -136,7 +136,6 @@ namespace CoachCue.Model
 
                         searchResults = queryResults.Take(50).ToList();
 
-
                         HttpContext.Current.Cache.Insert(cacheID, searchResults, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(0, 5, 0));
                     }
                 }

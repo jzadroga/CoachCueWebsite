@@ -73,58 +73,7 @@ namespace CoachCue.Model
         }
 
         //gets all possible Twitter account matches
-        public static List<twitteraccount> GetTwitterAccounts( int playerID, TwitterContext twitterCtx )
-        {
-            nflplayer playerAccount = nflplayer.Get(playerID);
-            List<twitteraccount> accounts = new List<twitteraccount>();
-
-            try
-            {
-                List<User> twitterUsers = new List<User>();
-
-               /* if (playerAccount.twitterAccountID.HasValue)
-                {
-                    //ulong accountID = Convert.ToUInt64(twitteraccount.Get(playerAccount.twitterAccountID.Value).twitterID);
-                    twitteraccount acnt = twitteraccount.Get(playerAccount.twitterAccountID.Value);
-
-                    twitterUsers = (from usr in twitterCtx.User
-                                    where usr.Type == UserType.Lookup &&
-                                    usr.ScreenNameList == acnt.twitterUsername
-                                    select usr).ToList();
-                }
-                else
-                {*/
-                    //see if the player has a twitter account, find the player account on twitter
-                    string playerName = playerAccount.firstName + " " + playerAccount.lastName;
-                    twitterUsers = (from usr in twitterCtx.User
-                                    where usr.Type == UserType.Search &&
-                                    usr.Query == playerName && usr.Verified == true
-                                    select usr).ToList();
-                //}
-
-                if (twitterUsers.Count() > 0)
-                {
-                    foreach (var user in twitterUsers)
-                    {
-                        accounts.Add(new twitteraccount
-                        {
-                            twitterAccountID = (playerAccount.twitterAccountID.HasValue) ? (int)playerAccount.twitterAccountID : 0,
-                            twitterID = user.UserID.ToString(),
-                            twitterUsername = user.ScreenName,
-                            twitterName = user.Name,
-                            profileImageUrl = user.ProfileImageUrl,
-                            description = user.Description
-                        });
-                    }
-                }
-            }
-            catch( Exception ex )
-            {
-                string err = ex.Message;
-            }
-
-            return accounts;
-        }
+      
 
         public static twitteraccount Get(int twitterAccountID)
         {

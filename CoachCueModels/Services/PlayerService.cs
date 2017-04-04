@@ -2,6 +2,7 @@
 using CoachCue.Models;
 using CoachCue.Repository;
 using HtmlAgilityPack;
+using LinqToTwitter;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -143,6 +144,16 @@ namespace CoachCue.Service
             return player;
         }
 
+        public static async Task<Player> UpdateTwitterAccount(string playerID, string twitternName, string twitterImage)
+        {
+            var player = await Get(playerID);
+            player.Twitter = new TwitterAccount() { Active = true, Name = twitternName, ProfileImage = twitterImage };
+
+            await DocumentDBRepository<Player>.UpdateItemAsync(player.Id, player, "Players");
+
+            return player;
+        }
+
         public static async Task<Player> Get(string id)
         {
             return await DocumentDBRepository<Player>.GetItemAsync(id, "Players");
@@ -249,6 +260,57 @@ namespace CoachCue.Service
         public static async Task<IEnumerable<Player>> GetListByIds(List<string> playerIds)
         {
             return await DocumentDBRepository<Player>.GetItemsAsync(d => playerIds.Contains(d.Id), "Players");
+        }
+
+        public static async Task<List<TwitterAccount>> GetTwitterAccounts(string playerID, TwitterContext twitterCtx)
+        {
+            Player playerAccount = await Get(playerID);
+            List<TwitterAccount> accounts = new List<TwitterAccount>();
+
+            try
+            {
+                /* if (playerAccount.twitterAccountID.HasValue)
+                 {
+                     //ulong accountID = Convert.ToUInt64(twitteraccount.Get(playerAccount.twitterAccountID.Value).twitterID);
+                     twitteraccount acnt = twitteraccount.Get(playerAccount.twitterAccountID.Value);
+
+                     twitterUsers = (from usr in twitterCtx.User
+                                     where usr.Type == UserType.Lookup &&
+                                     usr.ScreenNameList == acnt.twitterUsername
+                                     select usr).ToList();
+                 }
+                 else
+                 {*/
+                //see if the player has a twitter account, find the player account on twitter
+                string playerName = playerAccount.FirstName.Replace(".", "").Replace("-", " ").Replace("'", " ") + " " + playerAccount.LastName.Replace(".", "").Replace("-", " ").Replace("'", " ");
+                var twitterUsers = (from usr in twitterCtx.User
+                                where usr.Type == UserType.Search &&
+                                usr.Query == playerName && usr.Verified == true
+                                select usr).ToList();
+                //}
+
+                if (twitterUsers.Count() > 0)
+                {
+                    foreach (var user in twitterUsers)
+                    {
+                        accounts.Add(new TwitterAccount
+                        {
+                            // twitterAccountID = (playerAccount.twitterAccountID.HasValue) ? (int)playerAccount.twitterAccountID : 0,
+                            // twitterID = user.UserID.ToString(),
+                            Name = user.ScreenNameResponse,
+                            Active = true,
+                           // twitterName = user.Name,
+                            ProfileImage = user.ProfileImageUrl
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string err = ex.Message;
+            }
+
+            return accounts;
         }
 
         public static async Task<List<string>> GetPlayerNotConditions(string firstName, string lastName)

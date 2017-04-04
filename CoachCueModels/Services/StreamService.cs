@@ -75,7 +75,8 @@ namespace CoachCue.Service
                     var trendingPlayers = await GetTrendingStream();
                     foreach (var trendingPlayer in trendingPlayers.Take(15))
                     {
-                        stream.AddRange(await GetPlayerTwitterStream(trendingPlayer));
+                        var playerNews = await GetPlayerTwitterStream(trendingPlayer);
+                        stream.AddRange(playerNews.Take(5));
                     }
 
                     HttpContext.Current.Cache.Insert(cacheID, stream, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(0, 8, 0));
@@ -148,7 +149,10 @@ namespace CoachCue.Service
                             //try and find a matching player
                             var player = await PlayerService.GetByLink(playerName);
                             if (player != null)
-                                stream.Add(player);
+                            {
+                                if( stream.Where( pl => pl.Id == player.Id).FirstOrDefault() == null)
+                                 stream.Add(player);
+                            }
                         }
                     }
 

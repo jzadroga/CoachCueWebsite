@@ -23,13 +23,18 @@
                 </tr>
             </thead>
             <tbody>
-                 @foreach (message msg in Model.Messages)
+                 @foreach (var msg in Model.Messages)
                 {
                 <tr>
-                    <td><button data-message='@msg.messageID' class="btn btn-mini edit-points">Delete</button></td>
-                    <td>@msg.user.fullName</td>
-                    <td>@Html.Raw(msg.messageText)</td>
-                    <td>@msg.dateCreated.ToShortDateString()</td>
+                    <td>
+                        <form action='@Url.Action("DeleteMessage", "ControlPanel")' method="post">
+                            <input type="hidden" name="messageId" value="@msg.Id" />
+                            <button type="submit" class="btn btn-mini">Delete</button>
+                        </form>
+                    </td>
+                    <td>@msg.Name</td>
+                    <td>@Html.Raw(msg.Text)</td>
+                    <td>@msg.DateCreated.ToShortDateString()</td>
                 </tr>
                 }
             </tbody>

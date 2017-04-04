@@ -51,12 +51,21 @@ namespace CoachCue.Controllers
             return RedirectToAction("Matchups");
         }
 
-        public ActionResult Messages()
+        public async Task<ActionResult> Messages()
         {
             MessagesViewModel messagesVM = new MessagesViewModel();
-            messagesVM.Messages = message.GetAll();
+
+            DateTime endDate = DateTime.Now.AddDays(-200);
+            messagesVM.Messages = await MessageService.GetList(endDate);
 
             return View(messagesVM);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> DeleteMessage(string messageId)
+        {
+            await MessageService.Delete(messageId);
+            return RedirectToAction("Messages");
         }
 
         [HttpPost]
@@ -144,12 +153,6 @@ namespace CoachCue.Controllers
             return RedirectToAction("TeamRoster", new { team = teamID });
         }
 
-        public ActionResult GetTeamPlayers( string slug )
-        {
-            List<nflplayer> players = nflplayer.ListByTeam(slug);
-            return PartialView("_TeamPlayerRow", players);
-        }
-
         public ActionResult UpdateUsers()
         {
             /*coachCueEntities db = new coachCueEntities();
@@ -178,7 +181,7 @@ namespace CoachCue.Controllers
             return View();
         }
 
-        public async Task<ActionResult> UpdatePlayerTwitter(int teamID, int playerID, [DefaultValue(false)] bool login)
+        public async Task<ActionResult> UpdatePlayerTwitter(string teamID, string playerID, [DefaultValue(false)] bool login)
         {
             //set the twitter information
             if (credentials.ConsumerKey == null || credentials.ConsumerSecret == null)
@@ -209,34 +212,28 @@ namespace CoachCue.Controllers
             twitterCtx = new TwitterContext(auth);
 
             //get the list of possible twitter accounts for a player
-            List<twitteraccount> accounts = twitteraccount.GetTwitterAccounts( playerID, twitterCtx );
+            List<TwitterAccount> accounts = await PlayerService.GetTwitterAccounts(playerID, twitterCtx );
             PlayerTwitterModel playerTwitter = new PlayerTwitterModel();
             playerTwitter.PlayerID = playerID;
-            playerTwitter.TeamID = teamID;
+            playerTwitter.TeamSlug = teamID;
             playerTwitter.TwitterAccounts = accounts;
 
             return View(playerTwitter);
         }
 
-        public ActionResult DeletePlayerTwitter(int teamID, int playerID)
+        public async Task<ActionResult> DeletePlayerTwitter(string teamID, string playerID)
         {
-            int accountID = CoachCue.Model.nflplayer.DeleteTwitterAccount(playerID);
-            twitteraccount.Delete(accountID);
-            return RedirectToAction("TeamRoster", new { team = teamID });
+            await PlayerService.UpdateTwitterAccount(playerID, string.Empty, string.Empty);
+            return RedirectToAction("TeamRoster", new { slug = teamID });
         }
 
         [HttpPost]
-        public ActionResult SelectPlayerTwitter(int teamID, int playerID, int accountID, string twitterID, string username, string name, string image, string description)
+        public async Task<ActionResult> SelectPlayerTwitter(string slug, string playerID, string name, string image)
         {
-            twitteraccount twtAccount = twitteraccount.Save(accountID, twitterID, username, name, image, 1, "Active", description);
-            if (accountID == 0) //add a reference to the player since it is new
-            {
-                nflplayer.UpdateTwitterAccount(playerID, twtAccount.twitterAccountID);
-                string cacheID = "nflplayer" + playerID.ToString();
-                HttpContext.Cache.Remove(cacheID);
-            }
+            if (!string.IsNullOrEmpty(name)) //add a reference to the player since it is new
+                await PlayerService.UpdateTwitterAccount(playerID, name, image);
 
-            return RedirectToAction("TeamRoster", new { team = teamID });
+            return RedirectToAction("TeamRoster", new { slug = slug });
         }
 
         public async Task<ActionResult> BuildPlayerJson()

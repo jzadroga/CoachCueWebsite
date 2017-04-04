@@ -15,43 +15,35 @@
         <thead>
             <tr>
                 <th></th>
-                <th>Name</th>
                 <th>Twitter Username</th>
                 <th>Profile Pic</th>
-                <th style="width: 150px">Description</th>
                 </tr>
         </thead>
         <tbody>
 
-        @foreach (twitteraccount account in Model.TwitterAccounts)
+        @foreach (var account in Model.TwitterAccounts)
         {
             <tr>
                 <td>
                     <form action='@Url.Action("SelectPlayerTwitter", "ControlPanel")' method="post">
-                        <input name="teamID" id="teamID" value="@Model.TeamID" type="hidden" />
+                        <input name="slug" id="slug" value="@Model.TeamSlug" type="hidden" />
                         <input name="playerID" id="playerID" value="@Model.PlayerID" type="hidden" />
-                        <input name="twitterID" id="twitterID" value="@account.twitterID" type="hidden" />
-                        <input name="username" id="username" value="@account.twitterUsername" type="hidden" />
-                        <input name="name" id="name" value="@account.twitterName" type="hidden" />
-                        <input name="image" id="image" value="@account.profileImageUrl" type="hidden" />
-                        <input name="description" id="description" value="@account.description" type="hidden" />
-                        <input name="accountID" id="accountID" value="@account.twitterAccountID" type="hidden" />
+                        <input name="name" id="name" value="@account.Name" type="hidden" />
+                        <input name="image" id="image" value="@account.ProfileImage" type="hidden" />
                         <button type="submit" class="btn btn-primary btn-mini">Select</button>
                     </form>
                 </td>
-                <td>@account.twitterName</td>
-                <td><a target="_blank" href='http://twitter.com/@account.twitterUsername'>@account.twitterUsername</a></td>
-                <td><img src="@account.profileImageUrl" /></td>
-                <td>@account.description</td>
+                <td><a target="_blank" href='http://twitter.com/@account.Name'>@account.Name</a></td>
+                <td><img src="@account.ProfileImage" /></td>
             </tr>
         }
         </table>
 
         <div class="btn-toolbar toolbar-share">
             @if( Model.TwitterAccounts.Count() > 0 ){
-                <a href='@Url.Action("AccountDelete", "ControlPanel", new { id = @Model.TwitterAccounts[0].twitterAccountID, playerID = @Model.PlayerID, teamID = @Model.TeamID})' class="btn btn-danger">Remove Twitter Account</a>
+                <a href='@Url.Action("AccountDelete", "ControlPanel", new { playerID = @Model.PlayerID, team = @Model.TeamSlug})' class="btn btn-danger">Remove Twitter Account</a>
             }
-            <a href='@Url.Action("TeamRoster", "ControlPanel", new {team = @Model.TeamID})' class="btn btn-primary">Cancel</a>
+            <a href='@Url.Action("TeamRoster", "ControlPanel", new {slug = @Model.TeamSlug})' class="btn btn-primary">Cancel</a>
         </div>
 
     </div>

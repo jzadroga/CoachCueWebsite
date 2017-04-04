@@ -16,7 +16,7 @@ namespace CoachCue.ViewModels
 
     public class MessagesViewModel
     {
-        public List<message> Messages { get; set; }
+        public IEnumerable<Message> Messages { get; set; }
     }
 
     public class TeamJournalistModel

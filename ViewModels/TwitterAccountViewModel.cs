@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using CoachCue.Model;
+using CoachCue.Models;
 
 namespace CoachCue.ViewModels
 {
@@ -20,8 +21,8 @@ namespace CoachCue.ViewModels
 
     public class PlayerTwitterModel
     {
-        public int PlayerID { get; set; }
-        public int TeamID { get; set; }
-        public List<twitteraccount> TwitterAccounts { get; set; }
+        public string PlayerID { get; set; }
+        public string TeamSlug { get; set; }
+        public List<TwitterAccount> TwitterAccounts { get; set; }
     }
 }
