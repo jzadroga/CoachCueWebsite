@@ -20,6 +20,7 @@ namespace CoachCue.Repository
         public int NotificationCount { get; set; }
         public string Link { get; set; }
         public UserStatistics Stats { get; set; }
+        public List<Badge> Badges { get; set; }
 
         public static void Reset()
         {
@@ -27,7 +28,7 @@ namespace CoachCue.Repository
             HttpContext.Current.Session["UserId"] = null;
         }
 
-        public static void SetUserData(string id, string name, string userName, string profileImage, string email, int notificationCount, string link, UserStatistics stats)
+        public static void SetUserData(string id, string name, string userName, string profileImage, string email, int notificationCount, string link, UserStatistics stats, List<Badge> badges)
         {
             HttpContext.Current.Session["UserId"] = id;
             HttpContext.Current.Session["Name"] = name;
@@ -37,13 +38,14 @@ namespace CoachCue.Repository
             HttpContext.Current.Session["NotificationCount"] = notificationCount;
             HttpContext.Current.Session["Link"] = link;
             HttpContext.Current.Session["Stats"] = stats;
+            HttpContext.Current.Session["Badges"] = badges;
         }
 
         public async static Task<CoachCueUserData> GetUserData(string email)
         {
             if (string.IsNullOrEmpty(email))
             {
-                SetUserData(string.Empty, string.Empty, string.Empty, "sm_profile.jpg", email, 0, string.Empty, null);
+                SetUserData(string.Empty, string.Empty, string.Empty, "sm_profile.jpg", email, 0, string.Empty, null, new List<Badge>());
             }
             else
             {
@@ -54,7 +56,7 @@ namespace CoachCue.Repository
                     var currentUser = await UserService.GetByEmail(email);
                     var notifications = await NotificationService.GetList(currentUser.Id);
                     int count = (notifications.Count() > 0) ? notifications.Where(n => n.Read == false).Count() : 0;
-                    SetUserData(currentUser.Id, currentUser.Name, currentUser.UserName, currentUser.Profile.Image, currentUser.Email, count, currentUser.Link, currentUser.Statistics);
+                    SetUserData(currentUser.Id, currentUser.Name, currentUser.UserName, currentUser.Profile.Image, currentUser.Email, count, currentUser.Link, currentUser.Statistics, currentUser.Badges);
                 }
             }
 
@@ -67,7 +69,8 @@ namespace CoachCue.Repository
                 Email = HttpContext.Current.Session["Email"].ToString(),
                 NotificationCount = (int)HttpContext.Current.Session["NotificationCount"],
                 Link = HttpContext.Current.Session["Link"].ToString(),
-                Stats = (UserStatistics)HttpContext.Current.Session["Stats"]
+                Stats = (UserStatistics)HttpContext.Current.Session["Stats"],
+                Badges = (List<Badge>)HttpContext.Current.Session["Badges"]
             };
         }
     }

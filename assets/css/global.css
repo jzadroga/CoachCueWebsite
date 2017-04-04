@@ -290,6 +290,11 @@ h1.home-header{
     margin-bottom: 0px !important;
 }
 
+
+.thumbnail{
+    border: none !important;
+    margin-bottom: 4px !important;
+}
 .well-extra-small
 {
     padding: 4px 0 0 0 !important;

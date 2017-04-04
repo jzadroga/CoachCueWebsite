@@ -167,14 +167,14 @@ namespace CoachCue.Service
             return users.Count();
         }
 
-        public static async Task<List<User>> ListByPage(int pageIndex, string sort)
+        public static async Task<List<User>> ListByPage(int pageIndex, string sort, string search)
         {
             List<User> userList = new List<User>();
             try
             {
                 int pageSize = 100;
 
-                var usrs = await DocumentDBRepository<User>.GetItemsAsync(d => d.Active == true, "Users");
+                var usrs = (!string.IsNullOrEmpty(search)) ? await DocumentDBRepository<User>.GetItemsAsync(d => d.Active == true && d.Name.Contains(search), "Users") :  await DocumentDBRepository<User>.GetItemsAsync(d => d.Active == true, "Users");
 
                 if (!string.IsNullOrEmpty(sort))
                 {
@@ -198,6 +198,27 @@ namespace CoachCue.Service
             catch (Exception) { }
 
             return userList;
+        }
+
+        public static async Task<User> RemoveBadge(string id, string image)
+        {
+            var user = await Get(id);
+            var badge = user.Badges.Where(bd => bd.Image == image).FirstOrDefault();
+            user.Badges.Remove(badge);
+
+            await DocumentDBRepository<User>.UpdateItemAsync(id, user, "Users");
+
+            return user;
+        }
+
+        public static async Task<User> AddBadge(string id, string title, string image)
+        {
+            var user = await Get(id);
+            user.Badges.Add(new Badge() { Title = title, Image = image });
+
+            await DocumentDBRepository<User>.UpdateItemAsync(id, user, "Users");
+
+            return user;
         }
 
         public static async Task<User> UpdateMessageCount(string id)

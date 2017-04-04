@@ -24,22 +24,13 @@ namespace CoachCue.Controllers
 
             playerVM.LoggedIn = false;
             playerVM.PlayerDetail = await PlayerService.GetByDescription(team, name);
+            if (playerVM.PlayerDetail == null) //can't find the player
+                return RedirectToAction("Index", "Home");
+
             playerVM.PlayerStream = await StreamService.GetPlayerStream(playerVM.UserData, playerVM.PlayerDetail.Id);
             playerVM.TwitterContent = new List<StreamContent>();//stream.GetPlayerTwitterStream(playerVM.PlayerDetail);
 
             return View(playerVM);
         }
-
-        public ActionResult List()
-        {
-            SearchResultViewModel listVM = new SearchResultViewModel();
-
-            int userID = (User.Identity.IsAuthenticated) ? user.GetUserID(User.Identity.Name) : 0;
-            //listVM.Accounts = user.GetAccountsFromPlayers(nflplayer.GetTrending(50), (userID != 0) ? (int?)userID : null);
-
-
-            return View(listVM);
-        }
-
     }
 }

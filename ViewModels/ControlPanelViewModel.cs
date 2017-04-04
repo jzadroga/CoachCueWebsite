@@ -45,5 +45,6 @@ namespace CoachCue.ViewModels
         public int Page { get; set; }
         public int PageCount { get; set; }
         public int Total { get; set; }
+        public string Search { get; set; }
     }
 }

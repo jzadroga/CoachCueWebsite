@@ -1,0 +1,46 @@
+﻿@model CoachCue.Models.User
+
+@{
+    ViewBag.Title = "AddBadge";
+    Layout = "~/Views/Shared/_ControlPanelLayout.cshtml";
+}
+
+<h4>@Model.Name</h4>
+
+<div class="row">
+    <div class="span12">
+
+        <table class="table table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th style="width: 160px"></th>
+                    <th>Name</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var badge in Model.Badges)
+                {
+                    <tr>
+                        <td>
+                            <a href='@Url.Action("DeleteBadge", "ControlPanel", new { id = Model.Id, image = @badge.Image })' class="btn btn-danger btn-mini"><i class="icon-white icon-remove"></i> Delete</a>
+                        </td>
+                        <td>@badge.Title</td>
+                        <td><img src="@Url.Content("~/assets/img/badges/" + badge.Image)" /></td>
+                    </tr>
+                }
+                <tr>
+                    <form action="@Url.Action("AddBadge", "ControlPanel")" method="post">
+                        <td>
+                            <input type="hidden" id="user" name="id" value="@Model.Id" />
+                            <input type="submit" class="btn btn-primary btn-mini" value="Add New" />
+                        </td>
+                        <td><input class="form-control" type="text" id="title" name="title" /></td>
+                        <td><input class="form-control"  type="text" name="image" /> </td>
+                    </form>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

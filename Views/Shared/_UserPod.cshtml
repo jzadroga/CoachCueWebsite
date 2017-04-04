@@ -39,10 +39,18 @@
             </ul>
         </div>
 
-        <div class="user-trophy-case" style="display: none">
+        <div class="user-trophy-case">
             <h5>TROPHY CASE</h5>
             <ul class="stats trophy-list">
-                <li><img src='@Url.Content("~/assets/img/trophy-1.png")' /></li>
+                @foreach (var badge in Model.UserData.Badges)
+                {
+                <li class="thumbnail">
+                    <img alt="@badge.Title" class="img-thumbnail" style="height: 40px; width: 40px" src='@Url.Content("~/assets/img/badges/" + @badge.Image )' />
+                    <div class="caption">
+                        <p>@badge.Title</p>
+                    </div>
+                </li>
+                }
             </ul>
         </div>
     </div>

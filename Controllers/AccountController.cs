@@ -68,7 +68,7 @@ namespace CoachCue.Controllers
 
             if (await MembershipService.ValidateUser(acntUser.Email, acntUser.Password))
             {
-                CoachCueUserData.SetUserData(acntUser.Id, acntUser.Name, acntUser.UserName, acntUser.Profile.Image, acntUser.Email, 0, acntUser.Link, acntUser.Statistics);
+                CoachCueUserData.SetUserData(acntUser.Id, acntUser.Name, acntUser.UserName, acntUser.Profile.Image, acntUser.Email, 0, acntUser.Link, acntUser.Statistics, acntUser.Badges);
                 FormsService.SignIn(acntUser.Email, true);
             }
 
@@ -215,7 +215,7 @@ namespace CoachCue.Controllers
                     var notifications = await NotificationService.GetList(usr.Id);
                     int count = (notifications.Count() > 0) ? notifications.Where(n => n.Read == false).Count() : 0;
 
-                    CoachCueUserData.SetUserData(usr.Id, usr.Name, usr.UserName, usr.Profile.Image, usr.Email, count, usr.Link, usr.Statistics); 
+                    CoachCueUserData.SetUserData(usr.Id, usr.Name, usr.UserName, usr.Profile.Image, usr.Email, count, usr.Link, usr.Statistics, usr.Badges); 
 
                     //always have the rememberme cookie set
                     FormsService.SignIn(username, true);

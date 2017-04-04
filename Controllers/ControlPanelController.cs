@@ -91,15 +91,35 @@ namespace CoachCue.Controllers
             return View(roster);
         }
 
-        public async Task<ActionResult> Users([DefaultValue(0)]int page, [DefaultValue("")]string srt)
+        public async Task<ActionResult> Users([DefaultValue(0)]int page, [DefaultValue("")]string srt, [DefaultValue("")]string search)
         {
             UsersModel users = new UsersModel();
             users.Page = page;
-            users.Users = await UserService.ListByPage(page, srt);
+            users.Users = await UserService.ListByPage(page, srt, search);
             users.PageCount = await UserService.UserPageCount() + 1;
             users.Total = await UserService.GetCount();
+            users.Search = search;
 
             return View(users);
+        }
+
+        public async Task<ActionResult> AddBadge(string id)
+        {
+            var user = await UserService.Get(id);
+            return View(user);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddBadge(string id, string title, string image)
+        {
+            var user = await UserService.AddBadge(id, title, image);
+            return View(user);
+        }
+
+        public async Task<ActionResult> DeleteBadge(string id, string image)
+        {
+            var user = await UserService.RemoveBadge(id, image);
+            return RedirectToAction("AddBadge", new { id = id });
         }
 
         public async Task<ActionResult> ImportRoster(string slug)

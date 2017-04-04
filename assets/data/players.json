@@ -175,16 +175,16 @@
     "number": null,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "ShowTimeSheed",
+      "profileImage": "http://pbs.twimg.com/profile_images/821031874772484096/annbFCLn_normal.jpg"
     },
     "team": {
       "name": "Philadelphia Eagles",
       "slug": "phi"
     },
-    "profileImage": "/assets/img/teams/phi.jpg",
-    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/821031874772484096/annbFCLn_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/821031874772484096/annbFCLn_bigger.jpg",
     "link": "rasheed-bailey",
     "beatWriters": [
       "howardeskin",
@@ -237,16 +237,16 @@
     "number": null,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "DENgoinHAM3",
+      "profileImage": "http://pbs.twimg.com/profile_images/820512159117484032/GIE1gVaW_normal.jpg"
     },
     "team": {
       "name": "Philadelphia Eagles",
       "slug": "phi"
     },
-    "profileImage": "/assets/img/teams/phi.jpg",
-    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/820512159117484032/GIE1gVaW_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/820512159117484032/GIE1gVaW_bigger.jpg",
     "link": "anthony-denham",
     "beatWriters": [
       "howardeskin",
@@ -268,16 +268,16 @@
     "number": 86,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "ZERTZ_86",
+      "profileImage": "http://pbs.twimg.com/profile_images/617760567873310722/bzEBe5aw_normal.jpg"
     },
     "team": {
       "name": "Philadelphia Eagles",
       "slug": "phi"
     },
-    "profileImage": "/assets/img/teams/phi.jpg",
-    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/617760567873310722/bzEBe5aw_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/617760567873310722/bzEBe5aw_bigger.jpg",
     "link": "zach-ertz",
     "beatWriters": [
       "howardeskin",
@@ -299,16 +299,16 @@
     "number": null,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "NFoles_9",
+      "profileImage": "http://pbs.twimg.com/profile_images/492484583909126145/ud4Wueg4_normal.jpeg"
     },
     "team": {
       "name": "Philadelphia Eagles",
       "slug": "phi"
     },
-    "profileImage": "/assets/img/teams/phi.jpg",
-    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/492484583909126145/ud4Wueg4_normal.jpeg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/492484583909126145/ud4Wueg4_bigger.jpeg",
     "link": "nick-foles",
     "beatWriters": [
       "howardeskin",
@@ -330,16 +330,16 @@
     "number": 18,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "realdgb",
+      "profileImage": "http://pbs.twimg.com/profile_images/780893247224905729/aYK4a1ht_normal.jpg"
     },
     "team": {
       "name": "Philadelphia Eagles",
       "slug": "phi"
     },
-    "profileImage": "/assets/img/teams/phi.jpg",
-    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/780893247224905729/aYK4a1ht_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/780893247224905729/aYK4a1ht_bigger.jpg",
     "link": "dorial-greenbeckham",
     "beatWriters": [
       "howardeskin",
@@ -361,16 +361,16 @@
     "number": null,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "TheWorldof_AJ",
+      "profileImage": "http://pbs.twimg.com/profile_images/848361723820224513/rbZChupD_normal.jpg"
     },
     "team": {
       "name": "Philadelphia Eagles",
       "slug": "phi"
     },
-    "profileImage": "/assets/img/teams/phi.jpg",
-    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/848361723820224513/rbZChupD_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/848361723820224513/rbZChupD_bigger.jpg",
     "link": "alshon-jeffery",
     "beatWriters": [
       "howardeskin",
@@ -454,16 +454,16 @@
     "number": 24,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "rmathews24",
+      "profileImage": "http://pbs.twimg.com/profile_images/712782602294337536/VGCSpdrb_normal.jpg"
     },
     "team": {
       "name": "Philadelphia Eagles",
       "slug": "phi"
     },
-    "profileImage": "/assets/img/teams/phi.jpg",
-    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/712782602294337536/VGCSpdrb_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/712782602294337536/VGCSpdrb_bigger.jpg",
     "link": "ryan-mathews",
     "beatWriters": [
       "howardeskin",
@@ -485,16 +485,16 @@
     "number": 81,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "jmattjmattjmatt",
+      "profileImage": "http://pbs.twimg.com/profile_images/839840476438089728/Vm8brGx2_normal.jpg"
     },
     "team": {
       "name": "Philadelphia Eagles",
       "slug": "phi"
     },
-    "profileImage": "/assets/img/teams/phi.jpg",
-    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/839840476438089728/Vm8brGx2_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/839840476438089728/Vm8brGx2_bigger.jpg",
     "link": "jordan-matthews",
     "beatWriters": [
       "howardeskin",
@@ -516,16 +516,16 @@
     "number": 28,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "WSmallwood28",
+      "profileImage": "http://pbs.twimg.com/profile_images/791727555917279237/81opLkU__normal.jpg"
     },
     "team": {
       "name": "Philadelphia Eagles",
       "slug": "phi"
     },
-    "profileImage": "/assets/img/teams/phi.jpg",
-    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/791727555917279237/81opLkU__normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/791727555917279237/81opLkU__bigger.jpg",
     "link": "wendell-smallwood",
     "beatWriters": [
       "howardeskin",
@@ -547,16 +547,16 @@
     "number": null,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "TorreySmithWR",
+      "profileImage": "http://pbs.twimg.com/profile_images/840304182494126080/Khh_zstS_normal.jpg"
     },
     "team": {
       "name": "Philadelphia Eagles",
       "slug": "phi"
     },
-    "profileImage": "/assets/img/teams/phi.jpg",
-    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/840304182494126080/Khh_zstS_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/840304182494126080/Khh_zstS_bigger.jpg",
     "link": "torrey-smith",
     "beatWriters": [
       "howardeskin",
@@ -578,16 +578,16 @@
     "number": 43,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "DarrenSproles",
+      "profileImage": "http://pbs.twimg.com/profile_images/601822542819561472/BhPacv9t_normal.jpg"
     },
     "team": {
       "name": "Philadelphia Eagles",
       "slug": "phi"
     },
-    "profileImage": "/assets/img/teams/phi.jpg",
-    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/601822542819561472/BhPacv9t_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/601822542819561472/BhPacv9t_bigger.jpg",
     "link": "darren-sproles",
     "beatWriters": [
       "howardeskin",
@@ -671,16 +671,16 @@
     "number": 19,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "pauloturner80",
+      "profileImage": "http://pbs.twimg.com/profile_images/812083205062979588/UC7ZY9am_normal.jpg"
     },
     "team": {
       "name": "Philadelphia Eagles",
       "slug": "phi"
     },
-    "profileImage": "/assets/img/teams/phi.jpg",
-    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/812083205062979588/UC7ZY9am_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/812083205062979588/UC7ZY9am_bigger.jpg",
     "link": "paul-turner",
     "beatWriters": [
       "howardeskin",
@@ -733,16 +733,16 @@
     "number": 35,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "terrellwatson33",
+      "profileImage": "http://pbs.twimg.com/profile_images/816891043748646912/uSI0rPaf_normal.jpg"
     },
     "team": {
       "name": "Philadelphia Eagles",
       "slug": "phi"
     },
-    "profileImage": "/assets/img/teams/phi.jpg",
-    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/816891043748646912/uSI0rPaf_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/816891043748646912/uSI0rPaf_bigger.jpg",
     "link": "terrell-watson",
     "beatWriters": [
       "howardeskin",
@@ -764,16 +764,16 @@
     "number": 11,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "cj_wentz",
+      "profileImage": "http://pbs.twimg.com/profile_images/826851155493916672/4q_un_16_normal.jpg"
     },
     "team": {
       "name": "Philadelphia Eagles",
       "slug": "phi"
     },
-    "profileImage": "/assets/img/teams/phi.jpg",
-    "profileImageLarge": "/assets/img/teams/phi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/826851155493916672/4q_un_16_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/826851155493916672/4q_un_16_bigger.jpg",
     "link": "carson-wentz",
     "beatWriters": [
       "howardeskin",
@@ -1941,7 +1941,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "dan-bailey",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "727c3522-5cc1-418f-a3f2-bf0379f19bd2",
@@ -1965,7 +1970,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "cole-beasley",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "acb7bb10-a5c4-44ec-958d-d85183072c5c",
@@ -1989,7 +1999,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "dez-bryant",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "ece52af1-c9fd-45d4-b734-66a827b7c9de",
@@ -2013,7 +2028,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "ezekiel-elliott",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "9d914160-20c2-4275-8298-a3820be5e83a",
@@ -2037,7 +2057,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "shaq-evans",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "6932d4fc-1f03-4088-96c6-07ddd28cdcd0",
@@ -2061,7 +2086,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "rico-gathers",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "5a274c2d-19e3-4b33-b9b2-28e806be1f01",
@@ -2085,7 +2115,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "connor-hamlett",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "ea4fb5dd-14cc-4516-9de0-85d2afbc17b9",
@@ -2109,7 +2144,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "james-hanna",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "b107cd14-0266-4451-897e-fb1506306c5d",
@@ -2133,7 +2173,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "andy-jones",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "1dad77ef-9124-435a-bd65-3f5b9bd51359",
@@ -2157,7 +2202,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "quincy-mcduffie",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "202915fd-358f-4b27-b8df-bddfe728ce2a",
@@ -2181,7 +2231,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "darren-mcfadden",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "f2de4278-d503-4242-b661-5bfb57f12f16",
@@ -2205,7 +2260,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "kellen-moore",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "bc566b82-120e-48b6-9696-7f47a13576d2",
@@ -2229,7 +2289,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "alfred-morris",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "d36a5557-f94a-479b-8282-c405aa035bf8",
@@ -2253,7 +2318,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "uzoma-nwachukwu",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "095658c2-bf9e-4b57-9561-5e9741c31017",
@@ -2277,7 +2347,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "dak-prescott",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "46b2faca-b8fe-4c5d-9896-e5e2a67ca1f2",
@@ -2301,7 +2376,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "tony-romo",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "5654f0e4-b4c6-48d3-ae78-f6829b6dfa48",
@@ -2325,7 +2405,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "jameill-showers",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "ad0f97c7-1148-4626-a33a-490d42b110ae",
@@ -2349,7 +2434,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "keith-smith",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "79f6b9d2-e766-4bab-aa85-aef080161f76",
@@ -2373,7 +2463,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "rod-smith",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "4337c253-99f2-4690-a9ad-f1a5921867b2",
@@ -2397,7 +2492,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "geoff-swaim",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "78721f7c-3e72-4699-b55f-901a1976578c",
@@ -2421,7 +2521,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "lucky-whitehead",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "8105d9e4-b105-4955-b9f8-05670da42799",
@@ -2445,7 +2550,12 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "terrance-williams",
-    "beatWriters": []
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
   },
   {
     "id": "2112b2b7-cb35-4f11-b8c3-8cb32404a097",
@@ -2469,6 +2579,3491 @@
     "profileImage": "/assets/img/teams/dal.jpg",
     "profileImageLarge": "/assets/img/teams/dal.jpg",
     "link": "jason-witten",
+    "beatWriters": [
+      "DMN_George",
+      "dallascowboys",
+      "dmn_cowboys",
+      "junior_miller"
+    ]
+  },
+  {
+    "id": "5ff4e6b3-5f63-4795-b428-62fafdafe1eb",
+    "firstName": "Harvey",
+    "lastName": "Binford",
+    "shortName": "H. Binford",
+    "name": "Harvey Binford",
+    "value": "Harvey Binford",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "harvey-binford",
+    "beatWriters": []
+  },
+  {
+    "id": "6d3a8e95-185d-4704-bb2e-e015ede03d5e",
+    "firstName": "Jaron",
+    "lastName": "Brown",
+    "shortName": "J. Brown",
+    "name": "Jaron Brown",
+    "value": "Jaron Brown",
+    "position": "WR",
+    "number": 13,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "jaron-brown",
+    "beatWriters": []
+  },
+  {
+    "id": "038235c9-833e-4e33-86d8-24529e256efe",
+    "firstName": "John",
+    "lastName": "Brown",
+    "shortName": "J. Brown",
+    "name": "John Brown",
+    "value": "John Brown",
+    "position": "WR",
+    "number": 12,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "john-brown",
+    "beatWriters": []
+  },
+  {
+    "id": "33702a8a-f8f1-4ed7-a2dd-e937aa076d08",
+    "firstName": "Marquis",
+    "lastName": "Bundy",
+    "shortName": "M. Bundy",
+    "name": "Marquis Bundy",
+    "value": "Marquis Bundy",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "marquis-bundy",
+    "beatWriters": []
+  },
+  {
+    "id": "b97c1d5d-14d7-458f-88ef-fa5bcf2f3c06",
+    "firstName": "Phil",
+    "lastName": "Dawson",
+    "shortName": "P. Dawson",
+    "name": "Phil Dawson",
+    "value": "Phil Dawson",
+    "position": "K",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "phil-dawson",
+    "beatWriters": []
+  },
+  {
+    "id": "cb518122-cc8c-44d8-acdb-db349bd76fce",
+    "firstName": "Aaron",
+    "lastName": "Dobson",
+    "shortName": "A. Dobson",
+    "name": "Aaron Dobson",
+    "value": "Aaron Dobson",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "aaron-dobson",
+    "beatWriters": []
+  },
+  {
+    "id": "0465feb0-f94c-4d09-8820-3359b683762d",
+    "firstName": "Zac",
+    "lastName": "Dysert",
+    "shortName": "Z. Dysert",
+    "name": "Zac Dysert",
+    "value": "Zac Dysert",
+    "position": "QB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "zac-dysert",
+    "beatWriters": []
+  },
+  {
+    "id": "58aaf598-d5c2-4563-8e33-e491439fb7bb",
+    "firstName": "Andre",
+    "lastName": "Ellington",
+    "shortName": "A. Ellington",
+    "name": "Andre Ellington",
+    "value": "Andre Ellington",
+    "position": "RB",
+    "number": 38,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "andre-ellington",
+    "beatWriters": []
+  },
+  {
+    "id": "5a17dfe4-baca-47a7-a4f8-5c1bf7b194d4",
+    "firstName": "Larry",
+    "lastName": "Fitzgerald",
+    "shortName": "L. Fitzgerald",
+    "name": "Larry Fitzgerald",
+    "value": "Larry Fitzgerald",
+    "position": "WR",
+    "number": 11,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "larry-fitzgerald",
+    "beatWriters": []
+  },
+  {
+    "id": "f9e1ee76-8d49-43d5-9327-231154e0ea4c",
+    "firstName": "Brittan",
+    "lastName": "Golden",
+    "shortName": "B. Golden",
+    "name": "Brittan Golden",
+    "value": "Brittan Golden",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "brittan-golden",
+    "beatWriters": []
+  },
+  {
+    "id": "c8967e53-dea9-47f4-a294-7bfc6642b9d7",
+    "firstName": "Jermaine",
+    "lastName": "Gresham",
+    "shortName": "J. Gresham",
+    "name": "Jermaine Gresham",
+    "value": "Jermaine Gresham",
+    "position": "TE",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "jermaine-gresham",
+    "beatWriters": []
+  },
+  {
+    "id": "d7ad96a8-87e8-47d7-a235-f7a0a083fc0f",
+    "firstName": "Marvin",
+    "lastName": "Hall",
+    "shortName": "M. Hall",
+    "name": "Marvin Hall",
+    "value": "Marvin Hall",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "marvin-hall",
+    "beatWriters": []
+  },
+  {
+    "id": "c7427ba4-1f73-4a80-8023-64f177564f1c",
+    "firstName": "Chris",
+    "lastName": "Hubert",
+    "shortName": "C. Hubert",
+    "name": "Chris Hubert",
+    "value": "Chris Hubert",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "chris-hubert",
+    "beatWriters": []
+  },
+  {
+    "id": "5b3b8d8b-e7f9-48a5-b618-3516a0ab8856",
+    "firstName": "David",
+    "lastName": "Johnson",
+    "shortName": "D. Johnson",
+    "name": "David Johnson",
+    "value": "David Johnson",
+    "position": "RB",
+    "number": 31,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "david-johnson",
+    "beatWriters": []
+  },
+  {
+    "id": "9efe674d-a27c-4268-bdad-bbdf65fa13fe",
+    "firstName": "Ifeanyi",
+    "lastName": "Momah",
+    "shortName": "I. Momah",
+    "name": "Ifeanyi Momah",
+    "value": "Ifeanyi Momah",
+    "position": "TE",
+    "number": 80,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "ifeanyi-momah",
+    "beatWriters": []
+  },
+  {
+    "id": "6172d16c-aa0b-4700-aadd-bb3bd84ac342",
+    "firstName": "J.J.",
+    "lastName": "Nelson",
+    "shortName": "J. Nelson",
+    "name": "J.J. Nelson",
+    "value": "J.J. Nelson",
+    "position": "WR",
+    "number": 14,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "jj-nelson",
+    "beatWriters": []
+  },
+  {
+    "id": "f001c840-2aa1-4e31-af1d-ba836f6f9b9b",
+    "firstName": "Troy",
+    "lastName": "Niklas",
+    "shortName": "T. Niklas",
+    "name": "Troy Niklas",
+    "value": "Troy Niklas",
+    "position": "TE",
+    "number": 87,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "troy-niklas",
+    "beatWriters": []
+  },
+  {
+    "id": "c636cf12-58bf-4279-b9f7-65f580bfa84b",
+    "firstName": "Carson",
+    "lastName": "Palmer",
+    "shortName": "C. Palmer",
+    "name": "Carson Palmer",
+    "value": "Carson Palmer",
+    "position": "QB",
+    "number": 3,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "carson-palmer",
+    "beatWriters": []
+  },
+  {
+    "id": "aee96c54-3704-4585-99d0-3ce8d1e5a519",
+    "firstName": "Elijhaa",
+    "lastName": "Penny",
+    "shortName": "E. Penny",
+    "name": "Elijhaa Penny",
+    "value": "Elijhaa Penny",
+    "position": "RB",
+    "number": 35,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "elijhaa-penny",
+    "beatWriters": []
+  },
+  {
+    "id": "05080de5-f56d-4958-8bdd-3ce4eea10bdf",
+    "firstName": "Drew",
+    "lastName": "Stanton",
+    "shortName": "D. Stanton",
+    "name": "Drew Stanton",
+    "value": "Drew Stanton",
+    "position": "QB",
+    "number": 5,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "drew-stanton",
+    "beatWriters": []
+  },
+  {
+    "id": "3de04d8b-f71a-4831-a690-577b0db9eb3b",
+    "firstName": "Hakeem",
+    "lastName": "Valles",
+    "shortName": "H. Valles",
+    "name": "Hakeem Valles",
+    "value": "Hakeem Valles",
+    "position": "TE",
+    "number": 89,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "hakeem-valles",
+    "beatWriters": []
+  },
+  {
+    "id": "7c5ba515-7fec-4a59-93fe-242855492d25",
+    "firstName": "Kerwynn",
+    "lastName": "Williams",
+    "shortName": "K. Williams",
+    "name": "Kerwynn Williams",
+    "value": "Kerwynn Williams",
+    "position": "RB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Arizona Cardinals",
+      "slug": "ari"
+    },
+    "profileImage": "/assets/img/teams/ari.jpg",
+    "profileImageLarge": "/assets/img/teams/ari.jpg",
+    "link": "kerwynn-williams",
+    "beatWriters": []
+  },
+  {
+    "id": "8a487f25-8106-4c80-a8c4-0ad3aa8533c8",
+    "firstName": "Matt",
+    "lastName": "Bryant",
+    "shortName": "M. Bryant",
+    "name": "Matt Bryant",
+    "value": "Matt Bryant",
+    "position": "K",
+    "number": 3,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "matt-bryant",
+    "beatWriters": []
+  },
+  {
+    "id": "4a0fec70-cc13-43d6-9653-9f160926db35",
+    "firstName": "Tevin",
+    "lastName": "Coleman",
+    "shortName": "T. Coleman",
+    "name": "Tevin Coleman",
+    "value": "Tevin Coleman",
+    "position": "RB",
+    "number": 26,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "tevin-coleman",
+    "beatWriters": []
+  },
+  {
+    "id": "ae7e577d-7d1d-4215-b2da-1c09f23fc97d",
+    "firstName": "Derrick",
+    "lastName": "Coleman",
+    "shortName": "D. Coleman",
+    "name": "Derrick Coleman",
+    "value": "Derrick Coleman",
+    "position": "RB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "derrick-coleman",
+    "beatWriters": []
+  },
+  {
+    "id": "db59c9e7-00f4-4e20-917e-7ced4dfba189",
+    "firstName": "Anthony",
+    "lastName": "Dable",
+    "shortName": "A. Dable",
+    "name": "Anthony Dable",
+    "value": "Anthony Dable",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "anthony-dable",
+    "beatWriters": []
+  },
+  {
+    "id": "f574d80a-b9f6-4c2d-b304-14a1193b1dca",
+    "firstName": "B.J.",
+    "lastName": "Daniels",
+    "shortName": "B. Daniels",
+    "name": "B.J. Daniels",
+    "value": "B.J. Daniels",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "bj-daniels",
+    "beatWriters": []
+  },
+  {
+    "id": "658e69d4-2b3d-4aed-b0d0-c4480d8967ac",
+    "firstName": "Devonta",
+    "lastName": "Freeman",
+    "shortName": "D. Freeman",
+    "name": "Devonta Freeman",
+    "value": "Devonta Freeman",
+    "position": "RB",
+    "number": 24,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "devonta-freeman",
+    "beatWriters": []
+  },
+  {
+    "id": "a235fda3-7af3-48c7-a5d8-9f65984d88b1",
+    "firstName": "Devin",
+    "lastName": "Fuller",
+    "shortName": "D. Fuller",
+    "name": "Devin Fuller",
+    "value": "Devin Fuller",
+    "position": "WR",
+    "number": 87,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "devin-fuller",
+    "beatWriters": []
+  },
+  {
+    "id": "1026dde7-c8c4-4034-9d3f-94515ac69787",
+    "firstName": "Taylor",
+    "lastName": "Gabriel",
+    "shortName": "T. Gabriel",
+    "name": "Taylor Gabriel",
+    "value": "Taylor Gabriel",
+    "position": "WR",
+    "number": 18,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "taylor-gabriel",
+    "beatWriters": []
+  },
+  {
+    "id": "cfd64152-1826-41fa-ad3a-9f534460b9bf",
+    "firstName": "Darion",
+    "lastName": "Griswold",
+    "shortName": "D. Griswold",
+    "name": "Darion Griswold",
+    "value": "Darion Griswold",
+    "position": "TE",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "darion-griswold",
+    "beatWriters": []
+  },
+  {
+    "id": "685f2157-35d2-4964-9b24-9678098c2ca6",
+    "firstName": "Justin",
+    "lastName": "Hardy",
+    "shortName": "J. Hardy",
+    "name": "Justin Hardy",
+    "value": "Justin Hardy",
+    "position": "WR",
+    "number": 16,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "justin-hardy",
+    "beatWriters": []
+  },
+  {
+    "id": "9274dc40-9526-4593-a737-8ad24e10ea89",
+    "firstName": "Austin",
+    "lastName": "Hooper",
+    "shortName": "A. Hooper",
+    "name": "Austin Hooper",
+    "value": "Austin Hooper",
+    "position": "TE",
+    "number": 81,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "austin-hooper",
+    "beatWriters": []
+  },
+  {
+    "id": "b8c4d0c9-57d5-46c9-886f-fe75a12c86ed",
+    "firstName": "Julio",
+    "lastName": "Jones",
+    "shortName": "J. Jones",
+    "name": "Julio Jones",
+    "value": "Julio Jones",
+    "position": "WR",
+    "number": 11,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "julio-jones",
+    "beatWriters": []
+  },
+  {
+    "id": "6f100353-ebd6-4224-ae3d-76474d4a032b",
+    "firstName": "Mike",
+    "lastName": "Meyer",
+    "shortName": "M. Meyer",
+    "name": "Mike Meyer",
+    "value": "Mike Meyer",
+    "position": "K",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "mike-meyer",
+    "beatWriters": []
+  },
+  {
+    "id": "ef23deab-17a7-458f-a620-e4d3fd4e2daf",
+    "firstName": "Josh",
+    "lastName": "Perkins",
+    "shortName": "J. Perkins",
+    "name": "Josh Perkins",
+    "value": "Josh Perkins",
+    "position": "TE",
+    "number": 82,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "josh-perkins",
+    "beatWriters": []
+  },
+  {
+    "id": "7cae2eb9-5d63-4a78-82d6-cd2b18340a30",
+    "firstName": "Andre",
+    "lastName": "Roberts",
+    "shortName": "A. Roberts",
+    "name": "Andre Roberts",
+    "value": "Andre Roberts",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "andre-roberts",
+    "beatWriters": []
+  },
+  {
+    "id": "82e9a481-4111-48bb-83fe-7e596433d180",
+    "firstName": "Matt",
+    "lastName": "Ryan",
+    "shortName": "M. Ryan",
+    "name": "Matt Ryan",
+    "value": "Matt Ryan",
+    "position": "QB",
+    "number": 2,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "matt-ryan",
+    "beatWriters": []
+  },
+  {
+    "id": "2f070d80-3fb5-4235-b9ab-68aaddfccaa8",
+    "firstName": "Mohamed",
+    "lastName": "Sanu",
+    "shortName": "M. Sanu",
+    "name": "Mohamed Sanu",
+    "value": "Mohamed Sanu",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "mohamed-sanu",
+    "beatWriters": []
+  },
+  {
+    "id": "9f0bdb75-aa9c-4e2c-8cdf-136cbd28be96",
+    "firstName": "D.J.",
+    "lastName": "Tialavea",
+    "shortName": "D. Tialavea",
+    "name": "D.J. Tialavea",
+    "value": "D.J. Tialavea",
+    "position": "TE",
+    "number": 86,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "dj-tialavea",
+    "beatWriters": []
+  },
+  {
+    "id": "e96f007f-25d3-4fbb-b6f3-4122fdedbade",
+    "firstName": "Levine",
+    "lastName": "Toilolo",
+    "shortName": "L. Toilolo",
+    "name": "Levine Toilolo",
+    "value": "Levine Toilolo",
+    "position": "TE",
+    "number": 80,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "levine-toilolo",
+    "beatWriters": []
+  },
+  {
+    "id": "d816239a-f7f8-418d-ae3b-2ac47fddf701",
+    "firstName": "Soma",
+    "lastName": "Vainuku",
+    "shortName": "S. Vainuku",
+    "name": "Soma Vainuku",
+    "value": "Soma Vainuku",
+    "position": "RB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "soma-vainuku",
+    "beatWriters": []
+  },
+  {
+    "id": "fd7199ca-7701-4d85-b545-f19307a69ec7",
+    "firstName": "Brian",
+    "lastName": "Vogler",
+    "shortName": "B. Vogler",
+    "name": "Brian Vogler",
+    "value": "Brian Vogler",
+    "position": "TE",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "brian-vogler",
+    "beatWriters": []
+  },
+  {
+    "id": "07c46b0f-9ce5-4a5e-8731-0971a3303e02",
+    "firstName": "Terron",
+    "lastName": "Ward",
+    "shortName": "T. Ward",
+    "name": "Terron Ward",
+    "value": "Terron Ward",
+    "position": "RB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Atlanta Falcons",
+      "slug": "atl"
+    },
+    "profileImage": "/assets/img/teams/atl.jpg",
+    "profileImageLarge": "/assets/img/teams/atl.jpg",
+    "link": "terron-ward",
+    "beatWriters": []
+  },
+  {
+    "id": "5ae4f39c-ec44-4639-b4e2-ec1fc8bcf67c",
+    "firstName": "Javorius",
+    "lastName": "Allen",
+    "shortName": "J. Allen",
+    "name": "Javorius Allen",
+    "value": "Javorius Allen",
+    "position": "RB",
+    "number": 37,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "javorius-allen",
+    "beatWriters": []
+  },
+  {
+    "id": "e6e19029-8055-4613-bd43-fc7aff5c271d",
+    "firstName": "Kenny",
+    "lastName": "Bell",
+    "shortName": "K. Bell",
+    "name": "Kenny Bell",
+    "value": "Kenny Bell",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "kenny-bell",
+    "beatWriters": []
+  },
+  {
+    "id": "a8bf5700-ff7a-4c5d-af8b-6830abc1935a",
+    "firstName": "Nick",
+    "lastName": "Boyle",
+    "shortName": "N. Boyle",
+    "name": "Nick Boyle",
+    "value": "Nick Boyle",
+    "position": "TE",
+    "number": 86,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "nick-boyle",
+    "beatWriters": []
+  },
+  {
+    "id": "f3df8fb4-c2f5-409b-871b-093d0518491d",
+    "firstName": "Michael",
+    "lastName": "Campanaro",
+    "shortName": "M. Campanaro",
+    "name": "Michael Campanaro",
+    "value": "Michael Campanaro",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "michael-campanaro",
+    "beatWriters": []
+  },
+  {
+    "id": "d8816b22-8895-47b8-a230-0a694c3695a5",
+    "firstName": "Joe",
+    "lastName": "Flacco",
+    "shortName": "J. Flacco",
+    "name": "Joe Flacco",
+    "value": "Joe Flacco",
+    "position": "QB",
+    "number": 5,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "joe-flacco",
+    "beatWriters": []
+  },
+  {
+    "id": "17d36ba9-5ae4-49e2-9564-945dac05fd56",
+    "firstName": "Crockett",
+    "lastName": "Gillmore",
+    "shortName": "C. Gillmore",
+    "name": "Crockett Gillmore",
+    "value": "Crockett Gillmore",
+    "position": "TE",
+    "number": 80,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "crockett-gillmore",
+    "beatWriters": []
+  },
+  {
+    "id": "3d3c4848-3066-40c6-974d-29ded6393d3b",
+    "firstName": "Stephen",
+    "lastName": "Houston",
+    "shortName": "S. Houston",
+    "name": "Stephen Houston",
+    "value": "Stephen Houston",
+    "position": "RB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "stephen-houston",
+    "beatWriters": []
+  },
+  {
+    "id": "4da4b43b-cbd7-4de0-8ff5-df30a7e278ed",
+    "firstName": "Ryan",
+    "lastName": "Mallett",
+    "shortName": "R. Mallett",
+    "name": "Ryan Mallett",
+    "value": "Ryan Mallett",
+    "position": "QB",
+    "number": 15,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "ryan-mallett",
+    "beatWriters": []
+  },
+  {
+    "id": "5eee1f16-7c8d-4a02-99f1-7953d23be4bb",
+    "firstName": "Chris",
+    "lastName": "Matthews",
+    "shortName": "C. Matthews",
+    "name": "Chris Matthews",
+    "value": "Chris Matthews",
+    "position": "WR",
+    "number": 84,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "chris-matthews",
+    "beatWriters": []
+  },
+  {
+    "id": "3dc0e9fc-3793-4845-ac8c-37df17ace6ac",
+    "firstName": "Vince",
+    "lastName": "Mayle",
+    "shortName": "V. Mayle",
+    "name": "Vince Mayle",
+    "value": "Vince Mayle",
+    "position": "WR",
+    "number": 16,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "vince-mayle",
+    "beatWriters": []
+  },
+  {
+    "id": "98c5b801-a908-4a94-90c2-7a465c51d96d",
+    "firstName": "Chris",
+    "lastName": "Moore",
+    "shortName": "C. Moore",
+    "name": "Chris Moore",
+    "value": "Chris Moore",
+    "position": "WR",
+    "number": 10,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "chris-moore",
+    "beatWriters": []
+  },
+  {
+    "id": "7d1d8aff-f725-4460-9cf1-68665b73dd86",
+    "firstName": "Breshad",
+    "lastName": "Perriman",
+    "shortName": "B. Perriman",
+    "name": "Breshad Perriman",
+    "value": "Breshad Perriman",
+    "position": "WR",
+    "number": 18,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "breshad-perriman",
+    "beatWriters": []
+  },
+  {
+    "id": "3266d3c4-967b-42f6-939a-3753bacc7a47",
+    "firstName": "Dennis",
+    "lastName": "Pitta",
+    "shortName": "D. Pitta",
+    "name": "Dennis Pitta",
+    "value": "Dennis Pitta",
+    "position": "TE",
+    "number": 88,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "dennis-pitta",
+    "beatWriters": []
+  },
+  {
+    "id": "71619cdc-7e06-497e-bdcc-277c00ff71ce",
+    "firstName": "Keenan",
+    "lastName": "Reynolds",
+    "shortName": "K. Reynolds",
+    "name": "Keenan Reynolds",
+    "value": "Keenan Reynolds",
+    "position": "WR",
+    "number": 81,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "keenan-reynolds",
+    "beatWriters": []
+  },
+  {
+    "id": "fa679385-e684-4d5a-8907-9c5c6e056599",
+    "firstName": "Steve",
+    "lastName": "Smith",
+    "shortName": "S. Smith",
+    "name": "Steve Smith",
+    "value": "Steve Smith",
+    "position": "WR",
+    "number": 89,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "steve-smith",
+    "beatWriters": []
+  },
+  {
+    "id": "ef5062dc-0bbb-4764-a49e-b7d213f3d408",
+    "firstName": "Lorenzo",
+    "lastName": "Taliaferro",
+    "shortName": "L. Taliaferro",
+    "name": "Lorenzo Taliaferro",
+    "value": "Lorenzo Taliaferro",
+    "position": "RB",
+    "number": 34,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "lorenzo-taliaferro",
+    "beatWriters": []
+  },
+  {
+    "id": "0144132b-985d-4412-80c8-66f18a193b01",
+    "firstName": "Justin",
+    "lastName": "Tucker",
+    "shortName": "J. Tucker",
+    "name": "Justin Tucker",
+    "value": "Justin Tucker",
+    "position": "K",
+    "number": 9,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "justin-tucker",
+    "beatWriters": []
+  },
+  {
+    "id": "175da36c-8a4b-4eeb-86f3-fb84a57f0ce7",
+    "firstName": "Dustin",
+    "lastName": "Vaughan",
+    "shortName": "D. Vaughan",
+    "name": "Dustin Vaughan",
+    "value": "Dustin Vaughan",
+    "position": "QB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "dustin-vaughan",
+    "beatWriters": []
+  },
+  {
+    "id": "4e0d937c-72a8-49df-97d8-dafc0bcc5c35",
+    "firstName": "Mike",
+    "lastName": "Wallace",
+    "shortName": "M. Wallace",
+    "name": "Mike Wallace",
+    "value": "Mike Wallace",
+    "position": "WR",
+    "number": 17,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "mike-wallace",
+    "beatWriters": []
+  },
+  {
+    "id": "cabe5902-8a1e-463b-8ba9-d457011a3de1",
+    "firstName": "Darren",
+    "lastName": "Waller",
+    "shortName": "D. Waller",
+    "name": "Darren Waller",
+    "value": "Darren Waller",
+    "position": "TE",
+    "number": 84,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "darren-waller",
+    "beatWriters": []
+  },
+  {
+    "id": "51e4810d-452d-4f9c-957e-33d53ca639e2",
+    "firstName": "Benjamin",
+    "lastName": "Watson",
+    "shortName": "B. Watson",
+    "name": "Benjamin Watson",
+    "value": "Benjamin Watson",
+    "position": "TE",
+    "number": 82,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "benjamin-watson",
+    "beatWriters": []
+  },
+  {
+    "id": "ac3ba59f-3009-441d-b71f-02e8aa90ec29",
+    "firstName": "Terrance",
+    "lastName": "West",
+    "shortName": "T. West",
+    "name": "Terrance West",
+    "value": "Terrance West",
+    "position": "RB",
+    "number": 28,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "terrance-west",
+    "beatWriters": []
+  },
+  {
+    "id": "01dfb27e-b47f-4464-994f-394594c5ecc5",
+    "firstName": "Maxx",
+    "lastName": "Williams",
+    "shortName": "M. Williams",
+    "name": "Maxx Williams",
+    "value": "Maxx Williams",
+    "position": "TE",
+    "number": 87,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "maxx-williams",
+    "beatWriters": []
+  },
+  {
+    "id": "f7aade1e-a021-4f53-b215-9f664f732193",
+    "firstName": "Danny",
+    "lastName": "Woodhead",
+    "shortName": "D. Woodhead",
+    "name": "Danny Woodhead",
+    "value": "Danny Woodhead",
+    "position": "RB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Baltimore Ravens",
+      "slug": "bal"
+    },
+    "profileImage": "/assets/img/teams/bal.jpg",
+    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "link": "danny-woodhead",
+    "beatWriters": []
+  },
+  {
+    "id": "d2eaffb9-3a6d-4b6a-a6c4-9013f072c897",
+    "firstName": "Blake",
+    "lastName": "Annen",
+    "shortName": "B. Annen",
+    "name": "Blake Annen",
+    "value": "Blake Annen",
+    "position": "TE",
+    "number": 86,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "blake-annen",
+    "beatWriters": []
+  },
+  {
+    "id": "c5825251-012e-43de-a43d-66a8462f3d5c",
+    "firstName": "Joe",
+    "lastName": "Banyard",
+    "shortName": "J. Banyard",
+    "name": "Joe Banyard",
+    "value": "Joe Banyard",
+    "position": "RB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "joe-banyard",
+    "beatWriters": []
+  },
+  {
+    "id": "733929ea-0baf-4a6f-bd9f-1abe8177bb12",
+    "firstName": "Corey",
+    "lastName": "Brown",
+    "shortName": "C. Brown",
+    "name": "Corey Brown",
+    "value": "Corey Brown",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "corey-brown",
+    "beatWriters": []
+  },
+  {
+    "id": "d55535d2-b81b-4865-b874-bb5f8fc88c68",
+    "firstName": "Jeremy",
+    "lastName": "Butler",
+    "shortName": "J. Butler",
+    "name": "Jeremy Butler",
+    "value": "Jeremy Butler",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "jeremy-butler",
+    "beatWriters": []
+  },
+  {
+    "id": "083dc352-dc61-4db2-a67a-233346baa906",
+    "firstName": "Charles",
+    "lastName": "Clay",
+    "shortName": "C. Clay",
+    "name": "Charles Clay",
+    "value": "Charles Clay",
+    "position": "TE",
+    "number": 85,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "charles-clay",
+    "beatWriters": []
+  },
+  {
+    "id": "dd85919f-be02-4dea-b293-39b18f44fd61",
+    "firstName": "Patrick",
+    "lastName": "DiMarco",
+    "shortName": "P. DiMarco",
+    "name": "Patrick DiMarco",
+    "value": "Patrick DiMarco",
+    "position": "RB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "patrick-dimarco",
+    "beatWriters": []
+  },
+  {
+    "id": "73d8aeec-af8c-425c-911f-0d2d58308a1d",
+    "firstName": "Mike",
+    "lastName": "Gillislee",
+    "shortName": "M. Gillislee",
+    "name": "Mike Gillislee",
+    "value": "Mike Gillislee",
+    "position": "RB",
+    "number": 35,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "mike-gillislee",
+    "beatWriters": []
+  },
+  {
+    "id": "57842f70-35f6-4c76-b726-478361a4aec5",
+    "firstName": "Chris",
+    "lastName": "Gragg",
+    "shortName": "C. Gragg",
+    "name": "Chris Gragg",
+    "value": "Chris Gragg",
+    "position": "TE",
+    "number": 89,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "chris-gragg",
+    "beatWriters": []
+  },
+  {
+    "id": "7003bf15-eb3b-4778-aa50-8bbdc021926d",
+    "firstName": "Steven",
+    "lastName": "Hauschka",
+    "shortName": "S. Hauschka",
+    "name": "Steven Hauschka",
+    "value": "Steven Hauschka",
+    "position": "K",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "steven-hauschka",
+    "beatWriters": []
+  },
+  {
+    "id": "e67cfe5c-39e0-4b22-8ddc-b7c635052ab3",
+    "firstName": "Andre",
+    "lastName": "Holmes",
+    "shortName": "A. Holmes",
+    "name": "Andre Holmes",
+    "value": "Andre Holmes",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "andre-holmes",
+    "beatWriters": []
+  },
+  {
+    "id": "001a46c7-e03a-4a67-9b7e-dad92f579e1c",
+    "firstName": "Cardale",
+    "lastName": "Jones",
+    "shortName": "C. Jones",
+    "name": "Cardale Jones",
+    "value": "Cardale Jones",
+    "position": "QB",
+    "number": 7,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "cardale-jones",
+    "beatWriters": []
+  },
+  {
+    "id": "57a91e2e-679f-4fce-a0cb-99986407a608",
+    "firstName": "Dezmin",
+    "lastName": "Lewis",
+    "shortName": "D. Lewis",
+    "name": "Dezmin Lewis",
+    "value": "Dezmin Lewis",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "dezmin-lewis",
+    "beatWriters": []
+  },
+  {
+    "id": "fd79ac5b-058e-4b95-9f13-0eeda600e6cd",
+    "firstName": "Kolby",
+    "lastName": "Listenbee",
+    "shortName": "K. Listenbee",
+    "name": "Kolby Listenbee",
+    "value": "Kolby Listenbee",
+    "position": "WR",
+    "number": 18,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "kolby-listenbee",
+    "beatWriters": []
+  },
+  {
+    "id": "c9be3c97-2e33-4cc3-b194-8080c51e86ca",
+    "firstName": "LeSean",
+    "lastName": "McCoy",
+    "shortName": "L. McCoy",
+    "name": "LeSean McCoy",
+    "value": "LeSean McCoy",
+    "position": "RB",
+    "number": 25,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "lesean-mccoy",
+    "beatWriters": []
+  },
+  {
+    "id": "d0af44c3-387f-4a8f-8290-8b4cbc15aaed",
+    "firstName": "Nick",
+    "lastName": "O'Leary",
+    "shortName": "N. O'Leary",
+    "name": "Nick O'Leary",
+    "value": "Nick O'Leary",
+    "position": "TE",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "nick-oleary",
+    "beatWriters": []
+  },
+  {
+    "id": "ca0d7249-6683-456e-ac40-4dbf3abfae16",
+    "firstName": "Cedric",
+    "lastName": "O'Neal",
+    "shortName": "C. O'Neal",
+    "name": "Cedric O'Neal",
+    "value": "Cedric O'Neal",
+    "position": "RB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "cedric-oneal",
+    "beatWriters": []
+  },
+  {
+    "id": "275aca75-59a8-4067-95be-cf1796dfaaab",
+    "firstName": "Walt",
+    "lastName": "Powell",
+    "shortName": "W. Powell",
+    "name": "Walt Powell",
+    "value": "Walt Powell",
+    "position": "WR",
+    "number": 19,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "walt-powell",
+    "beatWriters": []
+  },
+  {
+    "id": "00502908-d701-484d-b869-c0412596aaa3",
+    "firstName": "Brandon",
+    "lastName": "Tate",
+    "shortName": "B. Tate",
+    "name": "Brandon Tate",
+    "value": "Brandon Tate",
+    "position": "WR",
+    "number": 15,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "brandon-tate",
+    "beatWriters": []
+  },
+  {
+    "id": "98560753-a943-4b3e-9abe-cd4e9b17add5",
+    "firstName": "Tyrod",
+    "lastName": "Taylor",
+    "shortName": "T. Taylor",
+    "name": "Tyrod Taylor",
+    "value": "Tyrod Taylor",
+    "position": "QB",
+    "number": 5,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "tyrod-taylor",
+    "beatWriters": []
+  },
+  {
+    "id": "0bef492d-bd8a-4a65-915d-cb01f5959189",
+    "firstName": "Logan",
+    "lastName": "Thomas",
+    "shortName": "L. Thomas",
+    "name": "Logan Thomas",
+    "value": "Logan Thomas",
+    "position": "QB",
+    "number": 82,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "logan-thomas",
+    "beatWriters": []
+  },
+  {
+    "id": "d61fa2bc-3e7d-4cb9-9083-766273b4bcc4",
+    "firstName": "Mike",
+    "lastName": "Tolbert",
+    "shortName": "M. Tolbert",
+    "name": "Mike Tolbert",
+    "value": "Mike Tolbert",
+    "position": "FB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "mike-tolbert",
+    "beatWriters": []
+  },
+  {
+    "id": "f22ada36-b4db-4454-80cb-c367d32b2ca8",
+    "firstName": "Corey",
+    "lastName": "Washington",
+    "shortName": "C. Washington",
+    "name": "Corey Washington",
+    "value": "Corey Washington",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "corey-washington",
+    "beatWriters": []
+  },
+  {
+    "id": "4964ec4c-6927-4a8a-8a56-7e439e6e69a0",
+    "firstName": "Sammy",
+    "lastName": "Watkins",
+    "shortName": "S. Watkins",
+    "name": "Sammy Watkins",
+    "value": "Sammy Watkins",
+    "position": "WR",
+    "number": 14,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "sammy-watkins",
+    "beatWriters": []
+  },
+  {
+    "id": "0343e7da-841c-474d-acba-b55ff536274f",
+    "firstName": "Jonathan",
+    "lastName": "Williams",
+    "shortName": "J. Williams",
+    "name": "Jonathan Williams",
+    "value": "Jonathan Williams",
+    "position": "RB",
+    "number": 31,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "jonathan-williams",
+    "beatWriters": []
+  },
+  {
+    "id": "7c98ca36-87c9-436e-9a13-daf9ba2ee833",
+    "firstName": "Josh",
+    "lastName": "Woodrum",
+    "shortName": "J. Woodrum",
+    "name": "Josh Woodrum",
+    "value": "Josh Woodrum",
+    "position": "QB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Buffalo Bills",
+      "slug": "buf"
+    },
+    "profileImage": "/assets/img/teams/buf.jpg",
+    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "link": "josh-woodrum",
+    "beatWriters": []
+  },
+  {
+    "id": "4077c600-ebff-46b0-92ca-31667ece7ab8",
+    "firstName": "Derek",
+    "lastName": "Anderson",
+    "shortName": "D. Anderson",
+    "name": "Derek Anderson",
+    "value": "Derek Anderson",
+    "position": "QB",
+    "number": 3,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "derek-anderson",
+    "beatWriters": []
+  },
+  {
+    "id": "b4a7a8e1-d4e2-4c36-96ad-9d77e12c637d",
+    "firstName": "Cameron",
+    "lastName": "Artis-Payne",
+    "shortName": "C. Artis-Payne",
+    "name": "Cameron Artis-Payne",
+    "value": "Cameron Artis-Payne",
+    "position": "RB",
+    "number": 34,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "cameron-artispayne",
+    "beatWriters": []
+  },
+  {
+    "id": "2dcfae88-83f0-4ae4-b896-80834fcb1fbc",
+    "firstName": "Kelvin",
+    "lastName": "Benjamin",
+    "shortName": "K. Benjamin",
+    "name": "Kelvin Benjamin",
+    "value": "Kelvin Benjamin",
+    "position": "WR",
+    "number": 13,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "kelvin-benjamin",
+    "beatWriters": []
+  },
+  {
+    "id": "a01eb31f-8da5-4601-8098-2a79db526205",
+    "firstName": "Damiere",
+    "lastName": "Byrd",
+    "shortName": "D. Byrd",
+    "name": "Damiere Byrd",
+    "value": "Damiere Byrd",
+    "position": "WR",
+    "number": 18,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "damiere-byrd",
+    "beatWriters": []
+  },
+  {
+    "id": "c9caf258-8b42-40dd-80d7-aa1c792cfb06",
+    "firstName": "LaRon",
+    "lastName": "Byrd",
+    "shortName": "L. Byrd",
+    "name": "LaRon Byrd",
+    "value": "LaRon Byrd",
+    "position": "WR",
+    "number": 86,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "laron-byrd",
+    "beatWriters": []
+  },
+  {
+    "id": "a222a8e9-cfaa-44ac-9894-829e2320e3ce",
+    "firstName": "Ed",
+    "lastName": "Dickson",
+    "shortName": "E. Dickson",
+    "name": "Ed Dickson",
+    "value": "Ed Dickson",
+    "position": "TE",
+    "number": 84,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "ed-dickson",
+    "beatWriters": []
+  },
+  {
+    "id": "f5de9e57-67d8-4014-95ef-934213720c64",
+    "firstName": "Mose",
+    "lastName": "Frazier",
+    "shortName": "M. Frazier",
+    "name": "Mose Frazier",
+    "value": "Mose Frazier",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "mose-frazier",
+    "beatWriters": []
+  },
+  {
+    "id": "f8eb8dd9-4b8e-4403-97b1-9de21cb02f5f",
+    "firstName": "Devin",
+    "lastName": "Funchess",
+    "shortName": "D. Funchess",
+    "name": "Devin Funchess",
+    "value": "Devin Funchess",
+    "position": "WR",
+    "number": 17,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "devin-funchess",
+    "beatWriters": []
+  },
+  {
+    "id": "3efeec6f-3556-4386-ab09-8929dad16d2e",
+    "firstName": "Graham",
+    "lastName": "Gano",
+    "shortName": "G. Gano",
+    "name": "Graham Gano",
+    "value": "Graham Gano",
+    "position": "K",
+    "number": 9,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "graham-gano",
+    "beatWriters": []
+  },
+  {
+    "id": "15ac322c-1711-42dd-9b41-01be63de2748",
+    "firstName": "Keyarris",
+    "lastName": "Garrett",
+    "shortName": "K. Garrett",
+    "name": "Keyarris Garrett",
+    "value": "Keyarris Garrett",
+    "position": "WR",
+    "number": 15,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "keyarris-garrett",
+    "beatWriters": []
+  },
+  {
+    "id": "8fa667cb-3488-4840-9dd2-767e4217689f",
+    "firstName": "Garrett",
+    "lastName": "Gilbert",
+    "shortName": "G. Gilbert",
+    "name": "Garrett Gilbert",
+    "value": "Garrett Gilbert",
+    "position": "QB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "garrett-gilbert",
+    "beatWriters": []
+  },
+  {
+    "id": "4a585268-a216-4b3d-93b1-ac95302abf69",
+    "firstName": "Charles",
+    "lastName": "Johnson",
+    "shortName": "C. Johnson",
+    "name": "Charles Johnson",
+    "value": "Charles Johnson",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "charles-johnson",
+    "beatWriters": []
+  },
+  {
+    "id": "db426d62-acbe-469a-a591-ee6e358917b7",
+    "firstName": "Devon",
+    "lastName": "Johnson",
+    "shortName": "D. Johnson",
+    "name": "Devon Johnson",
+    "value": "Devon Johnson",
+    "position": "RB",
+    "number": 47,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "devon-johnson",
+    "beatWriters": []
+  },
+  {
+    "id": "00f3c67f-dcc3-4fa1-8910-3c1270f22a8e",
+    "firstName": "Chris",
+    "lastName": "Manhertz",
+    "shortName": "C. Manhertz",
+    "name": "Chris Manhertz",
+    "value": "Chris Manhertz",
+    "position": "TE",
+    "number": 82,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "chris-manhertz",
+    "beatWriters": []
+  },
+  {
+    "id": "9386d8ae-f88d-479b-ac4b-79eebf7aa08e",
+    "firstName": "Cam",
+    "lastName": "Newton",
+    "shortName": "C. Newton",
+    "name": "Cam Newton",
+    "value": "Cam Newton",
+    "position": "QB",
+    "number": 1,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "cam-newton",
+    "beatWriters": []
+  },
+  {
+    "id": "8480b182-6a52-4748-94cf-bc25f81a0c2f",
+    "firstName": "Greg",
+    "lastName": "Olsen",
+    "shortName": "G. Olsen",
+    "name": "Greg Olsen",
+    "value": "Greg Olsen",
+    "position": "TE",
+    "number": 88,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "greg-olsen",
+    "beatWriters": []
+  },
+  {
+    "id": "62ca0f97-0201-47ff-883f-2c88c5a59f16",
+    "firstName": "Russell",
+    "lastName": "Shepard",
+    "shortName": "R. Shepard",
+    "name": "Russell Shepard",
+    "value": "Russell Shepard",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "russell-shepard",
+    "beatWriters": []
+  },
+  {
+    "id": "e3b07c23-1c06-4d3b-aa8f-03491d1771ce",
+    "firstName": "Jalen",
+    "lastName": "Simmons",
+    "shortName": "J. Simmons",
+    "name": "Jalen Simmons",
+    "value": "Jalen Simmons",
+    "position": "RB",
+    "number": 38,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "jalen-simmons",
+    "beatWriters": []
+  },
+  {
+    "id": "cabc839b-7ae0-44cd-ae0e-89c7c0f65d5b",
+    "firstName": "Scott",
+    "lastName": "Simonson",
+    "shortName": "S. Simonson",
+    "name": "Scott Simonson",
+    "value": "Scott Simonson",
+    "position": "TE",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "scott-simonson",
+    "beatWriters": []
+  },
+  {
+    "id": "125467ad-a3fc-4621-9366-766c4ddb3883",
+    "firstName": "Jonathan",
+    "lastName": "Stewart",
+    "shortName": "J. Stewart",
+    "name": "Jonathan Stewart",
+    "value": "Jonathan Stewart",
+    "position": "RB",
+    "number": 28,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "jonathan-stewart",
+    "beatWriters": []
+  },
+  {
+    "id": "53e237b1-5bc5-4429-8965-1699773d3354",
+    "firstName": "Eric",
+    "lastName": "Wallace",
+    "shortName": "E. Wallace",
+    "name": "Eric Wallace",
+    "value": "Eric Wallace",
+    "position": "TE",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "eric-wallace",
+    "beatWriters": []
+  },
+  {
+    "id": "bbdc800f-2ea6-4410-b0fc-285c717053e8",
+    "firstName": "Joe",
+    "lastName": "Webb",
+    "shortName": "J. Webb",
+    "name": "Joe Webb",
+    "value": "Joe Webb",
+    "position": "QB",
+    "number": 14,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "joe-webb",
+    "beatWriters": []
+  },
+  {
+    "id": "dd24121d-1a12-40ee-8851-cf65a19b281f",
+    "firstName": "Fozzy",
+    "lastName": "Whittaker",
+    "shortName": "F. Whittaker",
+    "name": "Fozzy Whittaker",
+    "value": "Fozzy Whittaker",
+    "position": "RB",
+    "number": 43,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "fozzy-whittaker",
+    "beatWriters": []
+  },
+  {
+    "id": "eee363c7-951d-4ee8-9c68-e71aed3fd37e",
+    "firstName": "Darrel",
+    "lastName": "Young",
+    "shortName": "D. Young",
+    "name": "Darrel Young",
+    "value": "Darrel Young",
+    "position": "FB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Carolina Panthers",
+      "slug": "car"
+    },
+    "profileImage": "/assets/img/teams/car.jpg",
+    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "link": "darrel-young",
+    "beatWriters": []
+  },
+  {
+    "id": "be87beaa-837c-452c-bf97-a49602852db5",
+    "firstName": "Bralon",
+    "lastName": "Addison",
+    "shortName": "B. Addison",
+    "name": "Bralon Addison",
+    "value": "Bralon Addison",
+    "position": "WR",
+    "number": 45,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "bralon-addison",
+    "beatWriters": []
+  },
+  {
+    "id": "b306528f-8f3d-4616-8ca4-b6f9e03b152d",
+    "firstName": "Dres",
+    "lastName": "Anderson",
+    "shortName": "D. Anderson",
+    "name": "Dres Anderson",
+    "value": "Dres Anderson",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "dres-anderson",
+    "beatWriters": []
+  },
+  {
+    "id": "cb6b7dee-5e06-43d8-87ef-ee43acb02ce4",
+    "firstName": "Connor",
+    "lastName": "Barth",
+    "shortName": "C. Barth",
+    "name": "Connor Barth",
+    "value": "Connor Barth",
+    "position": "K",
+    "number": 4,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "connor-barth",
+    "beatWriters": []
+  },
+  {
+    "id": "052b3b7a-cc0c-469f-a449-516d9bfc8055",
+    "firstName": "Josh",
+    "lastName": "Bellamy",
+    "shortName": "J. Bellamy",
+    "name": "Josh Bellamy",
+    "value": "Josh Bellamy",
+    "position": "WR",
+    "number": 11,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "josh-bellamy",
+    "beatWriters": []
+  },
+  {
+    "id": "44df902e-dcd5-4517-8cd2-63a8277b5860",
+    "firstName": "Ben",
+    "lastName": "Braunecker",
+    "shortName": "B. Braunecker",
+    "name": "Ben Braunecker",
+    "value": "Ben Braunecker",
+    "position": "TE",
+    "number": 84,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "ben-braunecker",
+    "beatWriters": []
+  },
+  {
+    "id": "a7dbec54-2214-404a-8b8a-fec105115c01",
+    "firstName": "Daniel",
+    "lastName": "Braverman",
+    "shortName": "D. Braverman",
+    "name": "Daniel Braverman",
+    "value": "Daniel Braverman",
+    "position": "WR",
+    "number": 83,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "daniel-braverman",
+    "beatWriters": []
+  },
+  {
+    "id": "82f2eb03-ecd0-4aa2-93c5-bea079daac7a",
+    "firstName": "Daniel",
+    "lastName": "Brown",
+    "shortName": "D. Brown",
+    "name": "Daniel Brown",
+    "value": "Daniel Brown",
+    "position": "TE",
+    "number": 85,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "daniel-brown",
+    "beatWriters": []
+  },
+  {
+    "id": "c40154ac-81e5-47dd-9b54-ccd51fa47fdb",
+    "firstName": "Ka'Deem",
+    "lastName": "Carey",
+    "shortName": "K. Carey",
+    "name": "Ka'Deem Carey",
+    "value": "Ka'Deem Carey",
+    "position": "RB",
+    "number": 25,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "kadeem-carey",
+    "beatWriters": []
+  },
+  {
+    "id": "ad03c313-820d-4fbe-bcd4-6e20d9357777",
+    "firstName": "David",
+    "lastName": "Cobb",
+    "shortName": "D. Cobb",
+    "name": "David Cobb",
+    "value": "David Cobb",
+    "position": "RB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "david-cobb",
+    "beatWriters": []
+  },
+  {
+    "id": "12f8093b-0f84-4c97-8072-2c445188e328",
+    "firstName": "Benny",
+    "lastName": "Cunningham",
+    "shortName": "B. Cunningham",
+    "name": "Benny Cunningham",
+    "value": "Benny Cunningham",
+    "position": "RB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "benny-cunningham",
+    "beatWriters": []
+  },
+  {
+    "id": "1ebea0c7-ec79-4855-a5db-20002270034f",
+    "firstName": "David",
+    "lastName": "Fales",
+    "shortName": "D. Fales",
+    "name": "David Fales",
+    "value": "David Fales",
+    "position": "QB",
+    "number": 9,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "david-fales",
+    "beatWriters": []
+  },
+  {
+    "id": "59c795e6-0948-4a58-99d4-978a573add6d",
+    "firstName": "Mike",
+    "lastName": "Glennon",
+    "shortName": "M. Glennon",
+    "name": "Mike Glennon",
+    "value": "Mike Glennon",
+    "position": "QB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "mike-glennon",
+    "beatWriters": []
+  },
+  {
+    "id": "aeb252fb-b287-4727-bee0-1de5a28015f3",
+    "firstName": "Jordan",
+    "lastName": "Howard",
+    "shortName": "J. Howard",
+    "name": "Jordan Howard",
+    "value": "Jordan Howard",
+    "position": "RB",
+    "number": 24,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "jordan-howard",
+    "beatWriters": []
+  },
+  {
+    "id": "98dd2f7f-8381-4060-ba09-42506715329d",
+    "firstName": "Jeremy",
+    "lastName": "Langford",
+    "shortName": "J. Langford",
+    "name": "Jeremy Langford",
+    "value": "Jeremy Langford",
+    "position": "RB",
+    "number": 33,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "jeremy-langford",
+    "beatWriters": []
+  },
+  {
+    "id": "dd4cec41-b106-4cfb-80ff-4fa74c19730e",
+    "firstName": "Paul",
+    "lastName": "Lasike",
+    "shortName": "P. Lasike",
+    "name": "Paul Lasike",
+    "value": "Paul Lasike",
+    "position": "FB",
+    "number": 47,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "paul-lasike",
+    "beatWriters": []
+  },
+  {
+    "id": "c8efc5f1-4545-4a6d-87fd-88422c6e70f8",
+    "firstName": "Cameron",
+    "lastName": "Meredith",
+    "shortName": "C. Meredith",
+    "name": "Cameron Meredith",
+    "value": "Cameron Meredith",
+    "position": "WR",
+    "number": 81,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "cameron-meredith",
+    "beatWriters": []
+  },
+  {
+    "id": "d1b8bb73-3efe-4367-8e0b-ec4bb49a6129",
+    "firstName": "Zach",
+    "lastName": "Miller",
+    "shortName": "Z. Miller",
+    "name": "Zach Miller",
+    "value": "Zach Miller",
+    "position": "TE",
+    "number": 86,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "zach-miller",
+    "beatWriters": []
+  },
+  {
+    "id": "57cf87dd-8712-4ed6-b63f-3b4ce39cbbb0",
+    "firstName": "Justin",
+    "lastName": "Perillo",
+    "shortName": "J. Perillo",
+    "name": "Justin Perillo",
+    "value": "Justin Perillo",
+    "position": "TE",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "justin-perillo",
+    "beatWriters": []
+  },
+  {
+    "id": "5437d2cc-7b35-49e9-9a18-7550c5aefae9",
+    "firstName": "MyCole",
+    "lastName": "Pruitt",
+    "shortName": "M. Pruitt",
+    "name": "MyCole Pruitt",
+    "value": "MyCole Pruitt",
+    "position": "TE",
+    "number": 80,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "mycole-pruitt",
+    "beatWriters": []
+  },
+  {
+    "id": "b886b680-a770-4c96-b0ed-08c9121cf12a",
+    "firstName": "Rueben",
+    "lastName": "Randle",
+    "shortName": "R. Randle",
+    "name": "Rueben Randle",
+    "value": "Rueben Randle",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "rueben-randle",
+    "beatWriters": []
+  },
+  {
+    "id": "3eaead40-6289-47a7-9aa6-32bda628ff56",
+    "firstName": "Eddie",
+    "lastName": "Royal",
+    "shortName": "E. Royal",
+    "name": "Eddie Royal",
+    "value": "Eddie Royal",
+    "position": "WR",
+    "number": 19,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "eddie-royal",
+    "beatWriters": []
+  },
+  {
+    "id": "64b7e933-c105-4c64-b9e7-71dfcc4dc88c",
+    "firstName": "Mark",
+    "lastName": "Sanchez",
+    "shortName": "M. Sanchez",
+    "name": "Mark Sanchez",
+    "value": "Mark Sanchez",
+    "position": "QB",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "mark-sanchez",
+    "beatWriters": []
+  },
+  {
+    "id": "4ab63ccf-291e-4ec1-ba0e-39b9dda412ab",
+    "firstName": "Connor",
+    "lastName": "Shaw",
+    "shortName": "C. Shaw",
+    "name": "Connor Shaw",
+    "value": "Connor Shaw",
+    "position": "QB",
+    "number": 8,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "connor-shaw",
+    "beatWriters": []
+  },
+  {
+    "id": "7fc5b482-4959-4a36-91b1-bd637c87530e",
+    "firstName": "Dion",
+    "lastName": "Sims",
+    "shortName": "D. Sims",
+    "name": "Dion Sims",
+    "value": "Dion Sims",
+    "position": "TE",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "dion-sims",
+    "beatWriters": []
+  },
+  {
+    "id": "fce9b26e-a60e-4d68-b057-034d865b0ee1",
+    "firstName": "Deonte",
+    "lastName": "Thompson",
+    "shortName": "D. Thompson",
+    "name": "Deonte Thompson",
+    "value": "Deonte Thompson",
+    "position": "WR",
+    "number": 14,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "deonte-thompson",
+    "beatWriters": []
+  },
+  {
+    "id": "3b029d66-815e-492f-a5e4-441a6984a2ff",
+    "firstName": "Markus",
+    "lastName": "Wheaton",
+    "shortName": "M. Wheaton",
+    "name": "Markus Wheaton",
+    "value": "Markus Wheaton",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "markus-wheaton",
+    "beatWriters": []
+  },
+  {
+    "id": "5cac9417-2071-43e8-8027-f5312247bb58",
+    "firstName": "Kevin",
+    "lastName": "White",
+    "shortName": "K. White",
+    "name": "Kevin White",
+    "value": "Kevin White",
+    "position": "WR",
+    "number": 13,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "kevin-white",
+    "beatWriters": []
+  },
+  {
+    "id": "d6f5471e-9fb7-4592-ad94-4b09d88af0f8",
+    "firstName": "Kendall",
+    "lastName": "Wright",
+    "shortName": "K. Wright",
+    "name": "Kendall Wright",
+    "value": "Kendall Wright",
+    "position": "WR",
+    "number": null,
+    "isActive": true,
+    "twitter": {
+      "isActive": false,
+      "name": null,
+      "profileImage": null
+    },
+    "team": {
+      "name": "Chicago Bears",
+      "slug": "chi"
+    },
+    "profileImage": "/assets/img/teams/chi.jpg",
+    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "link": "kendall-wright",
     "beatWriters": []
   }
 ]
