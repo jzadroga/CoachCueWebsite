@@ -1,6 +1,6 @@
 ﻿@model CoachCue.ViewModels.MatchupsViewModel
 @using CoachCue.ViewModels
-@using CoachCue.Model
+@using CoachCue.Models
 
 @{
     ViewBag.Title = "Matchups";
@@ -11,37 +11,51 @@
 
 <div class="row">
     <div class="span12">
-        <form id="frm-add-matchup" action="@Url.Action("AddMatchup", "ControlPanel")" method="post"> 
+
+        <div>
+            <form method="post" action="@Url.Action("TeamRoster", "ControlPanel")" id="frmRoster">
+                <span>Select Type: </span>
+                <select id="matchup-type" class="form-control">
+                    @foreach (var type in MatchupType.GetList())
+                    {
+                        <option>@type</option>
+                    }
+                </select>
+            </form>
+        </div>
 
         <table class="table table-striped table-condensed">
             <thead>
                 <tr>
                     <th></th>
                     <th>Scoring Type</th>
-                    <th>Player 1</th>
-                    <th>Player 1 points</th>
-                    <th>Player 2</th>
-                    <th>Player 2 points</th>
-                    <th>Week #</th>
+                    <th>Week</th>
+                    <th>Players</th>
                 </tr>
             </thead>
             <tbody>
-                 @foreach (matchup playerMatchup in Model.Matchups)
+                 @foreach (var playerMatchup in Model.Matchups)
                 {
                 <tr>
-                    <td><a href='@Url.Action("MatchupDelete", "ControlPanel", new { id = @playerMatchup.matchupID })' id="delete-account" class="btn btn-danger btn-mini"><i class="icon-white icon-remove"></i> Delete</a>
-                    &nbsp;<button data-matchup='@playerMatchup.matchupID' class="btn btn-mini edit-points">Update points</button></td>
-                    <td>@playerMatchup.matchupscoringtype.scoringType</td>
-                    <td>@playerMatchup.nflplayer.fullName</td>
-                    <td><input id='pts1-@playerMatchup.matchupID' class="player1-points" type="text" value='@playerMatchup.player1Points' /></td>
-                    <td>@playerMatchup.nflplayer1.fullName</td>
-                    <td><input id='pts2-@playerMatchup.matchupID' class="player2-points" type="text" value='@playerMatchup.player2Points' /></td>
-                    <td>@playerMatchup.gameschedule.weekNumber</td> 
+                    <td><a href='@Url.Action("MatchupDelete", "ControlPanel", new { id = @playerMatchup.Id })' id="delete-account" class="btn btn-danger btn-mini"><i class="icon-white icon-remove"></i> Delete</a>
+                    &nbsp;<button data-matchup='@playerMatchup.Id' class="btn btn-mini edit-points">Update points</button></td>
+                    <td>@playerMatchup.Type</td>
+                    <td>@playerMatchup.Players[0].GameWeek.Week</td>
+                    <td>
+                        <table>
+                            @foreach (var player in playerMatchup.Players)
+                            {
+                                <tr>
+                                    <td>@player.Name</td>
+                                    <td><input data-player="@player.Id" type="text" /></td>
+                                </tr>
+                            }
+                        </table>
+                    </td>
                 </tr>
                 }
             </tbody>
         </table>
 
-        </form>    
     </div>
 </div>

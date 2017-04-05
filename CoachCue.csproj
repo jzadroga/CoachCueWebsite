@@ -434,7 +434,6 @@
     <Content Include="Views\ControlPanel\Index.cshtml" />
     <Content Include="Views\ControlPanel\JournalistAccounts.cshtml" />
     <Content Include="Views\ControlPanel\Matchups.cshtml" />
-    <Content Include="Views\ControlPanel\SendNotificationEmail.cshtml" />
     <Content Include="Views\ControlPanel\TeamRoster.cshtml" />
     <Content Include="Views\ControlPanel\UpdatePlayerTwitter.cshtml" />
     <Content Include="Views\ControlPanel\Users.cshtml" />

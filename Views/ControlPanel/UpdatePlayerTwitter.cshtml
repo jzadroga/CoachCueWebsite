@@ -40,9 +40,6 @@
         </table>
 
         <div class="btn-toolbar toolbar-share">
-            @if( Model.TwitterAccounts.Count() > 0 ){
-                <a href='@Url.Action("AccountDelete", "ControlPanel", new { playerID = @Model.PlayerID, team = @Model.TeamSlug})' class="btn btn-danger">Remove Twitter Account</a>
-            }
             <a href='@Url.Action("TeamRoster", "ControlPanel", new {slug = @Model.TeamSlug})' class="btn btn-primary">Cancel</a>
         </div>
 

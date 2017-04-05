@@ -294,6 +294,11 @@ h1.home-header{
     border: none !important;
     margin-bottom: 4px !important;
 }
+
+.thumbnail .caption p{
+    margin: 0 0 3px 0;
+}
+
 .well-extra-small
 {
     padding: 4px 0 0 0 !important;
@@ -3348,7 +3353,7 @@ div.top-bar {
 }
 
 .user-stats-container ul.stats-list{
-    height: 40px;
+    height: 45px;
     display: block;
     background-color: #fff;
     padding: 0;

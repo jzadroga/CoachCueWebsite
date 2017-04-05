@@ -78,4 +78,22 @@ namespace CoachCue.Models
             }
         }
     }
+
+    public class MatchupType
+    {
+        public static List<string>  GetList()
+        {
+            List<string> types = new List<string>();
+
+            types.Add("Who Do I Start? (Standard)");
+            types.Add("Who Do I Start? (PPR)");
+            types.Add("Who Do I Start? (Daily Fantasy)");
+            types.Add("Who Do I Keep?");
+            types.Add("Who Do I Add? (Waiver Wire)");
+            types.Add("Who Do I Drop? (Waiver Wire)");
+            types.Add("Who Do I Draft?");
+
+            return types;
+        }
+    }
 }

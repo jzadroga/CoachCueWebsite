@@ -35,11 +35,10 @@ namespace CoachCue.Controllers
             return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Matchups()
+        public async Task<ActionResult> Matchups()
         {
             MatchupsViewModel matchupsVM = new MatchupsViewModel();
-            matchupsVM.Players = nflplayer.ListFantasyOffense();
-            matchupsVM.Matchups = matchup.List(true);
+            matchupsVM.Matchups = await MatchupService.GetList(DateTime.Now.AddDays(-200));
 
             return View(matchupsVM);
         }
@@ -134,14 +133,6 @@ namespace CoachCue.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult AccountDelete(int id, int playerID, int teamID)
-        {
-            nflplayer.RemoveTwitterAccount(playerID, id);
-            twitteraccount.Delete(id);
-            
-            return RedirectToAction("TeamRoster", new { team = teamID });
-        }
-
         //deletes a journalist account
         public  async Task<ActionResult> DeleteTwitterAccount(string account, string slug)
         {
@@ -186,12 +177,6 @@ namespace CoachCue.Controllers
                 db.SaveChanges();
             }
             */
-            return View();
-        }
-
-        public ActionResult SendNotificationEmail()
-        {
-            //ViewData["sent"] = EmailHelper.SendNotificationEmail();
             return View();
         }
 

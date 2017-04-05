@@ -476,13 +476,9 @@
                             </div>
                             <div class="textarea-wrap">
                                 <select id="matchup-type" class="form-control">
-                                    <option>Who Do I Start? (Standard)</option>
-                                    <option>Who Do I Start? (PPR)</option>
-                                    <option>Who Do I Start? (Daily Fantasy)</option>
-                                    <option>Who Do I Keep?</option>
-                                    <option>Who Do I Add? (Waiver Wire)</option>
-                                    <option>Who Do I Drop? (Waiver Wire)</option>
-                                    <option>Who Do I Draft?</option>
+                                    @foreach (var type in MatchupType.GetList()) {
+                                    <option>@type</option>
+                                    }
                                 </select>
 
                                 <ul class="list-group" style="margin-bottom: 0">
