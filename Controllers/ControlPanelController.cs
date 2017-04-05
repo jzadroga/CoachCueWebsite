@@ -38,7 +38,7 @@ namespace CoachCue.Controllers
         public async Task<ActionResult> Matchups()
         {
             MatchupsViewModel matchupsVM = new MatchupsViewModel();
-            matchupsVM.Matchups = await MatchupService.GetList(DateTime.Now.AddDays(-200));
+            matchupsVM.Matchups = await MatchupService.GetList(DateTime.Now.AddDays(-200), false);
 
             return View(matchupsVM);
         }

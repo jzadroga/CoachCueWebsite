@@ -120,9 +120,13 @@ namespace CoachCue.Service
             return matchup.FirstOrDefault();
         }
 
-        public static async Task<IEnumerable<Matchup>> GetList(DateTime endDate)
+        public static async Task<IEnumerable<Matchup>> GetList(DateTime endDate, bool includeCompleted = true)
         {
             var matchups = await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true, "Matchups");
+
+            if (!includeCompleted)
+                matchups = matchups.Where(mt => mt.Completed = false);
+
             return matchups.OrderByDescending(d => d.DateCreated).ThenBy(d => d.Votes.Count);
         }
 
