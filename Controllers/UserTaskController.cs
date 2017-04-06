@@ -106,7 +106,6 @@ namespace CoachCue.Controllers
 
             return Json(new
             {
-                //StreamData = streamData,
                 PlayerID = id,
                 ID = matchup,
                 Matchup = matchupItem,
@@ -297,6 +296,9 @@ namespace CoachCue.Controllers
         public async Task<ActionResult> AddMatchupItem(string player1, string player2, string player3, string player4, string type)
         {
             var userData = await CoachCueUserData.GetUserData(User.Identity.Name);
+            string streamData = string.Empty;
+            string userInvites = string.Empty;
+            bool existing = false;
 
             //add all the players included
             List<string> players = new List<string>();
@@ -308,25 +310,30 @@ namespace CoachCue.Controllers
                 players.Add(player4);
 
             var matchup = await MatchupService.Save(userData, players, type);
-            List<Matchup> matchups = new List<Matchup>();
-            matchups.Add(matchup);
+            if (matchup.CreatedBy != userData.UserId) //must be already created by another user so don't proceed
+                existing = true;
+            else
+            {
+                List<Matchup> matchups = new List<Matchup>();
+                matchups.Add(matchup);
 
-            StreamContent streamItem = StreamService.MatchupToStream(userData, matchups)[0];
+                StreamContent streamItem = StreamService.MatchupToStream(userData, matchups)[0];
+                streamData = this.PartialViewToString("_StreamItem", streamItem);
 
-            string streamData = this.PartialViewToString("_StreamItem", streamItem);
-
-            //get list of users to invite
-            var invites = await UserService.GetRandomTopVotes(10);
-            string userInvites = this.PartialViewToString("_InviteVote", new InviteViewModel() { MatchupItem = matchup, Users = invites.ToList() });
+                //get list of users to invite
+                var invites = await UserService.GetRandomTopVotes(10);
+                userInvites = this.PartialViewToString("_InviteVote", new InviteViewModel() { MatchupItem = matchup, Users = invites.ToList() });
+            }
 
             return Json(new
             {
+                Link = matchup.Link,
                 MatchupData = streamData,
                 InviteData = userInvites,
                 ID = player1,
                 Type = "matchup",
-                Existing = false, //usrMatchup.ExistingMatchup,
-                MatchupID = matchup.Id //usrMatchup.MatchupID
+                Existing = existing,
+                MatchupID = matchup.Id
             }, JsonRequestBehavior.AllowGet);
         }
 

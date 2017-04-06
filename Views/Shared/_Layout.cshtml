@@ -474,6 +474,9 @@
                                     </span>
                                 </div>
                             </div>
+                            <div id="matchup-exists-alert" class="alert alert-danger" role="alert"> 
+                                <strong>Matchup already exists</strong> <a id="matchup-exists-link" href="#">check the results so far </a>
+                            </div>
                             <div class="textarea-wrap">
                                 <select id="matchup-type" class="form-control">
                                     @foreach (var type in MatchupType.GetList()) {

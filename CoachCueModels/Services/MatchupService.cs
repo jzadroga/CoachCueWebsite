@@ -64,10 +64,18 @@ namespace CoachCue.Service
                 }
 
                 matchup.Link = link.ToLower();
-                var result = await DocumentDBRepository<Matchup>.CreateItemAsync(matchup, "Matchups");
-                matchup.Id = result.Id;
 
-                await UserService.UpdateMatchupCount(userData.UserId);
+                //make sure it doesn't exist first
+                var existingMatchup = await GetByLink(matchup.Link);
+                if (existingMatchup == null)
+                {
+                    var result = await DocumentDBRepository<Matchup>.CreateItemAsync(matchup, "Matchups");
+                    matchup.Id = result.Id;
+
+                    await UserService.UpdateMatchupCount(userData.UserId);
+                }
+                else
+                    matchup = existingMatchup;
             }
             catch (Exception ex)
             {

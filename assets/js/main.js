@@ -106,6 +106,7 @@ $(document).ready(function () {
         $('#add-matchup-player').parent().show();
         $('#invite-user-list').remove();
         $('input.player-id').val('');
+        $('#matchup-exists-alert').hide();
     });
 
     //image preview
@@ -298,10 +299,10 @@ $(document).ready(function () {
             return false;
         }
 
-        task.addMatchupItem(player1, player2, player3, player4, $('#matchup-type').val(), function (data) {
-           
+        task.addMatchupItem(player1, player2, player3, player4, $('#matchup-type').val(), function (data) {          
             if (data.Existing) {
-                window.location = "/Matchup?mt=" + data.MatchupID;
+                $('#matchup-exists-alert').show();
+                $("#matchup-exists-link").attr('href', data.Link);
             } else {
                 //add to stream
                 $(".stream-matchups").prepend(data.MatchupData);
@@ -783,6 +784,7 @@ function loadMatchupPlayersTypeahead() {
         $selected.find(".player-selected-img").attr("src", datum.profileImage);
         $selected.find(".player-selected-bio").text(datum.position + " " + datum.team.name);
         $selected.find(".player-id").val(datum.id);
+        $('#matchup-exists-alert').hide();
 
         $(obj.target).typeahead('destroy');
         $(obj.target).hide('fast', function () { $selected.find('div.selected-player').show(); });
