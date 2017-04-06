@@ -313,8 +313,6 @@ namespace CoachCue.Service
 
             Random rnd = new Random();
             int start = rnd.Next(0, 25);
-
-            start = 0; //remove this when going live
             users = users.OrderBy(us => us.Statistics.VoteCount).Skip(start).Take(total);
 
             return users;

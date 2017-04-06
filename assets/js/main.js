@@ -78,6 +78,7 @@ $(document).ready(function () {
             $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
         }, 0);
         loadUserTypeahead();
+        loadMatchupPlayersTypeahead();
     });
 
     //close message modal
@@ -104,8 +105,7 @@ $(document).ready(function () {
         $('#player4-id').parents('li.list-group-item').hide();
         $('#add-matchup-player').parent().show();
         $('#invite-user-list').remove();
-
-        loadMatchupPlayersTypeahead();
+        $('input.player-id').val('');
     });
 
     //image preview
@@ -778,14 +778,14 @@ function loadMatchupPlayersTypeahead() {
     });
 
     $('#player1, #player2, #player3, #player4').bind('typeahead:selected', function (obj, datum, name) {
-        var $selected = $(obj.target).parent().prev();
+        var $selected = $(obj.target).parents('li.list-group-item');
         $selected.find(".player-selected-name").text(datum.name);
         $selected.find(".player-selected-img").attr("src", datum.profileImage);
         $selected.find(".player-selected-bio").text(datum.position + " " + datum.team.name);
         $selected.find(".player-id").val(datum.id);
 
         $(obj.target).typeahead('destroy');
-        $(obj.target).hide('fast', function () { $selected.show(); });
+        $(obj.target).hide('fast', function () { $selected.find('div.selected-player').show(); });
 
         if ($("#player1-id").val().length > 0 && $("#player2-id").val().length > 0) {
             $("#share-matchup").removeClass("disabled");
