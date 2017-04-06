@@ -25,14 +25,14 @@ namespace CoachCue.Service
 
             var addedUsers = userDB.ToList();
 
-           /* foreach (user usr in usrs)
+            foreach (user usr in usrs)
             {
                 if (addedUsers.Where(u => u.Email == usr.email).Count() == 0)
                 {
                     await SaveUser(usr, usr.fullName, usr.email, usr.password);
                 }
             }
-            */
+            
             return foundPlayers;
         }
 
@@ -124,6 +124,9 @@ namespace CoachCue.Service
                 UserStatistics stats = new UserStatistics();
                 stats.LastLogin = usr.LastLoginDate.Value; //now;
                 stats.LoginCount = usr.LoginCount; //1;
+                stats.MatchupCount = usr.MatchupCreatedCount;
+                stats.MessageCount = usr.messages.Count();
+                stats.VoteCount = usr.TotalMatchupVotes;
                 user.Statistics = stats;
 
                 await DocumentDBRepository<User>.CreateItemAsync(user, "Users");

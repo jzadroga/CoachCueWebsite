@@ -225,13 +225,25 @@ namespace CoachCue.Service
             var matchups = await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true, "Matchups");
 
             //get the 50 most recent
-            matchups = matchups.OrderByDescending(d => d.DateCreated).Take(50);
+            matchups = matchups.OrderByDescending(d => d.DateCreated).Take(250);
 
             //get the 10 most voted on playaers
             var votedPlayers = matchups.SelectMany(mt => mt.Votes, (mt, votes) => new { mt, votes })
                         .GroupBy(ply => ply.votes.PlayerId, pair => pair.mt).Select(ply => ply.Key).ToList();
 
-            //get the 10 most mentioned players
+            return await GetListByIds(votedPlayers.Distinct().ToList());
+        }
+
+        public static async Task<IEnumerable<Player>> GetTrending()
+        {
+            var matchups = await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true, "Matchups");
+
+            //get the 50 most recent
+            matchups = matchups.OrderByDescending(d => d.DateCreated).Take(50);
+
+            var votedPlayers = matchups.SelectMany(mt => mt.Votes, (mt, votes) => new { mt, votes })
+                        .GroupBy(ply => ply.votes.PlayerId, pair => pair.mt).Select(ply => ply.Key).ToList();
+
             var mentionPlayers = matchups.SelectMany(mt => mt.Players, (mt, players) => new { mt, players })
                         .GroupBy(ply => ply.players.Id, pair => pair.mt).Select( ply => ply.Key).ToList();
 

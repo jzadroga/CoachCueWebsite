@@ -432,7 +432,12 @@ $(document).ready(function () {
 
     //select a matchup starter in stream
     $("body").on("click", 'a.stream-select-starter', function (e) {
+        if ($(this).hasClass('disabled'))
+            return false;
+
         var $current = $(this).parents("div.matchup-item");
+        $(this).addClass('active');
+        $current.find('a.stream-select-starter').addClass('disabled');
 
         task.setStreamMatchupChoice($(this).attr("data-player-id"), $(this).attr("data-player-name"), $current.attr("data-matchup-id"), function (data) {
             task.sendMatchupVoteEmail(data.ID, data.UserVotedID);
@@ -776,7 +781,7 @@ function loadMatchupPlayersTypeahead() {
         var $selected = $(obj.target).parent().prev();
         $selected.find(".player-selected-name").text(datum.name);
         $selected.find(".player-selected-img").attr("src", datum.profileImage);
-        $selected.find(".player-selected-bio").text(datum.number + " " + datum.position + " " + datum.team.name);
+        $selected.find(".player-selected-bio").text(datum.position + " " + datum.team.name);
         $selected.find(".player-id").val(datum.id);
 
         $(obj.target).typeahead('destroy');

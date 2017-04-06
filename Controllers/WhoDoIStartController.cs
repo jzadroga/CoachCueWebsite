@@ -16,16 +16,16 @@ using CoachCue.Service;
 
 namespace CoachCue.Controllers
 {
-    public class TopVotedPlayersController : BaseController
+    public class WhoDoIStartController : BaseController
     {
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            TopPlayersViewModel topVotedVM = new TopPlayersViewModel();
-            await LoadBaseViewModel(topVotedVM);
+            return RedirectToAction("Index", "Home");
+        }
 
-            topVotedVM.Players = await PlayerService.GetMostVoted();
-
-            return View(topVotedVM);
+        public ActionResult TopPlayers()
+        {
+            return RedirectToAction("Index", "TopVotedPlayers");
         }
     }
 }

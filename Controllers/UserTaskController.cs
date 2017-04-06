@@ -308,22 +308,10 @@ namespace CoachCue.Controllers
                 players.Add(player4);
 
             var matchup = await MatchupService.Save(userData, players, type);
+            List<Matchup> matchups = new List<Matchup>();
+            matchups.Add(matchup);
 
-            //usrMatchup.AllowVote = true;
-
-            StreamContent streamItem = new StreamContent
-            {
-                MatchupItem = matchup,
-                DateTicks = matchup.DateCreated.Ticks.ToString(),
-                ProfileImg = userData.ProfileImage,
-                UserName = userData.UserName,
-                FullName = userData.Name,
-                ContentType = "matchup",
-                DateCreated = matchup.DateCreated,
-                TimeAgo = twitter.GetRelativeTime(matchup.DateCreated),
-                HideActions = false,
-                UserProfileImg = userData.ProfileImage
-            };
+            StreamContent streamItem = StreamService.MatchupToStream(userData, matchups)[0];
 
             string streamData = this.PartialViewToString("_StreamItem", streamItem);
 

@@ -28,7 +28,6 @@ namespace CoachCue.Controllers
                 return RedirectToAction("Index", "Home");
 
             playerVM.PlayerStream = await StreamService.GetPlayerStream(playerVM.UserData, playerVM.PlayerDetail.Id);
-            playerVM.TwitterContent = new List<StreamContent>();//stream.GetPlayerTwitterStream(playerVM.PlayerDetail);
 
             return View(playerVM);
         }

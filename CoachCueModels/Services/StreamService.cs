@@ -29,29 +29,9 @@ namespace CoachCue.Service
 
                 //get all the user messages for following a user or player
                 var endDate = DateTime.UtcNow.GetEasternTime().AddDays(-280);
-
-                //gets the matchups for the stream
-                string contentType = "matchupSelected";
-                /*if (string.IsNullOrEmpty(matchup.UserSelectedPlayer))
-                {
-                    //make sure the game hasn't passed too
-                    if (DateTime.UtcNow.GetEasternTime() < matchup.GameDate)
-                        contentType = "matchup";
-                }*/
+       
                 var matchups = MatchupService.GetListByPosition(endDate, position).Take(80);
-                stream = matchups.Select(usrmtch => new Service.StreamContent
-                {
-                    MatchupItem = usrmtch,
-                    DateTicks = usrmtch.DateCreated.Ticks.ToString(),
-                    ProfileImg = usrmtch.ProfileImage,
-                    UserProfileImg = profileImage,
-                    UserName = usrmtch.UserName,
-                    FullName = usrmtch.Name,
-                    ContentType = contentType,
-                    DateCreated = usrmtch.DateCreated,
-                    TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated),
-                    HideActions = (usrmtch.CreatedBy == userData.UserId) ? false : true,
-                }).ToList();
+                stream = MatchupToStream(userData, matchups);
             }
             catch (Exception ex)
             {
@@ -157,7 +137,7 @@ namespace CoachCue.Service
                     }
 
                     //get the most voted on or matchup involved players
-                    stream.AddRange(await PlayerService.GetMostVoted());
+                    stream.AddRange(await PlayerService.GetTrending());
 
                     HttpContext.Current.Cache.Insert(cacheID, stream, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(0, 2, 0));
                 }
@@ -178,28 +158,8 @@ namespace CoachCue.Service
                 //get all the user messages for following a user or player
                 var endDate = DateTime.UtcNow.GetEasternTime().AddDays(-280);
 
-                //gets the matchups for the stream
-                string contentType = "matchupSelected";
-                /*if (string.IsNullOrEmpty(matchup.UserSelectedPlayer))
-                {
-                    //make sure the game hasn't passed too
-                    if (DateTime.UtcNow.GetEasternTime() < matchup.GameDate)
-                        contentType = "matchup";
-                }*/
                 var matchups = await MatchupService.GetList(endDate);
-                stream = matchups.Select(usrmtch => new Service.StreamContent
-                {
-                    MatchupItem = usrmtch,
-                    DateTicks = usrmtch.DateCreated.Ticks.ToString(),
-                    ProfileImg = usrmtch.ProfileImage,
-                    UserProfileImg = profileImage,
-                    UserName = usrmtch.UserName,
-                    FullName = usrmtch.Name,
-                    ContentType = contentType,
-                    DateCreated = usrmtch.DateCreated,
-                    TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated),
-                    HideActions = (usrmtch.CreatedBy == userData.UserId) ? false : true,
-                }).ToList();
+                stream = MatchupToStream(userData, matchups);
                 
                 var msgs = await MessageService.GetList(endDate);
                 stream.AddRange(msgs.Select(msg => new StreamContent
@@ -216,7 +176,7 @@ namespace CoachCue.Service
                 }).ToList());
                 
                 //sort everything by date
-                stream = stream.OrderByDescending(str => str.DateCreated).Take(80).ToList();
+                stream = stream.OrderByDescending(str => str.DateCreated).Take(100).ToList();
             }
             catch (Exception ex)
             {
@@ -230,23 +190,12 @@ namespace CoachCue.Service
         {
             StreamContent stream = new StreamContent();
 
-            string profileImage = userData.ProfileImage;
-
             var matchup = await MatchupService.GetByLink(link);
-            string contentType = "matchupSelected";
-
             if (matchup != null)
             {
-                stream.MatchupItem = matchup;
-                stream.DateTicks = matchup.DateCreated.Ticks.ToString();
-                stream.ProfileImg = matchup.ProfileImage;
-                stream.UserProfileImg = profileImage;
-                stream.UserName = matchup.UserName;
-                stream.FullName = matchup.Name;
-                stream.ContentType = contentType;
-                stream.DateCreated = matchup.DateCreated;
-                stream.TimeAgo = twitter.GetRelativeTime(matchup.DateCreated);
-                stream.HideActions = (matchup.CreatedBy == userData.UserId) ? false : true;
+                var matchups = new List<Matchup>();
+                matchups.Add(matchup);
+                stream = MatchupToStream(userData, matchups)[0];
             }
 
             return stream;           
@@ -258,25 +207,10 @@ namespace CoachCue.Service
 
             try
             {
-                string profileImage = userData.ProfileImage;
-
-                string contentType = "matchupSelected";
                 var endDate = DateTime.UtcNow.GetEasternTime().AddDays(-280);
 
                 var matchups = await MatchupService.GetRelatedList(endDate, matchup);
-                stream = matchups.Select(usrmtch => new Service.StreamContent
-                {
-                    MatchupItem = usrmtch,
-                    DateTicks = usrmtch.DateCreated.Ticks.ToString(),
-                    ProfileImg = usrmtch.ProfileImage,
-                    UserProfileImg = profileImage,
-                    UserName = usrmtch.UserName,
-                    FullName = usrmtch.Name,
-                    ContentType = contentType,
-                    DateCreated = usrmtch.DateCreated,
-                    TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated),
-                    HideActions = (usrmtch.CreatedBy == userData.UserId) ? false : true
-                }).ToList();
+                stream = MatchupToStream(userData, matchups);
             }
             catch (Exception)
             {
@@ -295,29 +229,9 @@ namespace CoachCue.Service
 
                 //get all the user messages for following a user or player
                 var endDate = DateTime.UtcNow.GetEasternTime().AddDays(-280);
-
-                //gets the matchups for the stream
-                string contentType = "matchupSelected";
-                /*if (string.IsNullOrEmpty(matchup.UserSelectedPlayer))
-                {
-                    //make sure the game hasn't passed too
-                    if (DateTime.UtcNow.GetEasternTime() < matchup.GameDate)
-                        contentType = "matchup";
-                }*/
+           
                 var matchups =  MatchupService.GetListByPlayer(endDate, playerId);
-                stream = matchups.Select(usrmtch => new Service.StreamContent
-                {
-                    MatchupItem = usrmtch,
-                    DateTicks = usrmtch.DateCreated.Ticks.ToString(),
-                    ProfileImg = usrmtch.ProfileImage,
-                    UserProfileImg = profileImage,
-                    UserName = usrmtch.UserName,
-                    FullName = usrmtch.Name,
-                    ContentType = contentType,
-                    DateCreated = usrmtch.DateCreated,
-                    TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated),
-                    HideActions = (usrmtch.CreatedBy == userData.UserId) ? false : true
-                }).ToList();
+                stream = MatchupToStream(userData, matchups);
 
                 var msgs = await MessageService.GetListByPlayer(endDate, playerId);
                 stream.AddRange(msgs.Select(msg => new StreamContent
@@ -334,7 +248,7 @@ namespace CoachCue.Service
                 }).ToList());
 
                 //sort everything by date
-                stream = stream.OrderByDescending(str => str.DateCreated).Take(80).ToList();
+                stream = stream.OrderByDescending(str => str.DateCreated).Take(100).ToList();
             }
             catch (Exception ex)
             {
@@ -354,29 +268,9 @@ namespace CoachCue.Service
 
                 //get all the user messages for following a user or player
                 var endDate = DateTime.UtcNow.GetEasternTime().AddDays(-280);
-
-                //gets the matchups for the stream
-                string contentType = "matchupSelected";
-                /*if (string.IsNullOrEmpty(matchup.UserSelectedPlayer))
-                {
-                    //make sure the game hasn't passed too
-                    if (DateTime.UtcNow.GetEasternTime() < matchup.GameDate)
-                        contentType = "matchup";
-                }*/
+             
                 var matchups = await MatchupService.GetListByUser(endDate, userId);
-                stream = matchups.Select(usrmtch => new Service.StreamContent
-                {
-                    MatchupItem = usrmtch,
-                    DateTicks = usrmtch.DateCreated.Ticks.ToString(),
-                    ProfileImg = usrmtch.ProfileImage,
-                    UserProfileImg = profileImage,
-                    UserName = usrmtch.UserName,
-                    FullName = usrmtch.Name,
-                    ContentType = contentType,
-                    DateCreated = usrmtch.DateCreated,
-                    TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated),
-                    HideActions = (usrmtch.CreatedBy == userData.UserId) ? false : true
-                }).ToList();
+                stream = MatchupToStream(userData, matchups);
 
                 if (!matchupsOnly)
                 {
@@ -396,7 +290,7 @@ namespace CoachCue.Service
                 }
 
                 //sort everything by date
-                stream = stream.OrderByDescending(str => str.DateCreated).Take(80).ToList();
+                stream = stream.OrderByDescending(str => str.DateCreated).Take(100).ToList();
             }
             catch (Exception ex)
             {
@@ -404,6 +298,50 @@ namespace CoachCue.Service
             }
 
             return stream;
+        }
+
+        public static List<StreamContent> MatchupToStream(CoachCueUserData userData, IEnumerable<Matchup> matchups)
+        {
+            return matchups.Select(usrmtch => new StreamContent
+            {
+                MatchupItem = usrmtch,
+                DateTicks = usrmtch.DateCreated.Ticks.ToString(),
+                ProfileImg = usrmtch.ProfileImage,
+                UserProfileImg = userData.ProfileImage,
+                UserName = usrmtch.UserName,
+                FullName = usrmtch.Name,
+                ContentType = getMatchupContentType(userData.UserId, usrmtch),
+                DateCreated = usrmtch.DateCreated,
+                TimeAgo = twitter.GetRelativeTime(usrmtch.DateCreated),
+                HideActions = (usrmtch.CreatedBy == userData.UserId) ? false : true,
+                SelectedPlayerID = getSelectedPlayer(userData.UserId, usrmtch)
+            }).ToList();
+        }
+
+        private static string getMatchupContentType(string userID, Matchup matchup)
+        {
+            string type = "matchupSelected";
+
+            //if its over
+            if (matchup.Completed == true || (DateTime.UtcNow.GetEasternTime() >= matchup.Players[0].GameWeek.Date))
+                return type;
+
+            type = (matchup.Votes.Where(vt => vt.UserId == userID).Count() > 0) ? "matchupSelected" : "matchup";
+
+            return type;
+        }
+
+        private static string getSelectedPlayer(string userID, Matchup matchup)
+        {
+            string selected = string.Empty;
+            if (string.IsNullOrEmpty(userID))
+                return selected;
+
+            var voted = matchup.Votes.Where(vt => vt.UserId == userID).FirstOrDefault();
+            if (voted != null)
+                selected = voted.PlayerId;
+
+            return selected;
         }
     }
 
@@ -421,6 +359,7 @@ namespace CoachCue.Service
         public Matchup MatchupItem { get; set; }
         public TweetContent Tweet { get; set; }
         public string PlayerID { get; set; }
+        public string SelectedPlayerID { get; set; }
         public string CssClass { get; set; }
         public string Source { get; set; }
         public bool HideActions { get; set; }

@@ -158,28 +158,6 @@ namespace CoachCue.Controllers
             return RedirectToAction("TeamRoster", new { slug = teamID });
         }
 
-        public ActionResult UpdateUsers()
-        {
-            /*coachCueEntities db = new coachCueEntities();
-           
-            var ret = from mt in db.users
-                        select mt;
-
-            foreach (user usr in ret.ToList())
-            {
-                usr.userGuid = Guid.NewGuid().ToString();
-
-                users_settings usrset = new users_settings();
-                usrset.userID = usr.userID;
-                usrset.emailNotifications = true;
-                db.users_settings.AddObject(usrset);
-
-                db.SaveChanges();
-            }
-            */
-            return View();
-        }
-
         public async Task<ActionResult> UpdatePlayerTwitter(string teamID, string playerID, [DefaultValue(false)] bool login)
         {
             //set the twitter information

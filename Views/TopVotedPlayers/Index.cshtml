@@ -1,5 +1,5 @@
 ﻿@model CoachCue.ViewModels.TopPlayersViewModel
-@using CoachCue.Model;
+@using CoachCue.Models;
 
 @{
     ViewBag.Description = "Fantasy football Who Should I Start? Top Voted Players";
@@ -14,7 +14,7 @@
 
     <div id="search-results">
         <div id="top-voted-filter">
-            @foreach (VotedPlayers player in Model.Players)
+            @foreach (var player in Model.Players)
             {
                 <div class="item clear player-item">
                     <div class="content">

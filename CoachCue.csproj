@@ -255,6 +255,7 @@
     <Compile Include="Controllers\WhoDoIStartDailyFantasyController .cs" />
     <Compile Include="Controllers\WhoDoIStartPPRController.cs" />
     <Compile Include="Controllers\TopVotedPlayersController .cs" />
+    <Compile Include="Controllers\WhoDoIStartController.cs" />
     <Compile Include="Controllers\WhoDoIStartStandardController.cs" />
     <Compile Include="ErrorHandler\AiHandleErrorAttribute.cs" />
     <Compile Include="Global.asax.cs">

@@ -56,7 +56,6 @@ namespace CoachCue.ViewModels
         public bool LoggedIn { get; set; }
         public Player PlayerDetail { get; set; }
         public List<StreamContent> PlayerStream { get; set; }
-        public List<StreamContent> TwitterContent { get; set; }
     }
 
     public class UserViewModel : BaseViewModel
@@ -191,7 +190,7 @@ namespace CoachCue.ViewModels
 
     public class TopPlayersViewModel : BaseViewModel
     {
-        public List<VotedPlayers> Players { get; set; }
+        public IEnumerable<Player> Players { get; set; }
     }
 
     public class TrendingNewsViewModel : BaseViewModel
