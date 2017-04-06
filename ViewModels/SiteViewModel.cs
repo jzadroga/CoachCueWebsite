@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using CoachCue.Model;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using CoachCue.Service;
@@ -14,7 +13,7 @@ namespace CoachCue.ViewModels
     public class BaseViewModel
     {
         public List<Player> TrendingItems { get; set; }
-        public List<AccountData> RecentlyViewedItems { get; set; }
+       // public List<AccountData> RecentlyViewedItems { get; set; }
         public bool IsMobile { get; set; }
         public List<LeaderboardCoach> TopCoaches { get; set; }
         public CoachCueUserData UserData { get; set; }
@@ -22,7 +21,7 @@ namespace CoachCue.ViewModels
 
         public BaseViewModel()
         {
-            this.RecentlyViewedItems = new List<AccountData>();
+     //       this.RecentlyViewedItems = new List<AccountData>();
             this.MessagePlayers = new List<Player>();
         }
     }
@@ -39,15 +38,11 @@ namespace CoachCue.ViewModels
         public List<StreamContent> Stream { get; set; }
         public bool ShowRegistration { get; set; }
         public bool ShowFriendInvite { get; set; }
-        public List<WeeklyMatchups> CurrentMatchups {get;set;}
-        public List<WeeklyMatchups> MyMatchups { get; set; }
         public bool LoadMatchups { get; set; }
 
         public HomeViewModel()
         {
             this.Stream = new List<Service.StreamContent>();
-            this.CurrentMatchups = new List<WeeklyMatchups>();
-            this.MyMatchups = new List<WeeklyMatchups>();
         }
     }
 
@@ -66,10 +61,10 @@ namespace CoachCue.ViewModels
 
     public class LeaderBoardModel : BaseViewModel
     {
-        public List<LeaderboardCoach> LeaderCoaches { get; set; }
-        public List<GameWeek> Weeks { get; set; }
+        //public List<LeaderboardCoach> LeaderCoaches { get; set; }
+       // public List<GameWeek> Weeks { get; set; }
         public int SelectedWeek { get; set; }
-        public LeaderboardCoach CurrentUser { get; set; }
+        //public LeaderboardCoach CurrentUser { get; set; }
         public bool UserIncluded { get; set; }
         public string Sort { get; set; }
         public string Direction { get; set; }
@@ -84,10 +79,10 @@ namespace CoachCue.ViewModels
 
     public class MatchupsListViewModel : BaseViewModel
     {
-        public List<WeeklyMatchups> MyMatchups { get; set; }
-        public List<WeeklyMatchups> AllMatchups { get; set; }
+       // public List<WeeklyMatchups> MyMatchups { get; set; }
+        //public List<WeeklyMatchups> AllMatchups { get; set; }
         public int SelectedWeek { get; set; }
-        public List<GameWeek> Weeks { get; set; }
+       // public List<GameWeek> Weeks { get; set; }
         public string WeekDescription { get; set; }
     }
 
@@ -98,7 +93,7 @@ namespace CoachCue.ViewModels
 
     public class ConversationViewModel
     {
-        public List<message> Messages { get; set; }
+        //public List<message> Messages { get; set; }
         public int SourceMessageID { get; set; }
         public string Type { get; set; }
         public string Avatar { get; set; }
@@ -107,7 +102,7 @@ namespace CoachCue.ViewModels
 
         public ConversationViewModel()
         {
-            this.Messages = new List<message>();
+           // this.Messages = new List<message>();
         }
     }
 
@@ -121,18 +116,18 @@ namespace CoachCue.ViewModels
     {
         public CoachCueUserData User { get; set; }
         public Message ParentMessage { get; set; }
-        public List<nflplayer> MessagePlayers { get; set; }
+       // public List<nflplayer> MessagePlayers { get; set; }
         public string Type { get; set; }
-        public matchup Matchup { get; set; }
+       // public matchup Matchup { get; set; }
         public string ParentID { get; set; }
-        public List<user> MatchupInvites { get; set; }
+       // public List<user> MatchupInvites { get; set; }
 
         public MessageViewModel()
         {
-            this.MessagePlayers = new List<nflplayer>();
+         //   this.MessagePlayers = new List<nflplayer>();
             this.ParentMessage = new Message();
-            this.Matchup = new matchup();
-            this.MatchupInvites = new List<user>();
+        //    this.Matchup = new matchup();
+        //    this.MatchupInvites = new List<user>();
         }
     }
 
@@ -190,12 +185,7 @@ namespace CoachCue.ViewModels
 
     public class TopPlayersViewModel : BaseViewModel
     {
-        public IEnumerable<Player> Players { get; set; }
-    }
-
-    public class TrendingNewsViewModel : BaseViewModel
-    {
-        public List<AccountData> Players { get; set; }
+        public IEnumerable<VotedPlayer> VotesPlayers { get; set; }
     }
 
     public class SignupViewModel

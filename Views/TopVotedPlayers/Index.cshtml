@@ -14,17 +14,17 @@
 
     <div id="search-results">
         <div id="top-voted-filter">
-            @foreach (var player in Model.Players)
+            @foreach (var player in Model.VotesPlayers)
             {
                 <div class="item clear player-item">
                     <div class="content">
                         <div class="content-header">
-                            <a data-player-img="@player.Player.profilePic" data-player-name="@player.Player.fullName" data-player-pos="@player.Player.position.positionName&nbsp;|&nbsp;@player.Player.nflteam.teamSlug" data-player-id="@player.Player.playerID" class=" player-popover username" href="@Url.Action("index", "player", new { id = player.Player.playerID, name = player.Player.linkFullName })">@player.Player.shortName</a>
-                            <span>@player.Player.position.positionName&nbsp;|&nbsp;@player.Player.nflteam.teamSlug</span>
+                            <a data-player-id="@player.Player.Id" class="username" href="@Url.Action("index", "player", new { team = player.Player.Team.Slug.ToLower(), name = player.Player.Link })">@player.Player.ShortName</a>
+                            <span>@player.Player.Position&nbsp;|&nbsp;@player.Player.Team.Slug</span>
                         </div>
 
-                        <img class="avatar player-item-avatar" src="@player.Player.profilePic" alt="@player.Player.fullName">
-                        <a href="@Url.Action("index", "player", new { id = player.Player.playerID, name = player.Player.linkFullName })">
+                        <img class="avatar player-item-avatar" src="@player.Player.ProfileImage" alt="@player.Player.Name">
+                        <a href="@Url.Action("index", "player", new {team = player.Player.Team.Slug.ToLower(), name = player.Player.Link })">
                             <span style="width: @player.Percent" class="badge trending-badge">@player.Votes</span>
                         </a>
                     </div>

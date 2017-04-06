@@ -22,8 +22,8 @@ namespace CoachCue.Controllers
         {
             TopPlayersViewModel topVotedVM = new TopPlayersViewModel();
             await LoadBaseViewModel(topVotedVM);
-
-            topVotedVM.Players = await PlayerService.GetMostVoted();
+            //matchup.GetTopMathupVotes(gameschedule.GetCurrentWeekID(), true);
+            topVotedVM.VotesPlayers = await PlayerService.GetTopVoted();
 
             return View(topVotedVM);
         }

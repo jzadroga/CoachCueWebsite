@@ -323,7 +323,7 @@ namespace CoachCue.Service
             string type = "matchupSelected";
 
             //if its over
-            if (matchup.Completed == true || (DateTime.UtcNow.GetEasternTime() >= matchup.Players[0].GameWeek.Date))
+            if (matchup.Completed == true )// || (DateTime.UtcNow.GetEasternTime() >= matchup.Players[0].GameWeek.Date))
                 return type;
 
             type = (matchup.Votes.Where(vt => vt.UserId == userID).Count() > 0) ? "matchupSelected" : "matchup";

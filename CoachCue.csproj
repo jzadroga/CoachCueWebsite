@@ -481,7 +481,6 @@
     <Content Include="packages.config" />
     <Content Include="Views\WhoDoIStartStandard\Index.cshtml" />
     <None Include="Properties\PublishProfiles\CoachCue - Web Deploy.pubxml" />
-    <Content Include="Views\WhoDoIStartStandard\News.cshtml" />
     <Content Include="Views\Shared\_StreamItemMedia.cshtml" />
     <Content Include="Views\Shared\_InviteVote.cshtml" />
     <Content Include="Views\WhoDoIAddWaiverWire\Index.cshtml" />

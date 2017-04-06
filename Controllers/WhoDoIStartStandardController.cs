@@ -34,13 +34,5 @@ namespace CoachCue.Controllers
 
             return View(myMatchVM);
         }
- 
-        public ActionResult News()
-        {
-            return View(new TrendingNewsViewModel()
-            {
-                Players = user.GetAccountsFromPlayers(nflplayer.GetTrending(40), null)
-            });
-        }
     }
 }

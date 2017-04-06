@@ -220,14 +220,40 @@ namespace CoachCue.Service
             return await DocumentDBRepository<Player>.GetItemsAsync(d => d.Active == true && d.Team.Slug == teamSlug, "Players");
         }
 
+        public static async Task<IEnumerable<VotedPlayer>> GetTopVoted()
+        {
+            List<VotedPlayer> players = new List<VotedPlayer>();
+            var matchups = await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true, "Matchups");        
+
+            //get the 250 most recent
+            matchups = matchups.OrderByDescending(d => d.DateCreated).Take(250);
+
+            var votedPlayers = matchups.SelectMany(mt => mt.Votes, (mt, votes) => new { mt, votes })
+                        .GroupBy(ply => ply.votes.PlayerId, pair => pair.mt).Select( ply => 
+                            new { id = ply.Key, count = ply.Count() }).ToList();
+
+            var playerList = await GetListByIds(votedPlayers.Select( ply => ply.id).ToList());
+
+            int topCount = votedPlayers.OrderByDescending(ply => ply.count).First().count;
+
+            foreach ( var player in playerList )
+            {
+                int count = votedPlayers.Where(ply => ply.id == player.Id).First().count;
+                string percent = ((Convert.ToDecimal(count) / topCount) * 100).ToString() + "%";
+
+                players.Add(new VotedPlayer { Percent = percent, Votes = count, Player = player });
+            }
+           
+            return players.OrderByDescending(ply => ply.Votes);
+        }
+
         public static async Task<IEnumerable<Player>> GetMostVoted()
         {
             var matchups = await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true, "Matchups");
 
-            //get the 50 most recent
+            //get the 250 most recent
             matchups = matchups.OrderByDescending(d => d.DateCreated).Take(250);
 
-            //get the 10 most voted on playaers
             var votedPlayers = matchups.SelectMany(mt => mt.Votes, (mt, votes) => new { mt, votes })
                         .GroupBy(ply => ply.votes.PlayerId, pair => pair.mt).Select(ply => ply.Key).ToList();
 
