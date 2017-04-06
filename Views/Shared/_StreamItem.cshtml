@@ -1,7 +1,5 @@
 ﻿@model CoachCue.Service.StreamContent
-@using CoachCue.Service;    
 @using CoachCue.Models;
-@using CoachCue.Model;
 
     @switch (Model.ContentType)
     {
@@ -86,6 +84,16 @@
                                     @player.Name @player.Position | @player.Team.Slug
                                     <span id="vote-@Model.MatchupItem.Id@player.Id" @if(Model.ContentType == "matchup") {<text>style = "display: none"</text>} class="badge vote-count">@Model.MatchupItem.Votes.Where( pl => pl.PlayerId  == player.Id).Count()</span>
                                     <input type="hidden" class="player-tags" data-img="@player.ProfileImage" data-name="@player.ShortName" value="@player.Id" />                                  
+                                </a>
+                            }
+                        </div>
+                        <div class="player-tags">                      
+                            @foreach (var player in Model.MatchupItem.Players)
+                            {
+                                <a class="player-tag-container player-popover" href="@Url.Action("index", "player", new { team = player.Team.Slug.ToLower(), name = player.Link })">
+                                    <span>
+                                        <img src="@Url.Content("~/assets/img/Player_Icon_1-orange.png")" />@player.ShortName @player.Position | @player.Team.Slug
+                                    </span>
                                 </a>
                             }
                         </div>
@@ -218,7 +226,7 @@
                     <div class="player-tags">                      
                     @foreach (Player player in Model.MessageItem.PlayerMentions)
                     {
-                        <a data-player-img="@player.ProfileImage" data-player-name="@player.Name" data-player-pos="@player.Position&nbsp;|&nbsp;@player.Team.Slug" data-player-id="@player.Id" class="player-tag-container player-popover" href="@Url.Action("index", "player", new { team = player.Team.Slug.ToLower(), name = player.Link })">
+                        <a class="player-tag-container player-popover" href="@Url.Action("index", "player", new { team = player.Team.Slug.ToLower(), name = player.Link })">
                             <span>
                                 <img src="@Url.Content("~/assets/img/Player_Icon_1-orange.png")" />@player.ShortName @player.Position | @player.Team.Slug
                             </span>
@@ -258,9 +266,7 @@
                                     }
                                 </div>
                             </div>
-                        </div>
-
-                        @if (!Model.HideActions) {
+                        </div>                      
                         <div class="row">
                             <div class="col-xs-12 message-post-@Model.MessageItem.Id @if (Model.MessageItem.Reply.Count() == 0){ <text>empty-message-block</text>}">
                                 <img alt="@Model.UserName" class="img-circle matchup-new-msg-item-avatar" src="@Url.Content("~/assets/img/avatar/" + Model.UserProfileImg)" />
@@ -281,8 +287,7 @@
                                     </form>
                                 }
                             </div>
-                        </div>
-                        }
+                        </div>                     
                     </div>
                 </div>
 
