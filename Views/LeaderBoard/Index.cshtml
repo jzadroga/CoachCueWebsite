@@ -1,5 +1,5 @@
 ﻿@model CoachCue.ViewModels.LeaderBoardModel
-@using CoachCue.Model;
+@using CoachCue.Models;
 
 @{
     ViewBag.Title = "CoachCue - LeaderBoard";
@@ -9,13 +9,13 @@
 <div class="span9 section">
 
     <ul class="nav nav-pills weeklist">
-        <li @if (Model.SelectedWeek == 0) { <text> class="active" </text>  }>
+        <li @if (string.IsNullOrEmpty(Model.SelectedWeek)) { <text> class="active" </text>  }>
             <a href="@Url.Action("Index", "LeaderBoard", new { week = 0 })">Overall</a>
         </li>
-        @foreach (GameWeek week in Model.Weeks)
+        @foreach (var week in Model.Weeks)
         {
-            <li @if (week.ID == Model.SelectedWeek) { <text> class="active" </text>  }>
-                <a href="@Url.Action("Index", "LeaderBoard", new { week = @week.ID })">@week.Label</a>
+            <li @if (week.Id == Model.SelectedWeek) { <text> class="active" </text>  }>
+                <a href="@Url.Action("Index", "LeaderBoard", new { week = @week.Id })">@week.Week</a>
             </li>
         }
     </ul>
@@ -99,9 +99,9 @@
                                 <tr>
                                     <td class="leaderboard-item">
                                         <span>@(i + 1).&nbsp;</span>
-                                        <img class="avatar player-item-avatar" style="position: relative" src='@Url.Content("~/assets/img/avatar/" + @Model.LeaderCoaches[i].Coach.avatar.imageName)' alt="@Model.LeaderCoaches[i].Coach.fullName">
-                                        <span>&nbsp;<a class="username" data-account-id='@Model.LeaderCoaches[i].Coach.userID' href="@Url.Action("Index", "Coach", new { id = Model.LeaderCoaches[i].Coach.userID, name = Model.LeaderCoaches[i].Coach.fullName })">@Model.LeaderCoaches[i].Coach.fullName</a></span>
-                                        @if (Model.LeaderCoaches[i].Coach.verified)
+                                        <img class="avatar player-item-avatar" style="position: relative" src='@Url.Content("~/assets/img/avatar/" + @Model.LeaderCoaches[i].Coach.Profile.Image)' alt="@Model.LeaderCoaches[i].Coach.Name">
+                                        <span>&nbsp;<a class="username" href="@Url.Action("Index", "Coach", new { name = Model.LeaderCoaches[i].Coach.Link })">@Model.LeaderCoaches[i].Coach.Name</a></span>
+                                        @if (Model.LeaderCoaches[i].Coach.Verified)
                                         {
                                             <img class="user-verified-small" src='@Url.Content("~/assets/img/verified_small.png")' alt="Fantasy Pro" />
                                         }

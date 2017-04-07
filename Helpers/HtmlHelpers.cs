@@ -15,7 +15,7 @@ namespace CoachCue.Helpers
             string currentController = helper.ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.ToString();
             //string currentAction = helper.ViewContext.Controller.ValueProvider.GetValue("action").RawValue.ToString();
 
-            if (currentController == controller)// && currentAction == action)
+            if (currentController.ToLower() == controller.ToLower())// && currentAction == action)
             {
                 classValue = "active";
             }

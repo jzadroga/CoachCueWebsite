@@ -61,9 +61,9 @@ namespace CoachCue.ViewModels
 
     public class LeaderBoardModel : BaseViewModel
     {
-        //public List<LeaderboardCoach> LeaderCoaches { get; set; }
-       // public List<GameWeek> Weeks { get; set; }
-        public int SelectedWeek { get; set; }
+        public List<LeaderboardCoach> LeaderCoaches { get; set; }
+        public List<Game> Weeks { get; set; }
+        public string SelectedWeek { get; set; }
         //public LeaderboardCoach CurrentUser { get; set; }
         public bool UserIncluded { get; set; }
         public string Sort { get; set; }

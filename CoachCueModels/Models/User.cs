@@ -71,4 +71,14 @@ namespace CoachCue.Models
 
         public List<Badge> Badges { get; set; }
     }
+
+    public class LeaderboardCoach
+    {
+        public string Header { get; set; }
+        public User Coach { get; set; }
+        public int Percent { get; set; }
+        public int Correct { get; set; }
+        public int Wrong { get; set; }
+        public int Total { get; set; }
+    }
 }

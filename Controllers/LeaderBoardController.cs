@@ -3,39 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using CoachCue.Model;
+using CoachCue.Models;
 using System.ComponentModel;
 using CoachCue.ViewModels;
 using System.Net;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace CoachCue.Controllers
 {
     public class LeaderBoardController : BaseController
     {
-        public ActionResult Index([DefaultValue(50)]int week, [DefaultValue("")]string sort, [DefaultValue("")]string dr)
+        public async Task<ActionResult> Index([DefaultValue("")]string week, [DefaultValue("")]string sort, [DefaultValue("")]string dr)
         {
             LeaderBoardModel leaderVM = new LeaderBoardModel();
-            int userID = (User.Identity.IsAuthenticated) ? user.GetUserID(User.Identity.Name) : 0;
-            List<GameWeek> weeks = new List<GameWeek>();
+            await LoadBaseViewModel(leaderVM);
+
+            List<Game> weeks = new List<Game>();
 
             //return current week and overall which is week 0
-
-            int currentWeek = gameschedule.GetCurrentWeekID();
+            /*int currentWeek = gameschedule.GetCurrentWeekID();
             if (week == 50)
                 week = currentWeek - 1;
 
             //set up the past weeks
             for (int i = 1; i <= currentWeek; i++)
             {
-                weeks.Add(new GameWeek { ID = i, Label = i.ToString() });
-            }
+                weeks.Add(new Game { ID = i, Label = i.ToString() });
+            }*/
 
-           // leaderVM.Weeks = weeks;
+            leaderVM.Weeks = weeks;
             leaderVM.SelectedWeek = week;
             leaderVM.Sort = (string.IsNullOrEmpty(sort)) ? "correct" : sort.ToLower();
             leaderVM.Direction = (string.IsNullOrEmpty(dr)) ? "asc" : dr.ToLower();
-          //  leaderVM.LeaderCoaches = user.GetTopCoachesByWeek(100, week, 5);
+            leaderVM.LeaderCoaches = new List<LeaderboardCoach>(); //user.GetTopCoachesByWeek(100, week, 5);
 
             switch( leaderVM.Sort )
             {
@@ -59,13 +60,7 @@ namespace CoachCue.Controllers
                 break;
             }
 
-
             leaderVM.UserIncluded = false;
-
-            if( userID != 0)
-            {
-
-            }
 
             return View(leaderVM);
         }

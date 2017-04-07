@@ -97,13 +97,4 @@ namespace CoachCue.Models
         public int Votes { get; set; }
         public string Percent { get; set; }
     }
-
-    public class LeaderboardCoach
-    {
-        public user Coach { get; set; }
-        public int Percent { get; set; }
-        public int Correct { get; set; }
-        public int Wrong { get; set; }
-        public int Total { get; set; }
-    }
 }

@@ -556,17 +556,17 @@
                     @if (!User.Identity.IsAuthenticated) {
                         <a role="button" data-register="true" data-backdrop="static" data-keyboard="false" href="#modal-register" data-toggle="modal" data-target="#modal-register"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
                     } else {
-                        <a class="@Html.ActiveSection("Coach")" href="@Url.Action("index", "coach", new { name = Model.UserData.Link })"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
+                        <a class="@Html.ActiveSection("coach")" href="@Url.Action("index", "coach", new { name = Model.UserData.Link })"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
                     }
                 </div>
                 <div class="col-xs-3 text-center">
-                    <a class="@Html.ActiveSection("Search")" href="@Url.Action("index", "search")"><i class="glyphicon glyphicon-search"></i><br>Search</a>
+                    <a class="@Html.ActiveSection("search")" href="@Url.Action("index", "search")"><i class="glyphicon glyphicon-search"></i><br>Search</a>
                 </div>
                 <div class="col-xs-3 text-center">
-                    <a class="@Html.ActiveSection("TopVotedPlayers")" href="@Url.Action("index", "topvotedplayers")"><i class="glyphicon glyphicon-thumbs-up"></i><br>Most Voted</a>
+                    <a class="@Html.ActiveSection("topvotedplayers")" href="@Url.Action("index", "topvotedplayers")"><i class="glyphicon glyphicon-thumbs-up"></i><br>Most Voted</a>
                 </div>
                 <div class="col-xs-3 text-center">
-                    <a class="@Html.ActiveSection("Leaderboard")" href='@Url.Action("index", "leaderboard")'><i class="glyphicon glyphicon-star"></i><br>Our Experts</a>
+                    <a class="@Html.ActiveSection("leaderboard")" href='@Url.Action("index", "leaderboard")'><i class="glyphicon glyphicon-star"></i><br>Our Experts</a>
                 </div>
             </div>
         </div>
