@@ -11,7 +11,7 @@ $(document).ready(function () {
     loadSearchTypeahead();
     loadPlayersTypeahead();
     loadMatchupPlayersTypeahead();
-    loadMatchupInviteTypeahead();
+    loadMatchupInviteFilter();
 
     //tooltips
     $("[rel='tooltip']").tooltip();
@@ -98,7 +98,7 @@ $(document).ready(function () {
         $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
         $('#matchup-invite').hide();
         $('#matchup-select').show();
-
+        $('#askFilterSearch').val('');
         $('#matchup-select').find('div.selected-player').hide();
         $('#matchup-select').find('input.matchup-player-select').val('').show();
         $('#player3-id').parents('li.list-group-item').hide();
@@ -255,6 +255,11 @@ $(document).ready(function () {
         return false;
     });
 
+    //add a matchup ask invite
+    $("#modal-matchup").on("click", ".user-invite", function (e) {
+        return false;
+    });
+
     //send out matchup ask invites
     $("#modal-matchup").on("click", '#send-invites', function (e) {
         var inviteUsers = $("#invite-user-list input:checkbox:checked")
@@ -311,7 +316,6 @@ $(document).ready(function () {
 
                 //show the invite page
                 $('#invite-body').append(data.InviteData);
-                $('.user-invite').bootstrapToggle();
 
                 $('#matchup-select').hide();
                 $('#matchup-invite').show();
@@ -502,40 +506,6 @@ $(document).ready(function () {
             $(icon).removeClass("icon-chevron-up").addClass("icon-chevron-down");
         }
     });
-
-    //show latest news from twitter
-    $("body").on("click", '.player-card-news', function (e) {
-        $(".player-latest-news").css("overflow", "hidden");
-
-        var $btn = $(this).button('loading');
-
-        var playerID = $(this).attr("data-player-id");
-        var matchupID = $(this).attr("data-matchup-id")
-
-        var $popoverObj = $(this);
-        var $newsObj = $("#" + matchupID + "-latest-news");
-
-        $newsObj.find(".player-data-spinner").spin(smalSpinnerBlackOpts);
-
-        //set the body text
-        task.getPlayerTwitterStream(playerID, function (data) {
-            $btn.button('reset');
-
-            $newsObj.find(".player-pop-details").html(data.StreamData);
-            $newsObj.slideDown();
-
-        });
-
-        //send analytics event
-        ga('send', {
-            hitType: 'event',
-            eventCategory: 'News',
-            eventAction: 'click',
-            eventLabel: 'Latest News'
-        });
-
-        return false;
-    });
 });
 
 function loadMatchupStream(position) { 
@@ -689,29 +659,37 @@ function loadSearchTypeahead() {
     });
 }
 
-function loadMatchupInviteTypeahead() {
-    var userTemplateNoLink = '<img class="typeahead-avatar" src="{{image}}" alt=""><span class="typeahead-bio">{{name}} | @{{username}}</span>';
-    var usersNoLink = Hogan.compile(userTemplateNoLink);
+function loadMatchupInviteFilter() {
+    $('#searchlist').btsListFilter('#askFilterSearch', { itemChild: 'span' });
+    var filter = "";
 
-    $('.ask-a-coach').typeahead({
-        prefetch: '/assets/data/users.json',
-        limit: 5,
-        template: usersNoLink.render.bind(usersNoLink)
-    });
+    $.getJSON("/assets/data/users.json", function (data) {
+        $('#searchlist').btsListFilter('#askFilterSearch', {
+            loadingClass: 'loading',
+            sourceData: function (text, callback) {
+                filter = text;
+                var filterData = [];
+                $.each(data, function (i, v) {
+                    if (v.name.toUpperCase().includes(text.toUpperCase())) {
+                        filterData.push(v);
+                    }
+                });
 
-    $('.ask-a-coach').bind('typeahead:selected', function (obj, datum, name) {
-        //add the new toggle with unique id 
-        var selected = "<li class='list-group-item'>";
-        selected += "<input data-user='" + datum.userID + "' checked id='" + datum.userID + "' data-style='invite-select' class='user-invite' type='checkbox' data-toggle='toggle' data-on='<i class=\"glyphicon glyphicon-ok\"></i> Invite will be sent<br/>to " + datum.name + "' data-off='<img class=\"typeahead-avatar\" src=\"" + datum.image + "\" /> Invite " + datum.name + "<br/>to answer'>";
-        selected += "</li>";
-
-        $("#invite-user-list").find("ul.list-group").prepend(selected);
-
-        //initialize it 
-        $('#' + datum.userID).bootstrapToggle();
-        //clear the typeahead
-        $(this).val("");
-        $('.ask-a-coach').typeahead('setQuery', '');
+                callback(filterData);
+            },
+            sourceNode: function (data) {
+                return $('<a class="list-group-item user-invite" href="#"><img class="typeahead-avatar" src="' + data.image + '" alt=""><span class="typeahead-bio">' + data.name + ' | @' + data.username + '</span></a>')
+                    .on('click', function (e) {
+                        e.preventDefault();
+                        $('#askFilterSearch').val(filter);
+                        
+                        //add a checkmark and a button to the top with a delete x (if that is clicked it is removed)
+                    });
+            },
+            emptyNode: function (data) {
+                return $('<a class="list-group-item well" href="#"><span>Not found <b>"' + data + '"</b></a>');
+            }
+        });
     });
 }
 

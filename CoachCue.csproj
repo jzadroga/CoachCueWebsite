@@ -375,7 +375,7 @@
     </Content>
     <None Include="assets\js\jquery-1.5.1-vsdoc.js" />
     <Content Include="assets\js\hogan.js" />
-    <Content Include="assets\js\jquery.masonry.min.js" />
+    <Content Include="assets\js\bootstrap-list-filter.min..js" />
     <Content Include="assets\js\jquery.placeholder.min.js" />
     <Content Include="assets\js\jquery.unobtrusive-ajax.min.js" />
     <Content Include="assets\js\jquery.unveil.js" />
