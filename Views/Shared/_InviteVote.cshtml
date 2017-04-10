@@ -2,22 +2,14 @@
 @using CoachCue.Models;
 @using CoachCue.ViewModels;
 
-<div class="row">
-    <div class="col-md-12">
-        <a class="ask-twitter-button btn-info btn btn-xs" href="https://twitter.com/intent/tweet?count=none&hashtags=FantasyFootball&via=coachcue&url=http://coachcue.com/@Model.MatchupItem.Link&text=@Model.MatchupItem.Type @Model.MatchupItem.Players.Select( ply => ply.ShortName).Aggregate((current, next) => current + ", " + next)">Ask Twitter</a>
+@*<div class="row">
+        <div class="col-md-12">
+            <a class="ask-twitter-button btn-info btn btn-xs" href="https://twitter.com/intent/tweet?count=none&hashtags=FantasyFootball&via=coachcue&url=http://coachcue.com/@Model.MatchupItem.Link&text=@Model.MatchupItem.Type @Model.MatchupItem.Players.Select( ply => ply.ShortName).Aggregate((current, next) => current + ", " + next)">Ask Twitter</a>
+        </div>
     </div>
-</div>
-
-<div class="row" id="invite-user-list" data-matchup="@Model.MatchupItem.Id">
-    <div class="col-md-12 col-xs-12">
-        <ul class="list-group">
-            <!-- users -->
-            @foreach (var user in Model.Users)
-            {               
-                <li class="list-group-item">         
-                    <input data-user="@user.Id" data-style="invite-select" class="user-invite" type="checkbox" data-toggle="toggle" data-on="<i class='glyphicon glyphicon-ok'></i> Invite will be sent<br/>to @user.Name" data-off="<img class='typeahead-avatar' src='/assets/img/avatar/@user.Profile.Image' /> Invite @user.Name<br/>to answer">
-                </li>
-            }
-        </ul>
-    </div>
-</div>
+*@
+    <!-- users -->
+    @foreach (var user in Model.Users)
+    {                             
+        <a class="list-group-item user-invite" data-name="@user.Name" data-id="@user.Id" href="#"><img class="typeahead-avatar" src="/assets/img/avatar/@user.Profile.Image" alt=""><span class="typeahead-bio">@user.Name | @@@user.UserName</span><i style="display: none; padding-left: 18px" class="badge glyphicon glyphicon-ok">&nbsp;</i></a>         
+    }

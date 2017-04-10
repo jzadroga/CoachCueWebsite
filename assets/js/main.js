@@ -105,6 +105,7 @@ $(document).ready(function () {
         $('#player4-id').parents('li.list-group-item').hide();
         $('#add-matchup-player').parent().show();
         $('#invite-user-list').empty();
+        syncCheckmarks();
         $('input.player-id').val('');
         $('#matchup-exists-alert').hide();
     });
@@ -258,15 +259,23 @@ $(document).ready(function () {
     //add a matchup ask invite
     $("#modal-matchup").on("click", ".user-invite", function (e) {
 
-        //add a checkmark and a button to the top with a delete x (if that is clicked it is removed)
-        $(this).find("i.badge").toggle();
-        $('#invite-user-list').append('<button data-id="' + $(this).attr('data-id') + '" class="btn btn-default invite-user-add">' + $(this).attr('data-name') + '&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>');
+        //if user button already exists than remove
+        var $inviteButton = $('#invite-user-list').find('button.invite-user-add[data-id="' + $(this).attr('data-id') + '"]');
+        if ($inviteButton.length > 0) {
+            $inviteButton.remove();
+        } else {
+            //add a checkmark and a button to the top with a delete x (if that is clicked it is removed)
+            $('#invite-user-list').append('<button data-id="' + $(this).attr('data-id') + '" class="btn btn-default invite-user-add">' + $(this).attr('data-name') + '&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>');
+        }
+
+        syncCheckmarks();
 
         return false;
     });
 
     $("#modal-matchup").on("click", ".invite-user-add", function (e) {
         $(this).remove();
+        syncCheckmarks();
     });
 
     //send out matchup ask invites
@@ -283,6 +292,13 @@ $(document).ready(function () {
         }
 
         $("#modal-matchup").modal('hide');
+
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'Invite',
+            eventAction: 'click',
+            eventLabel: 'Invites sent'
+        });
 
         return false;
     });
@@ -324,7 +340,8 @@ $(document).ready(function () {
                 showNotice("Matchup Posted", "Thanks for sharing. Your matchup has been posted.");
 
                 //show the invite page
-                $('#invite-body').append(data.InviteData);
+                $('#invite-user-list').attr('data-matchup', data.MatchupID)
+                $('#searchlist').append(data.InviteData);
 
                 $('#matchup-select').hide();
                 $('#matchup-invite').show();
@@ -481,6 +498,13 @@ $(document).ready(function () {
         $("#invite-sent").hide();
         $("#inviteEmail").val("");
         $("#btnSendInvite").show();
+
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'Invite',
+            eventAction: 'click',
+            eventLabel: 'Invites sent'
+        });
     });
 
     $("#regemail").change(function () {
@@ -516,6 +540,14 @@ $(document).ready(function () {
         }
     });
 });
+
+function syncCheckmarks() {
+    $('#searchlist').find("i.badge").hide();
+    $("#invite-user-list button.invite-user-add").each(function (index) {
+        var userId = $(this).attr("data-id");
+        $('a.user-invite[data-id="' + userId + '"]').find("i.badge").show();
+    });
+}
 
 function loadMatchupStream(position) { 
     task.getMatchupStream(position, function (data) {
@@ -685,7 +717,8 @@ function loadMatchupInviteFilter() {
                     }
                 });
          
-                callback(filterData);            
+                callback(filterData);
+                syncCheckmarks();
             },
             sourceNode: function (data) {
                 return $('<a class="list-group-item user-invite" data-name="' + data.name + '" data-id="' + data.userID + '" href="#"><img class="typeahead-avatar" src="' + data.image + '" alt=""><span class="typeahead-bio">' + data.name + ' | @' + data.username + '</span><i style="display: none; padding-left: 18px" class="badge glyphicon glyphicon-ok">&nbsp;</i></a>')
