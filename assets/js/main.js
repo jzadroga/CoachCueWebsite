@@ -104,7 +104,7 @@ $(document).ready(function () {
         $('#player3-id').parents('li.list-group-item').hide();
         $('#player4-id').parents('li.list-group-item').hide();
         $('#add-matchup-player').parent().show();
-        $('#invite-user-list').remove();
+        $('#invite-user-list').empty();
         $('input.player-id').val('');
         $('#matchup-exists-alert').hide();
     });
@@ -257,13 +257,22 @@ $(document).ready(function () {
 
     //add a matchup ask invite
     $("#modal-matchup").on("click", ".user-invite", function (e) {
+
+        //add a checkmark and a button to the top with a delete x (if that is clicked it is removed)
+        $(this).find("i.badge").toggle();
+        $('#invite-user-list').append('<button data-id="' + $(this).attr('data-id') + '" class="btn btn-default invite-user-add">' + $(this).attr('data-name') + '&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>');
+
         return false;
+    });
+
+    $("#modal-matchup").on("click", ".invite-user-add", function (e) {
+        $(this).remove();
     });
 
     //send out matchup ask invites
     $("#modal-matchup").on("click", '#send-invites', function (e) {
-        var inviteUsers = $("#invite-user-list input:checkbox:checked")
-             .map(function () { return $(this).attr("data-user"); }).get();
+        var inviteUsers = $("#invite-user-list button.invite-user-add")
+             .map(function () { return $(this).attr("data-id"); }).get();
 
         showNotice("Invites Sent", "Your Ask requests have been sent.");
         var matchupID = $("#invite-user-list").attr("data-matchup");
@@ -667,6 +676,7 @@ function loadMatchupInviteFilter() {
         $('#searchlist').btsListFilter('#askFilterSearch', {
             loadingClass: 'loading',
             sourceData: function (text, callback) {
+       
                 filter = text;
                 var filterData = [];
                 $.each(data, function (i, v) {
@@ -674,16 +684,14 @@ function loadMatchupInviteFilter() {
                         filterData.push(v);
                     }
                 });
-
-                callback(filterData);
+         
+                callback(filterData);            
             },
             sourceNode: function (data) {
-                return $('<a class="list-group-item user-invite" href="#"><img class="typeahead-avatar" src="' + data.image + '" alt=""><span class="typeahead-bio">' + data.name + ' | @' + data.username + '</span></a>')
+                return $('<a class="list-group-item user-invite" data-name="' + data.name + '" data-id="' + data.userID + '" href="#"><img class="typeahead-avatar" src="' + data.image + '" alt=""><span class="typeahead-bio">' + data.name + ' | @' + data.username + '</span><i style="display: none; padding-left: 18px" class="badge glyphicon glyphicon-ok">&nbsp;</i></a>')
                     .on('click', function (e) {
                         e.preventDefault();
-                        $('#askFilterSearch').val(filter);
-                        
-                        //add a checkmark and a button to the top with a delete x (if that is clicked it is removed)
+                        $('#askFilterSearch').val(filter);    
                     });
             },
             emptyNode: function (data) {
