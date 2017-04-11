@@ -9,6 +9,7 @@ using CoachCue.ViewModels;
 using System.Net;
 using System.IO;
 using System.Threading.Tasks;
+using CoachCue.Service;
 
 namespace CoachCue.Controllers
 {
@@ -36,27 +37,28 @@ namespace CoachCue.Controllers
             leaderVM.SelectedWeek = week;
             leaderVM.Sort = (string.IsNullOrEmpty(sort)) ? "correct" : sort.ToLower();
             leaderVM.Direction = (string.IsNullOrEmpty(dr)) ? "asc" : dr.ToLower();
-            leaderVM.LeaderCoaches = new List<LeaderboardCoach>(); //user.GetTopCoachesByWeek(100, week, 5);
+            var topUsers = await UserService.GetTopCoaches(100, 0);
+            leaderVM.LeaderCoaches = topUsers.ToList();
 
-            switch( leaderVM.Sort )
+            switch ( leaderVM.Sort )
             {
                 case "correct":
-                   // if (leaderVM.Direction == "asc")
-                  //      leaderVM.LeaderCoaches = leaderVM.LeaderCoaches.OrderByDescending(ldr => ldr.Correct).ToList();
-                   // else
-                  //      leaderVM.LeaderCoaches = leaderVM.LeaderCoaches.OrderBy(ldr => ldr.Correct).ToList();
+                   if (leaderVM.Direction == "asc")
+                       leaderVM.LeaderCoaches = leaderVM.LeaderCoaches.OrderByDescending(ldr => ldr.Correct).ToList();
+                   else
+                       leaderVM.LeaderCoaches = leaderVM.LeaderCoaches.OrderBy(ldr => ldr.Correct).ToList();
                 break;
                 case "wrong":
-               // if (leaderVM.Direction == "asc")
-                   // leaderVM.LeaderCoaches = leaderVM.LeaderCoaches.OrderByDescending(ldr => ldr.Wrong).ToList();
-               // else
-               //     leaderVM.LeaderCoaches = leaderVM.LeaderCoaches.OrderBy(ldr => ldr.Wrong).ToList();
+                 if (leaderVM.Direction == "asc")
+                   leaderVM.LeaderCoaches = leaderVM.LeaderCoaches.OrderByDescending(ldr => ldr.Wrong).ToList();
+                else
+                    leaderVM.LeaderCoaches = leaderVM.LeaderCoaches.OrderBy(ldr => ldr.Wrong).ToList();
                 break;
                 case "percent":
-              //  if (leaderVM.Direction == "asc")
-               //     leaderVM.LeaderCoaches = leaderVM.LeaderCoaches.OrderByDescending(ldr => ldr.Percent).ToList();
-              //  else
-              //      leaderVM.LeaderCoaches = leaderVM.LeaderCoaches.OrderBy(ldr => ldr.Percent).ToList();
+                if (leaderVM.Direction == "asc")
+                    leaderVM.LeaderCoaches = leaderVM.LeaderCoaches.OrderByDescending(ldr => ldr.Percent).ToList();
+                else
+                    leaderVM.LeaderCoaches = leaderVM.LeaderCoaches.OrderBy(ldr => ldr.Percent).ToList();
                 break;
             }
 

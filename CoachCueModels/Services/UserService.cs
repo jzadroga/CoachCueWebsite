@@ -319,22 +319,33 @@ namespace CoachCue.Service
         }
 
         
-        public static async Task<IEnumerable<LeaderboardCoach>> GetTopCoaches(int total)
+        public static async Task<IEnumerable<LeaderboardCoach>> GetTopCoaches(int total, int week)
         {
-            //cache this per week
-            var users = await DocumentDBRepository<User>.GetItemsAsync(us => us.Active == true, "Users");          
-            users = users.OrderByDescending(us => us.Statistics.CorrectVoteCount).Take(total);
+            IEnumerable<LeaderboardCoach> coaches = new List<LeaderboardCoach>();
 
-            return users.Select(us => new LeaderboardCoach()
+            //cache this per week
+            string cacheID = "leaderboard-" + total.ToString() + "-" + week.ToString();
+            if (HttpContext.Current.Cache[cacheID] != null)
+                coaches = (IEnumerable<LeaderboardCoach>)HttpContext.Current.Cache[cacheID];
+            else
             {
-                Header = "",
-                Coach = us,
-                Percent = (us.Statistics.VoteCount == 0 ) ? 0 : us.Statistics.CorrectVoteCount * 100 / us.Statistics.VoteCount,
-                Correct = us.Statistics.CorrectVoteCount,
-                Wrong = us.Statistics.VoteCount - us.Statistics.CorrectVoteCount,
-                Total = us.Statistics.VoteCount
-            });
-           
+                var users = await DocumentDBRepository<User>.GetItemsAsync(us => us.Active == true, "Users");
+                users = users.OrderByDescending(us => us.Statistics.CorrectVoteCount).Take(total);
+
+                coaches = users.Select(us => new LeaderboardCoach()
+                {
+                    Header = "",
+                    Coach = us,
+                    Percent = (us.Statistics.VoteCount == 0) ? 0 : us.Statistics.CorrectVoteCount * 100 / us.Statistics.VoteCount,
+                    Correct = us.Statistics.CorrectVoteCount,
+                    Wrong = us.Statistics.VoteCount - us.Statistics.CorrectVoteCount,
+                    Total = us.Statistics.VoteCount
+                });
+
+                HttpContext.Current.Cache.Insert(cacheID, coaches, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(48, 0, 0));
+            }
+
+            return coaches;
         }
 
         public static async Task<IEnumerable<User>> GetRandomTopVotes(int total)
