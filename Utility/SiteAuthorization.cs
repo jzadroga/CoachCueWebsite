@@ -100,7 +100,7 @@ namespace CoachCue.Utility
 
             if (HttpContext.Current.User.Identity.IsAuthenticated)
             {
-                if(HttpContext.Current.User.Identity.Name == "jason.zadroga@gmail.com")            
+                if(HttpContext.Current.User.Identity.Name == "jason.zadroga@gmail.com" || HttpContext.Current.User.Identity.Name == "lu.reed@gmail.com" || HttpContext.Current.User.Identity.Name == "neeraj@coachcue.com")            
                     auth = true;
             }
 

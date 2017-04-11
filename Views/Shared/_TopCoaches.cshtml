@@ -1,4 +1,4 @@
-﻿@model List<LeaderboardCoach>
+﻿@model IEnumerable<LeaderboardCoach>
 @using CoachCue.Models;
 
 <div class="span4 pod pod-child">
@@ -25,7 +25,7 @@
                             </li>
                         </ul>
                     </div>
-                    <img class="avatar player-item-avatar lazy-load" data-src="/assets/img/avatar/@coach.Coach.Profile.Image" alt="@coach.Coach.Name">
+                    <img class="avatar player-item-avatar" src="/assets/img/avatar/@coach.Coach.Profile.Image" alt="@coach.Coach.Name">
                     <span>@@@coach.Coach.UserName</span>
                     
                 </div>

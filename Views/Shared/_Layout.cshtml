@@ -8,6 +8,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:image" content="http://coachcue.com/assets/img/twittercard-matchup1.png" />
+    <meta property="og:image" content="http://coachcue.com/assets/img/twittercard-matchup1.png" />
 
     @if(ViewBag.Description != null){
     <meta name="description" content="@ViewBag.Description" />
@@ -35,23 +38,29 @@
     @if (ViewBag.twitterTitle != null)
     {
     <meta name="twitter:title" content="@ViewBag.twitterTitle" />
+    <meta property="og:title" content="@ViewBag.twitterTitle" />
     }
     
     @if (ViewBag.twitterDescription != null)
     {
     <meta name="twitter:description" content="@ViewBag.twitterDescription" />
+    <meta property="og:description" content="@ViewBag.twitterDescription" />
     }
-    
-    @if (ViewBag.twitterImage != null)
+    else
     {
-    <meta name="twitter:image" content="@ViewBag.twitterImage" />
+    <meta property="og:description" content="Get instant advice for all of your Who Do I Start? questions. View results from 100+ player matchups." />
     }
 
     @if (ViewBag.twitterUrl != null)
     {
     <meta name="twitter:url" content="@ViewBag.twitterUrl" />
+    <meta property="og:url" content="@ViewBag.twitterUrl" />
     }
-    
+    else
+    {
+    <meta property="og:url" content="http://coachcue.com" />
+    }
+
     <meta name="author" content="" />
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">

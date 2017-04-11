@@ -42,4 +42,33 @@ namespace CoachCue.Service
             return gameSchedule;
         }
     }
+
+    public static class DateTimeExtensions
+    {
+        public static DateTime StartOfWeek(this DateTime dt, DayOfWeek startOfWeek)
+        {
+            int diff = dt.DayOfWeek - startOfWeek;
+            if (diff < 0)
+            {
+                diff += 7;
+            }
+
+            return dt.AddDays(-1 * diff).Date;
+        }
+
+        public static DateTime GetEasternTime(this DateTime date)
+        {
+            //DateTime timeUtc = date.UtcNow;
+            TimeZoneInfo easterZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+            DateTime eastTime = TimeZoneInfo.ConvertTimeFromUtc(date, easterZone);
+
+            return eastTime;
+        }
+    }
+
+    public class GameWeek
+    {
+        public string Label { get; set; }
+        public int ID { get; set; }
+    }
 }

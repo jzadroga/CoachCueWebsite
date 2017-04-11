@@ -1,11 +1,11 @@
-﻿using CoachCue.Model;
-using CoachCue.Models;
+﻿using CoachCue.Models;
 using CoachCue.Repository;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -18,18 +18,28 @@ namespace CoachCue.Service
         public static async Task<List<string>> ImportUsers()
         {
             List<string> foundPlayers = new List<string>();
-            CoachCueDataContext db = new CoachCueDataContext();
+            Model.CoachCueDataContext db = new Model.CoachCueDataContext();
 
             var usrs = db.users.Where(us => us.status.statusName == "Active").ToList();
             var userDB = await DocumentDBRepository<User>.GetItemsAsync(d => d.Active, "Users");
 
             var addedUsers = userDB.ToList();
 
-            foreach (user usr in usrs)
+            foreach (Model.user usr in usrs)
             {
-                if (addedUsers.Where(u => u.Email == usr.email).Count() == 0)
+                var matchingUser = addedUsers.Where(u => u.Email == usr.email);
+                if (matchingUser.Count() == 0)
                 {
                     await SaveUser(usr, usr.fullName, usr.email, usr.password);
+                }
+                else
+                {
+                    var updateUser = matchingUser.FirstOrDefault();
+                    if (updateUser != null)
+                    {
+                        updateUser.Statistics.CorrectVoteCount = usr.TotalCorrectVotes;
+                        await DocumentDBRepository<User>.UpdateItemAsync(updateUser.Id, updateUser, "Users");
+                    }
                 }
             }
             
@@ -85,7 +95,7 @@ namespace CoachCue.Service
 
         //save a user document to the Users collection
         //todo update code for true new user
-        public static async Task<User> SaveUser(user usr, string name, string email, string password)
+        public static async Task<User> SaveUser(Model.user usr, string name, string email, string password)
         {
             User user = new User();
 
@@ -127,6 +137,7 @@ namespace CoachCue.Service
                 stats.MatchupCount = usr.MatchupCreatedCount;
                 stats.MessageCount = usr.messages.Count();
                 stats.VoteCount = usr.TotalMatchupVotes;
+                stats.CorrectVoteCount = usr.TotalCorrectVotes;
                 user.Statistics = stats;
 
                 await DocumentDBRepository<User>.CreateItemAsync(user, "Users");
@@ -307,6 +318,25 @@ namespace CoachCue.Service
             return await DocumentDBRepository<User>.GetItemAsync(id, "Users");
         }
 
+        
+        public static async Task<IEnumerable<LeaderboardCoach>> GetTopCoaches(int total)
+        {
+            //cache this per week
+            var users = await DocumentDBRepository<User>.GetItemsAsync(us => us.Active == true, "Users");          
+            users = users.OrderByDescending(us => us.Statistics.CorrectVoteCount).Take(total);
+
+            return users.Select(us => new LeaderboardCoach()
+            {
+                Header = "",
+                Coach = us,
+                Percent = (us.Statistics.VoteCount == 0 ) ? 0 : us.Statistics.CorrectVoteCount * 100 / us.Statistics.VoteCount,
+                Correct = us.Statistics.CorrectVoteCount,
+                Wrong = us.Statistics.VoteCount - us.Statistics.CorrectVoteCount,
+                Total = us.Statistics.VoteCount
+            });
+           
+        }
+
         public static async Task<IEnumerable<User>> GetRandomTopVotes(int total)
         {
             var users = await DocumentDBRepository<User>.GetItemsAsync(us => us.Active == true, "Users");
@@ -337,6 +367,36 @@ namespace CoachCue.Service
             var user = await DocumentDBRepository<User>.GetItemsAsync(us => us.Email.ToLower() == email.ToLower(), "Users");
 
             return user.FirstOrDefault();
+        }
+
+        public static async Task<bool> IsValidEmail(string email)
+        {
+            bool valid = false;
+
+            if (string.IsNullOrEmpty(email))
+                return valid;
+
+            try
+            {
+                var ret = await GetByEmail(email);
+
+                if (ret == null)
+                {
+                    try
+                    {
+                        string address = new MailAddress(email).Address;
+                        valid = true;
+                    }
+                    catch (FormatException)
+                    {
+                        //address is invalid
+                        valid = false;
+                    }
+                }
+            }
+            catch (Exception) { }
+
+            return valid;
         }
 
         public static async Task<IEnumerable<User>> GetListByIds(List<string> userIds)

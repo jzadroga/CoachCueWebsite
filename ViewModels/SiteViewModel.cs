@@ -15,7 +15,7 @@ namespace CoachCue.ViewModels
         public List<Player> TrendingItems { get; set; }
        // public List<AccountData> RecentlyViewedItems { get; set; }
         public bool IsMobile { get; set; }
-        public List<LeaderboardCoach> TopCoaches { get; set; }
+        public IEnumerable<LeaderboardCoach> TopCoaches { get; set; }
         public CoachCueUserData UserData { get; set; }
         public List<Player> MessagePlayers { get; set; }
 

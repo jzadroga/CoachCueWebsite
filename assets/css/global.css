@@ -3750,6 +3750,7 @@ div.new-message-text-controls  div.message-charNum{
 
 .flyover-top {
    top: 10px;
+   z-index: 9999;
 }
 
 .flyover.in {

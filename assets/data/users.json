@@ -24,30 +24,6 @@
     "link": "lureed"
   },
   {
-    "name": "SiteTest",
-    "username": "site.test",
-    "image": "/assets/img/avatar/profile.jpg",
-    "value": "SiteTest",
-    "userID": "1eedfb47-31e5-4849-84f4-15718dc5cd82",
-    "link": "sitetest"
-  },
-  {
-    "name": "SiteTest2",
-    "username": "sitetest2",
-    "image": "/assets/img/avatar/profile.jpg",
-    "value": "SiteTest2",
-    "userID": "69e321b6-d26e-4b13-a5ab-0a4788be2d8d",
-    "link": "sitetest2"
-  },
-  {
-    "name": "SiteTest3",
-    "username": "sitetest3",
-    "image": "/assets/img/avatar/profile.jpg",
-    "value": "SiteTest3",
-    "userID": "d9486f43-e097-4fc2-9423-dd07ea852b17",
-    "link": "sitetest3"
-  },
-  {
     "name": "Mike Wexler",
     "username": "Wex",
     "image": "/assets/img/avatar/5_eagles.jpg",

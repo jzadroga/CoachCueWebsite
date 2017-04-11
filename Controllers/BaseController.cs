@@ -22,7 +22,7 @@ namespace CoachCue.Controllers
             bVM.UserData = await CoachCueUserData.GetUserData(User.Identity.Name);
 
             bVM.TrendingItems = (Request.Browser.IsMobileDevice) ? new List<Player>() :  await StreamService.GetTrendingStream();
-            bVM.TopCoaches = new List<LeaderboardCoach>(); //(Request.Browser.IsMobileDevice) ? new List<LeaderboardCoach>() : user.GetTopCoachesByWeek(5, gameschedule.GetCurrentWeekID()-1, 5);
+            bVM.TopCoaches = (Request.Browser.IsMobileDevice) ? new List<LeaderboardCoach>() : await UserService.GetTopCoaches(20);
 
             return bVM;
         }

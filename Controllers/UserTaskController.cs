@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using CoachCue.Model;
 using System.ComponentModel;
 using CoachCue.ViewModels;
 using System.Net;
@@ -21,33 +20,7 @@ namespace CoachCue.Controllers
 {
     public class UserTaskController : Controller
     {
-        [SiteAuthorization]
-        [NoCacheAttribute]
-        public JsonResult Follow(int accountID, string type)
-        {
-            //add to the folow list and return the players stream
-            int userID = user.GetUserID(User.Identity.Name);
-            int totalAccounts = user.Follow(userID, accountID, type);
-
-            return Json(new
-            {
-                StreamData = new List<StreamContent>(),
-                ID = accountID,
-                Type = "message",
-                LastUpdateTicks = DateTime.UtcNow.GetEasternTime().Ticks,
-                AddPlayerHeader = false
-            }, JsonRequestBehavior.AllowGet);
-        }
-
-        [SiteAuthorization]
-        [NoCacheAttribute]
-        public JsonResult Unfollow(int accountID, string type)
-        {
-            user.UnFollow(user.GetUserID(User.Identity.Name), accountID, type);
-            return Json(new { Result = true, ID = accountID }, JsonRequestBehavior.AllowGet);
-        }
-
-        [SiteAuthorization]
+       /* [SiteAuthorization]
         [NoCacheAttribute]
         public JsonResult GetUserData(int userID)
         {
@@ -61,7 +34,7 @@ namespace CoachCue.Controllers
             userData.fullName = userItem.fullName;
   
             return Json(new { User = userData }, JsonRequestBehavior.AllowGet);
-        }
+        }*/
 
         [SiteAuthorization]
         [NoCacheAttribute]
@@ -116,7 +89,7 @@ namespace CoachCue.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-        [NoCacheAttribute]
+       /* [NoCacheAttribute]
         [HttpPost]
         public ActionResult GetStreamUpdateCount(string tms)
         {
@@ -138,7 +111,7 @@ namespace CoachCue.Controllers
                 UpdateCount = updateCount,
                 LastDate = DateTime.UtcNow.GetEasternTime().Ticks
             });
-        }
+        }*/
 
         public async Task<JsonResult> GetPlayerStream(string playerID, string view)
         {
@@ -178,14 +151,14 @@ namespace CoachCue.Controllers
         }
         
         [NoCacheAttribute]
-        public JsonResult ValidEmail(string email)
+        public async Task<JsonResult> ValidEmail(string email)
         {
-            bool valid = user.IsValidEmail(email);
+            bool valid = await UserService.IsValidEmail(email);
 
             return Json(new { Valid = valid }, JsonRequestBehavior.AllowGet);
         }
 
-        [NoCacheAttribute]
+       /* [NoCacheAttribute]
         public ActionResult GetStream(string tms, bool ftr)
         {
             List<StreamContent> streamList = new List<StreamContent>();
@@ -206,7 +179,7 @@ namespace CoachCue.Controllers
                 Type = "list",
                 LastDate = DateTime.UtcNow.GetEasternTime().AddSeconds(60).Ticks
             }, JsonRequestBehavior.AllowGet);
-        }
+        }*/
 
         [SiteAuthorization]
         [NoCacheAttribute]
@@ -226,7 +199,7 @@ namespace CoachCue.Controllers
                 FullName = userData.Name,
                 ContentType = "message",
                 DateCreated = message.DateCreated,
-                TimeAgo = twitter.GetRelativeTime(message.DateCreated),
+                TimeAgo = Model.twitter.GetRelativeTime(message.DateCreated),
                 HideActions = (type == "matchup") ? true : false,
                 UserProfileImg = userData.ProfileImage
             };
@@ -252,7 +225,7 @@ namespace CoachCue.Controllers
                 ID = message.Id,
                 Type = type,
                 Inline = inline,
-                MentionNotices = new List<MentionNotice>(),
+                MentionNotices = new List<Model.MentionNotice>(),
             //LastUpdateTicks = streamItem.DateTicks,
                 AddPlayerHeader = false,
                 ParentID = prnt
@@ -337,7 +310,7 @@ namespace CoachCue.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-        [SiteAuthorization]
+       /* [SiteAuthorization]
         [NoCacheAttribute]
         public ActionResult GetUpdateNotificatons()
         {
@@ -349,9 +322,9 @@ namespace CoachCue.Controllers
             {
                 Notices = noticeData
             }, JsonRequestBehavior.AllowGet);
-        }
+        }*/
 
-        [NoCacheAttribute]
+        /*[NoCacheAttribute]
         public JsonResult GetWeeklyStarters(int accountID)
         {
             List<MatchupByWeek> matchups = new List<MatchupByWeek>();
@@ -391,6 +364,7 @@ namespace CoachCue.Controllers
 
             return Json(nflplayer.Search(query, userID), JsonRequestBehavior.AllowGet);
         }
+        
 
         [OutputCache(Duration = 2592000, VaryByParam = "*")]
         public JsonResult SearchPlayers(string query)
@@ -459,12 +433,12 @@ namespace CoachCue.Controllers
                 Results = streamData,
             }, JsonRequestBehavior.AllowGet);
         }
-
+        
         [SiteAuthorization]
         public ActionResult GetMatchupList()
         {
             List<MatchupByWeek> matchups = matchup.GetUserMatchups(user.GetUserID(User.Identity.Name));
             return PartialView("_MacthupList", matchups);
-        }
+        }*/
     }
 }
