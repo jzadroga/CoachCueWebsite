@@ -742,7 +742,7 @@ function loadUserTypeahead() {
     var $textArea = $(".users-typeahead");
     if ($textArea.length > 0) {
         setCaretToPos($textArea.get(0), ($textArea.val().length));
-        $textArea.limiter(400, $(".message-charNum"));
+        $textArea.limiter(500, $(".message-charNum"));
     }
 
     //load the user typeahead
