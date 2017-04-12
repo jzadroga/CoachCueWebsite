@@ -113,6 +113,15 @@
 </head>
 
 <body>
+    <div id="fb-root"></div>
+    <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     <div id="main-wrap">
         <nav id="main-nav-bar" class="navbar navbar-fixed-top" role="navigation">
             <div class="container">
@@ -441,7 +450,7 @@
                 <input type="hidden" id="msgType" value="general" />
                 <input type="hidden" id="prnt-id" value="" />
                 <div class="modal-dialog">
-                    <div id="matchup-invite" class="modal-content" style="display: none">
+                    <div id="matchup-invite" class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">
                                 <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
@@ -451,6 +460,17 @@
                             </div>
                         </div>
                         <div class="modal-body" id="invite-body">
+                            <div class="rwo">
+                                <div class="col-md-12 col-xs-12">
+                                    Invite Social Media friends to vote:
+                                    <a class="ask-twitter-button btn-info btn btn-xs" href="#">Ask Twitter</a>
+                                    <div class="fb-share-button"
+                                         data-size="small"
+                                         data-href="http://coachcue.com"
+                                         data-layout="button">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-12 col-xs-12">
                                     <div class="content ask-any-user">
@@ -470,7 +490,7 @@
                         </div>
                     </div>
 
-                    <div id="matchup-select" class="modal-content">
+                    <div id="matchup-select" class="modal-content"  style="display: none">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">
                                 <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>

@@ -346,6 +346,8 @@ $(document).ready(function () {
                 $('#matchup-select').hide();
                 $('#matchup-invite').show();
                 
+                $('.fb-share-button').attr('data-href', data.FacebookLink);
+                $('a.ask-twitter-button').attr('href', data.TwitterLink);
                 $.getScript("http://platform.twitter.com/widgets.js");
             }
         });

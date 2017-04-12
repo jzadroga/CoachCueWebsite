@@ -271,6 +271,8 @@ namespace CoachCue.Controllers
             var userData = await CoachCueUserData.GetUserData(User.Identity.Name);
             string streamData = string.Empty;
             string userInvites = string.Empty;
+            string twitterHref = string.Empty;
+            string facebookHref = string.Empty;
             bool existing = false;
 
             //add all the players included
@@ -296,6 +298,9 @@ namespace CoachCue.Controllers
                 //get list of users to invite
                 var invites = await UserService.GetRandomTopVotes(10);
                 userInvites = this.PartialViewToString("_InviteVote", new InviteViewModel() { MatchupItem = matchup, Users = invites.ToList() });
+
+                twitterHref = "https://twitter.com/intent/tweet?count=none&hashtags=FantasyFootball&via=coachcue&url=http://coachcue.com/" + matchup.Link + "&text=" + matchup.Type + matchup.Players.Select(ply => ply.ShortName).Aggregate((current, next) => current + ", " + next);
+                facebookHref = "http://coachcue.com/" + matchup.Link;
             }
 
             return Json(new
@@ -303,6 +308,8 @@ namespace CoachCue.Controllers
                 Link = matchup.Link,
                 MatchupData = streamData,
                 InviteData = userInvites,
+                TwitterLink = twitterHref,
+                FacebookLink = facebookHref,
                 ID = player1,
                 Type = "matchup",
                 Existing = existing,
