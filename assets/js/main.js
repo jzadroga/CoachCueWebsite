@@ -782,7 +782,6 @@ function loadPlayersTypeahead() {
         limit: 10,
         engine: Hogan
     }).bind('typeahead:selected', $.proxy(function (obj, datum) {
-        console.log(obj);
         this.tagsinput('add', datum);
         this.tagsinput('input').typeahead('setQuery', '');
     }, $('#players')));

@@ -935,6 +935,12 @@ div.stream-messages .row, div.stream-matchups .row, div.message-list-stream .row
     padding-bottom: 6px;
 }
 
+.row.matchup-body div.list-group a.list-group-item.active, .row.matchup-body div.list-group a.list-group-item.active:hover, .row.matchup-body div.list-group a.list-group-item.active:focus {
+    background: rgba(241, 138, 32,0.9);
+    border-color: #F18A20;
+    opacity: 0.9;
+}
+
 .row.matchup-header {
     border-top: #F18A20 solid 3px;
     background-color:#f5f5f5;
@@ -1218,111 +1224,11 @@ li.coach-correct span, li.coach-correct i
     margin-top: -1px;
 }
 
-/* player popovers */
-.player-card-popover {
-    position: fixed;
-    width: 450px;
-    max-width: 450px;
-    height: 350px;
-}
-
-.player-card-popover .popover-title {
-    line-height: 28px;
-    font-size: 14px;
-    color: #656565;
-    font-weight: bold;
-}
-
-.player-card-popover .popover-title .avatar{
-    top: 8px !important;
-    position: absolute;
-}
-
-.player-card-popover .popover-content{
-    height: 300px;
-    padding: 0 6px 8px 6px;
-}
-
-.player-card-popover .popover-content .player-votes {
-    width: 200px;
-    float: left;
-}
-
-.player-card-popover .popover-content .player-tweets {
-    width: 210px;
-    float: right;
-    background-color: #e2e2e2;
-}
-
-.player-card-popover .popover-content .player-tweets .tweet-list {
-    height: 260px; 
-    overflow: auto;
-}
-
-.player-card-popover .popover-content .player-tweets .item .content {
-    margin-left: 30px;
-    font-weight: normal;
-    font-size: 12px;
-}
-
-.player-card-popover .popover-content .player-tweets .time{
-    position: absolute;
-    top: 10px;
-    right: 5px;
-}
 
 .stream-news{
     margin-bottom: 6px !important;
     border-top: #556B2F solid 3px;
     border-radius: 5px 5px 0 0;
-}
-
-.player-card-popover .popover-content .player-tweets .content-header .username{
-    font-size: 12px;
-}
-
-.player-card-popover .popover-content .player-tweets .item .content span {
-    font-size: 12px;
-}
-
-.player-card-popover .popover-content .item.player-item .content{
-    margin: 0 0 0 30px;
-}
-
-.player-card-popover .popover-content h4{
-    font-size: 14px;
-    font-weight: bold;
-    margin-top: 6px !important;
-    margin-bottom: 6px !important;
-}
-
-.player-card-popover .popover-content .player-tweets h4{
-    margin-bottom: 4px;
-    margin-left: 10px;
-}
-
-.player-card-popover .popover-content .item.player-item{
-    padding: 0 0 8px 2px;
-}
-
-.player-card-popover .popover-content .user-avatar-small{
-    left: 6px !important;
-}
-
-.player-card-popover .popover-footer {
-  margin: 0;
-  padding: 8px 14px;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 18px;
-  background-color: #F7F7F7;
-  border-bottom: 1px solid #EBEBEB;
-  border-radius: 5px 5px 0 0;
-}
-
-.player-card-popover .popover-title .player-popover-header{
-    margin: 0 0 0 30px;
-    font-size: 16px;
 }
 
 .action a:hover
@@ -3222,75 +3128,10 @@ div.conversation-message
     border: none;
 }
 
-/* player pod */
-
-.playerpod
-{
-    padding: 0 !important;
-    margin: 0 !important;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    color: #333333;
-    border: 4px;
-    border-color: #F18A21;
-}
-
-.playerpod .player-container
-{
-    padding: 2px 4px 10px 6px;
-    background-color: #F18A21;
-    width: 340px;
-    overflow: visible;
-    margin: 0 !important;
-}
-
-.playerpod div.parent
-{
-    width: 310px;
-}
 
 div.top-bar {
     border: none;
     height: 30px;
-}
-
-.playerpod a
-{
-    color: #0088cc;
-    text-decoration: none;
-}
-
-.playerpod .player-stream
-{
-    overflow: hidden;
-    position:relative;
-    height: 300px;
-    width: 335px;
-}
-
-.playerpod #content-holder
-{
-    height: 300px;
-}
-
-.playerpod .time
-{
-    right: 10px;
-}
-
-.playerpod .content-header
-{
-    padding-top: 6px;
-}
-
-.playerpod .player-header .username
-{
-    font-size: 18px;
-}
-
-.playerpod .bio
-{
-    line-height: 3px;
 }
 
 /* user panel */
@@ -3867,3 +3708,172 @@ div.new-message-text-controls  div.message-charNum{
         float: none;
     }
 }
+
+/*unused styles */
+/* player popovers */
+/*.player-card-popover {
+    position: fixed;
+    width: 450px;
+    max-width: 450px;
+    height: 350px;
+}
+
+.player-card-popover .popover-title {
+    line-height: 28px;
+    font-size: 14px;
+    color: #656565;
+    font-weight: bold;
+}
+
+.player-card-popover .popover-title .avatar{
+    top: 8px !important;
+    position: absolute;
+}
+
+.player-card-popover .popover-content{
+    height: 300px;
+    padding: 0 6px 8px 6px;
+}
+
+.player-card-popover .popover-content .player-votes {
+    width: 200px;
+    float: left;
+}
+
+.player-card-popover .popover-content .player-tweets {
+    width: 210px;
+    float: right;
+    background-color: #e2e2e2;
+}
+
+.player-card-popover .popover-content .player-tweets .tweet-list {
+    height: 260px; 
+    overflow: auto;
+}
+
+.player-card-popover .popover-content .player-tweets .item .content {
+    margin-left: 30px;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.player-card-popover .popover-content .player-tweets .time{
+    position: absolute;
+    top: 10px;
+    right: 5px;
+}
+
+    .player-card-popover .popover-content .player-tweets .content-header .username{
+    font-size: 12px;
+}
+
+.player-card-popover .popover-content .player-tweets .item .content span {
+    font-size: 12px;
+}
+
+.player-card-popover .popover-content .item.player-item .content{
+    margin: 0 0 0 30px;
+}
+
+.player-card-popover .popover-content h4{
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+}
+
+.player-card-popover .popover-content .player-tweets h4{
+    margin-bottom: 4px;
+    margin-left: 10px;
+}
+
+.player-card-popover .popover-content .item.player-item{
+    padding: 0 0 8px 2px;
+}
+
+.player-card-popover .popover-content .user-avatar-small{
+    left: 6px !important;
+}
+
+.player-card-popover .popover-footer {
+  margin: 0;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  background-color: #F7F7F7;
+  border-bottom: 1px solid #EBEBEB;
+  border-radius: 5px 5px 0 0;
+}
+
+.player-card-popover .popover-title .player-popover-header{
+    margin: 0 0 0 30px;
+    font-size: 16px;
+}
+
+.playerpod
+{
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #333333;
+    border: 4px;
+    border-color: #F18A21;
+}
+
+.playerpod .player-container
+{
+    padding: 2px 4px 10px 6px;
+    background-color: #F18A21;
+    width: 340px;
+    overflow: visible;
+    margin: 0 !important;
+}
+
+.playerpod div.parent
+{
+    width: 310px;
+}
+
+    .playerpod a
+{
+    color: #0088cc;
+    text-decoration: none;
+}
+
+.playerpod .player-stream
+{
+    overflow: hidden;
+    position:relative;
+    height: 300px;
+    width: 335px;
+}
+
+.playerpod #content-holder
+{
+    height: 300px;
+}
+
+.playerpod .time
+{
+    right: 10px;
+}
+
+.playerpod .content-header
+{
+    padding-top: 6px;
+}
+
+.playerpod .player-header .username
+{
+    font-size: 18px;
+}
+
+.playerpod .bio
+{
+    line-height: 3px;
+}
+
+
+*/

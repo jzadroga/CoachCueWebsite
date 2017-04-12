@@ -65,7 +65,6 @@
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> 
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     @Styles.Render("~/assets/css/bundle")
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>    
@@ -450,7 +449,7 @@
                 <input type="hidden" id="msgType" value="general" />
                 <input type="hidden" id="prnt-id" value="" />
                 <div class="modal-dialog">
-                    <div id="matchup-invite" class="modal-content">
+                    <div id="matchup-invite" class="modal-content" style="display: none">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">
                                 <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
@@ -490,7 +489,7 @@
                         </div>
                     </div>
 
-                    <div id="matchup-select" class="modal-content"  style="display: none">
+                    <div id="matchup-select" class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">
                                 <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
