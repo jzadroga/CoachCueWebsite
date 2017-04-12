@@ -284,6 +284,20 @@ h1.home-header{
     padding: 0 10px;
 }
 
+.stream-select-starter{
+    padding: 2px !important;
+}
+
+.badge.vote-count{
+    margin: 18px;
+    font-size: 19px;
+    background-color: #F18A20;
+}
+
+a.list-group-item.active>.badge.vote-count, .nav-pills>.active>a>.badge.vote-count{
+    color: #F18A20;
+}
+
 #my-matchup-item .nav-tabs.nav-stacked > li:first-child > a
 {
     border-top: none;

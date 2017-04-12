@@ -60,14 +60,14 @@
             
                 <!-- matchup header -->
                 <div class="row matchup-header">
-                    <div class="col-md-6 col-xs-6">
+                    <div class="col-md-9 col-xs-9">
                         <a href="@Url.Action("index", "coach", new { name = Model.MatchupItem.UserLink })">
                             <img alt="@Model.UserName" class="avatar player-item-avatar" src="/assets/img/avatar/@Model.MatchupItem.ProfileImage" />
                             <span class="created-by-name">@Model.MatchupItem.Name</span>
                         </a>
                         <span class="created-by-type">@Model.MatchupItem.Type</span>
                     </div>
-                    <div class="col-md-6 col-xs-6 text-right">
+                    <div class="col-md-3 col-xs-3 text-right">
                         <a class="matchup-time" href="@Href("~/" + Model.MatchupItem.Link)"> Details</a>
                     </div>
                 </div>
