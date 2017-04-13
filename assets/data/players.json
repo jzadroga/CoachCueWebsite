@@ -42,15 +42,15 @@
     "isActive": true,
     "twitter": {
       "isActive": true,
-      "name": "Kenjon Barner",
-      "profileImage": "http://pbs.twimg.com/profile_images/729378657039343616/qN8qfJcO_normal.jpg"
+      "name": "KBDeuce4",
+      "profileImage": "http://pbs.twimg.com/profile_images/836285806427852801/7-8u_33M_normal.jpg"
     },
     "team": {
       "name": "Los Angeles Chargers",
       "slug": "lac"
     },
-    "profileImage": "http://pbs.twimg.com/profile_images/729378657039343616/qN8qfJcO_normal.jpg",
-    "profileImageLarge": "http://pbs.twimg.com/profile_images/729378657039343616/qN8qfJcO_bigger.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/836285806427852801/7-8u_33M_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/836285806427852801/7-8u_33M_bigger.jpg",
     "link": "kenjon-barner",
     "beatWriters": []
   },
@@ -1378,16 +1378,16 @@
     "number": 13,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "Keenan13Allen",
+      "profileImage": "http://pbs.twimg.com/profile_images/841687656136298496/hHp18cuc_normal.jpg"
     },
     "team": {
       "name": "Los Angeles Chargers",
       "slug": "lac"
     },
-    "profileImage": "/assets/img/teams/lac.jpg",
-    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/841687656136298496/hHp18cuc_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/841687656136298496/hHp18cuc_bigger.jpg",
     "link": "keenan-allen",
     "beatWriters": []
   },
@@ -1402,16 +1402,16 @@
     "number": 12,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "TravisBenjamin3",
+      "profileImage": "http://pbs.twimg.com/profile_images/759254952468504577/ZaiGWcyp_normal.jpg"
     },
     "team": {
       "name": "Los Angeles Chargers",
       "slug": "lac"
     },
-    "profileImage": "/assets/img/teams/lac.jpg",
-    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/759254952468504577/ZaiGWcyp_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/759254952468504577/ZaiGWcyp_bigger.jpg",
     "link": "travis-benjamin",
     "beatWriters": []
   },
@@ -1618,16 +1618,16 @@
     "number": 28,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "Melvingordon25",
+      "profileImage": "http://pbs.twimg.com/profile_images/827977696957366273/Zl9LuMnN_normal.jpg"
     },
     "team": {
       "name": "Los Angeles Chargers",
       "slug": "lac"
     },
-    "profileImage": "/assets/img/teams/lac.jpg",
-    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/827977696957366273/Zl9LuMnN_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/827977696957366273/Zl9LuMnN_bigger.jpg",
     "link": "melvin-gordon",
     "beatWriters": []
   },
@@ -1642,16 +1642,16 @@
     "number": 86,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "Hunter_Henry84",
+      "profileImage": "http://pbs.twimg.com/profile_images/819635086761086978/URMZpkCy_normal.jpg"
     },
     "team": {
       "name": "Los Angeles Chargers",
       "slug": "lac"
     },
-    "profileImage": "/assets/img/teams/lac.jpg",
-    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/819635086761086978/URMZpkCy_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/819635086761086978/URMZpkCy_bigger.jpg",
     "link": "hunter-henry",
     "beatWriters": []
   },
@@ -1690,16 +1690,16 @@
     "number": 15,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "mrinman15",
+      "profileImage": "http://pbs.twimg.com/profile_images/500007018002792448/zkot04-G_normal.jpeg"
     },
     "team": {
       "name": "Los Angeles Chargers",
       "slug": "lac"
     },
-    "profileImage": "/assets/img/teams/lac.jpg",
-    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/500007018002792448/zkot04-G_normal.jpeg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/500007018002792448/zkot04-G_bigger.jpeg",
     "link": "dontrelle-inman",
     "beatWriters": []
   },
@@ -1810,16 +1810,16 @@
     "number": 43,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "BoBelieves",
+      "profileImage": "http://pbs.twimg.com/profile_images/830286319339180032/03btoKn__normal.jpg"
     },
     "team": {
       "name": "Los Angeles Chargers",
       "slug": "lac"
     },
-    "profileImage": "/assets/img/teams/lac.jpg",
-    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/830286319339180032/03btoKn__normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/830286319339180032/03btoKn__bigger.jpg",
     "link": "branden-oliver",
     "beatWriters": []
   },
@@ -1906,16 +1906,16 @@
     "number": 16,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "TyrellWilliams_",
+      "profileImage": "http://pbs.twimg.com/profile_images/807719934499426304/X1WjvCIq_normal.jpg"
     },
     "team": {
       "name": "Los Angeles Chargers",
       "slug": "lac"
     },
-    "profileImage": "/assets/img/teams/lac.jpg",
-    "profileImageLarge": "/assets/img/teams/lac.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/807719934499426304/X1WjvCIq_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/807719934499426304/X1WjvCIq_bigger.jpg",
     "link": "tyrell-williams",
     "beatWriters": []
   },
@@ -1959,16 +1959,16 @@
     "number": 11,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "Bease11",
+      "profileImage": "http://pbs.twimg.com/profile_images/791302931962134528/S1v9JEos_normal.jpg"
     },
     "team": {
       "name": "Dallas Cowboys",
       "slug": "dal"
     },
-    "profileImage": "/assets/img/teams/dal.jpg",
-    "profileImageLarge": "/assets/img/teams/dal.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/791302931962134528/S1v9JEos_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/791302931962134528/S1v9JEos_bigger.jpg",
     "link": "cole-beasley",
     "beatWriters": [
       "DMN_George",
@@ -1988,16 +1988,16 @@
     "number": 88,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "DezBryant",
+      "profileImage": "http://pbs.twimg.com/profile_images/677650676734959616/bL4W3ljp_normal.jpg"
     },
     "team": {
       "name": "Dallas Cowboys",
       "slug": "dal"
     },
-    "profileImage": "/assets/img/teams/dal.jpg",
-    "profileImageLarge": "/assets/img/teams/dal.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/677650676734959616/bL4W3ljp_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/677650676734959616/bL4W3ljp_bigger.jpg",
     "link": "dez-bryant",
     "beatWriters": [
       "DMN_George",
@@ -2017,16 +2017,16 @@
     "number": 21,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "EzekielElliott",
+      "profileImage": "http://pbs.twimg.com/profile_images/801104648639840256/ynD7ye-U_normal.jpg"
     },
     "team": {
       "name": "Dallas Cowboys",
       "slug": "dal"
     },
-    "profileImage": "/assets/img/teams/dal.jpg",
-    "profileImageLarge": "/assets/img/teams/dal.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/801104648639840256/ynD7ye-U_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/801104648639840256/ynD7ye-U_bigger.jpg",
     "link": "ezekiel-elliott",
     "beatWriters": [
       "DMN_George",
@@ -2220,16 +2220,16 @@
     "number": 20,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "dmcfadden20",
+      "profileImage": "http://pbs.twimg.com/profile_images/642368389529272320/5NDouNf-_normal.jpg"
     },
     "team": {
       "name": "Dallas Cowboys",
       "slug": "dal"
     },
-    "profileImage": "/assets/img/teams/dal.jpg",
-    "profileImageLarge": "/assets/img/teams/dal.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/642368389529272320/5NDouNf-_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/642368389529272320/5NDouNf-_bigger.jpg",
     "link": "darren-mcfadden",
     "beatWriters": [
       "DMN_George",
@@ -2278,16 +2278,16 @@
     "number": 46,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "FredoSauce",
+      "profileImage": "http://pbs.twimg.com/profile_images/816291351239282688/kxF6nMLh_normal.jpg"
     },
     "team": {
       "name": "Dallas Cowboys",
       "slug": "dal"
     },
-    "profileImage": "/assets/img/teams/dal.jpg",
-    "profileImageLarge": "/assets/img/teams/dal.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/816291351239282688/kxF6nMLh_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/816291351239282688/kxF6nMLh_bigger.jpg",
     "link": "alfred-morris",
     "beatWriters": [
       "DMN_George",
@@ -2336,16 +2336,16 @@
     "number": 4,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "dak",
+      "profileImage": "http://pbs.twimg.com/profile_images/851569435261509632/Bp9FGnKo_normal.jpg"
     },
     "team": {
       "name": "Dallas Cowboys",
       "slug": "dal"
     },
-    "profileImage": "/assets/img/teams/dal.jpg",
-    "profileImageLarge": "/assets/img/teams/dal.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/851569435261509632/Bp9FGnKo_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/851569435261509632/Bp9FGnKo_bigger.jpg",
     "link": "dak-prescott",
     "beatWriters": [
       "DMN_George",
@@ -2365,16 +2365,16 @@
     "number": 9,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "tonyromo",
+      "profileImage": "http://pbs.twimg.com/profile_images/507525998771183616/OCy5_O5e_normal.jpeg"
     },
     "team": {
       "name": "Dallas Cowboys",
       "slug": "dal"
     },
-    "profileImage": "/assets/img/teams/dal.jpg",
-    "profileImageLarge": "/assets/img/teams/dal.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/507525998771183616/OCy5_O5e_normal.jpeg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/507525998771183616/OCy5_O5e_bigger.jpeg",
     "link": "tony-romo",
     "beatWriters": [
       "DMN_George",
@@ -2539,16 +2539,16 @@
     "number": 83,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "TerranceWill2",
+      "profileImage": "http://pbs.twimg.com/profile_images/681357900866916353/CxwZ29ah_normal.jpg"
     },
     "team": {
       "name": "Dallas Cowboys",
       "slug": "dal"
     },
-    "profileImage": "/assets/img/teams/dal.jpg",
-    "profileImageLarge": "/assets/img/teams/dal.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/681357900866916353/CxwZ29ah_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/681357900866916353/CxwZ29ah_bigger.jpg",
     "link": "terrance-williams",
     "beatWriters": [
       "DMN_George",
@@ -2568,16 +2568,16 @@
     "number": 82,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "JasonWitten",
+      "profileImage": "http://pbs.twimg.com/profile_images/804029214861230083/pJ2aTQns_normal.jpg"
     },
     "team": {
       "name": "Dallas Cowboys",
       "slug": "dal"
     },
-    "profileImage": "/assets/img/teams/dal.jpg",
-    "profileImageLarge": "/assets/img/teams/dal.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/804029214861230083/pJ2aTQns_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/804029214861230083/pJ2aTQns_bigger.jpg",
     "link": "jason-witten",
     "beatWriters": [
       "DMN_George",
@@ -3653,16 +3653,16 @@
     "number": 37,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "realbuckallen",
+      "profileImage": "http://pbs.twimg.com/profile_images/846004297250885633/IRk9dHQe_normal.jpg"
     },
     "team": {
       "name": "Baltimore Ravens",
       "slug": "bal"
     },
-    "profileImage": "/assets/img/teams/bal.jpg",
-    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/846004297250885633/IRk9dHQe_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/846004297250885633/IRk9dHQe_bigger.jpg",
     "link": "javorius-allen",
     "beatWriters": []
   },
@@ -3701,16 +3701,16 @@
     "number": 86,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "nickboyle86",
+      "profileImage": "http://pbs.twimg.com/profile_images/711025250683772929/y2uWPnkn_normal.jpg"
     },
     "team": {
       "name": "Baltimore Ravens",
       "slug": "bal"
     },
-    "profileImage": "/assets/img/teams/bal.jpg",
-    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/711025250683772929/y2uWPnkn_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/711025250683772929/y2uWPnkn_bigger.jpg",
     "link": "nick-boyle",
     "beatWriters": []
   },
@@ -3749,16 +3749,16 @@
     "number": 5,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "JoeFlacco",
+      "profileImage": "http://pbs.twimg.com/profile_images/578602465186066432/WgQnjEOm_normal.png"
     },
     "team": {
       "name": "Baltimore Ravens",
       "slug": "bal"
     },
-    "profileImage": "/assets/img/teams/bal.jpg",
-    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/578602465186066432/WgQnjEOm_normal.png",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/578602465186066432/WgQnjEOm_bigger.png",
     "link": "joe-flacco",
     "beatWriters": []
   },
@@ -3941,16 +3941,16 @@
     "number": 88,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "dennispitta",
+      "profileImage": "http://pbs.twimg.com/profile_images/2170341385/image_normal.jpg"
     },
     "team": {
       "name": "Baltimore Ravens",
       "slug": "bal"
     },
-    "profileImage": "/assets/img/teams/bal.jpg",
-    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/2170341385/image_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/2170341385/image_bigger.jpg",
     "link": "dennis-pitta",
     "beatWriters": []
   },
@@ -4013,16 +4013,16 @@
     "number": 34,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "ZoBot_45",
+      "profileImage": "http://pbs.twimg.com/profile_images/517124191364329472/nzhyTQdj_normal.jpeg"
     },
     "team": {
       "name": "Baltimore Ravens",
       "slug": "bal"
     },
-    "profileImage": "/assets/img/teams/bal.jpg",
-    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/517124191364329472/nzhyTQdj_normal.jpeg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/517124191364329472/nzhyTQdj_bigger.jpeg",
     "link": "lorenzo-taliaferro",
     "beatWriters": []
   },
@@ -4037,16 +4037,16 @@
     "number": 9,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "jtuck9",
+      "profileImage": "http://pbs.twimg.com/profile_images/750341658638622720/sJhfh4gE_normal.jpg"
     },
     "team": {
       "name": "Baltimore Ravens",
       "slug": "bal"
     },
-    "profileImage": "/assets/img/teams/bal.jpg",
-    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/750341658638622720/sJhfh4gE_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/750341658638622720/sJhfh4gE_bigger.jpg",
     "link": "justin-tucker",
     "beatWriters": []
   },
@@ -4085,16 +4085,16 @@
     "number": 17,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "Wallace17_daKid",
+      "profileImage": "http://pbs.twimg.com/profile_images/796799337816817664/8IYvIwLq_normal.jpg"
     },
     "team": {
       "name": "Baltimore Ravens",
       "slug": "bal"
     },
-    "profileImage": "/assets/img/teams/bal.jpg",
-    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/796799337816817664/8IYvIwLq_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/796799337816817664/8IYvIwLq_bigger.jpg",
     "link": "mike-wallace",
     "beatWriters": []
   },
@@ -4157,16 +4157,16 @@
     "number": 28,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "TerranceWestBWI",
+      "profileImage": "http://pbs.twimg.com/profile_images/787896530544058368/fxRG5-8c_normal.jpg"
     },
     "team": {
       "name": "Baltimore Ravens",
       "slug": "bal"
     },
-    "profileImage": "/assets/img/teams/bal.jpg",
-    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/787896530544058368/fxRG5-8c_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/787896530544058368/fxRG5-8c_bigger.jpg",
     "link": "terrance-west",
     "beatWriters": []
   },
@@ -4205,16 +4205,16 @@
     "number": null,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "danny__woodhead",
+      "profileImage": "http://pbs.twimg.com/profile_images/693242340882800640/CK7ZlIW2_normal.jpg"
     },
     "team": {
       "name": "Baltimore Ravens",
       "slug": "bal"
     },
-    "profileImage": "/assets/img/teams/bal.jpg",
-    "profileImageLarge": "/assets/img/teams/bal.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/693242340882800640/CK7ZlIW2_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/693242340882800640/CK7ZlIW2_bigger.jpg",
     "link": "danny-woodhead",
     "beatWriters": []
   },
@@ -4325,16 +4325,16 @@
     "number": 85,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "C42Clay",
+      "profileImage": "http://pbs.twimg.com/profile_images/578713758077468672/2GFn3Qmd_normal.jpeg"
     },
     "team": {
       "name": "Buffalo Bills",
       "slug": "buf"
     },
-    "profileImage": "/assets/img/teams/buf.jpg",
-    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/578713758077468672/2GFn3Qmd_normal.jpeg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/578713758077468672/2GFn3Qmd_bigger.jpeg",
     "link": "charles-clay",
     "beatWriters": []
   },
@@ -4373,16 +4373,16 @@
     "number": 35,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "mikescogilly",
+      "profileImage": "http://pbs.twimg.com/profile_images/850352142221225984/b1mKZyCQ_normal.jpg"
     },
     "team": {
       "name": "Buffalo Bills",
       "slug": "buf"
     },
-    "profileImage": "/assets/img/teams/buf.jpg",
-    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/850352142221225984/b1mKZyCQ_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/850352142221225984/b1mKZyCQ_bigger.jpg",
     "link": "mike-gillislee",
     "beatWriters": []
   },
@@ -4421,16 +4421,16 @@
     "number": null,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "StephenHauscka4",
+      "profileImage": "http://pbs.twimg.com/profile_images/541074780632256512/FPdV4PIk_normal.jpeg"
     },
     "team": {
       "name": "Buffalo Bills",
       "slug": "buf"
     },
-    "profileImage": "/assets/img/teams/buf.jpg",
-    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/541074780632256512/FPdV4PIk_normal.jpeg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/541074780632256512/FPdV4PIk_bigger.jpeg",
     "link": "steven-hauschka",
     "beatWriters": []
   },
@@ -4541,16 +4541,16 @@
     "number": 25,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "CutonDime25",
+      "profileImage": "http://pbs.twimg.com/profile_images/585797049968435201/WBEutaXs_normal.jpg"
     },
     "team": {
       "name": "Buffalo Bills",
       "slug": "buf"
     },
-    "profileImage": "/assets/img/teams/buf.jpg",
-    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/585797049968435201/WBEutaXs_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/585797049968435201/WBEutaXs_bigger.jpg",
     "link": "lesean-mccoy",
     "beatWriters": []
   },
@@ -4661,16 +4661,16 @@
     "number": 5,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "TyrodTaylor",
+      "profileImage": "http://pbs.twimg.com/profile_images/745056056309592064/TmGhyH3O_normal.jpg"
     },
     "team": {
       "name": "Buffalo Bills",
       "slug": "buf"
     },
-    "profileImage": "/assets/img/teams/buf.jpg",
-    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/745056056309592064/TmGhyH3O_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/745056056309592064/TmGhyH3O_bigger.jpg",
     "link": "tyrod-taylor",
     "beatWriters": []
   },
@@ -4757,16 +4757,16 @@
     "number": 14,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "sammywatkins",
+      "profileImage": "http://pbs.twimg.com/profile_images/813477556108328961/T9de3DK-_normal.jpg"
     },
     "team": {
       "name": "Buffalo Bills",
       "slug": "buf"
     },
-    "profileImage": "/assets/img/teams/buf.jpg",
-    "profileImageLarge": "/assets/img/teams/buf.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/813477556108328961/T9de3DK-_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/813477556108328961/T9de3DK-_bigger.jpg",
     "link": "sammy-watkins",
     "beatWriters": []
   },
@@ -4853,16 +4853,16 @@
     "number": 34,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "ThaRealKillaCam",
+      "profileImage": "http://pbs.twimg.com/profile_images/646527830428418048/0fh_P3jH_normal.jpg"
     },
     "team": {
       "name": "Carolina Panthers",
       "slug": "car"
     },
-    "profileImage": "/assets/img/teams/car.jpg",
-    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/646527830428418048/0fh_P3jH_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/646527830428418048/0fh_P3jH_bigger.jpg",
     "link": "cameron-artispayne",
     "beatWriters": []
   },
@@ -4877,16 +4877,16 @@
     "number": 13,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "kelvinbenjamin",
+      "profileImage": "http://pbs.twimg.com/profile_images/695389836765634561/LiTsRBVr_normal.jpg"
     },
     "team": {
       "name": "Carolina Panthers",
       "slug": "car"
     },
-    "profileImage": "/assets/img/teams/car.jpg",
-    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/695389836765634561/LiTsRBVr_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/695389836765634561/LiTsRBVr_bigger.jpg",
     "link": "kelvin-benjamin",
     "beatWriters": []
   },
@@ -4997,16 +4997,16 @@
     "number": 17,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "D_FUNCH",
+      "profileImage": "http://pbs.twimg.com/profile_images/671413901150560256/_elXUXEz_normal.jpg"
     },
     "team": {
       "name": "Carolina Panthers",
       "slug": "car"
     },
-    "profileImage": "/assets/img/teams/car.jpg",
-    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/671413901150560256/_elXUXEz_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/671413901150560256/_elXUXEz_bigger.jpg",
     "link": "devin-funchess",
     "beatWriters": []
   },
@@ -5189,16 +5189,16 @@
     "number": 88,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "gregolsen88",
+      "profileImage": "http://pbs.twimg.com/profile_images/674056415326150656/mzATqP8T_normal.jpg"
     },
     "team": {
       "name": "Carolina Panthers",
       "slug": "car"
     },
-    "profileImage": "/assets/img/teams/car.jpg",
-    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/674056415326150656/mzATqP8T_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/674056415326150656/mzATqP8T_bigger.jpg",
     "link": "greg-olsen",
     "beatWriters": []
   },
@@ -5285,16 +5285,16 @@
     "number": 28,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "Jonathanstewar1",
+      "profileImage": "http://pbs.twimg.com/profile_images/757829613980483584/OBjudsRk_normal.jpg"
     },
     "team": {
       "name": "Carolina Panthers",
       "slug": "car"
     },
-    "profileImage": "/assets/img/teams/car.jpg",
-    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/757829613980483584/OBjudsRk_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/757829613980483584/OBjudsRk_bigger.jpg",
     "link": "jonathan-stewart",
     "beatWriters": []
   },
@@ -5357,16 +5357,16 @@
     "number": 43,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "FozzyWhitt",
+      "profileImage": "http://pbs.twimg.com/profile_images/693423873883131905/_75ZM2Zs_normal.jpg"
     },
     "team": {
       "name": "Carolina Panthers",
       "slug": "car"
     },
-    "profileImage": "/assets/img/teams/car.jpg",
-    "profileImageLarge": "/assets/img/teams/car.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/693423873883131905/_75ZM2Zs_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/693423873883131905/_75ZM2Zs_bigger.jpg",
     "link": "fozzy-whittaker",
     "beatWriters": []
   },
@@ -5453,16 +5453,16 @@
     "number": 4,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "contbarth",
+      "profileImage": "http://pbs.twimg.com/profile_images/798611828209229829/e_srQjuU_normal.jpg"
     },
     "team": {
       "name": "Chicago Bears",
       "slug": "chi"
     },
-    "profileImage": "/assets/img/teams/chi.jpg",
-    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/798611828209229829/e_srQjuU_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/798611828209229829/e_srQjuU_bigger.jpg",
     "link": "connor-barth",
     "beatWriters": []
   },
@@ -5693,16 +5693,16 @@
     "number": 24,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "JHowardx24",
+      "profileImage": "http://pbs.twimg.com/profile_images/851901626516480000/UeauS-WC_normal.jpg"
     },
     "team": {
       "name": "Chicago Bears",
       "slug": "chi"
     },
-    "profileImage": "/assets/img/teams/chi.jpg",
-    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/851901626516480000/UeauS-WC_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/851901626516480000/UeauS-WC_bigger.jpg",
     "link": "jordan-howard",
     "beatWriters": []
   },
@@ -5789,16 +5789,16 @@
     "number": 86,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "ZMiller86",
+      "profileImage": "http://pbs.twimg.com/profile_images/623505165887373312/XY6tIOvh_normal.jpg"
     },
     "team": {
       "name": "Chicago Bears",
       "slug": "chi"
     },
-    "profileImage": "/assets/img/teams/chi.jpg",
-    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/623505165887373312/XY6tIOvh_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/623505165887373312/XY6tIOvh_bigger.jpg",
     "link": "zach-miller",
     "beatWriters": []
   },
@@ -5885,16 +5885,16 @@
     "number": 19,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "EddieRoyalWR",
+      "profileImage": "http://pbs.twimg.com/profile_images/582015466824171520/hLpqMS4o_normal.jpg"
     },
     "team": {
       "name": "Chicago Bears",
       "slug": "chi"
     },
-    "profileImage": "/assets/img/teams/chi.jpg",
-    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/582015466824171520/hLpqMS4o_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/582015466824171520/hLpqMS4o_bigger.jpg",
     "link": "eddie-royal",
     "beatWriters": []
   },
@@ -5909,16 +5909,16 @@
     "number": null,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "Mark_Sanchez",
+      "profileImage": "http://pbs.twimg.com/profile_images/480077467021881345/hvLPyWSv_normal.jpeg"
     },
     "team": {
       "name": "Chicago Bears",
       "slug": "chi"
     },
-    "profileImage": "/assets/img/teams/chi.jpg",
-    "profileImageLarge": "/assets/img/teams/chi.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/480077467021881345/hvLPyWSv_normal.jpeg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/480077467021881345/hvLPyWSv_bigger.jpeg",
     "link": "mark-sanchez",
     "beatWriters": []
   },
@@ -6077,16 +6077,16 @@
     "number": 25,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "G_Bernard25",
+      "profileImage": "http://pbs.twimg.com/profile_images/612651942779744256/LbJezkLu_normal.jpg"
     },
     "team": {
       "name": "Cincinnati Bengals",
       "slug": "cin"
     },
-    "profileImage": "/assets/img/teams/cin.jpg",
-    "profileImageLarge": "/assets/img/teams/cin.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/612651942779744256/LbJezkLu_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/612651942779744256/LbJezkLu_bigger.jpg",
     "link": "giovani-bernard",
     "beatWriters": []
   },
@@ -6101,16 +6101,16 @@
     "number": 83,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "boutdat_23",
+      "profileImage": "http://pbs.twimg.com/profile_images/790992534206046209/louMdsqF_normal.jpg"
     },
     "team": {
       "name": "Cincinnati Bengals",
       "slug": "cin"
     },
-    "profileImage": "/assets/img/teams/cin.jpg",
-    "profileImageLarge": "/assets/img/teams/cin.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/790992534206046209/louMdsqF_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/790992534206046209/louMdsqF_bigger.jpg",
     "link": "tyler-boyd",
     "beatWriters": []
   },
@@ -6221,16 +6221,16 @@
     "number": 14,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "andydalton14",
+      "profileImage": "http://pbs.twimg.com/profile_images/692130370788147200/tFNBHxOh_normal.jpg"
     },
     "team": {
       "name": "Cincinnati Bengals",
       "slug": "cin"
     },
-    "profileImage": "/assets/img/teams/cin.jpg",
-    "profileImageLarge": "/assets/img/teams/cin.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/692130370788147200/tFNBHxOh_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/692130370788147200/tFNBHxOh_bigger.jpg",
     "link": "andy-dalton",
     "beatWriters": []
   },
@@ -6269,16 +6269,16 @@
     "number": 85,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "EiferTy85",
+      "profileImage": "http://pbs.twimg.com/profile_images/776474383829307392/tMCSBnBN_normal.jpg"
     },
     "team": {
       "name": "Cincinnati Bengals",
       "slug": "cin"
     },
-    "profileImage": "/assets/img/teams/cin.jpg",
-    "profileImageLarge": "/assets/img/teams/cin.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/776474383829307392/tMCSBnBN_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/776474383829307392/tMCSBnBN_bigger.jpg",
     "link": "tyler-eifert",
     "beatWriters": []
   },
@@ -6317,16 +6317,16 @@
     "number": 18,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "ajgreen_18",
+      "profileImage": "http://pbs.twimg.com/profile_images/2879152035/a7feaab82b3eacaf53faf7da150769c3_normal.jpeg"
     },
     "team": {
       "name": "Cincinnati Bengals",
       "slug": "cin"
     },
-    "profileImage": "/assets/img/teams/cin.jpg",
-    "profileImageLarge": "/assets/img/teams/cin.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/2879152035/a7feaab82b3eacaf53faf7da150769c3_normal.jpeg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/2879152035/a7feaab82b3eacaf53faf7da150769c3_bigger.jpeg",
     "link": "aj-green",
     "beatWriters": []
   },
@@ -6365,16 +6365,16 @@
     "number": 32,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "JeremyHill33",
+      "profileImage": "http://pbs.twimg.com/profile_images/838354063846617089/4f7RP3W5_normal.jpg"
     },
     "team": {
       "name": "Cincinnati Bengals",
       "slug": "cin"
     },
-    "profileImage": "/assets/img/teams/cin.jpg",
-    "profileImageLarge": "/assets/img/teams/cin.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/838354063846617089/4f7RP3W5_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/838354063846617089/4f7RP3W5_bigger.jpg",
     "link": "jeremy-hill",
     "beatWriters": []
   },
@@ -6437,16 +6437,16 @@
     "number": 5,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "10AJMcCarron",
+      "profileImage": "http://pbs.twimg.com/profile_images/833098392775565312/oBG2Ksrr_normal.jpg"
     },
     "team": {
       "name": "Cincinnati Bengals",
       "slug": "cin"
     },
-    "profileImage": "/assets/img/teams/cin.jpg",
-    "profileImageLarge": "/assets/img/teams/cin.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/833098392775565312/oBG2Ksrr_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/833098392775565312/oBG2Ksrr_bigger.jpg",
     "link": "aj-mccarron",
     "beatWriters": []
   },
@@ -6461,16 +6461,16 @@
     "number": 30,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "CedPeerman30",
+      "profileImage": "http://pbs.twimg.com/profile_images/784530445476200449/Ui5ITta4_normal.jpg"
     },
     "team": {
       "name": "Cincinnati Bengals",
       "slug": "cin"
     },
-    "profileImage": "/assets/img/teams/cin.jpg",
-    "profileImageLarge": "/assets/img/teams/cin.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/784530445476200449/Ui5ITta4_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/784530445476200449/Ui5ITta4_bigger.jpg",
     "link": "cedric-peerman",
     "beatWriters": []
   },
@@ -6509,16 +6509,16 @@
     "number": 87,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "cjuzomah81",
+      "profileImage": "http://pbs.twimg.com/profile_images/483343127013388288/_eSlGw_g_normal.jpeg"
     },
     "team": {
       "name": "Cincinnati Bengals",
       "slug": "cin"
     },
-    "profileImage": "/assets/img/teams/cin.jpg",
-    "profileImageLarge": "/assets/img/teams/cin.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/483343127013388288/_eSlGw_g_normal.jpeg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/483343127013388288/_eSlGw_g_bigger.jpeg",
     "link": "cj-uzomah",
     "beatWriters": []
   },
@@ -6581,16 +6581,16 @@
     "number": 82,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "garybarnidge",
+      "profileImage": "http://pbs.twimg.com/profile_images/713907441096867840/hwg2SSAZ_normal.jpg"
     },
     "team": {
       "name": "Cleveland Browns",
       "slug": "cle"
     },
-    "profileImage": "/assets/img/teams/cle.jpg",
-    "profileImageLarge": "/assets/img/teams/cle.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/713907441096867840/hwg2SSAZ_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/713907441096867840/hwg2SSAZ_bigger.jpg",
     "link": "gary-barnidge",
     "beatWriters": []
   },
@@ -6629,16 +6629,16 @@
     "number": null,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "KennyBritt_18",
+      "profileImage": "http://pbs.twimg.com/profile_images/617746638128480256/weOiVIPA_normal.jpg"
     },
     "team": {
       "name": "Cleveland Browns",
       "slug": "cle"
     },
-    "profileImage": "/assets/img/teams/cle.jpg",
-    "profileImageLarge": "/assets/img/teams/cle.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/617746638128480256/weOiVIPA_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/617746638128480256/weOiVIPA_bigger.jpg",
     "link": "kenny-britt",
     "beatWriters": []
   },
@@ -6725,16 +6725,16 @@
     "number": 12,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "JOSH_GORDONXII",
+      "profileImage": "http://pbs.twimg.com/profile_images/843889864793833476/sSbzxi_5_normal.jpg"
     },
     "team": {
       "name": "Cleveland Browns",
       "slug": "cle"
     },
-    "profileImage": "/assets/img/teams/cle.jpg",
-    "profileImageLarge": "/assets/img/teams/cle.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/843889864793833476/sSbzxi_5_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/843889864793833476/sSbzxi_5_bigger.jpg",
     "link": "josh-gordon",
     "beatWriters": []
   },
@@ -6821,16 +6821,16 @@
     "number": null,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "jp_holtz86",
+      "profileImage": "http://pbs.twimg.com/profile_images/823694418263834625/o0342yjW_normal.jpg"
     },
     "team": {
       "name": "Cleveland Browns",
       "slug": "cle"
     },
-    "profileImage": "/assets/img/teams/cle.jpg",
-    "profileImageLarge": "/assets/img/teams/cle.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/823694418263834625/o0342yjW_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/823694418263834625/o0342yjW_bigger.jpg",
     "link": "jp-holtz",
     "beatWriters": []
   },
@@ -6869,16 +6869,16 @@
     "number": 29,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "DukeJohnson_8",
+      "profileImage": "http://pbs.twimg.com/profile_images/829044721695735808/0ZCqbuPZ_normal.jpg"
     },
     "team": {
       "name": "Cleveland Browns",
       "slug": "cle"
     },
-    "profileImage": "/assets/img/teams/cle.jpg",
-    "profileImageLarge": "/assets/img/teams/cle.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/829044721695735808/0ZCqbuPZ_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/829044721695735808/0ZCqbuPZ_bigger.jpg",
     "link": "duke-johnson",
     "beatWriters": []
   },
@@ -7013,16 +7013,16 @@
     "number": null,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "bosweiler17",
+      "profileImage": "http://pbs.twimg.com/profile_images/851501381865295872/kxccaklw_normal.jpg"
     },
     "team": {
       "name": "Cleveland Browns",
       "slug": "cle"
     },
-    "profileImage": "/assets/img/teams/cle.jpg",
-    "profileImageLarge": "/assets/img/teams/cle.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/851501381865295872/kxccaklw_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/851501381865295872/kxccaklw_bigger.jpg",
     "link": "brock-osweiler",
     "beatWriters": []
   },
@@ -7037,16 +7037,16 @@
     "number": 3,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "CParkey36",
+      "profileImage": "http://pbs.twimg.com/profile_images/780489052176936960/z1aHgt2H_normal.jpg"
     },
     "team": {
       "name": "Cleveland Browns",
       "slug": "cle"
     },
-    "profileImage": "/assets/img/teams/cle.jpg",
-    "profileImageLarge": "/assets/img/teams/cle.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/780489052176936960/z1aHgt2H_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/780489052176936960/z1aHgt2H_bigger.jpg",
     "link": "cody-parkey",
     "beatWriters": []
   },
@@ -7205,16 +7205,16 @@
     "number": 22,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "CjAndersonRB9",
+      "profileImage": "http://pbs.twimg.com/profile_images/465188093927366656/qRnmMIdk_normal.jpeg"
     },
     "team": {
       "name": "Denver Broncos",
       "slug": "den"
     },
-    "profileImage": "/assets/img/teams/den.jpg",
-    "profileImageLarge": "/assets/img/teams/den.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/465188093927366656/qRnmMIdk_normal.jpeg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/465188093927366656/qRnmMIdk_bigger.jpeg",
     "link": "cj-anderson",
     "beatWriters": []
   },
@@ -7349,16 +7349,16 @@
     "number": 85,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "VGreen85",
+      "profileImage": "http://pbs.twimg.com/profile_images/713370351896387585/ZhBUX7O7_normal.jpg"
     },
     "team": {
       "name": "Denver Broncos",
       "slug": "den"
     },
-    "profileImage": "/assets/img/teams/den.jpg",
-    "profileImageLarge": "/assets/img/teams/den.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/713370351896387585/ZhBUX7O7_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/713370351896387585/ZhBUX7O7_bigger.jpg",
     "link": "virgil-green",
     "beatWriters": []
   },
@@ -7445,16 +7445,16 @@
     "number": 14,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "CodyLatimer14",
+      "profileImage": "http://pbs.twimg.com/profile_images/844440167523987457/Q8G11fo1_normal.jpg"
     },
     "team": {
       "name": "Denver Broncos",
       "slug": "den"
     },
-    "profileImage": "/assets/img/teams/den.jpg",
-    "profileImageLarge": "/assets/img/teams/den.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/844440167523987457/Q8G11fo1_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/844440167523987457/Q8G11fo1_bigger.jpg",
     "link": "cody-latimer",
     "beatWriters": []
   },
@@ -7517,16 +7517,16 @@
     "number": 8,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "thekidmcmanus",
+      "profileImage": "http://pbs.twimg.com/profile_images/833896287485435904/ZuDI0a1l_normal.jpg"
     },
     "team": {
       "name": "Denver Broncos",
       "slug": "den"
     },
-    "profileImage": "/assets/img/teams/den.jpg",
-    "profileImageLarge": "/assets/img/teams/den.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/833896287485435904/ZuDI0a1l_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/833896287485435904/ZuDI0a1l_bigger.jpg",
     "link": "brandon-mcmanus",
     "beatWriters": []
   },
@@ -7541,16 +7541,16 @@
     "number": null,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "BPierce_30",
+      "profileImage": "http://pbs.twimg.com/profile_images/816018213146427392/mtVOGawe_normal.jpg"
     },
     "team": {
       "name": "Denver Broncos",
       "slug": "den"
     },
-    "profileImage": "/assets/img/teams/den.jpg",
-    "profileImageLarge": "/assets/img/teams/den.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/816018213146427392/mtVOGawe_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/816018213146427392/mtVOGawe_bigger.jpg",
     "link": "bernard-pierce",
     "beatWriters": []
   },
@@ -7589,16 +7589,16 @@
     "number": 10,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "ESanders_10",
+      "profileImage": "http://pbs.twimg.com/profile_images/684532800205099008/Vk4dsVLY_normal.jpg"
     },
     "team": {
       "name": "Denver Broncos",
       "slug": "den"
     },
-    "profileImage": "/assets/img/teams/den.jpg",
-    "profileImageLarge": "/assets/img/teams/den.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/684532800205099008/Vk4dsVLY_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/684532800205099008/Vk4dsVLY_bigger.jpg",
     "link": "emmanuel-sanders",
     "beatWriters": []
   },
@@ -7661,16 +7661,16 @@
     "number": 13,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "TrevorSiemian",
+      "profileImage": "http://pbs.twimg.com/profile_images/768951818202128384/CjHYg-S-_normal.jpg"
     },
     "team": {
       "name": "Denver Broncos",
       "slug": "den"
     },
-    "profileImage": "/assets/img/teams/den.jpg",
-    "profileImageLarge": "/assets/img/teams/den.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/768951818202128384/CjHYg-S-_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/768951818202128384/CjHYg-S-_bigger.jpg",
     "link": "trevor-siemian",
     "beatWriters": []
   },
@@ -7709,16 +7709,16 @@
     "number": 88,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "DemaryiusT",
+      "profileImage": "http://pbs.twimg.com/profile_images/732799647765430273/tKVoxfQO_normal.jpg"
     },
     "team": {
       "name": "Denver Broncos",
       "slug": "den"
     },
-    "profileImage": "/assets/img/teams/den.jpg",
-    "profileImageLarge": "/assets/img/teams/den.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/732799647765430273/tKVoxfQO_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/732799647765430273/tKVoxfQO_bigger.jpg",
     "link": "demaryius-thomas",
     "beatWriters": []
   },
@@ -7733,16 +7733,16 @@
     "number": null,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "JuwanJuju23",
+      "profileImage": "http://pbs.twimg.com/profile_images/841743196094881793/LmqNHZXZ_normal.jpg"
     },
     "team": {
       "name": "Denver Broncos",
       "slug": "den"
     },
-    "profileImage": "/assets/img/teams/den.jpg",
-    "profileImageLarge": "/assets/img/teams/den.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/841743196094881793/LmqNHZXZ_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/841743196094881793/LmqNHZXZ_bigger.jpg",
     "link": "juwan-thompson",
     "beatWriters": []
   },
@@ -7805,16 +7805,16 @@
     "number": 21,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "Ameerguapo",
+      "profileImage": "http://pbs.twimg.com/profile_images/834973121572663296/C3Ukq3Nj_normal.jpg"
     },
     "team": {
       "name": "Detroit Lions",
       "slug": "det"
     },
-    "profileImage": "/assets/img/teams/det.jpg",
-    "profileImageLarge": "/assets/img/teams/det.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/834973121572663296/C3Ukq3Nj_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/834973121572663296/C3Ukq3Nj_bigger.jpg",
     "link": "ameer-abdullah",
     "beatWriters": []
   },
@@ -7853,16 +7853,16 @@
     "number": 16,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "jacegable",
+      "profileImage": "http://pbs.twimg.com/profile_images/772051766577954816/kDXgYZlO_normal.jpg"
     },
     "team": {
       "name": "Detroit Lions",
       "slug": "det"
     },
-    "profileImage": "/assets/img/teams/det.jpg",
-    "profileImageLarge": "/assets/img/teams/det.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/772051766577954816/kDXgYZlO_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/772051766577954816/kDXgYZlO_bigger.jpg",
     "link": "jace-billingsley",
     "beatWriters": []
   },
@@ -7901,16 +7901,16 @@
     "number": 85,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "Ebron85",
+      "profileImage": "http://pbs.twimg.com/profile_images/847612177078861826/PvFUw7BA_normal.jpg"
     },
     "team": {
       "name": "Detroit Lions",
       "slug": "det"
     },
-    "profileImage": "/assets/img/teams/det.jpg",
-    "profileImageLarge": "/assets/img/teams/det.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/847612177078861826/PvFUw7BA_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/847612177078861826/PvFUw7BA_bigger.jpg",
     "link": "eric-ebron",
     "beatWriters": []
   },
@@ -7973,16 +7973,16 @@
     "number": 11,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "MarvinJonesJr",
+      "profileImage": "http://pbs.twimg.com/profile_images/741834346512932864/cXXcKRQg_normal.jpg"
     },
     "team": {
       "name": "Detroit Lions",
       "slug": "det"
     },
-    "profileImage": "/assets/img/teams/det.jpg",
-    "profileImageLarge": "/assets/img/teams/det.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/741834346512932864/cXXcKRQg_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/741834346512932864/cXXcKRQg_bigger.jpg",
     "link": "marvin-jones",
     "beatWriters": []
   },
@@ -8069,16 +8069,16 @@
     "number": 5,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "MattPrater_5",
+      "profileImage": "http://pbs.twimg.com/profile_images/745657606807519233/68Ar7oxF_normal.jpg"
     },
     "team": {
       "name": "Detroit Lions",
       "slug": "det"
     },
-    "profileImage": "/assets/img/teams/det.jpg",
-    "profileImageLarge": "/assets/img/teams/det.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/745657606807519233/68Ar7oxF_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/745657606807519233/68Ar7oxF_bigger.jpg",
     "link": "matt-prater",
     "beatWriters": []
   },
@@ -8189,16 +8189,16 @@
     "number": 15,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "ShowtimeTate",
+      "profileImage": "http://pbs.twimg.com/profile_images/468468263408529408/403T1VzF_normal.jpeg"
     },
     "team": {
       "name": "Detroit Lions",
       "slug": "det"
     },
-    "profileImage": "/assets/img/teams/det.jpg",
-    "profileImageLarge": "/assets/img/teams/det.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/468468263408529408/403T1VzF_normal.jpeg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/468468263408529408/403T1VzF_bigger.jpeg",
     "link": "golden-tate",
     "beatWriters": []
   },
@@ -8309,16 +8309,16 @@
     "number": 17,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "tae15adams",
+      "profileImage": "http://pbs.twimg.com/profile_images/816193780613283840/o3pI4TKD_normal.jpg"
     },
     "team": {
       "name": "Green Bay Packers",
       "slug": "gb"
     },
-    "profileImage": "/assets/img/teams/gb.jpg",
-    "profileImageLarge": "/assets/img/teams/gb.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/816193780613283840/o3pI4TKD_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/816193780613283840/o3pI4TKD_bigger.jpg",
     "link": "davante-adams",
     "beatWriters": []
   },
@@ -8357,16 +8357,16 @@
     "number": null,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "MartysaurusRex",
+      "profileImage": "http://pbs.twimg.com/profile_images/834582018398814208/KcxMVUNe_normal.jpg"
     },
     "team": {
       "name": "Green Bay Packers",
       "slug": "gb"
     },
-    "profileImage": "/assets/img/teams/gb.jpg",
-    "profileImageLarge": "/assets/img/teams/gb.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/834582018398814208/KcxMVUNe_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/834582018398814208/KcxMVUNe_bigger.jpg",
     "link": "martellus-bennett",
     "beatWriters": []
   },
@@ -8405,16 +8405,16 @@
     "number": 18,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "rcobb18",
+      "profileImage": "http://pbs.twimg.com/profile_images/596136136377937921/-kgC3QJ0_normal.jpg"
     },
     "team": {
       "name": "Green Bay Packers",
       "slug": "gb"
     },
-    "profileImage": "/assets/img/teams/gb.jpg",
-    "profileImageLarge": "/assets/img/teams/gb.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/596136136377937921/-kgC3QJ0_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/596136136377937921/-kgC3QJ0_bigger.jpg",
     "link": "randall-cobb",
     "beatWriters": []
   },
@@ -8453,16 +8453,16 @@
     "number": 2,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "crosbykicks2",
+      "profileImage": "http://pbs.twimg.com/profile_images/842355697832480769/rM6yR_EW_normal.jpg"
     },
     "team": {
       "name": "Green Bay Packers",
       "slug": "gb"
     },
-    "profileImage": "/assets/img/teams/gb.jpg",
-    "profileImageLarge": "/assets/img/teams/gb.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/842355697832480769/rM6yR_EW_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/842355697832480769/rM6yR_EW_bigger.jpg",
     "link": "mason-crosby",
     "beatWriters": []
   },
@@ -8549,16 +8549,16 @@
     "number": 34,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "DonnyjGLA6",
+      "profileImage": "http://pbs.twimg.com/profile_images/849354427530174464/uuJ3v6m9_normal.jpg"
     },
     "team": {
       "name": "Green Bay Packers",
       "slug": "gb"
     },
-    "profileImage": "/assets/img/teams/gb.jpg",
-    "profileImageLarge": "/assets/img/teams/gb.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/849354427530174464/uuJ3v6m9_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/849354427530174464/uuJ3v6m9_bigger.jpg",
     "link": "don-jackson",
     "beatWriters": []
   },
@@ -8573,16 +8573,16 @@
     "number": 83,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "jrjanis",
+      "profileImage": "http://pbs.twimg.com/profile_images/775514655695536128/mRVEfk4Q_normal.jpg"
     },
     "team": {
       "name": "Green Bay Packers",
       "slug": "gb"
     },
-    "profileImage": "/assets/img/teams/gb.jpg",
-    "profileImageLarge": "/assets/img/teams/gb.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/775514655695536128/mRVEfk4Q_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/775514655695536128/mRVEfk4Q_bigger.jpg",
     "link": "jeff-janis",
     "beatWriters": []
   },
@@ -8669,16 +8669,16 @@
     "number": 32,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "Cmike33",
+      "profileImage": "http://pbs.twimg.com/profile_images/432236753651376128/yJbk_SDe_normal.jpeg"
     },
     "team": {
       "name": "Green Bay Packers",
       "slug": "gb"
     },
-    "profileImage": "/assets/img/teams/gb.jpg",
-    "profileImageLarge": "/assets/img/teams/gb.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/432236753651376128/yJbk_SDe_normal.jpeg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/432236753651376128/yJbk_SDe_bigger.jpeg",
     "link": "christine-michael",
     "beatWriters": []
   },
@@ -8693,16 +8693,16 @@
     "number": 88,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "TyMontgomery2",
+      "profileImage": "http://pbs.twimg.com/profile_images/804149787524218880/QJ2e5Gq1_normal.jpg"
     },
     "team": {
       "name": "Green Bay Packers",
       "slug": "gb"
     },
-    "profileImage": "/assets/img/teams/gb.jpg",
-    "profileImageLarge": "/assets/img/teams/gb.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/804149787524218880/QJ2e5Gq1_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/804149787524218880/QJ2e5Gq1_bigger.jpg",
     "link": "ty-montgomery",
     "beatWriters": []
   },
@@ -8717,16 +8717,16 @@
     "number": 87,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "JordyRNelson",
+      "profileImage": "http://pbs.twimg.com/profile_images/2273106196/image_normal.jpg"
     },
     "team": {
       "name": "Green Bay Packers",
       "slug": "gb"
     },
-    "profileImage": "/assets/img/teams/gb.jpg",
-    "profileImageLarge": "/assets/img/teams/gb.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/2273106196/image_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/2273106196/image_bigger.jpg",
     "link": "jordy-nelson",
     "beatWriters": []
   },
@@ -8765,16 +8765,16 @@
     "number": 12,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "AaronRodgers12",
+      "profileImage": "http://pbs.twimg.com/profile_images/632044451150565376/sHXDMx-I_normal.jpg"
     },
     "team": {
       "name": "Green Bay Packers",
       "slug": "gb"
     },
-    "profileImage": "/assets/img/teams/gb.jpg",
-    "profileImageLarge": "/assets/img/teams/gb.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/632044451150565376/sHXDMx-I_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/632044451150565376/sHXDMx-I_bigger.jpg",
     "link": "aaron-rodgers",
     "beatWriters": []
   },
@@ -8861,16 +8861,16 @@
     "number": 89,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "S_Anderson89",
+      "profileImage": "http://pbs.twimg.com/profile_images/432206547284795392/AnvAA4Pf_normal.jpeg"
     },
     "team": {
       "name": "Houston Texans",
       "slug": "hou"
     },
-    "profileImage": "/assets/img/teams/hou.jpg",
-    "profileImageLarge": "/assets/img/teams/hou.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/432206547284795392/AnvAA4Pf_normal.jpeg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/432206547284795392/AnvAA4Pf_bigger.jpeg",
     "link": "stephen-anderson",
     "beatWriters": []
   },
@@ -9053,16 +9053,16 @@
     "number": 10,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "Nukdabomb",
+      "profileImage": "http://pbs.twimg.com/profile_images/820392724838883329/LLa1mjFP_normal.jpg"
     },
     "team": {
       "name": "Houston Texans",
       "slug": "hou"
     },
-    "profileImage": "/assets/img/teams/hou.jpg",
-    "profileImageLarge": "/assets/img/teams/hou.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/820392724838883329/LLa1mjFP_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/820392724838883329/LLa1mjFP_bigger.jpg",
     "link": "deandre-hopkins",
     "beatWriters": []
   },
@@ -9125,16 +9125,16 @@
     "number": 13,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "BraxtonMiller5",
+      "profileImage": "http://pbs.twimg.com/profile_images/753024686435500032/AwUJ2yUu_normal.jpg"
     },
     "team": {
       "name": "Houston Texans",
       "slug": "hou"
     },
-    "profileImage": "/assets/img/teams/hou.jpg",
-    "profileImageLarge": "/assets/img/teams/hou.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/753024686435500032/AwUJ2yUu_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/753024686435500032/AwUJ2yUu_bigger.jpg",
     "link": "braxton-miller",
     "beatWriters": []
   },
@@ -9245,16 +9245,16 @@
     "number": 3,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "TomSavage03",
+      "profileImage": "http://pbs.twimg.com/profile_images/767370379396575232/QHlybEeN_normal.jpg"
     },
     "team": {
       "name": "Houston Texans",
       "slug": "hou"
     },
-    "profileImage": "/assets/img/teams/hou.jpg",
-    "profileImageLarge": "/assets/img/teams/hou.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/767370379396575232/QHlybEeN_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/767370379396575232/QHlybEeN_bigger.jpg",
     "link": "tom-savage",
     "beatWriters": []
   },
@@ -9269,16 +9269,16 @@
     "number": 11,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "JaelenStrong",
+      "profileImage": "http://pbs.twimg.com/profile_images/805563919960014848/vwqyRiax_normal.jpg"
     },
     "team": {
       "name": "Houston Texans",
       "slug": "hou"
     },
-    "profileImage": "/assets/img/teams/hou.jpg",
-    "profileImageLarge": "/assets/img/teams/hou.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/805563919960014848/vwqyRiax_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/805563919960014848/vwqyRiax_bigger.jpg",
     "link": "jaelen-strong",
     "beatWriters": []
   },
@@ -9293,16 +9293,16 @@
     "number": 5,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "bweeden3",
+      "profileImage": "http://pbs.twimg.com/profile_images/667165396160507904/6E1GwpUo_normal.jpg"
     },
     "team": {
       "name": "Houston Texans",
       "slug": "hou"
     },
-    "profileImage": "/assets/img/teams/hou.jpg",
-    "profileImageLarge": "/assets/img/teams/hou.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/667165396160507904/6E1GwpUo_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/667165396160507904/6E1GwpUo_bigger.jpg",
     "link": "brandon-weeden",
     "beatWriters": []
   },
@@ -9341,16 +9341,16 @@
     "number": null,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "KamarAiken88",
+      "profileImage": "http://pbs.twimg.com/profile_images/840962807701131265/LH13UH45_normal.jpg"
     },
     "team": {
       "name": "Indianapolis Colts",
       "slug": "ind"
     },
-    "profileImage": "/assets/img/teams/ind.jpg",
-    "profileImageLarge": "/assets/img/teams/ind.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/840962807701131265/LH13UH45_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/840962807701131265/LH13UH45_bigger.jpg",
     "link": "kamar-aiken",
     "beatWriters": []
   },
@@ -9413,16 +9413,16 @@
     "number": 15,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "Dorsett_4",
+      "profileImage": "http://pbs.twimg.com/profile_images/824714286450761730/4SXcQkIn_normal.jpg"
     },
     "team": {
       "name": "Indianapolis Colts",
       "slug": "ind"
     },
-    "profileImage": "/assets/img/teams/ind.jpg",
-    "profileImageLarge": "/assets/img/teams/ind.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/824714286450761730/4SXcQkIn_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/824714286450761730/4SXcQkIn_bigger.jpg",
     "link": "phillip-dorsett",
     "beatWriters": []
   },
@@ -9485,16 +9485,16 @@
     "number": 13,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "TYHilton13",
+      "profileImage": "http://pbs.twimg.com/profile_images/735891705942159360/O5Uw-EWD_normal.jpg"
     },
     "team": {
       "name": "Indianapolis Colts",
       "slug": "ind"
     },
-    "profileImage": "/assets/img/teams/ind.jpg",
-    "profileImageLarge": "/assets/img/teams/ind.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/735891705942159360/O5Uw-EWD_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/735891705942159360/O5Uw-EWD_bigger.jpg",
     "link": "ty-hilton",
     "beatWriters": []
   },
@@ -9557,16 +9557,16 @@
     "number": 10,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "drm_12",
+      "profileImage": "http://pbs.twimg.com/profile_images/752312241391804417/hnoxs9CV_normal.jpg"
     },
     "team": {
       "name": "Indianapolis Colts",
       "slug": "ind"
     },
-    "profileImage": "/assets/img/teams/ind.jpg",
-    "profileImageLarge": "/assets/img/teams/ind.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/752312241391804417/hnoxs9CV_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/752312241391804417/hnoxs9CV_bigger.jpg",
     "link": "donte-moncrief",
     "beatWriters": []
   },
@@ -9725,16 +9725,16 @@
     "number": 33,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "RobT_33",
+      "profileImage": "http://pbs.twimg.com/profile_images/841801693184552961/zTrmDjTP_normal.jpg"
     },
     "team": {
       "name": "Indianapolis Colts",
       "slug": "ind"
     },
-    "profileImage": "/assets/img/teams/ind.jpg",
-    "profileImageLarge": "/assets/img/teams/ind.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/841801693184552961/zTrmDjTP_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/841801693184552961/zTrmDjTP_bigger.jpg",
     "link": "robert-turbin",
     "beatWriters": []
   },
@@ -9749,16 +9749,16 @@
     "number": 4,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "adamvinatieri",
+      "profileImage": "http://pbs.twimg.com/profile_images/2538459632/eQe0PDGs_normal"
     },
     "team": {
       "name": "Indianapolis Colts",
       "slug": "ind"
     },
-    "profileImage": "/assets/img/teams/ind.jpg",
-    "profileImageLarge": "/assets/img/teams/ind.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/2538459632/eQe0PDGs_normal",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/2538459632/eQe0PDGs_bigger",
     "link": "adam-vinatieri",
     "beatWriters": []
   },
@@ -9797,16 +9797,16 @@
     "number": 10,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "BrandonAllen_10",
+      "profileImage": "http://pbs.twimg.com/profile_images/792801038206013440/zllSxNjG_normal.jpg"
     },
     "team": {
       "name": "Jacksonville Jaguars",
       "slug": "jac"
     },
-    "profileImage": "/assets/img/teams/jac.jpg",
-    "profileImageLarge": "/assets/img/teams/jac.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/792801038206013440/zllSxNjG_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/792801038206013440/zllSxNjG_bigger.jpg",
     "link": "brandon-allen",
     "beatWriters": []
   },
@@ -9869,16 +9869,16 @@
     "number": 14,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "JustBlack81",
+      "profileImage": "http://pbs.twimg.com/profile_images/3421158579/4bf2fea2be30f69a146fc03e38734ee8_normal.jpeg"
     },
     "team": {
       "name": "Jacksonville Jaguars",
       "slug": "jac"
     },
-    "profileImage": "/assets/img/teams/jac.jpg",
-    "profileImageLarge": "/assets/img/teams/jac.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/3421158579/4bf2fea2be30f69a146fc03e38734ee8_normal.jpeg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/3421158579/4bf2fea2be30f69a146fc03e38734ee8_bigger.jpeg",
     "link": "justin-blackmon",
     "beatWriters": []
   },
@@ -9893,16 +9893,16 @@
     "number": 5,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "BBortles5",
+      "profileImage": "http://pbs.twimg.com/profile_images/783012608634945540/ym28Zx63_normal.jpg"
     },
     "team": {
       "name": "Jacksonville Jaguars",
       "slug": "jac"
     },
-    "profileImage": "/assets/img/teams/jac.jpg",
-    "profileImageLarge": "/assets/img/teams/jac.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/783012608634945540/ym28Zx63_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/783012608634945540/ym28Zx63_bigger.jpg",
     "link": "blake-bortles",
     "beatWriters": []
   },
@@ -9965,16 +9965,16 @@
     "number": 13,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "RG80_",
+      "profileImage": "http://pbs.twimg.com/profile_images/644966487917260804/jBrdHO5l_normal.jpg"
     },
     "team": {
       "name": "Jacksonville Jaguars",
       "slug": "jac"
     },
-    "profileImage": "/assets/img/teams/jac.jpg",
-    "profileImageLarge": "/assets/img/teams/jac.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/644966487917260804/jBrdHO5l_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/644966487917260804/jBrdHO5l_bigger.jpg",
     "link": "rashad-greene",
     "beatWriters": []
   },
@@ -10037,16 +10037,16 @@
     "number": 88,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "A1hurns",
+      "profileImage": "http://pbs.twimg.com/profile_images/653764179908763648/--dgyVRB_normal.jpg"
     },
     "team": {
       "name": "Jacksonville Jaguars",
       "slug": "jac"
     },
-    "profileImage": "/assets/img/teams/jac.jpg",
-    "profileImageLarge": "/assets/img/teams/jac.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/653764179908763648/--dgyVRB_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/653764179908763648/--dgyVRB_bigger.jpg",
     "link": "allen-hurns",
     "beatWriters": []
   },
@@ -10061,16 +10061,16 @@
     "number": 33,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "ivory33",
+      "profileImage": "http://pbs.twimg.com/profile_images/378800000412638635/537bb9916ba2cbbbb2a0accf22a1043c_normal.jpeg"
     },
     "team": {
       "name": "Jacksonville Jaguars",
       "slug": "jac"
     },
-    "profileImage": "/assets/img/teams/jac.jpg",
-    "profileImageLarge": "/assets/img/teams/jac.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/378800000412638635/537bb9916ba2cbbbb2a0accf22a1043c_normal.jpeg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/378800000412638635/537bb9916ba2cbbbb2a0accf22a1043c_bigger.jpeg",
     "link": "chris-ivory",
     "beatWriters": []
   },
@@ -10109,16 +10109,16 @@
     "number": 11,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "TeamLee1",
+      "profileImage": "http://pbs.twimg.com/profile_images/783769001331683328/v1NQhkdO_normal.jpg"
     },
     "team": {
       "name": "Jacksonville Jaguars",
       "slug": "jac"
     },
-    "profileImage": "/assets/img/teams/jac.jpg",
-    "profileImageLarge": "/assets/img/teams/jac.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/783769001331683328/v1NQhkdO_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/783769001331683328/v1NQhkdO_bigger.jpg",
     "link": "marqise-lee",
     "beatWriters": []
   },
@@ -10205,16 +10205,16 @@
     "number": null,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "MychalRivera",
+      "profileImage": "http://pbs.twimg.com/profile_images/844725873517432832/r0ytxmkP_normal.jpg"
     },
     "team": {
       "name": "Jacksonville Jaguars",
       "slug": "jac"
     },
-    "profileImage": "/assets/img/teams/jac.jpg",
-    "profileImageLarge": "/assets/img/teams/jac.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/844725873517432832/r0ytxmkP_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/844725873517432832/r0ytxmkP_bigger.jpg",
     "link": "mychal-rivera",
     "beatWriters": []
   },
@@ -10229,16 +10229,16 @@
     "number": 15,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "Thee_AR15",
+      "profileImage": "http://pbs.twimg.com/profile_images/833026277942534145/yUp0Xt3A_normal.jpg"
     },
     "team": {
       "name": "Jacksonville Jaguars",
       "slug": "jac"
     },
-    "profileImage": "/assets/img/teams/jac.jpg",
-    "profileImageLarge": "/assets/img/teams/jac.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/833026277942534145/yUp0Xt3A_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/833026277942534145/yUp0Xt3A_bigger.jpg",
     "link": "allen-robinson",
     "beatWriters": []
   },
@@ -10373,16 +10373,16 @@
     "number": 14,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "SHANEWYNN4",
+      "profileImage": "http://pbs.twimg.com/profile_images/851272867580747778/LsWbP8TI_normal.jpg"
     },
     "team": {
       "name": "Jacksonville Jaguars",
       "slug": "jac"
     },
-    "profileImage": "/assets/img/teams/jac.jpg",
-    "profileImageLarge": "/assets/img/teams/jac.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/851272867580747778/LsWbP8TI_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/851272867580747778/LsWbP8TI_bigger.jpg",
     "link": "shane-wynn",
     "beatWriters": []
   },
@@ -10397,16 +10397,16 @@
     "number": 24,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "T_Yeldon",
+      "profileImage": "http://pbs.twimg.com/profile_images/610146800209690625/1dMD0hx2_normal.jpg"
     },
     "team": {
       "name": "Jacksonville Jaguars",
       "slug": "jac"
     },
-    "profileImage": "/assets/img/teams/jac.jpg",
-    "profileImageLarge": "/assets/img/teams/jac.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/610146800209690625/1dMD0hx2_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/610146800209690625/1dMD0hx2_bigger.jpg",
     "link": "tj-yeldon",
     "beatWriters": []
   },
@@ -10445,16 +10445,16 @@
     "number": 17,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "_flight17_",
+      "profileImage": "http://pbs.twimg.com/profile_images/610429288525922304/yvAroEVs_normal.jpg"
     },
     "team": {
       "name": "Kansas City Chiefs",
       "slug": "kc"
     },
-    "profileImage": "/assets/img/teams/kc.jpg",
-    "profileImageLarge": "/assets/img/teams/kc.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/610429288525922304/yvAroEVs_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/610429288525922304/yvAroEVs_bigger.jpg",
     "link": "chris-conley",
     "beatWriters": []
   },
@@ -10517,16 +10517,16 @@
     "number": 84,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "BreadWinner084",
+      "profileImage": "http://pbs.twimg.com/profile_images/835013273401589762/XsmG2pe4_normal.jpg"
     },
     "team": {
       "name": "Kansas City Chiefs",
       "slug": "kc"
     },
-    "profileImage": "/assets/img/teams/kc.jpg",
-    "profileImageLarge": "/assets/img/teams/kc.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/835013273401589762/XsmG2pe4_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/835013273401589762/XsmG2pe4_bigger.jpg",
     "link": "demetrius-harris",
     "beatWriters": []
   },
@@ -10589,16 +10589,16 @@
     "number": 87,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "tkelce",
+      "profileImage": "http://pbs.twimg.com/profile_images/803875983862431744/MtprvjzV_normal.jpg"
     },
     "team": {
       "name": "Kansas City Chiefs",
       "slug": "kc"
     },
-    "profileImage": "/assets/img/teams/kc.jpg",
-    "profileImageLarge": "/assets/img/teams/kc.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/803875983862431744/MtprvjzV_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/803875983862431744/MtprvjzV_bigger.jpg",
     "link": "travis-kelce",
     "beatWriters": []
   },
@@ -10613,16 +10613,16 @@
     "number": 19,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "jmac___19",
+      "profileImage": "http://pbs.twimg.com/profile_images/575791226257076224/S_xQidq6_normal.jpeg"
     },
     "team": {
       "name": "Kansas City Chiefs",
       "slug": "kc"
     },
-    "profileImage": "/assets/img/teams/kc.jpg",
-    "profileImageLarge": "/assets/img/teams/kc.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/575791226257076224/S_xQidq6_normal.jpeg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/575791226257076224/S_xQidq6_bigger.jpeg",
     "link": "jeremy-maclin",
     "beatWriters": []
   },
@@ -10709,16 +10709,16 @@
     "number": 24,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "Engaged2Success",
+      "profileImage": "http://pbs.twimg.com/profile_images/792346085142343680/L-MYnhsu_normal.jpg"
     },
     "team": {
       "name": "Kansas City Chiefs",
       "slug": "kc"
     },
-    "profileImage": "/assets/img/teams/kc.jpg",
-    "profileImageLarge": "/assets/img/teams/kc.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/792346085142343680/L-MYnhsu_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/792346085142343680/L-MYnhsu_bigger.jpg",
     "link": "darrin-reaves",
     "beatWriters": []
   },
@@ -10829,16 +10829,16 @@
     "number": null,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "CJSPILLER",
+      "profileImage": "http://pbs.twimg.com/profile_images/820065730246901760/KgVPABvp_normal.jpg"
     },
     "team": {
       "name": "Kansas City Chiefs",
       "slug": "kc"
     },
-    "profileImage": "/assets/img/teams/kc.jpg",
-    "profileImageLarge": "/assets/img/teams/kc.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/820065730246901760/KgVPABvp_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/820065730246901760/KgVPABvp_bigger.jpg",
     "link": "cj-spiller",
     "beatWriters": []
   },
@@ -10925,16 +10925,16 @@
     "number": 32,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "spenceware11",
+      "profileImage": "http://pbs.twimg.com/profile_images/816786236266446849/hs_-3yXN_normal.jpg"
     },
     "team": {
       "name": "Kansas City Chiefs",
       "slug": "kc"
     },
-    "profileImage": "/assets/img/teams/kc.jpg",
-    "profileImageLarge": "/assets/img/teams/kc.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/816786236266446849/hs_-3yXN_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/816786236266446849/hs_-3yXN_bigger.jpg",
     "link": "spencer-ware",
     "beatWriters": []
   },
@@ -10949,16 +10949,16 @@
     "number": 35,
     "isActive": true,
     "twitter": {
-      "isActive": false,
-      "name": null,
-      "profileImage": null
+      "isActive": true,
+      "name": "Charcandrick26",
+      "profileImage": "http://pbs.twimg.com/profile_images/771891584040366081/80td1v6i_normal.jpg"
     },
     "team": {
       "name": "Kansas City Chiefs",
       "slug": "kc"
     },
-    "profileImage": "/assets/img/teams/kc.jpg",
-    "profileImageLarge": "/assets/img/teams/kc.jpg",
+    "profileImage": "http://pbs.twimg.com/profile_images/771891584040366081/80td1v6i_normal.jpg",
+    "profileImageLarge": "http://pbs.twimg.com/profile_images/771891584040366081/80td1v6i_bigger.jpg",
     "link": "charcandrick-west",
     "beatWriters": []
   },
