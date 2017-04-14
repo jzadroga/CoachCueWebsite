@@ -29,6 +29,7 @@ namespace CoachCue.Service
                 FormattedMessage messageItem = await FormatMessage(text);
                 message.CreatedBy = userData.UserId;
                 message.Text = messageItem.messageText;
+                message.UserMentions = messageItem.userList.Select( us => us.Id).ToList();
 
                 DateTime messageCreated = DateTime.UtcNow.GetEasternTime();
                 message.DateCreated = messageCreated;
@@ -101,7 +102,7 @@ namespace CoachCue.Service
                         var matchupUsers = await NotificationService.GetMatchupNotificationUsers(userData.UserId, parentMatchup);
                         foreach (var matchupUser in matchupUsers)
                         {
-                            await NotificationService.Save(userData, matchupUser, userData.Name + " Posted a new message about a matchup you are following.", "reply", message);
+                            await NotificationService.Save(userData.UserId, matchupUser.Id, userData.Name + " Posted a new message about a matchup you are following.", "replyMatchup", message.Id);
                         }
 
                         parentMatchup.Messages.Add(message);
@@ -116,7 +117,7 @@ namespace CoachCue.Service
                         var replyUsers = await NotificationService.GetReplyNotificationUsers(userData.UserId, parentMsg);
                         foreach (var replyUser in replyUsers)
                         {
-                            await NotificationService.Save(userData, replyUser, userData.Name + " Posted a new reply message.", "reply", message);
+                            await NotificationService.Save(userData.UserId, replyUser.Id, userData.Name + " Posted a new reply message.", "reply", message.Id);
                         }
 
                         parentMsg.Reply.Add(message);
@@ -134,7 +135,7 @@ namespace CoachCue.Service
                 {
                     foreach (User mention in messageItem.userList)
                     {
-                        await NotificationService.Save(userData, mention, userData.Name + " Posted a new message, mentioning you.", "mention", message);
+                        await NotificationService.Save(userData.UserId, mention.Id, userData.Name + " Posted a new message, mentioning you.", "mention", message.Id);
                     }
                 }             
             }

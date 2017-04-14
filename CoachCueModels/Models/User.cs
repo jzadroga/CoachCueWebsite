@@ -18,6 +18,7 @@ namespace CoachCue.Models
                     MessageCount = 0
                 };
             this.Badges = new List<Badge>();
+            this.Notifications = new List<Notification>();
         }
 
         [JsonProperty(PropertyName = "id")]
@@ -68,6 +69,9 @@ namespace CoachCue.Models
                 return name.Replace(" ", "-").ToLower();
             }
         }
+
+        [JsonProperty(PropertyName = "notifications")]
+        public List<Notification> Notifications { get; set; }
 
         public List<Badge> Badges { get; set; }
     }

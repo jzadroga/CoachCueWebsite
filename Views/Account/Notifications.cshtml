@@ -13,29 +13,36 @@
         <table class="table table-hover table-condensed">
             @foreach (var notice in Model.Notifications)
             {
-                switch( notice.Type ){
+                switch( notice.Notification.Type ){
                     case "vote":
                     case "voteRequested":   
-                    <tr>
-                        <td>@notice.DateCreated.ToShortDateString()</td>
-                        <td class="notice-img"><img src="/assets/img/avatar/@notice.UserFrom.Profile.Image" /></td>
-                        <td><a href="@Href("~/" + notice.Matchup.Link)">@Html.Raw(notice.Text)</a></td>
-                    </tr>
-                    break;
-                    case "messageMention":
-                    <tr>
-                        <td>@notice.DateCreated.ToShortDateString()</td>
-                        <td class="notice-img"><img src="/assets/img/avatar/@notice.UserFrom.Profile.Image" /></td>
-                        <td>@notice.UserFrom.Name <a href="@Url.Action("index", "coach", new { name = notice.UserFrom.Link })">@notice.Text</a></td>
-                    </tr>
-                    break;
-                    case "matchupMessage":
-                    <tr>
-                        <td>@notice.DateCreated.ToShortDateString()</td>
-                        <td class="notice-img"><img src"/assets/img/avatar/@notice.UserFrom.Profile.Image" /></td>
-                        <td>@notice.UserFrom.Name @notice.Text <a href="@Href("~/" + notice.Matchup.Link)">@notice.Text</td>
-                    </tr>
-                    break;
+                        <tr>
+                            <td>@notice.Notification.DateCreated.ToShortDateString()</td>
+                            <td class="notice-img"><img src="/assets/img/avatar/@notice.UserFrom.Profile.Image" /></td>
+                            <td><a href="@Href("~/" + notice.Matchup.Link)">@Html.Raw(notice.Notification.Text)</a></td>
+                        </tr>
+                        break;
+                    case "mention":
+                        <tr>
+                            <td>@notice.Notification.DateCreated.ToShortDateString()</td>
+                            <td class="notice-img"><img src="/assets/img/avatar/@notice.UserFrom.Profile.Image" /></td>
+                            <td><a href="@Url.Action("index", "coach", new { name = notice.UserFrom.Link })">@notice.Notification.Text</a></td>
+                        </tr>
+                        break;
+                    case "reply":
+                        <tr>
+                            <td>@notice.Notification.DateCreated.ToShortDateString()</td>
+                            <td class="notice-img"><img src="/assets/img/avatar/@notice.UserFrom.Profile.Image" /></td>
+                            <td>@notice.Notification.Text</td>
+                        </tr>
+                        break;
+                    case "replyMatchup":
+                        <tr>
+                            <td>@notice.Notification.DateCreated.ToShortDateString()</td>
+                            <td class="notice-img"><img src="/assets/img/avatar/@notice.UserFrom.Profile.Image" /></td>
+                            <td>@notice.Notification.Text</td>
+                        </tr>
+                        break;
                 }
             }
         </table>

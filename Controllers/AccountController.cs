@@ -19,6 +19,7 @@ using DotNetOpenAuth.OpenId.Extensions.SimpleRegistration;
 using CoachCue.Repository;
 using CoachCue.Service;
 using System.Threading.Tasks;
+using CoachCue.Models;
 
 namespace CoachCue.Controllers
 {
@@ -360,16 +361,31 @@ namespace CoachCue.Controllers
             await LoadBaseViewModel(notVM);
 
             var notifications = await NotificationService.GetList(userData.UserId);
-            notifications = notifications.OrderByDescending(nt => nt.DateCreated).Take(200);
+            notifications = notifications.OrderByDescending(nt => nt.DateCreated).Take(100);
 
-            notVM.Notifications = notifications;
-
+            var notices = new List<NotificationNotice>();
             //mark all as read
             foreach (var notification in notifications)
             {
-                notification.Read = true;
-                await NotificationService.Update(notification);
+                if (notification.Read == false)
+                {
+                    notification.Read = true;
+                    await NotificationService.Update(notification);
+                }
+
+                var userFrom = await UserService.Get(notification.UserFrom);
+                var message = (string.IsNullOrEmpty(notification.Message)) ? null : await MessageService.Get(notification.Message);
+                var matchup = (string.IsNullOrEmpty(notification.Matchup)) ? null : await MatchupService.Get(notification.Matchup);
+                notices.Add(new NotificationNotice()
+                {
+                    UserFrom = userFrom,
+                    Message = message,
+                    Matchup = matchup,
+                    Notification = notification
+                });
             }
+
+            notVM.Notifications = notices;
 
             //reset the session
             CoachCueUserData.Reset();

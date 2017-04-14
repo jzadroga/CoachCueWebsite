@@ -88,7 +88,7 @@ namespace CoachCue.ViewModels
 
     public class NotificationsViewModel : BaseViewModel
     {
-        public IEnumerable<Notification> Notifications { get; set; }
+        public List<NotificationNotice> Notifications { get; set; }
     }
 
     public class ConversationViewModel

@@ -59,7 +59,7 @@ namespace CoachCue.Controllers
             foreach (var toUser in toUsers)
             {
                 string msg = fromUser.Name + " asked you to answer a matchup. " + matchup.Type + " " + players;
-                notifications.Add( await NotificationService.Save(fromUser, toUser, msg, "voteRequested", matchup) );
+                notifications.Add( await NotificationService.Save(fromUser.Id, toUser.Id, msg, "voteRequested", matchup.Id) );
             }
 
             await EmailHelper.SendVoteRequestEmail(notifications);

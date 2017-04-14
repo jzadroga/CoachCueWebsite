@@ -115,7 +115,7 @@ namespace CoachCue.Service
                 if (userData.UserId != matchup.CreatedBy)
                 {
                     var toUser = await UserService.Get(matchup.CreatedBy);
-                    await NotificationService.Save(userData, toUser, userData.Name + " voted on your CoachCue matchup.", "vote", matchup);
+                    await NotificationService.Save(userData.UserId, toUser.Id, userData.Name + " voted on your CoachCue matchup.", "vote", matchup.Id);
                 }
             }
 

@@ -28,21 +28,29 @@ namespace CoachCue.Models
         public string Type { get; set; }
 
         [JsonProperty(PropertyName = "userFrom")]
-        public User UserFrom { get; set; }
+        public string UserFrom { get; set; }
 
         [JsonProperty(PropertyName = "userTo")]
-        public User UserTo { get; set; }
+        public string UserTo { get; set; }
 
         [JsonProperty(PropertyName = "message")]
-        public Message Message { get; set; }
+        public string Message { get; set; }
 
         [JsonProperty(PropertyName = "matchup")]
-        public Matchup Matchup { get; set; }
+        public string Matchup { get; set; }
 
         [JsonProperty(PropertyName = "sent")]
         public bool Sent { get; set; }
 
         [JsonProperty(PropertyName = "read")]
         public bool Read { get; set; }
+    }
+
+    public class NotificationNotice
+    {
+        public Notification Notification { get; set; }
+        public User UserFrom { get; set; }
+        public Message Message { get; set; }
+        public Matchup Matchup { get; set; }
     }
 }

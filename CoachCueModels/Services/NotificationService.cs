@@ -13,69 +13,29 @@ namespace CoachCue.Service
     public static class NotificationService
     { 
         //save a notification document to the Notifications collection
-        public static async Task<Notification> Save(CoachCueUserData userData, User toUser, string text, string type, Message message)
+        public static async Task<Notification> Save(string userFrom, string toUser, string text, string type, string referenceId)
         {
             Notification notification = new Notification();
 
             try
             {
                 notification.DateCreated = DateTime.UtcNow.GetEasternTime();
-                notification.CreatedBy = userData.UserId;
-                notification.Text = text;
-                notification.Type = type;
-                notification.UserFrom = new User()
-                {
-                    Id = userData.UserId,
-                    UserName = userData.UserName,
-                    Name = userData.Name,
-                    Profile = new UserProfile() { Image = userData.ProfileImage },
-                    Email = userData.Email
-                };
-                notification.UserTo = toUser;
-                notification.Message = message;
-
-                var result = await DocumentDBRepository<Notification>.CreateItemAsync(notification, "Notifications");
-                notification.Id = result.Id;            
-            }
-            catch (Exception ex)
-            {
-                string error = ex.Message;
-            }
-              
-            return notification;
-        }
-
-        //save a notification document to the Notifications collection
-        public static async Task<Notification> Save(CoachCueUserData userData, User toUser, string text, string type, Matchup matchup)
-        {
-            User userFrom = new User()
-            {
-                Id = userData.UserId,
-                UserName = userData.UserName,
-                Name = userData.Name,
-                Profile = new UserProfile() { Image = userData.ProfileImage },
-                Email = userData.Email
-            };
-
-            return await Save(userFrom, toUser, text, type, matchup);
-        }
-
-        public static async Task<Notification> Save(User userFrom, User toUser, string text, string type, Matchup matchup)
-        {
-            Notification notification = new Notification();
-
-            try
-            {
-                notification.DateCreated = DateTime.UtcNow.GetEasternTime();
-                notification.CreatedBy = userFrom.Id;
+                notification.CreatedBy = userFrom;
                 notification.Text = text;
                 notification.Type = type;
                 notification.UserFrom = userFrom;
                 notification.UserTo = toUser;
-                notification.Matchup = matchup;
+                if (type == "vote" || type == "voteRequested")
+                    notification.Matchup = referenceId;
+                else
+                    notification.Message = referenceId;
 
-                var result = await DocumentDBRepository<Notification>.CreateItemAsync(notification, "Notifications");
-                notification.Id = result.Id;
+                notification.Id = Guid.NewGuid().ToString();
+
+                //add notification to the user and update
+                var user = await UserService.Get(toUser);
+                user.Notifications.Add(notification);
+                await DocumentDBRepository<User>.UpdateItemAsync(user.Id, user, "Users");
             }
             catch (Exception ex)
             {
@@ -87,36 +47,42 @@ namespace CoachCue.Service
 
         public static async Task<IEnumerable<Notification>> GetList(string userId)
         {
-            return await DocumentDBRepository<Notification>.GetItemsAsync(d => d.UserTo.Id == userId, "Notifications");
-        }
-
-        public static async Task<Notification> Get(string id)
-        {
-            return await DocumentDBRepository<Notification>.GetItemAsync(id, "Notifications");
+            var user = await UserService.Get(userId);
+            return user.Notifications;
         }
 
         public static async Task<IEnumerable<Notification>> GetByMessage(string messageId)
         {
-            return await DocumentDBRepository<Notification>.GetItemsAsync(d => d.Message.Id == messageId 
-                && d.Sent == false 
-                && (d.Type == "mention" || d.Type == "reply"), 
-                "Notifications");
+            var message = await MessageService.Get(messageId);
+            var user = await UserService.Get(message.UserMentions.FirstOrDefault());
+
+            return user.Notifications.Where(d => d.Message == messageId
+                && d.Sent == false
+                && (d.Type == "mention" || d.Type == "reply"));
         }
 
         public static async Task<Notification> GetByMatchup(string matchupId, string fromUser)
         {
-            var notifications = await DocumentDBRepository<Notification>.GetItemsAsync(d => d.Matchup.Id == matchupId
+            var matchup = await MatchupService.Get(matchupId);
+            var user = await UserService.Get(matchup.CreatedBy);
+
+            var notifications = user.Notifications.Where(d => d.Matchup == matchupId
                 && d.Sent == false
                 && d.Type == "vote"
-                && d.UserFrom.Id == fromUser,
-                "Notifications");
+                && d.UserFrom == fromUser);
 
             return notifications.FirstOrDefault();
         }
 
         public static async Task<Microsoft.Azure.Documents.Document> Update(Notification notification)
         {
-            return await DocumentDBRepository<Notification>.UpdateItemAsync(notification.Id, notification, "Notifications");
+            var user = await UserService.Get(notification.UserTo);
+
+            var update=  user.Notifications.Where(nt => nt.Id == notification.Id).FirstOrDefault();
+            update.Sent = notification.Sent;
+            update.Read = notification.Read;
+          
+            return await DocumentDBRepository<User>.UpdateItemAsync(user.Id, user, "Users");
         }
 
         public static async Task<List<User>> GetMatchupNotificationUsers(string userId, Matchup matchup)

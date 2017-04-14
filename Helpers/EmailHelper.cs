@@ -6,7 +6,6 @@ using System.Net.Mail;
 using System.Configuration;
 using System.Net;
 using CoachCue.Mailers;
-using CoachCue.Model;
 using Mvc.Mailer;
 using System.Threading.Tasks;
 using CoachCue.Models;
@@ -20,26 +19,17 @@ namespace CoachCue.Helpers
         {
             try
             {
-                /*LinkData link = notification.GetMatchupLink(matchupID, noticeGuid);
-                string fromName = user.Get(fromID).fullName;
-                
-                user userToItem = user.Get(toID);
-                string toEmail = userToItem.email;
-
-                CoachCue.Mailers.IUserMailer UserMailer = new UserMailer();
-
-                SmtpClientWrapper wrapper = new SmtpClientWrapper(getSmtpConfig());
-                //check the users settings before sending
-                if( user.GetSettings( toID ).emailNotifications.Value == true )
-                    UserMailer.RequestVote(toEmail, userToItem.userGuid, fromID, link).Send(wrapper);*/
-
                 IUserMailer UserMailer = new UserMailer();
 
                 //check the users settings before sending
                 foreach (var notification in notifications)
                 {
-                    if (notification.UserTo.Settings.EmailNotifications == true)
-                        UserMailer.RequestVote(notification).Send(new SmtpClientWrapper(getSmtpConfig()));
+                    var userTo = await UserService.Get(notification.UserTo);
+                    var userFrom = await UserService.Get(notification.UserFrom);
+                    var matchup = await MatchupService.Get(notification.Matchup);
+
+                    if (userTo.Settings.EmailNotifications == true)
+                        UserMailer.RequestVote(notification, userTo, userFrom, matchup).Send(new SmtpClientWrapper(getSmtpConfig()));
 
                     //mark as sent
                     notification.Sent = true;
@@ -57,8 +47,12 @@ namespace CoachCue.Helpers
             {
                 IUserMailer UserMailer = new UserMailer();
 
-                if (notification.UserTo.Settings.EmailNotifications == true)
-                    UserMailer.MatchupVoted(notification).Send(new SmtpClientWrapper(getSmtpConfig()));
+                var userTo = await UserService.Get(notification.UserTo);
+                var userFrom = await UserService.Get(notification.UserFrom);
+                var matchup = await MatchupService.Get(notification.Matchup);
+
+                if (userTo.Settings.EmailNotifications == true)
+                    UserMailer.MatchupVoted(notification, userTo, userFrom, matchup).Send(new SmtpClientWrapper(getSmtpConfig()));
 
                 //mark as sent
                 notification.Sent = true;
@@ -78,8 +72,12 @@ namespace CoachCue.Helpers
                 //check the users settings before sending
                 foreach (var notification in notifications)
                 {
-                    if (notification.UserTo.Settings.EmailNotifications == true)
-                        UserMailer.Notifications(notification).Send(new SmtpClientWrapper(getSmtpConfig()));
+                    var userTo = await UserService.Get(notification.UserTo);
+                    var userFrom = await UserService.Get(notification.UserFrom);
+                    var message = await MessageService.Get(notification.Message);
+
+                    if (userTo.Settings.EmailNotifications == true)
+                        UserMailer.Notifications(notification, userFrom, userTo, message).Send(new SmtpClientWrapper(getSmtpConfig()));
 
                     //mark as sent
                     notification.Sent = true;
@@ -92,26 +90,6 @@ namespace CoachCue.Helpers
             }
 
             return true;
-        }
-
-        public static void SendMatchupMessageEmail(int fromID, int toID, int matchupID, string noticeGuid)
-        {
-            try
-            {
-                LinkData link = notification.GetMatchupLink(matchupID, string.Empty);
-                string fromName = user.Get(fromID).fullName;
-
-                user userToItem = user.Get(toID);
-                string toEmail = userToItem.email;
-
-                CoachCue.Mailers.IUserMailer UserMailer = new UserMailer();
-
-                SmtpClientWrapper wrapper = new SmtpClientWrapper(getSmtpConfig());
-                //check the users settings before sending
-                if (user.GetSettings(toID).emailNotifications.Value == true)
-                    UserMailer.MatchupMessage(userToItem, fromID, link).Send(wrapper);
-            }
-            catch (Exception) { }
         }
 
         public static void Send(string toAddress, string emailLabel, string inviteMessage) 
