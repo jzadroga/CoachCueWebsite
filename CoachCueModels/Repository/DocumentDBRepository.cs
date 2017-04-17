@@ -115,6 +115,16 @@
             }
         }
 
+        #region Users
+
+        public static IEnumerable<Models.User> GetNotificationsByMatchup(string matchupId)
+        {
+            return client.CreateDocumentQuery<Models.User>(UriFactory.CreateDocumentCollectionUri(DatabaseId, "Users"))
+                    .SelectMany(s => s.Notifications.Where(c => c.Matchup == matchupId && c.Read == false && c.Sent == false).Select(c => s)).ToList();
+        }
+            
+        #endregion
+
         #region Matchup
 
         public static IEnumerable<Matchup> GetPlayerMatchups(string playerId)

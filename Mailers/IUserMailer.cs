@@ -11,5 +11,6 @@ namespace CoachCue.Mailers
         MvcMailMessage Notifications(Notification notification, User userFrom, User userTo, Message message);
         MvcMailMessage RequestVote(Notification notification, User userTo, User userFrom, Matchup matchup);
         MvcMailMessage MatchupVoted(Notification notification, User userTo, User userFrom, Matchup matchup);
+        MvcMailMessage MatchupNotifications(Notification notification, User userFrom, User userTo, Matchup matchup);
     }
 }

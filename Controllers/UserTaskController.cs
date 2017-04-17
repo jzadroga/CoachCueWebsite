@@ -222,7 +222,7 @@ namespace CoachCue.Controllers
             return Json(new
             {
                 StreamData = streamData,
-                ID = message.Id,
+                ID = (streamItem.ContentType == "replyMessage" ) ? prnt : message.Id,
                 Type = type,
                 Inline = inline,
                 MentionNotices = new List<Model.MentionNotice>(),
@@ -234,9 +234,9 @@ namespace CoachCue.Controllers
 
         [SiteAuthorization]
         [HttpPost]
-        public async Task<ActionResult> SendMessageNotifications(string messageId)
+        public async Task<ActionResult> SendMessageNotifications(string messageId, string type)
         {
-            var notifications = await NotificationService.GetByMessage(messageId);
+            var notifications = (type == "matchup") ? NotificationService.GetByMatchup(messageId) : await NotificationService.GetByMessage(messageId);
 
             //send off mention/reply emails
             if( notifications.Count() > 0 )

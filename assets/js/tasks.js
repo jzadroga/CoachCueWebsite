@@ -117,10 +117,10 @@ var task = function () {
         })
     },
 
-    sendNotificationEmail = function (msgId, callback) {
+    sendNotificationEmail = function (msgId, type, callback) {
         var postData = new FormData();
         postData.append('messageId', msgId);
-
+        postData.append('type', type);
         $.ajax({
             type: "POST",
             contentType: false,

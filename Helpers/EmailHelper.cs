@@ -74,10 +74,20 @@ namespace CoachCue.Helpers
                 {
                     var userTo = await UserService.Get(notification.UserTo);
                     var userFrom = await UserService.Get(notification.UserFrom);
-                    var message = await MessageService.Get(notification.Message);
 
                     if (userTo.Settings.EmailNotifications == true)
-                        UserMailer.Notifications(notification, userFrom, userTo, message).Send(new SmtpClientWrapper(getSmtpConfig()));
+                    {
+                        if(!string.IsNullOrEmpty(notification.Message))
+                        {
+                            var message = await MessageService.Get(notification.Message);
+                            UserMailer.Notifications(notification, userFrom, userTo, message).Send(new SmtpClientWrapper(getSmtpConfig()));
+                        }
+                        else if(!string.IsNullOrEmpty(notification.Matchup))
+                        {
+                            var matchup = await MatchupService.Get(notification.Matchup);
+                            UserMailer.MatchupNotifications(notification, userFrom, userTo, matchup).Send(new SmtpClientWrapper(getSmtpConfig()));
+                        }
+                    }
 
                     //mark as sent
                     notification.Sent = true;

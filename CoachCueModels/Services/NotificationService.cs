@@ -25,7 +25,7 @@ namespace CoachCue.Service
                 notification.Type = type;
                 notification.UserFrom = userFrom;
                 notification.UserTo = toUser;
-                if (type == "vote" || type == "voteRequested")
+                if (type == "vote" || type == "voteRequested" || type == "replyMatchup")
                     notification.Matchup = referenceId;
                 else
                     notification.Message = referenceId;
@@ -54,11 +54,29 @@ namespace CoachCue.Service
         public static async Task<IEnumerable<Notification>> GetByMessage(string messageId)
         {
             var message = await MessageService.Get(messageId);
-            var user = await UserService.Get(message.UserMentions.FirstOrDefault());
+            var user = (message.UserMentions.Count() > 0) ? await UserService.Get(message.UserMentions.FirstOrDefault()) : await UserService.Get(message.CreatedBy);
 
             return user.Notifications.Where(d => d.Message == messageId
                 && d.Sent == false
                 && (d.Type == "mention" || d.Type == "reply"));
+        }
+
+        public static IEnumerable<Notification> GetByMatchup(string matchupId)
+        {
+            List<Notification> notifications = new List<Notification>();
+            List<User> userList = new List<User>();
+
+            var users = UserService.GetUserNotifications(matchupId);
+            foreach(var user in users)
+            {
+                if (userList.Where(us => us.Id == user.Id).Count() == 0)
+                {
+                    userList.Add(user);
+                    notifications.AddRange(user.Notifications.Where(nt => nt.Matchup == matchupId && nt.Type == "replyMatchup"));
+                }
+            }
+
+            return notifications;
         }
 
         public static async Task<Notification> GetByMatchup(string matchupId, string fromUser)

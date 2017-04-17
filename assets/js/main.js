@@ -181,7 +181,7 @@ $(document).ready(function () {
                 }
          
                 //send out email notifications
-                task.sendNotificationEmail(data.ID, function (emailSent) {
+                task.sendNotificationEmail(data.ID, msgType, function (emailSent) {
                 });                
             }
 

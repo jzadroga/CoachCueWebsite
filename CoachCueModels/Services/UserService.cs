@@ -359,6 +359,11 @@ namespace CoachCue.Service
             return users;
         }
 
+        public static IEnumerable<User> GetUserNotifications(string matchupId)
+        {
+            return DocumentDBRepository<User>.GetNotificationsByMatchup(matchupId);
+        }
+
         public static async Task<User> GetByUsername(string username)
         {
             var user = await DocumentDBRepository<User>.GetItemsAsync(us => us.UserName.ToLower() == username.ToLower(), "Users");

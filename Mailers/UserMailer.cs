@@ -65,6 +65,44 @@ namespace CoachCue.Mailers
             });
         }
 
+        public virtual MvcMailMessage MatchupNotifications(Notification notification, User userFrom, User userTo, Matchup matchup)
+        {
+            string msg = matchup.Type + " ";
+            for (int i = 0; i < matchup.Players.Count; i++)
+            {
+                if (matchup.Players.Count > 2 && i < matchup.Players.Count - 2)
+                    msg += matchup.Players[i].Name + ", ";
+                else
+                    msg += ((i + 1) != matchup.Players.Count) ? matchup.Players[i].Name + " or " : matchup.Players[i].Name;
+            }
+
+            LinkData link = new LinkData()
+            {
+                Message = msg,
+                ID = notification.Matchup,
+                Guid = notification.UserFrom
+            };
+
+            MailRequestVoteViewModel voteVM = new MailRequestVoteViewModel();
+            voteVM.FullName = userFrom.Name;
+            voteVM.MatchupLink = link;
+            voteVM.FromAvatarSrc = "http://coachcue.com/assets/img/avatar/" + userFrom.Profile.Image;
+            voteVM.FullLink = "http://coachcue.com/" + matchup.Link;
+
+            ViewData.Model = voteVM;
+
+            ViewData["Title"] = notification.Text;
+            ViewData["UserGuid"] = string.Empty;
+
+            return Populate(x =>
+            {
+                x.Subject = notification.Text;
+                x.ViewName = "MatchupVote";
+                x.To.Add(userTo.Email);
+                x.From = new MailAddress(fromAddress, "CoachCue");
+            });
+        }
+
         public virtual MvcMailMessage RequestVote(Notification notification, User userTo, User userFrom, Matchup matchup)
         {
             ViewData["Title"] = notification.Text;

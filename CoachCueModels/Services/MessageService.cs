@@ -117,7 +117,7 @@ namespace CoachCue.Service
                         var replyUsers = await NotificationService.GetReplyNotificationUsers(userData.UserId, parentMsg);
                         foreach (var replyUser in replyUsers)
                         {
-                            await NotificationService.Save(userData.UserId, replyUser.Id, userData.Name + " Posted a new reply message.", "reply", message.Id);
+                            await NotificationService.Save(userData.UserId, replyUser.Id, userData.Name + " Posted a new reply message.", "reply", parentID);
                         }
 
                         parentMsg.Reply.Add(message);

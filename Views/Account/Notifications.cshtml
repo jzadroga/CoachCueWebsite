@@ -1,5 +1,4 @@
 ﻿@model CoachCue.ViewModels.NotificationsViewModel
-@using CoachCue.Model;
 
 @{
     ViewBag.Title = "CoachCue - Notifications";
@@ -33,14 +32,14 @@
                         <tr>
                             <td>@notice.Notification.DateCreated.ToShortDateString()</td>
                             <td class="notice-img"><img src="/assets/img/avatar/@notice.UserFrom.Profile.Image" /></td>
-                            <td>@notice.Notification.Text</td>
+                            <td><a href="@Url.Action("index", "coach", new { name = notice.UserFrom.Link })">@notice.Notification.Text</a></td>
                         </tr>
                         break;
                     case "replyMatchup":
                         <tr>
                             <td>@notice.Notification.DateCreated.ToShortDateString()</td>
                             <td class="notice-img"><img src="/assets/img/avatar/@notice.UserFrom.Profile.Image" /></td>
-                            <td>@notice.Notification.Text</td>
+                            <td><a href="@Href("~/" + notice.Matchup.Link)">@notice.Notification.Text</a></td>
                         </tr>
                         break;
                 }
