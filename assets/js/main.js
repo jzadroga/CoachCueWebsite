@@ -666,7 +666,7 @@ function showNotice(header, msg) {
 //typeaheads
 function loadSearchTypeahead() {
     //top search
-    var playerTemplate = '<a href="/player/{{team.slug}}/{{link}}"><img class="typeahead-avatar" src="{{profileImage}}" alt=""><span class="typeahead-bio">{{name}} | {{position}} | {{team.name}}</span></a>';
+    var playerTemplate = '<a href="/player/{{team.slug}}/{{link}}"><img class="typeahead-avatar" src="{{profileImage}}" alt=""><span class="typeahead-bio-player">{{name}} | {{position}} | {{team.slug}}</span></a>';
     var nflPlayers = Hogan.compile(playerTemplate);
 
     var userTemplate = '<a href="/coach/{{link}}"><img class="typeahead-avatar" src="{{image}}" alt=""><span class="typeahead-bio">{{name}} | @{{username}}</span></a>';
@@ -764,7 +764,7 @@ function loadPlayersTypeahead() {
 
     //load the typeahead template
     // construct template string
-    var template = '<img class="typeahead-avatar" src="{{profileImage}}" alt=""><span class="typeahead-bio">{{name}} | {{position}} | {{team.name}}</span>';
+    var template = '<img class="typeahead-avatar" src="{{profileImage}}" alt=""><span class="typeahead-bio-player">{{name}} | {{position}} | {{team.slug}}</span>';
     var nflPlayers = Hogan.compile(template);
 
     //load the player typeahead
@@ -788,7 +788,7 @@ function loadPlayersTypeahead() {
 }
 
 function loadMatchupPlayersTypeahead() {
-    var template = '<img class="typeahead-avatar" src="{{profileImage}}" alt=""><span class="typeahead-bio">{{name}} | {{position}} | {{team.name}}</span>';
+    var template = '<img class="typeahead-avatar" src="{{profileImage}}" alt=""><span class="typeahead-bio-player">{{name}} | {{position}} | {{team.slug}}</span>';
     var nflPlayers = Hogan.compile(template);
 
     $('#player1, #player2, #player3, #player4').typeahead({

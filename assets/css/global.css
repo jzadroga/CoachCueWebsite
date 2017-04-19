@@ -1644,6 +1644,13 @@ div#avatar-wrapper
     font-size: 16px;
 }
 
+.typeahead-bio-player{
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
 .you-link
 {
     padding-left: 35px !important;
@@ -3614,7 +3621,11 @@ div.new-message-text-controls  div.message-charNum{
 
 /* iPhone 4 */
 @media (max-width: 320px) {
-     #main-nav-bar .brand {
+     span.footer-nav-text{
+        display: none;
+    }
+
+    #main-nav-bar .brand {
         display: none;
     }
 
@@ -3636,15 +3647,29 @@ div.new-message-text-controls  div.message-charNum{
     }
 
     .nav-pills.stream-filter li a{
-        padding: 8px 10px !important;
+        padding: 8px 6px !important;
+         font-size: 12px;
+        font-weight: bold;
     }
 
     .msg-media .media .media-left{
         float: none;
     }
+
+    div.global-button-items {
+        bottom: 4rem;
+    }
 }
 
 @media (max-width: 480px) {
+    span.footer-nav-text{
+        display: none;
+    }
+
+    div.global-button-items {
+        bottom: 4rem;
+    }
+
     div.global-button-item-message{
         margin: 0 0 10px;
     }
@@ -3715,7 +3740,9 @@ div.new-message-text-controls  div.message-charNum{
     }
 
     .nav-pills.stream-filter li a{
-        padding: 8px 10px !important;
+        padding: 8px 6px !important;
+        font-size: 12px;
+        font-weight: bold;
     }
 
     .msg-media .media .media-left{

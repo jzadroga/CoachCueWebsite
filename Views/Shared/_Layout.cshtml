@@ -65,6 +65,7 @@
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> 
+    <link rel="manifest" href="/manifest.json">
     @Styles.Render("~/assets/css/bundle")
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>    
@@ -591,19 +592,19 @@
             <div class="row" id="bottomNav">
                 <div class="col-xs-3 text-center">
                     @if (!User.Identity.IsAuthenticated) {
-                        <a role="button" data-register="true" data-backdrop="static" data-keyboard="false" href="#modal-register" data-toggle="modal" data-target="#modal-register"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
+                        <a role="button" data-register="true" data-backdrop="static" data-keyboard="false" href="#modal-register" data-toggle="modal" data-target="#modal-register"><i class="glyphicon glyphicon-user"></i><span class="footer-nav-text"><br>My Matchups</span></a>
                     } else {
-                        <a class="@Html.ActiveSection("coach")" href="@Url.Action("index", "coach", new { name = Model.UserData.Link })"><i class="glyphicon glyphicon-user"></i><br>My Matchups</a>
+                        <a class="@Html.ActiveSection("coach")" href="@Url.Action("index", "coach", new { name = Model.UserData.Link })"><i class="glyphicon glyphicon-user"></i><span class="footer-nav-text"><br>My Matchups</span></a>
                     }
                 </div>
                 <div class="col-xs-3 text-center">
-                    <a class="@Html.ActiveSection("search")" href="@Url.Action("index", "search")"><i class="glyphicon glyphicon-search"></i><br>Search</a>
+                    <a class="@Html.ActiveSection("search")" href="@Url.Action("index", "search")"><i class="glyphicon glyphicon-search"></i><span class="footer-nav-text"><br>Search</span></a>
                 </div>
                 <div class="col-xs-3 text-center">
-                    <a class="@Html.ActiveSection("topvotedplayers")" href="@Url.Action("index", "topvotedplayers")"><i class="glyphicon glyphicon-thumbs-up"></i><br>Most Voted</a>
+                    <a class="@Html.ActiveSection("topvotedplayers")" href="@Url.Action("index", "topvotedplayers")"><i class="glyphicon glyphicon-thumbs-up"></i><span class="footer-nav-text"><br>Most Voted</span></a>
                 </div>
                 <div class="col-xs-3 text-center">
-                    <a class="@Html.ActiveSection("leaderboard")" href='@Url.Action("index", "leaderboard")'><i class="glyphicon glyphicon-star"></i><br>Our Experts</a>
+                    <a class="@Html.ActiveSection("leaderboard")" href='@Url.Action("index", "leaderboard")'><i class="glyphicon glyphicon-star"></i><span class="footer-nav-text"><br>Our Experts</span></a>
                 </div>
             </div>
         </div>
@@ -623,5 +624,13 @@
 
     <script type="text/javascript" src="~/assets/js/bootstrap-list-filter.min..js"></script>
 
+    <script>
+     if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(function(reg){
+         }).catch(function(err) {
+        });
+     }
+    </script>
 </body>
 </html>
