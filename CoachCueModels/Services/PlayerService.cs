@@ -93,13 +93,26 @@ namespace CoachCue.Service
             return foundPlayers;
         }
 
+        public static async Task<bool> AddDefense()
+        {
+            bool added = true;
+
+            foreach(var team in Team.GetList())
+            {
+                var firstName = team.Name.Substring(team.Name.LastIndexOf(" ")).Trim();
+                await SavePlayer(firstName, "Defense", "DEF", string.Empty, string.Empty, string.Empty, team.Slug);
+            }
+
+            return added;
+        }
+
         //save a player document to the Players collection
         public static async Task<Player> SavePlayer(string firstName, string lastName, string position, string number, string college,
                                      string years, string slug)
         {
             Player player = new Player();
 
-            if (position == "QB" || position == "TE" || position == "RB" || position == "WR" || position == "K" || position == "FB")
+            if (position == "QB" || position == "TE" || position == "RB" || position == "WR" || position == "K" || position == "FB" || position == "DEF")
             {
                 var players = await DocumentDBRepository<Player>.GetItemsAsync(d => d.Active || !d.Active, "Players");
 
