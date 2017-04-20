@@ -63,7 +63,7 @@ namespace CoachCue.ViewModels
     {
         public List<LeaderboardCoach> LeaderCoaches { get; set; }
         public List<Game> Weeks { get; set; }
-        public string SelectedWeek { get; set; }
+        public int SelectedWeek { get; set; }
         //public LeaderboardCoach CurrentUser { get; set; }
         public bool UserIncluded { get; set; }
         public string Sort { get; set; }

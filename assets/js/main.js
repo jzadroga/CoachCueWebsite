@@ -666,7 +666,7 @@ function showNotice(header, msg) {
 //typeaheads
 function loadSearchTypeahead() {
     //top search
-    var playerTemplate = '<a href="/player/{{team.slug}}/{{link}}"><img class="typeahead-avatar" src="{{profileImage}}" alt=""><span class="typeahead-bio-player">{{name}} | {{position}} | {{team.slug}}</span></a>';
+    var playerTemplate = '<a href="/player/{{team.slug}}/{{link}}"><img class="typeahead-avatar" src="{{profileImage}}" alt=""><span class="typeahead-bio-player">{{name}} | {{position}} | <span>{{team.slug}}</span></span></a>';
     var nflPlayers = Hogan.compile(playerTemplate);
 
     var userTemplate = '<a href="/coach/{{link}}"><img class="typeahead-avatar" src="{{image}}" alt=""><span class="typeahead-bio">{{name}} | @{{username}}</span></a>';

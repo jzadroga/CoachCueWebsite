@@ -15,7 +15,7 @@ namespace CoachCue.Controllers
 {
     public class LeaderBoardController : BaseController
     {
-        public async Task<ActionResult> Index([DefaultValue("")]string week, [DefaultValue("")]string sort, [DefaultValue("")]string dr)
+        public async Task<ActionResult> Index([DefaultValue(0)]int week, [DefaultValue("")]string sort, [DefaultValue("")]string dr)
         {
             LeaderBoardModel leaderVM = new LeaderBoardModel();
             await LoadBaseViewModel(leaderVM);

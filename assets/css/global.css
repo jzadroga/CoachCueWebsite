@@ -48,6 +48,7 @@ div.global-button-items{
     position: fixed; 
     bottom: 8rem; 
     right: 2rem;
+    z-index: 9999;
 }
 
 div.global-button-item{
@@ -3629,6 +3630,10 @@ div.new-message-text-controls  div.message-charNum{
 
 /* iPhone 4 */
 @media (max-width: 320px) {
+    #bottomNav a{
+        font-size: 18px;
+    }
+
      span.footer-nav-text{
         display: none;
     }
@@ -3670,6 +3675,10 @@ div.new-message-text-controls  div.message-charNum{
 }
 
 @media (max-width: 480px) {
+    #bottomNav a{
+        font-size: 18px;
+    }
+
     span.footer-nav-text{
         display: none;
     }

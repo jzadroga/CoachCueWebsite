@@ -30,7 +30,7 @@ namespace CoachCue.Service
                 //get all the user messages for following a user or player
                 var endDate = DateTime.UtcNow.GetEasternTime().AddDays(-280);
        
-                var matchups = MatchupService.GetListByPosition(endDate, position).Take(80);
+                var matchups = MatchupService.GetListByPosition(endDate, position);
                 stream = MatchupToStream(userData, matchups);
             }
             catch (Exception ex)

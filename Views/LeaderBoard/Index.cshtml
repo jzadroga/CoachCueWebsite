@@ -9,13 +9,13 @@
 <div class="span9 section">
 
     <ul class="nav nav-pills weeklist">
-        <li @if (string.IsNullOrEmpty(Model.SelectedWeek)) { <text> class="active" </text>  }>
+        <li @if (Model.SelectedWeek == 0) { <text> class="active" </text>  }>
             <a href="@Url.Action("Index", "LeaderBoard", new { week = 0 })">Overall</a>
         </li>
         @foreach (var week in Model.Weeks)
         {
-            <li @if (week.Id == Model.SelectedWeek) { <text> class="active" </text>  }>
-                <a href="@Url.Action("Index", "LeaderBoard", new { week = @week.Id })">@week.Week</a>
+            <li @if (week.Week == Model.SelectedWeek) { <text> class="active" </text>  }>
+                <a href="@Url.Action("Index", "LeaderBoard", new { week = @week.Week })">@week.Week</a>
             </li>
         }
     </ul>

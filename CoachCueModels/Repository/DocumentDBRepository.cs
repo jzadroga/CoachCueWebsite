@@ -161,21 +161,25 @@
 
         public static IEnumerable<Matchup> GetPositionMatchups(string position)
         {
+            var matchups = new List<Matchup>();
+
             if (position == "WR")
             {
-                return client.CreateDocumentQuery<Matchup>(UriFactory.CreateDocumentCollectionUri(DatabaseId, "Matchups"))
-                        .SelectMany(s => s.Players.Where(c => c.Position == position || c.Position == "TE").Select(c => s));
+                matchups = client.CreateDocumentQuery<Matchup>(UriFactory.CreateDocumentCollectionUri(DatabaseId, "Matchups"))
+                        .SelectMany(s => s.Players.Where(c => c.Position == position || c.Position == "TE").Select(c => s)).Take(200).ToList(); ;
             }
             else if (position == "DEF")
             {
-                return client.CreateDocumentQuery<Matchup>(UriFactory.CreateDocumentCollectionUri(DatabaseId, "Matchups"))
-                        .SelectMany(s => s.Players.Where(c => c.Position == position || c.Position == "K").Select(c => s));
+                matchups = client.CreateDocumentQuery<Matchup>(UriFactory.CreateDocumentCollectionUri(DatabaseId, "Matchups"))
+                        .SelectMany(s => s.Players.Where(c => c.Position == position || c.Position == "K").Select(c => s)).Take(200).ToList(); ;
             }
             else
             {
-               return client.CreateDocumentQuery<Matchup>(UriFactory.CreateDocumentCollectionUri(DatabaseId, "Matchups"))
-                        .SelectMany(s => s.Players.Where(c => c.Position == position).Select(c => s));
+                matchups = client.CreateDocumentQuery<Matchup>(UriFactory.CreateDocumentCollectionUri(DatabaseId, "Matchups"))
+                        .SelectMany(s => s.Players.Where(c => c.Position == position).Select(c => s)).Take(200).ToList();
             }
+
+            return matchups.GroupBy(mt => mt.Id).Select(grp => grp.First()).Take(100).ToList();
         }
 
         #endregion
