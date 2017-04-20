@@ -13,8 +13,8 @@
 
     public static class DocumentDBRepository<T> where T : class
     {
-        //private static readonly string DatabaseId = "CoachCueData";
-        private static readonly string DatabaseId = "coachcue";
+        private static readonly string DatabaseId = "CoachCueDB";
+        //private static readonly string DatabaseId = "coachcue";
         private static DocumentClient client;
 
         public static async Task<T> GetItemAsync(string id, string collection)
@@ -114,6 +114,30 @@
                 }
             }
         }
+
+        #region Games
+
+        public static async Task<Schedule> GetScheduleAsync(string id)
+        {
+            try
+            {
+                Document document = await client.ReadDocumentAsync(UriFactory.CreateDocumentUri(DatabaseId, "Players", id));
+                return (Schedule)(dynamic)document;
+            }
+            catch (DocumentClientException e)
+            {
+                if (e.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
+        #endregion
 
         #region Users
 

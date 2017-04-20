@@ -27,7 +27,6 @@ namespace CoachCue
             DocumentDBRepository<CoachCue.Models.User>.Initialize();
             DocumentDBRepository<CoachCue.Models.Message>.Initialize();
             DocumentDBRepository<CoachCue.Models.Matchup>.Initialize();
-            DocumentDBRepository<CoachCue.Models.Game>.Initialize();
         }
 
         protected void Application_Error(object sender, EventArgs e)

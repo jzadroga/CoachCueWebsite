@@ -764,7 +764,7 @@ function loadPlayersTypeahead() {
 
     //load the typeahead template
     // construct template string
-    var template = '<img class="typeahead-avatar" src="{{profileImage}}" alt=""><span class="typeahead-bio-player">{{name}} | {{position}} | {{team.slug}}</span>';
+    var template = '<img class="typeahead-avatar" src="{{profileImage}}" alt=""><span class="typeahead-bio-player">{{name}} | {{position}} | <span>{{team.slug}}</span></span>';
     var nflPlayers = Hogan.compile(template);
 
     //load the player typeahead
@@ -788,7 +788,7 @@ function loadPlayersTypeahead() {
 }
 
 function loadMatchupPlayersTypeahead() {
-    var template = '<img class="typeahead-avatar" src="{{profileImage}}" alt=""><span class="typeahead-bio-player">{{name}} | {{position}} | {{team.slug}}</span>';
+    var template = '<img class="typeahead-avatar" src="{{profileImage}}" alt=""><span class="typeahead-bio-player">{{name}} | {{position}} | <span>{{team.slug}}</span></span>';
     var nflPlayers = Hogan.compile(template);
 
     $('#player1, #player2, #player3, #player4').typeahead({

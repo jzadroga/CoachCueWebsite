@@ -129,7 +129,7 @@ namespace CoachCue.Controllers
 
         public ActionResult ImportSchedule()
         {
-            gameschedule.ImportSchedule(5);
+            GameScheduleService.ImportSchedule(2016);
             return RedirectToAction("Index");
         }
 

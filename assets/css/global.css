@@ -37,6 +37,11 @@
 	padding: 5px;
 }
 
+.row.text-center > div {
+    display: inline-block;
+    float: none;
+}
+
 /* Global buttons */
 
 div.global-button-items{
@@ -1648,6 +1653,9 @@ div#avatar-wrapper
     display: inline-block;
     margin-top: 5px;
     font-size: 16px;
+}
+
+.typeahead-bio-player span{
     text-transform: uppercase;
 }
 

@@ -589,21 +589,24 @@
 
     <div id="footer">
         <div class="col-xs-12 navbar-inverse navbar-fixed-bottom">
-            <div class="row" id="bottomNav">
-                <div class="col-xs-3 text-center">
+            <div class="row text-center" id="bottomNav">
+                <div class="col-xs-2 text-center">
+                    <a class="@Html.ActiveSection("home")" href="@Url.Action("index", "home")"><i class="glyphicon glyphicon-home"></i><span class="footer-nav-text"><br>Home</span></a>
+                </div>
+                <div class="col-xs-2 text-center">
                     @if (!User.Identity.IsAuthenticated) {
                         <a role="button" data-register="true" data-backdrop="static" data-keyboard="false" href="#modal-register" data-toggle="modal" data-target="#modal-register"><i class="glyphicon glyphicon-user"></i><span class="footer-nav-text"><br>My Matchups</span></a>
                     } else {
                         <a class="@Html.ActiveSection("coach")" href="@Url.Action("index", "coach", new { name = Model.UserData.Link })"><i class="glyphicon glyphicon-user"></i><span class="footer-nav-text"><br>My Matchups</span></a>
                     }
                 </div>
-                <div class="col-xs-3 text-center">
+                <div class="col-xs-2 text-center">
                     <a class="@Html.ActiveSection("search")" href="@Url.Action("index", "search")"><i class="glyphicon glyphicon-search"></i><span class="footer-nav-text"><br>Search</span></a>
                 </div>
-                <div class="col-xs-3 text-center">
+                <div class="col-xs-2 text-center">
                     <a class="@Html.ActiveSection("topvotedplayers")" href="@Url.Action("index", "topvotedplayers")"><i class="glyphicon glyphicon-thumbs-up"></i><span class="footer-nav-text"><br>Most Voted</span></a>
                 </div>
-                <div class="col-xs-3 text-center">
+                <div class="col-xs-2 text-center">
                     <a class="@Html.ActiveSection("leaderboard")" href='@Url.Action("index", "leaderboard")'><i class="glyphicon glyphicon-star"></i><span class="footer-nav-text"><br>Our Experts</span></a>
                 </div>
             </div>

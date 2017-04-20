@@ -223,25 +223,28 @@ namespace CoachCue.Service
         public static async Task<IEnumerable<VotedPlayer>> GetTopVoted()
         {
             List<VotedPlayer> players = new List<VotedPlayer>();
-            var matchups = await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true, "Matchups");        
+            var matchups = await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true, "Matchups");
 
             //get the 250 most recent
             matchups = matchups.OrderByDescending(d => d.DateCreated).Take(250);
 
             var votedPlayers = matchups.SelectMany(mt => mt.Votes, (mt, votes) => new { mt, votes })
-                        .GroupBy(ply => ply.votes.PlayerId, pair => pair.mt).Select( ply => 
-                            new { id = ply.Key, count = ply.Count() }).ToList();
+                        .GroupBy(ply => ply.votes.PlayerId, pair => pair.mt).Select(ply =>
+                           new { id = ply.Key, count = ply.Count() }).ToList();
 
-            var playerList = await GetListByIds(votedPlayers.Select( ply => ply.id).ToList());
+            var playerList = await GetListByIds(votedPlayers.Select(ply => ply.id).ToList());
 
-            int topCount = votedPlayers.OrderByDescending(ply => ply.count).First().count;
+            if (votedPlayers.Count() > 0)
+            { 
+                int topCount = votedPlayers.OrderByDescending(ply => ply.count).First().count;
 
-            foreach ( var player in playerList )
-            {
-                int count = votedPlayers.Where(ply => ply.id == player.Id).First().count;
-                string percent = ((Convert.ToDecimal(count) / topCount) * 100).ToString() + "%";
+                foreach (var player in playerList)
+                {
+                    int count = votedPlayers.Where(ply => ply.id == player.Id).First().count;
+                    string percent = ((Convert.ToDecimal(count) / topCount) * 100).ToString() + "%";
 
-                players.Add(new VotedPlayer { Percent = percent, Votes = count, Player = player });
+                    players.Add(new VotedPlayer { Percent = percent, Votes = count, Player = player });
+                }
             }
            
             return players.OrderByDescending(ply => ply.Votes);
