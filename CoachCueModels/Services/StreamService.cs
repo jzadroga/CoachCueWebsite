@@ -53,10 +53,10 @@ namespace CoachCue.Service
                 else
                 {
                     var trendingPlayers = await GetTrendingStream();
-                    foreach (var trendingPlayer in trendingPlayers.Take(15))
+                    foreach (var trendingPlayer in trendingPlayers.Take(40))
                     {
                         var playerNews = await GetPlayerTwitterStream(trendingPlayer);
-                        stream.AddRange(playerNews.Take(5));
+                        stream.AddRange(playerNews.Take(2));
                     }
 
                     HttpContext.Current.Cache.Insert(cacheID, stream, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(0, 8, 0));
@@ -130,15 +130,20 @@ namespace CoachCue.Service
                             var player = await PlayerService.GetByLink(playerName);
                             if (player != null)
                             {
-                                if( stream.Where( pl => pl.Id == player.Id).FirstOrDefault() == null)
+                                if(stream.Where( pl => pl.Id == player.Id).FirstOrDefault() == null)
                                  stream.Add(player);
                             }
                         }
                     }
 
                     //get the most voted on or matchup involved players
-                    stream.AddRange(await PlayerService.GetTrending());
-
+                    var trendingPlayers = await PlayerService.GetTrending();
+                    foreach(var ply in trendingPlayers)
+                    {
+                        if(stream.Where(pl => pl.Id == ply.Id).FirstOrDefault() == null)
+                            stream.Add(ply);
+                    }
+                    
                     HttpContext.Current.Cache.Insert(cacheID, stream, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(0, 2, 0));
                 }
             }

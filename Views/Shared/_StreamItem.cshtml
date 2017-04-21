@@ -80,8 +80,11 @@
                             @foreach (var player in Model.MatchupItem.Players)
                             {
                                 <a href="#" role="button" data-player-name="@player.Name" data-player-id="@player.Id" class="list-group-item stream-select-starter @if(player.Id == Model.SelectedPlayerID){<text>active</text>} @if(Model.ContentType=="matchupSelected"){<text>disabled</text>}">                                
-                                    <img alt="@player.Name" class='avatar large' src='@player.ProfileImageLarge' onerror="this.onerror=null;this.src='/assets/img/teams/@(player.Team.Slug + ".jpg")';" />
-                                    @player.Name @player.Position | @player.Team.Slug
+                                    <img alt="@player.Name" class='avatar large media-left' src='@player.ProfileImageLarge' onerror="this.onerror=null;this.src='/assets/img/teams/@(player.Team.Slug + ".jpg")';" />
+                                    <div style="display: inline-block; padding-left: 6px;">
+                                        <h4 class="list-group-item-heading">@player.Name</h4>
+                                        <p class="list-group-item-text">@player.Position | @player.Team.Slug</p>
+                                    </div>
                                     <span id="vote-@Model.MatchupItem.Id@player.Id" @if(Model.ContentType == "matchup") {<text>style="display: none"</text>} class="badge vote-count">@Model.MatchupItem.Votes.Where( pl => pl.PlayerId  == player.Id).Count()</span>
                                     <input type="hidden" class="player-tags" data-img="@player.ProfileImage" data-name="@player.ShortName" value="@player.Id" />                                  
                                 </a>
