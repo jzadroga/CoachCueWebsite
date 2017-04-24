@@ -48,7 +48,7 @@ div.global-button-items{
     position: fixed; 
     bottom: 8rem; 
     right: 2rem;
-    z-index: 9999;
+    z-index: 999;
 }
 
 div.global-button-item{

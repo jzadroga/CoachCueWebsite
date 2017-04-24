@@ -118,7 +118,7 @@ namespace CoachCue.Controllers
             Player player = await PlayerService.Get(playerID);
             var userData = await CoachCueUserData.GetUserData(User.Identity.Name);
 
-            var items = (view == "stream") ? await StreamService.GetPlayerStream(userData, playerID) : await StreamService.GetPlayerTwitterStream(player);
+            var items = (view == "stream") ? StreamService.GetPlayerStream(userData, playerID) : await StreamService.GetPlayerTwitterStream(player);
 
             string streamData = this.PartialViewToString("_StreamItemList", items);
 

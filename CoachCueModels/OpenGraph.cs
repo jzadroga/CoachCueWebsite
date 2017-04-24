@@ -43,6 +43,8 @@ namespace CoachCue.Model
                                 case "og:url":
                                     ogResponse.IsOpenGraph = true;
                                     ogResponse.URL = metaRow.GetAttributeValue("content", string.Empty);
+                                    if (!ogResponse.URL.StartsWith("http:") && !ogResponse.URL.StartsWith("https:"))
+                                        ogResponse.URL = url;
                                     break;
                                 case "og:image":
                                 case "og:image:url":

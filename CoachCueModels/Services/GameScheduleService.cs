@@ -32,7 +32,7 @@ namespace CoachCue.Service
                 DateTime weekStart = DateTime.UtcNow.GetEasternTime().StartOfWeek(DayOfWeek.Tuesday);
                 DateTime weekEnd = weekStart.AddDays(7);
 
-                var schedule = await DocumentDBRepository<Player>.GetScheduleAsync("schedule-2016");
+                var schedule = await DocumentDBRepository<Player>.GetScheduleAsync("schedule-2017");
                     
                 var currentGame = schedule.Games.Where(d => (d.HomeTeam == teamSlug || d.AwayTeam == teamSlug)
                         && (d.GameDate >= weekStart && d.GameDate <= weekEnd));

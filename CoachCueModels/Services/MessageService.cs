@@ -52,7 +52,7 @@ namespace CoachCue.Service
                         media.ObjectUrl = messageItem.openGraph.Video;
                         media.Type = "openGraphVideo";
                     }
-                    else if (messageItem.openGraph.MediaTypeID == 2)
+                    else if (messageItem.openGraph.MediaTypeID == 2 || messageItem.openGraph.MediaTypeID == 0)
                     {
                         media.ObjectUrl = messageItem.openGraph.Image;
                         media.Type = "openGraphImage";
@@ -166,10 +166,9 @@ namespace CoachCue.Service
             return await DocumentDBRepository<Message>.GetItemsAsync(d => d.CreatedBy == userId, "Messages");
         }
 
-        public static async Task<IEnumerable<Message>> GetListByPlayer(DateTime endDate, string playerId)
+        public static IEnumerable<Message> GetListByPlayer(DateTime endDate, string playerId)
         {
-            return await DocumentDBRepository<Message>.GetItemsAsync(d => d.PlayerMentions.Any( ply => ply.Id == playerId), "Messages");
-
+            return DocumentDBRepository<Message>.GetPlayerMessages(playerId).OrderByDescending(msg => msg.DateCreated);
         }
 
         public static async Task<Message> Get(string id)

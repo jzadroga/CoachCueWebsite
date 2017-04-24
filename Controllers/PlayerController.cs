@@ -27,7 +27,7 @@ namespace CoachCue.Controllers
             if (playerVM.PlayerDetail == null) //can't find the player
                 return RedirectToAction("Index", "Home");
 
-            playerVM.PlayerStream = await StreamService.GetPlayerStream(playerVM.UserData, playerVM.PlayerDetail.Id);
+            playerVM.PlayerStream = StreamService.GetPlayerStream(playerVM.UserData, playerVM.PlayerDetail.Id);
 
             return View(playerVM);
         }

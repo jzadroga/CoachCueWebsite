@@ -146,7 +146,19 @@
             return client.CreateDocumentQuery<Models.User>(UriFactory.CreateDocumentCollectionUri(DatabaseId, "Users"))
                     .SelectMany(s => s.Notifications.Where(c => c.Matchup == matchupId && c.Read == false && c.Sent == false).Select(c => s)).ToList();
         }
-            
+
+        #endregion
+
+        #region Messages
+
+        public static IEnumerable<Message> GetPlayerMessages(string playerId)
+        {
+            var messages = client.CreateDocumentQuery<Message>(UriFactory.CreateDocumentCollectionUri(DatabaseId, "Messages"))
+                    .SelectMany(s => s.PlayerMentions.Where(c => c.Id == playerId).Select(c => s));
+
+            return messages;
+        }
+
         #endregion
 
         #region Matchup

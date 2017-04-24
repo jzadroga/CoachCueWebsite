@@ -224,7 +224,7 @@ namespace CoachCue.Service
             return stream;
         }
 
-        public static async Task<List<StreamContent>> GetPlayerStream(CoachCueUserData userData, string playerId)
+        public static List<StreamContent> GetPlayerStream(CoachCueUserData userData, string playerId)
         {
             List<StreamContent> stream = new List<StreamContent>();
 
@@ -238,7 +238,7 @@ namespace CoachCue.Service
                 var matchups =  MatchupService.GetListByPlayer(endDate, playerId);
                 stream = MatchupToStream(userData, matchups);
 
-                var msgs = await MessageService.GetListByPlayer(endDate, playerId);
+                var msgs = MessageService.GetListByPlayer(endDate, playerId);
                 stream.AddRange(msgs.Select(msg => new StreamContent
                 {
                     MessageItem = msg,
@@ -251,6 +251,14 @@ namespace CoachCue.Service
                     UserProfileImg = profileImage,
                     TimeAgo = twitter.GetRelativeTime(msg.DateCreated)
                 }).ToList());
+
+                //add an empty item if necessary
+                if( stream.Count() <= 0)
+                {
+                    stream.Add(new StreamContent() {
+                         ContentType = "empty-messages"
+                    });
+                }
 
                 //sort everything by date
                 stream = stream.OrderByDescending(str => str.DateCreated).Take(100).ToList();
