@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using CoachCue.Service;
 using CoachCue.Models;
+using CoachCue.Helpers;
 
 namespace CoachCue.Controllers
 {
@@ -112,6 +113,15 @@ namespace CoachCue.Controllers
         public async Task<ActionResult> AddBadge(string id, string title, string image)
         {
             var user = await UserService.AddBadge(id, title, image);
+
+            var fromUser = "2706adc2-34ad-404e-9e0c-5b34ea1c5172"; //hardcoded to info@coachcue.com
+
+            var notification = await NotificationService.Save(fromUser, id, "You have earned a new Trophy!", "trophy", title);
+            var notifications = new List<Notification>();
+            notifications.Add(notification);
+
+            await EmailHelper.SendMessageNotificationEmails(notifications);
+
             return View(user);
         }
 

@@ -77,15 +77,24 @@ namespace CoachCue.Helpers
 
                     if (userTo.Settings.EmailNotifications == true)
                     {
-                        if(!string.IsNullOrEmpty(notification.Message))
+                        if (notification.Type == "trophy")
                         {
-                            var message = await MessageService.Get(notification.Message);
-                            UserMailer.Notifications(notification, userFrom, userTo, message).Send(new SmtpClientWrapper(getSmtpConfig()));
+                            var trophyMsg = new Message();
+                            trophyMsg.Text = "Congratulations! You have earned a new Trophy, " + notification.Message + ", from CoachCue";
+                            UserMailer.Notifications(notification, userFrom, userTo, trophyMsg).Send(new SmtpClientWrapper(getSmtpConfig()));
                         }
-                        else if(!string.IsNullOrEmpty(notification.Matchup))
+                        else
                         {
-                            var matchup = await MatchupService.Get(notification.Matchup);
-                            UserMailer.MatchupNotifications(notification, userFrom, userTo, matchup).Send(new SmtpClientWrapper(getSmtpConfig()));
+                            if (!string.IsNullOrEmpty(notification.Message))
+                            {
+                                var message = await MessageService.Get(notification.Message);
+                                UserMailer.Notifications(notification, userFrom, userTo, message).Send(new SmtpClientWrapper(getSmtpConfig()));
+                            }
+                            else if (!string.IsNullOrEmpty(notification.Matchup))
+                            {
+                                var matchup = await MatchupService.Get(notification.Matchup);
+                                UserMailer.MatchupNotifications(notification, userFrom, userTo, matchup).Send(new SmtpClientWrapper(getSmtpConfig()));
+                            }
                         }
                     }
 
