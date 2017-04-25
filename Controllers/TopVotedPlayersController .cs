@@ -24,7 +24,6 @@ namespace CoachCue.Controllers
             await LoadBaseViewModel(topVotedVM);
             //matchup.GetTopMathupVotes(gameschedule.GetCurrentWeekID(), true);
 
-            await GameScheduleService.GetCurrentWeek("PHI");
             topVotedVM.VotesPlayers = await PlayerService.GetTopVoted();
 
             return View(topVotedVM);

@@ -20,7 +20,7 @@ namespace CoachCue.Service
 {
     public static class GameScheduleService
     {
-        public static async Task<Game> GetCurrentWeek(string teamSlug)
+        public static async Task<Game> GetCurrentWeek(string teamSlug, string type)
         {
             //no schedule for 2017 yet so default to week 1
             Game gameSchedule = new Game();
@@ -39,6 +39,11 @@ namespace CoachCue.Service
 
                 if (currentGame.Count() > 0)
                     gameSchedule = currentGame.FirstOrDefault();
+                else if(type != "Who Do I Draft?")
+                {
+                    //make sure we get the first week set
+                    gameSchedule = schedule.Games.Where(d => (d.HomeTeam == teamSlug || d.AwayTeam == teamSlug) && d.Week == 1).FirstOrDefault();
+                }
             }
             catch (Exception) { }
 

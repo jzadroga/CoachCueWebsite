@@ -295,9 +295,11 @@ h1.home-header{
 }
 
 .badge.vote-count{
-    margin: 18px;
     font-size: 19px;
     background-color: #F18A20;
+    position: absolute;
+    top: 24px;
+    right: 10px;
 }
 
 a.list-group-item.active>.badge.vote-count, .nav-pills>.active>a>.badge.vote-count{
@@ -955,6 +957,14 @@ div.stream-messages .row, div.stream-matchups .row, div.message-list-stream .row
     padding-bottom: 6px;
 }
 
+.row.matchup-body div.list-group{
+    margin-bottom: 10px;
+}
+
+.row.matchup-body div.player-tags{
+    padding-bottom: 4px;
+}
+
 .row.matchup-body div.list-group a.list-group-item.active, .row.matchup-body div.list-group a.list-group-item.active:hover, .row.matchup-body div.list-group a.list-group-item.active:focus {
     background: rgba(241, 138, 32,0.9);
     border-color: #F18A20;
@@ -968,6 +978,7 @@ div.stream-messages .row, div.stream-matchups .row, div.message-list-stream .row
     color: #656565;
     padding: 3px 0 3px 0;
     border-bottom: #ddd solid 1px;
+    min-height: 44px;
 }
 
 .row.matchup-controls {
@@ -1007,14 +1018,10 @@ div.matchup-item{
     padding-bottom: 10px;
 }
 
-.row.matchup-header a, .row.matchup-header span{
-    color: #656565;
-}
-
 .row.matchup-header .created-by-name{
     position: absolute;
     top: -2px;
-    left: 55px;
+    left: 45px;
     font-weight: bold;
     white-space: nowrap;
 }
@@ -1022,21 +1029,31 @@ div.matchup-item{
 .row.matchup-header .created-by-type{
     position: absolute;
     top: 13px;
-    left: 55px;
+    left: 45px;
     text-transform: uppercase;
+    white-space: nowrap;
+    padding-top: 2px;
 }
 
 .row.matchup-header .matchup-time{
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 16px;
-    margin-top: 6px;
+    font-size: 14px;
     display: inline-block;
+    color: #656565;
 }
 
 div.matchup-middle{
     padding-left: 0px;
     padding-right: 0px;
+}
+
+div.matchup-game-details{
+    display: inline-block; 
+    padding-left: 6px; 
+    vertical-align: top;
+}
+
+div.matchup-game-details p.list-group-item-text{
+    font-size: 12px;
 }
 
 div.matchup-middle img{
@@ -1139,6 +1156,11 @@ li.coach-correct span, li.coach-correct i
     font-size: 14px;
 }
 
+.content-header .username .username-at, .matchup-header .username-at{
+    color : #657786; 
+    font-weight: normal
+}
+
 .content-header .player-card-news{
     position:absolute;
     top: 102px;
@@ -1171,7 +1193,6 @@ li.coach-correct span, li.coach-correct i
 .player-header .panel-heading .header-details{
     padding: 0 0 0 90px;
     position: relative;
-    width: 70%;
 }
 
 .player-header .panel-heading .header-details h4 {
@@ -1191,14 +1212,10 @@ li.coach-correct span, li.coach-correct i
     display: block;
 }
 
-.player-header .panel-body{
-    padding: 10px 0 0 30px !important;
-}
-
 .player-header .panel-footer{
     margin: 0 16px;
     background-color: #fff;
-    padding: 3px 15px !important;
+    padding: 3px 0px !important;
 }
 
 .player-header .panel-footer span {
@@ -1400,7 +1417,8 @@ div.asked-to-amswer span
 }
 
 .content span.time{
-    margin-left: 20px;
+   float: right;
+   color: #656565;
 }
 
 .msg-media{
@@ -2187,6 +2205,16 @@ a.invite-answer-coach
 
 .user-panel .panel-body{
     padding: 15px 5px 15px 5px;
+}
+
+.user-panel .panel-footer .user-trophy-case{
+    border: none;
+}
+
+.user-trophy-case .trophy-list{
+    padding: 0px;
+    overflow: hidden;
+    margin-bottom: 0px;
 }
 
 span.welcome-user
@@ -3195,7 +3223,7 @@ div.top-bar {
 
 .stats ul{
     height: 12px;
-    padding-left: 15px;
+    padding-left: 0px;
 }
 
 .stats a {
@@ -3675,6 +3703,21 @@ div.new-message-text-controls  div.message-charNum{
 }
 
 @media (max-width: 480px) {
+    .content-header .username, .matchup-header .created-by-name, .matchup-header .created-by-type{
+        font-size: 12px;
+    }
+
+    .content-header .username .username-at, .matchup-header .username-at{
+        font-size: 12px;
+    }
+
+    .row.matchup-header .matchup-time {
+        font-size: 13px;
+    }
+
+    .stream-select-starter .h4.list-group-item-heading{
+        font-size: 14px;
+    }
     #bottomNav a{
         font-size: 18px;
     }

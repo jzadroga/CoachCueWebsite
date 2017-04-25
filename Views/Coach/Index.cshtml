@@ -10,17 +10,26 @@
 
     <div class="panel panel-default user-panel player-header">
         <div class="panel-heading">
-            <a href="@Url.Action("index", "coach", new { name = Model.UserDetail.Link })" class="avatar user-avatar-large height" style="background: url('@Url.Content("~/assets/img/avatar/" + Model.UserDetail.Profile.Image)') 50% 50% no-repeat;"></a>
-        
-            <div class="header-details">
-                <h4 class='username'>
-                    @Model.UserDetail.Name
-                    @if (Model.UserDetail.Verified)
-                    {
-                        <img class="user-verified" src='@Url.Content("~/assets/img/verified.png")' alt="Fantasy Pro" />
-                    }
-                </h4>
-                <span>@@@Model.UserDetail.UserName</span>
+            <div class="row" >
+                <div class="col-md-12" style="min-height: 75px">
+                    <a href="@Url.Action("index", "coach", new { name = Model.UserDetail.Link })" class="avatar user-avatar-large height" style="background: url('@Url.Content("~/assets/img/avatar/" + Model.UserDetail.Profile.Image)') 50% 50% no-repeat;"></a>
+
+                    <div class="header-details">
+                        <h4 class='username'>
+                            @Model.UserDetail.Name
+                            @if (Model.UserDetail.Verified)
+                            {
+                                <img class="user-verified" src='@Url.Content("~/assets/img/verified.png")' alt="Fantasy Pro" />
+                            }
+                        </h4>
+                        <span>@@@Model.UserDetail.UserName</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <span>Joined: @Model.UserDetail.DateCreated.ToShortDateString()</span>
+                </div>
             </div>
         </div>
 
@@ -52,14 +61,22 @@
             </div>
         </div>
 
-        <div class="panel-footer">
-            <span>Joined: @Model.UserDetail.DateCreated.ToShortDateString()</span>
-            @if(!string.IsNullOrEmpty(Model.UserDetail.Profile.Website)){
-                <div class="user-website">
-                    <span class="glyphicon glyphicon-globe"></span>
-                    <a class="user-website-link" target="_blank" href="@Model.UserDetail.Profile.Website">@Model.UserDetail.Profile.Website</a>
-                </div>
-                }
+        <div class="panel-footer">         
+            <div class="user-trophy-case">
+                <h5>TROPHY CASE<a style="float: right; padding-right: 8px" href="#">Whats this?</a></h5>
+
+                <ul class="stats trophy-list">
+                    @foreach (var badge in Model.UserDetail.Badges) {
+                    <li class="thumbnail">
+                        <img alt="@badge.Title" class="img-thumbnail" style="height: 40px; width: 40px" src='@Url.Content("~/assets/img/badges/" + @badge.Image )' />
+                        <div class="caption">
+                            <p>@badge.Title</p>
+                        </div>
+                    </li>
+                    }
+                </ul>
+            </div>
+
         </div>
     </div>
 

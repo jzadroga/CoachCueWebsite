@@ -43,7 +43,7 @@ namespace CoachCue.Service
 
                 for(int i=0; i < matchupPlayers.Count; i++)
                 {
-                    var gameWeek = await GameScheduleService.GetCurrentWeek(matchupPlayers[i].Team.Slug);
+                    var gameWeek = await GameScheduleService.GetCurrentWeek(matchupPlayers[i].Team.Slug, type);
 
                     matchup.Players.Add(new MatchupPlayer()
                     {

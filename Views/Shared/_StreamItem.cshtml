@@ -70,12 +70,12 @@
                     <div class="col-md-9 col-xs-9">
                         <a href="@Url.Action("index", "coach", new { name = Model.MatchupItem.UserLink })">
                             <img alt="@Model.UserName" class="avatar player-item-avatar" src="/assets/img/avatar/@Model.MatchupItem.ProfileImage" />
-                            <span class="created-by-name">@Model.MatchupItem.Name</span>
+                            <span class="created-by-name">@Model.MatchupItem.Name <span class="username-at">@@@Model.MatchupItem.UserName</span></span>
                         </a>
                         <span class="created-by-type">@Model.MatchupItem.Type</span>
                     </div>
                     <div class="col-md-3 col-xs-3 text-right">
-                        <a class="matchup-time" href="@Href("~/" + Model.MatchupItem.Link)"> Details</a>
+                        <a class="matchup-time" href="@Href("~/" + Model.MatchupItem.Link)"> @Model.TimeAgo</a>
                     </div>
                 </div>
 
@@ -88,9 +88,12 @@
                             {
                                 <a href="#" role="button" data-player-name="@player.Name" data-player-id="@player.Id" class="list-group-item stream-select-starter @if(player.Id == Model.SelectedPlayerID){<text>active</text>} @if(Model.ContentType=="matchupSelected"){<text>disabled</text>}">                                
                                     <img alt="@player.Name" class='avatar large media-left' src='@player.ProfileImageLarge' onerror="this.onerror=null;this.src='/assets/img/teams/@(player.Team.Slug + ".jpg")';" />
-                                    <div style="display: inline-block; padding-left: 6px;">
+                                    <div class="matchup-game-details">
                                         <h4 class="list-group-item-heading">@player.Name</h4>
                                         <p class="list-group-item-text">@player.Position | @player.Team.Slug</p>
+                                        @if (player.GameWeek.GameDate.HasValue) {
+                                        <p class="list-group-item-text">@((player.Team.Slug == player.GameWeek.HomeTeam) ? player.GameWeek.AwayTeam : "@" + player.GameWeek.HomeTeam )  @player.GameWeek.GameDate.Value.ToString("ddd") @player.GameWeek.GameDate.Value.ToShortTimeString()</p>
+                                        }
                                     </div>
                                     <span id="vote-@Model.MatchupItem.Id@player.Id" @if(Model.ContentType == "matchup") {<text>style="display: none"</text>} class="badge vote-count">@Model.MatchupItem.Votes.Where( pl => pl.PlayerId  == player.Id).Count()</span>
                                     <input type="hidden" class="player-tags" data-img="@player.ProfileImage" data-name="@player.ShortName" value="@player.Id" />                                  
@@ -228,8 +231,8 @@
                     <img alt="@Model.UserName" class="avatar user-avatar" src="@Url.Content("~/assets/img/avatar/" + Model.ProfileImg)" />
                 </a>
                 <div class="content-header">          
-                    <a class="username" href="@Url.Action("index", "coach", new { name = Model.MessageItem.UserLink })">@Model.FullName</a>
-                    <span class="time">@Model.TimeAgo</span>
+                    <a class="username" href="@Url.Action("index", "coach", new { name = Model.MessageItem.UserLink })">@Model.FullName <span class="username-at">@@@Model.UserName</span></a>
+                    <span class="time text-right">@Model.TimeAgo</span>
                 </div>
                 <span>@Html.Raw(@Model.MessageItem.Text)</span>
                 @if (Model.MessageItem.PlayerMentions.Count() > 0) { 
