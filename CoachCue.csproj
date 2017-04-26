@@ -519,6 +519,7 @@
     <Content Include="Views\TopVotedPlayers\Index.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\ControlPanel\AddBadge.cshtml" />
+    <Content Include="Views\About\Trophies.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="CoachCueModels\CoachCueModels.csproj">

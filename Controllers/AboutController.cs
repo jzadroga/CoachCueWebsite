@@ -22,5 +22,13 @@ namespace CoachCue.Controllers
 
             return View(pgVM);
         }
+
+        public async Task<ActionResult> Trophies()
+        {
+            PageViewModel pgVM = new PageViewModel();
+            await LoadBaseViewModel(pgVM);
+
+            return View(pgVM);
+        }
     }
 }

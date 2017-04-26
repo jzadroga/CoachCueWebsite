@@ -89,7 +89,7 @@
                                 <a href="#" role="button" data-player-name="@player.Name" data-player-id="@player.Id" class="list-group-item stream-select-starter @if(player.Id == Model.SelectedPlayerID){<text>active</text>} @if(Model.ContentType=="matchupSelected"){<text>disabled</text>}">                                
                                     <img alt="@player.Name" class='avatar large media-left' src='@player.ProfileImageLarge' onerror="this.onerror=null;this.src='/assets/img/teams/@(player.Team.Slug + ".jpg")';" />
                                     <div class="matchup-game-details">
-                                        <h4 class="list-group-item-heading">@player.Name</h4>
+                                        <h4 style="font-size: 14px; font-weight: bold;" class="list-group-item-heading">@player.Name</h4>
                                         <p class="list-group-item-text">@player.Position | @player.Team.Slug</p>
                                         @if (player.GameWeek.GameDate.HasValue) {
                                         <p class="list-group-item-text">@((player.Team.Slug == player.GameWeek.HomeTeam) ? player.GameWeek.AwayTeam : "@" + player.GameWeek.HomeTeam )  @player.GameWeek.GameDate.Value.ToString("ddd") @player.GameWeek.GameDate.Value.ToShortTimeString()</p>

@@ -1,0 +1,23 @@
+﻿@model CoachCue.ViewModels.PageViewModel
+
+@{
+    ViewBag.Title = "CoachCue - Trophies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pod">
+    <h1 class="home-header">Introduction CoachCue Trophies!</h1>
+
+    <h3>Intro</h3>
+    <p>As a way of saying thanks to the people who contribute the most to making CoachCue a great community, a set of trophies are being created.  Trophies will be given to those who unluck acheivements each week by voting and helping others in our various weekly matchups. Each winner will receive a trophy and it will be displayed proudly on their user page as a token of having won the award.</p>
+
+    <h3>How do I get a Trophy?</h3>
+    <p>Easy, just contribute each week to help others set their best lineup and we will use some magical formula to calculate who has earned a trophy.  Fill up your trophy case to gain notoriety as a Fantasy Football genius!</p>
+
+    <h3>List of Trophies</h3>
+    <p>Coming soon</p>
+</div>
+
+@section rightcolumn {
+    @{ Html.RenderPartial("_RightColumnBase", model: Model); }
+}
