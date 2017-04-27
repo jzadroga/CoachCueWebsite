@@ -273,6 +273,7 @@
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserTaskController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\WhoDoIDraftController.cs" />
     <Compile Include="Controllers\WhoDoIAddWaiverWireController.cs" />
     <Compile Include="Controllers\WhoDoIDropWaiverWireController .cs" />
@@ -520,6 +521,8 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\ControlPanel\AddBadge.cshtml" />
     <Content Include="Views\About\Trophies.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Shared\_MatchupDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="CoachCueModels\CoachCueModels.csproj">

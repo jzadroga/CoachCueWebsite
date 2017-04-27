@@ -25,11 +25,18 @@ namespace CoachCue.Controllers
 
             myMatchVM.Matchup = await StreamService.GetDetailStream(myMatchVM.UserData, "whodoidropwaiverwire/" + week + "/" + players);
 
-            if (myMatchVM.Matchup.MatchupItem == null)
-                return RedirectToAction("Index", "Home");
+            if(myMatchVM.Matchup.MatchupItem == null)
+            {
+                myMatchVM.Matchup = new StreamContent();
+                myMatchVM.Matchup.MatchupItem = new Models.Matchup()
+                {
+                    Active = true,
+                    Id = "0",
+                    Type = "Who Do I Drop? (Waiver Wire)"
+                };
+            }
 
             myMatchVM.RelatedMatchups = await StreamService.GetRelatedStream(myMatchVM.UserData, myMatchVM.Matchup.MatchupItem);
-
             SetMatchupPageData(myMatchVM.Matchup.MatchupItem);
 
             return View(myMatchVM);

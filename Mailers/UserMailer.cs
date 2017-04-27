@@ -43,23 +43,21 @@ namespace CoachCue.Mailers
                 Guid = notification.UserFrom
             };
 
-            UrlHelper helper = new UrlHelper(HttpContext.Current.Request.RequestContext);
-            string msgLink = (notification.Type == "trophy" ) ? helper.Action("Index", "Coach", new { name = userTo.Link }) : helper.Action("Index", "Coach", new { name = userFrom.Link });
-            msgLink = ConfigurationManager.AppSettings["MvcMailer.BaseURL"] + msgLink;
+            MailRequestVoteViewModel voteVM = new MailRequestVoteViewModel();
+            voteVM.FullName = userFrom.Name;
+            voteVM.MatchupLink = link;
+            voteVM.FromAvatarSrc = "http://coachcue.com/assets/img/avatar/" + userFrom.Profile.Image;
+            voteVM.FullLink = "http://coachcue.com/message?id=" + message.Id;
+
+            ViewData.Model = voteVM;
 
             ViewData["Title"] = notification.Text;
-            ViewData["UserGuid"] = notification.UserFrom;
+            ViewData["UserGuid"] = string.Empty;
 
-            MailMentionViewModel voteVM = new MailMentionViewModel();
-            voteVM.FullName = userFrom.Name;
-            voteVM.MessageLink = link;
-            voteVM.UserMessageLink = msgLink;
-            voteVM.FromAvatarSrc = (notification.Type == "trophy") ? "http://coachcue.com/assets/img/avatar/" + userTo.Profile.Image : "http://coachcue.com/assets/img/avatar/" + userFrom.Profile.Image;
-            ViewData.Model = voteVM;
             return Populate(x =>
             {
                 x.Subject = notification.Text;
-                x.ViewName = "MentionNotice";
+                x.ViewName = "MatchupVote";
                 x.To.Add(userTo.Email);
                 x.From = new MailAddress(fromAddress, "CoachCue");
             });
@@ -134,6 +132,37 @@ namespace CoachCue.Mailers
             {
                 x.Subject = notification.Text;
                 x.ViewName = "RequestVote";
+                x.To.Add(userTo.Email);
+                x.From = new MailAddress(fromAddress, "CoachCue");
+            });
+        }
+
+        public virtual MvcMailMessage NewTrophy(Notification notification, User userTo, User userFrom, string trophy)
+        {
+            UrlHelper helper = new UrlHelper(HttpContext.Current.Request.RequestContext);
+
+            LinkData link = new LinkData()
+            {
+                Message = "Congratulations! You have earned a new Trophy, " + trophy + ", from CoachCue",
+                ID = notification.Id,
+                Guid = notification.UserFrom
+            };
+
+            MailRequestVoteViewModel voteVM = new MailRequestVoteViewModel();
+            voteVM.FullName = userFrom.Name;
+            voteVM.MatchupLink = link;
+            voteVM.FromAvatarSrc = "http://coachcue.com/assets/img/avatar/" + userTo.Profile.Image;
+            voteVM.FullLink = "http://coachcue.com/" + helper.Action("Index", "Coach", new { name = userTo.Link });
+
+            ViewData.Model = voteVM;
+
+            ViewData["Title"] = notification.Text;
+            ViewData["UserGuid"] = string.Empty;
+
+            return Populate(x =>
+            {
+                x.Subject = notification.Text;
+                x.ViewName = "MatchupVote";
                 x.To.Add(userTo.Email);
                 x.From = new MailAddress(fromAddress, "CoachCue");
             });

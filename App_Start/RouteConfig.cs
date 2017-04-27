@@ -93,6 +93,12 @@ namespace CoachCue
            );
 
             routes.MapRoute(
+              "Mesages",
+              "Message/{id}",
+              new { controller = "Message", action = "Index" }
+           );
+
+            routes.MapRoute(
                "Default", // Route name
                "{controller}/{action}/{playerName}", // URL with parameters
                new { controller = "Home", action = "Index", playerName = UrlParameter.Optional } // Parameter defaults

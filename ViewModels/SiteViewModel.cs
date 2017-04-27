@@ -77,6 +77,11 @@ namespace CoachCue.ViewModels
         public List<StreamContent> RelatedMatchups { get; set; }
     }
 
+    public class UserMessageModel : BaseViewModel
+    {
+        public StreamContent Message { get; set; }
+    }
+
     public class MatchupsListViewModel : BaseViewModel
     {
        // public List<WeeklyMatchups> MyMatchups { get; set; }

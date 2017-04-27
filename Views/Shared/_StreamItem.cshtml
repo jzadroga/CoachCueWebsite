@@ -232,7 +232,7 @@
                 </a>
                 <div class="content-header">          
                     <a class="username" href="@Url.Action("index", "coach", new { name = Model.MessageItem.UserLink })">@Model.FullName <span class="username-at">@@@Model.UserName</span></a>
-                    <span class="time text-right">@Model.TimeAgo</span>
+                    <span class="time text-right"><a href="@Url.Action("index", "message", new { id = Model.MessageItem.Id })">@Model.TimeAgo</a></span>
                 </div>
                 <span>@Html.Raw(@Model.MessageItem.Text)</span>
                 @if (Model.MessageItem.PlayerMentions.Count() > 0) { 

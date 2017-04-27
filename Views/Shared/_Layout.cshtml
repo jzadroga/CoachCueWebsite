@@ -4,13 +4,14 @@
 @using CoachCue.Models;
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:type" content="website" />
     <meta name="twitter:image" content="http://coachcue.com/assets/img/twittercard-matchup1.png" />
     <meta property="og:image" content="http://coachcue.com/assets/img/twittercard-matchup1.png" />
+    <link rel=”image_src” href=”http://coachcue.com/assets/img/twittercard-matchup1.png” />
 
     @if(ViewBag.Description != null){
     <meta name="description" content="@ViewBag.Description" />

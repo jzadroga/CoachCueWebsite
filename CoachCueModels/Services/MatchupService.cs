@@ -158,7 +158,7 @@ namespace CoachCue.Service
         {
             var matchups = await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true && d.Type == matchup.Type && d.Id != matchup.Id, "Matchups");
 
-            matchups = matchups.OrderByDescending(d => d.DateCreated).ThenBy(d => d.Votes.Count).Take(15);
+            matchups = matchups.OrderByDescending(d => d.DateCreated).ThenBy(d => d.Votes.Count).Take(30);
 
             return matchups;
         }

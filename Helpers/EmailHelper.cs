@@ -63,6 +63,27 @@ namespace CoachCue.Helpers
             return true;
         }
 
+        public static async Task<bool> SendTrophyNotificationEmail(Notification notification)
+        {
+            try
+            {
+                IUserMailer UserMailer = new UserMailer();
+
+                var userTo = await UserService.Get(notification.UserTo);
+                var userFrom = await UserService.Get(notification.UserFrom);
+
+                if (userTo.Settings.EmailNotifications == true)
+                    UserMailer.NewTrophy(notification, userTo, userFrom, notification.Message).Send(new SmtpClientWrapper(getSmtpConfig()));
+
+                //mark as sent
+                notification.Sent = true;
+                await NotificationService.Update(notification);
+            }
+            catch (Exception) { }
+
+            return true;
+        }
+
         public static async Task<bool> SendMessageNotificationEmails(List<Notification> notifications)
         {
             try
@@ -76,26 +97,17 @@ namespace CoachCue.Helpers
                     var userFrom = await UserService.Get(notification.UserFrom);
 
                     if (userTo.Settings.EmailNotifications == true)
-                    {
-                        if (notification.Type == "trophy")
+                    {                    
+                        if (!string.IsNullOrEmpty(notification.Message))
                         {
-                            var trophyMsg = new Message();
-                            trophyMsg.Text = "Congratulations! You have earned a new Trophy, " + notification.Message + ", from CoachCue";
-                            UserMailer.Notifications(notification, userFrom, userTo, trophyMsg).Send(new SmtpClientWrapper(getSmtpConfig()));
+                            var message = await MessageService.Get(notification.Message);
+                            UserMailer.Notifications(notification, userFrom, userTo, message).Send(new SmtpClientWrapper(getSmtpConfig()));
                         }
-                        else
+                        else if (!string.IsNullOrEmpty(notification.Matchup))
                         {
-                            if (!string.IsNullOrEmpty(notification.Message))
-                            {
-                                var message = await MessageService.Get(notification.Message);
-                                UserMailer.Notifications(notification, userFrom, userTo, message).Send(new SmtpClientWrapper(getSmtpConfig()));
-                            }
-                            else if (!string.IsNullOrEmpty(notification.Matchup))
-                            {
-                                var matchup = await MatchupService.Get(notification.Matchup);
-                                UserMailer.MatchupNotifications(notification, userFrom, userTo, matchup).Send(new SmtpClientWrapper(getSmtpConfig()));
-                            }
-                        }
+                            var matchup = await MatchupService.Get(notification.Matchup);
+                            UserMailer.MatchupNotifications(notification, userFrom, userTo, matchup).Send(new SmtpClientWrapper(getSmtpConfig()));
+                        }                      
                     }
 
                     //mark as sent

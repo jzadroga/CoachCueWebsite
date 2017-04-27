@@ -26,10 +26,17 @@ namespace CoachCue.Controllers
             myMatchVM.Matchup = await StreamService.GetDetailStream(myMatchVM.UserData, "whodoistartppr/" + week + "/" + players);
 
             if (myMatchVM.Matchup.MatchupItem == null)
-                return RedirectToAction("Index", "Home");
+            {
+                myMatchVM.Matchup = new StreamContent();
+                myMatchVM.Matchup.MatchupItem = new Models.Matchup()
+                {
+                    Active = true,
+                    Id = "0",
+                    Type = "Who Do I Start? (PPR)"
+                };
+            }
 
             myMatchVM.RelatedMatchups = await StreamService.GetRelatedStream(myMatchVM.UserData, myMatchVM.Matchup.MatchupItem);
-
             SetMatchupPageData(myMatchVM.Matchup.MatchupItem);
 
             return View(myMatchVM);

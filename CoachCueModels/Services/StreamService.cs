@@ -206,6 +206,27 @@ namespace CoachCue.Service
             return stream;           
         }
 
+        public static async Task<StreamContent> GetMessageDetailStream(CoachCueUserData userData, string id)
+        {
+            StreamContent stream = new StreamContent();
+
+            var message = await MessageService.Get(id);
+            if (message != null)
+            {
+                stream.MessageItem = message;
+                stream.DateTicks = message.DateCreated.Ticks.ToString();
+                stream.ProfileImg = message.ProfileImage;
+                stream.UserName = message.UserName;
+                stream.FullName = message.Name;
+                stream.ContentType = "message";
+                stream.DateCreated = message.DateCreated;
+                stream.UserProfileImg = userData.ProfileImage;
+                stream.TimeAgo = twitter.GetRelativeTime(message.DateCreated);           
+            }
+
+            return stream;
+        }
+
         public static async Task<List<StreamContent>> GetRelatedStream(CoachCueUserData userData, Matchup matchup)
         {
             List<StreamContent> stream = new List<StreamContent>();

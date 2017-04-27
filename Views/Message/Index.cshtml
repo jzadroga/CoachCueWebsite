@@ -1,0 +1,23 @@
+﻿@model CoachCue.ViewModels.UserMessageModel
+@using CoachCue.Model;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="span8 section matchup-details-item">
+
+    <div id="matchup-details">
+       
+        <div class="weekly-matchup-item mymatchup" data-message="@Model.Message.MessageItem.Id">
+
+            @{ Html.RenderPartial("_StreamItem", model: Model.Message); }
+
+        </div>
+                    
+    </div>
+</div>
+
+@section rightcolumn {
+    @{ Html.RenderPartial("_RightColumnBase", model: Model); }
+}

@@ -117,10 +117,7 @@ namespace CoachCue.Controllers
             var fromUser = "2706adc2-34ad-404e-9e0c-5b34ea1c5172"; //hardcoded to info@coachcue.com
 
             var notification = await NotificationService.Save(fromUser, id, "You have earned a new Trophy!", "trophy", title);
-            var notifications = new List<Notification>();
-            notifications.Add(notification);
-
-            await EmailHelper.SendMessageNotificationEmails(notifications);
+            await EmailHelper.SendTrophyNotificationEmail(notification);
 
             return View(user);
         }
