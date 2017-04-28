@@ -320,6 +320,7 @@ $(document).ready(function () {
 
     //add new matchup
     $("#modal-matchup").on("click", '#share-matchup', function (e) {
+        var $btn = $(this).button('loading');
         var player1 = $("#player1-id").val();
         var player2 = $("#player2-id").val();
         var player3 = $("#player3-id").val();
@@ -329,7 +330,8 @@ $(document).ready(function () {
             return false;
         }
 
-        task.addMatchupItem(player1, player2, player3, player4, $('#matchup-type').val(), function (data) {          
+        task.addMatchupItem(player1, player2, player3, player4, $('#matchup-type').val(), function (data) {
+            $btn.button('reset');
             if (data.Existing) {
                 $('#matchup-exists-alert').show();
                 $("#matchup-exists-link").attr('href', data.Link);
