@@ -360,6 +360,10 @@ namespace CoachCue.Service
             if (matchup.Completed == true )// || (DateTime.UtcNow.GetEasternTime() >= matchup.Players[0].GameWeek.Date))
                 return type;
 
+            //if current user is not logged in
+            if (string.IsNullOrEmpty(userID))
+                return "matchup";
+
             type = (matchup.Votes.Where(vt => vt.UserId == userID).Count() > 0) ? "matchupSelected" : "matchup";
 
             return type;

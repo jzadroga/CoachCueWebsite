@@ -125,7 +125,7 @@
                                 @foreach (var vote in Model.MatchupItem.Votes.Take(8))
                                 {
                                     <li>
-                                        <a href="@Url.Action("index", "coach", new { name = vote.UserLink })" rel='tooltip' data-toggle="tooltip" data-placement="top" title="" data-original-title="@vote.Name (@vote.PlayerName)" class="user-avatar-small height" style="background: url('@Url.Content("~/assets/img/avatar/" + vote.ProfileImage)') 50% 50% no-repeat;"></a>
+                                        <a href="@((string.IsNullOrEmpty(vote.UserLink)) ? "#" : @Url.Action("index", "coach", new { name = vote.UserLink }))" rel='tooltip' data-toggle="tooltip" data-placement="top" title="" data-original-title="@vote.Name (@vote.PlayerName)" class="user-avatar-small height" style="background: url('@Url.Content("~/assets/img/avatar/" + vote.ProfileImage)') 50% 50% no-repeat;"></a>
                                     </li>
                                 }
                             </ul>
@@ -136,7 +136,7 @@
                                     <div class="item player-item clear">
                                         <div class="content">
                                             <div class="content-header">
-                                                <a class="username" href="@Url.Action("index", "coach", new { name = vote.UserLink })">@vote.Name</a>                                         
+                                                <a class="username" href="@((string.IsNullOrEmpty(vote.UserLink)) ? "#" : @Url.Action("index", "coach", new { name = vote.UserLink }))">@vote.Name</a>                                         
                                                 <span class="user" style="font-size: 12px;"></span>                                        
                                             </div>
                                             <img class="avatar player-item-avatar" src="@Url.Content("~/assets/img/avatar/" + vote.ProfileImage)">
