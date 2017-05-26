@@ -9,7 +9,7 @@
 
  <!-- first try at filtering -->
 <ul class="nav nav-pills stream-filter">
-    <li class="active">
+    <li @if (!Model.LoadNews) { <text>class="active"</text> }>
         <a class="stream-filter-item" data-position="" href="#">Stream</a>
     </li>
     <li>
@@ -24,7 +24,7 @@
     <li>
         <a class="stream-filter-item" data-position="DEF" href="#">DEF / K</a>
     </li>
-    <li>
+    <li @if (Model.LoadNews) { <text>class="active"</text> }>
         <a class="stream-filter-item" data-position="NEWS" href="#">News</a>
     </li>
     <li>
@@ -34,8 +34,6 @@
 
 <div id="msg-list">
     
-    <input type="hidden" id="load-matchups" value="@Model.LoadMatchups" />
-
     <div class="panel panel-default">
         <div class="panel-body">
 

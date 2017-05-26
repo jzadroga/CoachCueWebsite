@@ -38,7 +38,7 @@ namespace CoachCue.ViewModels
         public List<StreamContent> Stream { get; set; }
         public bool ShowRegistration { get; set; }
         public bool ShowFriendInvite { get; set; }
-        public bool LoadMatchups { get; set; }
+        public bool LoadNews { get; set; }
 
         public HomeViewModel()
         {

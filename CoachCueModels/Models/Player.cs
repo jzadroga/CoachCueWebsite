@@ -60,7 +60,9 @@ namespace CoachCue.Models
             {
                 var image = "/assets/img/teams/" + this.Team.Slug + ".jpg";
                 if (!string.IsNullOrEmpty(this.Twitter.ProfileImage))
-                    image = this.Twitter.ProfileImage;
+                {
+                    image = this.Twitter.ProfileImage.Replace("http", "https");
+                }
 
                 return image;
             }

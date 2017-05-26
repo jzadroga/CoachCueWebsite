@@ -196,7 +196,7 @@ namespace CoachCue.Service
                     {
                         messageItem.userIncluded = true;
                         messageItem.userList.Add(userItem);
-                        message += "<a href='/coach/" + userItem.Id + "/" + userItem.Name + "'>" + word + "</a>";
+                        message += "<a href='/coach/" + userItem.UserName + "'>" + word + "</a>";
                     }
                 }
                 else

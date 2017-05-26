@@ -8,6 +8,8 @@ namespace CoachCue
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new ErrorHandler.AiHandleErrorAttribute());
+            //need to toggle this for debugging
+            filters.Add(new RequireHttpsAttribute());
         }
     }
 }
