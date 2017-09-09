@@ -141,13 +141,16 @@ namespace CoachCue.Controllers
                 streamContent = (pos == "NEWS") ? await StreamService.GetTrendingNews() : StreamService.GetPositionStream(userData, pos);                             
       
             string streamData = this.PartialViewToString("_StreamItemList", streamContent);
-                        
-            return Json(new
+
+            var jsonResult = Json(new
             {
                 StreamData = streamData,
                 Type = "list",
                 LastDate = DateTime.UtcNow.GetEasternTime().AddSeconds(60).Ticks
-            }, JsonRequestBehavior.AllowGet);            
+            }, JsonRequestBehavior.AllowGet);
+
+            jsonResult.MaxJsonLength = int.MaxValue;
+            return jsonResult;
         }
         
         [NoCacheAttribute]

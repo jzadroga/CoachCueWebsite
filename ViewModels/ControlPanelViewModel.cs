@@ -9,7 +9,7 @@ namespace CoachCue.ViewModels
 {
     public class MatchupsViewModel
     {
-        public IEnumerable<Matchup> Matchups { get; set; }
+        public List<Matchup> Matchups { get; set; }
     }
 
     public class MessagesViewModel

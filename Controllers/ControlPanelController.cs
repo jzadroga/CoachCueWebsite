@@ -39,9 +39,23 @@ namespace CoachCue.Controllers
         public async Task<ActionResult> Matchups()
         {
             MatchupsViewModel matchupsVM = new MatchupsViewModel();
-            matchupsVM.Matchups = await MatchupService.GetList(DateTime.Now.AddDays(-200), false);
+            var matchups = await MatchupService.GetListByWeek(1);
+            matchupsVM.Matchups = matchups.ToList();
 
             return View(matchupsVM);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> UpdatePoints(List<Matchup> matchups)
+        {
+            foreach(var matchup in matchups)
+            {
+                var allPoints = matchup.Players.Where(pl => !pl.Points.HasValue).FirstOrDefault();
+                if(allPoints == null)
+                    await MatchupService.UpdatePoints(matchup);
+            }
+
+            return RedirectToAction("Matchups");
         }
 
         public ActionResult MatchupDelete(int id)

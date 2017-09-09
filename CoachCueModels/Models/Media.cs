@@ -22,5 +22,21 @@ namespace CoachCue.Models
 
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
+
+        public string SecureUrl
+        {
+            get
+            {
+                return (string.IsNullOrEmpty(this.Url)) ? string.Empty : this.Url.Replace("http:", "https:");
+            }
+        }
+
+        public string SecureObjectUrl
+        {
+            get
+            {
+                return (string.IsNullOrEmpty(this.ObjectUrl)) ? string.Empty : this.ObjectUrl.Replace("http:", "https:");
+            }
+        }
     }
 }

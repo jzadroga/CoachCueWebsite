@@ -2,7 +2,7 @@
   "short_name": "CoachCue",
   "name": "CoachCue",
   "theme_color": "#f18a20",
-  "background_color": "#f18a20",
+  "background_color": "#ffffff",
   "display": "standalone",
   "icons": [
     {

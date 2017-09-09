@@ -85,6 +85,27 @@ namespace CoachCue.Service
             return matchup;
         }
 
+        public static async Task<Matchup> UpdatePoints(Matchup matchup)
+        {
+            var currentMatchup = await Get(matchup.Id);
+
+            currentMatchup.Completed = true;
+            currentMatchup.Active = false;
+
+            foreach(var player in matchup.Players)
+            {
+                var currentPlayer = currentMatchup.Players.Where(pl => pl.Id == player.Id).FirstOrDefault();
+                currentPlayer.Points = player.Points;
+                currentPlayer.IsWinner = false;
+            }
+
+            currentMatchup.Players.OrderByDescending(pl => pl.Points).FirstOrDefault().IsWinner = true;
+
+            await DocumentDBRepository<Matchup>.UpdateItemAsync(currentMatchup.Id, currentMatchup, "Matchups");
+
+            return currentMatchup;
+        }
+
         public static async Task<Matchup> AddVote(string playerId, string playerName, string matchupId, CoachCueUserData userData)
         {
             var matchup = await Get(matchupId);
@@ -128,12 +149,23 @@ namespace CoachCue.Service
             return matchup.FirstOrDefault();
         }
 
+        public static async Task<IEnumerable<Matchup>> GetListByWeek(int week)
+        {
+            var matchups = await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true  
+                && (d.Type == "Who Do I Start? (Standard)" || d.Type == "Who Do I Start? (PPR)")
+                && d.Players[0].GameWeek.Week == week, "Matchups");
+
+            matchups = matchups.Where(mt => mt.Completed == false);
+
+            return matchups.OrderByDescending(d => d.DateCreated).ThenBy(d => d.Votes.Count);
+        }
+
         public static async Task<IEnumerable<Matchup>> GetList(DateTime endDate, bool includeCompleted = true)
         {
             var matchups = await DocumentDBRepository<Matchup>.GetItemsAsync(d => d.Active == true, "Matchups");
 
             if (!includeCompleted)
-                matchups = matchups.Where(mt => mt.Completed = false);
+                matchups = matchups.Where(mt => mt.Completed == false);
 
             return matchups.OrderByDescending(d => d.DateCreated).ThenBy(d => d.Votes.Count);
         }

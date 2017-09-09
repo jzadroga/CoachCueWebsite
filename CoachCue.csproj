@@ -507,6 +507,7 @@
     <Content Include="packages.config" />
     <Content Include="Views\WhoDoIStartStandard\Index.cshtml" />
     <Content Include="manifest.json" />
+    <None Include="Properties\PublishProfiles\CoachCue - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\CoachCue - Web Deploy.pubxml" />
     <Content Include="Views\Shared\_StreamItemMedia.cshtml" />
     <Content Include="Views\Shared\_InviteVote.cshtml" />
@@ -523,6 +524,7 @@
     <Content Include="Views\About\Trophies.cshtml" />
     <Content Include="Views\Message\Index.cshtml" />
     <Content Include="Views\Shared\_MatchupDetails.cshtml" />
+    <None Include="Properties\PublishProfiles\Profile1.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="CoachCueModels\CoachCueModels.csproj">

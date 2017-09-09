@@ -12,4 +12,4 @@ namespace CoachCue
             filters.Add(new RequireHttpsAttribute());
         }
     }
-}
+}   

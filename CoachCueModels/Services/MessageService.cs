@@ -54,6 +54,14 @@ namespace CoachCue.Service
                     }
                     else if (messageItem.openGraph.MediaTypeID == 2 || messageItem.openGraph.MediaTypeID == 0)
                     {
+                        /*byte[] data;
+                        using (WebClient client = new WebClient())
+                        {
+                            data = client.DownloadData(messageItem.openGraph.Image);
+                        }
+                        string mediaImg = HttpContext.Current.Request.PhysicalApplicationPath + "assets\\img\\avatar\\";
+                        File.WriteAllBytes(mediaImg, data);
+                        */
                         media.ObjectUrl = messageItem.openGraph.Image;
                         media.Type = "openGraphImage";
                     }
